@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { openai, huggingFaceChat } from '@/lib/openai-client';
+import { chatRequestSchema } from '@/lib/validators';
+import { handleApiError, BadRequestError, InternalServerError } from '@/lib/api-error';
+import { withRateLimit } from '@/lib/rate-limit';
 
 // Knowledge base for the chatbot
 const KNOWLEDGE_BASE = {
@@ -61,19 +64,25 @@ const FALLBACK_RESPONSES = [
 
 export async function POST(request: NextRequest) {
   try {
-    const { messages } = await request.json();
-    
-    // Safety check for proper message format
-    if (!Array.isArray(messages) || messages.length === 0) {
-      return NextResponse.json(
-        { error: 'Invalid message format' },
-        { status: 400 }
-      );
+    // Rate limiting: 20 requests per minute per client
+    const rateLimitResponse = await withRateLimit(20, 60000)(request);
+    if (rateLimitResponse) {
+      return rateLimitResponse;
     }
+
+    const body = await request.json();
+    
+    // Validate request body
+    const validationResult = chatRequestSchema.safeParse(body);
+    if (!validationResult.success) {
+      throw new BadRequestError('Invalid request format', validationResult.error.errors);
+    }
+
+    const { messages } = validationResult.data;
     
     // Prepare system message with knowledge context
     const systemMessage = {
-      role: 'system',
+      role: 'system' as const,
       content: `
         You are Mindscape AI Assistant, a helpful and professional assistant for Mindscape AI platform.
         
@@ -152,18 +161,23 @@ export async function POST(request: NextRequest) {
 
     // Try OpenAI if Hugging Face is not available or failed
     if (hasOpenAIKey) {
-      const completion = await openai.chat.completions.create({
-        model: 'gpt-3.5-turbo',
-        messages: promptMessages,
-        temperature: 0.7,
-        max_tokens: 500,
-      });
+      try {
+        const completion = await openai.chat.completions.create({
+          model: 'gpt-3.5-turbo',
+          messages: promptMessages,
+          temperature: 0.7,
+          max_tokens: 500,
+        });
 
-      return NextResponse.json({
-        content: completion.choices[0].message.content,
-        role: 'assistant',
-        timestamp: new Date(),
-      });
+        return NextResponse.json({
+          content: completion.choices[0].message.content,
+          role: 'assistant',
+          timestamp: new Date(),
+        });
+      } catch (openaiError) {
+        console.error('OpenAI API error:', openaiError);
+        throw new InternalServerError('Failed to generate chat response');
+      }
     }
 
     // This should never be reached due to the earlier check, but as a final fallback:
@@ -174,13 +188,6 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Chat API error:', error);
-    
-    // Return a graceful error response
-    return NextResponse.json({
-      content: "I apologize, but I'm having trouble processing your request. Please try again later.",
-      role: 'assistant',
-      timestamp: new Date(),
-    }, { status: 200 }); // Return 200 to allow the chat to continue
+    return handleApiError(error);
   }
-} 
+}

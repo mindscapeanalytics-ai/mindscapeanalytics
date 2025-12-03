@@ -1,18 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { nlpRequestSchema } from '@/lib/validators';
+import { handleApiError, BadRequestError } from '@/lib/api-error';
+import { withRateLimit } from '@/lib/rate-limit';
+import { prisma } from '@/lib/prisma';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { text, options = {} } = body;
+    // Rate limiting: 100 requests per minute per client
+    const rateLimitResponse = await withRateLimit(100, 60000)(request);
+    if (rateLimitResponse) {
+      return rateLimitResponse;
+    }
 
-    if (!text) {
+    // Check authentication
+    const session = await getServerSession(authOptions);
+    if (!session?.user?.id) {
       return NextResponse.json(
-        { success: false, message: 'Text is required' },
-        { status: 400 }
+        { error: { code: 'UNAUTHORIZED', message: 'Authentication required' } },
+        { status: 401 }
       );
     }
 
-    // Mock NLP analysis - in a real app, you would use an NLP service
+    const body = await request.json();
+
+    // Validate request body
+    const validationResult = nlpRequestSchema.safeParse(body);
+    if (!validationResult.success) {
+      throw new BadRequestError('Invalid request format', validationResult.error.errors);
+    }
+
+    const { text, options = {} } = validationResult.data;
+
+    // TODO: Replace with actual NLP service (OpenAI, AWS Comprehend, etc.)
+    // For now, generate mock analysis
     const analysis = {
       sentiment: {
         score: 0.75,
@@ -44,18 +66,28 @@ export async function POST(request: NextRequest) {
       ]
     };
 
+    // Save NLP result to database
+    try {
+      await prisma.nLPResult.create({
+        data: {
+          userId: session.user.id as string,
+          text: text.substring(0, 10000), // Limit stored text length
+          sentiment: analysis.sentiment.label,
+          entities: analysis.entities as any,
+        },
+      });
+    } catch (dbError) {
+      // Log error but don't fail the request
+      console.error('Failed to save NLP result to database:', dbError);
+    }
+
     return NextResponse.json({
       success: true,
       analysis,
-      text,
+      text: text.substring(0, 100), // Return truncated text in response
       timestamp: new Date().toISOString()
     });
   } catch (error) {
-    console.error('NLP analysis error:', error);
-    return NextResponse.json(
-      { success: false, message: 'Failed to analyze text' },
-      { status: 500 }
-    );
+    return handleApiError(error);
   }
 }
-

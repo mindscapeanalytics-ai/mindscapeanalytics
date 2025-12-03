@@ -15,6 +15,7 @@ import {
   Users,
   Building,
   Sparkles,
+  ShoppingCart,
 } from "lucide-react"
 
 export type SiteConfig = {
@@ -100,6 +101,11 @@ export const mainNav: MainNavItem[] = [
     title: "Case Studies",
     href: "/case-studies",
     icon: FileText,
+  },
+  {
+    title: "Marketplace",
+    href: "/marketplace",
+    icon: ShoppingCart,
   },
   {
     title: "Pricing",

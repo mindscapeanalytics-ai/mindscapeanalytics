@@ -6,17 +6,17 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { 
-  Users, 
-  TrendingUp, 
-  Gift,
+import {
+  Users,
+  TrendingUp,
   CheckCircle,
   ArrowRight,
   Sparkles,
   Target,
   Zap,
   Star,
-  Rocket
+  Rocket,
+  Link2
 } from "lucide-react"
 
 const commissionTiers = [
@@ -25,15 +25,17 @@ const commissionTiers = [
     title: "Lead Generated",
     amount: "$50",
     description: "Per qualified lead",
-    color: "from-red-500 to-orange-500",
-    iconBg: "bg-red-500/20"
+    color: "from-orange-500 to-orange-600",
+    amountColor: "from-orange-400 to-orange-500",
+    iconBg: "bg-orange-500/20"
   },
   {
     icon: Target,
     title: "Meeting Booked",
     amount: "$100",
     description: "Per consultation",
-    color: "from-purple-500 to-pink-500",
+    color: "from-purple-500 to-purple-600",
+    amountColor: "from-purple-400 to-purple-500",
     iconBg: "bg-purple-500/20"
   },
   {
@@ -42,6 +44,7 @@ const commissionTiers = [
     amount: "$200+",
     description: "+ 10% project value",
     color: "from-red-600 to-red-500",
+    amountColor: "from-red-400 to-red-500",
     iconBg: "bg-red-600/20",
     featured: true
   }
@@ -77,104 +80,134 @@ export default function AffiliateProgramSection() {
   }
 
   return (
-    <section className="py-8 md:py-12 relative overflow-hidden bg-black">
+    <section className="py-8 md:py-10 relative overflow-hidden bg-black">
       {/* Background elements */}
       <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black,transparent)]"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-red-500/10 blur-[120px]"></div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-6">
-          <Badge className="mb-3 bg-gradient-to-r from-red-500/20 to-purple-500/20 text-white border-red-500/30">
-            <Gift className="h-3 w-3 mr-1" />
-            AFFILIATE PROGRAM
-          </Badge>
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-            Earn Up to <span className="text-red-500">$200+</span> Per Referral
-          </h2>
-          <p className="text-sm md:text-base text-white/70 max-w-2xl mx-auto">
-            Join our affiliate program and earn generous commissions. No experience needed!
-          </p>
-        </div>
+        <div className="max-w-6xl mx-auto">
+          {/* Section Header - Compact */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-6 md:mb-8"
+          >
+            <Badge className="mb-3 bg-red-500/10 text-red-400 border-red-500/30 hover:bg-red-500/20 backdrop-blur-sm">
+              <Sparkles className="h-3 w-3 mr-1.5" />
+              AFFILIATE PROGRAM
+            </Badge>
+            <h2 className="text-2xl md:text-3xl font-bold mb-2">
+              <span className="bg-gradient-to-r from-white via-red-100 to-red-300 bg-clip-text text-transparent">
+                Earn Money by Referring Clients
+              </span>
+            </h2>
+            <p className="text-white/60 text-sm max-w-2xl mx-auto">
+              Join our affiliate program and earn commissions for every successful referral
+            </p>
+          </motion.div>
 
-        <div className="max-w-5xl mx-auto">
-          {/* Commission Tiers - Horizontal Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+          {/* Commission Tiers - Compact Horizontal Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
             {commissionTiers.map((tier, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.1, duration: 0.4 }}
                 viewport={{ once: true }}
+                whileHover={{ y: -4, scale: 1.01 }}
+                className="h-full"
               >
-                <Card className={`bg-black/40 backdrop-blur-xl border ${tier.featured ? 'border-red-500/50 ring-1 ring-red-500/20' : 'border-white/10'} hover:border-red-500/30 transition-all duration-300 relative overflow-hidden group h-full`}>
+                <Card className={`bg-black/50 backdrop-blur-xl border ${tier.featured ? 'border-red-500/50 ring-1 ring-red-500/20 shadow-lg shadow-red-500/10' : 'border-white/10'} hover:border-red-500/40 transition-all duration-300 relative overflow-hidden group h-full`}>
                   {tier.featured && (
-                    <div className="absolute top-0 right-0 bg-gradient-to-r from-red-600 to-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-bl-lg">
-                      BEST VALUE
+                    <div className="absolute top-0 right-0 bg-gradient-to-r from-red-600 to-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-bl-lg shadow-md z-10">
+                      ⭐ BEST VALUE
                     </div>
                   )}
-                  {/* Gradient overlay */}
+
                   <div className={`absolute inset-0 bg-gradient-to-br ${tier.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                  
-                  <CardContent className="p-4 relative z-10 text-center">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${tier.color} flex items-center justify-center mx-auto mb-2 shadow-lg group-hover:scale-110 transition-transform`}>
+
+                  <CardContent className="p-4 relative z-10 text-center flex flex-col items-center justify-center h-full min-h-[130px]">
+                    {/* Icon */}
+                    <motion.div
+                      className={`w-10 h-10 rounded-lg bg-gradient-to-br ${tier.color} flex items-center justify-center mx-auto mb-2 shadow-md`}
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
                       <tier.icon className="h-5 w-5 text-white" />
+                    </motion.div>
+
+                    {/* Amount */}
+                    <div className={`text-2xl md:text-3xl font-black bg-gradient-to-r ${tier.amountColor || tier.color} bg-clip-text text-transparent mb-1`}>
+                      {tier.amount}
                     </div>
-                    <div className="text-2xl font-bold text-red-400 mb-0.5">{tier.amount}</div>
-                    <h3 className="text-xs font-bold mb-0.5 uppercase tracking-wide">{tier.title}</h3>
-                    <p className="text-[10px] text-white/60">{tier.description}</p>
+
+                    {/* Title */}
+                    <h3 className="text-xs font-bold mb-0.5 uppercase tracking-wider text-white/90">
+                      {tier.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-[10px] text-white/60">
+                      {tier.description}
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
             ))}
           </div>
 
-          {/* Two Column Layout */}
-          <div className="grid md:grid-cols-2 gap-4">
-            {/* Left Column - How It Works */}
-            <div>
-              <Card className="bg-black/40 backdrop-blur-xl border border-white/10 h-full">
-                <CardContent className="p-5">
-                  <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
+          {/* Compact Two Column Layout */}
+          <div className="grid md:grid-cols-2 gap-4 md:gap-5">
+            {/* Left Column - How It Works & Benefits Combined */}
+            <div className="space-y-4">
+              {/* How It Works */}
+              <Card className="bg-black/50 backdrop-blur-xl border border-white/10 hover:border-red-500/30 transition-all duration-300">
+                <CardContent className="p-4">
+                  <h3 className="text-base font-bold mb-3 flex items-center gap-2">
                     <Rocket className="h-4 w-4 text-red-400" />
-                    How It Works
+                    <span className="text-white">How It Works</span>
                   </h3>
-                  <div className="space-y-3">
+                  <div className="space-y-2.5">
                     {steps.map((step, i) => (
                       <motion.div
                         key={i}
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.1 }}
+                        transition={{ delay: i * 0.08 }}
                         viewport={{ once: true }}
-                        className="flex items-center gap-3"
+                        className="flex items-center gap-2.5"
                       >
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500/20 to-purple-500/20 border border-red-500/30 flex items-center justify-center flex-shrink-0">
-                          <span className="text-sm font-bold text-red-400">{step.number}</span>
+                        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-red-500/20 to-purple-500/20 border border-red-500/30 flex items-center justify-center flex-shrink-0">
+                          <span className="text-xs font-bold text-red-400">{step.number}</span>
                         </div>
-                        <div>
-                          <h4 className="text-sm font-semibold">{step.title}</h4>
-                          <p className="text-xs text-white/70">{step.desc}</p>
+                        <div className="flex-1">
+                          <h4 className="text-sm font-semibold text-white">{step.title}</h4>
+                          <p className="text-xs text-white/60">{step.desc}</p>
                         </div>
                       </motion.div>
                     ))}
                   </div>
+                </CardContent>
+              </Card>
 
-                  {/* Benefits */}
-                  <div className="mt-4 pt-4 border-t border-white/10">
-                    <h4 className="text-sm font-semibold mb-2 flex items-center gap-2">
-                      <Star className="h-3 w-3 text-yellow-400" />
-                      What You Get
-                    </h4>
-                    <div className="grid grid-cols-1 gap-1.5">
-                      {benefits.map((benefit, index) => (
-                        <div key={index} className="flex items-start gap-2 text-xs">
-                          <CheckCircle className="h-3 w-3 text-red-400 mt-0.5 flex-shrink-0" />
-                          <span className="text-white/80">{benefit}</span>
-                        </div>
-                      ))}
-                    </div>
+              {/* Benefits */}
+              <Card className="bg-black/50 backdrop-blur-xl border border-white/10 hover:border-red-500/30 transition-all duration-300">
+                <CardContent className="p-4">
+                  <h4 className="text-base font-bold mb-3 flex items-center gap-2">
+                    <Star className="h-4 w-4 text-yellow-400" />
+                    <span className="text-white">What You Get</span>
+                  </h4>
+                  <div className="grid grid-cols-1 gap-1.5">
+                    {benefits.map((benefit, index) => (
+                      <div key={index} className="flex items-start gap-2 text-xs">
+                        <CheckCircle className="h-3.5 w-3.5 text-green-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-white/80 leading-relaxed">{benefit}</span>
+                      </div>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
@@ -182,45 +215,59 @@ export default function AffiliateProgramSection() {
 
             {/* Right Column - Signup CTA */}
             <div className="flex flex-col justify-center">
-              <Card className="bg-gradient-to-br from-red-600/10 to-purple-600/10 border border-red-500/30 backdrop-blur-xl h-full">
-                <CardContent className="p-6 flex flex-col justify-center h-full">
+              <Card className="bg-gradient-to-br from-red-600/15 to-purple-600/15 border border-red-500/40 backdrop-blur-xl h-full hover:border-red-500/60 transition-all duration-300 shadow-xl shadow-red-500/10">
+                <CardContent className="p-5 flex flex-col justify-center h-full">
                   <div className="text-center mb-4">
-                    <TrendingUp className="h-10 w-10 text-red-400 mx-auto mb-2" />
-                    <h3 className="text-xl font-bold mb-1">Start Earning Today</h3>
+                    <motion.div
+                      animate={{ scale: [1, 1.05, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      <TrendingUp className="h-8 w-8 text-red-400 mx-auto mb-2" />
+                    </motion.div>
+                    <h3 className="text-xl font-bold mb-1 text-white">Start Earning Today</h3>
                     <p className="text-sm text-white/70">
                       Join hundreds of affiliates earning passive income
                     </p>
                   </div>
 
-                  {/* Stats */}
+                  {/* Stats - Compact */}
                   <div className="grid grid-cols-3 gap-2 mb-4">
-                    <div className="text-center bg-black/40 rounded-lg p-2">
-                      <div className="text-lg font-bold text-red-400">500+</div>
-                      <div className="text-[10px] text-white/60">Affiliates</div>
-                    </div>
-                    <div className="text-center bg-black/40 rounded-lg p-2">
-                      <div className="text-lg font-bold text-red-400">$50K+</div>
-                      <div className="text-[10px] text-white/60">Paid Out</div>
-                    </div>
-                    <div className="text-center bg-black/40 rounded-lg p-2">
-                      <div className="text-lg font-bold text-red-400">4.9★</div>
-                      <div className="text-[10px] text-white/60">Rating</div>
-                    </div>
+                    <motion.div
+                      className="text-center bg-black/50 rounded-lg p-2 border border-white/5 hover:border-red-500/30 transition-all"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="text-lg font-black bg-gradient-to-r from-red-400 to-orange-500 bg-clip-text text-transparent">500+</div>
+                      <div className="text-[10px] text-white/60 font-medium">Affiliates</div>
+                    </motion.div>
+                    <motion.div
+                      className="text-center bg-black/50 rounded-lg p-2 border border-white/5 hover:border-red-500/30 transition-all"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="text-lg font-black bg-gradient-to-r from-red-400 to-orange-500 bg-clip-text text-transparent">$50K+</div>
+                      <div className="text-[10px] text-white/60 font-medium">Paid Out</div>
+                    </motion.div>
+                    <motion.div
+                      className="text-center bg-black/50 rounded-lg p-2 border border-white/5 hover:border-red-500/30 transition-all"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="text-lg font-black bg-gradient-to-r from-red-400 to-orange-500 bg-clip-text text-transparent">4.9★</div>
+                      <div className="text-[10px] text-white/60 font-medium">Rating</div>
+                    </motion.div>
                   </div>
-                  
-                  <form onSubmit={handleSubmit} className="space-y-3 mt-auto">
+
+                  <form onSubmit={handleSubmit} className="space-y-2.5 mt-auto">
                     <Input
                       type="email"
                       placeholder="Enter your email address"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className="bg-black/40 border-white/10 h-10 text-sm"
+                      className="bg-black/50 border-white/20 focus:border-red-500/50 h-10 text-sm transition-all duration-300"
                     />
-                    <Button 
+                    <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white h-10"
+                      className="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white h-10 shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/40 transition-all duration-300 hover:scale-[1.02] font-semibold"
                       size="sm"
                     >
                       {isSubmitting ? (
@@ -230,7 +277,7 @@ export default function AffiliateProgramSection() {
                         </>
                       ) : (
                         <>
-                          <Sparkles className="mr-2 h-4 w-4" />
+                          <Link2 className="mr-2 h-4 w-4" />
                           Join Free - Start Earning
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </>

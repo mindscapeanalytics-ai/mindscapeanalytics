@@ -276,7 +276,7 @@ const FooterBottom = memo(({
         viewport={{ once: true }}
         transition={{ delay: 0.2 }}
       >
-        © {currentYear} {siteConfig.name}. All rights reserved.
+        © {currentYear} Mindscape Analytics LLC. All rights reserved.
       </motion.p>
 
       {secondaryLinks && (
@@ -326,7 +326,7 @@ const ErrorNotification = memo(({
 // Main footer component
 export default function Footer({ fullWidth = true }: FooterProps) {
   // State management
-  const currentYear = new Date().getFullYear();
+  const currentYear = 2025;
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
   const [email, setEmail] = useState("");

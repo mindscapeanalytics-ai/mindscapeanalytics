@@ -16,8 +16,8 @@ import { CookieConsent } from "@/components/cookie-consent"
 import UnifiedAIPlatform from "@/components/unified-ai-platform"
 import SocialProofSection from "@/components/social-proof-section"
 import WhyChooseUs from "@/components/why-choose-us"
-import AffiliateProgramSection from "@/components/affiliate-program-section"
 import InstantQuoteCalculator from "@/components/instant-quote-calculator"
+import ProductsShowcase from "@/components/products-showcase"
 
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
@@ -121,7 +121,20 @@ export default function Home() {
       </FlexibleSection>
 
 
-      {/* 2. OUR PROJECTS - Innovations - Moved here to be after Features */}
+      {/* 2. TRY OUT OUR PRODUCTS - Product Showcase */}
+      <FlexibleSection
+        id="products"
+        fullWidth={true}
+        className="relative z-10 py-6 md:py-12 overflow-hidden"
+      >
+        <div className={sectionBackgroundStyles.container} aria-hidden="true">
+          <div className={sectionBackgroundStyles.glow}></div>
+          <div className={sectionBackgroundStyles.glow}></div>
+        </div>
+        <ProductsShowcase />
+      </FlexibleSection>
+
+      {/* 3. OUR PROJECTS - Innovations - Moved here to be after Products */}
       <FlexibleSection
         id="projects"
         fullWidth={true}
@@ -136,7 +149,7 @@ export default function Home() {
 
 
 
-      {/* 3. INDUSTRY SOLUTIONS - Vertical Focus */}
+      {/* 4. INDUSTRY SOLUTIONS - Vertical Focus */}
       <FlexibleSection
         id="solutions"
         fullWidth={true}
@@ -197,15 +210,6 @@ export default function Home() {
         className="relative z-10 py-6 md:py-12 overflow-hidden"
       >
         <InstantQuoteCalculator />
-      </FlexibleSection>
-
-      {/* AFFILIATE PROGRAM - Growth Engine */}
-      <FlexibleSection
-        id="affiliate-program"
-        fullWidth={true}
-        className="relative z-10 py-6 md:py-12 overflow-hidden"
-      >
-        <AffiliateProgramSection />
       </FlexibleSection>
 
       {/* WHY CHOOSE US - USA-Based Advantages */}

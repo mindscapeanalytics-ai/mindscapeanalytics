@@ -33,6 +33,7 @@ import {
   Home,
   Briefcase,
   Building2,
+  ShoppingCart,
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -307,6 +308,12 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       description: "Transformative business impacts we've delivered for our clients",
       icon: <CheckCircle2 className="h-5 w-5 text-amber-500" />,
     },
+    {
+      title: "Marketplace",
+      href: "/marketplace",
+      description: "Browse and purchase our pre-built software solutions",
+      icon: <ShoppingCart className="h-5 w-5 text-red-500" />,
+    },
   ]
 
   const quickActions = [
@@ -360,8 +367,10 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
     // Projects section
     { title: "Our Projects", href: "#", icon: <FileText className="h-5 w-5" />, hasMegaMenu: true },
     { title: "Case Studies", href: "/case-studies", icon: <FileText className="h-5 w-5" /> },
+    { title: "Marketplace", href: "/marketplace", icon: <ShoppingCart className="h-5 w-5" /> },
     { title: "Client Portfolio", href: "/projects", icon: <BarChart2 className="h-5 w-5" /> },
     { title: "Success Stories", href: "/projects/success-stories", icon: <CheckCircle2 className="h-5 w-5" /> },
+    { title: "Marketplace", href: "/marketplace", icon: <ShoppingCart className="h-5 w-5" /> },
 
     // Resources section
     { title: "Resources", href: "#", icon: <HelpCircle className="h-5 w-5" />, hasMegaMenu: true },
@@ -582,7 +591,8 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       const projectsItems = mobileNavItems.filter(item =>
         (item.title === 'Case Studies' ||
           item.title === 'Client Portfolio' ||
-          item.title === 'Success Stories') ||
+          item.title === 'Success Stories' ||
+          item.title === 'Marketplace') ||
         (item.title === 'Our Projects' && item.hasMegaMenu)
       );
       const resourcesItems = mobileNavItems.filter(item =>
@@ -607,6 +617,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
         item.title !== 'Case Studies' &&
         item.title !== 'Client Portfolio' &&
         item.title !== 'Success Stories' &&
+        item.title !== 'Marketplace' &&
         item.title !== 'Resources' &&
         item.title !== 'Documentation' &&
         item.title !== 'Blog' &&

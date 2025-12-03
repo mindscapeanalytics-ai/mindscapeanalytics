@@ -1,9 +1,10 @@
 import OpenAI from 'openai';
 
 // Initialize OpenAI client with error handling
+// NOTE: This should ONLY be used server-side. Never expose API keys to the browser.
 export const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || '', // Default to empty string if not set
-  dangerouslyAllowBrowser: true, // Allow use in browser environments
+  // Removed dangerouslyAllowBrowser - API keys should never be exposed to browser
 });
 
 // Optional: Add Hugging Face Inference API integration as an alternative

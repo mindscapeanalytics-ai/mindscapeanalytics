@@ -20,6 +20,7 @@ model User {
   predictions   Prediction[]
   nlpResults    NLPResult[]
   visionResults VisionResult[]
+  orders        Order[]
 }
 
 model Profile {
@@ -78,7 +79,30 @@ model VisionResult {
   updatedAt   DateTime @updatedAt
 }
 
+model Order {
+  id                String   @id @default(cuid())
+  userId            String?
+  user              User?    @relation(fields: [userId], references: [id])
+  paymentIntentId   String   @unique
+  status            OrderStatus @default(PENDING)
+  amount            Float
+  currency          String   @default("usd")
+  items             Json     // Array of order items
+  customerInfo      Json     // Customer name, email, etc.
+  metadata          Json?    // Additional metadata
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
 enum Role {
   USER
   ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
 } 

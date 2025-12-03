@@ -1,18 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { visionRequestSchema } from '@/lib/validators';
+import { handleApiError, BadRequestError } from '@/lib/api-error';
+import { withRateLimit } from '@/lib/rate-limit';
+import { prisma } from '@/lib/prisma';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { imageUrl, options = {} } = body;
+    // Rate limiting: 50 requests per minute per client
+    const rateLimitResponse = await withRateLimit(50, 60000)(request);
+    if (rateLimitResponse) {
+      return rateLimitResponse;
+    }
 
-    if (!imageUrl) {
+    // Check authentication
+    const session = await getServerSession(authOptions);
+    if (!session?.user?.id) {
       return NextResponse.json(
-        { success: false, message: 'Image URL is required' },
-        { status: 400 }
+        { error: { code: 'UNAUTHORIZED', message: 'Authentication required' } },
+        { status: 401 }
       );
     }
 
-    // Mock vision analysis - in a real app, you would use computer vision APIs
+    const body = await request.json();
+
+    // Validate request body
+    const validationResult = visionRequestSchema.safeParse(body);
+    if (!validationResult.success) {
+      throw new BadRequestError('Invalid request format', validationResult.error.errors);
+    }
+
+    const { imageUrl, options = {} } = validationResult.data;
+
+    // TODO: Replace with actual computer vision service (OpenAI Vision, AWS Rekognition, etc.)
+    // For now, generate mock analysis
     const analysis = {
       objects: [
         {
@@ -73,6 +95,21 @@ export async function POST(request: NextRequest) {
       }
     };
 
+    // Save vision result to database
+    try {
+      await prisma.visionResult.create({
+        data: {
+          userId: session.user.id as string,
+          imageUrl,
+          labels: analysis.labels as any,
+          objects: analysis.objects as any,
+        },
+      });
+    } catch (dbError) {
+      // Log error but don't fail the request
+      console.error('Failed to save vision result to database:', dbError);
+    }
+
     return NextResponse.json({
       success: true,
       analysis,
@@ -80,11 +117,6 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString()
     });
   } catch (error) {
-    console.error('Vision analysis error:', error);
-    return NextResponse.json(
-      { success: false, message: 'Failed to analyze image' },
-      { status: 500 }
-    );
+    return handleApiError(error);
   }
 }
-
