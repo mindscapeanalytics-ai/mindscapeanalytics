@@ -24,6 +24,8 @@ const envSchema = z.object({
   // Payment services
   STRIPE_SECRET_KEY: z.string().min(1, 'STRIPE_SECRET_KEY is required for payments').optional(),
   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().min(1, 'NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is required for payments').optional(),
+  // Email services
+  RESEND_API_KEY: z.string().optional(),
   // Optional services
   REDIS_URL: z.string().url().optional(),
   SENTRY_DSN: z.string().url().optional(),

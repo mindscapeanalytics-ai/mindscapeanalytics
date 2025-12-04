@@ -63,23 +63,44 @@ function ContactFormContent() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      })
 
-    console.log(values)
-    setIsSubmitting(false)
-    setIsSuccess(true)
+      const data = await response.json()
 
-    toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you as soon as possible.",
-    })
+      if (!response.ok) {
+        throw new Error(data.error?.message || 'Failed to send message. Please try again.')
+      }
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      form.reset()
-      setIsSuccess(false)
-    }, 3000)
+      setIsSubmitting(false)
+      setIsSuccess(true)
+
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you as soon as possible.",
+      })
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        form.reset()
+        setIsSuccess(false)
+      }, 3000)
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setIsSubmitting(false)
+      
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Failed to send message. Please try again.",
+        variant: "destructive",
+      })
+    }
   }
 
   return (

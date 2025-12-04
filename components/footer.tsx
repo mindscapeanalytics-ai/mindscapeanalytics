@@ -117,9 +117,7 @@ const ContactInfo = memo(() => (
         </div>
         <div className="flex-1 pt-2">
           <a
-            href="https://wa.me/13072106155"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="tel:+13072106155"
             className="text-sm text-white/70 hover:text-white transition-colors"
           >
             +1 (307) 210-6155

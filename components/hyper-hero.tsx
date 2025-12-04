@@ -793,7 +793,7 @@ export default function HyperHero({ fullWidth = true }: HyperHeroProps) {
   }, []);
 
   return (
-    <div className="relative pt-28 pb-[10px] md:pb-20 overflow-hidden min-h-[calc(100vh-30px)] md:min-h-screen flex flex-col justify-start w-full">
+    <div className="relative pt-32 md:pt-36 pb-[10px] md:pb-20 overflow-hidden min-h-[calc(100vh-30px)] md:min-h-screen flex flex-col justify-start w-full">
       {/* Background elements */}
       <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black)]" />
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black/85" />

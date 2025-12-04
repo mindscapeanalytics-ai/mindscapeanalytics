@@ -2401,7 +2401,7 @@ export default function ZeeshanKeerioPage() {
                     </motion.a>
 
                     <motion.a
-                      href="https://wa.me/13072106155"
+                      href="tel:+13072106155"
                       className="flex items-center gap-3 group"
                       whileHover={{ x: 5 }}
                     >

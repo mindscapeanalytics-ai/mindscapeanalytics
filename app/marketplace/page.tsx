@@ -33,9 +33,88 @@ import {
     Sparkles,
     Heart,
     MessageSquare,
+    Shield,
+    Clock,
+    Download,
+    Award,
+    Users,
+    CheckCircle2,
+    Lock,
+    HeadphonesIcon,
+    Brain,
+    Database,
+    Cloud,
+    Activity,
 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
+
+
+// Testimonials for marketplace
+const marketplaceTestimonials = [
+    {
+        name: "Sarah Johnson",
+        role: "CTO, TechStart Inc",
+        quote: "Saved us 8 months of development time. The e-commerce platform was production-ready from day one.",
+        rating: 5,
+        product: "E-Commerce Platform Pro"
+    },
+    {
+        name: "Michael Chen",
+        role: "Founder, CryptoAnalytics",
+        quote: "The blockchain tracker exceeded our expectations. Clean code, great documentation, and excellent support.",
+        rating: 5,
+        product: "Blockchain Portfolio Tracker"
+    },
+    {
+        name: "Emily Rodriguez",
+        role: "Product Manager, AutoTech",
+        quote: "Best investment we made. The automotive diagnostics system integrated seamlessly with our existing infrastructure.",
+        rating: 5,
+        product: "Automotive Diagnostics System"
+    },
+]
+
+// Service cards for hero section
+const serviceCards = [
+    {
+        id: 1,
+        title: "AI SaaS Solutions",
+        description: "Intelligent automation & ML-powered platforms",
+        icon: Brain,
+        color: "from-purple-500/20 to-pink-500/20",
+        borderColor: "border-purple-500/30",
+        iconColor: "text-purple-400",
+        delay: 0,
+        x: -100,
+        y: -50,
+    },
+    {
+        id: 2,
+        title: "Cybersecurity",
+        description: "Enterprise-grade security & threat protection",
+        icon: Shield,
+        color: "from-red-500/20 to-orange-500/20",
+        borderColor: "border-red-500/30",
+        iconColor: "text-red-400",
+        delay: 0.2,
+        x: 100,
+        y: -30,
+    },
+    {
+        id: 3,
+        title: "Data Software",
+        description: "Analytics, visualization & data management",
+        icon: Database,
+        color: "from-blue-500/20 to-cyan-500/20",
+        borderColor: "border-blue-500/30",
+        iconColor: "text-blue-400",
+        delay: 0.4,
+        x: -80,
+        y: 50,
+    },
+]
 
 interface MarketplaceProduct {
     id: string
@@ -423,35 +502,124 @@ export default function MarketplacePage() {
                 )}
             </AnimatePresence>
 
-            {/* Hero Section - Single Column Centered */}
-            <section className="relative z-10 pt-20 pb-16 px-4">
-                <div className="max-w-4xl mx-auto relative">
+            {/* Enhanced Hero Section with Marketplace Design */}
+            <section className="relative z-10 pt-20 pb-20 px-4 overflow-hidden">
+                {/* Animated Background Effects */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    {/* Gradient Orbs */}
+                    <motion.div
+                        animate={{
+                            x: [0, 100, 0],
+                            y: [0, 50, 0],
+                            scale: [1, 1.2, 1],
+                        }}
+                        transition={{
+                            duration: 20,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                        }}
+                        className="absolute top-20 left-10 w-96 h-96 bg-red-500/10 rounded-full blur-3xl"
+                    />
+                    <motion.div
+                        animate={{
+                            x: [0, -80, 0],
+                            y: [0, -40, 0],
+                            scale: [1, 1.1, 1],
+                        }}
+                        transition={{
+                            duration: 15,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                        }}
+                        className="absolute top-40 right-20 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"
+                    />
+                    <motion.div
+                        animate={{
+                            x: [0, 60, 0],
+                            y: [0, -60, 0],
+                            scale: [1, 1.3, 1],
+                        }}
+                        transition={{
+                            duration: 18,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                        }}
+                        className="absolute bottom-20 left-1/2 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"
+                    />
+                    
+                    {/* Grid Pattern Overlay */}
+                    <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black,transparent)]" />
+                </div>
+
+                <div className="max-w-7xl mx-auto relative">
+                    {/* Main Hero Content */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-center"
+                        className="text-center mb-12"
                     >
-                        {/* Badge */}
-                        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500/20 to-pink-500/20 border border-red-500/30 rounded-full px-3 py-1 mb-6 backdrop-blur-sm">
-                            <Sparkles className="h-3 w-3 text-red-400 animate-pulse" />
-                            <span className="text-[10px] font-bold text-red-300 uppercase tracking-wider">Premium Software Solutions</span>
-                        </div>
+                        {/* Badge with Animation */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.1, duration: 0.5 }}
+                            className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500/20 via-pink-500/20 to-purple-500/20 border border-red-500/30 rounded-full px-3 py-1 mb-6 backdrop-blur-md"
+                        >
+                            <motion.div
+                                animate={{ rotate: [0, 360] }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                            >
+                                <Sparkles className="h-3 w-3 text-red-400" />
+                            </motion.div>
+                            <span className="text-[10px] font-bold text-red-300 uppercase tracking-wider">Premium Software Marketplace</span>
+                        </motion.div>
 
-                        {/* Title */}
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-[1.1]">
-                            <span className="bg-gradient-to-r from-white via-red-100 to-red-300 bg-clip-text text-transparent">
+                        {/* Main Title */}
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2, duration: 0.6 }}
+                            className="text-5xl md:text-6xl lg:text-7xl font-black mb-4 leading-[1.1]"
+                        >
+                            <motion.span
+                                animate={{
+                                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                                }}
+                                transition={{
+                                    duration: 5,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                }}
+                                style={{
+                                    background: 'linear-gradient(90deg, #ffffff, #fecaca, #e9d5ff, #bfdbfe, #ffffff)',
+                                    backgroundSize: '200% auto',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text',
+                                }}
+                            >
                                 Software Marketplace
-                            </span>
-                        </h1>
+                            </motion.span>
+                        </motion.h1>
 
                         {/* Subtitle */}
-                        <p className="text-sm md:text-base text-white/50 max-w-2xl mx-auto mb-8 leading-relaxed">
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3, duration: 0.6 }}
+                            className="text-sm md:text-base text-white/60 max-w-2xl mx-auto mb-8"
+                        >
                             Enterprise-ready solutions • Instant deployment • Save 6+ months development time
-                        </p>
+                        </motion.p>
 
-                        {/* CTAs - Centered */}
-                        <div className="flex flex-wrap gap-2.5 justify-center mb-10">
+                        {/* Compact CTAs */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4, duration: 0.6 }}
+                            className="flex flex-wrap gap-2.5 justify-center mb-8"
+                        >
                             <Button
                                 onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
                                 className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-semibold px-4 py-2 text-xs group shadow-lg shadow-red-500/30 rounded-xl h-auto border-0"
@@ -468,10 +636,15 @@ export default function MarketplacePage() {
                                 <Sparkles className="h-3 w-3 mr-1.5 group-hover:rotate-12 transition-transform text-purple-400" />
                                 Custom Software
                             </Button>
-                        </div>
+                        </motion.div>
 
-                        {/* Search & Filters - Single Row Compact */}
-                        <div className="max-w-5xl mx-auto bg-gradient-to-br from-white/[0.07] to-white/[0.03] backdrop-blur-xl border border-white/10 rounded-xl p-3 shadow-2xl shadow-black/20">
+                        {/* Compact Search & Filters */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5, duration: 0.6 }}
+                            className="max-w-4xl mx-auto bg-gradient-to-br from-white/[0.07] to-white/[0.03] backdrop-blur-xl border border-white/10 rounded-xl p-3 shadow-2xl shadow-black/20"
+                        >
                             <div className="flex items-center gap-3">
                                 {/* Search Input */}
                                 <div className="relative flex-1">
@@ -512,6 +685,70 @@ export default function MarketplacePage() {
                                     </select>
                                 </div>
                             </div>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Service Cards - Centered Below Hero */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6, duration: 0.8 }}
+                        className="mt-12"
+                    >
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-6 max-w-5xl mx-auto">
+                            {serviceCards.map((service, index) => {
+                                const Icon = service.icon
+                                return (
+                                    <motion.div
+                                        key={service.id}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.7 + index * 0.1, duration: 0.6 }}
+                                        whileHover={{
+                                            scale: 1.05,
+                                            y: -8,
+                                        }}
+                                        className="w-full md:w-[300px]"
+                                    >
+                                        <motion.div
+                                            animate={{
+                                                y: [0, -12, 0],
+                                            }}
+                                            transition={{
+                                                duration: 4 + index * 0.5,
+                                                repeat: Infinity,
+                                                ease: "easeInOut",
+                                                delay: index * 0.3,
+                                            }}
+                                        >
+                                            <Card className={`bg-gradient-to-br ${service.color} backdrop-blur-xl border-2 ${service.borderColor} rounded-2xl p-6 shadow-2xl transition-all duration-300 h-full hover:shadow-lg`}>
+                                                <CardContent className="p-0">
+                                                    <div className="flex flex-col items-center text-center">
+                                                        <motion.div
+                                                            whileHover={{ scale: 1.1, rotate: 5 }}
+                                                            className={`mb-4 p-4 rounded-xl bg-black/30 border ${service.borderColor}`}
+                                                        >
+                                                            <Icon className={`h-10 w-10 ${service.iconColor}`} />
+                                                        </motion.div>
+                                                        <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
+                                                        <p className="text-sm text-white/70 mb-4">{service.description}</p>
+                                                        <motion.div
+                                                            whileHover={{ scale: 1.1 }}
+                                                        >
+                                                            <Button
+                                                                variant="ghost"
+                                                                className={`text-xs ${service.iconColor} hover:bg-black/20 border ${service.borderColor} hover:border-opacity-50`}
+                                                            >
+                                                                Explore <ArrowRight className="h-3 w-3 ml-1" />
+                                                            </Button>
+                                                        </motion.div>
+                                                    </div>
+                                                </CardContent>
+                                            </Card>
+                                        </motion.div>
+                                    </motion.div>
+                                )
+                            })}
                         </div>
                     </motion.div>
                 </div>
@@ -523,10 +760,12 @@ export default function MarketplacePage() {
                     {selectedProduct && (
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="relative h-64 md:h-full min-h-[300px] rounded-xl overflow-hidden">
-                                <img
+                                <Image
                                     src={selectedProduct.image}
                                     alt={selectedProduct.title}
-                                    className="absolute inset-0 w-full h-full object-cover"
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                                 <div className="absolute bottom-4 left-4 right-4">
@@ -672,11 +911,14 @@ export default function MarketplacePage() {
                                     </button>
 
                                     <div className="relative h-48 overflow-hidden bg-black/20">
-                                        <img
+                                        <Image
                                             src={product.image}
                                             alt={product.title}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-pointer"
+                                            fill
+                                            className="object-cover group-hover:scale-110 transition-transform duration-500 cursor-pointer"
                                             onClick={() => setSelectedProduct(product)}
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                                            loading="lazy"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                                     </div>
@@ -774,7 +1016,15 @@ export default function MarketplacePage() {
                         <div className="space-y-4">
                             {cart.map(item => (
                                 <div key={item.id} className="flex gap-4 bg-white/5 rounded-lg p-4 border border-white/10">
-                                    <img src={item.image} alt={item.title} className="w-20 h-20 object-cover rounded-lg" />
+                                    <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                                        <Image
+                                            src={item.image}
+                                            alt={item.title}
+                                            fill
+                                            className="object-cover"
+                                            sizes="80px"
+                                        />
+                                    </div>
                                     <div className="flex-1">
                                         <h4 className="font-semibold text-white mb-1">{item.title}</h4>
                                         <p className="text-sm text-white/60 mb-2">${item.price.toLocaleString()} each</p>
@@ -996,6 +1246,58 @@ export default function MarketplacePage() {
                     </form>
                 </DialogContent>
             </Dialog>
+
+            {/* Structured Data for SEO */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "WebPage",
+                        "name": "Software Marketplace | Mindscape Analytics LLC",
+                        "description": "Browse premium software solutions. Buy pre-built enterprise software or request custom development.",
+                        "url": "https://mindscape-analytics.com/marketplace",
+                        "mainEntity": {
+                            "@type": "ItemList",
+                            "itemListElement": marketplaceProducts.map((product, index) => ({
+                                "@type": "Product",
+                                "position": index + 1,
+                                "name": product.title,
+                                "description": product.description,
+                                "image": product.image,
+                                "offers": {
+                                    "@type": "Offer",
+                                    "price": product.price,
+                                    "priceCurrency": "USD",
+                                    "availability": "https://schema.org/InStock"
+                                },
+                                "aggregateRating": {
+                                    "@type": "AggregateRating",
+                                    "ratingValue": product.rating,
+                                    "reviewCount": product.reviews
+                                }
+                            }))
+                        },
+                        "breadcrumb": {
+                            "@type": "BreadcrumbList",
+                            "itemListElement": [
+                                {
+                                    "@type": "ListItem",
+                                    "position": 1,
+                                    "name": "Home",
+                                    "item": "https://mindscape-analytics.com"
+                                },
+                                {
+                                    "@type": "ListItem",
+                                    "position": 2,
+                                    "name": "Marketplace",
+                                    "item": "https://mindscape-analytics.com/marketplace"
+                                }
+                            ]
+                        }
+                    })
+                }}
+            />
         </main>
     )
 }

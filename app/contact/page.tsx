@@ -78,13 +78,13 @@ const contactMethods = [
     description: "Our dedicated team is available to assist you via phone during business hours.",
     value: "+1 (307) 210-6155",
     action: "Call us",
-    link: "https://wa.me/13072106155"
+    link: "tel:+13072106155"
   },
   {
     icon: <MailIcon className="h-10 w-10 text-red-500" />,
     title: "Email Support",
     description: "Send us an email and we'll get back to you within 24 hours.",
-    value: "zeeshan.keerio@mindscapeanalytics.com",
+    value: null, // Email not displayed for privacy
     action: "Email us",
     link: "mailto:zeeshan.keerio@mindscapeanalytics.com"
   },
@@ -94,7 +94,7 @@ const contactMethods = [
     description: "Connect with us instantly via WhatsApp for quick responses.",
     value: "Message us",
     action: "Open WhatsApp",
-    link: "https://wa.link/tv0oyw"
+    link: "https://wa.link/wcd6nl"
   },
   {
     icon: <Linkedin className="h-10 w-10 text-red-500" />,
@@ -249,9 +249,11 @@ export default function ContactPage() {
                       <h3 className="text-xl font-bold mb-2">{method.title}</h3>
                       <p className="text-white/70 mb-4 flex-grow">{method.description}</p>
                       <div className="mt-auto">
-                        <p className="font-semibold text-lg mb-4">{method.value}</p>
-                        <Button variant="outline" className="border-red-500 text-white hover:bg-red-500/10" asChild>
-                          <a href={method.link} target="_blank" rel="noopener noreferrer">
+                        {method.value && (
+                          <p className="font-semibold text-lg mb-4">{method.value}</p>
+                        )}
+                        <Button variant="outline" className="border-red-500 text-white hover:bg-red-500/10 w-full" asChild>
+                          <a href={method.link} target={method.link.startsWith('http') || method.link.startsWith('mailto') ? '_blank' : undefined} rel={method.link.startsWith('http') ? 'noopener noreferrer' : undefined}>
                             {method.action} <ArrowRight className="ml-2 h-4 w-4" />
                           </a>
                         </Button>
@@ -276,7 +278,7 @@ export default function ContactPage() {
                     <div className="flex-shrink-0 flex items-center justify-center">
                       <div className="bg-white p-4 rounded-xl">
                         <Image
-                          src="/images/whatsapp-qr.png"
+                          src="/wa.link_wcd6nl.png"
                           alt="WhatsApp QR Code"
                           width={200}
                           height={200}
@@ -290,7 +292,7 @@ export default function ContactPage() {
                         Scan this QR code with your smartphone camera to instantly connect with our team on WhatsApp. Get quick answers to your questions, real-time support, and personalized assistance.
                       </p>
                       <Button className="bg-green-600 hover:bg-green-700 text-white" asChild>
-                        <a href="https://wa.link/tv0oyw" target="_blank" rel="noopener noreferrer">
+                        <a href="https://wa.link/wcd6nl" target="_blank" rel="noopener noreferrer">
                           <WhatsAppIcon className="mr-2 h-5 w-5" /> Connect on WhatsApp
                         </a>
                       </Button>
