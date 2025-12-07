@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { z } from 'zod';
 import { handleApiError, BadRequestError } from '@/lib/api-error';
 import { withRateLimit } from '@/lib/rate-limit';
-import { z } from 'zod';
 
 // Lazy initialization to avoid build-time errors
 function getResend() {
@@ -14,20 +14,21 @@ function getResend() {
 }
 
 // Validation schema
-const customRequestSchema = z.object({
+const consultationSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
-  company: z.string().optional(),
+  email: z.string().email('Please enter a valid email address'),
   phone: z.string().optional(),
-  projectDescription: z.string().min(10, 'Project description must be at least 10 characters'),
+  company: z.string().optional(),
+  service: z.string().min(1, 'Please select a service'),
   budget: z.string().optional(),
   timeline: z.string().optional(),
+  message: z.string().optional(),
 });
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting: 5 requests per hour per client
-    const rateLimitResponse = await withRateLimit(5, 3600000)(request);
+    // Rate limiting: 3 consultations per hour per client
+    const rateLimitResponse = await withRateLimit(3, 3600000)(request);
     if (rateLimitResponse) {
       return rateLimitResponse;
     }
@@ -40,21 +41,12 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate request body
-    const validationResult = customRequestSchema.safeParse(body);
+    const validationResult = consultationSchema.safeParse(body);
     if (!validationResult.success) {
-      return NextResponse.json(
-        {
-          error: {
-            code: 'VALIDATION_ERROR',
-            message: 'Invalid request format',
-            details: validationResult.error.errors,
-          },
-        },
-        { status: 422 }
-      );
+      throw new BadRequestError('Invalid form data', validationResult.error.errors);
     }
 
-    const { name, email, company, phone, projectDescription, budget, timeline } = validationResult.data;
+    const { name, email, phone, company, service, budget, timeline, message } = validationResult.data;
 
     // Get Resend instance
     const resend = getResend();
@@ -80,7 +72,7 @@ export async function POST(request: NextRequest) {
         <body>
           <div class="container">
             <div class="header">
-              <h2 style="margin: 0;">New Custom Software Request <span class="badge">Marketplace</span></h2>
+              <h2 style="margin: 0;">New Free Consultation Request <span class="badge">Consultation</span></h2>
             </div>
             <div class="content">
               <div class="field">
@@ -91,18 +83,22 @@ export async function POST(request: NextRequest) {
                 <span class="label">Email:</span>
                 <span class="value"><a href="mailto:${email}">${email}</a></span>
               </div>
-              ${company ? `
-              <div class="field">
-                <span class="label">Company:</span>
-                <span class="value">${company}</span>
-              </div>
-              ` : ''}
               ${phone ? `
               <div class="field">
                 <span class="label">Phone:</span>
                 <span class="value">${phone}</span>
               </div>
               ` : ''}
+              ${company ? `
+              <div class="field">
+                <span class="label">Company:</span>
+                <span class="value">${company}</span>
+              </div>
+              ` : ''}
+              <div class="field">
+                <span class="label">Service Interest:</span>
+                <span class="value">${service}</span>
+              </div>
               ${budget ? `
               <div class="field">
                 <span class="label">Budget Range:</span>
@@ -115,12 +111,14 @@ export async function POST(request: NextRequest) {
                 <span class="value">${timeline}</span>
               </div>
               ` : ''}
+              ${message ? `
               <div class="field">
-                <span class="label">Project Description:</span>
+                <span class="label">Project Details:</span>
                 <div class="message-box">
-                  <p style="margin: 0; white-space: pre-wrap;">${projectDescription}</p>
+                  <p style="margin: 0; white-space: pre-wrap;">${message}</p>
                 </div>
               </div>
+              ` : ''}
             </div>
           </div>
         </body>
@@ -128,13 +126,13 @@ export async function POST(request: NextRequest) {
     `;
 
     const emailText = `
-New Custom Software Request - Marketplace
+New Free Consultation Request
 
 Name: ${name}
 Email: ${email}
-${company ? `Company: ${company}\n` : ''}${phone ? `Phone: ${phone}\n` : ''}${budget ? `Budget: ${budget}\n` : ''}${timeline ? `Timeline: ${timeline}\n` : ''}
-Project Description:
-${projectDescription}
+${phone ? `Phone: ${phone}\n` : ''}${company ? `Company: ${company}\n` : ''}
+Service Interest: ${service}
+${budget ? `Budget: ${budget}\n` : ''}${timeline ? `Timeline: ${timeline}\n` : ''}${message ? `\nProject Details:\n${message}` : ''}
     `.trim();
 
     // Send email using Resend
@@ -142,7 +140,7 @@ ${projectDescription}
       from: 'Mindscape Analytics <noreply@mindscapeanalytics.com>',
       to: ['zeeshan.keerio@mindscapeanalytics.com'],
       replyTo: email,
-      subject: `Custom Software Request: ${name}${company ? ` - ${company}` : ''}`,
+      subject: `Free Consultation Request: ${name}${company ? ` - ${company}` : ''}`,
       html: emailHtml,
       text: emailText,
     });
@@ -150,17 +148,18 @@ ${projectDescription}
     if (error) {
       console.error('Resend error:', error);
       return NextResponse.json(
-        { error: { message: 'Failed to send email. Please try again later.' } },
+        { error: { message: 'Failed to book consultation. Please try again later.' } },
         { status: 500 }
       );
     }
 
     return NextResponse.json({
       success: true,
-      message: 'Custom request submitted successfully',
+      message: 'Consultation request submitted successfully!',
       data,
     });
   } catch (error) {
+    console.error('Consultation request error:', error);
     return handleApiError(error);
   }
 }

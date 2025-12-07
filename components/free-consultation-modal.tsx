@@ -56,15 +56,36 @@ export default function FreeConsultationModal({ isOpen, onOpenChange }: FreeCons
         e.preventDefault()
         setIsSubmitting(true)
 
-        // TODO: Implement actual form submission
-        setTimeout(() => {
+        try {
+            const response = await fetch('/api/consultation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+
+            const data = await response.json()
+
+            if (!response.ok) {
+                throw new Error(data.error?.message || 'Failed to book consultation. Please try again.')
+            }
+
             setStep(3)
-            setIsSubmitting(false)
             toast({
                 title: "Consultation Booked!",
                 description: "We'll contact you within 24 hours to schedule your free consultation.",
             })
-        }, 1500)
+        } catch (error) {
+            console.error('Error booking consultation:', error)
+            toast({
+                title: "Error",
+                description: error instanceof Error ? error.message : "Failed to book consultation. Please try again.",
+                variant: "destructive",
+            })
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     const resetForm = () => {

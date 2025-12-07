@@ -81,7 +81,7 @@ export default function ProductsShowcase() {
       <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black,transparent)]"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-red-500/10 blur-[120px]"></div>
       <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-red-500/5 blur-[100px]"></div>
-      
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Section Header - matching site theme */}
@@ -126,7 +126,7 @@ export default function ProductsShowcase() {
                   <div className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-sm"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500/80 shadow-sm"></div>
                 </div>
-                
+
                 {/* Window Title */}
                 <div className="flex-1 text-center">
                   <span className="text-xs text-white/70 font-mono">products-viewer</span>
@@ -165,13 +165,14 @@ export default function ProductsShowcase() {
                       src={productImages[currentIndex].src}
                       alt={productImages[currentIndex].alt}
                       fill
-                      className="object-contain p-2"
+                      className="object-contain p-4 md:p-6"
                       priority={currentIndex === 0}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+                      unoptimized
                     />
                     {/* Overlay gradient for better visibility */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none"></div>
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none"></div>
                   </motion.div>
                 </AnimatePresence>
 
