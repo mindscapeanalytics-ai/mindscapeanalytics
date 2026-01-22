@@ -26,7 +26,7 @@ export function FlexibleSection({
   maxWidth = 'none',
   id
 }: FlexibleSectionProps) {
-  
+
   // Always use full width without constraints
   return (
     <section
@@ -39,7 +39,7 @@ export function FlexibleSection({
     >
       <div className={cn(
         asContainer ? getContainerClasses({ fullWidth, noPadding }) : "w-full",
-        "w-full"
+        "w-full mobile-zoom-out"
       )}>
         {children}
       </div>

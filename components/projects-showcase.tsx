@@ -447,7 +447,7 @@ export default function ProjectsShowcase() {
       marqueeControls.start({
         x: ["0%", "-100%"],
         transition: {
-          duration: 40, // Slower for smoother perception
+          duration: 20, // Increased speed (lower duration)
           ease: "linear",
           repeat: Infinity,
           repeatType: "loop",
@@ -464,7 +464,7 @@ export default function ProjectsShowcase() {
       upcomingMarqueeControls.start({
         x: ["0%", "-100%"],
         transition: {
-          duration: 40,
+          duration: 20,
           ease: "linear",
           repeat: Infinity,
           repeatType: "loop",
@@ -508,7 +508,7 @@ export default function ProjectsShowcase() {
       marqueeControls.start({ x: panStartX.current, transition: { duration: 0.5 } })
     }
 
-    setIsPaused(false)
+    // setIsPaused(false) // Keep paused after interaction to prevent jump and allow manual navigation
   }, [marqueeControls])
 
   const handleUpcomingDragEnd = useCallback((event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
@@ -523,7 +523,7 @@ export default function ProjectsShowcase() {
       upcomingMarqueeControls.start({ x: upcomingPanStartX.current, transition: { duration: 0.5 } })
     }
 
-    setIsUpcomingPaused(false)
+    // setIsUpcomingPaused(false) // Keep paused after interaction
   }, [upcomingMarqueeControls])
 
   useEffect(() => {
@@ -575,13 +575,14 @@ export default function ProjectsShowcase() {
 
       <div className="relative z-10">
         {/* Updated header with two-column layout similar to features section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 items-center px-4">
-          {/* Left column: Title and description */}
+        <div className="flex flex-col mb-10 px-4">
+          {/* Title and description */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="text-center md:text-left"
           >
             <div className="mb-4 inline-flex items-center">
               <Badge
@@ -596,23 +597,10 @@ export default function ProjectsShowcase() {
               Our Cutting-Edge <span className="text-red-500">AI Projects</span>
             </h2>
 
-            <p className="text-base md:text-lg text-white/70">
+            <p className="text-base md:text-lg text-white/70 max-w-3xl">
               Explore our diverse portfolio of innovative solutions transforming industries and creating business value.
             </p>
           </motion.div>
-
-          {/* Right column: Explore All button */}
-          <div className="flex justify-start md:justify-end">
-            <Button
-              asChild
-              className="bg-gradient-to-r from-red-700 via-red-600 to-red-700 hover:brightness-110 text-white shadow-lg shadow-red-900/20 transition-all duration-300"
-            >
-              <Link href="/projects">
-                Explore Full Project Gallery
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-          </div>
         </div>
 
         <Tabs defaultValue="current" className="w-full" onValueChange={setActiveTab}>
@@ -665,8 +653,8 @@ export default function ProjectsShowcase() {
                     willChange: 'transform', // Hardware acceleration hint
                   }}
                   drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.1}
+                  dragConstraints={{ left: -1000, right: 1000 }}
+                  dragElastic={0.2}
                   onDragStart={handleDragStart}
                   onDragEnd={handleDragEnd}
                   key={activeTab}
@@ -680,7 +668,7 @@ export default function ProjectsShowcase() {
                       whileInView="visible"
                       viewport={{ once: true }}
                       whileHover="hover"
-                      className="flex-shrink-0 w-[300px] sm:w-[350px] md:w-[400px]"
+                      className="flex-shrink-0 w-[85vw] sm:w-[350px] md:w-[400px]"
                     >
                       <Card className={`backdrop-blur-xl border ${getBorderColor(project.color || 'red')} bg-black/40 hover:bg-black/60 transition-all duration-500 h-full group overflow-hidden flex flex-col shadow-2xl relative`}>
                         {/* Animated gradient background overlay */}
@@ -804,8 +792,8 @@ export default function ProjectsShowcase() {
                     willChange: 'transform',
                   }}
                   drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.1}
+                  dragConstraints={{ left: -1000, right: 1000 }}
+                  dragElastic={0.2}
                   onDragStart={handleUpcomingDragStart}
                   onDragEnd={handleUpcomingDragEnd}
                   key={activeTab}
@@ -819,7 +807,7 @@ export default function ProjectsShowcase() {
                       whileInView="visible"
                       viewport={{ once: true }}
                       whileHover="hover"
-                      className="flex-shrink-0 w-[300px] sm:w-[350px] md:w-[400px]"
+                      className="flex-shrink-0 w-[85vw] sm:w-[350px] md:w-[400px]"
                     >
                       <Card className={`backdrop-blur-xl border ${getBorderColor(project.color || 'red')} bg-black/40 hover:bg-black/60 transition-all duration-500 h-full group overflow-hidden flex flex-col shadow-2xl relative`}>
                         {/* Animated gradient background overlay */}
@@ -887,6 +875,20 @@ export default function ProjectsShowcase() {
             </div>
           </TabsContent>
         </Tabs>
+
+        {/* Explore All button - Moved to bottom centered */}
+        <div className="flex justify-center mt-8">
+          <Button
+            asChild
+            size="lg"
+            className="bg-gradient-to-r from-red-700 via-red-600 to-red-700 hover:brightness-110 text-white shadow-lg shadow-red-900/20 transition-all duration-300 rounded-full px-8"
+          >
+            <Link href="/projects">
+              Explore Full Project Gallery
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
+        </div>
       </div>
     </div>
   )

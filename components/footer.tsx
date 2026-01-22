@@ -84,58 +84,6 @@ const CompanyLogo = memo(() => (
   </div>
 ));
 
-const ContactInfo = memo(() => (
-  <div className="mb-6">
-    {/* Get in Touch Header */}
-    <div className="flex items-center gap-2 mb-4">
-      <Mail className="h-5 w-5 text-red-500" />
-      <h3 className="text-lg sm:text-xl font-semibold text-white">Get in Touch</h3>
-    </div>
-
-    <div className="space-y-3">
-      {/* Address with Icon Box */}
-      <div className="flex items-start gap-3">
-        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center">
-          <MapPin className="h-4 w-4 text-red-400" />
-        </div>
-        <div className="flex-1 pt-1.5">
-          <p className="text-sm text-white/70 leading-snug">
-            30 N Gould St Ste N<br />
-            Sheridan, WY 82801<br />
-            United States
-          </p>
-        </div>
-      </div>
-
-      {/* Phone with Icon Box */}
-      <div className="flex items-start gap-3">
-        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center">
-          <Phone className="h-4 w-4 text-red-400" />
-        </div>
-        <div className="flex-1 pt-2">
-          <a
-            href="tel:+13072106155"
-            className="text-sm text-white/70 hover:text-white transition-colors"
-          >
-            +1 (307) 210-6155
-          </a>
-        </div>
-      </div>
-
-      {/* Send Email Button */}
-      <div className="pt-1">
-        <a
-          href="mailto:zeeshan.keerio@mindscapeanalytics.com"
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white text-sm font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-red-900/50"
-        >
-          <Mail className="h-4 w-4" />
-          Send Email
-        </a>
-      </div>
-    </div>
-  </div>
-));
-
 const SocialLinks = memo(({
   handleExternalLink
 }: {
@@ -160,14 +108,14 @@ const SocialLinks = memo(({
   ];
 
   return (
-    <div className="flex gap-3 sm:gap-4">
+    <div className="flex gap-3 sm:gap-4 mt-4">
       {socialLinks.map((link, index) => (
         <a
           key={index}
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-red-500/20 hover:border-red-500/30 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-red-900/20"
+          className="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-red-500/20 hover:border-red-500/30 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-red-900/20"
           aria-label={link.label}
           onClick={(e) => handleExternalLink(link.href, e)}
         >
@@ -177,6 +125,72 @@ const SocialLinks = memo(({
     </div>
   );
 });
+
+const ContactInfo = memo(({
+  handleExternalLink
+}: {
+  handleExternalLink: (url: string, e: React.MouseEvent) => void
+}) => (
+  <div className="mb-6">
+    {/* Get in Touch Header */}
+    <div className="flex items-center gap-2 mb-6">
+      <Mail className="h-5 w-5 text-red-500" />
+      <h3 className="text-lg sm:text-xl font-semibold text-white">Get in Touch</h3>
+    </div>
+
+    {/* 2-Column Grid Layout */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-6">
+      {/* Column 1: Address & Phone */}
+      <div className="space-y-4">
+        {/* Address */}
+        <div className="flex items-start gap-3">
+          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center">
+            <MapPin className="h-4 w-4 text-red-400" />
+          </div>
+          <div className="flex-1 pt-1.5">
+            <p className="text-sm text-white/70 leading-snug">
+              30 N Gould St Ste N<br />
+              Sheridan, WY 82801<br />
+              United States
+            </p>
+          </div>
+        </div>
+
+        {/* Phone */}
+        <div className="flex items-start gap-3">
+          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center">
+            <Phone className="h-4 w-4 text-red-400" />
+          </div>
+          <div className="flex-1 pt-2">
+            <a
+              href="tel:+13072106155"
+              className="text-sm text-white/70 hover:text-white transition-colors"
+            >
+              +1 (307) 210-6155
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Column 2: Email Button & Social Icons */}
+      <div className="flex flex-col space-y-4">
+        {/* Send Email Button */}
+        <div>
+          <a
+            href="mailto:zeeshan.keerio@mindscapeanalytics.com"
+            className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white text-sm font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-red-900/50 w-full"
+          >
+            <Mail className="h-4 w-4" />
+            Send Email
+          </a>
+        </div>
+
+        {/* Social Icons */}
+        <SocialLinks handleExternalLink={handleExternalLink} />
+      </div>
+    </div>
+  </div>
+));
 
 const Newsletter = memo(({
   email,
@@ -423,10 +437,7 @@ export default function Footer({ fullWidth = true }: FooterProps) {
               artificial intelligence to drive innovation and growth.
             </p>
 
-            <ContactInfo />
-
-            {/* Social Media Links */}
-            <SocialLinks handleExternalLink={handleExternalLink} />
+            <ContactInfo handleExternalLink={handleExternalLink} />
           </div>
 
           {/* Quick Links */}

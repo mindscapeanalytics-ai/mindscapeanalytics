@@ -255,6 +255,11 @@ body {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
+
+  /* Global "Zoom Out" Effect for Mobile */
+  .mobile-zoom-out {
+    zoom: 0.75;
+  }
 }
 
 /* Reduced motion preference */

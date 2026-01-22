@@ -2,30 +2,30 @@
  * Default configurations for Enhanced Hero Component
  */
 
-import { 
-  Database, 
-  Brain, 
-  Zap, 
-  Shield, 
-  Globe, 
-  TrendingUp, 
-  Activity as ActivityIcon 
+import {
+  Database,
+  Brain,
+  Zap,
+  Shield,
+  Globe,
+  TrendingUp,
+  Activity as ActivityIcon
 } from "lucide-react"
 
-import { 
-  TypographyConfig, 
-  PerformanceConfig, 
-  MobileShowcaseConfig, 
+import {
+  TypographyConfig,
+  PerformanceConfig,
+  MobileShowcaseConfig,
   TrustBannerConfig,
-  EnhancedTimelineItem 
+  EnhancedTimelineItem
 } from "@/types/hero-enhancement"
 
 // Default Typography Configuration
 export const defaultTypographyConfig: TypographyConfig = {
   headlineStyles: {
     fontSize: {
-      mobile: "text-2xl md:text-3xl",
-      tablet: "text-4xl lg:text-5xl", 
+      mobile: "text-4xl md:text-5xl", // Increased for mobile prominence
+      tablet: "text-4xl lg:text-5xl",
       desktop: "text-5xl xl:text-6xl"
     },
     lineHeight: 1.1, // Improved from 0.9
@@ -109,7 +109,7 @@ export const defaultTrustConfig: TrustBannerConfig = {
     },
     {
       label: "Production Ready",
-      status: "ready", 
+      status: "ready",
       icon: Shield
     }
   ],
@@ -139,7 +139,7 @@ export const defaultTimelineData: EnhancedTimelineItem[] = [
   {
     id: 2,
     title: "AI Systems",
-    date: "Phase 2", 
+    date: "Phase 2",
     content: "Intelligent automation systems with machine learning models optimized for production environments.",
     mobileContent: "AI automation systems with ML optimization",
     category: "AI/ML",

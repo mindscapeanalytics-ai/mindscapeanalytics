@@ -30,6 +30,19 @@ const heartbeatStyles = `
   .animate-heartbeat {
     animation: heartbeat 2s ease-in-out infinite;
   }
+
+  @keyframes blink-dark {
+    0%, 100% {
+      filter: brightness(1) drop-shadow(0 0 0px transparent);
+    }
+    50% {
+      filter: brightness(0.7) drop-shadow(0 0 10px rgba(0,0,0,0.5));
+    }
+  }
+
+  .animate-blink-dark {
+    animation: blink-dark 1.5s ease-in-out infinite;
+  }
 `;
 
 // Inject styles safely
@@ -210,7 +223,7 @@ export default function RadialOrbitalTimeline({
 
             {/* Brand Logo with Heartbeat Effect - Extra Large */}
             <div className="relative z-10 flex items-center justify-center animate-heartbeat">
-              <div className="transform scale-150">
+              <div className="transform scale-[2.2] animate-blink-dark">
                 <MindscapeLogo
                   size="lg"
                   showText={false}

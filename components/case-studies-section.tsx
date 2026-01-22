@@ -35,7 +35,7 @@ const caseStudies: CaseStudy[] = [
     category: "Data Analytics",
     description: "Enterprise database analytics platform with real-time insights and AI-powered recommendations. Transformed data processing capabilities with advanced query optimization and predictive modeling.",
     icon: BarChart3,
-    image: "/our_products/dblynx.png",
+    image: "/images/projects/dblynx.png",
     link: "https://dblynx.mindscapeanalytics.com/",
     client: "Enterprise Client",
     timeline: "6 months",
@@ -56,7 +56,7 @@ const caseStudies: CaseStudy[] = [
     category: "AI Platform",
     description: "Comprehensive AI toolkit with intelligent automation and workflow optimization. Streamlined business processes with cutting-edge machine learning models and natural language processing.",
     icon: Brain,
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1600&auto=format&fit=crop",
+    image: "/images/projects/KAITOOLS.png",
     link: "https://www.kaitools.tech/",
     client: "Tech Enterprise",
     timeline: "8 months",
@@ -77,7 +77,7 @@ const caseStudies: CaseStudy[] = [
     category: "Financial Analytics",
     description: "AI-driven stock market analysis with real-time predictions and portfolio optimization. Delivered actionable insights for traders and investors with advanced algorithmic trading signals.",
     icon: TrendingUp,
-    image: "https://images.unsplash.com/photo-1611974765270-ca1258830860?q=80&w=1600&auto=format&fit=crop",
+    image: "/images/projects/KStock_Analyzer.png",
     link: "https://kstockanalyzer.com/",
     client: "Financial Services",
     timeline: "4 months",
@@ -98,7 +98,7 @@ const caseStudies: CaseStudy[] = [
     category: "E-commerce",
     description: "Intelligent campaign automation converting visitors into buyers with AI recommendations. Increased conversion rates through personalized shopping experiences and dynamic pricing strategies.",
     icon: ShoppingCart,
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=1600&auto=format&fit=crop",
+    image: "/images/projects/amazon_sales_management.png",
     client: "E-commerce Brand",
     timeline: "3 months",
     technologies: ["Shopify API", "Node.js", "Machine Learning", "Redis"],
@@ -118,7 +118,7 @@ const caseStudies: CaseStudy[] = [
     category: "Enterprise",
     description: "Automated inventory management with predictive analytics and intelligent reordering. Reduced operational costs while maintaining optimal stock levels across multiple warehouse locations.",
     icon: Package,
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600&auto=format&fit=crop",
+    image: "/images/projects/inventory.png",
     client: "Retail Chain",
     timeline: "5 months",
     technologies: ["Python", "PostgreSQL", "React", "IoT Sensors"],
@@ -138,7 +138,7 @@ const caseStudies: CaseStudy[] = [
     category: "Conversational AI",
     description: "Intelligent voice call agent for automated appointment booking with NLP. Handles complex conversations, understands context, and provides natural human-like interactions for customer service.",
     icon: Phone,
-    image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?q=80&w=1600&auto=format&fit=crop",
+    image: "/images/projects/mindscape-lms.png",
     client: "Healthcare Provider",
     timeline: "4 months",
     technologies: ["OpenAI Whisper", "GPT-4", "Twilio", "Node.js"],
@@ -182,7 +182,7 @@ export default function CaseStudiesSection() {
 
   return (
     <section className="w-full py-16 bg-black relative overflow-hidden border-t border-white/5">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-[90vw] mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center mb-4">
@@ -190,7 +190,7 @@ export default function CaseStudiesSection() {
               PROVEN RESULTS
             </Badge>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
             Real Projects, Real <span className="text-red-500">Impact</span>
           </h2>
           <p className="text-lg text-white/50 max-w-3xl mx-auto leading-relaxed font-light">
@@ -235,9 +235,7 @@ export default function CaseStudiesSection() {
                     {/* Icon & Category with Card */}
                     <Card className="bg-transparent border-0 shadow-none p-0">
                       <div className="flex items-start gap-4 mb-6">
-                        <Card className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500/20 to-red-600/10 border border-red-500/30 flex items-center justify-center shadow-lg shadow-red-500/10 animate-pulse">
-                          <currentStudy.icon className="w-8 h-8 text-red-400" />
-                        </Card>
+                        {/* Icon Removed as requested */}
                         <div className="flex-1">
                           <Badge variant="outline" className="bg-red-500/10 border-red-500/30 text-red-400 mb-2 text-xs px-3 py-1">
                             {currentStudy.category}
@@ -298,6 +296,28 @@ export default function CaseStudiesSection() {
                       </div>
                     )}
 
+                    {/* Metrics Row */}
+                    <div className="grid grid-cols-2 gap-4 pt-4 mt-4 border-t border-white/10">
+                      {currentStudy.metrics.map((metric, idx) => {
+                        const MetricIcon = metric.icon || BarChart3
+                        return (
+                          <div key={idx} className="flex items-center gap-3">
+                            <div className="p-2 rounded-lg bg-red-500/10 border border-red-500/20">
+                              <MetricIcon className="w-5 h-5 text-red-400" />
+                            </div>
+                            <div>
+                              <div className="text-xl font-bold text-white leading-none">
+                                {metric.value}
+                              </div>
+                              <div className="text-xs text-white/50 uppercase tracking-wider font-medium mt-1">
+                                {metric.label}
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+
                     {/* Enhanced Link Button */}
                     {currentStudy.link && (
                       <Button
@@ -319,36 +339,22 @@ export default function CaseStudiesSection() {
                   </div>
 
                   {/* Right: Enhanced Metrics Cards */}
-                  <div className="hidden md:grid grid-cols-2 gap-4">
-                    {currentStudy.metrics.map((metric, idx) => {
-                      const MetricIcon = metric.icon || BarChart3
-                      return (
-                        <Card
-                          key={idx}
-                          className="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/10 group"
-                        >
-                          <CardContent className="p-6 text-center">
-                            <div className="flex justify-center mb-3">
-                              <div className="p-2 rounded-lg bg-red-500/10 border border-red-500/20 group-hover:bg-red-500/20 transition-colors">
-                                <MetricIcon className="w-5 h-5 text-red-400" />
-                              </div>
-                            </div>
-                            <div className="text-4xl font-bold text-white mb-2 group-hover:text-red-400 transition-colors">
-                              {metric.value}
-                            </div>
-                            <div className="text-xs text-white/50 uppercase tracking-wider font-medium">
-                              {metric.label}
-                            </div>
-                            {metric.trend === "up" && (
-                              <div className="flex items-center justify-center gap-1 mt-2 text-green-400 text-xs">
-                                <TrendingUp className="w-3 h-3" />
-                                <span>Improved</span>
-                              </div>
-                            )}
-                          </CardContent>
-                        </Card>
-                      )
-                    })}
+                  {/* Right: Attractive Project Image - Replaces Metrics Cards */}
+                  <div className="hidden md:block relative h-full min-h-[400px] rounded-2xl overflow-hidden border border-white/10 group-hover:border-red-500/20 transition-all shadow-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-60"></div>
+                    <img
+                      src={currentStudy.image}
+                      alt={currentStudy.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+
+                    {/* Floating Badge on Image */}
+                    <div className="absolute bottom-6 left-6 z-20">
+                      <div className="inline-flex items-center gap-2 bg-black/60 backdrop-blur-md border border-white/10 rounded-full px-4 py-2">
+                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                        <span className="text-xs font-semibold text-white">Live Project</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>

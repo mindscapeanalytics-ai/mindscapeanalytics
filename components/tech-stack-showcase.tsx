@@ -22,7 +22,7 @@ const TechIcon = ({ name, iconSlug, fallbackIcon: FallbackIcon, color }: { name:
         {FallbackIcon ? (
           <FallbackIcon className="w-5 h-5 text-white/40 group-hover:text-white/80 transition-colors" />
         ) : (
-          <span className="font-bold text-[10px] text-white/40 uppercase">
+          <span className="font-bold text-xs text-white/40 uppercase">
             {name.slice(0, 2)}
           </span>
         )}
@@ -123,7 +123,7 @@ export default function TechStackShowcase() {
               Technology Stack
             </Badge>
             <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
-              Built on <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-amber-500">Giants</span>
+              Built on <span className="text-red-500">Giants</span>
             </h2>
             <p className="text-sm text-white/40 mt-2 max-w-lg">
               We leverage best-in-class open source and enterprise technologies.
@@ -173,7 +173,7 @@ export default function TechStackShowcase() {
                 className="aspect-square bg-neutral-900/50 border border-white/5 rounded-xl hover:bg-neutral-800 hover:border-white/10 transition-all duration-200 flex flex-col items-center justify-center gap-2 group cursor-default"
               >
                 <TechIcon name={item.name} iconSlug={item.iconSlug} fallbackIcon={item.fallbackIcon} />
-                <span className="text-[10px] text-white/30 group-hover:text-white/70 transition-colors font-medium text-center leading-tight">
+                <span className="text-xs text-white/30 group-hover:text-white/70 transition-colors font-medium text-center leading-tight">
                   {item.name}
                 </span>
               </motion.div>

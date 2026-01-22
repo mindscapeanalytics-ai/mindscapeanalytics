@@ -116,23 +116,46 @@ export default function EnhancedHero({
           id="hero-content"
         >
           <div className="w-full max-w-7xl mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
+            {/* Conditional Layout based on device */}
+            {isMobile ? (
+              // Mobile Layout: Heading -> Timeline -> Content
+              <div className="flex flex-col space-y-2 pb-12 scale-[1.25] origin-top w-[80%] mx-auto">
+                <ContentSection
+                  typographyConfig={mergedTypographyConfig}
+                  className="flex flex-col justify-center space-y-4 text-center pt-8"
+                  mode="heading"
+                />
 
-              {/* Left Column - Enhanced Content */}
-              <ContentSection
-                typographyConfig={mergedTypographyConfig}
-                className="flex flex-col justify-center space-y-8 text-center lg:text-left pt-32"
-              />
-
-              {/* Right Column - Interactive Elements - Full height */}
-              {!isMobile ? (
                 <InteractiveTimeline
                   timelineData={finalTimelineData}
                   performanceConfig={mergedPerformanceConfig}
-                  className="hidden lg:flex items-center justify-center relative z-40 h-[80vh] pt-32"
+                  className="flex items-center justify-center relative z-40 h-[350px] w-full -my-10"
                 />
-              ) : null}
-            </div>
+
+                <ContentSection
+                  typographyConfig={mergedTypographyConfig}
+                  className="flex flex-col justify-center space-y-4 text-center -mt-4 px-4"
+                  mode="content"
+                />
+              </div>
+            ) : (
+              // Desktop Layout: Side by Side
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
+                {/* Left Column - Enhanced Content */}
+                <ContentSection
+                  typographyConfig={mergedTypographyConfig}
+                  className="flex flex-col justify-center space-y-8 text-center lg:text-left pt-0"
+                  mode="full"
+                />
+
+                {/* Right Column - Interactive Elements - Full height */}
+                <InteractiveTimeline
+                  timelineData={finalTimelineData}
+                  performanceConfig={mergedPerformanceConfig}
+                  className="hidden lg:flex items-center justify-center relative z-40 h-[80vh] pt-0"
+                />
+              </div>
+            )}
           </div>
         </FlexibleSection>
 

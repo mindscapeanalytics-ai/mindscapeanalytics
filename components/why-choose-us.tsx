@@ -154,16 +154,16 @@ export default function WhyChooseUs() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.05 }}
                                 viewport={{ once: true }}
-                                className="flex-none w-64 snap-start"
+                                className="flex-none w-56 snap-start"
                             >
                                 <Card className="bg-black/40 backdrop-blur-xl border border-white/10 h-full hover:border-red-500/30 transition-all duration-300 group relative overflow-hidden">
                                     {/* Gradient overlay on hover */}
                                     <div className={`absolute inset-0 bg-gradient-to-br ${advantage.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
 
-                                    <CardContent className="p-5 relative z-10">
+                                    <CardContent className="p-4 relative z-10">
                                         {/* Icon */}
-                                        <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${advantage.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform shadow-lg`}>
-                                            <advantage.icon className="h-6 w-6 text-white" />
+                                        <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${advantage.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform shadow-lg`}>
+                                            <advantage.icon className="h-5 w-5 text-white" />
                                         </div>
 
                                         {/* Title */}

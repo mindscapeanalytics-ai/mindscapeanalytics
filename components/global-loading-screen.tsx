@@ -247,48 +247,48 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 bg-black flex items-center justify-center z-[9999]"
+          className="fixed inset-0 bg-white flex items-center justify-center z-[9999]"
         >
           <div className="flex flex-col items-center justify-center w-[90%] sm:w-full max-w-md px-4">
             {/* Brain Logo from HyperHero */}
             <div className="relative">
-              {/* Outer glow effect */}
-              <div className="absolute inset-0 bg-black/20 blur-[180px] rounded-full transform scale-[2]" />
+              {/* Outer glow effect - Wine colored */}
+              <div className="absolute inset-0 bg-red-900/5 blur-[180px] rounded-full transform scale-[2]" />
 
               {/* Logo and text container */}
               <div className="relative flex flex-col items-center">
                 {/* Brain icon with glow */}
                 <div className="relative scale-[1.2] sm:scale-[1.35] md:scale-[1.6]">
-                  {/* Multiple layered glows */}
-                  <div className="absolute inset-0 bg-red-900/10 blur-[50px] rounded-[20px] animate-pulse-slow scale-110" />
+                  {/* Multiple layered glows - Deep Red Wine */}
+                  <div className="absolute inset-0 bg-red-900/20 blur-[50px] rounded-[20px] animate-pulse-slow scale-110" />
                   <div className="absolute inset-0 bg-red-800/20 blur-[40px] rounded-[20px] animate-pulse-medium scale-110" />
-                  <div className="absolute inset-0 bg-red-700/30 blur-[30px] rounded-[20px] animate-pulse-fast scale-110" />
+                  <div className="absolute inset-0 bg-red-950/30 blur-[30px] rounded-[20px] animate-pulse-fast scale-110" />
 
-                  {/* Neural network lines */}
+                  {/* Neural network lines - Dark Red */}
                   <div className="absolute inset-0 opacity-50 scale-[1.2]">
-                    <div className="absolute h-[1px] w-10 bg-gradient-to-r from-transparent via-red-800 to-transparent top-1/4 -left-4 animate-neural-1" />
-                    <div className="absolute h-[1px] w-10 bg-gradient-to-r from-transparent via-red-800 to-transparent bottom-1/4 -right-4 animate-neural-2" />
-                    <div className="absolute w-[1px] h-10 bg-gradient-to-b from-transparent via-red-800 to-transparent -top-4 left-1/4 animate-neural-3" />
-                    <div className="absolute w-[1px] h-10 bg-gradient-to-b from-transparent via-red-800 to-transparent -bottom-4 right-1/4 animate-neural-4" />
+                    <div className="absolute h-[1px] w-10 bg-gradient-to-r from-transparent via-red-900 to-transparent top-1/4 -left-4 animate-neural-1" />
+                    <div className="absolute h-[1px] w-10 bg-gradient-to-r from-transparent via-red-900 to-transparent bottom-1/4 -right-4 animate-neural-2" />
+                    <div className="absolute w-[1px] h-10 bg-gradient-to-b from-transparent via-red-900 to-transparent -top-4 left-1/4 animate-neural-3" />
+                    <div className="absolute w-[1px] h-10 bg-gradient-to-b from-transparent via-red-900 to-transparent -bottom-4 right-1/4 animate-neural-4" />
                   </div>
 
                   {/* Enhanced Brain icon with RGB border */}
                   <div className="relative z-10 group animate-heartbeat">
                     {/* RGB Border Container */}
                     <div className="absolute -inset-[2px] rounded-[20px]">
-                      {/* Moving RGB gradient border */}
+                      {/* Moving RGB gradient border - Wine spectrum */}
                       <div className="absolute inset-[-2px] rounded-[20px] animate-rgb-spin group-hover:animate-rgb-spin-fast">
-                        <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#8B0000,#420000,#690000,#8B0000)] rounded-[20px] group-hover:bg-[conic-gradient(from_0deg,#8B0000,#420000,#690000,#8B0000)]" />
+                        <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#e11d48,#881337,#9f1239,#e11d48)] rounded-[20px] group-hover:bg-[conic-gradient(from_0deg,#e11d48,#881337,#9f1239,#e11d48)]" />
                       </div>
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-[20px] animate-border-flow group-hover:animate-border-flow-fast" />
-                      <div className="absolute inset-0 rounded-[20px] bg-black/95">
-                        <div className="absolute inset-0 rounded-[20px] bg-gradient-to-r from-[#8B000030] via-[#42000030] to-[#69000030] animate-rgb-spin-reverse group-hover:animate-rgb-spin-reverse-fast group-hover:from-[#8B000050] group-hover:via-[#42000050] group-hover:to-[#69000050]" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent rounded-[20px] animate-border-flow group-hover:animate-border-flow-fast" />
+                      <div className="absolute inset-0 rounded-[20px] bg-white">
+                        <div className="absolute inset-0 rounded-[20px] bg-gradient-to-r from-[#8B000010] via-[#42000010] to-[#69000010] animate-rgb-spin-reverse group-hover:animate-rgb-spin-reverse-fast" />
                       </div>
                     </div>
 
                     {/* Icon container */}
-                    <div className="relative bg-black rounded-[20px] p-6 sm:p-9 transition-transform duration-300 group-hover:scale-[0.98]">
-                      <div className="absolute inset-0 bg-red-900/10 rounded-[20px] blur-[10px] animate-pulse"></div>
+                    <div className="relative bg-white rounded-[20px] p-6 sm:p-9 transition-transform duration-300 group-hover:scale-[0.98] border border-red-100 shadow-xl">
+                      <div className="absolute inset-0 bg-red-900/5 rounded-[20px] blur-[10px] animate-pulse"></div>
                       <Image
                         src="/images/logo.png"
                         alt="Mindscape Brain Logo"
@@ -311,14 +311,14 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
               className="mt-[82px] mb-12 text-center"
             >
               <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight font-sans">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/80 [text-shadow:_0_2px_20px_rgb(255,255,255_/_20%)]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-900">
                   Mindscape
                 </span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500/80 via-red-400 to-red-500/80 ml-2">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-red-500 to-red-600 ml-2">
                   Analytics
                 </span>
               </h1>
-              <p className="text-white/70 text-xs sm:text-sm mt-1 sm:mt-2 font-light">Where AI Meets Innovation</p>
+              <p className="text-neutral-500 text-xs sm:text-sm mt-1 sm:mt-2 font-light">Where AI Meets Innovation</p>
             </motion.div>
 
             {/* Enhanced Loading Bar */}
@@ -329,15 +329,15 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
               className="mt-8 w-full max-w-md"
             >
               <div className="flex justify-between items-center mb-1 sm:mb-2">
-                <span className="text-[10px] sm:text-xs text-white/60">
+                <span className="text-[10px] sm:text-xs text-neutral-400">
                   {imagesPreloaded ? "Initializing..." : "Loading resources..."}
                 </span>
-                <span className="text-[10px] sm:text-xs text-white/60 font-mono">
+                <span className="text-[10px] sm:text-xs text-neutral-400 font-mono">
                   {Math.round(loadingProgress)}%
                 </span>
               </div>
 
-              <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
+              <div className="w-full h-1.5 bg-neutral-100 rounded-full overflow-hidden border border-neutral-200">
                 <motion.div
                   className="h-full bg-gradient-to-r from-red-700 via-red-600 to-red-700 shadow-glow-sm shadow-red-600/30"
                   initial={{ width: "0%" }}
@@ -365,7 +365,7 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="text-xs text-white/80 flex items-center"
+                    className="text-xs text-neutral-600 flex items-center"
                   >
                     <div className="h-1.5 w-1.5 rounded-full bg-green-500 mr-1.5"></div>
                     Ready

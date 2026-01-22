@@ -105,7 +105,7 @@ export default function Home() {
       <FlexibleSection
         id="hero"
         fullWidth={true}
-        className="relative z-10 overflow-hidden pt-10"
+        className="relative z-10 overflow-hidden pt-16 md:pt-16"
         noPadding
       >
         <motion.div

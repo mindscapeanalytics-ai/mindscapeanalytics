@@ -225,7 +225,7 @@ export default function ProductsShowcase() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:col-span-8 relative aspect-[16/10] md:aspect-video rounded-3xl overflow-hidden border border-white/5 shadow-2xl group"
+            className="lg:col-span-8 relative aspect-[16/10] md:aspect-video rounded-3xl overflow-hidden border border-white/5 shadow-2xl group w-[calc(100%+2rem)] -ml-4 md:w-full md:ml-0"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
@@ -335,8 +335,8 @@ export default function ProductsShowcase() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Thumbnail Nav / Dots */}
-            <div className="flex flex-wrap items-center gap-2.5 pt-4">
+            {/* Thumbnail Nav / Dots - HIDDEN as requested */}
+            <div className="hidden flex-wrap items-center gap-2.5 pt-4">
               {productImages.map((_, index) => (
                 <button
                   key={index}

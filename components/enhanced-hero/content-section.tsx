@@ -13,6 +13,7 @@ import { useTypography } from "@/lib/typography-system"
 interface ContentSectionProps {
   typographyConfig: TypographyConfig
   className?: string
+  mode?: 'full' | 'heading' | 'content' // Added mode prop
 }
 
 /**
@@ -21,8 +22,8 @@ interface ContentSectionProps {
  * Implements improved typography system with proper line heights,
  * enhanced visual hierarchy, and accessibility compliance.
  */
-export function ContentSection({ typographyConfig, className }: ContentSectionProps) {
-  const { 
+export function ContentSection({ typographyConfig, className, mode = 'full' }: ContentSectionProps) {
+  const {
     getResponsiveFontSize,
     getLineHeightStyles,
     getTextShadowStyles,
@@ -30,14 +31,14 @@ export function ContentSection({ typographyConfig, className }: ContentSectionPr
     getFocusStyles,
     getSpacingClasses
   } = useTypography(typographyConfig)
-  
+
   const handleGetStartedClick = () => {
     navigateToContactForm()
   }
 
   // Get spacing classes for consistent hierarchy
   const spacing = getSpacingClasses()
-  
+
   // Get gradient text configurations
   const redGradient = getGradientTextClasses(0)
   const blueGradient = getGradientTextClasses(1)
@@ -66,13 +67,8 @@ export function ContentSection({ typographyConfig, className }: ContentSectionPr
     }
   }
 
-  return (
-    <motion.div
-      className="flex flex-col justify-center space-y-6 text-center lg:text-left"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
+  const renderHeading = () => (
+    <>
       {/* Professional Badges - Repositioned above headline for maximum impact */}
       <motion.div
         className={`flex flex-wrap gap-3 justify-center lg:justify-start ${spacing.badgeSpacing}`}
@@ -94,8 +90,8 @@ export function ContentSection({ typographyConfig, className }: ContentSectionPr
 
       {/* Enhanced Main Headline with improved typography */}
       <motion.div variants={itemVariants}>
-        <h1 
-          className={`${getResponsiveFontSize()} font-black tracking-tight ${spacing.headlineSpacing} hero-headline`}
+        <h1
+          className={`${getResponsiveFontSize()} text-4xl sm:text-5xl font-black tracking-tight ${spacing.headlineSpacing} hero-headline`}
           style={{
             ...getLineHeightStyles(),
             ...getTextShadowStyles()
@@ -104,25 +100,29 @@ export function ContentSection({ typographyConfig, className }: ContentSectionPr
           <span className="block text-white mb-1 font-black">Engineering</span>
           <span className="block text-white mb-1 font-black">Intelligent Data</span>
           <span className="block text-white mb-1 font-black">& AI Systems</span>
-          <span className="block text-red-600 font-black">for Modern Enterprises</span>
+          <span className="block text-red-500 font-black">for Modern Enterprises</span>
         </h1>
       </motion.div>
+    </>
+  )
 
+  const renderContent = () => (
+    <>
       {/* Enhanced Description with clear visual hierarchy */}
       <motion.div
         variants={itemVariants}
         className={`space-y-3 max-w-2xl mx-auto lg:mx-0 ${spacing.descriptionSpacing}`}
       >
         {/* Primary description with enhanced styling */}
-        <p 
+        <p
           className="text-lg lg:text-xl text-white/95 leading-relaxed font-light hero-text"
           style={getTextShadowStyles()}
         >
           Mindscape Analytics delivers scalable data platforms, AI systems, and automation solutions that help organizations operate smarter, faster, and with greater control.
         </p>
-        
+
         {/* Secondary description with proper hierarchy */}
-        <p 
+        <p
           className="text-base lg:text-lg text-white/80 leading-relaxed hero-text"
           style={getTextShadowStyles()}
         >
@@ -149,7 +149,7 @@ export function ContentSection({ typographyConfig, className }: ContentSectionPr
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </span>
         </Button>
-        
+
         {/* Secondary CTA - Reduced prominence for 3:1 ratio */}
         <Link href="/solutions" className="w-full sm:w-auto">
           <Button
@@ -166,6 +166,18 @@ export function ContentSection({ typographyConfig, className }: ContentSectionPr
           </Button>
         </Link>
       </motion.div>
+    </>
+  )
+
+  return (
+    <motion.div
+      className={`flex flex-col justify-center space-y-6 text-center lg:text-left ${className || ''}`}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      {(mode === 'full' || mode === 'heading') && renderHeading()}
+      {(mode === 'full' || mode === 'content') && renderContent()}
     </motion.div>
   )
 }
