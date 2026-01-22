@@ -190,7 +190,7 @@ export default function CaseStudiesSection() {
               PROVEN RESULTS
             </Badge>
           </div>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
             Real Projects, Real <span className="text-red-500">Impact</span>
           </h2>
           <p className="text-lg text-white/50 max-w-3xl mx-auto leading-relaxed font-light">

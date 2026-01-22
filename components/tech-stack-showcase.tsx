@@ -122,7 +122,7 @@ export default function TechStackShowcase() {
             <Badge variant="outline" className="mb-3 bg-red-500/10 text-red-400 border-red-500/20 px-3 py-1 text-[10px] tracking-widest uppercase">
               Technology Stack
             </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
               Built on <span className="text-red-500">Giants</span>
             </h2>
             <p className="text-sm text-white/40 mt-2 max-w-lg">

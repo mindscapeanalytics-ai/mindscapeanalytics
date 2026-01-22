@@ -71,19 +71,19 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
     <>
       {/* Professional Badges - Repositioned above headline for maximum impact */}
       <motion.div
-        className={`flex flex-wrap gap-3 justify-center lg:justify-start ${spacing.badgeSpacing}`}
+        className={`flex flex-nowrap gap-2 justify-center lg:justify-start w-full overflow-x-auto scrollbar-hide pb-1 ${spacing.badgeSpacing}`}
         variants={itemVariants}
       >
-        <Badge className={`bg-red-950/90 border border-red-600/40 text-red-200 px-4 py-2 text-sm font-semibold backdrop-blur-xl shadow-lg hover:bg-red-900/90 transition-colors duration-300 ${getFocusStyles()}`}>
-          <Database className="h-4 w-4 mr-2" aria-hidden="true" />
+        <Badge className={`bg-red-950/90 border border-red-600/40 text-red-200 px-3 py-1 text-[11px] sm:text-sm sm:px-4 sm:py-2 font-semibold backdrop-blur-xl shadow-lg hover:bg-red-900/90 transition-colors duration-300 whitespace-nowrap ${getFocusStyles()}`}>
+          <Database className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" aria-hidden="true" />
           Data Platforms
         </Badge>
-        <Badge className={`bg-blue-950/90 border border-blue-600/40 text-blue-200 px-4 py-2 text-sm font-semibold backdrop-blur-xl shadow-lg hover:bg-blue-900/90 transition-colors duration-300 ${getFocusStyles()}`}>
-          <Brain className="h-4 w-4 mr-2" aria-hidden="true" />
+        <Badge className={`bg-blue-950/90 border border-blue-600/40 text-blue-200 px-3 py-1 text-[11px] sm:text-sm sm:px-4 sm:py-2 font-semibold backdrop-blur-xl shadow-lg hover:bg-blue-900/90 transition-colors duration-300 whitespace-nowrap ${getFocusStyles()}`}>
+          <Brain className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" aria-hidden="true" />
           AI Systems
         </Badge>
-        <Badge className={`bg-green-950/90 border border-green-600/40 text-green-200 px-4 py-2 text-sm font-semibold backdrop-blur-xl shadow-lg hover:bg-green-900/90 transition-colors duration-300 ${getFocusStyles()}`}>
-          <Zap className="h-4 w-4 mr-2" aria-hidden="true" />
+        <Badge className={`bg-green-950/90 border border-green-600/40 text-green-200 px-3 py-1 text-[11px] sm:text-sm sm:px-4 sm:py-2 font-semibold backdrop-blur-xl shadow-lg hover:bg-green-900/90 transition-colors duration-300 whitespace-nowrap ${getFocusStyles()}`}>
+          <Zap className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" aria-hidden="true" />
           Automation
         </Badge>
       </motion.div>

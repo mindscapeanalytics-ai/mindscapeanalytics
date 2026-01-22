@@ -110,16 +110,16 @@ export default function EnhancedHero({
 
         {/* Main Content - Full height without trust banner interference */}
         <FlexibleSection
-          fullWidth={fullWidth}
+          fullWidth={true}
           className="relative z-10 flex-1 flex items-center py-8"
-          noPadding={false}
+          noPadding={true}
           id="hero-content"
         >
           <div className="w-full max-w-7xl mx-auto px-4">
             {/* Conditional Layout based on device */}
             {isMobile ? (
               // Mobile Layout: Heading -> Timeline -> Content
-              <div className="flex flex-col space-y-2 pb-12 scale-[1.25] origin-top w-[80%] mx-auto">
+              <div className="flex flex-col space-y-2 pb-12 w-full px-4">
                 <ContentSection
                   typographyConfig={mergedTypographyConfig}
                   className="flex flex-col justify-center space-y-4 text-center pt-8"

@@ -111,7 +111,7 @@ export default function WhyChooseUs() {
                             WHY CHOOSE US
                         </Badge>
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
                         Your Success is <span className="text-red-500">Our Priority</span>
                     </h2>
                     <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
