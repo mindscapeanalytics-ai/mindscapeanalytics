@@ -130,38 +130,38 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
         </p>
       </motion.div>
 
-      {/* Enhanced CTA Buttons with 3:1 visual prominence ratio */}
+      {/* Enhanced CTA Buttons - Single row on mobile with reduced size */}
       <motion.div
-        className={`flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 ${spacing.ctaSpacing}`}
+        className={`flex flex-row items-center justify-center lg:justify-start gap-2 sm:gap-4 ${spacing.ctaSpacing}`}
         variants={itemVariants}
       >
-        {/* Primary CTA - Enhanced prominence */}
+        {/* Primary CTA - Compact on mobile */}
         <Button
-          size="lg"
-          className={`group relative w-full sm:w-auto px-5 py-3 text-sm sm:px-8 sm:py-4 sm:text-lg font-bold text-white rounded-xl hover:brightness-110 transition-all duration-300 overflow-hidden shadow-2xl hover:shadow-red-500/30 hover:scale-[1.02] border border-red-500/20 ${getFocusStyles()}`}
+          size="default"
+          className={`group relative flex-1 sm:flex-none px-4 py-2.5 sm:px-8 sm:py-4 text-xs sm:text-lg font-bold text-white rounded-lg sm:rounded-xl hover:brightness-110 transition-all duration-300 overflow-hidden shadow-2xl hover:shadow-red-500/30 hover:scale-[1.02] border border-red-500/20 ${getFocusStyles()}`}
           onClick={handleGetStartedClick}
           aria-label="Get started with Mindscape Analytics - Contact us for consultation"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 group-hover:from-red-500 group-hover:via-red-400 group-hover:to-red-500 transition-all duration-500 rounded-xl"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
-          <span className="relative z-10 flex items-center justify-center gap-2">
+          <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 group-hover:from-red-500 group-hover:via-red-400 group-hover:to-red-500 transition-all duration-500 rounded-lg sm:rounded-xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg sm:rounded-xl"></div>
+          <span className="relative z-10 flex items-center justify-center gap-1.5 sm:gap-2">
             Get Started
-            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            <ArrowRight className="h-3.5 w-3.5 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </span>
         </Button>
 
-        {/* Secondary CTA - Reduced prominence for 3:1 ratio */}
-        <Link href="/solutions" className="w-full sm:w-auto">
+        {/* Secondary CTA - Compact on mobile */}
+        <Link href="/solutions" className="flex-1 sm:flex-none">
           <Button
             size="default"
             variant="outline"
-            className={`group relative w-full px-4 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-base font-semibold text-white border-2 border-white/30 hover:border-white/50 hover:bg-white/10 rounded-xl backdrop-blur-md transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-white/10 ${getFocusStyles()}`}
+            className={`group relative w-full px-3 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-base font-semibold text-white border border-white/30 sm:border-2 hover:border-white/50 hover:bg-white/10 rounded-lg sm:rounded-xl backdrop-blur-md transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-white/10 ${getFocusStyles()}`}
             aria-label="View our solutions and services"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
-            <span className="relative z-10 flex items-center justify-center gap-2">
+            <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg sm:rounded-xl"></div>
+            <span className="relative z-10 flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap">
               View Solutions
-              <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </span>
           </Button>
         </Link>

@@ -118,25 +118,31 @@ export default function EnhancedHero({
           <div className="w-full max-w-7xl mx-auto px-4">
             {/* Conditional Layout based on device */}
             {isMobile ? (
-              // Mobile Layout: Heading -> Timeline -> Content
-              <div className="flex flex-col space-y-2 pb-8 w-full px-4">
-                <ContentSection
-                  typographyConfig={mergedTypographyConfig}
-                  className="flex flex-col justify-center items-start text-left pt-2 px-1"
-                  mode="heading"
-                />
+              // Mobile Layout: Heading -> Timeline (Background) -> Content
+              <div className="flex flex-col relative w-full px-4 min-h-[450px] justify-center">
+                {/* Timeline as absolute background overlay */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
+                  <InteractiveTimeline
+                    timelineData={finalTimelineData}
+                    performanceConfig={mergedPerformanceConfig}
+                    className="flex items-center justify-center scale-[0.45] opacity-25 mix-blend-screen -mt-20"
+                  />
+                </div>
 
-                <InteractiveTimeline
-                  timelineData={finalTimelineData}
-                  performanceConfig={mergedPerformanceConfig}
-                  className="flex items-center justify-center relative z-0 h-[280px] w-full -my-24 scale-[0.55] origin-top opacity-60 mix-blend-screen"
-                />
+                {/* Foreground Content */}
+                <div className="relative z-10 flex flex-col space-y-4">
+                  <ContentSection
+                    typographyConfig={mergedTypographyConfig}
+                    className="flex flex-col justify-center items-center text-center pt-2 px-1"
+                    mode="heading"
+                  />
 
-                <ContentSection
-                  typographyConfig={mergedTypographyConfig}
-                  className="flex flex-col justify-center items-start text-left -mt-4 px-1"
-                  mode="content"
-                />
+                  <ContentSection
+                    typographyConfig={mergedTypographyConfig}
+                    className="flex flex-col justify-center items-center text-center px-1"
+                    mode="content"
+                  />
+                </div>
               </div>
             ) : (
               // Desktop Layout: Side by Side
