@@ -129,7 +129,7 @@ export default function EnhancedHero({
                 <InteractiveTimeline
                   timelineData={finalTimelineData}
                   performanceConfig={mergedPerformanceConfig}
-                  className="flex items-center justify-center relative z-40 h-[320px] w-full -my-14 scale-[0.85] origin-top"
+                  className="flex items-center justify-center relative z-0 h-[280px] w-full -my-24 scale-[0.55] origin-top opacity-60 mix-blend-screen"
                 />
 
                 <ContentSection

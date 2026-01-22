@@ -138,7 +138,7 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
         {/* Primary CTA - Enhanced prominence */}
         <Button
           size="lg"
-          className={`group relative w-full sm:w-auto px-8 py-4 text-lg font-bold text-white rounded-xl hover:brightness-110 transition-all duration-300 overflow-hidden shadow-2xl hover:shadow-red-500/30 hover:scale-[1.02] border border-red-500/20 ${getFocusStyles()}`}
+          className={`group relative w-full sm:w-auto px-5 py-3 text-sm sm:px-8 sm:py-4 sm:text-lg font-bold text-white rounded-xl hover:brightness-110 transition-all duration-300 overflow-hidden shadow-2xl hover:shadow-red-500/30 hover:scale-[1.02] border border-red-500/20 ${getFocusStyles()}`}
           onClick={handleGetStartedClick}
           aria-label="Get started with Mindscape Analytics - Contact us for consultation"
         >
@@ -146,7 +146,7 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
           <span className="relative z-10 flex items-center justify-center gap-2">
             Get Started
-            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </span>
         </Button>
 
@@ -155,13 +155,13 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
           <Button
             size="default"
             variant="outline"
-            className={`group relative w-full px-6 py-3 text-base font-semibold text-white border-2 border-white/30 hover:border-white/50 hover:bg-white/10 rounded-xl backdrop-blur-md transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-white/10 ${getFocusStyles()}`}
+            className={`group relative w-full px-4 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-base font-semibold text-white border-2 border-white/30 hover:border-white/50 hover:bg-white/10 rounded-xl backdrop-blur-md transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-white/10 ${getFocusStyles()}`}
             aria-label="View our solutions and services"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
             <span className="relative z-10 flex items-center justify-center gap-2">
               View Solutions
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </span>
           </Button>
         </Link>
