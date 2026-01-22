@@ -91,7 +91,7 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
       {/* Enhanced Main Headline with improved typography */}
       <motion.div variants={itemVariants}>
         <h1
-          className={`${getResponsiveFontSize()} text-4xl sm:text-5xl font-black tracking-tight ${spacing.headlineSpacing} hero-headline`}
+          className={`${getResponsiveFontSize()} text-3xl sm:text-5xl font-black tracking-tight ${spacing.headlineSpacing} hero-headline`}
           style={{
             ...getLineHeightStyles(),
             ...getTextShadowStyles()
@@ -115,7 +115,7 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
       >
         {/* Primary description with enhanced styling */}
         <p
-          className="text-lg lg:text-xl text-white/95 leading-relaxed font-light hero-text"
+          className="text-sm sm:text-xl text-white/95 leading-relaxed font-light hero-text"
           style={getTextShadowStyles()}
         >
           Mindscape Analytics delivers scalable data platforms, AI systems, and automation solutions that help organizations operate smarter, faster, and with greater control.

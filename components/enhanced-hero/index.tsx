@@ -119,22 +119,22 @@ export default function EnhancedHero({
             {/* Conditional Layout based on device */}
             {isMobile ? (
               // Mobile Layout: Heading -> Timeline -> Content
-              <div className="flex flex-col space-y-2 pb-12 w-full px-4">
+              <div className="flex flex-col space-y-2 pb-8 w-full px-4">
                 <ContentSection
                   typographyConfig={mergedTypographyConfig}
-                  className="flex flex-col justify-center space-y-4 text-center pt-8"
+                  className="flex flex-col justify-center items-start text-left pt-2 px-1"
                   mode="heading"
                 />
 
                 <InteractiveTimeline
                   timelineData={finalTimelineData}
                   performanceConfig={mergedPerformanceConfig}
-                  className="flex items-center justify-center relative z-40 h-[350px] w-full -my-10"
+                  className="flex items-center justify-center relative z-40 h-[320px] w-full -my-14 scale-[0.85] origin-top"
                 />
 
                 <ContentSection
                   typographyConfig={mergedTypographyConfig}
-                  className="flex flex-col justify-center space-y-4 text-center -mt-4 px-4"
+                  className="flex flex-col justify-center items-start text-left -mt-4 px-1"
                   mode="content"
                 />
               </div>
