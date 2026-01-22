@@ -77,7 +77,7 @@ export default function WhyChooseUs() {
 
     const scroll = (direction: "left" | "right") => {
         if (scrollContainerRef.current) {
-            const scrollAmount = 320
+            const scrollAmount = 272
             const currentScroll = scrollContainerRef.current.scrollLeft
             const newScroll = direction === "left"
                 ? currentScroll - scrollAmount
@@ -99,18 +99,22 @@ export default function WhyChooseUs() {
     }
 
     return (
-        <section className="py-8 md:py-12 relative overflow-hidden bg-black">
+        <section className="py-10 md:py-14 relative overflow-hidden bg-black">
             {/* Background elements */}
             <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black,transparent)]"></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-red-500/10 blur-[120px]"></div>
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <div className="text-center mb-8">
-                    <Badge className="mb-3 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm">WHY CHOOSE US</Badge>
-                    <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-2">
+                    <div className="inline-flex items-center justify-center mb-3">
+                        <Badge variant="outline" className="bg-red-500/10 border-red-500/20 text-red-400 px-4 py-1.5 text-xs tracking-[0.2em] uppercase backdrop-blur-sm">
+                            WHY CHOOSE US
+                        </Badge>
+                    </div>
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
                         Your Success is <span className="text-red-500">Our Priority</span>
                     </h2>
-                    <p className="text-base md:text-lg text-white/70 max-w-2xl mx-auto">
+                    <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
                         We're not just another agency - we're your dedicated partner in digital transformation
                     </p>
                 </div>
@@ -150,25 +154,25 @@ export default function WhyChooseUs() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.05 }}
                                 viewport={{ once: true }}
-                                className="flex-none w-72 snap-start"
+                                className="flex-none w-64 snap-start"
                             >
                                 <Card className="bg-black/40 backdrop-blur-xl border border-white/10 h-full hover:border-red-500/30 transition-all duration-300 group relative overflow-hidden">
                                     {/* Gradient overlay on hover */}
-                                    <div className={`absolute inset-0 bg-gradient-to-br ${advantage.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                                    <div className={`absolute inset-0 bg-gradient-to-br ${advantage.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
 
                                     <CardContent className="p-5 relative z-10">
                                         {/* Icon */}
-                                        <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${advantage.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
-                                            <advantage.icon className="h-7 w-7 text-white" />
+                                        <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${advantage.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform shadow-lg`}>
+                                            <advantage.icon className="h-6 w-6 text-white" />
                                         </div>
 
                                         {/* Title */}
-                                        <h3 className="text-xl font-bold mb-1">{advantage.title}</h3>
-                                        <p className="text-sm font-semibold text-white/80 mb-2">{advantage.description}</p>
+                                        <h3 className="text-lg font-bold mb-1">{advantage.title}</h3>
+                                        <p className="text-xs font-semibold text-white/80 mb-2">{advantage.description}</p>
 
                                         {/* Highlight */}
-                                        <div className="flex items-start gap-2 text-sm text-white/70">
-                                            <CheckCircle className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                                        <div className="flex items-start gap-2 text-xs text-white/70">
+                                            <CheckCircle className="h-3.5 w-3.5 text-green-400 mt-0.5 flex-shrink-0" />
                                             <span>{advantage.highlight}</span>
                                         </div>
                                     </CardContent>
@@ -195,24 +199,24 @@ export default function WhyChooseUs() {
                     viewport={{ once: true }}
                     className="text-center mt-8"
                 >
-                    <Card className="bg-gradient-to-r from-red-600/20 to-purple-600/20 border border-red-500/30 inline-block">
-                        <CardContent className="p-6">
+                    <Card className="bg-gradient-to-r from-red-600/20 to-red-600/10 border border-red-500/30 inline-block">
+                        <CardContent className="p-5">
                             <div className="flex flex-col sm:flex-row items-center gap-4">
                                 <div className="flex items-center gap-3">
-                                    <Clock className="h-8 w-8 text-red-400" />
+                                    <Clock className="h-6 w-6 text-red-400" />
                                     <div className="text-left">
                                         <p className="text-sm font-semibold">Limited Availability</p>
                                         <p className="text-xs text-white/70"><span className="text-green-400 font-bold">2 spots</span> left this month</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-2">
-                                    <Button className="bg-red-600 hover:bg-red-700 text-white" asChild>
+                                    <Button size="sm" className="bg-red-600 hover:bg-red-700 text-white" asChild>
                                         <a href="#instant-quote">
                                             Get Quote
-                                            <ArrowRight className="ml-2 h-4 w-4" />
+                                            <ArrowRight className="ml-2 h-3.5 w-3.5" />
                                         </a>
                                     </Button>
-                                    <Button variant="outline" className="border-white/20 hover:bg-white/10" asChild>
+                                    <Button size="sm" variant="outline" className="border-white/20 hover:bg-white/10" asChild>
                                         <a href="mailto:zeeshan.keerio@mindscapeanalytics.com">
                                             Email Us
                                         </a>

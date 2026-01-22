@@ -6,17 +6,17 @@ import { useEffect } from 'react'
 // These are typically above-the-fold images on key pages
 const CRITICAL_IMAGES = [
   // Homepage critical images
-  '/images/brain.svg',
-  
+  '/images/logo.png',
+
   // Very important images
   '/images/optimized/founder-reduced.webp', // Optimized version of founder image
-  
+
   // Logos and brand images
   '/images/optimized/logo-original.webp',
-  
+
   // Icons that appear on every page
   '/icons/icon-192x192.png',
-  
+
   // Add other critical path images here
 ]
 

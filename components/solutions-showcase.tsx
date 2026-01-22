@@ -7,19 +7,19 @@ import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-import { 
-  Heart, 
-  BarChart4, 
-  Building2, 
-  Briefcase, 
-  Brain, 
-  Cpu, 
-  Database, 
-  Zap, 
-  ArrowRight, 
+import {
+  Heart,
+  BarChart4,
+  Building2,
+  Briefcase,
+  Brain,
+  Cpu,
+  Database,
+  Zap,
+  ArrowRight,
   Sparkles,
-  Globe, 
-  ShieldCheck, 
+  Globe,
+  ShieldCheck,
   Share2,
   ChevronRight,
   BarChart,
@@ -228,7 +228,7 @@ export default function SolutionsShowcase() {
   const isInView = useInView(containerRef, { once: false, amount: 0.2 });
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  
+
   const activeSolution = solutions.find((s) => s.id === activeTab) || solutions[0];
   const IconComponent = activeSolution.icon;
 
@@ -246,7 +246,7 @@ export default function SolutionsShowcase() {
   useEffect(() => {
     setMetrics(getMetricsForTab(activeTab));
   }, [activeTab]);
-  
+
   // Format values with proper units
   const formatMetricValue = (metric: string, value: number): string => {
     if (metric === "Cost Saving") return `${value}%`;
@@ -255,7 +255,7 @@ export default function SolutionsShowcase() {
     if (metric === "Efficiency") return `${value}%`;
     return `${value}%`;
   };
-  
+
   // 3D card effect with mouse movement
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { clientX, clientY } = e;
@@ -265,7 +265,7 @@ export default function SolutionsShowcase() {
     mouseX.set(x);
     mouseY.set(y);
   };
-  
+
   const rotateX = useTransform(mouseY, [0, 300], [5, -5]);
   const rotateY = useTransform(mouseX, [0, 600], [-5, 5]);
   const brightness = useTransform(mouseY, [0, 300], [1.1, 0.9]);
@@ -285,9 +285,9 @@ export default function SolutionsShowcase() {
   };
 
   return (
-    <section 
+    <section
       ref={containerRef}
-      className="py-24 relative overflow-hidden" 
+      className="py-24 relative overflow-hidden"
       id="solutions"
       aria-labelledby="solutions-heading"
       suppressHydrationWarning
@@ -296,7 +296,7 @@ export default function SolutionsShowcase() {
       <div className="absolute inset-0 bg-[url(/images/grid.svg)] bg-repeat [mask-image:linear-gradient(to_bottom,transparent,black)] opacity-40"></div>
       <div className="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] rounded-full bg-red-500/10 blur-[120px] opacity-70"></div>
       <div className="absolute -bottom-1/3 -left-1/4 w-[600px] h-[600px] rounded-full bg-blue-500/10 blur-[100px] opacity-70"></div>
-      
+
       {/* More sophisticated animated particles with varying sizes */}
       {[...Array(30)].map((_, i) => {
         // Use deterministic values based on index instead of random
@@ -305,42 +305,42 @@ export default function SolutionsShowcase() {
         const yPos = ((i * 3.33) % 100);
         const duration = 15 + (i % 10);
         const delay = i * 0.2;
-        
+
         return (
-        <motion.div
-          key={`particle-${i}`}
+          <motion.div
+            key={`particle-${i}`}
             className={`absolute rounded-full will-change-transform ${i % 3 === 0 ? 'bg-red-500/40' : i % 3 === 1 ? 'bg-blue-500/30' : 'bg-purple-500/30'}`}
             style={{
               width: `${size}px`,
               height: `${size}px`,
             }}
-          initial={{
+            initial={{
               x: `${xPos}%`,
               y: `${yPos}%`,
-            scale: 0,
-          }}
-          animate={{
+              scale: 0,
+            }}
+            animate={{
               x: `${(xPos + 50) % 100}%`,
               y: `${(yPos + 50) % 100}%`,
-            scale: [0, 1, 0],
-          }}
-          transition={{
+              scale: [0, 1, 0],
+            }}
+            transition={{
               duration: duration,
-            repeat: Infinity,
+              repeat: Infinity,
               delay: delay,
-          }}
-        />
+            }}
+          />
         );
       })}
 
       <div className="container relative z-10 mx-auto px-4 md:px-6">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
@@ -348,13 +348,13 @@ export default function SolutionsShowcase() {
           >
             <div className="bg-black px-4 py-1.5 rounded-full flex items-center space-x-1">
               <motion.div
-                animate={{ 
+                animate={{
                   rotate: [0, 10, -10, 10, 0],
-                  scale: [1, 1.2, 1, 1.2, 1] 
+                  scale: [1, 1.2, 1, 1.2, 1]
                 }}
-                transition={{ 
-                  duration: 2, 
-                  repeat: Infinity, 
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
                   repeatType: "reverse"
                 }}
               >
@@ -363,8 +363,8 @@ export default function SolutionsShowcase() {
               <span className="text-xs font-semibold tracking-wider text-white/80">INDUSTRY SOLUTIONS</span>
             </div>
           </motion.div>
-          
-          <h2 
+
+          <h2
             id="solutions-heading"
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/80"
           >
@@ -391,10 +391,10 @@ export default function SolutionsShowcase() {
                         : "text-white/70 hover:bg-white/5"
                     )}
                   >
-                    <div 
+                    <div
                       className={`flex items-center justify-center w-10 h-10 rounded-md p-1.5
-                        ${activeTab === solution.id 
-                          ? 'bg-gradient-to-br from-red-500/20 to-red-700/20 text-red-500' 
+                        ${activeTab === solution.id
+                          ? 'bg-gradient-to-br from-red-500/20 to-red-700/20 text-red-500'
                           : 'bg-black/20 text-white/60'}`}
                     >
                       <solution.icon className="h-full w-full" />
@@ -413,7 +413,7 @@ export default function SolutionsShowcase() {
                     </div>
                   </button>
                 ))}
-                
+
                 {/* Additional Industries */}
                 {additionalIndustries.map((industry) => (
                   <button
@@ -430,27 +430,27 @@ export default function SolutionsShowcase() {
               </div>
             </div>
           </div>
-          
+
           <div className="lg:col-span-8">
             {/* Content display area */}
             <AnimatePresence mode="wait">
-                  <motion.div
+              <motion.div
                 key={activeSolution.id}
                 initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ type: "spring", damping: 20 }}
                 className="bg-black/60 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden shadow-xl"
               >
                 <div className="relative aspect-video overflow-hidden">
-                    <Image
-                      src={activeSolution.image}
-                      alt={activeSolution.altText}
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  
+                  <Image
+                    src={activeSolution.image}
+                    alt={activeSolution.altText}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30"></div>
 
                   <div className="absolute top-0 left-0 right-0 p-6">
@@ -465,18 +465,18 @@ export default function SolutionsShowcase() {
                     <p className="text-base text-white/80 max-w-3xl mt-2">
                       {activeSolution.description.split('.')[0]}
                     </p>
-              </div>
                   </div>
+                </div>
 
                 {/* Stats banner */}
                 <div className="grid grid-cols-3 border-b border-white/5">
-                    {activeSolution.stats.map((stat, index) => (
+                  {activeSolution.stats.map((stat, index) => (
                     <div key={index} className={`p-4 text-center ${index !== activeSolution.stats.length - 1 ? 'border-r border-white/5' : ''}`}>
                       <div className="text-2xl lg:text-3xl font-bold text-red-500" suppressHydrationWarning>{stat.value}</div>
                       <div className="text-sm text-white/70" suppressHydrationWarning>{stat.label}</div>
-                        </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
+                </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
                   {/* Key Benefits Column */}
@@ -487,10 +487,10 @@ export default function SolutionsShowcase() {
                           <CheckCircle2 className="h-5 w-5 text-red-500" />
                         </span>
                         Key Benefits
-                  </h4>
+                      </h4>
                       <ul className="space-y-3">
-                    {activeSolution.features.map((feature, index) => (
-                      <motion.li 
+                        {activeSolution.features.map((feature, index) => (
+                          <motion.li
                             key={index}
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -499,11 +499,11 @@ export default function SolutionsShowcase() {
                           >
                             <div className="mt-0.5 p-1 rounded-full bg-red-500/10 group-hover:bg-red-500/20 transition-colors">
                               <Check className="h-3.5 w-3.5 text-red-500" />
-                        </div>
+                            </div>
                             <span className="text-sm group-hover:text-white transition-colors">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
+                          </motion.li>
+                        ))}
+                      </ul>
                     </div>
 
                     {/* ROI & Implementation */}
@@ -546,8 +546,8 @@ export default function SolutionsShowcase() {
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {metrics.map((metric, index) => (
-                        <motion.div 
-                            key={`metric-${index}`} 
+                          <motion.div
+                            key={`metric-${index}`}
                             className="bg-black/30 border border-white/5 rounded-lg p-4"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -556,20 +556,20 @@ export default function SolutionsShowcase() {
                             <div className="flex justify-between items-center mb-2">
                               <p className="text-sm text-white/70 font-medium" suppressHydrationWarning>{metric.label}</p>
                               <p className="text-lg font-bold text-red-500" suppressHydrationWarning>{formatMetricValue(metric.label, metric.value)}</p>
-                          </div>
+                            </div>
                             <div className="h-2 bg-black/50 rounded-full overflow-hidden">
-                              <motion.div 
+                              <motion.div
                                 className="h-full bg-red-500 rounded-full"
                                 initial={{ width: 0 }}
                                 animate={{ width: `${metric.value}%` }}
                                 transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
                               />
-                          </div>
-                        </motion.div>
+                            </div>
+                          </motion.div>
                         ))}
                       </div>
-                  </div>
-                  
+                    </div>
+
                     {/* Technologies */}
                     <div>
                       <h4 className="text-lg lg:text-xl font-semibold mb-4 flex items-center">
@@ -577,22 +577,22 @@ export default function SolutionsShowcase() {
                           <Cpu className="h-5 w-5 text-red-500" />
                         </span>
                         Technologies Used
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {activeSolution.techStack.map((tech, index) => (
-                        <motion.span
-                          key={`tech-${index}`}
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {activeSolution.techStack.map((tech, index) => (
+                          <motion.span
+                            key={`tech-${index}`}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.3 + index * 0.1 }}
                             className="text-xs bg-black/40 text-white/80 px-3 py-1.5 rounded-full border border-white/5 inline-flex items-center"
                           >
                             <span className="h-1.5 w-1.5 rounded-full bg-red-500 mr-1.5"></span>
-                          {tech}
-                        </motion.span>
-                      ))}
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
                     <Button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white border-0 mt-4">
                       <span className="flex items-center">
@@ -610,7 +610,7 @@ export default function SolutionsShowcase() {
                       <BarChart className="h-5 w-5 text-red-500" />
                     </div>
                     <h4 className="text-lg lg:text-xl font-semibold">Case Study</h4>
-          </div>
+                  </div>
 
                   <div className="bg-gradient-to-br from-black/60 to-black/40 border border-white/5 rounded-lg overflow-hidden">
                     <div className="grid grid-cols-1 lg:grid-cols-5">
@@ -626,13 +626,13 @@ export default function SolutionsShowcase() {
                             <div className="text-sm text-white/60 mb-1">Challenge</div>
                             <div className="text-sm">{activeSolution.casestudy.challenge}</div>
                           </div>
-                          
+
                           <div>
                             <div className="text-sm text-white/60 mb-1">Solution</div>
                             <div className="text-sm">{activeSolution.casestudy.solution}</div>
                           </div>
                         </div>
-                        
+
                         <div>
                           <div className="text-sm text-white/60 mb-1">Results</div>
                           <div className="flex items-center gap-2 mt-2">
@@ -645,7 +645,7 @@ export default function SolutionsShowcase() {
                             </div>
                           </div>
                         </div>
-                        
+
                         <Button className="mt-4 bg-black/40 hover:bg-black/60 text-white border border-white/10 text-xs px-3 h-8">
                           <span className="flex items-center">
                             View Full Case Study
@@ -653,20 +653,20 @@ export default function SolutionsShowcase() {
                           </span>
                         </Button>
                       </div>
-                      
+
                       {/* Right side - testimonial quote */}
                       <div className="lg:col-span-2 bg-gradient-to-r from-red-900/20 to-red-700/10 border-l border-white/5 p-5 relative">
                         <div className="absolute top-4 right-4 text-red-500/20">
                           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.39999 6.32003L15.89 3.49003C19.7 2.22003 21.77 4.30003 20.51 8.11003L17.68 16.6C15.78 22.31 12.66 22.31 10.76 16.6L9.91999 14.08L7.39999 13.24C1.68999 11.34 1.68999 8.23003 7.39999 6.32003Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M7.39999 6.32003L15.89 3.49003C19.7 2.22003 21.77 4.30003 20.51 8.11003L17.68 16.6C15.78 22.31 12.66 22.31 10.76 16.6L9.91999 14.08L7.39999 13.24C1.68999 11.34 1.68999 8.23003 7.39999 6.32003Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </div>
-                        
+
                         <div className="mt-4">
                           <blockquote className="text-sm italic text-white/90 relative">
                             "{activeSolution.casestudy.quote}"
                           </blockquote>
-                          
+
                           <div className="mt-4 flex items-center gap-3">
                             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white font-bold text-xs">
                               {activeSolution.casestudy.author.split(' ')[0][0]}{activeSolution.casestudy.author.split(' ')[1][0]}

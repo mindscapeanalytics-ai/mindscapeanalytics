@@ -72,7 +72,7 @@ import { ErrorBoundary } from "@/components/error-boundary"
 import { Metadata } from "next"
 import Link from "next/link"
 import { DashboardHeader } from "@/components/dashboard-header"
-import { DashboardShell } from "@/components/dashboard-shell"
+import { DashboardShell } from "@/components/ui/dashboard-shell"
 import { SmartInsightsCard } from "@/components/smart-insights-card"
 import { BusinessMetricsCard } from "@/components/business-metrics-card"
 import { AIOpportunityCard } from "@/components/ai-opportunity-card"
@@ -81,7 +81,7 @@ import { PredictiveCard } from "@/components/predictive-card"
 import { PlusIcon, ArrowRight } from "lucide-react"
 
 // Lazy load the BusinessInsights component to avoid issues
-const BusinessInsights = lazy(() => 
+const BusinessInsights = lazy(() =>
   import("@/components/dashboard/business-insights").then(mod => ({ default: mod.BusinessInsights }))
 )
 
@@ -121,7 +121,7 @@ export default function InsightsPage() {
   const [exportFormat, setExportFormat] = useState<"pdf" | "excel" | "json">("pdf")
   const [isLoading, setIsLoading] = useState(false)
   const [isGenerating, setIsGenerating] = useState(false)
-  
+
   // Fetch insights data using SWR
   const { data: insightsData, error: insightsError, isValidating } = useSWR(
     'api/dashboard/insights',
@@ -134,7 +134,7 @@ export default function InsightsPage() {
       }
     }
   )
-  
+
   // Handle errors with toast notifications
   useEffect(() => {
     if (insightsError) {
@@ -145,27 +145,27 @@ export default function InsightsPage() {
       })
     }
   }, [insightsError, toast])
-  
+
   // Simulate scheduled refresh if autoRefresh is enabled
   useEffect(() => {
     let refreshInterval: NodeJS.Timeout | null = null
-    
+
     if (autoRefresh) {
       refreshInterval = setInterval(() => {
         console.log("Auto-refreshing insights...")
         // In a real app, this would trigger SWR revalidation
       }, 60000) // Refresh every minute
     }
-    
+
     return () => {
       if (refreshInterval) clearInterval(refreshInterval)
     }
   }, [autoRefresh])
-  
+
   // Handle export function
   const handleExport = () => {
     setIsLoading(true)
-    
+
     setTimeout(() => {
       toast({
         title: "Export successful",
@@ -175,11 +175,11 @@ export default function InsightsPage() {
       setIsLoading(false)
     }, 1500)
   }
-  
+
   // Handle generate insights
   const handleGenerateInsights = async () => {
     setIsGenerating(true)
-    
+
     try {
       const response = await fetch('/api/dashboard/insights', {
         method: 'POST',
@@ -192,19 +192,19 @@ export default function InsightsPage() {
           timeframe: timeframeFilter,
         }),
       })
-      
+
       if (!response.ok) {
         throw new Error('Failed to generate insights')
       }
-      
+
       const data = await response.json()
-      
+
       toast({
         title: "Insights generated",
         description: "New business insights have been generated successfully.",
         variant: "default",
       })
-      
+
       // Trigger SWR revalidation
       mutate('api/dashboard/insights')
     } catch (error) {
@@ -218,7 +218,7 @@ export default function InsightsPage() {
       setIsGenerating(false)
     }
   }
-  
+
   // Memoized settings options for better performance
   const modelOptions = useMemo(() => [
     { id: "business", name: "Business Performance", icon: <BarChart className="h-4 w-4" /> },
@@ -227,7 +227,7 @@ export default function InsightsPage() {
     { id: "operational", name: "Operational Efficiency", icon: <Gauge className="h-4 w-4" /> },
     { id: "competitive", name: "Competitive Analysis", icon: <LineChart className="h-4 w-4" /> },
   ], [])
-  
+
   const timeframeOptions = useMemo(() => [
     { id: "all", name: "All Timeframes" },
     { id: "immediate", name: "Immediate Action" },
@@ -276,7 +276,7 @@ export default function InsightsPage() {
             <span>Real-time</span>
           </TabsTrigger>
         </TabsList>
-        
+
         <TabsContent value="metrics" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Card>
@@ -343,26 +343,26 @@ export default function InsightsPage() {
 
           <BusinessMetricsCard />
         </TabsContent>
-        
+
         <TabsContent value="ai" className="space-y-4">
           <Suspense fallback={<Skeleton className="h-[600px] w-full rounded-md" />}>
             <SmartInsightsCard />
           </Suspense>
           <AIOpportunityCard />
         </TabsContent>
-        
+
         <TabsContent value="optimization" className="space-y-4">
           <Suspense fallback={<Skeleton className="h-[400px] w-full rounded-md" />}>
             <RecommendationsCard />
           </Suspense>
         </TabsContent>
-        
+
         <TabsContent value="forecasts" className="space-y-4">
           <Suspense fallback={<Skeleton className="h-[500px] w-full rounded-md" />}>
             <PredictiveCard />
           </Suspense>
         </TabsContent>
-        
+
         <TabsContent value="real-time" className="space-y-4">
           <Card>
             <CardHeader>

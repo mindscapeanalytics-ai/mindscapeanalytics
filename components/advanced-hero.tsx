@@ -14,6 +14,7 @@ import { Environment, MeshDistortMaterial, OrbitControls } from "@react-three/dr
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 // 3D Scene Components
 function NeuralNetworkSphere() {
@@ -102,10 +103,10 @@ function NeuralConnections() {
 
       // Pulse the opacity of the lines
       if (linesRef.current.material) {
-        const material = Array.isArray(linesRef.current.material) 
-          ? linesRef.current.material[0] 
+        const material = Array.isArray(linesRef.current.material)
+          ? linesRef.current.material[0]
           : linesRef.current.material
-        
+
         material.opacity = (Math.sin(clock.getElapsedTime() * 0.5) + 1) * 0.25 + 0.2
       }
     }
@@ -144,7 +145,7 @@ function FloatingParticles({ count = 50 }) {
     if (!mesh.current) return;
 
     const dummy = new THREE.Object3D()
-    
+
     // Define the particle type explicitly
     interface Particle {
       x: number;
@@ -152,7 +153,7 @@ function FloatingParticles({ count = 50 }) {
       z: number;
       velocity: number;
     }
-    
+
     const particles: Particle[] = []
 
     for (let i = 0; i < count; i++) {
@@ -442,9 +443,11 @@ export default function AdvancedHero() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white group">
-                Get Started
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white group" asChild>
+                <Link href="/contact">
+                  Get Started
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
               </Button>
 
               <Button

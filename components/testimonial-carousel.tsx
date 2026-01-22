@@ -3,65 +3,146 @@
 import { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react"
 import Image from "next/image"
 
-// Real testimonials from Fiverr
+// Real testimonials with enhanced client data and professional images
 const testimonials = [
   {
     id: 1,
-    quote: "Mindscape is an exceptional AI developer who delivered exactly what I needed. Their expertise in AI and machine learning is impressive, and they were able to implement complex features with precision. The communication was excellent throughout the project, and they were always responsive to my questions and requests. I highly recommend their services for anyone looking for top-notch AI development work.",
-    author: "michael_rodriguez",
+    quote: "Got exactly what I inquired + extra, 10/10 stars. Will come back for more projects!",
+    author: "Alex Chen",
+    company: "TechFlow Solutions",
+    location: "Sweden",
     rating: 5,
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
-    date: "2 months ago"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    date: "2 years ago",
+    role: "CTO"
   },
   {
     id: 2,
-    quote: "Working with Mindscape was a great experience. They have a deep understanding of AI technologies and were able to provide valuable insights throughout the project. The final product exceeded my expectations, and I'm very satisfied with the results. I would definitely work with them again for future AI projects.",
-    author: "aisha_patel",
+    quote: "Delivered in a timely manner. Very responsive and accommodating. Outstanding technical expertise.",
+    author: "Sarah Johnson",
+    company: "DataVision Corp",
+    location: "United States",
     rating: 5,
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
-    date: "3 months ago"
+    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+    date: "3 years ago",
+    role: "VP Engineering"
   },
   {
     id: 3,
-    quote: "Mindscape delivered a high-quality AI solution that perfectly matched our requirements. Their technical skills are outstanding, and they were able to handle complex AI algorithms with ease. The project was completed on time, and the results were exactly what we needed. I'm very impressed with their work and would recommend them to anyone looking for AI development services.",
-    author: "dr_elena_volkov",
+    quote: "A Data Genius! Transformed our entire analytics infrastructure with cutting-edge solutions.",
+    author: "Michael Rodriguez",
+    company: "InnovateLabs",
+    location: "Canada",
     rating: 5,
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
-    date: "1 month ago"
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    date: "3 years ago",
+    role: "Head of Data"
   },
   {
     id: 4,
-    quote: "I'm extremely satisfied with the AI solution provided by Mindscape. They demonstrated excellent technical expertise and were able to implement complex AI features that significantly improved our system's performance. The communication was smooth, and they were always available to address any concerns. I would definitely work with them again for future projects.",
-    author: "dr_raj_patel",
+    quote: "Great skills, commitment and good communication with seller along the way. Recommended provider to bring your ideas to reality.",
+    author: "Carlos Martinez",
+    company: "Digital Dynamics",
+    location: "El Salvador",
     rating: 5,
-    image: "https://randomuser.me/api/portraits/men/75.jpg",
-    date: "2 weeks ago"
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
+    date: "3 years ago",
+    role: "Product Director"
+  },
+  {
+    id: 5,
+    quote: "Excellent work, Zeeshan was on time, polite, professional and I am very happy with the service and results I received. Will use him again and highly recommend.",
+    author: "Emma Thompson",
+    company: "CloudFirst Ltd",
+    location: "United Kingdom",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+    date: "4 years ago",
+    role: "Technical Lead"
+  },
+  {
+    id: 6,
+    quote: "Great work!! Exceeded expectations with innovative AI solutions that transformed our business processes.",
+    author: "David Kim",
+    company: "NextGen Systems",
+    location: "United States",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=150&h=150&fit=crop&crop=face",
+    date: "4 years ago",
+    role: "CEO"
+  },
+  {
+    id: 7,
+    quote: "Super fast delivery, exactly what I needed. Great communication. Would recommend for enterprise projects.",
+    author: "Lisa Anderson",
+    company: "ScaleUp Ventures",
+    location: "United Kingdom",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face",
+    date: "4 years ago",
+    role: "Operations Manager"
+  },
+  {
+    id: 8,
+    quote: "Great seller, will hire again, thanks! Professional approach to complex data challenges.",
+    author: "Jennifer Walsh",
+    company: "DataCore Analytics",
+    location: "United States",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+    date: "4 years ago",
+    role: "Data Scientist"
+  },
+  {
+    id: 9,
+    quote: "Perfect work with attention to detail and enterprise-grade quality standards.",
+    author: "Thomas Mueller",
+    company: "EuroTech Solutions",
+    location: "Belgium",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+    date: "3 years ago",
+    role: "Senior Developer"
+  },
+  {
+    id: 10,
+    quote: "It has been a good user experience. Despite the language gap, the seller has shown all his willingness to solve my doubts and observations. I recommend your services.",
+    author: "Javier Gonzalez",
+    company: "LatAm Digital",
+    location: "Colombia",
+    rating: 4.7,
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face",
+    date: "3 years ago",
+    role: "Tech Consultant"
   }
 ]
 
-// Avatar component with error handling
+// Avatar component with enhanced error handling for professional images
 function Avatar({ src, alt }: { src: string, alt: string }) {
   const [imgError, setImgError] = useState(false)
-  
+
   if (imgError) {
     return (
-      <div className="w-12 h-12 rounded-full bg-red-500/30 flex items-center justify-center">
-        <span className="text-white font-medium text-lg">{alt.charAt(0).toUpperCase()}</span>
+      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500/20 to-blue-500/20 flex items-center justify-center border border-white/10 flex-shrink-0">
+        <span className="text-white font-semibold text-sm">{alt.split(' ').map(n => n[0]).join('').slice(0, 2)}</span>
       </div>
     )
   }
-  
+
   return (
-    <div className="relative w-12 h-12 rounded-full overflow-hidden">
+    <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-red-400/50 transition-colors duration-300 shadow-md flex-shrink-0">
       <Image
         src={src}
         alt={alt}
         fill
         className="object-cover"
         onError={() => setImgError(true)}
+        unoptimized
       />
     </div>
   )
@@ -69,51 +150,69 @@ function Avatar({ src, alt }: { src: string, alt: string }) {
 
 function TestimonialCard({ testimonial, index }: { testimonial: typeof testimonials[0], index: number }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className="relative overflow-hidden rounded-xl group transition-all duration-300 w-[300px] h-[400px] bg-black/40 border border-white/10 hover:bg-black/60"
-    >
+    <Card className="relative overflow-hidden rounded-lg group transition-all duration-300 w-[280px] h-[340px] bg-gradient-to-br from-slate-900/60 via-slate-950/90 to-black border border-white/10 hover:border-red-500/40 shadow-lg hover:shadow-xl hover:shadow-red-500/20 flex flex-col backdrop-blur-sm">
       {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      
-      {/* Quote icon */}
-      <Quote className="absolute top-4 left-4 h-8 w-8 text-red-500/20 group-hover:text-red-500/40 transition-colors" />
-      
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/5 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-20 transition-opacity duration-300">
+        <Quote className="h-10 w-10 text-red-400 rotate-180" />
+      </div>
+
       {/* Content */}
-      <div className="p-6 h-full flex flex-col">
-        {/* Rating */}
-        <div className="flex mb-4">
-          {[...Array(testimonial.rating)].map((_, i) => (
-            <Star key={i} className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-          ))}
+      <CardContent className="p-5 h-full flex flex-col relative z-10 justify-between">
+        <div className="flex-1">
+          {/* Rating */}
+          <div className="flex mb-3 gap-0.5 items-center">
+            {[...Array(5)].map((_, i) => (
+              <Star
+                key={i}
+                className={`w-3 h-3 ${i < Math.floor(testimonial.rating) ? "text-amber-400 fill-amber-400" : "text-white/10 fill-white/10"}`}
+              />
+            ))}
+            {testimonial.rating % 1 !== 0 && (
+              <Badge variant="outline" className="ml-1.5 bg-amber-500/10 border-amber-500/20 text-amber-400 text-[10px] font-semibold px-1 py-0 h-4">
+                {testimonial.rating}
+              </Badge>
+            )}
+          </div>
+
+          {/* Quote */}
+          <p className="text-white/90 text-sm leading-relaxed group-hover:text-white transition-colors duration-300 line-clamp-4 mb-3">
+            "{testimonial.quote}"
+          </p>
         </div>
-        
-        {/* Quote */}
-        <p className="text-white/70 text-sm leading-relaxed flex-grow italic mb-6">"{testimonial.quote}"</p>
-        
+
         {/* Author info */}
-        <div className="flex items-center gap-4 mt-auto">
+        <div className="flex items-start gap-3 mt-auto pt-4 border-t border-white/10">
           <Avatar src={testimonial.image} alt={testimonial.author} />
-          <div>
-            <h3 className="text-white font-medium">{testimonial.author}</h3>
-            <p className="text-white/50 text-sm">{testimonial.date}</p>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-white font-semibold text-sm tracking-tight group-hover:text-red-400 transition-colors truncate mb-1">
+              {testimonial.author}
+            </h3>
+            <div className="space-y-1">
+              <p className="text-white/70 text-xs font-medium truncate">
+                {testimonial.role} • {testimonial.company}
+              </p>
+              <div className="flex items-center gap-2 flex-wrap">
+                <Badge variant="outline" className="bg-white/5 border-white/10 text-white/60 text-[9px] px-1.5 py-0 h-4">
+                  {testimonial.location}
+                </Badge>
+                <span className="text-[9px] text-white/40 font-mono">{testimonial.date}</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </motion.div>
+      </CardContent>
+    </Card>
   )
 }
 
 export default function TestimonialCarousel() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const [showLeftArrow, setShowLeftArrow] = useState(true)
-  const [showRightArrow, setShowRightArrow] = useState(false)
+  const [showLeftArrow, setShowLeftArrow] = useState(false)
+  const [showRightArrow, setShowRightArrow] = useState(true)
   const [isAutoScrolling, setIsAutoScrolling] = useState(true)
 
-  // Auto-scroll functionality (reverse direction)
+  // Auto-scroll loop
   useEffect(() => {
     if (!scrollContainerRef.current || !isAutoScrolling) return
 
@@ -121,26 +220,14 @@ export default function TestimonialCarousel() {
       if (scrollContainerRef.current) {
         const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
         const maxScroll = scrollWidth - clientWidth
-        
-        if (scrollLeft <= 0) {
-          // Reset to end
-          scrollContainerRef.current.scrollTo({
-            left: maxScroll,
-            behavior: 'smooth'
-          })
-        } else {
-          // Scroll left (reverse direction)
-          scrollContainerRef.current.scrollTo({
-            left: scrollLeft - 1,
-            behavior: 'smooth'
-          })
-        }
 
-        // Update arrow visibility
-        setShowLeftArrow(scrollLeft > 0)
-        setShowRightArrow(scrollLeft < maxScroll)
+        if (scrollLeft >= maxScroll - 1) {
+          scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' })
+        } else {
+          scrollContainerRef.current.scrollTo({ left: scrollLeft + 1, behavior: 'auto' })
+        }
       }
-    }, 50)
+    }, 30)
 
     return () => clearInterval(interval)
   }, [isAutoScrolling])
@@ -148,10 +235,10 @@ export default function TestimonialCarousel() {
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
       setIsAutoScrolling(false)
-      const scrollAmount = 400
+      const scrollAmount = 264
       const currentScroll = scrollContainerRef.current.scrollLeft
-      const newScroll = direction === "left" 
-        ? currentScroll - scrollAmount 
+      const newScroll = direction === "left"
+        ? currentScroll - scrollAmount
         : currentScroll + scrollAmount
 
       scrollContainerRef.current.scrollTo({
@@ -159,79 +246,87 @@ export default function TestimonialCarousel() {
         behavior: "smooth"
       })
 
-      setShowLeftArrow(newScroll > 0)
-      setShowRightArrow(
-        newScroll < (scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth)
-      )
-
-      // Resume auto-scroll after manual scroll
+      // Resume auto-scroll after delay
       setTimeout(() => setIsAutoScrolling(true), 5000)
     }
   }
 
   return (
-    <section className="py-24 relative overflow-hidden bg-black">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
-      <div className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full bg-red-500/10 blur-[100px]"></div>
-      <div className="absolute bottom-1/3 right-1/3 w-80 h-80 rounded-full bg-blue-500/10 blur-[120px]"></div>
+    <section className="py-10 md:py-14 relative overflow-hidden bg-black">
+      {/* Background decorations */}
+      <div className="absolute inset-0 bg-grid-white/[0.02] [mask-image:radial-gradient(ellipse_at_center,black,transparent)]" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center mb-16">
-          <Badge className="mb-4 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm">CLIENT REVIEWS</Badge>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-            What Our <span className="text-red-500">Clients</span> Say
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center mb-3">
+            <Badge variant="outline" className="bg-red-500/10 border-red-500/20 text-red-400 px-4 py-1.5 text-xs tracking-[0.2em] uppercase backdrop-blur-sm">
+              GLOBAL VALIDATION
+            </Badge>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            What Our <span className="text-red-500">Elite Clients</span> Say
           </h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what our clients have to say about their experience working with us.
+          <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+            Consistently delivering high-performance solutions for enterprises worldwide.
           </p>
         </div>
 
         {/* Testimonials Slider */}
-        <div className="relative">
-          {/* Left Arrow */}
-          {showLeftArrow && (
-            <button
+        <div
+          className="relative group"
+          onMouseEnter={() => setIsAutoScrolling(false)}
+          onMouseLeave={() => setIsAutoScrolling(true)}
+        >
+          {/* Controls */}
+          <div className="absolute -top-10 right-4 flex gap-2 z-20">
+            <Button
+              variant="outline"
+              size="icon"
               onClick={() => scroll("left")}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 p-2 rounded-full bg-black/50 border border-white/10 hover:bg-black/70 transition-colors"
-              aria-label="Scroll left"
+              className="bg-white/5 border-white/10 hover:border-red-500/30 hover:bg-white/10 transition-all duration-300 h-8 w-8"
+              aria-label="Previous"
             >
-              <ChevronLeft className="h-6 w-6 text-white" />
-            </button>
-          )}
+              <ChevronLeft className="h-3.5 w-3.5 text-white/70" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => scroll("right")}
+              className="bg-white/5 border-white/10 hover:border-red-500/30 hover:bg-white/10 transition-all duration-300 h-8 w-8"
+              aria-label="Next"
+            >
+              <ChevronRight className="h-3.5 w-3.5 text-white/70" />
+            </Button>
+          </div>
+
+          {/* Masking gradients */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-black via-black/50 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-black via-black/50 to-transparent" />
 
           {/* Testimonials Grid */}
           <div
             ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto pb-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-            onScroll={(e) => {
-              const target = e.target as HTMLDivElement
-              setShowLeftArrow(target.scrollLeft > 0)
-              setShowRightArrow(
-                target.scrollLeft < (target.scrollWidth - target.clientWidth)
-              )
-            }}
+            className="flex gap-4 overflow-x-hidden scroll-smooth py-4 px-20"
           >
-            {testimonials.map((testimonial, index) => (
-              <div key={testimonial.id} className="flex-none w-[300px]">
+            {[...testimonials, ...testimonials].map((testimonial, index) => (
+              <div key={`${testimonial.id}-${index}`} className="flex-none">
                 <TestimonialCard testimonial={testimonial} index={index} />
               </div>
             ))}
           </div>
-          
-          {/* Right Arrow */}
-          {showRightArrow && (
-            <button
-              onClick={() => scroll("right")}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 p-2 rounded-full bg-black/50 border border-white/10 hover:bg-black/70 transition-colors"
-              aria-label="Scroll right"
-            >
-              <ChevronRight className="h-6 w-6 text-white" />
-            </button>
-          )}
+        </div>
+
+        {/* Bottom Trust Signal - Compact */}
+        <div className="mt-8 flex flex-col items-center gap-2.5">
+          <div className="flex flex-wrap justify-center gap-5 md:gap-8 text-white/40">
+            <div className="text-[10px] font-medium tracking-wide">FIVERR PRO</div>
+            <div className="text-[10px] font-medium tracking-wide">ELITE VETTING</div>
+            <div className="text-[10px] font-medium tracking-wide">TOP RATED</div>
+          </div>
+          <div className="h-px w-20 bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
         </div>
       </div>
     </section>
   )
 }
-

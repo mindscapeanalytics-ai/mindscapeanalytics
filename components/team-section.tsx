@@ -21,10 +21,10 @@ const teamMembers = [
     }
   },
   {
-    name: "Michael Rodriguez",
-    role: "CTO & Co-Founder",
-    bio: "Former VP of Engineering at Amazon Web Services, specializing in distributed systems and cloud architecture. Led multiple successful cloud infrastructure projects.",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2149&auto=format&fit=crop",
+    name: "Muhammad Atif",
+    role: "Full Stack Developer",
+    bio: "Versatile developer specializing in creating scalable, user-friendly applications with modern technologies. Expert in building robust full-stack solutions.",
+    image: "/muhammad-atif.jpg",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -33,10 +33,10 @@ const teamMembers = [
     }
   },
   {
-    name: "Aisha Patel",
-    role: "Chief Product Officer",
-    bio: "Product leader with experience at Netflix and Spotify. Expert in building AI-powered products that users love. Focused on creating intuitive and impactful user experiences.",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=2370&auto=format&fit=crop",
+    name: "Ghulam Akbar",
+    role: "Business Development Manager",
+    bio: "Strategic leader focused on driving growth through market expansion, high-value partnerships, and innovative sales strategies.",
+    image: "/Akbar_keerio.jpeg",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -45,10 +45,10 @@ const teamMembers = [
     }
   },
   {
-    name: "Dr. Elena Volkov",
-    role: "Head of AI Research",
-    bio: "Specializes in natural language processing and large language models. Previously worked on GPT models at OpenAI. Published multiple papers in top AI conferences.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2361&auto=format&fit=crop",
+    name: "Syed Athar",
+    role: "Brand & Media Specialist",
+    bio: "Creative expert dedicated to building compelling brand identities and high-impact digital media strategies for global enterprises.",
+    image: "/syed-ather.png",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -57,10 +57,10 @@ const teamMembers = [
     }
   },
   {
-    name: "Dr. Raj Patel",
-    role: "Principal Research Scientist",
-    bio: "Expert in reinforcement learning and robotics. Ph.D. from MIT with 15+ years of research experience. Developed innovative RL algorithms for real-world applications.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=2187&auto=format&fit=crop",
+    name: "Farhan Murad",
+    role: "Cybersecurity Analyst",
+    bio: "Security specialist focused on proactive threat detection, vulnerability management, and ensuring the integrity of digital infrastructure.",
+    image: "/farhankeerio.jpeg",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -80,8 +80,8 @@ function TeamCard({ member, index }: { member: typeof teamMembers[0], index: num
       transition={{ delay: index * 0.1 }}
       viewport={{ once: true }}
       className={`relative overflow-hidden rounded-xl group transition-all duration-300 w-[320px] h-[520px] ${isFounder
-          ? "bg-gradient-to-br from-red-500/10 to-black/40 border border-red-500/30 shadow-[0_0_25px_rgba(220,38,38,0.2)]"
-          : "bg-black/40 border border-white/10"
+        ? "bg-gradient-to-br from-red-500/10 to-black/40 border border-red-500/30 shadow-[0_0_25px_rgba(220,38,38,0.2)]"
+        : "bg-black/40 border border-white/10"
         }`}
     >
       {/* Background gradient effect */}
@@ -127,8 +127,8 @@ function TeamCard({ member, index }: { member: typeof teamMembers[0], index: num
         {/* Role badge */}
         <div className="absolute top-4 right-4 z-20">
           <span className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${isFounder
-              ? "bg-red-500/20 text-red-400 border border-red-500/30"
-              : "bg-white/10 text-white/70 border border-white/10"
+            ? "bg-red-500/20 text-red-400 border border-red-500/30"
+            : "bg-white/10 text-white/70 border border-white/10"
             }`}>
             {member.role}
           </span>
@@ -157,8 +157,8 @@ function TeamCard({ member, index }: { member: typeof teamMembers[0], index: num
             target="_blank"
             rel="noopener noreferrer"
             className={`p-2 rounded-full transition-all duration-300 ${isFounder
-                ? "bg-red-500/20 hover:bg-red-500/30 hover:scale-110"
-                : "bg-white/5 hover:bg-white/10 hover:scale-105"
+              ? "bg-red-500/20 hover:bg-red-500/30 hover:scale-110"
+              : "bg-white/5 hover:bg-white/10 hover:scale-105"
               }`}
             aria-label={`${member.name}'s LinkedIn profile`}
           >
@@ -171,8 +171,8 @@ function TeamCard({ member, index }: { member: typeof teamMembers[0], index: num
             target="_blank"
             rel="noopener noreferrer"
             className={`p-2 rounded-full transition-all duration-300 ${isFounder
-                ? "bg-red-500/20 hover:bg-red-500/30 hover:scale-110"
-                : "bg-white/5 hover:bg-white/10 hover:scale-105"
+              ? "bg-red-500/20 hover:bg-red-500/30 hover:scale-110"
+              : "bg-white/5 hover:bg-white/10 hover:scale-105"
               }`}
             aria-label={`${member.name}'s GitHub profile`}
           >
@@ -185,8 +185,8 @@ function TeamCard({ member, index }: { member: typeof teamMembers[0], index: num
             target="_blank"
             rel="noopener noreferrer"
             className={`p-2 rounded-full transition-all duration-300 ${isFounder
-                ? "bg-red-500/20 hover:bg-red-500/30 hover:scale-110"
-                : "bg-white/5 hover:bg-white/10 hover:scale-105"
+              ? "bg-red-500/20 hover:bg-red-500/30 hover:scale-110"
+              : "bg-white/5 hover:bg-white/10 hover:scale-105"
               }`}
             aria-label={`${member.name}'s email`}
           >
@@ -206,34 +206,26 @@ export default function TeamSection() {
   const [showRightArrow, setShowRightArrow] = useState(false)
   const [isAutoScrolling, setIsAutoScrolling] = useState(true)
 
-  // Auto-scroll functionality (reverse direction)
+  // Auto-scroll functionality (Infinite Circulating Effect)
   useEffect(() => {
     if (!scrollContainerRef.current || !isAutoScrolling) return
 
     const interval = setInterval(() => {
       if (scrollContainerRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
-        const maxScroll = scrollWidth - clientWidth
+        const { scrollLeft, scrollWidth } = scrollContainerRef.current
+        const halfWidth = scrollWidth / 2
 
-        if (scrollLeft <= 0) {
-          // Reset to end
-          scrollContainerRef.current.scrollTo({
-            left: maxScroll,
-            behavior: 'smooth'
-          })
+        if (scrollLeft >= halfWidth) {
+          scrollContainerRef.current.scrollLeft = 0
         } else {
-          // Scroll left (reverse direction)
-          scrollContainerRef.current.scrollTo({
-            left: scrollLeft - 1,
-            behavior: 'smooth'
-          })
+          scrollContainerRef.current.scrollLeft += 1
         }
 
         // Update arrow visibility
-        setShowLeftArrow(scrollLeft > 0)
-        setShowRightArrow(scrollLeft < maxScroll)
+        setShowLeftArrow(scrollLeft > 10)
+        setShowRightArrow(true)
       }
-    }, 50)
+    }, 30)
 
     return () => clearInterval(interval)
   }, [isAutoScrolling])
@@ -297,17 +289,25 @@ export default function TeamSection() {
           <div
             ref={scrollContainerRef}
             className="flex gap-6 overflow-x-auto pb-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            onMouseEnter={() => setIsAutoScrolling(false)}
+            onMouseLeave={() => setIsAutoScrolling(true)}
             onScroll={(e) => {
               const target = e.target as HTMLDivElement
-              setShowLeftArrow(target.scrollLeft > 0)
-              setShowRightArrow(
-                target.scrollLeft < (target.scrollWidth - target.clientWidth)
-              )
+              const scrollLeft = target.scrollLeft
+              const scrollWidth = target.scrollWidth
+              const halfWidth = scrollWidth / 2
+
+              if (scrollLeft >= halfWidth) {
+                target.scrollLeft = scrollLeft - halfWidth
+              }
+
+              setShowLeftArrow(target.scrollLeft > 10)
+              setShowRightArrow(true)
             }}
           >
-            {teamMembers.map((member, index) => (
-              <div key={member.name} className="flex-none w-80">
-                <TeamCard member={member} index={index} />
+            {[...teamMembers, ...teamMembers].map((member, index) => (
+              <div key={`${member.name}-${index}`} className="flex-none w-80">
+                <TeamCard member={member} index={index % teamMembers.length} />
               </div>
             ))}
           </div>
@@ -323,25 +323,7 @@ export default function TeamSection() {
             </button>
           )}
         </div>
-
-        <div className="mt-16 text-center">
-          <div className="inline-block bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 max-w-3xl">
-            <h3 className="text-xl font-bold mb-2">Join Our Team</h3>
-            <p className="text-muted-foreground text-sm text-center mb-3">
-              We're a team of passionate individuals committed to transforming how people interact with AI.
-            </p>
-            <motion.a
-              href="#careers"
-              className="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View Open Positions
-            </motion.a>
-          </div>
-        </div>
       </div>
     </section>
   )
 }
-

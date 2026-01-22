@@ -124,17 +124,17 @@ const config: Config = {
           },
         },
         "blink": {
-          "0%": { 
+          "0%": {
             opacity: "1",
-            filter: "brightness(1) drop-shadow(0 0 5px rgba(220, 38, 38, 0.5))" 
+            filter: "brightness(1) drop-shadow(0 0 5px rgba(220, 38, 38, 0.5))"
           },
-          "50%": { 
+          "50%": {
             opacity: "0.6",
-            filter: "brightness(0.8) drop-shadow(0 0 2px rgba(220, 38, 38, 0.3))" 
+            filter: "brightness(0.8) drop-shadow(0 0 2px rgba(220, 38, 38, 0.3))"
           },
-          "100%": { 
+          "100%": {
             opacity: "1",
-            filter: "brightness(1) drop-shadow(0 0 5px rgba(220, 38, 38, 0.5))" 
+            filter: "brightness(1) drop-shadow(0 0 5px rgba(220, 38, 38, 0.5))"
           },
         },
         wave: {

@@ -19,6 +19,7 @@ import {
   ChevronRight,
   Pen,
   BarChart,
+  DollarSign,
   Pizza,
   Recycle,
   Youtube,
@@ -39,26 +40,33 @@ import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 
-// Available project images for random assignment
+// Available project images for explicit assignment
 const availableProjectImages = [
-  "/images/projects/Automated Workflows.png",
-  "/images/projects/Investment_Insights.png",
-  "/images/projects/vehicle_analysis_dashboard.png",
-  "/images/projects/our_web_designs.png",
-  "/images/projects/mindscapeanalytics.png",
-  "/images/projects/jfbz_token.png",
-  "/images/projects/image_annotation_tool.png",
-  "/images/projects/cryptotrader2.png",
+  "/images/projects/inventory.png",
+  "/images/projects/CYBERTRADERX.png",
+  "/images/projects/mindscape-lms.png",
+  "/images/projects/AgriChian.jpg",
+  "/images/projects/breach-data.png",
+  "/images/projects/real_estate_solutions.png",
+  "/images/projects/dblynx-database-intelligence-mindscapeanalytics.PNG",
+  "/images/projects/mindscape-mortgage.png",
+  "/images/projects/cattle_farm.png",
   "/images/projects/cryforecast.png",
+  "/images/projects/ll-mindscapeanalytics.png",
+  "/images/projects/vehicle_analysis_dashboard.png",
+  "/images/projects/Crypto_folio_App.png",
   "/images/projects/amazon_sales_management.png",
   "/images/projects/amazon_invontry_management_system.png",
   "/images/projects/amazon_inventory.png",
   "/images/projects/KStock_Analyzer.png",
-  "/images/projects/KAITOOLS.png",
-  "/images/projects/Crypto_folio_App.png",
   "/images/projects/Crypto_Tracker.png",
-  "/images/projects/AgriChian.jpg",
-  "/images/scrolling_solutions/real_estate_solutions.png"
+  "/images/projects/Investment_Insights.png",
+  "/images/projects/Automated Workflows.png",
+  "/images/projects/mindscapeanalytics.png",
+  "/images/projects/jfbz_token.png",
+  "/images/projects/image_annotation_tool.png",
+  "/images/projects/cryptotrader2.png",
+  "/images/projects/our_web_designs.png",
 ];
 
 const getRandomProjectImage = () => {
@@ -97,256 +105,160 @@ interface UpcomingProject extends Project {
 const currentProjects: CurrentProject[] = [
   {
     id: "mindscape-analytics",
-    title: "Mindscape Analytics",
-    description: "A comprehensive data analytics platform designed for business intelligence with intuitive visualization and predictive analytics",
+    title: "Intelligence Hub",
+    description: "Enterprise data visualization and predictive modeling engine for real-time market insights.",
     category: "Data Analytics",
     icon: Brain,
     href: "/projects/mindscape-analytics",
-    features: ["Interactive Dashboards", "Real-time Processing", "Predictive Analytics", "Custom Report Generation"],
-    status: "Beta",
-    videoLink: "https://youtu.be/23A9JRb0SXM",
-    externalLink: "https://mindscape.ai",
+    features: ["Predictive UI", "Live Streams"],
+    status: "Live",
     imageUrl: "/images/projects/mindscapeanalytics.png",
     color: "indigo"
   },
   {
     id: "cryptotrader",
-    title: "CryptoTrader",
-    description: "An advanced cryptocurrency trading platform with AI-driven market analysis and automated trading strategies",
-    category: "Finance",
+    title: "CryptoTrader Pro",
+    description: "High-frequency algorithmic trading platform with deep liquidity integration and AI signal auditing.",
+    category: "FinTech",
     icon: BarChart,
     href: "/projects/cryptotrader",
-    features: ["Automated Trading", "Real-time Market Analysis", "Portfolio Optimization", "Risk Management"],
+    features: ["Auto-Execution", "Risk Bot"],
     status: "Beta",
-    videoLink: "https://youtu.be/CcPag_gW78Y",
-    externalLink: "https://cryptotrader.io",
     imageUrl: "/images/projects/cryptotrader2.png",
     color: "blue"
   },
   {
     id: "agrichan",
-    title: "AgriChan",
-    description: "Revolutionary agricultural management platform combining IoT sensors, satellite imagery, and AI for farming optimization",
-    category: "Agriculture",
+    title: "AgriChain",
+    description: "Precision agriculture ecosystem utilizing blockchain for immutable supply chain transparency.",
+    category: "AgriTech",
     icon: Recycle,
     href: "/projects/agrichan",
-    features: ["Crop Monitoring", "Weather Prediction", "Resource Optimization", "Yield Forecasting"],
-    status: "Development",
-    videoLink: "https://youtu.be/Fn2a55UKkhU",
-    externalLink: "https://agrichan.tech",
+    features: ["Smart Yield", "Tracking"],
+    status: "Beta",
     imageUrl: "/images/projects/AgriChian.jpg",
     color: "green"
   },
   {
     id: "image-annotation",
-    title: "Advanced Image Annotation Tool",
-    description: "A sophisticated image annotation platform for AI training data preparation with intelligent auto-annotation capabilities",
+    title: "VisionScan AI",
+    description: "Multi-modal model training platform with advanced auto-labeling and dataset integrity checks.",
     category: "Computer Vision",
     icon: ImageIcon,
     href: "/projects/annotation-tool",
-    features: ["AI-powered Annotation", "Collaborative Workflow", "Quality Assurance", "Dataset Management"],
-    status: "Alpha",
-    videoLink: "https://youtu.be/cd75TIAM9X0",
-    externalLink: "https://annotation.ai",
+    features: ["Auto-Label", "QA Mode"],
+    status: "Beta",
     imageUrl: "/images/projects/image_annotation_tool.png",
     color: "purple"
   },
   {
     id: "quantum-crypto",
-    title: "Quantum Crypto Index Bot",
-    description: "A cutting-edge financial tool leveraging quantum computing techniques to analyze cryptocurrency markets and manage indexed portfolios",
-    category: "Finance",
+    title: "Quantum Index",
+    description: "Financial modeling tool using quantum-inspired optimization for multi-asset crypto portfolios.",
+    category: "FinTech",
     icon: Database,
     href: "/projects/quantum-crypto",
-    features: ["Quantum Algorithms", "Automated Rebalancing", "Market Prediction", "Risk Optimization"],
-    status: "Alpha",
-    videoLink: "https://youtu.be/CcPag_gW78Y",
-    externalLink: "https://quantumcrypto.io",
+    features: ["Optimized P&L", "DeFi Hub"],
+    status: "Beta",
     imageUrl: "/images/projects/Crypto_folio_App.png",
     color: "cyan"
   },
   {
-    id: "contentforge",
-    title: "ContentForge",
-    description: "AI-powered content creation platform for digital marketers that generates high-quality posts and marketing materials",
-    category: "AI Content Generation",
-    icon: Pen,
-    href: "/projects/contentforge",
-    features: ["One-Click Generation", "SEO Optimization", "Multi-Platform Support", "Brand Voice Customization"],
-    status: "Alpha",
-    videoLink: "https://youtu.be/23A9JRb0SXM",
-    externalLink: "https://contentforge.ai",
-    imageUrl: "/images/projects/our_web_designs.png",
-    color: "teal"
-  },
-  {
     id: "amazon-inventory",
-    title: "Amazon Inventory Manager",
-    description: "Comprehensive solution for Amazon sellers to manage inventory, track sales, forecast demand, and optimize restocking",
+    title: "Seller Intelligence",
+    description: "Demand forecasting and inventory optimization suite tailored for multi-region Amazon logistics.",
     category: "E-commerce",
     icon: ShoppingCart,
     href: "/projects/amazon-inventory",
-    features: ["Inventory Tracking", "Sales Analytics", "Demand Forecasting", "Profit Optimization"],
-    status: "Completed",
-    videoLink: "https://youtu.be/JbIPyXUMYFY",
-    externalLink: "https://amazinventory.io",
+    features: ["Restock AI", "Profit Map"],
+    status: "Live",
     imageUrl: "/images/projects/amazon_invontry_management_system.png",
     color: "amber"
   },
   {
     id: "vehicle-eu-analytics",
-    title: "Vehicle EU Market Analytics",
-    description: "Sophisticated platform for analyzing the European vehicle market, tracking trends, and identifying optimal buy/sell opportunities",
+    title: "EU Auto Portal",
+    description: "Market intelligence platform for European vehicle distribution with automated trend detection.",
     category: "Automotive",
     icon: Car,
     href: "/projects/vehicle-eu-analytics",
-    features: ["Market Trend Analysis", "Price Prediction", "Inventory Optimization", "Competitor Tracking"],
-    status: "Completed",
-    videoLink: "https://youtu.be/cd75TIAM9X0",
-    externalLink: "https://euvehicle.market",
+    features: ["Euro-Pricing", "Fleet AI"],
+    status: "Live",
     imageUrl: "/images/projects/vehicle_analysis_dashboard.png",
     color: "pink"
   },
   {
     id: "jfbz-token",
-    title: "JFBZ Token Exchange",
-    description: "Secure and high-performance cryptocurrency exchange platform specialized in the JFBZ token ecosystem",
+    title: "JFBZ Exchange",
+    description: "Decentralized liquidity aggregator and token management platform for institutional assets.",
     category: "Blockchain",
     icon: Database,
     href: "/projects/jfbz-token",
-    features: ["High-speed Trading", "Multi-wallet Integration", "Advanced Security", "Portfolio Analytics"],
-    status: "Beta",
-    videoLink: "https://youtu.be/CcPag_gW78Y",
-    externalLink: "https://jfbz.exchange",
+    features: ["Cold Staking", "Audit Log"],
+    status: "Live",
     imageUrl: "/images/projects/jfbz_token.png",
     color: "violet"
   },
   {
     id: "kstock-analyzer",
     title: "KStock Analyzer",
-    description: "Advanced stock market analysis tool using AI to identify market patterns, predict trends, and provide actionable insights",
-    category: "Finance",
+    description: "Real-time stock pattern recognition engine analyzing billions of events for predictive trading.",
+    category: "FinTech",
     icon: BarChart,
     href: "/projects/kstock-analyzer",
-    features: ["Pattern Recognition", "Technical Analysis", "Sentiment Analysis", "Portfolio Risk Assessment"],
-    status: "Completed",
-    videoLink: "https://youtu.be/CcPag_gW78Y",
-    externalLink: "https://kstock.io",
+    features: ["Signal Filter", "P&L Hub"],
+    status: "Live",
     imageUrl: "/images/projects/KStock_Analyzer.png",
     color: "emerald"
   },
   {
     id: "crypto-tracker",
-    title: "Crypto Tracker Pro",
-    description: "Comprehensive cryptocurrency tracking and portfolio management application for monitoring prices and performance",
-    category: "Finance",
+    title: "Asset Tracker",
+    description: "Unified digital asset monitoring with automated tax reporting and deep wallet insights.",
+    category: "FinTech",
     icon: BarChart,
     href: "/projects/crypto-tracker",
-    features: ["Multi-exchange Integration", "Real-time Alerts", "Portfolio Tracking", "Tax Reporting"],
-    status: "Completed",
-    videoLink: "https://youtu.be/CcPag_gW78Y",
-    externalLink: "https://cryptotrackerpro.app",
+    features: ["Tax Export", "Hot Alerts"],
+    status: "Live",
     imageUrl: "/images/projects/Crypto_Tracker.png",
     color: "orange"
   },
   {
-    id: "cryoforst",
-    title: "CryoForst Analytics",
-    description: "Specialized data analytics platform for the cryogenics and cold chain industry with monitoring and optimization",
-    category: "IoT Analytics",
-    icon: Brain,
-    href: "/projects/cryoforst",
-    features: ["Temperature Monitoring", "Predictive Maintenance", "Energy Optimization", "Compliance Reporting"],
-    status: "Beta",
-    videoLink: "https://youtu.be/23A9JRb0SXM",
-    externalLink: "https://cryoforst.io",
-    imageUrl: "/images/projects/cryforecast.png",
-    color: "lime"
-  },
-  {
     id: "kitools",
-    title: "KITOOLS Development Suite",
-    description: "Comprehensive toolset for developers that streamlines workflow, automates tasks, and enhances productivity",
-    category: "Developer Tools",
+    title: "DBlynx Dev",
+    description: "Automated database schema visualizer and intelligent SQL optimization workbench.",
+    category: "DevOps",
     icon: Code,
     href: "/projects/kitools",
-    features: ["Code Generation", "Automated Testing", "Performance Profiling", "Code Review Assistant"],
-    status: "Beta",
-    videoLink: "https://youtu.be/23A9JRb0SXM",
-    externalLink: "https://kitools.dev",
-    imageUrl: "/images/projects/KAITOOLS.png",
+    features: ["Query Map", "Auto-Fix"],
+    status: "Live",
+    imageUrl: "/images/projects/dblynx-database-intelligence-mindscapeanalytics.PNG",
     color: "rose"
   },
   {
-    id: "real-estate-solutions",
-    title: "Real Estate Analytics",
-    description: "Comprehensive real estate market analytics platform for property valuation, trend analysis, and investment opportunities",
-    category: "Real Estate",
-    icon: Home,
-    href: "/projects/real-estate-solutions",
-    features: ["Property Valuation", "Market Trend Analysis", "Investment Opportunity Scoring", "Predictive Price Modeling"],
-    status: "Development",
-    videoLink: "https://youtu.be/cd75TIAM9X0",
-    externalLink: "https://realestate.mindscape.io",
-    imageUrl: "/images/scrolling_solutions/real_estate_solutions.png",
-    color: "red"
-  },
-  {
     id: "amazon-sales-analytics",
-    title: "Amazon Sales Analytics Platform",
-    description: "Comprehensive analytics solution for Amazon sellers with real-time sales data, competitive analysis, and marketing performance tracking",
+    title: "Sales Hub Pro",
+    description: "E-commerce analytics engine providing real-time competitive intelligence and campaign metrics.",
     category: "E-commerce",
     icon: ShoppingCart,
     href: "/projects/amazon-sales-analytics",
-    features: ["Sales Dashboard", "Competitor Monitoring", "Campaign Analysis", "Pricing Optimization"],
-    status: "Beta",
-    videoLink: "https://youtu.be/JbIPyXUMYFY",
-    externalLink: "https://amazonsales.ai",
+    features: ["Ad Optimizer", "ROI Hub"],
+    status: "Live",
     imageUrl: "/images/projects/amazon_sales_management.png",
     color: "yellow"
   },
   {
-    id: "amazon-inventory-opt",
-    title: "Amazon Inventory Optimization",
-    description: "Specialized inventory management solution for Amazon sellers that uses AI to optimize stock levels and prevent stockouts",
-    category: "E-commerce",
-    icon: ShoppingCart,
-    href: "/projects/amazon-inventory-opt",
-    features: ["Stock Optimization", "Demand Forecasting", "Reorder Automation", "Multi-warehouse Balancing"],
-    status: "Completed",
-    videoLink: "https://youtu.be/JbIPyXUMYFY",
-    externalLink: "https://amazinventory.io",
-    imageUrl: "/images/projects/amazon_inventory.png",
-    color: "fuchsia"
-  },
-  {
-    id: "disposal-production-tracker",
-    title: "Disposal & Production Tracker",
-    description: "Advanced tracking system for monitoring disposal operations and production processes with real-time analytics",
-    category: "Operations",
-    icon: BarChart,
-    href: "/projects/disposal-production-tracker",
-    features: ["Real-time Tracking", "Production Analytics", "Disposal Management", "Performance Metrics"],
+    id: "mindscape-mortgage",
+    title: "Mortgage Pro",
+    description: "Advanced AI mortgage and financial analysis suite for enterprise real estate.",
+    category: "Real Estate",
+    icon: DollarSign,
+    href: "https://mortgage.mindscapeanalytics.com/",
+    features: ["ROI Engine", "Loan Visualizer"],
     status: "Live",
-    videoLink: "https://youtu.be/kjHZvUcBlFk",
-    externalLink: "https://disposal-tracker.mindscape.ai",
-    imageUrl: "/images/projects/Automated Workflows.png",
-    color: "emerald"
+    imageUrl: "/images/projects/mindscape-mortgage.png",
+    color: "violet"
   },
-  {
-    id: "realtime-stock-trading",
-    title: "Real-Time Stock Trading",
-    description: "Intraday stock trading platform with real-time buy/sell signals and market analysis",
-    category: "Finance",
-    icon: BarChart,
-    href: "/projects/realtime-stock-trading",
-    features: ["Live Market Data", "Buy/Sell Signals", "Portfolio Tracking", "Risk Analysis"],
-    status: "Live",
-    videoLink: "https://youtu.be/CcPag_gW78Y",
-    externalLink: "https://stock-trading.mindscape.ai",
-    imageUrl: "/images/projects/Investment_Insights.png",
-    color: "blue"
-  }
 ]
 
 const upcomingProjects: UpcomingProject[] = [
@@ -636,15 +548,16 @@ export default function ProjectsShowcase() {
       y: 0,
       transition: {
         delay: index * 0.05,
-        duration: 0.3,
-        ease: "easeOut"
+        duration: 0.4,
+        ease: [0.22, 1, 0.36, 1]
       }
     }),
     hover: {
-      y: -5,
-      scale: 1.02,
+      y: -12,
+      scale: 1.03,
       transition: {
-        duration: 0.2
+        duration: 0.4,
+        ease: [0.22, 1, 0.36, 1]
       }
     }
   };
@@ -769,7 +682,9 @@ export default function ProjectsShowcase() {
                       whileHover="hover"
                       className="flex-shrink-0 w-[300px] sm:w-[350px] md:w-[400px]"
                     >
-                      <Card className={`backdrop-blur-sm border ${getBorderColor(project.color || 'red')} bg-gradient-to-br ${getBackgroundGradient(project.color || 'red')} transition-colors duration-300 h-full group overflow-hidden flex flex-col shadow-lg`}>
+                      <Card className={`backdrop-blur-xl border ${getBorderColor(project.color || 'red')} bg-black/40 hover:bg-black/60 transition-all duration-500 h-full group overflow-hidden flex flex-col shadow-2xl relative`}>
+                        {/* Animated gradient background overlay */}
+                        <div className={`absolute inset-0 bg-gradient-to-br ${getBackgroundGradient(project.color || 'red')} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
                         <CardHeader className="relative p-4">
                           <div className="absolute top-0 right-0 z-10">
                             <Badge className={`${getBadgeBackground(project.color || 'red')} rounded-br-none rounded-tl-none text-xs`}>{project.category}</Badge>
@@ -796,7 +711,7 @@ export default function ProjectsShowcase() {
                           {/* Project Image Thumbnail - Optimized */}
                           <div className="relative w-full mb-4 pt-[56.25%] rounded-lg overflow-hidden shadow-md ring-1 ring-white/10 bg-black/20">
                             <Image
-                              src={project.imageUrl || getRandomProjectImage()}
+                              src={project.imageUrl || availableProjectImages[0]}
                               alt={project.title}
                               fill
                               className="object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
@@ -906,7 +821,9 @@ export default function ProjectsShowcase() {
                       whileHover="hover"
                       className="flex-shrink-0 w-[300px] sm:w-[350px] md:w-[400px]"
                     >
-                      <Card className={`backdrop-blur-sm border ${getBorderColor(project.color || 'red')} bg-gradient-to-br ${getBackgroundGradient(project.color || 'red')} transition-colors duration-300 h-full group overflow-hidden flex flex-col shadow-lg`}>
+                      <Card className={`backdrop-blur-xl border ${getBorderColor(project.color || 'red')} bg-black/40 hover:bg-black/60 transition-all duration-500 h-full group overflow-hidden flex flex-col shadow-2xl relative`}>
+                        {/* Animated gradient background overlay */}
+                        <div className={`absolute inset-0 bg-gradient-to-br ${getBackgroundGradient(project.color || 'red')} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
                         <CardHeader className="relative p-4">
                           <div className="absolute top-0 right-0 z-10">
                             <Badge className={`${getBadgeBackground(project.color || 'red')} rounded-br-none rounded-tl-none text-xs`}>{project.category}</Badge>
@@ -927,7 +844,7 @@ export default function ProjectsShowcase() {
                         <CardContent className="flex-grow p-4 pt-0">
                           <div className="relative w-full mb-4 pt-[56.25%] rounded-lg overflow-hidden shadow-md ring-1 ring-white/10 bg-black/20">
                             <Image
-                              src={project.imageUrl || getRandomProjectImage()}
+                              src={project.imageUrl || availableProjectImages[0]}
                               alt={project.title}
                               fill
                               className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"

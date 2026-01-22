@@ -20,16 +20,15 @@ function ImagePrefetcher() {
     // Prefetch critical images for better performance
     const criticalImages = [
       '/images/logo.png',
-      '/images/brain.svg',
       '/images/optimized/founder-reduced.webp'
     ];
-    
+
     criticalImages.forEach(src => {
       const img = new Image();
       img.src = src;
     });
   }, []);
-  
+
   return null;
 }
 
@@ -39,33 +38,33 @@ interface RootLayoutContentProps {
   fullWidth?: boolean // Added option for full-width layout
 }
 
-export default function RootLayoutContent({ 
-  children, 
+export default function RootLayoutContent({
+  children,
   inter,
   fullWidth = true // Set default to true
 }: RootLayoutContentProps) {
   const pathname = usePathname()
   const isDashboard = pathname?.startsWith('/dashboard')
   const isDocs = pathname?.startsWith('/docs')
-  
+
   // Track when initial loading is complete
   const [initialLoadComplete, setInitialLoadComplete] = useState(false)
-  
+
   useEffect(() => {
     // Mark initial load as complete after a short delay
     const timer = setTimeout(() => {
       setInitialLoadComplete(true)
     }, 2000);
-    
+
     return () => clearTimeout(timer);
   }, []);
-  
+
   // Explicitly define pages that should NOT have a footer
   const pagesWithoutFooter = [
     isDashboard, // Dashboard pages
     isDocs,      // Documentation pages
   ]
-  
+
   // Show footer if not in the exclusion list
   const showFooter = !pagesWithoutFooter.some(Boolean)
 
@@ -79,25 +78,25 @@ export default function RootLayoutContent({
       >
         {/* Prefetch critical images */}
         <ImagePrefetcher />
-        
+
         {/* Monitor navigation events - wrapped in Suspense */}
         <Suspense fallback={<NavigationEventsFallback />}>
           <NavigationEvents />
         </Suspense>
-        
+
         {/* Global Loading Screen */}
         <GlobalLoadingScreen disableOnPaths={["/dashboard"]} />
-        
+
         <div className="relative min-h-screen min-w-[320px] w-full max-w-[100vw] mx-auto xl:max-w-[1920px] bg-gradient-to-b from-black to-zinc-950">
           {!isDashboard && <EnhancedHeader fullWidth={true} />}
-          
+
           <div className="w-full max-w-[100vw] mx-auto xl:max-w-[1920px] relative z-10 zoom-friendly">
             {/* Wrap children in a div with a key to force remount on route change */}
             <div key={pathname}>
               {children}
             </div>
           </div>
-          
+
           {/* Main footer - consistently applied to all pages except excluded ones */}
           {showFooter && <Footer key="main-footer" fullWidth={true} />}
           <Toaster />

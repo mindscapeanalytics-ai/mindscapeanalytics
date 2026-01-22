@@ -11,7 +11,8 @@ import {
     Brain,
     Smartphone,
     ArrowRight,
-    Check
+    Check,
+    PhoneCall
 } from "lucide-react"
 import Link from "next/link"
 
@@ -62,13 +63,13 @@ const services = [
         features: ["Predictive Analytics", "Custom Models", "Data Science"]
     },
     {
-        id: "mobile-apps",
-        title: "Mobile Apps",
-        description: "Native & cross-platform excellence",
-        icon: Smartphone,
+        id: "voice-ai",
+        title: "Voice/Mobile Call Agent",
+        description: "Autonomous AI agents for seamless voice interactions",
+        icon: PhoneCall,
         color: "cyan",
-        href: "/services/mobile-app-development",
-        features: ["iOS & Android", "Cross-platform", "App Store Ready"]
+        href: "/services/voice-ai-agents",
+        features: ["Real-time Voice", "Natural Conversations", "Seamless Handoff"]
     }
 ]
 
@@ -109,17 +110,19 @@ export default function ServicesShowcase() {
     return (
         <section className="relative py-16">
             <div className="container mx-auto px-4">
-                {/* Compact Header */}
-                <div className="text-center mb-12">
+                {/* Section Header */}
+                <div className="text-center mb-16">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                         viewport={{ once: true }}
                     >
-                        <Badge className="bg-red-500/10 border-red-500/20 text-red-400 px-3 py-1 mb-4 text-xs">
-                            OUR SERVICES
-                        </Badge>
+                        <div className="inline-flex items-center justify-center mb-4">
+                            <Badge variant="outline" className="bg-black/50 border-white/10 text-white/60 px-4 py-1.5 text-xs tracking-[0.2em] uppercase backdrop-blur-md">
+                                OUR SERVICES
+                            </Badge>
+                        </div>
                     </motion.div>
 
                     <motion.h2
@@ -127,9 +130,9 @@ export default function ServicesShowcase() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/70 mb-3"
+                        className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight"
                     >
-                        Comprehensive AI Solutions
+                        Comprehensive AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Solutions</span>
                     </motion.h2>
 
                     <motion.p
@@ -137,9 +140,9 @@ export default function ServicesShowcase() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="text-base text-white/60 max-w-2xl mx-auto"
+                        className="text-lg text-white/50 max-w-3xl mx-auto leading-relaxed font-light"
                     >
-                        Cutting-edge solutions tailored to your business needs
+                        Cutting-edge solutions tailored to your business needs, powered by the latest AI technology.
                     </motion.p>
                 </div>
 
@@ -158,9 +161,10 @@ export default function ServicesShowcase() {
                                 viewport={{ once: true }}
                             >
                                 <Link href={service.href}>
-                                    <Card className={`group relative h-full bg-gradient-to-br from-black/90 to-black/70 backdrop-blur-sm transition-all duration-300 overflow-hidden cursor-pointer shadow-xl ${colors.shadow} hover:shadow-2xl ${colors.hoverShadow} hover:-translate-y-2`}>
-                                        {/* Gradient Overlay on Hover */}
-                                        <div className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                                    <Card className={`group relative h-full bg-black/60 backdrop-blur-md border-white/10 transition-all duration-500 overflow-hidden cursor-pointer shadow-2xl ${colors.shadow} hover:shadow-2xl ${colors.hoverShadow} hover:-translate-y-2`}>
+                                        {/* Premium Glow Effect */}
+                                        <div className={`absolute -inset-[2px] bg-gradient-to-br ${colors.gradient} opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-sm`}></div>
+                                        <div className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
 
                                         <CardContent className="relative p-6 flex flex-col h-full min-h-[280px]">
                                             {/* Icon */}

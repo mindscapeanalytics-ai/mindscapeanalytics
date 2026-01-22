@@ -28,17 +28,40 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'randomuser.me'
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.simpleicons.org'
+      },
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org'
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.jsdelivr.net'
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'assets.vercel.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'fastapi.tiangolo.com'
       }
     ],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   experimental: {
     optimizeCss: true,
     optimizePackageImports: [
-      'lucide-react', 
-      'framer-motion', 
+      'lucide-react',
+      'framer-motion',
       '@radix-ui/react-icons',
       '@radix-ui/react-dialog',
       '@radix-ui/react-dropdown-menu',
@@ -68,29 +91,10 @@ const nextConfig = {
       '@tiptap/starter-kit'
     ],
     webpackBuildWorker: true,
-    parallelServerBuildTraces: true,
-    parallelServerCompiles: true,
-    webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB', 'INP'],
-    serverComponentsExternalPackages: ['sharp'],
-    outputFileTracingExcludes: {
-      '*': [
-        'node_modules/@swc/core-linux-x64-gnu',
-        'node_modules/@swc/core-linux-x64-musl',
-        'node_modules/@esbuild/linux-x64'
-      ],
-    },
-    turbo: {
-      rules: {
-        '*.svg': ['@svgr/webpack'],
-      },
-    },
-    // Removing unsupported option
-    serverMinification: true, // Enable server code minification
-    optimizeServerReact: true, // Optimize server React bundle
-    // Removing PPR until using canary version
-    // ppr: true,
+    serverMinification: true,
+    optimizeServerReact: true,
   },
-  transpilePackages: [],
+  transpilePackages: ['lucide-react', 'framer-motion'],
   webpack: (config, { isServer, dev }) => {
     config.externals.push({
       'sharp': 'commonjs sharp',
@@ -99,20 +103,9 @@ const nextConfig = {
       test: /\.svg$/,
       use: ["@svgr/webpack"],
     });
-    
-    // Optimize bundle size by marking dependencies as modularized
-    config.module.parser = {
-      ...config.module.parser,
-      javascript: {
-        ...config.module.parser?.javascript,
-        exportsPresence: 'error',
-        importExportsPresence: 'error',
-      },
-    };
 
     // Optimize production bundle size
     if (!isServer) {
-      // Create separate chunks for large libraries
       config.optimization.splitChunks = {
         chunks: 'all',
         maxInitialRequests: 30,
@@ -120,7 +113,6 @@ const nextConfig = {
         minSize: 20000,
         minChunks: 1,
         cacheGroups: {
-          // Separate major libraries into their own chunks
           framework: {
             name: 'framework',
             chunks: 'all',
@@ -161,20 +153,18 @@ const nextConfig = {
           },
         },
       };
-      
-      // Add Compression Plugin for production builds
+
       if (!dev) {
         const CompressionPlugin = require('compression-webpack-plugin');
         config.plugins.push(
           new CompressionPlugin({
             test: /\.(js|css|html|svg|json)$/,
             algorithm: 'gzip',
-            threshold: 10240, // Only assets > 10kb get compressed
-            minRatio: 0.8, // Only compress if compression ratio is better than 0.8
+            threshold: 10240,
+            minRatio: 0.8,
           })
         );
-        
-        // Add image optimization for production
+
         const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
         config.plugins.push(
           new ImageMinimizerPlugin({
@@ -186,16 +176,7 @@ const nextConfig = {
                   ['jpegtran', { progressive: true }],
                   ['optipng', { optimizationLevel: 5 }],
                   ['svgo', {
-                    plugins: [
-                      {
-                        name: 'preset-default',
-                        params: {
-                          overrides: {
-                            removeViewBox: false,
-                          },
-                        },
-                      },
-                    ],
+                    plugins: [{ name: 'preset-default', params: { overrides: { removeViewBox: false } } }],
                   }],
                 ],
               },
@@ -204,109 +185,63 @@ const nextConfig = {
         );
       }
     }
-    
+
     return config;
   },
   poweredByHeader: false,
   compress: true,
   productionBrowserSourceMaps: false,
   reactStrictMode: true,
-  swcMinify: true,
+  swcMinify: false,
   staticPageGenerationTimeout: 0,
   env: {
     NEXT_PUBLIC_DISABLE_STATIC_GENERATION: "true"
   },
-  // Enhanced cache control headers for better performance
   async headers() {
     return [
       {
         source: '/(.*)',
         headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-XSS-Protection', value: '1; mode=block' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
         ],
       },
       {
         source: '/fonts/(.*)',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
       {
         source: '/images/(.*)',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=86400, stale-while-revalidate=31536000',
-          },
+          { key: 'Cache-Control', value: 'public, max-age=86400, stale-while-revalidate=31536000' },
         ],
       },
       {
         source: '/_next/static/(.*)',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
       {
         source: '/api/(.*)',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-cache, no-store, max-age=0, must-revalidate',
-          },
+          { key: 'Cache-Control', value: 'no-cache, no-store, max-age=0, must-revalidate' },
         ],
       },
       {
         source: '/(.*).json',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=3600, stale-while-revalidate=86400',
-          },
+          { key: 'Cache-Control', value: 'public, max-age=3600, stale-while-revalidate=86400' },
         ],
       },
-      {
-        source: '/(.*).js',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/(.*).css',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      // Add prefetching and preloading hints
+      /* Removed aggressive caching headers for JS/CSS that can interfere with Webpack chunks */
       {
         source: '/:path*',
         headers: [
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
-          },
+          { key: 'X-DNS-Prefetch-Control', value: 'on' },
         ],
       },
     ];
@@ -314,9 +249,8 @@ const nextConfig = {
   distDir: '.next',
 }
 
-// Add bundle analyzer for production builds
-const withBundleAnalyzer = process.env.ANALYZE === 'true' 
+const withBundleAnalyzer = process.env.ANALYZE === 'true'
   ? require('@next/bundle-analyzer')({ enabled: true })
   : (config) => config;
 
-module.exports = withBundleAnalyzer(nextConfig); 
+module.exports = withBundleAnalyzer(nextConfig);

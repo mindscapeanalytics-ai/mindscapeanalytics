@@ -21,20 +21,19 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
   useEffect(() => {
     // Check if we should disable the loader on this path
     const shouldDisable = disableOnPaths.some(path => pathname?.startsWith(path))
-    
+
     if (shouldDisable) {
       setLoading(false)
       return
     }
-    
+
     const preloadImages = async () => {
       // Key images that should be preloaded before showing content
       const criticalImages = [
         '/images/logo.png',
-        '/images/brain.svg',
         '/images/optimized/founder-reduced.webp'
       ];
-      
+
       try {
         // Create an array of promises for loading each image
         const imagePromises = criticalImages.map(src => {
@@ -45,7 +44,7 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
             img.src = src;
           });
         });
-        
+
         // Progress simulation for loading
         let progress = 0;
         const progressInterval = setInterval(() => {
@@ -56,13 +55,13 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
           }
           setLoadingProgress(Math.min(progress, 90));
         }, 200);
-        
+
         // Wait for all images to be loaded
         await Promise.all(imagePromises);
         setImagesPreloaded(true);
         setLoadingProgress(100);
         clearInterval(progressInterval);
-        
+
         // Hide loading screen after preloading is complete plus a small delay
         setTimeout(() => {
           setLoading(false)
@@ -85,14 +84,14 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
       handleLoad()
     } else {
       window.addEventListener("load", handleLoad)
-      
+
       // Fallback timer in case the load event doesn't fire
       const timer = setTimeout(() => {
         if (!imagesPreloaded) {
           preloadImages();
         }
       }, 2000)
-      
+
       return () => {
         window.removeEventListener("load", handleLoad)
         clearTimeout(timer)
@@ -107,18 +106,18 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
       // Show loading screen when navigating back to home from any page except dashboard
       const isNavigatingToHome = to === '/';
       const isFromDashboard = from.startsWith('/dashboard');
-      
+
       return isNavigatingToHome && !isFromDashboard;
     };
-    
+
     // Create a global state variable to track if we're navigating between pages
     if (typeof window !== 'undefined') {
       window.__isNavigating = false;
     }
-    
+
     // Store current pathname for comparison
     let previousPath = pathname || '';
-    
+
     // Function to handle navigation start
     const handleNavigationStart = (url: string) => {
       // Only show loading when needed
@@ -127,7 +126,7 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
         setLoading(true);
         // Reset loading progress for navigation events
         setLoadingProgress(0);
-        
+
         // Simulate loading progress
         let progress = 0;
         const progressInterval = setInterval(() => {
@@ -138,40 +137,40 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
           }
           setLoadingProgress(Math.min(progress, 90));
         }, 200);
-        
+
         // Store interval for cleanup
         window.__loadingProgressInterval = progressInterval;
       }
     };
-    
+
     // Function to handle navigation end
     const handleNavigationEnd = () => {
       // Update previous path for next navigation
       previousPath = window.location.pathname;
-      
+
       // Clear any running intervals
       if (window.__loadingProgressInterval) {
         clearInterval(window.__loadingProgressInterval);
         delete window.__loadingProgressInterval;
       }
-      
+
       // Complete the loading progress
       setLoadingProgress(100);
-      
+
       // Hide loading screen after a short delay
       setTimeout(() => {
         setIsNavigating(false);
         setLoading(false);
       }, 500);
     };
-    
+
     // Listen for popstate (back/forward navigation)
     const handlePopState = (e: PopStateEvent) => {
       const currentPath = window.location.pathname;
       if (shouldShowLoading(previousPath, currentPath)) {
         setIsNavigating(true);
         setLoading(true);
-        
+
         // Reset and simulate loading progress
         setLoadingProgress(0);
         let progress = 0;
@@ -183,10 +182,10 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
           }
           setLoadingProgress(Math.min(progress, 90));
         }, 200);
-        
+
         // Store interval for cleanup
         window.__loadingProgressInterval = progressInterval;
-        
+
         setTimeout(() => {
           // Clear interval and complete progress
           if (window.__loadingProgressInterval) {
@@ -194,7 +193,7 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
             delete window.__loadingProgressInterval;
           }
           setLoadingProgress(100);
-          
+
           // Hide loading screen
           setTimeout(() => {
             setIsNavigating(false);
@@ -203,31 +202,31 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
         }, 1000);
       }
     };
-    
+
     // Listen for page navigation events
     window.addEventListener('popstate', handlePopState);
-    
+
     // Setup route change monitoring
     let originalPushState: History['pushState'];
     if (typeof window !== 'undefined') {
       originalPushState = window.history.pushState;
-      window.history.pushState = function(...args) {
+      window.history.pushState = function (...args) {
         const result = originalPushState.apply(this, args);
         handleNavigationStart(args[2] as string);
         setTimeout(handleNavigationEnd, 1000);
         return result;
       };
     }
-    
+
     return () => {
       window.removeEventListener('popstate', handlePopState);
-      
+
       // Clear any running intervals
       if (typeof window !== 'undefined' && window.__loadingProgressInterval) {
         clearInterval(window.__loadingProgressInterval);
         delete window.__loadingProgressInterval;
       }
-      
+
       // Restore original pushState
       if (typeof window !== 'undefined' && originalPushState) {
         window.history.pushState = originalPushState;
@@ -255,7 +254,7 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
             <div className="relative">
               {/* Outer glow effect */}
               <div className="absolute inset-0 bg-black/20 blur-[180px] rounded-full transform scale-[2]" />
-              
+
               {/* Logo and text container */}
               <div className="relative flex flex-col items-center">
                 {/* Brain icon with glow */}
@@ -264,7 +263,7 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
                   <div className="absolute inset-0 bg-red-900/10 blur-[50px] rounded-[20px] animate-pulse-slow scale-110" />
                   <div className="absolute inset-0 bg-red-800/20 blur-[40px] rounded-[20px] animate-pulse-medium scale-110" />
                   <div className="absolute inset-0 bg-red-700/30 blur-[30px] rounded-[20px] animate-pulse-fast scale-110" />
-                  
+
                   {/* Neural network lines */}
                   <div className="absolute inset-0 opacity-50 scale-[1.2]">
                     <div className="absolute h-[1px] w-10 bg-gradient-to-r from-transparent via-red-800 to-transparent top-1/4 -left-4 animate-neural-1" />
@@ -286,14 +285,14 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
                         <div className="absolute inset-0 rounded-[20px] bg-gradient-to-r from-[#8B000030] via-[#42000030] to-[#69000030] animate-rgb-spin-reverse group-hover:animate-rgb-spin-reverse-fast group-hover:from-[#8B000050] group-hover:via-[#42000050] group-hover:to-[#69000050]" />
                       </div>
                     </div>
-                    
+
                     {/* Icon container */}
                     <div className="relative bg-black rounded-[20px] p-6 sm:p-9 transition-transform duration-300 group-hover:scale-[0.98]">
                       <div className="absolute inset-0 bg-red-900/10 rounded-[20px] blur-[10px] animate-pulse"></div>
-                      <Image 
-                        src="/images/brain.svg" 
+                      <Image
+                        src="/images/logo.png"
                         alt="Mindscape Brain Logo"
-                        className="h-20 w-20 sm:h-28 sm:w-28 transform transition-all duration-300 group-hover:scale-[0.98] animate-brain-pulse-enhanced animate-blink relative z-10"
+                        className="h-20 w-20 sm:h-28 sm:w-28 transform transition-all duration-300 group-hover:scale-[0.98] animate-brain-pulse-enhanced relative z-10"
                         width={112}
                         height={112}
                         priority
@@ -303,10 +302,10 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
                 </div>
               </div>
             </div>
-            
+
             {/* Mindscape Analytics Text */}
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }} 
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
               className="mt-[82px] mb-12 text-center"
@@ -321,7 +320,7 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
               </h1>
               <p className="text-white/70 text-xs sm:text-sm mt-1 sm:mt-2 font-light">Where AI Meets Innovation</p>
             </motion.div>
-            
+
             {/* Enhanced Loading Bar */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -337,7 +336,7 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
                   {Math.round(loadingProgress)}%
                 </span>
               </div>
-              
+
               <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
                 <motion.div
                   className="h-full bg-gradient-to-r from-red-700 via-red-600 to-red-700 shadow-glow-sm shadow-red-600/30"
@@ -346,7 +345,7 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
                   transition={{ duration: 0.5 }}
                 />
               </div>
-              
+
               {/* Small pulsing indicators */}
               <div className="flex justify-between mt-4">
                 <div className="flex space-x-2">
@@ -354,16 +353,16 @@ export function GlobalLoadingScreen({ disableOnPaths = ["/dashboard"] }: GlobalL
                     <div
                       key={i}
                       className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse"
-                      style={{ 
+                      style={{
                         animationDelay: `${i * 0.3}s`,
                         opacity: loadingProgress < 100 ? 0.6 : 0,
-                        transition: 'opacity 0.3s ease-in-out' 
+                        transition: 'opacity 0.3s ease-in-out'
                       }}
                     />
                   ))}
                 </div>
                 {loadingProgress >= 100 && (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-xs text-white/80 flex items-center"

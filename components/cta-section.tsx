@@ -59,7 +59,7 @@ export default function CTASection({
     e.preventDefault()
     navigateToContactForm("ai-analytics", "Start Free Trial Request")
   }
-  
+
   const handleSecondaryButtonClick = (e: React.MouseEvent) => {
     e.preventDefault()
     navigateToContactForm("custom", "Book a Demo Request")
@@ -77,7 +77,7 @@ export default function CTASection({
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
-      
+
       {isPrimary && (
         <>
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-50"></div>
@@ -192,7 +192,7 @@ export default function CTASection({
                   >
                     <ArrowRight className="h-4 w-4" />
                   </motion.span>
-                  
+
                   {/* Animated button gradient background on hover */}
                   {isPrimaryHovering && (
                     <motion.div
@@ -203,10 +203,10 @@ export default function CTASection({
                     />
                   )}
                 </Button>
-                
+
                 {/* Interactive glow effect that follows mouse on desktops */}
                 {isPrimaryHovering && (
-                  <div 
+                  <div
                     className="absolute inset-0 -m-2 bg-red-500/20 blur-xl rounded-xl pointer-events-none opacity-70 hidden md:block will-change-transform"
                     style={{
                       transform: `translate(${(mousePosition.x - window.innerWidth / 2) / 20}px, ${(mousePosition.y - window.innerHeight / 2) / 20}px)`,
@@ -236,10 +236,10 @@ export default function CTASection({
                     <ArrowUpRight className="h-4 w-4" />
                   </motion.span>
                 </Button>
-                
+
                 {/* Interactive glow effect that follows mouse on desktops */}
                 {isSecondaryHovering && (
-                  <div 
+                  <div
                     className="absolute inset-0 -m-2 bg-white/10 blur-xl rounded-xl pointer-events-none opacity-70 hidden md:block will-change-transform"
                     style={{
                       transform: `translate(${(mousePosition.x - window.innerWidth / 2) / 20}px, ${(mousePosition.y - window.innerHeight / 2) / 20}px)`,

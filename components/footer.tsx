@@ -64,14 +64,11 @@ const CompanyLogo = memo(() => (
           </div>
           <div className="relative bg-black rounded-2xl p-2 sm:p-3 transition-all duration-300 group-hover:scale-[0.98] shadow-lg">
             <Image
-              src="/images/brain.svg"
-              alt="Mindscape Brain Logo"
+              src="/images/logo.png"
+              alt="Mindscape Analytics Logo"
               width={56}
               height={56}
-              className="h-12 w-12 sm:h-14 sm:w-14"
-              style={{
-                filter: 'drop-shadow(0 0 1px #8B0000)'
-              }}
+              className="h-12 w-12 sm:h-14 sm:w-14 object-contain"
             />
           </div>
         </div>

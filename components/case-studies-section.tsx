@@ -1,424 +1,416 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { ExternalLink, TrendingUp, ShoppingCart, BarChart3, Phone, Package, Brain, ChevronLeft, ChevronRight, Clock, Users, Zap, CheckCircle2, ArrowRight, Database } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { 
-  ArrowRight, 
-  BarChart3, 
-  Clock, 
-  DollarSign, 
-  LineChart, 
-  PieChart, 
-  TrendingUp, 
-  Users
-} from "lucide-react"
-import Image from "next/image"
+import { Progress } from "@/components/ui/progress"
 
-// Case studies data
-const caseStudies = [
+type CaseStudy = {
+  id: string
+  title: string
+  category: string
+  description: string
+  icon: React.ElementType
+  image: string
+  link?: string
+  client?: string
+  timeline?: string
+  technologies?: string[]
+  metrics: {
+    label: string
+    value: string
+    icon?: React.ElementType
+    trend?: "up" | "down" | "neutral"
+  }[]
+  highlights?: string[]
+}
+
+const caseStudies: CaseStudy[] = [
   {
-    id: 1,
-    title: "Global Financial Institution",
-    subtitle: "AI-Powered Risk Assessment",
-    industry: "Finance",
-    challenge: "A leading global bank needed to reduce fraud detection time and improve accuracy while handling millions of transactions daily.",
-    solution: "Implemented Mindscape AI's advanced fraud detection system with real-time transaction analysis and predictive modeling.",
-    results: [
-      { 
-        metric: "Fraud Detection Accuracy", 
-        value: "99.8%", 
-        improvement: "+12%", 
-        icon: <BarChart3 className="w-5 h-5" /> 
-      },
-      { 
-        metric: "Processing Time", 
-        value: "0.8s", 
-        improvement: "-75%", 
-        icon: <Clock className="w-5 h-5" /> 
-      },
-      { 
-        metric: "Cost Reduction", 
-        value: "$12M", 
-        improvement: "Annually", 
-        icon: <DollarSign className="w-5 h-5" /> 
-      },
-      { 
-        metric: "Customer Satisfaction", 
-        value: "92%", 
-        improvement: "+18%", 
-        icon: <Users className="w-5 h-5" /> 
-      }
+    id: "dblynx",
+    title: "DBLynx Analytics",
+    category: "Data Analytics",
+    description: "Enterprise database analytics platform with real-time insights and AI-powered recommendations. Transformed data processing capabilities with advanced query optimization and predictive modeling.",
+    icon: BarChart3,
+    image: "/our_products/dblynx.png",
+    link: "https://dblynx.mindscapeanalytics.com/",
+    client: "Enterprise Client",
+    timeline: "6 months",
+    technologies: ["PostgreSQL", "Python", "React", "TensorFlow"],
+    metrics: [
+      { label: "Data Points", value: "10M+", icon: Database, trend: "up" },
+      { label: "Response Time", value: "<100ms", icon: Zap, trend: "up" }
     ],
-    testimonial: {
-      quote: "Mindscape AI's solution has transformed our risk management operations. The system's ability to learn and adapt has made it an invaluable asset to our security infrastructure.",
-      author: "Dr. James Wilson",
-      title: "Chief Risk Officer",
-      company: "Global Financial Corp"
-    },
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-    logo: "https://placehold.co/200x60/1e40af/ffffff?text=Global+Financial"
+    highlights: [
+      "Real-time data processing",
+      "AI-powered insights",
+      "99.9% uptime SLA"
+    ]
   },
   {
-    id: 2,
-    title: "Healthcare Provider Network",
-    subtitle: "Predictive Patient Care",
-    industry: "Healthcare",
-    challenge: "A regional healthcare network needed to improve patient outcomes while reducing operational costs and wait times.",
-    solution: "Deployed Mindscape AI's predictive analytics platform to optimize resource allocation and patient care pathways.",
-    results: [
-      { 
-        metric: "Patient Wait Time", 
-        value: "8min", 
-        improvement: "-62%", 
-        icon: <Clock className="w-5 h-5" /> 
-      },
-      { 
-        metric: "Diagnostic Accuracy", 
-        value: "96%", 
-        improvement: "+15%", 
-        icon: <BarChart3 className="w-5 h-5" /> 
-      },
-      { 
-        metric: "Operational Costs", 
-        value: "$8.5M", 
-        improvement: "Saved Annually", 
-        icon: <DollarSign className="w-5 h-5" /> 
-      },
-      { 
-        metric: "Patient Satisfaction", 
-        value: "94%", 
-        improvement: "+22%", 
-        icon: <Users className="w-5 h-5" /> 
-      }
+    id: "kaitools",
+    title: "KAI Tools Suite",
+    category: "AI Platform",
+    description: "Comprehensive AI toolkit with intelligent automation and workflow optimization. Streamlined business processes with cutting-edge machine learning models and natural language processing.",
+    icon: Brain,
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1600&auto=format&fit=crop",
+    link: "https://www.kaitools.tech/",
+    client: "Tech Enterprise",
+    timeline: "8 months",
+    technologies: ["OpenAI", "LangChain", "Next.js", "TypeScript"],
+    metrics: [
+      { label: "AI Models", value: "15+", icon: Brain, trend: "up" },
+      { label: "Automation Rate", value: "80%", icon: Zap, trend: "up" }
     ],
-    testimonial: {
-      quote: "The implementation of Mindscape AI's predictive analytics has revolutionized our patient care. We've seen remarkable improvements in both efficiency and outcomes.",
-      author: "Dr. Sarah Martinez",
-      title: "Medical Director",
-      company: "HealthCare Network"
-    },
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop",
-    logo: "https://placehold.co/200x60/15803d/ffffff?text=HealthCare+Network"
+    highlights: [
+      "Multi-model AI integration",
+      "Workflow automation",
+      "Enterprise-grade security"
+    ]
   },
   {
-    id: 3,
-    title: "Manufacturing Enterprise",
-    subtitle: "Smart Factory Transformation",
-    industry: "Manufacturing",
-    challenge: "A global manufacturer faced increasing production inefficiencies and quality control issues across multiple facilities.",
-    solution: "Implemented Mindscape AI's IoT analytics platform with predictive maintenance and quality control systems.",
-    results: [
-      { 
-        metric: "Production Efficiency", 
-        value: "87%", 
-        improvement: "+23%", 
-        icon: <TrendingUp className="w-5 h-5" /> 
-      },
-      { 
-        metric: "Defect Rate", 
-        value: "0.12%", 
-        improvement: "-78%", 
-        icon: <PieChart className="w-5 h-5" /> 
-      },
-      { 
-        metric: "Downtime Reduction", 
-        value: "62%", 
-        improvement: "Less", 
-        icon: <Clock className="w-5 h-5" /> 
-      },
-      { 
-        metric: "ROI", 
-        value: "320%", 
-        improvement: "First Year", 
-        icon: <DollarSign className="w-5 h-5" /> 
-      }
+    id: "kstock",
+    title: "K-Stock Analyzer",
+    category: "Financial Analytics",
+    description: "AI-driven stock market analysis with real-time predictions and portfolio optimization. Delivered actionable insights for traders and investors with advanced algorithmic trading signals.",
+    icon: TrendingUp,
+    image: "https://images.unsplash.com/photo-1611974765270-ca1258830860?q=80&w=1600&auto=format&fit=crop",
+    link: "https://kstockanalyzer.com/",
+    client: "Financial Services",
+    timeline: "4 months",
+    technologies: ["Python", "TensorFlow", "React", "WebSocket"],
+    metrics: [
+      { label: "Prediction Accuracy", value: "92%", icon: TrendingUp, trend: "up" },
+      { label: "Markets Covered", value: "50+", icon: BarChart3, trend: "up" }
     ],
-    testimonial: {
-      quote: "Mindscape AI's solution has transformed our manufacturing operations. The predictive maintenance capabilities alone have saved us millions in prevented downtime.",
-      author: "Robert Chen",
-      title: "Operations Director",
-      company: "Global Manufacturing Inc"
-    },
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop",
-    logo: "https://placehold.co/200x60/ca8a04/ffffff?text=Global+Manufacturing"
+    highlights: [
+      "Real-time market analysis",
+      "Portfolio optimization",
+      "Risk assessment tools"
+    ]
   },
   {
-    id: 4,
-    title: "Retail Chain",
-    subtitle: "Customer Experience Revolution",
-    industry: "Retail",
-    challenge: "A national retail chain needed to personalize customer experiences and optimize inventory management across hundreds of stores.",
-    solution: "Deployed Mindscape AI's customer analytics and inventory optimization platform with real-time insights.",
-    results: [
-      { 
-        metric: "Sales Increase", 
-        value: "32%", 
-        improvement: "YoY", 
-        icon: <TrendingUp className="w-5 h-5" /> 
-      },
-      { 
-        metric: "Inventory Accuracy", 
-        value: "99.2%", 
-        improvement: "+15%", 
-        icon: <BarChart3 className="w-5 h-5" /> 
-      },
-      { 
-        metric: "Customer Retention", 
-        value: "78%", 
-        improvement: "+24%", 
-        icon: <Users className="w-5 h-5" /> 
-      },
-      { 
-        metric: "Marketing ROI", 
-        value: "285%", 
-        improvement: "Improvement", 
-        icon: <LineChart className="w-5 h-5" /> 
-      }
+    id: "shopify-engine",
+    title: "Shopify Conversion Engine",
+    category: "E-commerce",
+    description: "Intelligent campaign automation converting visitors into buyers with AI recommendations. Increased conversion rates through personalized shopping experiences and dynamic pricing strategies.",
+    icon: ShoppingCart,
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=1600&auto=format&fit=crop",
+    client: "E-commerce Brand",
+    timeline: "3 months",
+    technologies: ["Shopify API", "Node.js", "Machine Learning", "Redis"],
+    metrics: [
+      { label: "Conversion Rate", value: "+40%", icon: TrendingUp, trend: "up" },
+      { label: "Revenue Growth", value: "+65%", icon: BarChart3, trend: "up" }
     ],
-    testimonial: {
-      quote: "Mindscape AI has revolutionized how we understand and serve our customers. The personalized recommendations have significantly increased our average order value.",
-      author: "Jennifer Lee",
-      title: "Chief Customer Officer",
-      company: "National Retail Chain"
-    },
-    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=2070&auto=format&fit=crop",
-    logo: "https://placehold.co/200x60/2563eb/ffffff?text=National+Retail"
+    highlights: [
+      "AI-powered recommendations",
+      "Dynamic pricing",
+      "Personalized experiences"
+    ]
+  },
+  {
+    id: "inventory-system",
+    title: "Smart Inventory System",
+    category: "Enterprise",
+    description: "Automated inventory management with predictive analytics and intelligent reordering. Reduced operational costs while maintaining optimal stock levels across multiple warehouse locations.",
+    icon: Package,
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600&auto=format&fit=crop",
+    client: "Retail Chain",
+    timeline: "5 months",
+    technologies: ["Python", "PostgreSQL", "React", "IoT Sensors"],
+    metrics: [
+      { label: "Efficiency Gain", value: "+75%", icon: Zap, trend: "up" },
+      { label: "Cost Savings", value: "35%", icon: TrendingUp, trend: "up" }
+    ],
+    highlights: [
+      "Predictive analytics",
+      "Automated reordering",
+      "Multi-location sync"
+    ]
+  },
+  {
+    id: "voice-agent",
+    title: "AI Voice Agent",
+    category: "Conversational AI",
+    description: "Intelligent voice call agent for automated appointment booking with NLP. Handles complex conversations, understands context, and provides natural human-like interactions for customer service.",
+    icon: Phone,
+    image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?q=80&w=1600&auto=format&fit=crop",
+    client: "Healthcare Provider",
+    timeline: "4 months",
+    technologies: ["OpenAI Whisper", "GPT-4", "Twilio", "Node.js"],
+    metrics: [
+      { label: "Booking Success", value: "95%", icon: CheckCircle2, trend: "up" },
+      { label: "Customer Rating", value: "4.8/5", icon: Users, trend: "up" }
+    ],
+    highlights: [
+      "Natural language processing",
+      "24/7 availability",
+      "Multi-language support"
+    ]
   }
 ]
 
 export default function CaseStudiesSection() {
-  const [activeTab, setActiveTab] = useState("all")
-  const [selectedCase, setSelectedCase] = useState(caseStudies[0])
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
-  // Filter case studies by industry
-  const filteredCaseStudies = activeTab === "all" 
-    ? caseStudies 
-    : caseStudies.filter(study => study.industry.toLowerCase() === activeTab.toLowerCase())
+  useEffect(() => {
+    if (!isAutoPlaying) return
 
-  // Get unique industries for tabs
-  const industries = ["all", ...Array.from(new Set(caseStudies.map(study => study.industry.toLowerCase())))]
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % caseStudies.length)
+    }, 5000)
+
+    return () => clearInterval(timer)
+  }, [isAutoPlaying])
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % caseStudies.length)
+    setIsAutoPlaying(false)
+  }
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + caseStudies.length) % caseStudies.length)
+    setIsAutoPlaying(false)
+  }
+
+  const currentStudy = caseStudies[currentIndex]
 
   return (
-    <section className="py-16 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
-      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
-      <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-blue-500/10 blur-[100px]"></div>
-      <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-blue-500/10 blur-[120px]"></div>
-
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        {/* Industry filter tabs */}
-        <Tabs 
-          defaultValue="all" 
-          className="mb-12"
-          onValueChange={setActiveTab}
-        >
-          <TabsList className="flex flex-wrap justify-center gap-2 mb-8">
-            {industries.map((industry) => (
-              <TabsTrigger 
-                key={industry} 
-                value={industry}
-                className="capitalize"
-              >
-                {industry}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          <TabsContent value={activeTab} className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {filteredCaseStudies.map((study) => (
-                <motion.div
-                  key={study.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-gradient-to-br from-red-900/20 to-black/20 backdrop-blur-md rounded-xl border border-red-500/20 overflow-hidden hover:border-red-500/40 transition-all duration-300 cursor-pointer group shadow-xl shadow-black/20"
-                  onClick={() => {
-                    setSelectedCase(study)
-                    setIsModalOpen(true)
-                  }}
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={study.image}
-                      alt={study.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge variant="outline" className="bg-blue-500/20 text-blue-300 border-blue-500/30">
-                          {study.industry}
-                        </Badge>
-                      </div>
-                      <h3 className="text-xl font-bold text-white">{study.title}</h3>
-                      <p className="text-blue-300">{study.subtitle}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="p-6">
-                    <p className="text-white/70 mb-4 line-clamp-2">{study.challenge}</p>
-                    
-                    <div className="grid grid-cols-2 gap-4 mb-4">
-                      {study.results.slice(0, 2).map((result, index) => (
-                        <div key={index} className="bg-gradient-to-br from-red-900/20 to-black/20 rounded-lg p-3 border border-red-500/20 hover:border-red-500/30 transition-colors">
-                          <div className="flex items-center gap-2 mb-1">
-                            <div className="text-red-400">{result.icon}</div>
-                            <div className="text-sm text-white/70">{result.metric}</div>
-                          </div>
-                          <div className="text-xl font-bold text-white">{result.value}</div>
-                          <div className="text-xs text-red-400">{result.improvement}</div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-900/20 to-black/20 flex items-center justify-center overflow-hidden border border-red-500/20">
-                          <Image
-                            src={study.logo}
-                            alt={`${study.title} logo`}
-                            width={24}
-                            height={24}
-                            className="object-contain"
-                          />
-                        </div>
-                        <div className="text-sm text-white/70">
-                          {study.testimonial.author.split(' ')[0]}
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm" className="text-red-400 hover:text-red-300 group-hover:bg-red-500/10">
-                        View Case Study
-                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
-
-        {/* CTA */}
-        <div className="text-center mt-12">
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" className="bg-gradient-to-r from-red-900 to-black hover:from-red-800 hover:to-black text-white border-0">
-              Schedule a Demo
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button size="lg" variant="outline" className="border-red-500/20 hover:bg-red-500/10 hover:border-red-500/30">
-              View All Case Studies
-            </Button>
+    <section className="w-full py-16 bg-black relative overflow-hidden border-t border-white/5">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center mb-4">
+            <Badge variant="outline" className="bg-black/50 border-white/10 text-white/60 px-4 py-1.5 text-xs tracking-[0.2em] uppercase backdrop-blur-md">
+              PROVEN RESULTS
+            </Badge>
           </div>
-          <p className="mt-4 text-white/60 text-sm">
-            See how Mindscape AI can transform your business
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+            Real Projects, Real <span className="text-red-500">Impact</span>
+          </h2>
+          <p className="text-lg text-white/50 max-w-3xl mx-auto leading-relaxed font-light">
+            See how we've transformed businesses with cutting-edge technology and delivered measurable results.
           </p>
         </div>
-      </div>
 
-      {/* Case Study Modal */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => setIsModalOpen(false)}
+        {/* Enhanced Carousel Container */}
+        <div className="relative">
+          {/* Main Card with modern design */}
+          <Card
+            className="relative bg-gradient-to-br from-white/[0.03] via-white/[0.02] to-white/[0.01] border-2 border-white/10 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm"
+            onMouseEnter={() => setIsAutoPlaying(false)}
+            onMouseLeave={() => setIsAutoPlaying(true)}
           >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-black/90 border border-white/10 rounded-xl overflow-hidden max-w-4xl w-full max-h-[90vh] overflow-y-auto"
-              onClick={(e) => e.stopPropagation()}
+            {/* Background gradient & Image effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-black/50 to-blue-500/10 opacity-60 pointer-events-none z-0" />
+            <div
+              className="absolute inset-0 z-0 opacity-20 transition-opacity duration-700 hover:opacity-30"
+              style={{
+                backgroundImage: `url(${currentStudy.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                filter: 'grayscale(100%)', // Elegant B&W base
+              }}
+            />
+            {/* Dark overlay to ensure text readability */}
+            <div className="absolute inset-0 bg-black/80 z-0" />
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, x: 50, scale: 0.95 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: -50, scale: 0.95 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="relative z-10 p-8 md:p-12 lg:p-16"
+              >
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                  {/* Left: Enhanced Content */}
+                  <div className="space-y-6">
+                    {/* Icon & Category with Card */}
+                    <Card className="bg-transparent border-0 shadow-none p-0">
+                      <div className="flex items-start gap-4 mb-6">
+                        <Card className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500/20 to-red-600/10 border border-red-500/30 flex items-center justify-center shadow-lg shadow-red-500/10 animate-pulse">
+                          <currentStudy.icon className="w-8 h-8 text-red-400" />
+                        </Card>
+                        <div className="flex-1">
+                          <Badge variant="outline" className="bg-red-500/10 border-red-500/30 text-red-400 mb-2 text-xs px-3 py-1">
+                            {currentStudy.category}
+                          </Badge>
+                          <CardTitle className="text-3xl md:text-4xl font-bold text-white mt-2 mb-1">
+                            {currentStudy.title}
+                          </CardTitle>
+                          {currentStudy.client && (
+                            <CardDescription className="text-white/50 text-sm flex items-center gap-2 mt-2">
+                              <Users className="w-4 h-4" />
+                              {currentStudy.client}
+                            </CardDescription>
+                          )}
+                        </div>
+                      </div>
+                    </Card>
+
+                    {/* Enhanced Description */}
+                    <CardDescription className="text-white/70 leading-relaxed text-base md:text-lg">
+                      {currentStudy.description}
+                    </CardDescription>
+
+                    {/* Technologies & Timeline */}
+                    {(currentStudy.technologies || currentStudy.timeline) && (
+                      <div className="flex flex-wrap items-center gap-4 pt-2">
+                        {currentStudy.timeline && (
+                          <div className="flex items-center gap-2 text-sm text-white/60">
+                            <Clock className="w-4 h-4" />
+                            <span>{currentStudy.timeline}</span>
+                          </div>
+                        )}
+                        {currentStudy.technologies && (
+                          <div className="flex flex-wrap gap-2">
+                            {currentStudy.technologies.slice(0, 3).map((tech, idx) => (
+                              <Badge key={idx} variant="outline" className="bg-white/5 border-white/10 text-white/70 text-xs">
+                                {tech}
+                              </Badge>
+                            ))}
+                            {currentStudy.technologies.length > 3 && (
+                              <Badge variant="outline" className="bg-white/5 border-white/10 text-white/70 text-xs">
+                                +{currentStudy.technologies.length - 3} more
+                              </Badge>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Highlights */}
+                    {currentStudy.highlights && (
+                      <div className="space-y-2 pt-2">
+                        {currentStudy.highlights.map((highlight, idx) => (
+                          <div key={idx} className="flex items-center gap-2 text-sm text-white/60">
+                            <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
+                            <span>{highlight}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Enhanced Link Button */}
+                    {currentStudy.link && (
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="mt-6 border-red-500/30 bg-red-500/10 hover:bg-red-500/20 text-red-400 hover:text-red-300 group"
+                      >
+                        <a
+                          href={currentStudy.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2"
+                        >
+                          View Live Project
+                          <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+
+                  {/* Right: Enhanced Metrics Cards */}
+                  <div className="hidden md:grid grid-cols-2 gap-4">
+                    {currentStudy.metrics.map((metric, idx) => {
+                      const MetricIcon = metric.icon || BarChart3
+                      return (
+                        <Card
+                          key={idx}
+                          className="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/10 group"
+                        >
+                          <CardContent className="p-6 text-center">
+                            <div className="flex justify-center mb-3">
+                              <div className="p-2 rounded-lg bg-red-500/10 border border-red-500/20 group-hover:bg-red-500/20 transition-colors">
+                                <MetricIcon className="w-5 h-5 text-red-400" />
+                              </div>
+                            </div>
+                            <div className="text-4xl font-bold text-white mb-2 group-hover:text-red-400 transition-colors">
+                              {metric.value}
+                            </div>
+                            <div className="text-xs text-white/50 uppercase tracking-wider font-medium">
+                              {metric.label}
+                            </div>
+                            {metric.trend === "up" && (
+                              <div className="flex items-center justify-center gap-1 mt-2 text-green-400 text-xs">
+                                <TrendingUp className="w-3 h-3" />
+                                <span>Improved</span>
+                              </div>
+                            )}
+                          </CardContent>
+                        </Card>
+                      )
+                    })}
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Enhanced Navigation Arrows */}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group backdrop-blur-sm z-20"
             >
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={selectedCase.image}
-                  alt={selectedCase.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Badge variant="outline" className="bg-blue-500/20 text-blue-300 border-blue-500/30">
-                      {selectedCase.industry}
-                    </Badge>
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white">{selectedCase.title}</h2>
-                  <p className="text-blue-300 text-lg">{selectedCase.subtitle}</p>
-                </div>
-              </div>
-              
-              <div className="p-6 md:p-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                  <div className="md:col-span-2">
-                    <h3 className="text-xl font-semibold text-white mb-4">The Challenge</h3>
-                    <p className="text-white/70">{selectedCase.challenge}</p>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white mb-4">The Solution</h3>
-                    <p className="text-white/70">{selectedCase.solution}</p>
-                  </div>
-                </div>
-                
-                <h3 className="text-xl font-semibold text-white mb-4">Results</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                  {selectedCase.results.map((result, index) => (
-                    <div key={index} className="bg-white/5 rounded-lg p-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="text-blue-400">{result.icon}</div>
-                        <div className="text-sm text-white/70">{result.metric}</div>
-                      </div>
-                      <div className="text-2xl font-bold text-white">{result.value}</div>
-                      <div className="text-sm text-green-400">{result.improvement}</div>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="bg-white/5 rounded-lg p-6 mb-8">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center overflow-hidden flex-shrink-0">
-                      <Image
-                        src={selectedCase.logo}
-                        alt={`${selectedCase.title} logo`}
-                        width={36}
-                        height={36}
-                        className="object-contain"
-                      />
-                    </div>
-                    <div>
-                      <blockquote className="text-lg text-white italic mb-4">
-                        "{selectedCase.testimonial.quote}"
-                      </blockquote>
-                      <div className="font-semibold text-white">{selectedCase.testimonial.author}</div>
-                      <div className="text-white/70">
-                        {selectedCase.testimonial.title}, {selectedCase.testimonial.company}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="flex justify-center">
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                    Get Similar Results
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <ChevronLeft className="w-6 h-6 text-white/60 group-hover:text-white group-hover:scale-110 transition-all" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group backdrop-blur-sm z-20"
+            >
+              <ChevronRight className="w-6 h-6 text-white/60 group-hover:text-white group-hover:scale-110 transition-all" />
+            </Button>
+          </Card>
+
+          {/* Enhanced Dots Indicator */}
+          <div className="flex justify-center items-center gap-2 mt-8">
+            {caseStudies.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  setCurrentIndex(idx)
+                  setIsAutoPlaying(false)
+                }}
+                className={`rounded-full transition-all duration-300 ${idx === currentIndex
+                  ? 'w-10 h-2 bg-gradient-to-r from-red-600 to-red-500 shadow-lg shadow-red-500/50'
+                  : 'w-2 h-2 bg-white/20 hover:bg-white/40 hover:scale-125'
+                  }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Slide Counter */}
+          <div className="text-center mt-4">
+            <p className="text-xs text-white/30">
+              {currentIndex + 1} / {caseStudies.length}
+            </p>
+          </div>
+        </div>
+
+        {/* Enhanced Project Count with Card */}
+        <Card className="bg-transparent border-white/10 mt-12">
+          <CardContent className="p-6 text-center">
+            <div className="flex items-center justify-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-green-400" />
+              <p className="text-sm text-white/60">
+                <span className="text-white font-bold text-lg">{caseStudies.length}+</span> successful projects delivered
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </section>
   )
-} 
+}

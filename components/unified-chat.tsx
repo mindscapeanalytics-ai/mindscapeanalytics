@@ -28,8 +28,8 @@ interface UnifiedChatProps {
   embedded?: boolean
 }
 
-export default function UnifiedChat({ 
-  initialStyle = "floating", 
+export default function UnifiedChat({
+  initialStyle = "floating",
   allowStyleToggle = false,
   theme = "landing",
   embedded = false
@@ -75,7 +75,7 @@ export default function UnifiedChat({
         role: msg.role,
         content: msg.content
       }));
-      
+
       // Add the new user message
       apiMessages.push({
         role: "user",
@@ -96,7 +96,7 @@ export default function UnifiedChat({
       }
 
       const data = await response.json();
-      
+
       // Add assistant response
       const aiMessage: Message = {
         id: Date.now().toString(),
@@ -108,7 +108,7 @@ export default function UnifiedChat({
       setMessages((prev) => [...prev, aiMessage])
     } catch (error) {
       console.error('Error in chat request:', error);
-      
+
       // Add error message
       const errorMessage: Message = {
         id: Date.now().toString(),
@@ -116,7 +116,7 @@ export default function UnifiedChat({
         role: "assistant",
         timestamp: new Date(),
       }
-      
+
       setMessages((prev) => [...prev, errorMessage])
     } finally {
       setIsLoading(false)
@@ -145,13 +145,11 @@ export default function UnifiedChat({
   const getButtonBaseClass = () => {
     if (embedded) return ""
     if (isDashboard) {
-      return `fixed bottom-6 right-6 h-12 w-12 rounded-full shadow-md z-40 ${
-        isOpen ? "bg-primary/90 hover:bg-primary/100" : "bg-primary hover:bg-primary/90"
-      }`
+      return `fixed bottom-6 right-6 h-12 w-12 rounded-full shadow-md z-40 ${isOpen ? "bg-primary/90 hover:bg-primary/100" : "bg-primary hover:bg-primary/90"
+        }`
     }
-    return `fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-50 ${
-      isOpen ? "bg-red-700 hover:bg-red-800" : "bg-red-600 hover:bg-red-700"
-    }`
+    return `fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-50 ${isOpen ? "bg-red-700 hover:bg-red-800" : "bg-red-600 hover:bg-red-700"
+      }`
   }
 
   // Render the floating chat bubble style
@@ -174,14 +172,14 @@ export default function UnifiedChat({
             animate={embedded ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
             exit={embedded ? undefined : { opacity: 0, y: 20, scale: 0.9 }}
             transition={{ duration: 0.2 }}
-            className={embedded 
+            className={embedded
               ? "w-full h-full flex flex-col overflow-hidden"
               : "fixed bottom-20 right-6 w-80 sm:w-96 h-96 bg-black border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 flex flex-col"
             }
           >
             {!embedded && (
-              <div className={isDashboard 
-                ? "bg-primary p-3 flex items-center justify-between" 
+              <div className={isDashboard
+                ? "bg-primary p-3 flex items-center justify-between"
                 : "bg-gradient-to-r from-red-600 to-red-500 p-3 flex items-center justify-between"
               }>
                 <div className="flex items-center gap-2">
@@ -225,11 +223,10 @@ export default function UnifiedChat({
               {messages.map((message) => (
                 <div key={message.id} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div
-                    className={`max-w-[80%] rounded-lg p-3 ${
-                      message.role === "user"
+                    className={`max-w-[80%] rounded-lg p-3 ${message.role === "user"
                         ? isDashboard ? "bg-primary text-primary-foreground" : "bg-red-600 text-white"
                         : embedded ? "bg-accent" : "bg-white/5 border border-white/10 text-white"
-                    }`}
+                      }`}
                   >
                     <p className="text-sm">{message.content}</p>
                     <p className="text-xs mt-1 opacity-70">
@@ -242,9 +239,8 @@ export default function UnifiedChat({
               {isLoading && (
                 <div className="flex justify-start">
                   <div
-                    className={`max-w-[80%] rounded-lg p-3 ${
-                      embedded ? "bg-accent" : "bg-white/5 border border-white/10 text-white"
-                    }`}
+                    className={`max-w-[80%] rounded-lg p-3 ${embedded ? "bg-accent" : "bg-white/5 border border-white/10 text-white"
+                      }`}
                   >
                     <div className="flex items-center gap-2">
                       <Loader2 className="h-4 w-4 animate-spin" />
@@ -253,7 +249,7 @@ export default function UnifiedChat({
                   </div>
                 </div>
               )}
-              
+
               <div ref={messagesEndRef} />
             </div>
 
@@ -310,8 +306,8 @@ export default function UnifiedChat({
             animate={embedded ? { opacity: 1 } : { opacity: 1, y: 0 }}
             exit={embedded ? undefined : { opacity: 0, y: 20 }}
             transition={{ duration: 0.2 }}
-            className={embedded 
-              ? "w-full h-full flex flex-col overflow-hidden" 
+            className={embedded
+              ? "w-full h-full flex flex-col overflow-hidden"
               : `fixed ${isExpanded ? "inset-4 md:inset-10" : "bottom-6 right-6 w-80 md:w-96 h-[500px]"} z-50`
             }
           >
@@ -370,11 +366,10 @@ export default function UnifiedChat({
                 {messages.map((message) => (
                   <div key={message.id} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                     <div
-                      className={`max-w-[80%] rounded-lg p-3 ${
-                        message.role === "user" 
-                          ? isDashboard ? "bg-primary text-primary-foreground" : "bg-red-600 text-white" 
+                      className={`max-w-[80%] rounded-lg p-3 ${message.role === "user"
+                          ? isDashboard ? "bg-primary text-primary-foreground" : "bg-red-600 text-white"
                           : "bg-white/10 text-white"
-                      }`}
+                        }`}
                     >
                       <p>{message.content}</p>
                       <div className="text-xs mt-1 opacity-70 text-right">

@@ -7,16 +7,16 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
 import { motion, AnimatePresence } from "framer-motion"
-import { 
-  ImageIcon, 
-  BarChart2, 
-  PenTool, 
-  Sparkles, 
-  ArrowRight, 
-  Clock, 
-  Users, 
-  Zap, 
-  Brain, 
+import {
+  ImageIcon,
+  BarChart2,
+  PenTool,
+  Sparkles,
+  ArrowRight,
+  Clock,
+  Users,
+  Zap,
+  Brain,
   LineChart,
   DollarSign,
   Target,
@@ -83,7 +83,8 @@ const availableProjectImages = [
   "/images/projects/amazon_invontry_management_system.png",
   "/images/projects/amazon_inventory.png",
   "/images/projects/KStock_Analyzer.png",
-  "/images/projects/KAITOOLS.png",
+  "/images/projects/dblynx-database-intelligence-mindscapeanalytics.PNG",
+  "/images/projects/mindscape-mortgage.png",
   "/images/projects/Crypto_folio_App.png",
   "/images/projects/Crypto_Tracker.png",
   "/images/projects/AgriChian.jpg"
@@ -325,50 +326,7 @@ const projects: Project[] = [
     featured: true,
     order: 6
   },
-  {
-    id: "6",
-    title: "ContentForge",
-    description: "An AI-powered content creation platform for digital marketers that generates high-quality posts, articles, and marketing materials with just a few clicks. Leveraging advanced language models and marketing expertise to create engaging, SEO-optimized content.",
-    shortDescription: "AI-powered content creation for digital marketers",
-    status: "alpha",
-    features: [
-      "One-click content generation",
-      "SEO optimization",
-      "Multi-platform formatting",
-      "Brand voice customization",
-      "Content calendar integration",
-      "Performance analytics"
-    ],
-    techStack: [
-      "GPT-4",
-      "Next.js",
-      "Tailwind CSS",
-      "Prisma",
-      "PostgreSQL",
-      "AWS"
-    ],
-    timeline: {
-      start: "January 2024",
-      estimatedCompletion: "Q3 2024",
-      currentPhase: "Alpha Testing"
-    },
-    demo: {
-      type: "interactive",
-      url: "/demos/contentforge"
-    },
-    team: {
-      size: 8,
-      roles: ["AI Engineers", "Frontend Developers", "UX Designers", "Marketing Experts"]
-    },
-    metrics: [
-      { label: "Content Generation Speed", value: "5x Faster" },
-      { label: "Engagement Rate", value: "45% Higher" },
-      { label: "Time Saved", value: "80% Reduction" }
-    ],
-    imageUrl: "/images/projects/our_web_designs.png",
-    category: "Marketing",
-    websiteUrl: "https://contentforge.ai"
-  },
+
   {
     id: "7",
     title: "Amazon Inventory Management System",
@@ -738,6 +696,52 @@ const projects: Project[] = [
     websiteUrl: "https://realestate.mindscape.ai",
     featured: true,
     order: 6
+  },
+  {
+    id: "mindscape-mortgage",
+    title: "Mindscape Mortgage Tool",
+    description: "Advanced AI mortgage and financial analysis suite for enterprise real estate. Features include predictive rate analytics, complex loan structuring, and direct integration with financial institutions for real-time mortgage processing.",
+    shortDescription: "AI-powered mortgage and financial analysis suite",
+    status: "completed",
+    features: [
+      "Predictive rate analytics",
+      "Loan structuring engine",
+      "Interactive amortization",
+      "Financial institution integration",
+      "Market trend forecasting",
+      "Investment ROI analysis"
+    ],
+    techStack: [
+      "Next.js",
+      "Python",
+      "TensorFlow",
+      "PostgreSQL",
+      "GraphQL",
+      "AWS"
+    ],
+    timeline: {
+      start: "October 2023",
+      estimatedCompletion: "January 2024",
+      currentPhase: "Completed"
+    },
+    demo: {
+      type: "interactive",
+      url: "https://mortgage.mindscapeanalytics.com/"
+    },
+    team: {
+      size: 5,
+      roles: ["Financial Analysts", "Full-stack Developers", "AI Engineers", "UX Designers"]
+    },
+    metrics: [
+      { label: "Processing Speed", value: "10x Faster" },
+      { label: "Accuracy", value: "99.9%" },
+      { label: "User Satisfaction", value: "4.9/5" }
+    ],
+    imageUrl: "/images/projects/mindscape-mortgage.png",
+    category: "FinTech & PropTech",
+    websiteUrl: "https://mortgage.mindscapeanalytics.com/",
+    featured: true,
+    order: 1
   }
 ]
 
@@ -745,15 +749,15 @@ const projects: Project[] = [
 function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], onSelectProject: (project: Project) => void }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
-  
+
   // Auto-scroll slides, pause on hover
   useEffect(() => {
     if (isHovering) return;
-    
+
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % projects.length);
     }, 5000);
-    
+
     return () => clearInterval(timer);
   }, [projects.length, isHovering]);
 
@@ -764,9 +768,9 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
     { value: 98, label: "Client Success Rate", prefix: "", suffix: "%" },
     { value: 3, label: "Average ROI", prefix: "", suffix: "x" }
   ];
-  
+
   return (
-    <section 
+    <section
       className="relative overflow-hidden flex items-center min-h-[70vh] sm:min-h-[80vh] md:min-h-[85vh] max-h-[900px]"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
@@ -779,14 +783,14 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
               key={project.id}
               className="absolute inset-0 w-full h-full"
               initial={{ opacity: 0 }}
-              animate={{ 
+              animate={{
                 opacity: currentSlide === index ? 0.4 : 0,
                 scale: currentSlide === index ? 1 : 1.1,
               }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
             >
-              <div 
+              <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${project.imageUrl || getRandomProjectImage()})` }}
               />
@@ -794,13 +798,13 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
             </motion.div>
           ))}
         </AnimatePresence>
-        
+
         {/* Subtle animated gradient overlay */}
         <div className="absolute inset-0 overflow-hidden">
-          <motion.div 
+          <motion.div
             className="absolute top-0 left-0 w-screen h-screen bg-gradient-to-br from-red-500/10 via-purple-500/5 to-transparent rounded-full filter blur-[120px]"
-            animate={{ 
-              x: [0, 20, 0], 
+            animate={{
+              x: [0, 20, 0],
               y: [0, -20, 0],
               opacity: [0.4, 0.6, 0.4],
             }}
@@ -811,16 +815,16 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
             }}
           />
         </div>
-        
+
         {/* Subtle grid pattern overlay */}
-        <div className="absolute inset-0 z-2 opacity-10" 
-          style={{ 
-            backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)`, 
-            backgroundSize: `30px 30px` 
+        <div className="absolute inset-0 z-2 opacity-10"
+          style={{
+            backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
+            backgroundSize: `30px 30px`
           }}
         />
       </div>
-      
+
       <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-20 py-6 md:py-12 lg:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
           <div className="space-y-4 md:space-y-6 lg:space-y-8">
@@ -835,7 +839,7 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
                   Innovation Portfolio
                 </Badge>
               </motion.div>
-              
+
               <motion.h1
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 md:mb-4 lg:mb-6 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
@@ -849,7 +853,7 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-red-400">
                     AI Innovation
                   </span>
-                  <motion.span 
+                  <motion.span
                     className="absolute -bottom-1 md:-bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-400"
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
@@ -857,21 +861,21 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
                   />
                 </span>
               </motion.h1>
-              
+
               <motion.p
                 className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 mb-4 md:mb-6 lg:mb-8 leading-relaxed max-w-xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Discover our pioneering AI projects that drive measurable impact 
-                and deliver innovative solutions across multiple industries. From 
-                concept to deployment, we're shaping the future of technology with 
+                Discover our pioneering AI projects that drive measurable impact
+                and deliver innovative solutions across multiple industries. From
+                concept to deployment, we're shaping the future of technology with
                 expertise and precision.
               </motion.p>
             </div>
-            
-            <motion.div 
+
+            <motion.div
               className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -886,17 +890,17 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
                 View Case Studies
               </Button>
             </motion.div>
-            
+
             {/* Animated statistics section */}
-            <motion.div 
+            <motion.div
               className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 mt-4 sm:mt-6 md:mt-10 pt-3 sm:pt-4 md:pt-6 border-t border-white/10"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
             >
               {stats.map((stat, i) => (
-                <motion.div 
-                  key={i} 
+                <motion.div
+                  key={i}
                   className="flex flex-col"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -904,7 +908,7 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
                 >
                   <div className="flex items-end">
                     <span className="text-white/80 text-sm sm:text-base md:text-xl">{stat.prefix}</span>
-                    <motion.span 
+                    <motion.span
                       className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -919,7 +923,7 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
               ))}
             </motion.div>
           </div>
-          
+
           {/* Enhanced project details */}
           <div className="mt-4 lg:mt-0">
             <AnimatePresence initial={false} mode="wait">
@@ -955,22 +959,21 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
                             </div>
                           </div>
                         </div>
-                        
-                        <Badge 
-                          variant="outline" 
-                          className={`text-xs md:text-sm ${
-                            project.status === "development" ? "bg-blue-500/10 text-blue-400 border-blue-500/30" :
+
+                        <Badge
+                          variant="outline"
+                          className={`text-xs md:text-sm ${project.status === "development" ? "bg-blue-500/10 text-blue-400 border-blue-500/30" :
                             project.status === "alpha" ? "bg-purple-500/10 text-purple-400 border-purple-500/30" :
-                            project.status === "beta" ? "bg-green-500/10 text-green-400 border-green-500/30" :
-                            "bg-amber-500/10 text-amber-400 border-amber-500/30"
-                          }`}
+                              project.status === "beta" ? "bg-green-500/10 text-green-400 border-green-500/30" :
+                                "bg-amber-500/10 text-amber-400 border-amber-500/30"
+                            }`}
                         >
                           {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
                         </Badge>
                       </div>
-                      
+
                       <p className="text-white/80 mb-6 md:mb-8 text-base md:text-lg">{project.shortDescription}</p>
-                      
+
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
                         {project.metrics.map((metric, i) => (
                           <div key={i} className="bg-white/5 rounded-lg p-2 md:p-3 border border-white/10">
@@ -979,11 +982,11 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
                           </div>
                         ))}
                       </div>
-                      
+
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
                         <div>
                           <h4 className="text-white/80 font-medium mb-2 md:mb-3 flex items-center gap-2 text-sm md:text-base">
-                            <Zap className="h-3.5 w-3.5 md:h-4 md:w-4 text-red-400" /> 
+                            <Zap className="h-3.5 w-3.5 md:h-4 md:w-4 text-red-400" />
                             Key Features
                           </h4>
                           <ul className="space-y-1 md:space-y-2">
@@ -999,7 +1002,7 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
                         </div>
                         <div>
                           <h4 className="text-white/80 font-medium mb-2 md:mb-3 flex items-center gap-2 text-sm md:text-base">
-                            <Cpu className="h-3.5 w-3.5 md:h-4 md:w-4 text-red-400" /> 
+                            <Cpu className="h-3.5 w-3.5 md:h-4 md:w-4 text-red-400" />
                             Tech Stack
                           </h4>
                           <div className="flex flex-wrap gap-2">
@@ -1016,14 +1019,14 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <Users className="h-5 w-5 text-white/70" />
                           <span className="text-white/80">{project.team.size} Specialists</span>
                         </div>
                         <div className="flex gap-3">
-                          <Button 
+                          <Button
                             onClick={() => onSelectProject(project)}
                             className="bg-red-500 hover:bg-red-600 text-white"
                           >
@@ -1062,15 +1065,14 @@ function ProjectSlideshow({ projects, onSelectProject }: { projects: Project[], 
                 )
               ))}
             </AnimatePresence>
-            
+
             {/* Navigation dots */}
             <div className="flex justify-center gap-2 mt-6">
               {projects.map((_, index) => (
                 <button
                   key={index}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    currentSlide === index ? "bg-red-500 scale-110" : "bg-white/30 hover:bg-white/50"
-                  }`}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${currentSlide === index ? "bg-red-500 scale-110" : "bg-white/30 hover:bg-white/50"
+                    }`}
                   onClick={() => setCurrentSlide(index)}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -1090,33 +1092,33 @@ export default function ProjectsPage() {
   const [filteredProjects, setFilteredProjects] = useState(projects)
   const [currentSlide, setCurrentSlide] = useState(0)
   const sliderRef = useRef<HTMLDivElement>(null)
-  
+
   // Get all unique categories
   const categories = ["All", ...Array.from(new Set(projects.map(project => project.category)))]
-  
+
   // Featured projects for the hero slider
   const featuredProjects = projects.filter(project => project.featured).sort((a, b) => (a.order || 0) - (b.order || 0));
-  
+
   // Filter projects based on search query and category
   useEffect(() => {
     let result = projects;
-    
+
     // Filter by search query
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
-      result = result.filter(project => 
-        project.title.toLowerCase().includes(query) || 
+      result = result.filter(project =>
+        project.title.toLowerCase().includes(query) ||
         project.description.toLowerCase().includes(query) ||
         project.shortDescription.toLowerCase().includes(query) ||
         project.techStack.some(tech => tech.toLowerCase().includes(query))
       );
     }
-    
+
     // Filter by category
     if (selectedCategory !== "All") {
       result = result.filter(project => project.category === selectedCategory);
     }
-    
+
     setFilteredProjects(result);
   }, [searchQuery, selectedCategory]);
 
@@ -1134,14 +1136,14 @@ export default function ProjectsPage() {
             {/* Search */}
             <div className="relative w-full md:w-1/3">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-              <Input 
-                placeholder="Search projects..." 
+              <Input
+                placeholder="Search projects..."
                 className="pl-10 bg-black/40 border-white/10 focus:border-red-500/50"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
               {searchQuery && (
-                <button 
+                <button
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
                   onClick={() => setSearchQuery("")}
                 >
@@ -1149,18 +1151,18 @@ export default function ProjectsPage() {
                 </button>
               )}
             </div>
-            
+
             {/* Category Filter */}
-            <Tabs 
-              defaultValue="All" 
+            <Tabs
+              defaultValue="All"
               className="w-full md:w-auto overflow-x-auto scrollbar-hide"
               value={selectedCategory}
               onValueChange={setSelectedCategory}
             >
               <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:flex bg-black/40 border border-white/10 p-1 min-w-max">
                 {categories.map((category) => (
-                  <TabsTrigger 
-                    key={category} 
+                  <TabsTrigger
+                    key={category}
                     value={category}
                     className="whitespace-nowrap data-[state=active]:bg-red-500/10 data-[state=active]:text-red-500 px-3 py-1.5 text-xs sm:text-sm"
                   >
@@ -1170,7 +1172,7 @@ export default function ProjectsPage() {
               </TabsList>
             </Tabs>
           </div>
-          
+
           {/* Results count */}
           <div className="flex items-center gap-2 mb-4 md:mb-6 text-white/60 text-sm md:text-base">
             <Filter className="h-3.5 w-3.5 md:h-4 md:w-4" />
@@ -1191,32 +1193,31 @@ export default function ProjectsPage() {
                   transition={{ duration: 0.2 }}
                   className="h-full"
                 >
-                  <Card 
+                  <Card
                     className="bg-black/40 backdrop-blur-md border border-white/10 overflow-hidden group h-full hover:border-red-500/50 transition-colors duration-300"
                     onClick={() => setSelectedProject(project)}
                   >
                     <CardContent className="p-0 h-full flex flex-col">
                       {/* Project Image */}
                       <div className="relative h-40 sm:h-48 w-full overflow-hidden bg-gradient-to-r from-black to-gray-900">
-                        <div 
+                        <div
                           className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-500"
                           style={{ backgroundImage: `url(${project.imageUrl || getRandomProjectImage()})` }}
                         />
                         <div className="absolute inset-0 bg-black/50"></div>
                         <div className="absolute top-0 right-0 p-3">
-                          <Badge 
-                            variant="outline" 
-                            className={`text-xs ${
-                              project.status === "development" ? "bg-blue-500/10 text-blue-500" :
+                          <Badge
+                            variant="outline"
+                            className={`text-xs ${project.status === "development" ? "bg-blue-500/10 text-blue-500" :
                               project.status === "alpha" ? "bg-purple-500/10 text-purple-500" :
-                              "bg-green-500/10 text-green-500"
-                            }`}
+                                "bg-green-500/10 text-green-500"
+                              }`}
                           >
                             {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
                           </Badge>
                         </div>
                       </div>
-                      
+
                       <div className="p-4 sm:p-6 flex-grow flex flex-col">
                         <div className="mb-3 sm:mb-4">
                           <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
@@ -1235,7 +1236,7 @@ export default function ProjectsPage() {
                             <span>{project.category}</span>
                           </div>
                         </div>
-                        
+
                         <p className="text-white/70 mb-4 sm:mb-6 text-sm sm:text-base line-clamp-3">{project.shortDescription}</p>
 
                         <div className="mt-auto">
@@ -1269,7 +1270,7 @@ export default function ProjectsPage() {
                               Learn More
                               <ArrowRight className="ml-1 h-3 w-3 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" />
                             </Button>
-                            
+
                             {project.demo && project.demo.url && project.demo.url.includes("youtu") && (
                               <Button
                                 variant="outline"
@@ -1283,7 +1284,7 @@ export default function ProjectsPage() {
                                 <Youtube className="h-3 w-3 sm:h-4 sm:w-4" />
                               </Button>
                             )}
-                            
+
                             {project.websiteUrl && (
                               <Button
                                 variant="outline"
@@ -1311,8 +1312,8 @@ export default function ProjectsPage() {
               </div>
               <h3 className="text-lg md:text-xl font-semibold mb-2">No matching projects found</h3>
               <p className="text-white/60 mb-4 md:mb-6 text-sm md:text-base">Try adjusting your search or filter criteria</p>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 onClick={() => {
                   setSearchQuery("");
                   setSelectedCategory("All");
@@ -1335,19 +1336,18 @@ export default function ProjectsPage() {
             className="bg-black/90 border border-white/10 rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto scrollbar-hide"
           >
             <div className="relative h-48 sm:h-64 w-full overflow-hidden">
-              <div 
+              <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${selectedProject.imageUrl || getRandomProjectImage()})` }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
               <div className="absolute bottom-0 left-0 p-4 sm:p-6">
-                <Badge 
-                  variant="outline" 
-                  className={`mb-2 sm:mb-3 text-xs sm:text-sm ${
-                    selectedProject.status === "development" ? "bg-blue-500/10 text-blue-500" :
+                <Badge
+                  variant="outline"
+                  className={`mb-2 sm:mb-3 text-xs sm:text-sm ${selectedProject.status === "development" ? "bg-blue-500/10 text-blue-500" :
                     selectedProject.status === "alpha" ? "bg-purple-500/10 text-purple-500" :
-                    "bg-green-500/10 text-green-500"
-                  }`}
+                      "bg-green-500/10 text-green-500"
+                    }`}
                 >
                   {selectedProject.status.charAt(0).toUpperCase() + selectedProject.status.slice(1)}
                 </Badge>
@@ -1362,7 +1362,7 @@ export default function ProjectsPage() {
                 <X className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </div>
-            
+
             <div className="p-4 sm:p-6">
               <div className="mb-4 sm:mb-6">
                 <p className="text-sm sm:text-base text-white/70">{selectedProject.description}</p>
@@ -1405,7 +1405,7 @@ export default function ProjectsPage() {
                       <span>{selectedProject.timeline.estimatedCompletion}</span>
                     </div>
                   </div>
-                  
+
                   <h3 className="text-lg sm:text-xl font-semibold mt-4 sm:mt-6 mb-2 sm:mb-4 flex items-center gap-2">
                     <Users className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" />
                     Team
@@ -1459,15 +1459,15 @@ export default function ProjectsPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4">
-                <Button 
-                  variant="outline" 
-                  onClick={() => setSelectedProject(null)} 
+                <Button
+                  variant="outline"
+                  onClick={() => setSelectedProject(null)}
                   className="order-2 sm:order-1 text-sm py-1.5 h-auto sm:py-2"
                 >
                   Close
                 </Button>
                 {selectedProject.demo && selectedProject.demo.url && selectedProject.demo.url.includes("youtu") && (
-                  <Button 
+                  <Button
                     className="flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white order-1 sm:order-2 shadow-lg shadow-red-500/20 transition-all duration-300 text-sm py-1.5 h-auto sm:py-2"
                     onClick={() => window.open(selectedProject.demo.url, '_blank')}
                   >
@@ -1476,7 +1476,7 @@ export default function ProjectsPage() {
                   </Button>
                 )}
                 {selectedProject.websiteUrl && (
-                  <Button 
+                  <Button
                     className="flex items-center gap-2 bg-white text-black hover:bg-white/90 order-3 sm:order-3 text-sm py-1.5 h-auto sm:py-2"
                     onClick={() => window.open(selectedProject.websiteUrl, '_blank')}
                   >

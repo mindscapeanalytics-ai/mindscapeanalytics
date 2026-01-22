@@ -1,0 +1,171 @@
+"use client"
+
+import React from "react"
+import { motion } from "framer-motion"
+import { ArrowRight, Database, Brain, Zap } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { navigateToContactForm } from "@/lib/utils"
+import { TypographyConfig } from "@/types/hero-enhancement"
+import { useTypography } from "@/lib/typography-system"
+
+interface ContentSectionProps {
+  typographyConfig: TypographyConfig
+  className?: string
+}
+
+/**
+ * Enhanced Content Section
+ * 
+ * Implements improved typography system with proper line heights,
+ * enhanced visual hierarchy, and accessibility compliance.
+ */
+export function ContentSection({ typographyConfig, className }: ContentSectionProps) {
+  const { 
+    getResponsiveFontSize,
+    getLineHeightStyles,
+    getTextShadowStyles,
+    getGradientTextClasses,
+    getFocusStyles,
+    getSpacingClasses
+  } = useTypography(typographyConfig)
+  
+  const handleGetStartedClick = () => {
+    navigateToContactForm()
+  }
+
+  // Get spacing classes for consistent hierarchy
+  const spacing = getSpacingClasses()
+  
+  // Get gradient text configurations
+  const redGradient = getGradientTextClasses(0)
+  const blueGradient = getGradientTextClasses(1)
+
+  // Enhanced animation sequence with staggered delays
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1]
+      }
+    }
+  }
+
+  return (
+    <motion.div
+      className="flex flex-col justify-center space-y-6 text-center lg:text-left"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      {/* Professional Badges - Repositioned above headline for maximum impact */}
+      <motion.div
+        className={`flex flex-wrap gap-3 justify-center lg:justify-start ${spacing.badgeSpacing}`}
+        variants={itemVariants}
+      >
+        <Badge className={`bg-red-950/90 border border-red-600/40 text-red-200 px-4 py-2 text-sm font-semibold backdrop-blur-xl shadow-lg hover:bg-red-900/90 transition-colors duration-300 ${getFocusStyles()}`}>
+          <Database className="h-4 w-4 mr-2" aria-hidden="true" />
+          Data Platforms
+        </Badge>
+        <Badge className={`bg-blue-950/90 border border-blue-600/40 text-blue-200 px-4 py-2 text-sm font-semibold backdrop-blur-xl shadow-lg hover:bg-blue-900/90 transition-colors duration-300 ${getFocusStyles()}`}>
+          <Brain className="h-4 w-4 mr-2" aria-hidden="true" />
+          AI Systems
+        </Badge>
+        <Badge className={`bg-green-950/90 border border-green-600/40 text-green-200 px-4 py-2 text-sm font-semibold backdrop-blur-xl shadow-lg hover:bg-green-900/90 transition-colors duration-300 ${getFocusStyles()}`}>
+          <Zap className="h-4 w-4 mr-2" aria-hidden="true" />
+          Automation
+        </Badge>
+      </motion.div>
+
+      {/* Enhanced Main Headline with improved typography */}
+      <motion.div variants={itemVariants}>
+        <h1 
+          className={`${getResponsiveFontSize()} font-black tracking-tight ${spacing.headlineSpacing} hero-headline`}
+          style={{
+            ...getLineHeightStyles(),
+            ...getTextShadowStyles()
+          }}
+        >
+          <span className="block text-white mb-1 font-black">Engineering</span>
+          <span className="block text-white mb-1 font-black">Intelligent Data</span>
+          <span className="block text-white mb-1 font-black">& AI Systems</span>
+          <span className="block text-red-600 font-black">for Modern Enterprises</span>
+        </h1>
+      </motion.div>
+
+      {/* Enhanced Description with clear visual hierarchy */}
+      <motion.div
+        variants={itemVariants}
+        className={`space-y-3 max-w-2xl mx-auto lg:mx-0 ${spacing.descriptionSpacing}`}
+      >
+        {/* Primary description with enhanced styling */}
+        <p 
+          className="text-lg lg:text-xl text-white/95 leading-relaxed font-light hero-text"
+          style={getTextShadowStyles()}
+        >
+          Mindscape Analytics delivers scalable data platforms, AI systems, and automation solutions that help organizations operate smarter, faster, and with greater control.
+        </p>
+        
+        {/* Secondary description with proper hierarchy */}
+        <p 
+          className="text-base lg:text-lg text-white/80 leading-relaxed hero-text"
+          style={getTextShadowStyles()}
+        >
+          We design, build, and optimize systems that perform in real-world production environments.
+        </p>
+      </motion.div>
+
+      {/* Enhanced CTA Buttons with 3:1 visual prominence ratio */}
+      <motion.div
+        className={`flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 ${spacing.ctaSpacing}`}
+        variants={itemVariants}
+      >
+        {/* Primary CTA - Enhanced prominence */}
+        <Button
+          size="lg"
+          className={`group relative w-full sm:w-auto px-8 py-4 text-lg font-bold text-white rounded-xl hover:brightness-110 transition-all duration-300 overflow-hidden shadow-2xl hover:shadow-red-500/30 hover:scale-[1.02] border border-red-500/20 ${getFocusStyles()}`}
+          onClick={handleGetStartedClick}
+          aria-label="Get started with Mindscape Analytics - Contact us for consultation"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 group-hover:from-red-500 group-hover:via-red-400 group-hover:to-red-500 transition-all duration-500 rounded-xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          <span className="relative z-10 flex items-center justify-center gap-2">
+            Get Started
+            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+          </span>
+        </Button>
+        
+        {/* Secondary CTA - Reduced prominence for 3:1 ratio */}
+        <Link href="/solutions" className="w-full sm:w-auto">
+          <Button
+            size="default"
+            variant="outline"
+            className={`group relative w-full px-6 py-3 text-base font-semibold text-white border-2 border-white/30 hover:border-white/50 hover:bg-white/10 rounded-xl backdrop-blur-md transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-white/10 ${getFocusStyles()}`}
+            aria-label="View our solutions and services"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              View Solutions
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            </span>
+          </Button>
+        </Link>
+      </motion.div>
+    </motion.div>
+  )
+}

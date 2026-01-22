@@ -34,6 +34,12 @@ import {
   Briefcase,
   Building2,
   ShoppingCart,
+  Database,
+  Zap,
+  Shield,
+  LayoutGrid,
+  BookOpen,
+  DollarSign,
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -49,14 +55,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { Command } from "cmdk"
 import { mainNav } from "@/config/site-config"
@@ -69,6 +69,10 @@ type NavItem = {
   icon?: React.ReactNode;
   hasMegaMenu?: boolean;
   highlight?: boolean;
+  status?: string;
+  image?: string;
+  description?: string;
+  badge?: string;
 }
 
 // If there are type interfaces instead, update them similarly
@@ -104,7 +108,12 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
     company: false,
     services: false,
     projects: false,
+    tools: false,
   })
+
+  // State for tool image hover preview
+  const [hoveredToolImage, setHoveredToolImage] = useState<string | null>(null)
+  const [hoveredToolPos, setHoveredToolPos] = useState({ x: 0, y: 0 })
 
   // Add error handling for navigation
   const [navigationError, setNavigationError] = useState(false)
@@ -308,11 +317,80 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       description: "Transformative business impacts we've delivered for our clients",
       icon: <CheckCircle2 className="h-5 w-5 text-amber-500" />,
     },
+  ]
+
+  const ourTools = [
     {
-      title: "Marketplace",
+      title: "DBlynx",
+      href: "#",
+      status: "Coming Next Month",
+      description: "Database analysis and synchronization tool",
+      image: "/images/projects/dblynx-database-intelligence-mindscapeanalytics.PNG",
+      icon: <Database className="h-5 w-5 text-blue-500" />,
+    },
+    {
+      title: "Inventory",
+      href: "/inventory",
+      status: "This Month",
+      description: "Enterprise inventory management system",
+      image: "/images/projects/inventory.png",
+      icon: <ShoppingCart className="h-5 w-5 text-emerald-500" />,
+    },
+    {
+      title: "CyberTraderX",
+      href: "#",
+      status: "Coming Soon",
+      description: "High-performance trading platform",
+      image: "/images/projects/CYBERTRADERX.png",
+      icon: <Zap className="h-5 w-5 text-amber-500" />,
+    },
+    {
+      title: "Mindscape LMS",
+      href: "https://lms.mindscapeanalytics.com/en",
+      status: "Live",
+      description: "Learning Management System for enterprise",
+      image: "/images/projects/mindscape-lms.png",
+      icon: <BookOpen className="h-5 w-5 text-indigo-500" />,
+    },
+    {
+      title: "Mindscape Market",
       href: "/marketplace",
-      description: "Browse and purchase our pre-built software solutions",
-      icon: <ShoppingCart className="h-5 w-5 text-red-500" />,
+      status: "Live",
+      description: "AI model and digital asset marketplace",
+      image: "/images/projects/amazon_sales_management.png",
+      icon: <ShoppingCart className="h-5 w-5 text-pink-500" />,
+    },
+    {
+      title: "BreachData",
+      href: "https://breachdata.mindscapeanalytics.com/",
+      status: "Live",
+      description: "Data breach monitoring and security alerts",
+      image: "/images/projects/breach-data.png",
+      icon: <Shield className="h-5 w-5 text-red-500" />,
+    },
+    {
+      title: "Cattle Farm Manager",
+      href: "#",
+      status: "Coming Soon",
+      description: "Precision agriculture management platform",
+      image: "/images/projects/cattle_farm.png",
+      icon: <Users className="h-5 w-5 text-orange-500" />,
+    },
+    {
+      title: "Mindscape Formations",
+      href: "https://llc.mindscapeanalytics.com/",
+      status: "Live",
+      description: "Enterprise formation and LLC management",
+      image: "/images/projects/ll-mindscapeanalytics.png",
+      icon: <Building2 className="h-5 w-5 text-blue-400" />,
+    },
+    {
+      title: "Mindscape Mortgage",
+      href: "https://mortgage.mindscapeanalytics.com/",
+      status: "Live",
+      description: "Advanced AI mortgage and financial analysis suite",
+      image: "/images/projects/mindscape-mortgage.png",
+      icon: <DollarSign className="h-5 w-5 text-purple-500" />,
     },
   ]
 
@@ -341,6 +419,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
 
   const primaryNavItems: NavItem[] = [
     { title: "Solutions", hasMegaMenu: true },
+    { title: "Our Tools", hasMegaMenu: true },
     { title: "Services", hasMegaMenu: true },
     { title: "Our Projects", hasMegaMenu: true },
     { title: "Resources", hasMegaMenu: true },
@@ -383,6 +462,14 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
     { title: "About Us", href: "/about", icon: <Building2 className="h-5 w-5" /> },
     { title: "Careers", href: "/careers", icon: <Briefcase className="h-5 w-5" /> },
     { title: "Contact", href: "/contact", icon: <MessageSquare className="h-5 w-5" /> },
+
+    // Tools section
+    ...ourTools.map((tool: any) => ({
+      title: tool.title,
+      href: tool.href,
+      icon: tool.icon,
+      badge: tool.status === "Live" ? undefined : tool.status
+    } as NavItem))
   ]
 
   // Add error state for mega menu rendering
@@ -404,7 +491,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
           <li key={menuItem.title}>
             <NavigationMenuLink asChild>
               <Link
-                href={menuItem.href}
+                href={menuItem.href || "#"}
                 className="flex p-4 select-none rounded-lg hover:bg-red-900/20 transition-all duration-300 group"
               >
                 <div className="flex items-start gap-4">
@@ -427,7 +514,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
           <li key={menuItem.title}>
             <NavigationMenuLink asChild>
               <Link
-                href={menuItem.href}
+                href={menuItem.href || "#"}
                 className="flex p-4 select-none rounded-lg hover:bg-red-900/20 transition-all duration-300 group"
               >
                 <div className="flex items-start gap-4">
@@ -450,7 +537,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
           <li key={menuItem.title}>
             <NavigationMenuLink asChild>
               <Link
-                href={menuItem.href}
+                href={menuItem.href || "#"}
                 className="flex p-4 select-none rounded-lg hover:bg-red-900/20 transition-all duration-300 group"
               >
                 <div className="flex items-start gap-4">
@@ -473,7 +560,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
           <li key={menuItem.title}>
             <NavigationMenuLink asChild>
               <Link
-                href={menuItem.href}
+                href={menuItem.href || "#"}
                 className={`flex p-4 select-none rounded-lg hover:bg-red-900/20 transition-all duration-300 group ${menuItem.comingSoon ? 'opacity-70 cursor-not-allowed' : ''}`}
                 onClick={(e) => menuItem.comingSoon && e.preventDefault()}
               >
@@ -495,12 +582,50 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
             </NavigationMenuLink>
           </li>
         ))
+      } else if (type === "Our Tools") {
+        return ourTools.map((menuItem: any) => (
+          <li key={menuItem.title} className="col-span-1">
+            <NavigationMenuLink asChild>
+              <Link
+                href={menuItem.href || "#"}
+                className={`flex p-3 select-none rounded-xl hover:bg-red-900/10 transition-all duration-300 group ${menuItem.status.includes('Coming') ? 'opacity-80' : ''}`}
+                onMouseEnter={() => setHoveredToolImage(menuItem.image)}
+                onMouseLeave={() => setHoveredToolImage(null)}
+                onMouseMove={(e) => {
+                  setHoveredToolPos({ x: e.clientX + 20, y: e.clientY - 40 })
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="bg-black/40 p-2 rounded-lg backdrop-blur-md border border-white/5 group-hover:bg-red-500/20 group-hover:border-red-500/30 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                    {menuItem.icon}
+                  </div>
+                  <div className="flex flex-col min-w-0">
+                    <div className="text-sm font-semibold text-white group-hover:text-red-400 transition-colors flex items-center gap-2 truncate">
+                      {menuItem.title}
+                      <span className={cn(
+                        "text-[7px] h-3.5 px-1 py-0 leading-none font-bold uppercase rounded-sm flex items-center justify-center",
+                        menuItem.status === "Live" ? "bg-green-500/20 text-green-400" :
+                          menuItem.status === "This Month" ? "bg-blue-500/20 text-blue-400" :
+                            "bg-amber-500/20 text-amber-400"
+                      )}>
+                        {menuItem.status}
+                      </span>
+                    </div>
+                    <p className="text-[10px] text-white/50 group-hover:text-white/70 transition-colors truncate">
+                      {menuItem.description}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            </NavigationMenuLink>
+          </li>
+        ))
       } else if (type === "Our Projects") {
-        return projects.map((menuItem) => (
+        return projects.map((menuItem: NavItem) => (
           <li key={menuItem.title}>
             <NavigationMenuLink asChild>
               <Link
-                href={menuItem.href}
+                href={menuItem.href || "#"}
                 className="flex p-4 select-none rounded-lg hover:bg-red-900/20 transition-all duration-300 group"
               >
                 <div className="flex items-start gap-4">
@@ -595,6 +720,9 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
           item.title === 'Marketplace') ||
         (item.title === 'Our Projects' && item.hasMegaMenu)
       );
+      const toolsItems = mobileNavItems.filter(item =>
+        ourTools.some(tool => tool.title === item.title) || (item.title === 'Our Tools' && item.hasMegaMenu)
+      );
       const resourcesItems = mobileNavItems.filter(item =>
         (item.title === 'Documentation' || item.title === 'Blog' ||
           item.title === 'Support') ||
@@ -625,7 +753,9 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
         item.title !== 'About Us' &&
         item.title !== 'Careers' &&
         item.title !== 'Contact' &&
-        item.title !== 'Company'
+        item.title !== 'Company' &&
+        item.title !== 'Our Tools' &&
+        !ourTools.some(tool => tool.title === item.title)
       );
 
       const toggleSection = (section: string) => {
@@ -646,6 +776,51 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                 aria-label="Search in mobile menu"
               />
             </div>
+          </div>
+
+          {/* Our Tools Section */}
+          <div className="mb-2">
+            <button
+              onClick={() => toggleSection('tools')}
+              className="flex items-center justify-between w-full rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors"
+            >
+              <div className="flex items-center space-x-2.5">
+                <div className="text-white/70"><LayoutGrid className="h-5 w-5" /></div>
+                <span className="text-sm font-medium">Our Tools</span>
+              </div>
+              <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${expandedSections.tools ? 'rotate-180' : ''}`} />
+            </button>
+
+            {expandedSections.tools && (
+              <div className="pl-10 space-y-1 mt-1 border-l-2 border-red-900/20 ml-5">
+                {toolsItems.slice(1).map((item, index) => (
+                  <Link
+                    key={`mobile-tools-${index}`}
+                    href={item.href || "#"}
+                    className={cn(
+                      "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors",
+                      pathname === item.href ? "bg-red-900/30" : ""
+                    )}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <div className="text-white/70">{item.icon}</div>
+                    <div className="flex flex-col">
+                      <span className="text-sm">{item.title}</span>
+                      {item.badge && (
+                        <span className={cn(
+                          "text-[9px] font-bold uppercase px-1 rounded-sm w-fit",
+                          item.badge === "Live" ? "text-green-400" :
+                            item.badge === "This Month" ? "text-blue-400" :
+                              "text-amber-400"
+                        )}>
+                          {item.badge}
+                        </span>
+                      )}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Solutions Section */}
@@ -903,7 +1078,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                     <div className="relative z-10 group">
                       {/* Icon container */}
                       <div className="relative transition-transform duration-300 group-hover:scale-[0.98]">
-                        <Image src="/images/brain.svg" alt="AI Icon" width={500} height={300} className="h-10 w-10 text-red-700 transform transition-all duration-300 group-hover:text-red-600" />
+                        <Image src="/images/logo.png" alt="Mindscape Analytics Logo" width={40} height={40} className="h-10 w-10 object-contain transform transition-all duration-300 group-hover:scale-105" />
                       </div>
                     </div>
                   </div>
@@ -1057,6 +1232,37 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
         )}
       </AnimatePresence>
 
+      {/* Hover Image Preview Popup */}
+      <AnimatePresence>
+        {hoveredToolImage && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 10 }}
+            transition={{ type: "spring", damping: 20, stiffness: 300 }}
+            style={{
+              position: 'fixed',
+              left: hoveredToolPos.x,
+              top: hoveredToolPos.y,
+              zIndex: 9999,
+              pointerEvents: 'none',
+            }}
+            className="w-48 h-32 rounded-xl overflow-hidden border border-red-500/30 shadow-2xl shadow-red-500/20 backdrop-blur-md bg-black/40 p-1"
+          >
+            <div className="relative w-full h-full rounded-lg overflow-hidden">
+              <Image
+                src={hoveredToolImage}
+                alt="Tool Preview"
+                fill
+                className="object-cover"
+                sizes="192px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Error notification */}
       {menuError && (
         <div className="fixed bottom-4 right-4 bg-red-600 text-white p-4 rounded-lg shadow-lg z-50">
@@ -1077,5 +1283,3 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
     </>
   );
 }
-
-

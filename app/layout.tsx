@@ -7,7 +7,7 @@ import PreloadCriticalImages from "@/components/preload-critical-images"
 import Script from "next/script"
 
 // Optimize font loading with display=swap for better performance
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   display: 'swap',
   preload: true,
@@ -19,7 +19,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   minimumScale: 1,
-  maximumScale: 5, 
+  maximumScale: 5,
   userScalable: true,
   themeColor: "#000000",
 }
@@ -80,18 +80,18 @@ export default function RootLayout({
       <head>
         <meta name="google-site-verification" content="your-verification-code" />
         <link rel="canonical" href="https://mindscape-analytics.com" />
-        
+
         {/* Performance optimizations for faster resource loading */}
         <link rel="preconnect" href="https://mindscape-analytics.com" />
         <link rel="dns-prefetch" href="https://mindscape-analytics.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
+
         {/* Add preload hints for critical resources */}
         <link rel="preload" href="/_next/static/chunks/main.js" as="script" />
         <link rel="preload" href="/_next/static/chunks/webpack.js" as="script" />
         <link rel="preload" href="/_next/static/chunks/framework.js" as="script" />
-        
+
         {/* Preload critical fonts */}
         <link
           rel="preload"
@@ -100,80 +100,29 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
-        
-        {/* Preload critical images */}
+
         <link
           rel="preload"
           href="/images/logo.png"
           as="image"
           type="image/png"
         />
-        <link rel="preload" href="/images/brain.svg" as="image" type="image/svg+xml" />
-        
+
         {/* Preload WebP versions of large images */}
-        <link 
-          rel="preload" 
-          href="/images/optimized/founder-reduced.webp" 
-          as="image" 
+        <link
+          rel="preload"
+          href="/images/optimized/founder-reduced.webp"
+          as="image"
           type="image/webp"
         />
-        
+
         {/* Add QuickLink for prefetching visible links */}
-        <Script id="quicklink" strategy="afterInteractive">
-          {`
-          function loadQuicklink() {
-            try {
-              // Try using standard import path first
-              import('quicklink').then(module => {
-                if (module && module.listen) {
-                  module.listen({
-                    origins: [location.origin],
-                    ignores: [
-                      /\\/api\\//,
-                      uri => uri.includes('#'),
-                      uri => uri.includes('?'),
-                      uri => uri.includes('=')
-                    ]
-                  });
-                  console.log("Quicklink initialized");
-                } else {
-                  console.warn("Quicklink module loaded but listen function not found");
-                }
-              }).catch(e => {
-                console.warn("Couldn't load quicklink with direct import, trying fallback", e);
-                // Fallback to alternate path if direct import fails
-                import('quicklink/dist/quicklink.js').then(module => {
-                  if (module && module.listen) {
-                    module.listen({
-                      origins: [location.origin],
-                      ignores: [
-                        /\\/api\\//,
-                        uri => uri.includes('#'),
-                        uri => uri.includes('?'),
-                        uri => uri.includes('=')
-                      ]
-                    });
-                    console.log("Quicklink initialized with fallback");
-                  }
-                }).catch(e2 => {
-                  console.error('Error loading quicklink via fallback:', e2);
-                });
-              });
-            } catch (e) {
-              console.error('Error loading quicklink:', e);
-            }
-          }
-          
-          if (document.readyState === 'complete') {
-            loadQuicklink();
-          } else {
-            window.addEventListener('load', loadQuicklink);
-          }
-          `}
-        </Script>
-        
+        {/* Quicklink disabled to prevent Webpack runtime conflicts */}
+        {/* <Script id="quicklink" strategy="afterInteractive"> ... </Script> */}
+
         {/* Add critical CSS inline to reduce render-blocking resources */}
-        <style dangerouslySetInnerHTML={{ __html: `
+        <style dangerouslySetInnerHTML={{
+          __html: `
           /* Critical path CSS */
           *, *::before, *::after {
             box-sizing: border-box;
@@ -208,7 +157,7 @@ export default function RootLayout({
             overflow: hidden;
           }
         `}} />
-        
+
         {/* Move non-essential scripts to afterInteractive or lazyOnload */}
         <Script id="json-ld" type="application/ld+json" strategy="afterInteractive">
           {`
@@ -232,27 +181,10 @@ export default function RootLayout({
             }
           `}
         </Script>
-        
+
         {/* Web Vitals measurement */}
-        <Script id="web-vitals" strategy="lazyOnload">
-          {`
-            try {
-              window.addEventListener('load', () => {
-                setTimeout(() => {
-                  import('web-vitals').then(({ getCLS, getFID, getLCP, getFCP, getTTFB }) => {
-                    getCLS(metric => console.log('CLS:', metric.value));
-                    getFID(metric => console.log('FID:', metric.value));
-                    getLCP(metric => console.log('LCP:', metric.value));
-                    getFCP(metric => console.log('FCP:', metric.value));
-                    getTTFB(metric => console.log('TTFB:', metric.value));
-                  });
-                }, 3000);
-              });
-            } catch (e) {
-              console.error('Error loading web-vitals', e);
-            }
-          `}
-        </Script>
+        {/* Web Vitals disabled to prevent Webpack runtime conflicts */}
+        {/* <Script id="web-vitals" strategy="lazyOnload"> ... </Script> */}
       </head>
       {/* 
         RootLayoutContent handles the main structure of the site, including:
@@ -263,7 +195,7 @@ export default function RootLayout({
       <RootLayoutContent inter={inter} fullWidth={true}>
         {/* Preload critical images for faster page load */}
         <PreloadCriticalImages />
-        
+
         {children}
       </RootLayoutContent>
     </html>

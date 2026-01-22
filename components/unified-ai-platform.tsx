@@ -178,8 +178,10 @@ export default function UnifiedAIPlatform() {
                 </p>
             </div>
 
-            {/* Main Interface */}
-            <div className="bg-[#0A0A0A] border border-white/10 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/5">
+            {/* Main Interface - "Frameless" on mobile, Glassmorphic on desktop */}
+            <div className="md:bg-[#0A0A0A]/80 md:border md:border-white/10 md:rounded-3xl md:overflow-hidden md:shadow-2xl md:ring-1 md:ring-white/5 relative group">
+                {/* Background glow for the whole platform */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-red-600/20 to-red-900/20 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10" />
                 <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[650px]">
 
                     {/* Left Sidebar - Navigation */}
@@ -195,23 +197,26 @@ export default function UnifiedAIPlatform() {
                                     setIsDemoActive(false)
                                 }}
                                 className={cn(
-                                    "flex items-center gap-3 p-3 mx-2 rounded-xl text-left transition-all duration-200 group relative overflow-hidden",
+                                    "flex items-center gap-3 p-3 sm:mx-2 rounded-xl text-left transition-all duration-300 group relative overflow-hidden",
                                     activeTab === cap.id
-                                        ? "bg-white/5 text-white shadow-inner"
-                                        : "text-white/40 hover:text-white hover:bg-white/5"
+                                        ? "bg-white/10 text-white shadow-xl shadow-red-500/5"
+                                        : "text-white/30 hover:text-white hover:bg-white/5"
                                 )}
                             >
                                 {activeTab === cap.id && (
-                                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-500" />
+                                    <motion.div
+                                        layoutId="activeTabGlow"
+                                        className="absolute left-0 top-0 bottom-0 w-1 bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)]"
+                                    />
                                 )}
                                 <div className={cn(
-                                    "p-2 rounded-lg transition-colors",
-                                    activeTab === cap.id ? "text-red-500" : "text-current opacity-50"
+                                    "p-2 rounded-lg transition-all duration-300",
+                                    activeTab === cap.id ? "bg-red-500/20 text-red-500" : "bg-white/5 text-white/20 group-hover:text-white/50"
                                 )}>
                                     <cap.icon className="h-5 w-5" />
                                 </div>
                                 <div className="flex-1">
-                                    <div className="font-medium text-sm tracking-wide">{cap.title}</div>
+                                    <div className="font-bold text-xs sm:text-sm tracking-wide uppercase italic">{cap.title}</div>
                                 </div>
                             </button>
                         ))}
@@ -279,8 +284,8 @@ export default function UnifiedAIPlatform() {
                         </AnimatePresence>
                     </div>
 
-                    {/* Right Panel - Code/Terminal View */}
-                    <div className="lg:col-span-4 bg-[#050505] flex flex-col relative overflow-hidden">
+                    {/* Right Panel - Code/Terminal View - Visible on Tablet/Desktop, Stacked on Mobile */}
+                    <div className="lg:col-span-4 bg-black/95 flex flex-col relative overflow-hidden border-t lg:border-t-0 border-white/5">
                         {/* Terminal Header */}
                         <div className="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-white/[0.02]">
                             <div className="flex gap-2">

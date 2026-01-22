@@ -43,17 +43,17 @@ function ContactFormContent() {
       interest: searchParams?.get("interest") || "",
     },
   })
-  
+
   // Update form values when URL parameters change
   useEffect(() => {
     if (searchParams) {
       const interest = searchParams.get("interest")
       const subject = searchParams.get("subject")
-      
+
       if (interest) {
         form.setValue("interest", interest)
       }
-      
+
       if (subject) {
         form.setValue("subject", subject)
       }
@@ -94,7 +94,7 @@ function ContactFormContent() {
     } catch (error) {
       console.error('Error submitting form:', error)
       setIsSubmitting(false)
-      
+
       toast({
         title: "Error",
         description: error instanceof Error ? error.message : "Failed to send message. Please try again.",
@@ -188,11 +188,13 @@ function ContactFormContent() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent className="bg-black/90 border-white/10">
+                    <SelectItem value="demo">Live Demo Request</SelectItem>
                     <SelectItem value="ai-analytics">AI Analytics Platform</SelectItem>
                     <SelectItem value="computer-vision">Computer Vision</SelectItem>
                     <SelectItem value="nlp">Natural Language Processing</SelectItem>
                     <SelectItem value="ml">Machine Learning Models</SelectItem>
                     <SelectItem value="custom">Custom AI Solutions</SelectItem>
+                    <SelectItem value="whatsapp">WhatsApp Inquiry</SelectItem>
                     <SelectItem value="other">Other</SelectItem>
                   </SelectContent>
                 </Select>

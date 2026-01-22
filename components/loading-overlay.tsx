@@ -12,7 +12,7 @@ const BrainLogo = memo(() => (
       {/* Brain icon container with animated glow effects */}
       <div className="relative">
         {/* Outer glow effect - pulsing */}
-        <motion.div 
+        <motion.div
           className="absolute -inset-2 bg-red-800/20 blur-lg rounded-2xl"
           animate={{
             scale: [1, 1.2, 1],
@@ -24,11 +24,11 @@ const BrainLogo = memo(() => (
             ease: "easeInOut",
           }}
         ></motion.div>
-        
+
         {/* Main container */}
         <div className="relative z-10 group">
           {/* Border glow container - pulsing */}
-          <motion.div 
+          <motion.div
             className="absolute -inset-[1.5px] rounded-2xl"
             animate={{
               opacity: [0.7, 1, 0.7],
@@ -41,24 +41,22 @@ const BrainLogo = memo(() => (
           >
             <div className="absolute inset-0 bg-red-700 rounded-2xl opacity-90"></div>
           </motion.div>
-          
+
           {/* Icon container */}
           <div className="relative bg-black rounded-2xl p-3">
-            <Image 
-              src="/images/brain.svg" 
-              alt="Mindscape Brain Logo"
+            <Image
+              src="/images/logo.png"
+              alt="Mindscape Analytics Logo"
               width={80}
               height={80}
               priority
-              style={{
-                filter: 'drop-shadow(0 0 2px #8B0000)'
-              }}
+              className="object-contain"
             />
           </div>
         </div>
       </div>
     </div>
-    
+
     {/* Text part */}
     <div className="mt-4 text-center">
       <h1 className="text-3xl font-bold tracking-tight font-sans">
@@ -133,7 +131,7 @@ function LoadingOverlayContent() {
   return (
     <AnimatePresence mode="wait">
       {isLoading && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

@@ -196,7 +196,7 @@ const PROJECTS: Project[] = [
   {
     title: "News and Market Analytics Web App",
     description: "A sophisticated platform that combines real-time news analysis with market data analytics. Features include sentiment analysis of financial news, market impact predictions, automated trading signals based on news events, and customizable news feeds with AI-powered relevance scoring.",
-    imageUrl: "/images/projects/KAITOOLS.png",
+    imageUrl: "/images/projects/dblynx-database-intelligence-mindscapeanalytics.PNG",
     youtubeUrl: "https://youtu.be/23A9JRb0SXM",
     tags: ["AI", "Analytics", "News Analysis"]
   },
@@ -297,6 +297,13 @@ const PROJECTS: Project[] = [
     imageUrl: "/images/scrolling_solutions/real_estate_solutions.png",
     youtubeUrl: "https://youtu.be/cd75TIAM9X0",
     tags: ["Real Estate", "Analytics", "Investment"]
+  },
+  {
+    title: "Mindscape Mortgage Tool",
+    description: "Innovative mortgage and financial analysis platform that leverages AI to provide deep insights into property financing and investment opportunities.",
+    imageUrl: "/images/projects/mindscape-mortgage.png",
+    youtubeUrl: "https://mortgage.mindscapeanalytics.com/",
+    tags: ["FinTech", "PropTech", "AI"]
   }
 ]
 

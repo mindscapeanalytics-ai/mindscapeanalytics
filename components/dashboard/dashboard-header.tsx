@@ -8,7 +8,7 @@ import { useDashboard } from "@/providers/dashboard-context"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { 
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
-import { 
+import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -37,7 +37,7 @@ export function DashboardHeader({ heading }: DashboardHeaderProps) {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   return (
-    <header 
+    <header
       className="sticky top-0 z-30 flex h-14 items-center gap-2 border-b border-white/10 bg-zinc-950/90 px-3 sm:px-4 backdrop-blur-lg supports-[backdrop-filter]:bg-black/60"
       data-test-id="dashboard-header"
     >
@@ -59,20 +59,17 @@ export function DashboardHeader({ heading }: DashboardHeaderProps) {
             <div className="absolute inset-0 bg-red-900/10 blur-md rounded-md animate-pulse-slow"></div>
             <div className="relative z-10">
               <div className="relative bg-black rounded-md p-1">
-                <Image 
-                  src="/images/brain.svg" 
-                  alt="Mindscape Brain Logo"
+                <Image
+                  src="/images/logo.png"
+                  alt="Mindscape Analytics Logo"
                   width={24}
                   height={24}
-                  className="h-4 w-4"
-                  style={{
-                    filter: 'drop-shadow(0 0 1px #8B0000)'
-                  }}
+                  className="h-4 w-4 object-contain"
                 />
               </div>
             </div>
           </div>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
@@ -103,9 +100,9 @@ export function DashboardHeader({ heading }: DashboardHeaderProps) {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
+                <Button
+                  variant="ghost"
+                  size="icon"
                   onClick={() => setIsSearchOpen(true)}
                   className="text-zinc-400 hover:text-white hover:bg-white/5 h-8 w-8"
                   aria-label="Search"
@@ -124,8 +121,8 @@ export function DashboardHeader({ heading }: DashboardHeaderProps) {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="icon"
                   className="relative text-zinc-400 hover:text-white hover:bg-white/5 h-8 w-8"
                   onClick={toggleNotificationsPanel}
@@ -133,7 +130,7 @@ export function DashboardHeader({ heading }: DashboardHeaderProps) {
                 >
                   <Bell className="h-4 w-4" />
                   {unreadNotificationsCount > 0 && (
-                    <Badge 
+                    <Badge
                       className="absolute -top-0.5 -right-0.5 h-4 w-4 p-0 bg-red-500 text-white flex items-center justify-center text-[10px]"
                     >
                       {unreadNotificationsCount}
@@ -150,8 +147,8 @@ export function DashboardHeader({ heading }: DashboardHeaderProps) {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="icon"
                   className="relative text-zinc-400 hover:text-white hover:bg-white/5 h-8 w-8 hidden sm:flex"
                   aria-label="Help"
@@ -168,9 +165,9 @@ export function DashboardHeader({ heading }: DashboardHeaderProps) {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button 
-              variant="ghost" 
-              size="sm" 
+            <Button
+              variant="ghost"
+              size="sm"
               className="rounded-full h-8 pl-0 pr-0 sm:pl-2 sm:pr-2 overflow-hidden gap-2 hover:bg-white/5"
               aria-label="User menu"
             >
@@ -214,7 +211,7 @@ export function DashboardHeader({ heading }: DashboardHeaderProps) {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      
+
       {/* Add styles for animations */}
       <style jsx global>{`
         @keyframes pulse-slow {

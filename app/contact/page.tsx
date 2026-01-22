@@ -94,8 +94,19 @@ const contactMethods = [
     description: "Connect with us instantly via WhatsApp for quick responses.",
     value: "Message us",
     action: "Open WhatsApp",
-    link: "https://wa.link/wcd6nl"
+    link: "https://wa.me/message/4F7V2WKEGPIEH1"
   },
+  {
+    icon: <MessageSquare className="h-10 w-10 text-red-500" />,
+    title: "Discord",
+    description: "Join our community on Discord for real-time discussions and support.",
+    value: "@mindcapeanalytics",
+    action: "Join Discord",
+    link: "#discord"
+  },
+]
+
+const additionalContacts = [
   {
     icon: <Linkedin className="h-10 w-10 text-red-500" />,
     title: "LinkedIn",
@@ -103,17 +114,6 @@ const contactMethods = [
     value: "Mindscape Analytics",
     action: "Visit LinkedIn",
     link: "https://www.linkedin.com/company/mindscapeanalytics/"
-  },
-]
-
-const additionalContacts = [
-  {
-    icon: <MessageSquare className="h-10 w-10 text-red-500" />,
-    title: "Live Chat",
-    description: "Chat with our support team in real-time for immediate assistance.",
-    value: "Available 24/7",
-    action: "Start chat",
-    link: "#chat"
   },
   {
     icon: <Calendar className="h-10 w-10 text-red-500" />,
@@ -278,7 +278,7 @@ export default function ContactPage() {
                     <div className="flex-shrink-0 flex items-center justify-center">
                       <div className="bg-white p-4 rounded-xl">
                         <Image
-                          src="/wa.link_wcd6nl.png"
+                          src="/images/whatsapp-qr.png"
                           alt="WhatsApp QR Code"
                           width={200}
                           height={200}
@@ -292,7 +292,7 @@ export default function ContactPage() {
                         Scan this QR code with your smartphone camera to instantly connect with our team on WhatsApp. Get quick answers to your questions, real-time support, and personalized assistance.
                       </p>
                       <Button className="bg-green-600 hover:bg-green-700 text-white" asChild>
-                        <a href="https://wa.link/wcd6nl" target="_blank" rel="noopener noreferrer">
+                        <a href="https://wa.me/message/4F7V2WKEGPIEH1" target="_blank" rel="noopener noreferrer">
                           <WhatsAppIcon className="mr-2 h-5 w-5" /> Connect on WhatsApp
                         </a>
                       </Button>

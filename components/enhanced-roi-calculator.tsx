@@ -351,8 +351,8 @@ export default function EnhancedROICalculator() {
   useEffect(() => {
     // Only start blinking when user has made changes and has not yet calculated
     if (!results && (
-      companySize !== 'small' || 
-      annualRevenue !== 1000000 || 
+      companySize !== 'small' ||
+      annualRevenue !== 1000000 ||
       annualCosts !== 3500000 ||
       implementationCost !== 75000 ||
       annualMaintenanceCost !== 15000 ||
@@ -370,10 +370,10 @@ export default function EnhancedROICalculator() {
       setShouldButtonBlink(false)
     }
   }, [
-    companySize, annualRevenue, annualCosts, 
-    implementationCost, annualMaintenanceCost, revenueIncrease, 
-    costReduction, timeToImplement, includeIntangibles, 
-    employeeProductivity, customerSatisfaction, timeHorizon, 
+    companySize, annualRevenue, annualCosts,
+    implementationCost, annualMaintenanceCost, revenueIncrease,
+    costReduction, timeToImplement, includeIntangibles,
+    employeeProductivity, customerSatisfaction, timeHorizon,
     discountRate, results
   ])
 
@@ -515,7 +515,7 @@ export default function EnhancedROICalculator() {
         })
         return
       }
-      
+
       // Clone current parameters as the comparison base
       setComparisonScenario({
         params: {
@@ -537,11 +537,11 @@ export default function EnhancedROICalculator() {
         },
         results
       })
-      
+
       setComparisonMode(true)
     }
   }
-  
+
   // Calculate ROI for comparison scenario
   const calculateComparisonROI = () => {
     setIsCalculating(true)
@@ -549,7 +549,7 @@ export default function EnhancedROICalculator() {
     setTimeout(() => {
       // Same calculation logic as the main calculateROI function, but store results in comparisonScenario
       // ... calculation code ...
-      
+
       // Calculate yearly cash flows
       const cashFlows = []
       let cumulativeROI = 0
@@ -701,7 +701,7 @@ export default function EnhancedROICalculator() {
 
     // Create CSV header
     let csv = "Year,Investment,Revenue Gain,Cost Savings,Maintenance Cost,Intangible Benefits,Net Cash Flow,Cumulative Cash Flow,ROI\n"
-    
+
     // Add data rows
     results.cashFlows.forEach((cf: CashFlowItem) => {
       csv += `${cf.year},`
@@ -714,7 +714,7 @@ export default function EnhancedROICalculator() {
       csv += `${cf.cumulativeCashFlow},`
       csv += `${cf.year === 0 ? "0" : cf.roi.toFixed(1) + "%"}\n`
     })
-    
+
     // Create download link
     const blob = new Blob([csv], { type: "text/csv" })
     const url = URL.createObjectURL(blob)
@@ -722,19 +722,19 @@ export default function EnhancedROICalculator() {
     link.setAttribute("href", url)
     link.setAttribute("download", "roi_analysis.csv")
     link.click()
-    
+
     toast({
       title: "Export Complete",
       description: "Your ROI analysis has been exported as CSV.",
     })
   }
-  
+
   const exportAsPDF = () => {
     if (!results) return
 
     try {
       // Show loading toast
-    toast({
+      toast({
         title: "Generating PDF",
         description: "Please wait while we prepare your detailed ROI report...",
       })
@@ -742,31 +742,31 @@ export default function EnhancedROICalculator() {
       // Preload brain logo image
       const img = new Image();
       img.crossOrigin = "Anonymous";
-      img.src = "/images/brain.svg"; // Use existing brain logo from public folder
-      
+      img.src = "/images/logo.png"; // Use the new logo asset
+
       img.onload = () => {
         // Create a temporary canvas to convert SVG to data URL
         const canvas = document.createElement('canvas');
         canvas.width = img.width;
         canvas.height = img.height;
         const ctx = canvas.getContext('2d');
-        
+
         if (!ctx) {
           throw new Error('Failed to get canvas context');
         }
-        
+
         // Create styled background for logo
         ctx.fillStyle = '#000000';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.strokeStyle = '#DC2626';
         ctx.lineWidth = 4;
         ctx.strokeRect(0, 0, canvas.width, canvas.height);
-        
+
         // Draw the image with a slight offset to center it
         ctx.drawImage(img, 2, 2, img.width - 4, img.height - 4);
-        
+
         const logoDataUrl = canvas.toDataURL('image/png');
-        
+
         // First, dynamically load the required libraries
         const loadScript = (src: string): Promise<void> => {
           return new Promise((resolve, reject) => {
@@ -775,21 +775,21 @@ export default function EnhancedROICalculator() {
               resolve();
               return;
             }
-            
+
             const script = document.createElement('script');
             script.src = src;
             script.async = true;
-            
+
             script.onload = () => {
               console.log(`Script loaded: ${src}`);
               resolve();
             };
-            
+
             script.onerror = (error) => {
               console.error(`Error loading script: ${src}`, error);
               reject(new Error(`Failed to load ${src}`));
             };
-            
+
             document.head.appendChild(script);
           });
         };
@@ -819,7 +819,7 @@ export default function EnhancedROICalculator() {
           }
         `;
         document.head.appendChild(styleTag);
-        
+
         // Create a hidden div to contain the report content
         const reportContainer = document.createElement('div')
         reportContainer.id = 'roi-pdf-report'
@@ -835,14 +835,14 @@ export default function EnhancedROICalculator() {
         reportContainer.style.overflowX = 'hidden' // Prevent horizontal scrolling
         reportContainer.style.margin = '0'
         document.body.appendChild(reportContainer)
-        
+
         // Current date formatted nicely
-        const currentDate = new Date().toLocaleDateString('en-US', { 
-          year: 'numeric', 
-          month: 'long', 
-          day: 'numeric' 
+        const currentDate = new Date().toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
         });
-        
+
         // Create report ID
         const reportId = "MS-" + Math.random().toString(36).substr(2, 9).toUpperCase();
 
@@ -907,13 +907,12 @@ export default function EnhancedROICalculator() {
               </p>
               <div style="font-size: 12px; font-weight: 500; color: #4b5563; display: flex; align-items: center;">
                 <div style="width: 8px; height: 8px; border-radius: 50%; background-color: ${results.roi > 100 ? '#10b981' : results.roi > 50 ? '#f97316' : '#DC2626'}; margin-right: 6px;"></div>
-                ${
-                  results.roi > 100 
-                    ? 'Highly Recommended Investment' 
-                    : results.roi > 50 
-                      ? 'Recommended Investment'
-                      : 'Consider Alternative Approaches'
-                }
+                ${results.roi > 100
+            ? 'Highly Recommended Investment'
+            : results.roi > 50
+              ? 'Recommended Investment'
+              : 'Consider Alternative Approaches'
+          }
               </div>
             </div>
           </div>
@@ -1130,10 +1129,10 @@ export default function EnhancedROICalculator() {
               if (typeof window.html2canvas === 'undefined' || typeof window.jspdf === 'undefined') {
                 throw new Error('PDF libraries failed to initialize properly');
               }
-              
+
               // Create PDF with proper page breaks
               generatePDF(reportContainer);
-              
+
             } catch (error) {
               console.error("Error during PDF generation:", error);
               document.body.removeChild(reportContainer);
@@ -1153,7 +1152,7 @@ export default function EnhancedROICalculator() {
           });
           document.body.removeChild(reportContainer);
         });
-        
+
         // Function to handle PDF generation with proper paging
         const generatePDF = (container: HTMLElement) => {
           // @ts-ignore
@@ -1178,54 +1177,54 @@ export default function EnhancedROICalculator() {
                 format: 'a4',
                 compress: true
               });
-              
+
               const imgData = canvas.toDataURL('image/png', 1.0);
               const imgWidth = 210; // A4 width in mm (full width)
               const imgHeight = canvas.height * imgWidth / canvas.width;
               const pageHeight = 297; // A4 height in mm
               const bottomMargin = 5; // 5mm bottom margin
-              
+
               let heightLeft = imgHeight;
               let position = 0;
               let pageCount = 0;
-              
+
               // Function to render each page with bottom margin
               while (heightLeft > 0) {
                 // Add a new page after the first page
                 if (pageCount > 0) {
                   pdf.addPage();
                 }
-                
+
                 // Calculate position and effective page height
                 const effectivePageHeight = pageHeight - bottomMargin;
-                
+
                 // On all pages after the first, adjust the positioning
                 if (pageCount > 0) {
                   position = -pageHeight * pageCount + bottomMargin * pageCount;
                 }
-                
+
                 // Add the image
                 pdf.addImage(
-                  imgData, 
-                  'PNG', 
+                  imgData,
+                  'PNG',
                   0, // left margin
                   position, // top position
                   imgWidth, // width
                   imgHeight // height
                 );
-                
+
                 // Reduce height left to print
                 heightLeft -= effectivePageHeight;
                 pageCount++;
               }
-              
+
               // Save the PDF
               pdf.save(`roi_analysis_${industry}_${solutionType}.pdf`);
-              
+
               // Clean up
               document.body.removeChild(container);
               if (styleTag) document.head.removeChild(styleTag);
-              
+
               toast({
                 title: "Report Generated",
                 description: "Your comprehensive ROI analysis has been exported as PDF.",
@@ -1252,7 +1251,7 @@ export default function EnhancedROICalculator() {
           });
         };
       };
-      
+
       // Handle error if logo loading fails
       img.onerror = () => {
         // Fallback to direct PDF generation without logo
@@ -1260,7 +1259,7 @@ export default function EnhancedROICalculator() {
           title: "Logo Load Warning",
           description: "Could not load logo image, proceeding with basic logo.",
         });
-        
+
         // Proceed with PDF generation using a simple text-based logo
         const simpleLogo = `
           <div style="width: 64px; height: 64px; background-color: black; color: #DC2626; border-radius: 8px; 
@@ -1268,11 +1267,11 @@ export default function EnhancedROICalculator() {
             MIND
           </div>
         `;
-        
+
         // Continue with PDF generation using simple logo
         // ... (rest of the PDF generation logic)
       };
-      
+
     } catch (error) {
       console.error("PDF export error:", error);
       toast({
@@ -1282,7 +1281,7 @@ export default function EnhancedROICalculator() {
       });
     }
   }
-  
+
   // Save current scenario
   const saveScenario = () => {
     if (!scenarioName.trim()) {
@@ -1293,7 +1292,7 @@ export default function EnhancedROICalculator() {
       })
       return
     }
-    
+
     const scenarioData = {
       name: scenarioName,
       date: new Date().toISOString(),
@@ -1316,24 +1315,24 @@ export default function EnhancedROICalculator() {
       },
       results,
     }
-    
+
     const updatedScenarios = [...savedScenarios, scenarioData]
     setSavedScenarios(updatedScenarios)
     localStorage.setItem("roi-scenarios", JSON.stringify(updatedScenarios))
-    
+
     setSaveDialogOpen(false)
     setScenarioName("")
-    
+
     toast({
       title: "Scenario Saved",
       description: `Scenario "${scenarioName}" has been saved successfully.`,
     })
   }
-  
+
   // Load a saved scenario
   const loadScenario = (scenario: any) => {
     const { params } = scenario
-    
+
     setIndustry(params.industry)
     setSolutionType(params.solutionType)
     setCompanySize(params.companySize)
@@ -1350,20 +1349,20 @@ export default function EnhancedROICalculator() {
     setTimeHorizon(params.timeHorizon)
     setDiscountRate(params.discountRate)
     setResults(scenario.results)
-    
+
     toast({
       title: "Scenario Loaded",
       description: `Scenario "${scenario.name}" has been loaded successfully.`,
     })
   }
-  
+
   // Delete a saved scenario
   const deleteScenario = (index: number) => {
     const updatedScenarios = [...savedScenarios]
     updatedScenarios.splice(index, 1)
     setSavedScenarios(updatedScenarios)
     localStorage.setItem("roi-scenarios", JSON.stringify(updatedScenarios))
-    
+
     toast({
       title: "Scenario Deleted",
       description: "The selected scenario has been deleted.",
@@ -1373,9 +1372,9 @@ export default function EnhancedROICalculator() {
   // Load industry template
   const loadTemplate = (templateKey: string) => {
     const template = industryTemplates[templateKey as keyof typeof industryTemplates]
-    
+
     if (!template) return
-    
+
     setIndustry(template.industry)
     setSolutionType(template.solutionType)
     setCompanySize(template.companySize)
@@ -1388,12 +1387,12 @@ export default function EnhancedROICalculator() {
     setCustomerSatisfaction(template.customerSatisfaction)
     setTimeHorizon(template.timeHorizon)
     setDiscountRate(template.discountRate)
-    
+
     // Reset results when loading a new template
     setResults(null)
-    
+
     setActiveTab("inputs")
-    
+
     toast({
       title: "Template Loaded",
       description: `"${template.name}" template has been loaded successfully.`,
@@ -1421,10 +1420,10 @@ export default function EnhancedROICalculator() {
                   <CardDescription>Enter information about your company and the AI solution</CardDescription>
                 </div>
                 {results && (
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    onClick={toggleComparisonMode} 
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={toggleComparisonMode}
                     className={comparisonMode ? "bg-red-900/20 text-red-400 border-red-900/30 w-full sm:w-auto" : "w-full sm:w-auto"}
                   >
                     {comparisonMode ? "Disable Comparison" : "Compare Scenarios"}
@@ -1444,9 +1443,9 @@ export default function EnhancedROICalculator() {
                       value={comparisonName}
                       onChange={(e) => setComparisonName(e.target.value)}
                     />
-                    <Button 
-                      size="sm" 
-                      className="bg-red-600 hover:bg-red-700 w-full sm:w-auto" 
+                    <Button
+                      size="sm"
+                      className="bg-red-600 hover:bg-red-700 w-full sm:w-auto"
                       onClick={calculateComparisonROI}
                     >
                       Calculate Alternative
@@ -1725,9 +1724,9 @@ export default function EnhancedROICalculator() {
                   <RefreshCw className="mr-2 h-4 w-4" />
                   Reset
                 </Button>
-                
+
                 {savedScenarios.length > 0 && (
-                  <select 
+                  <select
                     className="bg-black/50 border border-white/10 rounded text-sm px-2 py-1 text-white w-full sm:w-auto"
                     onChange={(e) => {
                       const index = parseInt(e.target.value)
@@ -1746,13 +1745,13 @@ export default function EnhancedROICalculator() {
                   </select>
                 )}
               </div>
-              
-              <Button 
-                className={`bg-red-600 hover:bg-red-700 ${shouldButtonBlink ? 'animate-attention-pulse' : ''} w-full sm:w-auto`} 
+
+              <Button
+                className={`bg-red-600 hover:bg-red-700 ${shouldButtonBlink ? 'animate-attention-pulse' : ''} w-full sm:w-auto`}
                 onClick={() => {
                   calculateROI()
                   setShouldButtonBlink(false)
-                }} 
+                }}
                 disabled={isCalculating}
               >
                 {isCalculating ? (
@@ -1792,17 +1791,17 @@ export default function EnhancedROICalculator() {
                           <td className="p-2">{scenario.name}</td>
                           <td className="p-2">{new Date(scenario.date).toLocaleDateString()}</td>
                           <td className="p-2 text-right">
-                            <Button 
-                              variant="ghost" 
-                              size="sm" 
+                            <Button
+                              variant="ghost"
+                              size="sm"
                               onClick={() => loadScenario(scenario)}
                               className="text-white/70 hover:text-white"
                             >
                               <Upload className="h-4 w-4" />
                             </Button>
-                            <Button 
-                              variant="ghost" 
-                              size="sm" 
+                            <Button
+                              variant="ghost"
+                              size="sm"
                               onClick={() => deleteScenario(index)}
                               className="text-white/70 hover:text-red-500"
                             >
@@ -1818,7 +1817,7 @@ export default function EnhancedROICalculator() {
             </Card>
           )}
         </TabsContent>
-        
+
         <TabsContent value="templates" className="space-y-4">
           <Card className="bg-black/30 border-white/10">
             <CardHeader>
@@ -1855,21 +1854,21 @@ export default function EnhancedROICalculator() {
                           {template.industry.charAt(0).toUpperCase() + template.industry.slice(1)}
                         </Badge>
                         <Badge className="text-[8px] h-3 bg-red-900/20 text-red-400 hover:bg-red-900/30">
-                          {template.solutionType === "predictiveAnalytics" 
-                            ? "Predictive Analytics" 
-                            : template.solutionType === "computerVision" 
-                            ? "Computer Vision"
-                            : template.solutionType === "nlp" 
-                            ? "NLP"
-                            : template.solutionType === "recommendation" 
-                            ? "Recommendation"
-                            : "Automation"}
+                          {template.solutionType === "predictiveAnalytics"
+                            ? "Predictive Analytics"
+                            : template.solutionType === "computerVision"
+                              ? "Computer Vision"
+                              : template.solutionType === "nlp"
+                                ? "NLP"
+                                : template.solutionType === "recommendation"
+                                  ? "Recommendation"
+                                  : "Automation"}
                         </Badge>
                       </div>
                     </CardContent>
                     <div className="px-6 pb-4">
-                      <Button 
-                        onClick={() => loadTemplate(key)} 
+                      <Button
+                        onClick={() => loadTemplate(key)}
                         className="w-full bg-white/5 hover:bg-white/10 text-white"
                       >
                         Load Template
@@ -1929,9 +1928,9 @@ export default function EnhancedROICalculator() {
                       <FileSpreadsheet className="h-3.5 w-3.5" />
                       <span>CSV</span>
                     </Button>
-                    <Button 
-                      variant="outline" 
-                      className="h-8 gap-1" 
+                    <Button
+                      variant="outline"
+                      className="h-8 gap-1"
                       onClick={exportAsPDF}
                       data-export-report
                     >
@@ -1950,7 +1949,7 @@ export default function EnhancedROICalculator() {
                           <Badge className="bg-red-500/30 text-red-400">{comparisonName}</Badge>
                         </div>
                       </div>
-                      
+
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div className="bg-black/20 p-4 rounded-lg">
                           <p className="text-sm text-white/70">Total ROI</p>
@@ -1996,7 +1995,7 @@ export default function EnhancedROICalculator() {
                           </Badge>
                         </div>
                       </div>
-                      
+
                       <div className="h-[300px] mt-4">
                         <ChartContainer
                           config={{
@@ -2012,13 +2011,13 @@ export default function EnhancedROICalculator() {
                           className="h-full"
                         >
                           <ResponsiveContainer width="100%" height="100%">
-                            <BarChart 
+                            <BarChart
                               margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
                             >
                               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                              <XAxis 
-                                dataKey="year" 
-                                stroke="rgba(255,255,255,0.5)" 
+                              <XAxis
+                                dataKey="year"
+                                stroke="rgba(255,255,255,0.5)"
                                 type="category"
                                 allowDuplicatedCategory={false}
                               />
@@ -2046,7 +2045,7 @@ export default function EnhancedROICalculator() {
                           </ResponsiveContainer>
                         </ChartContainer>
                       </div>
-                      
+
                       <table className="w-full border-collapse text-sm mt-4">
                         <thead>
                           <tr className="border-b border-white/10">
@@ -2089,15 +2088,15 @@ export default function EnhancedROICalculator() {
                           </tr>
                         </tbody>
                       </table>
-                      
+
                       <div className="bg-blue-500/10 p-3 rounded-lg text-sm">
                         <h4 className="font-medium mb-1">Analysis Insight</h4>
                         <p className="text-white/80">
-                          {results.roi > comparisonScenario.results.roi 
-                            ? "The base scenario shows a better overall ROI, suggesting it may be the preferred approach." 
+                          {results.roi > comparisonScenario.results.roi
+                            ? "The base scenario shows a better overall ROI, suggesting it may be the preferred approach."
                             : "The alternative scenario shows a better overall ROI, suggesting it may be the preferred approach."}
-                          {results.paybackPeriod < comparisonScenario.results.paybackPeriod 
-                            ? " The base scenario also has a faster payback period." 
+                          {results.paybackPeriod < comparisonScenario.results.paybackPeriod
+                            ? " The base scenario also has a faster payback period."
                             : " The alternative scenario also has a faster payback period."}
                           {" Consider your organization's priorities between upfront investment, implementation time, and long-term returns when making your decision."}
                         </p>
@@ -2166,37 +2165,37 @@ export default function EnhancedROICalculator() {
                         <BarChart data={results.cashFlows} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                           <defs>
                             <linearGradient id="colorNetCashFlow" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8}/>
-                              <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.2}/>
+                              <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />
+                              <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.2} />
                             </linearGradient>
                             <linearGradient id="colorCumulativeCF" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="#f97316" stopOpacity={0.8}/>
-                              <stop offset="95%" stopColor="#f97316" stopOpacity={0.2}/>
+                              <stop offset="5%" stopColor="#f97316" stopOpacity={0.8} />
+                              <stop offset="95%" stopColor="#f97316" stopOpacity={0.2} />
                             </linearGradient>
                           </defs>
                           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                          <XAxis 
-                            dataKey="year" 
+                          <XAxis
+                            dataKey="year"
                             stroke="rgba(255,255,255,0.7)"
                             tick={{ fill: 'rgba(255,255,255,0.8)' }}
                             axisLine={{ stroke: 'rgba(255,255,255,0.3)' }}
                           />
-                          <YAxis 
-                            stroke="rgba(255,255,255,0.7)" 
+                          <YAxis
+                            stroke="rgba(255,255,255,0.7)"
                             tick={{ fill: 'rgba(255,255,255,0.8)' }}
                             axisLine={{ stroke: 'rgba(255,255,255,0.3)' }}
-                            tickFormatter={(value) => `$${value >= 1000 ? `${(value/1000).toFixed(0)}k` : value}`}
+                            tickFormatter={(value) => `$${value >= 1000 ? `${(value / 1000).toFixed(0)}k` : value}`}
                           />
-                          <Tooltip 
+                          <Tooltip
                             contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }}
                             labelStyle={{ color: 'rgba(255,255,255,0.9)' }}
                             formatter={(value) => [`$${Number(value).toLocaleString()}`, undefined]}
                           />
                           <Legend wrapperStyle={{ paddingTop: '10px' }} />
-                          <Bar 
-                            dataKey="netCashFlow" 
-                            fill="url(#colorNetCashFlow)" 
-                            name="Net Cash Flow" 
+                          <Bar
+                            dataKey="netCashFlow"
+                            fill="url(#colorNetCashFlow)"
+                            name="Net Cash Flow"
                             radius={[4, 4, 0, 0]}
                             barSize={30}
                             animationDuration={1500}
@@ -2232,8 +2231,8 @@ export default function EnhancedROICalculator() {
                           <defs>
                             {results.roiBreakdown.map((entry: any, index: number) => (
                               <linearGradient key={`gradient-${index}`} id={`colorBreakdown${index}`} x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stopColor={getBreakdownColor(index)} stopOpacity={0.9}/>
-                                <stop offset="100%" stopColor={getBreakdownColor(index)} stopOpacity={0.6}/>
+                                <stop offset="0%" stopColor={getBreakdownColor(index)} stopOpacity={0.9} />
+                                <stop offset="100%" stopColor={getBreakdownColor(index)} stopOpacity={0.6} />
                               </linearGradient>
                             ))}
                           </defs>
@@ -2252,22 +2251,22 @@ export default function EnhancedROICalculator() {
                             blendStroke
                           >
                             {results.roiBreakdown.map((entry: any, index: number) => (
-                              <Cell 
-                                key={`cell-${index}`} 
-                                fill={`url(#colorBreakdown${index})`} 
+                              <Cell
+                                key={`cell-${index}`}
+                                fill={`url(#colorBreakdown${index})`}
                                 stroke={getBreakdownColor(index)}
                                 strokeWidth={2}
                               />
                             ))}
                           </Pie>
-                          <Tooltip 
+                          <Tooltip
                             formatter={(value) => [`${value}%`, "Contribution"]}
                             contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.2)' }}
                             itemStyle={{ color: 'rgba(255,255,255,0.9)' }}
                           />
-                          <Legend 
-                            layout="vertical" 
-                            verticalAlign="middle" 
+                          <Legend
+                            layout="vertical"
+                            verticalAlign="middle"
                             align="right"
                             iconType="circle"
                           />
@@ -2395,7 +2394,7 @@ export default function EnhancedROICalculator() {
             <div className="space-y-4">
               <div>
                 <Label htmlFor="scenario-name">Scenario Name</Label>
-                <Input 
+                <Input
                   id="scenario-name"
                   className="bg-black/50 border-white/10 mt-1"
                   placeholder="Enter a name for this scenario"
@@ -2404,13 +2403,13 @@ export default function EnhancedROICalculator() {
                 />
               </div>
               <div className="flex justify-end gap-2 pt-2">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={() => setSaveDialogOpen(false)}
                 >
                   Cancel
                 </Button>
-                <Button 
+                <Button
                   className="bg-red-600 hover:bg-red-700"
                   onClick={saveScenario}
                 >

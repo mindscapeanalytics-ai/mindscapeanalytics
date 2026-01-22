@@ -46,49 +46,6 @@ export default function AboutPage() {
   const [isAutoScrolling, setIsAutoScrolling] = useState(true)
 
   // Auto-scroll functionality (reverse direction)
-  useEffect(() => {
-    if (!scrollContainerRef.current || !isAutoScrolling) return;
-
-    const interval = setInterval(() => {
-      if (scrollContainerRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-        const maxScroll = scrollWidth - clientWidth;
-
-        // Smaller increment for smoother scrolling
-        const increment = 0.8;
-
-        // Reset when reaching the end
-        if (scrollLeft >= maxScroll - 2) {
-          scrollContainerRef.current.scrollTo({
-            left: 0,
-            behavior: 'smooth'
-          });
-
-          // Also update indicator
-          document.querySelectorAll('.scroll-indicator').forEach((el, i) => {
-            if (i === 0) {
-              el.classList.add('active');
-              el.classList.add('bg-red-500/60');
-              el.classList.remove('bg-white/10');
-            } else {
-              el.classList.remove('active');
-              el.classList.remove('bg-red-500/60');
-              el.classList.add('bg-white/10');
-            }
-          });
-        } else {
-          // Standard very smooth scrolling
-          scrollContainerRef.current.scrollLeft += increment;
-        }
-
-        // Update arrow visibility
-        setShowLeftArrow(scrollLeft > 0);
-        setShowRightArrow(scrollLeft < maxScroll);
-      }
-    }, 20); // Very frequent updates for ultra-smooth scrolling
-
-    return () => clearInterval(interval);
-  }, [isAutoScrolling]);
 
   // Update the scroll function for perfectly aligned scrolling with consistent cards
   const scroll = (direction: "left" | "right") => {
@@ -396,18 +353,28 @@ export default function AboutPage() {
                     scrollBehavior: 'smooth',
                     gridAutoFlow: 'column'
                   }}
+                  onMouseEnter={() => setIsAutoScrolling(false)}
+                  onMouseLeave={() => setIsAutoScrolling(true)}
                   onScroll={(e) => {
                     const target = e.target as HTMLDivElement
                     const scrollLeft = target.scrollLeft
-                    const maxScroll = target.scrollWidth - target.clientWidth
+                    const scrollWidth = target.scrollWidth
+                    const halfWidth = scrollWidth / 2
+
+                    // Seamless jump for manual scroll too
+                    if (scrollLeft >= halfWidth) {
+                      target.scrollLeft = scrollLeft - halfWidth
+                    } else if (scrollLeft <= 0) {
+                      // Optionally jump to middle if scrolling back manually
+                    }
 
                     setShowLeftArrow(scrollLeft > 10)
-                    setShowRightArrow(scrollLeft < maxScroll - 10)
+                    setShowRightArrow(true)
 
                     // Update active indicator
                     if (scrollContainerRef.current) {
                       const containerWidth = scrollContainerRef.current.clientWidth
-                      const currentPage = Math.floor(scrollLeft / (containerWidth / 2))
+                      const currentPage = Math.floor((scrollLeft % halfWidth) / (containerWidth / 2))
                       const totalPages = Math.ceil(teamMembers.length / (containerWidth / 350))
                       const adjustedPage = Math.min(currentPage, totalPages - 1)
 
@@ -420,26 +387,19 @@ export default function AboutPage() {
                         }
                       })
                     }
-
-                    // Pause auto-scrolling while user is manually scrolling
-                    if (isAutoScrolling) setIsAutoScrolling(false)
-
-                    // Resume auto-scroll after 5 seconds of inactivity
-                    clearTimeout((window as any).scrollTimeout)
-                      ; (window as any).scrollTimeout = setTimeout(() => setIsAutoScrolling(true), 5000)
                   }}
                 >
-                  {teamMembers.map((member, index) => (
+                  {[...teamMembers, ...teamMembers].map((member, index) => (
                     <motion.div
-                      key={member.name}
+                      key={`${member.name}-${index}`}
                       variants={fadeIn}
                       initial="hidden"
                       animate={teamInView ? "visible" : "hidden"}
-                      transition={{ duration: 0.8, delay: 0.3 + index * 0.08 }}
+                      transition={{ duration: 0.8, delay: 0.3 + (index % teamMembers.length) * 0.08 }}
                       className="snap-center"
                       whileHover={{ y: -5, transition: { duration: 0.3 } }}
                     >
-                      <TeamMemberCard member={member} index={index} />
+                      <TeamMemberCard member={member} index={index % teamMembers.length} />
                     </motion.div>
                   ))}
                 </div>
@@ -704,8 +664,8 @@ const teamMembers = [
   {
     name: "Muhammad Atif",
     role: "Full Stack Developer",
-    bio: "Versatile developer with expertise in building comprehensive web solutions from front-end to back-end. Specializes in creating scalable, user-friendly applications with modern technologies.",
-    image: "/full_stack_developer.jpg",
+    bio: "Versatile developer with expertise in building comprehensive web solutions from front-end to back-end. Specializes in creating scalable, user-friendly applications with modern technologies and robust architectures.",
+    image: "/muhammad-atif.jpg",
     department: "Engineering",
     achievements: [
       "Developed multiple full-stack applications",
@@ -728,23 +688,70 @@ const teamMembers = [
     }
   },
   {
-    name: "Muhammad Abubakar",
+    name: "Ghulam Akbar",
     role: "Business Development Manager (BDM)",
-    bio: "Responsible for driving company growth by identifying new business opportunities, building client relationships, and expanding market presence.",
-    image: "/abubakar.jpg",
+    bio: "Strategic business leader dedicated to driving company growth by identifying new market opportunities, cultivating high-value client relationships, and expanding global market presence.",
+    image: "/Akbar_keerio.jpeg",
     department: "Business",
     achievements: [
       "Expanded market reach by 40% by launching Business in two new regions",
-      "Improved lead conversion rate by 25% through streamlined sales processes."
-
+      "Improved lead conversion rate by 25% through streamlined sales processes"
     ],
     education: [
-
       "BS in Computer Science"
     ],
     experience: [
-      "2+ years Experience BDM",
-
+      "2+ years Experience BDM"
+    ],
+    social: {
+      linkedin: "#",
+      twitter: "#",
+      github: "#",
+    }
+  },
+  {
+    name: "Syed Ather",
+    role: "Brand & Media Specialist",
+    bio: "Creative powerhouse focused on building compelling brand narratives and high-impact media strategies. Expert in visual identity, digital storytelling, and multi-channel brand positioning.",
+    image: "/syed-ather.png",
+    department: "Marketing",
+    achievements: [
+      "Crafted unified brand identities for enterprise clients",
+      "Led highly successful multi-channel media campaigns",
+      "Elevated digital presence through innovative creative direction"
+    ],
+    education: [
+      "Degree in Media Sciences & Communication"
+    ],
+    experience: [
+      "Brand Identity & Strategy",
+      "Content Creation & Digital Marketing",
+      "Media Campaign Management"
+    ],
+    social: {
+      linkedin: "#",
+      twitter: "#",
+      github: "#",
+    }
+  },
+  {
+    name: "Farhan Murad",
+    role: "Cybersecurity Analyst",
+    bio: "Diligent security expert specializing in protecting digital assets and ensuring system integrity. Focused on proactive threat detection, vulnerability management, and robust security architecture.",
+    image: "/farhankeerio.jpeg",
+    department: "Security",
+    achievements: [
+      "Implemented advanced security protocols for enterprise platforms",
+      "Led comprehensive vulnerability assessments and mitigation",
+      "Ensured data privacy and regulatory compliance across systems"
+    ],
+    education: [
+      "BS in Cybersecurity & Network Security"
+    ],
+    experience: [
+      "Network Infrastructure Security",
+      "Threat Intel & Incident Response",
+      "Security Auditing & Compliance"
     ],
     social: {
       linkedin: "#",

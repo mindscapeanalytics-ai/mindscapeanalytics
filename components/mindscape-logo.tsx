@@ -10,9 +10,9 @@ interface MindscapeLogoProps {
   pulseEffect?: boolean
 }
 
-export default function MindscapeLogo({ 
-  className = "", 
-  variant = "default", 
+export default function MindscapeLogo({
+  className = "",
+  variant = "default",
   size = "md",
   showText = true,
   pulseEffect = true
@@ -65,63 +65,14 @@ export default function MindscapeLogo({
 
   return (
     <div className={`flex items-center ${currentSize.container} ${className}`}>
-      <svg 
-        width={currentSize.svg.width} 
-        height={currentSize.svg.height} 
-        viewBox="0 0 32 32" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg" 
+      <Image
+        src="/images/logo.png"
+        alt="Mindscape Analytics Logo"
+        width={currentSize.svg.width}
+        height={currentSize.svg.height}
         className={`${showText ? "mr-2" : ""} ${pulseEffect ? "animate-logo-pulse" : ""}`}
-        aria-hidden="true"
-      >
-        {/* Brain-inspired logo with connections */}
-        <rect width="32" height="32" rx="8" fill={currentColors.primary} fillOpacity="0.1" />
-
-        {/* Main brain shape */}
-        <path
-          d="M16 5C10.4772 5 6 9.47715 6 15C6 20.5228 10.4772 25 16 25C21.5228 25 26 20.5228 26 15C26 9.47715 21.5228 5 16 5Z"
-          stroke={currentColors.primary}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-
-        {/* Neural network connections */}
-        <path
-          d="M12 10L16 15L20 10M12 20L16 15L20 20M10 15H22"
-          stroke={currentColors.primary}
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-
-        {/* Central node with pulse effect */}
-        <circle 
-          cx="16" 
-          cy="15" 
-          r="2" 
-          fill={currentColors.primary} 
-          className={pulseEffect ? "animate-ping opacity-75" : ""}
-          style={pulseEffect ? { transformOrigin: 'center', transformBox: 'fill-box', animationDuration: '3s' } : undefined}
-        >
-          {pulseEffect && (
-            <animate 
-              attributeName="opacity" 
-              values="1;0.4;1" 
-              dur="2s" 
-              repeatCount="indefinite" 
-            />
-          )}
-        </circle>
-
-        {/* Outer nodes */}
-        <circle cx="10" cy="15" r="1.5" fill={currentColors.secondary} />
-        <circle cx="22" cy="15" r="1.5" fill={currentColors.secondary} />
-        <circle cx="12" cy="10" r="1.5" fill={currentColors.secondary} />
-        <circle cx="20" cy="10" r="1.5" fill={currentColors.secondary} />
-        <circle cx="12" cy="20" r="1.5" fill={currentColors.secondary} />
-        <circle cx="20" cy="20" r="1.5" fill={currentColors.secondary} />
-      </svg>
+        priority
+      />
       {showText && (
         <span className={`font-bold ${currentSize.textSize} tracking-tight mt-1.5`}>
           <span style={{ color: currentColors.text }}>Mindscape</span>
