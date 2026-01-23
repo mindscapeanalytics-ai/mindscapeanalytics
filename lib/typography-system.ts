@@ -37,7 +37,7 @@ export class TypographySystem {
    */
   getTextShadowStyles(): React.CSSProperties {
     if (!this.config.textShadow.enabled) return {}
-    
+
     return {
       textShadow: `0 2px 4px ${this.config.textShadow.color}`
     }
@@ -51,7 +51,7 @@ export class TypographySystem {
     style: React.CSSProperties
   } {
     const gradient = this.config.gradientText.colors[gradientIndex] || this.config.gradientText.colors[0]
-    
+
     return {
       className: `bg-gradient-to-r ${gradient} bg-clip-text text-transparent`,
       style: {
@@ -67,10 +67,10 @@ export class TypographySystem {
     // Simplified contrast ratio check - in production, use a proper color contrast library
     const bgLuminance = this.getLuminance(backgroundColor)
     const textLuminance = this.getLuminance(textColor)
-    
-    const contrast = (Math.max(bgLuminance, textLuminance) + 0.05) / 
-                    (Math.min(bgLuminance, textLuminance) + 0.05)
-    
+
+    const contrast = (Math.max(bgLuminance, textLuminance) + 0.05) /
+      (Math.min(bgLuminance, textLuminance) + 0.05)
+
     return contrast >= this.config.gradientText.contrastRatio
   }
 
@@ -84,7 +84,7 @@ export class TypographySystem {
     const r = parseInt(hex.substr(0, 2), 16) / 255
     const g = parseInt(hex.substr(2, 2), 16) / 255
     const b = parseInt(hex.substr(4, 2), 16) / 255
-    
+
     return 0.2126 * r + 0.7152 * g + 0.0722 * b
   }
 
@@ -105,10 +105,10 @@ export class TypographySystem {
     ctaSpacing: string
   } {
     return {
-      badgeSpacing: "mb-4", // Reduced from mb-6
-      headlineSpacing: "mb-4", // Reduced from mb-6
-      descriptionSpacing: "mb-6", // Reduced from mb-8
-      ctaSpacing: "pt-1" // Reduced from pt-2
+      badgeSpacing: "mb-2",
+      headlineSpacing: "mb-2",
+      descriptionSpacing: "mb-4",
+      ctaSpacing: "pt-0.5"
     }
   }
 }

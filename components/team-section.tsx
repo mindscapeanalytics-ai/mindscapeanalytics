@@ -255,7 +255,7 @@ export default function TeamSection() {
   }
 
   return (
-    <section className="py-24 relative overflow-hidden bg-black">
+    <div className="relative overflow-hidden bg-black">
       {/* Background elements */}
       <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
       <div className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full bg-red-500/10 blur-[100px]"></div>
@@ -324,6 +324,6 @@ export default function TeamSection() {
           )}
         </div>
       </div>
-    </section>
+    </div>
   )
 }

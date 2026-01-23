@@ -87,35 +87,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-        {/* Add preload hints for critical resources */}
-        <link rel="preload" href="/_next/static/chunks/main.js" as="script" />
-        <link rel="preload" href="/_next/static/chunks/webpack.js" as="script" />
-        <link rel="preload" href="/_next/static/chunks/framework.js" as="script" />
-
-        {/* Preload critical fonts */}
-        <link
-          rel="preload"
-          href="/fonts/inter-var.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-
-        <link
-          rel="preload"
-          href="/images/logo.png"
-          as="image"
-          type="image/png"
-        />
-
-        {/* Preload WebP versions of large images */}
-        <link
-          rel="preload"
-          href="/images/optimized/founder-reduced.webp"
-          as="image"
-          type="image/webp"
-        />
-
         {/* Add QuickLink for prefetching visible links */}
         {/* Quicklink disabled to prevent Webpack runtime conflicts */}
         {/* <Script id="quicklink" strategy="afterInteractive"> ... </Script> */}

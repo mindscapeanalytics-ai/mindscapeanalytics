@@ -24,9 +24,9 @@ import {
 export const defaultTypographyConfig: TypographyConfig = {
   headlineStyles: {
     fontSize: {
-      mobile: "text-4xl md:text-5xl", // Increased for mobile prominence
-      tablet: "text-4xl lg:text-5xl",
-      desktop: "text-5xl xl:text-6xl"
+      mobile: "text-3xl md:text-4xl",
+      tablet: "text-4xl lg:text-4xl",
+      desktop: "text-4xl xl:text-5xl"
     },
     lineHeight: 1.1, // Improved from 0.9
     letterSpacing: "tracking-tight",

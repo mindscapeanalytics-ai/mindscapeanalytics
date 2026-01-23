@@ -447,7 +447,7 @@ export default function ProjectsShowcase() {
       marqueeControls.start({
         x: ["0%", "-100%"],
         transition: {
-          duration: 20, // Increased speed (lower duration)
+          duration: 120,
           ease: "linear",
           repeat: Infinity,
           repeatType: "loop",
@@ -464,7 +464,7 @@ export default function ProjectsShowcase() {
       upcomingMarqueeControls.start({
         x: ["0%", "-100%"],
         transition: {
-          duration: 20,
+          duration: 120,
           ease: "linear",
           repeat: Infinity,
           repeatType: "loop",
@@ -563,7 +563,7 @@ export default function ProjectsShowcase() {
   };
 
   return (
-    <div ref={containerRef} className="relative overflow-hidden py-12">
+    <div ref={containerRef} className="relative overflow-hidden">
       {/* Enhanced Background Elements - Simplified for performance */}
       <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black)] pointer-events-none"></div>
 

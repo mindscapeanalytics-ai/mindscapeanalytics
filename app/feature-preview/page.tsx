@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { Info, ArrowRight } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import NewsTicker from "@/components/news-ticker"
 import TechStackShowcase from "@/components/tech-stack-showcase"
 
 export default function FeaturePreviewPage() {
@@ -24,7 +23,7 @@ export default function FeaturePreviewPage() {
       <div className="absolute inset-0 bg-black"></div>
       <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-5 mix-blend-overlay"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black/80"></div>
-      
+
       {/* Header section */}
       <header className="relative z-10 pt-16 md:pt-24 pb-16">
         <div className="container mx-auto px-4 md:px-6 max-w-7xl">
@@ -49,7 +48,7 @@ export default function FeaturePreviewPage() {
           </motion.div>
         </div>
       </header>
-      
+
       {/* Preview Banner */}
       <section className="relative z-20 mb-16">
         <div className="container mx-auto px-4 md:px-6 max-w-7xl">
@@ -78,22 +77,8 @@ export default function FeaturePreviewPage() {
           </div>
         </div>
       </section>
-      
-      {/* News Ticker */}
-      <section className="relative z-20 mb-16">
-        <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-2">Enhanced News Ticker</h2>
-            <p className="text-white/70 mb-6">
-              Our improved news ticker now supports dynamic colored backgrounds for different news categories.
-            </p>
-          </div>
-          <div className="hidden md:block">
-            <NewsTicker />
-          </div>
-        </div>
-      </section>
-      
+
+
       {/* Screenshot Preview */}
       <section className="relative z-20 mb-16">
         <div className="container mx-auto px-4 md:px-6 max-w-7xl">
@@ -105,9 +90,9 @@ export default function FeaturePreviewPage() {
           </div>
           <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-red-900/20"></div>
-            <img 
-              src="/images/tech-showcase-preview.png" 
-              alt="Tech Stack Showcase Preview" 
+            <img
+              src="/images/tech-showcase-preview.png"
+              alt="Tech Stack Showcase Preview"
               className="w-full h-auto"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-40"></div>
@@ -123,7 +108,7 @@ export default function FeaturePreviewPage() {
           </div>
         </div>
       </section>
-      
+
       {/* Tech Stack Showcase */}
       <section className="relative z-20 pb-24">
         <div className="container mx-auto px-4 md:px-6 max-w-7xl">
@@ -133,7 +118,7 @@ export default function FeaturePreviewPage() {
               Explore the advanced technologies that power Mindscape Analytics.
             </p>
           </div>
-          <TechStackShowcase fullWidth={false} />
+          <TechStackShowcase />
         </div>
       </section>
 

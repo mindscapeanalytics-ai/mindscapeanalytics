@@ -252,7 +252,7 @@ export default function TestimonialCarousel() {
   }
 
   return (
-    <section className="py-10 md:py-14 relative overflow-hidden bg-black">
+    <div className="relative overflow-hidden bg-black">
       {/* Background decorations */}
       <div className="absolute inset-0 bg-grid-white/[0.02] [mask-image:radial-gradient(ellipse_at_center,black,transparent)]" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
@@ -327,6 +327,6 @@ export default function TestimonialCarousel() {
           <div className="h-px w-20 bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
         </div>
       </div>
-    </section>
+    </div>
   )
 }

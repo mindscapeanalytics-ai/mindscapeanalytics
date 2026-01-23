@@ -97,9 +97,9 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
             ...getTextShadowStyles()
           }}
         >
-          <span className="block text-white mb-1 font-black">Engineering</span>
-          <span className="block text-white mb-1 font-black">Intelligent Data</span>
-          <span className="block text-white mb-1 font-black">& AI Systems</span>
+          <span className="block text-white font-black">Engineering</span>
+          <span className="block text-white font-black">Intelligent Data</span>
+          <span className="block text-white font-black">& AI Systems</span>
           <span className="block text-red-500 font-black">for Modern Enterprises</span>
         </h1>
       </motion.div>
@@ -115,7 +115,7 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
       >
         {/* Primary description with enhanced styling */}
         <p
-          className="text-sm sm:text-xl text-white/95 leading-relaxed font-light hero-text"
+          className="text-sm sm:text-lg text-white/95 leading-relaxed font-light hero-text"
           style={getTextShadowStyles()}
         >
           Mindscape Analytics delivers scalable data platforms, AI systems, and automation solutions that help organizations operate smarter, faster, and with greater control.
@@ -123,7 +123,7 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
 
         {/* Secondary description with proper hierarchy */}
         <p
-          className="text-base lg:text-lg text-white/80 leading-relaxed hero-text"
+          className="text-sm lg:text-base text-white/80 leading-relaxed hero-text"
           style={getTextShadowStyles()}
         >
           We design, build, and optimize systems that perform in real-world production environments.
@@ -151,7 +151,7 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
         </Button>
 
         {/* Secondary CTA - Compact on mobile */}
-        <Link href="/solutions" className="flex-1 sm:flex-none">
+        <Link href="/services" className="flex-1 sm:flex-none">
           <Button
             size="default"
             variant="outline"
@@ -160,7 +160,7 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
           >
             <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg sm:rounded-xl"></div>
             <span className="relative z-10 flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap">
-              View Solutions
+              View Services
               <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </span>
           </Button>
@@ -171,7 +171,7 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
 
   return (
     <motion.div
-      className={`flex flex-col justify-center space-y-6 text-center lg:text-left ${className || ''}`}
+      className={`flex flex-col justify-center space-y-4 text-center lg:text-left ${className || ''}`}
       variants={containerVariants}
       initial="hidden"
       animate="visible"

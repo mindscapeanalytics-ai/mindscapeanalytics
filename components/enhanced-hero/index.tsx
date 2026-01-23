@@ -8,19 +8,19 @@ import { FlexibleSection } from "@/components/flexible-section"
 import { EnhancedHeroProps, TypographyConfig, PerformanceConfig, MobileShowcaseConfig, TrustBannerConfig } from "@/types/hero-enhancement"
 
 // Import modular components and configurations
+import { HeroContainer } from "./hero-container"
+import { ContentSection } from "./content-section"
+import { InteractiveTimeline } from "./interactive-timeline"
+import { MobileShowcase } from "./mobile-showcase"
+import { TrustBanner } from "./trust-banner"
+import { PerformanceOptimizer } from "./performance-optimizer"
 import {
-  HeroContainer,
-  ContentSection,
-  InteractiveTimeline,
-  MobileShowcase,
-  TrustBanner,
-  PerformanceOptimizer,
   defaultTypographyConfig,
   defaultPerformanceConfig,
   defaultMobileConfig,
   defaultTrustConfig,
   defaultTimelineData
-} from "./exports"
+} from "./config"
 
 /**
  * Enhanced Hero Component
@@ -28,14 +28,6 @@ import {
  * A performant, accessible, and conversion-optimized hero section that maintains
  * the professional enterprise aesthetic while addressing typography, performance,
  * mobile experience, and accessibility issues.
- * 
- * Features:
- * - Modular architecture with clear separation of concerns
- * - Optimized background system (max 4 layers)
- * - Enhanced typography with proper line heights (1.1+)
- * - Mobile-first responsive design with touch optimization
- * - Accessibility compliance (WCAG AA)
- * - Performance monitoring and optimization
  */
 export default function EnhancedHero({
   fullWidth = true,
@@ -98,7 +90,7 @@ export default function EnhancedHero({
     <PerformanceOptimizer config={mergedPerformanceConfig}>
       <div
         ref={containerRef}
-        className={`relative w-full min-h-[90vh] flex flex-col overflow-hidden ${className || ''}`}
+        className={`relative w-full min-h-[85vh] lg:min-h-[90vh] flex flex-col overflow-hidden ${className || ''}`}
         role="banner"
         aria-label={ariaLabels.hero.main}
       >
@@ -108,10 +100,10 @@ export default function EnhancedHero({
           className="absolute inset-0"
         />
 
-        {/* Main Content - Full height without trust banner interference */}
+        {/* Main Content - Improved vertical alignment to clear fixed nav */}
         <FlexibleSection
           fullWidth={true}
-          className="relative z-10 flex-1 flex items-center py-8"
+          className="relative z-10 flex-1 flex items-center pt-24 lg:pt-32 pb-12 lg:pb-16"
           noPadding={true}
           id="hero-content"
         >
@@ -158,7 +150,7 @@ export default function EnhancedHero({
                 <InteractiveTimeline
                   timelineData={finalTimelineData}
                   performanceConfig={mergedPerformanceConfig}
-                  className="hidden lg:flex items-center justify-center relative z-40 h-[80vh] pt-0"
+                  className="hidden lg:flex items-center justify-center relative z-40 h-[60vh] pt-0"
                 />
               </div>
             )}
@@ -178,11 +170,9 @@ export default function EnhancedHero({
 }
 
 // Export individual components for testing and customization
-export {
-  HeroContainer,
-  ContentSection,
-  InteractiveTimeline,
-  MobileShowcase,
-  TrustBanner,
-  PerformanceOptimizer
-} from "./exports"
+export { HeroContainer } from "./hero-container"
+export { ContentSection } from "./content-section"
+export { InteractiveTimeline } from "./interactive-timeline"
+export { MobileShowcase } from "./mobile-showcase"
+export { TrustBanner } from "./trust-banner"
+export { PerformanceOptimizer } from "./performance-optimizer"

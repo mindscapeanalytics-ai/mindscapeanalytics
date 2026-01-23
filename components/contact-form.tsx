@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from "react"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -20,9 +21,7 @@ const formSchema = z.object({
   phone: z.string().optional(),
   subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
-  interest: z.string({
-    required_error: "Please select an area of interest.",
-  }),
+  interest: z.string().min(1, { message: "Please select an area of interest." }),
 })
 
 function ContactFormContent() {
@@ -106,28 +105,40 @@ function ContactFormContent() {
   return (
     <div className="relative">
       {isSuccess && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur-sm rounded-lg z-10">
-          <CheckCircle2 className="h-16 w-16 text-green-500 mb-4" />
-          <h3 className="text-xl font-bold mb-2">Message Sent!</h3>
-          <p className="text-white/70 text-center max-w-xs">
-            Thank you for reaching out. We'll get back to you as soon as possible.
-          </p>
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-zinc-950/95 backdrop-blur-md rounded-lg z-20 border border-green-500/20">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="flex flex-col items-center"
+          >
+            <div className="h-16 w-16 bg-green-500/10 rounded-full flex items-center justify-center mb-4">
+              <CheckCircle2 className="h-8 w-8 text-green-500" />
+            </div>
+            <h3 className="text-xl font-bold mb-2 text-white">Message Sent!</h3>
+            <p className="text-zinc-400 text-center max-w-xs text-sm">
+              Thank you for reaching out. We'll get back to you shortly.
+            </p>
+          </motion.div>
         </div>
       )}
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Full Name</FormLabel>
+                <FormItem className="space-y-1.5">
+                  <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Full Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" className="bg-black/50 border-white/10" {...field} />
+                    <Input
+                      placeholder="John Doe"
+                      className="bg-zinc-900/80 border-white/10 focus:border-red-500/50 focus:ring-red-500/20 h-10 transition-all placeholder:text-zinc-600"
+                      {...field}
+                    />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-xs" />
                 </FormItem>
               )}
             />
@@ -135,28 +146,36 @@ function ContactFormContent() {
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email Address</FormLabel>
+                <FormItem className="space-y-1.5">
+                  <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Email Address</FormLabel>
                   <FormControl>
-                    <Input placeholder="john@example.com" className="bg-black/50 border-white/10" {...field} />
+                    <Input
+                      placeholder="john@example.com"
+                      className="bg-zinc-900/80 border-white/10 focus:border-red-500/50 focus:ring-red-500/20 h-10 transition-all placeholder:text-zinc-600"
+                      {...field}
+                    />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-xs" />
                 </FormItem>
               )}
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               control={form.control}
               name="company"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Company Name</FormLabel>
+                <FormItem className="space-y-1.5">
+                  <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Company</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your Company" className="bg-black/50 border-white/10" {...field} />
+                    <Input
+                      placeholder="Your Company"
+                      className="bg-zinc-900/80 border-white/10 focus:border-red-500/50 focus:ring-red-500/20 h-10 transition-all placeholder:text-zinc-600"
+                      {...field}
+                    />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-xs" />
                 </FormItem>
               )}
             />
@@ -164,12 +183,63 @@ function ContactFormContent() {
               control={form.control}
               name="phone"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Phone Number</FormLabel>
+                <FormItem className="space-y-1.5">
+                  <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Phone</FormLabel>
                   <FormControl>
-                    <Input placeholder="+1 (555) 123-4567" className="bg-black/50 border-white/10" {...field} />
+                    <Input
+                      placeholder="+1 (555) 000-0000"
+                      className="bg-zinc-900/80 border-white/10 focus:border-red-500/50 focus:ring-red-500/20 h-10 transition-all placeholder:text-zinc-600"
+                      {...field}
+                    />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-xs" />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FormField
+              control={form.control}
+              name="interest"
+              render={({ field }) => (
+                <FormItem className="space-y-1.5">
+                  <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Interest</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger className="bg-zinc-900/80 border-white/10 focus:border-red-500/50 focus:ring-red-500/20 h-10 text-zinc-300">
+                        <SelectValue placeholder="Select topic" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent className="bg-zinc-900 border-zinc-800 text-zinc-300">
+                      <SelectItem value="demo">Live Demo Request</SelectItem>
+                      <SelectItem value="ai-analytics">AI Analytics Platform</SelectItem>
+                      <SelectItem value="computer-vision">Computer Vision</SelectItem>
+                      <SelectItem value="nlp">Natural Language Processing</SelectItem>
+                      <SelectItem value="ml">Machine Learning Models</SelectItem>
+                      <SelectItem value="custom">Custom AI Solutions</SelectItem>
+                      <SelectItem value="whatsapp">WhatsApp Inquiry</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage className="text-xs" />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="subject"
+              render={({ field }) => (
+                <FormItem className="space-y-1.5">
+                  <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Subject</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="How can we help?"
+                      className="bg-zinc-900/80 border-white/10 focus:border-red-500/50 focus:ring-red-500/20 h-10 transition-all placeholder:text-zinc-600"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-xs" />
                 </FormItem>
               )}
             />
@@ -177,69 +247,31 @@ function ContactFormContent() {
 
           <FormField
             control={form.control}
-            name="interest"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Area of Interest</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger className="bg-black/50 border-white/10">
-                      <SelectValue placeholder="Select your area of interest" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent className="bg-black/90 border-white/10">
-                    <SelectItem value="demo">Live Demo Request</SelectItem>
-                    <SelectItem value="ai-analytics">AI Analytics Platform</SelectItem>
-                    <SelectItem value="computer-vision">Computer Vision</SelectItem>
-                    <SelectItem value="nlp">Natural Language Processing</SelectItem>
-                    <SelectItem value="ml">Machine Learning Models</SelectItem>
-                    <SelectItem value="custom">Custom AI Solutions</SelectItem>
-                    <SelectItem value="whatsapp">WhatsApp Inquiry</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="subject"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Subject</FormLabel>
-                <FormControl>
-                  <Input placeholder="How can we help you?" className="bg-black/50 border-white/10" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
             name="message"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Message</FormLabel>
+              <FormItem className="space-y-1.5">
+                <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Message</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Please provide details about your inquiry..."
-                    className="bg-black/50 border-white/10 min-h-[120px]"
+                    placeholder="Tell us about your project requirements..."
+                    className="bg-zinc-900/80 border-white/10 focus:border-red-500/50 focus:ring-red-500/20 min-h-[100px] resize-none transition-all placeholder:text-zinc-600"
                     {...field}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-xs" />
               </FormItem>
             )}
           />
 
-          <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold tracking-wide h-11 rounded-md shadow-lg shadow-red-900/20 transition-all active:scale-[0.98] mt-2 border border-red-500/20"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Sending...
+                Processing...
               </>
             ) : (
               "Send Message"

@@ -3,7 +3,7 @@
 import { useState, useEffect, memo } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Github, Linkedin, Twitter, ChevronRight, Mail, MapPin, Phone, ArrowRight, Brain, AlertCircle } from "lucide-react"
+import { Github, Linkedin, Twitter, ChevronRight, Mail, MapPin, Phone, ArrowRight, AlertCircle } from "lucide-react"
 import { motion } from "framer-motion"
 
 import { footerNav, siteConfig } from "@/config/site-config"
@@ -37,13 +37,13 @@ const FooterBackground = memo(() => (
         backgroundSize: '50px 50px'
       }} />
 
-    {/* Neural network nodes with enhanced shadows */}
-    <div className="absolute top-1/4 left-10 w-1 h-1 bg-red-500 rounded-full opacity-50 animate-pulse-slow"
-      style={{ boxShadow: "0 0 20px 8px rgba(239, 68, 68, 0.4)" }} />
-    <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-red-600 rounded-full opacity-40 animate-pulse-medium"
-      style={{ boxShadow: "0 0 30px 10px rgba(220, 38, 38, 0.5)" }} />
-    <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-red-500 rounded-full opacity-30 animate-pulse-slow"
-      style={{ boxShadow: "0 0 25px 8px rgba(239, 68, 68, 0.4)" }} />
+    {/* Neural network nodes with enhanced shadows - Using Tailwind for animations */}
+    <div className="absolute top-1/4 left-10 w-1 h-1 bg-red-500 rounded-full opacity-50 animate-pulse"
+      style={{ boxShadow: "0 0 20px 8px rgba(239, 68, 68, 0.4)", animationDuration: '4s' }} />
+    <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-red-600 rounded-full opacity-40 animate-pulse"
+      style={{ boxShadow: "0 0 30px 10px rgba(220, 38, 38, 0.5)", animationDuration: '3s' }} />
+    <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-red-500 rounded-full opacity-30 animate-pulse"
+      style={{ boxShadow: "0 0 25px 8px rgba(239, 68, 68, 0.4)", animationDuration: '5s' }} />
 
     {/* Enhanced top gradient border */}
     <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent" />
@@ -52,6 +52,7 @@ const FooterBackground = memo(() => (
     <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-80" />
   </>
 ));
+FooterBackground.displayName = 'FooterBackground';
 
 const CompanyLogo = memo(() => (
   <div className="relative flex flex-col items-start">
@@ -83,6 +84,7 @@ const CompanyLogo = memo(() => (
     </div>
   </div>
 ));
+CompanyLogo.displayName = 'CompanyLogo';
 
 const SocialLinks = memo(({
   handleExternalLink
@@ -125,6 +127,7 @@ const SocialLinks = memo(({
     </div>
   );
 });
+SocialLinks.displayName = 'SocialLinks';
 
 const ContactInfo = memo(({
   handleExternalLink
@@ -132,17 +135,13 @@ const ContactInfo = memo(({
   handleExternalLink: (url: string, e: React.MouseEvent) => void
 }) => (
   <div className="mb-6">
-    {/* Get in Touch Header */}
     <div className="flex items-center gap-2 mb-6">
       <Mail className="h-5 w-5 text-red-500" />
       <h3 className="text-lg sm:text-xl font-semibold text-white">Get in Touch</h3>
     </div>
 
-    {/* 2-Column Grid Layout */}
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-6">
-      {/* Column 1: Address & Phone */}
       <div className="space-y-4">
-        {/* Address */}
         <div className="flex items-start gap-3">
           <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center">
             <MapPin className="h-4 w-4 text-red-400" />
@@ -156,7 +155,6 @@ const ContactInfo = memo(({
           </div>
         </div>
 
-        {/* Phone */}
         <div className="flex items-start gap-3">
           <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center">
             <Phone className="h-4 w-4 text-red-400" />
@@ -172,9 +170,7 @@ const ContactInfo = memo(({
         </div>
       </div>
 
-      {/* Column 2: Email Button & Social Icons */}
       <div className="flex flex-col space-y-4">
-        {/* Send Email Button */}
         <div>
           <a
             href="mailto:zeeshan.keerio@mindscapeanalytics.com"
@@ -184,13 +180,12 @@ const ContactInfo = memo(({
             Send Email
           </a>
         </div>
-
-        {/* Social Icons */}
         <SocialLinks handleExternalLink={handleExternalLink} />
       </div>
     </div>
   </div>
 ));
+ContactInfo.displayName = 'ContactInfo';
 
 const Newsletter = memo(({
   email,
@@ -240,16 +235,17 @@ const Newsletter = memo(({
     </div>
   </div>
 ));
+Newsletter.displayName = 'Newsletter';
 
-const FooterNavLinks = memo(({ footerNav }: { footerNav: typeof import("@/config/site-config").footerNav }) => (
+const FooterNavLinks = memo(({ footerNav }: { footerNav: any }) => (
   <div className="grid grid-cols-2 gap-4 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
-    {footerNav.main.map((section, i) => (
+    {footerNav.main.map((section: any, i: number) => (
       <div key={i} className="mb-6 md:mb-0">
         <h3 className="font-medium text-base sm:text-lg mb-3 sm:mb-4 pb-2 border-b border-white/10 text-white drop-shadow-sm">
           {section.title}
         </h3>
         <ul className="space-y-2 sm:space-y-3">
-          {section.items.map((item, j) => (
+          {section.items.map((item: any, j: number) => (
             <li key={j}>
               <Link
                 href={item.href}
@@ -266,6 +262,7 @@ const FooterNavLinks = memo(({ footerNav }: { footerNav: typeof import("@/config
     ))}
   </div>
 ));
+FooterNavLinks.displayName = 'FooterNavLinks';
 
 const FooterBottom = memo(({
   currentYear,
@@ -278,15 +275,9 @@ const FooterBottom = memo(({
     <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent shadow-sm" />
 
     <div className="pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <motion.p
-        className="text-white/60 text-xs sm:text-sm text-center md:text-left drop-shadow-sm"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2 }}
-      >
+      <p className="text-white/60 text-xs sm:text-sm text-center md:text-left drop-shadow-sm">
         © {currentYear} Mindscape Analytics LLC. All rights reserved.
-      </motion.p>
+      </p>
 
       {secondaryLinks && (
         <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
@@ -305,6 +296,7 @@ const FooterBottom = memo(({
     </div>
   </div>
 ));
+FooterBottom.displayName = 'FooterBottom';
 
 const ErrorNotification = memo(({
   linkError,
@@ -331,30 +323,15 @@ const ErrorNotification = memo(({
     </div>
   ) : null
 ));
+ErrorNotification.displayName = 'ErrorNotification';
 
 // Main footer component
 export default function Footer({ fullWidth = true }: FooterProps) {
   // State management
   const currentYear = 2025;
-  const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [linkError, setLinkError] = useState(false);
-
-  // Handle window resize for responsiveness
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 640);
-      setIsTablet(window.innerWidth >= 640 && window.innerWidth < 1024);
-    };
-
-    // Set initial values
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   // Email validation
   const validateEmail = (email: string): boolean => {
@@ -364,7 +341,7 @@ export default function Footer({ fullWidth = true }: FooterProps) {
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(e.target.value);
-    setIsEmailValid(true); // Reset validation state on change
+    setIsEmailValid(true);
   };
 
   const handleSubscribe = (): void => {
@@ -372,52 +349,25 @@ export default function Footer({ fullWidth = true }: FooterProps) {
       setIsEmailValid(false);
       return;
     }
-
-    try {
-      // Handle subscription logic with error handling
-      console.log("Subscribed with:", email);
-      // In a real app, this would call an API endpoint
-      // fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email }) })
-      //   .then(res => {
-      //     if (!res.ok) throw new Error('Subscription failed');
-      //     return res.json();
-      //   })
-      //   .then(data => {
-      //     // Handle success
-      //     setEmail("");
-      //   })
-      //   .catch(err => {
-      //     console.error('Error:', err);
-      //     // Handle error
-      //   });
-
-      setEmail("");
-    } catch (error) {
-      console.error("Subscription error:", error);
-      // Handle error state here if needed
-    }
+    console.log("Subscribed with:", email);
+    setEmail("");
   };
 
-  // Safe external link handler
   const handleExternalLink = (url: string, e: React.MouseEvent): void => {
     try {
       window.open(url, "_blank", "noopener,noreferrer");
     } catch (error) {
       e.preventDefault();
       setLinkError(true);
-      console.error("Error opening link:", error);
-      // Auto-dismiss error after 5 seconds
       setTimeout(() => setLinkError(false), 5000);
     }
   };
 
   return (
     <footer className="relative bg-black border-t border-white/10 text-white overflow-hidden shadow-xl" role="contentinfo" aria-label="Site footer">
-      {/* Background elements */}
       <FooterBackground />
 
       <div className={`${getContainerClasses({ fullWidth })} relative z-10`}>
-        {/* Newsletter Subscription */}
         <Newsletter
           email={email}
           isEmailValid={isEmailValid}
@@ -425,71 +375,30 @@ export default function Footer({ fullWidth = true }: FooterProps) {
           handleSubscribe={handleSubscribe}
         />
 
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
-          {/* Company Info */}
           <div className="lg:col-span-4 relative z-10">
-            <div className="mb-6 motion-safe:animate-fade-in">
+            <div className="mb-6">
               <CompanyLogo />
             </div>
             <p className="text-sm sm:text-base text-white/70 mb-6 max-w-md drop-shadow-sm">
               Transforming businesses with advanced AI solutions. Our platform helps enterprises harness the power of
               artificial intelligence to drive innovation and growth.
             </p>
-
             <ContactInfo handleExternalLink={handleExternalLink} />
           </div>
 
-          {/* Quick Links */}
           <div className="lg:col-span-8 relative z-10">
             <FooterNavLinks footerNav={footerNav} />
           </div>
         </div>
 
-        {/* Bottom Footer */}
         <FooterBottom
           currentYear={currentYear}
           secondaryLinks={footerNav.secondary}
         />
       </div>
 
-      {/* Error notification */}
       <ErrorNotification linkError={linkError} setLinkError={setLinkError} />
-
-      <style jsx global>{`
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 0.6; transform: scale(1.05); }
-        }
-
-        @keyframes pulse-medium {
-          0%, 100% { opacity: 0.4; transform: scale(1); }
-          50% { opacity: 0.7; transform: scale(1.1); }
-        }
-        
-        @keyframes rgb-spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        
-        @keyframes fade-in {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-5px); }
-        }
-        
-        .animate-fade-in {
-          animation: fade-in 0.8s ease-out forwards;
-        }
-        
-        .animate-float {
-          animation: float 5s ease-in-out infinite;
-        }
-      `}</style>
     </footer>
   );
 }

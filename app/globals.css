@@ -685,3 +685,38 @@ aside>* {
     box-shadow: 0 0 0 10px rgba(244, 63, 94, 0);
   }
 }
+
+/* Orbit Animations */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes blink-dark {
+  0%, 100% { filter: brightness(1) drop-shadow(0 0 0px transparent); }
+  50% { filter: brightness(0.7) drop-shadow(0 0 10px rgba(0,0,0,0.5)); }
+}
+
+.animate-blink-dark {
+  animation: blink-dark 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate-orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-rotate-orbit {
+  animation: rotate-orbit 30s linear infinite;
+}
+
+.node-counter-rotate {
+  animation: rotate-orbit 30s linear infinite reverse;
+}

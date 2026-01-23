@@ -4,10 +4,11 @@ import type React from "react"
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { MessageSquare, X, Send, Loader2, Brain } from "lucide-react"
+import { MessageSquare, X, Send, Loader2, Brain, UserPlus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { QuickContactModal } from "@/components/quick-contact-modal"
 
 type Message = {
   text: string;
@@ -18,6 +19,7 @@ type Message = {
 
 export function FloatingChatWidget() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
     {
       text: "Hi there! 👋 How can I help you with Mindscape AI today?",
@@ -43,7 +45,7 @@ export function FloatingChatWidget() {
       sender: "user",
       timestamp: new Date(),
     }
-    
+
     setMessages((prev) => [...prev, userMessage])
     setInputValue("")
     setIsLoading(true)
@@ -56,7 +58,7 @@ export function FloatingChatWidget() {
           role: msg.sender === "user" ? "user" : "assistant",
           content: msg.text
         }));
-      
+
       // Add the new user message
       apiMessages.push({
         role: "user",
@@ -77,7 +79,7 @@ export function FloatingChatWidget() {
       }
 
       const data = await response.json();
-      
+
       // Add bot response
       const botMessage: Message = {
         text: data.content,
@@ -88,14 +90,14 @@ export function FloatingChatWidget() {
       setMessages((prev) => [...prev, botMessage])
     } catch (error) {
       console.error('Error in chat request:', error);
-      
+
       // Add error message
       const errorMessage: Message = {
         text: "I'm sorry, I'm having trouble connecting right now. Please try again later.",
         sender: "bot",
         timestamp: new Date(),
       }
-      
+
       setMessages((prev) => [...prev, errorMessage])
     } finally {
       setIsLoading(false)
@@ -133,25 +135,35 @@ export function FloatingChatWidget() {
                   <p className="text-xs text-white/70">Online | Powered by AI</p>
                 </div>
               </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-white hover:bg-white/10"
-                onClick={() => setIsOpen(false)}
-              >
-                <X className="h-4 w-4" />
-              </Button>
+              <div className="flex gap-1">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-white hover:bg-white/10 h-8 w-8"
+                  onClick={() => setIsContactModalOpen(true)}
+                  title="Quick Contact"
+                >
+                  <UserPlus className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-white hover:bg-white/10 h-8 w-8"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
 
             <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-black/50 backdrop-blur-sm">
               {messages.map((message, index) => (
                 <div key={index} className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}>
                   <div
-                    className={`max-w-[80%] rounded-lg p-3 ${
-                      message.sender === "user"
-                        ? "bg-red-600 text-white"
-                        : "bg-white/5 border border-white/10 text-white"
-                    }`}
+                    className={`max-w-[80%] rounded-lg p-3 ${message.sender === "user"
+                      ? "bg-red-600 text-white"
+                      : "bg-white/5 border border-white/10 text-white"
+                      }`}
                   >
                     <p className="text-sm">{message.text}</p>
                     <p className="text-xs mt-1 opacity-70">
@@ -171,7 +183,7 @@ export function FloatingChatWidget() {
                   </div>
                 </div>
               )}
-              
+
               <div ref={messagesEndRef} />
             </div>
 
@@ -205,14 +217,21 @@ export function FloatingChatWidget() {
       </AnimatePresence>
 
       <Button
-        className={`fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-50 ${
-          isOpen ? "bg-red-700 hover:bg-red-800" : "bg-red-600 hover:bg-red-700"
-        }`}
+        className={`fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-50 ${isOpen ? "bg-red-700 hover:bg-red-800" : "bg-red-600 hover:bg-red-700"
+          }`}
         size="icon"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? <X className="h-6 w-6" /> : <MessageSquare className="h-6 w-6" />}
       </Button>
+
+      {/* Quick Contact Modal */}
+      <QuickContactModal
+        open={isContactModalOpen}
+        onOpenChange={setIsContactModalOpen}
+        title="Contact Our Team"
+        description="Fill out this quick form and our team will get back to you shortly."
+      />
     </>
   )
 }

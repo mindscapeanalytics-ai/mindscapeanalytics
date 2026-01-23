@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 
 // Background component that implements the landing page's background style and effects
@@ -17,7 +19,7 @@ export function StandardBackground() {
       {/* Global Background Elements */}
       <div className={`${backgroundStyles.global} ${backgroundStyles.gradient}`}></div>
       <div className={`${backgroundStyles.global} ${backgroundStyles.overlay}`}></div>
-      
+
       {/* Animated Background Particles */}
       <div className={backgroundStyles.particles}>
         <div className={backgroundStyles.grid}></div>

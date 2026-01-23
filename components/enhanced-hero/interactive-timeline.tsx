@@ -46,9 +46,9 @@ export function InteractiveTimeline({
       role="region"
       aria-label={ariaLabels.timeline.container}
     >
-      <div className="w-full h-[600px] flex items-center justify-center relative z-30 pt-10">
-        {/* Enhanced glow effect behind timeline - more transparent and larger */}
-        <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-transparent to-blue-500/5 rounded-full blur-[120px] z-10"></div>
+      <div className="w-full h-[450px] flex items-center justify-center relative z-30 pt-0">
+        {/* Enhanced glow effect behind timeline - Using performant radial gradient instead of blur */}
+        <div className="absolute inset-x-[-20%] inset-y-[-10%] bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.06)_0%,rgba(59,130,246,0.04)_40%,transparent_70%)] z-10 pointer-events-none"></div>
 
         {/* Original RadialOrbitalTimeline Component */}
         <div className="relative z-30 w-full h-full">

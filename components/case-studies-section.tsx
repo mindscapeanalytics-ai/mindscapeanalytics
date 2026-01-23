@@ -181,7 +181,7 @@ export default function CaseStudiesSection() {
   const currentStudy = caseStudies[currentIndex]
 
   return (
-    <section className="w-full py-16 bg-black relative overflow-hidden border-t border-white/5">
+    <div className="w-full bg-black relative overflow-hidden border-t border-white/5">
       <div className="max-w-[90vw] mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -417,6 +417,6 @@ export default function CaseStudiesSection() {
           </CardContent>
         </Card>
       </div>
-    </section>
+    </div>
   )
 }

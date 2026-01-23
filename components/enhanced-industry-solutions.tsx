@@ -1497,7 +1497,7 @@ export default function EnhancedIndustrySolutions() {
       <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-red-500/10 blur-[100px] animate-pulse-slow"></div>
       <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-red-500/10 blur-[120px] animate-pulse-slow"></div>
 
-      <div className="relative z-10">
+      <div className="relative z-10 container mx-auto px-4 md:px-6">
         {/* Updated header with two-column layout for desktop and stacked for mobile */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-10 items-center">
           {/* Left column: Title and description */}

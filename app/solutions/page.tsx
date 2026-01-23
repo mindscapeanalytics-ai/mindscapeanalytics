@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import { Brain, MessageSquare, Search, ArrowRight, Building } from "lucide-react"
+import { Brain, MessageSquare, Search, ArrowRight, Building, Truck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { StandardBackground, SectionBackground } from "@/components/shared/background"
@@ -62,6 +62,12 @@ export default function SolutionsPage() {
       title: "Real Estate Solutions",
       description: "Advanced AI-powered analytics and management tools for the real estate industry.",
       href: "/solutions/real-estate"
+    },
+    {
+      icon: <Truck className="h-10 w-10 text-red-500" />,
+      title: "Supply Chain Solutions",
+      description: "Autonomous logistics and predictive supply chain optimization platform.",
+      href: "/solutions/supply-chain"
     }
   ]
 

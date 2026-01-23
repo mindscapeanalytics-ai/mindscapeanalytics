@@ -187,7 +187,7 @@ export default function ProductsShowcase() {
   }
 
   return (
-    <section className="py-20 relative overflow-hidden bg-black">
+    <div className="w-full relative overflow-hidden bg-black">
       {/* Immersive background effects */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-red-500/50 to-transparent"></div>
@@ -354,6 +354,6 @@ export default function ProductsShowcase() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

@@ -226,7 +226,6 @@ interface FeaturesSectionProps {
 export default function FeaturesSection({ fullWidth = true }: FeaturesSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
-    target: containerRef,
     offset: ["start end", "end start"],
   })
 
@@ -237,13 +236,13 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
   const [activeFeature, setActiveFeature] = useState<string | null>(null)
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false)
   const [animatedStats, setAnimatedStats] = useState<Record<string, number>>({})
-  
+
   // Add new states for advanced interactions
   const [comparisonMode, setComparisonMode] = useState(false)
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([])
   const [selectedMetric, setSelectedMetric] = useState<MetricKey>("performance")
   const [showBenchmark, setShowBenchmark] = useState(true)
-  
+
   // Add animation for stats
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -269,7 +268,7 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
     setActiveFeature(title);
     setIsDetailModalOpen(true);
   };
-  
+
   // Function to toggle feature selection for comparison
   const toggleFeatureSelection = (title: string) => {
     if (selectedFeatures.includes(title)) {
@@ -292,12 +291,12 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
         <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
         <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-red-500/10 blur-[100px] animate-pulse-slow"></div>
         <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-red-500/10 blur-[120px] animate-pulse-slow"></div>
-        
+
         <motion.div
           style={{ y, opacity }}
           className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent pointer-events-none"
         />
-        
+
         <div className="relative z-10 w-full">
           {/* Compact Feature Header - Two-column layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 items-center w-full">
@@ -305,22 +304,22 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
             <div>
               <div className="mb-4 inline-flex items-center">
                 <div>
-                  <Badge 
-                    variant="outline" 
+                  <Badge
+                    variant="outline"
                     className="text-sm font-medium bg-red-500/10 backdrop-blur-sm border-red-500/30 text-red-400 shadow-glow-sm shadow-red-500/20 px-4 py-1.5"
                   >
                     POWERFUL FEATURES
                   </Badge>
                 </div>
               </div>
-              
-              <h2 
+
+              <h2
                 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/70"
               >
                 Enterprise-Grade <span className="text-red-500">AI Platform</span>
               </h2>
-              
-              <p 
+
+              <p
                 className="text-base md:text-lg text-white/70"
               >
                 Built for scale and performance, our platform delivers cutting-edge AI capabilities with enterprise-grade reliability.
@@ -329,8 +328,8 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
 
             {/* Right column: Compare Features button */}
             <div className="flex justify-start md:justify-end">
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className={`flex items-center gap-2 ${comparisonMode ? 'bg-red-500/20 text-red-300 border-red-500/40' : 'border-white/20 hover:border-red-500/40'} backdrop-blur-sm transition-all duration-300 hover:shadow-glow-sm hover:shadow-red-500/20 px-5 py-2.5`}
                 onClick={() => setComparisonMode(!comparisonMode)}
               >
@@ -346,11 +345,11 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
               </Button>
             </div>
           </div>
-          
+
           {/* Comparison Mode Panel - Enhanced */}
           <AnimatePresence>
             {comparisonMode && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, height: 0, y: -20 }}
                 animate={{ opacity: 1, height: 'auto', y: 0 }}
                 exit={{ opacity: 0, height: 0, y: -20 }}
@@ -361,14 +360,13 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                   <p className="text-sm text-white/60 mb-2">Select up to 3 features to compare</p>
                   <div className="flex justify-center gap-2 flex-wrap">
                     {features.map(feature => (
-                      <Badge 
+                      <Badge
                         key={feature.title}
                         variant={selectedFeatures.includes(feature.title) ? "default" : "outline"}
-                        className={`cursor-pointer backdrop-blur-sm transition-all duration-300 ${
-                          selectedFeatures.includes(feature.title) 
-                            ? `bg-${feature.color}-500/20 text-${feature.color}-300 border-${feature.color}-500/40` 
+                        className={`cursor-pointer backdrop-blur-sm transition-all duration-300 ${selectedFeatures.includes(feature.title)
+                            ? `bg-${feature.color}-500/20 text-${feature.color}-300 border-${feature.color}-500/40`
                             : 'hover:bg-white/10 border-white/20'
-                        }`}
+                          }`}
                         onClick={() => toggleFeatureSelection(feature.title)}
                       >
                         {feature.title}
@@ -378,9 +376,9 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                       </Badge>
                     ))}
                   </div>
-                  
+
                   {selectedFeatures.length > 0 && (
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
@@ -388,39 +386,38 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                     >
                       <div className="flex justify-center gap-2 mb-4">
                         {(["performance", "reliability", "scalability", "costEfficiency"] as const).map(metric => (
-                          <Button 
+                          <Button
                             key={metric}
                             variant={selectedMetric === metric ? "default" : "outline"}
                             size="sm"
                             onClick={() => setSelectedMetric(metric)}
-                            className={`text-xs backdrop-blur-sm transition-all duration-300 ${
-                              selectedMetric === metric 
-                                ? 'bg-red-500/20 text-red-300 border-red-500/40 shadow-glow-sm shadow-red-500/20' 
+                            className={`text-xs backdrop-blur-sm transition-all duration-300 ${selectedMetric === metric
+                                ? 'bg-red-500/20 text-red-300 border-red-500/40 shadow-glow-sm shadow-red-500/20'
                                 : 'border-white/20 hover:border-red-500/30'
-                            }`}
+                              }`}
                           >
-                            {metric.replace(/([A-Z])/g, ' $1').trim().split(' ').map(word => 
+                            {metric.replace(/([A-Z])/g, ' $1').trim().split(' ').map(word =>
                               word.charAt(0).toUpperCase() + word.slice(1)
                             ).join(' ')}
                           </Button>
                         ))}
                       </div>
-                      
+
                       <div className="flex-1 flex flex-col justify-end gap-4 w-full">
                         {selectedFeatures.map(featureTitle => {
                           const feature = features.find(f => f.title === featureTitle);
                           if (!feature) return null;  // Safety check
                           const value = featureComparison[selectedMetric as MetricKey][featureTitle];
-                          const color = feature?.color === 'red' ? 'bg-red-500' : 
-                                      feature?.color === 'blue' ? 'bg-blue-500' : 
-                                      feature?.color === 'green' ? 'bg-green-500' : 'bg-yellow-500';
-                          const glowColor = feature?.color === 'red' ? 'shadow-red-500/30' : 
-                                          feature?.color === 'blue' ? 'shadow-blue-500/30' : 
-                                          feature?.color === 'green' ? 'shadow-green-500/30' : 'shadow-yellow-500/30';
-                          
+                          const color = feature?.color === 'red' ? 'bg-red-500' :
+                            feature?.color === 'blue' ? 'bg-blue-500' :
+                              feature?.color === 'green' ? 'bg-green-500' : 'bg-yellow-500';
+                          const glowColor = feature?.color === 'red' ? 'shadow-red-500/30' :
+                            feature?.color === 'blue' ? 'shadow-blue-500/30' :
+                              feature?.color === 'green' ? 'shadow-green-500/30' : 'shadow-yellow-500/30';
+
                           return (
-                            <motion.div 
-                              key={featureTitle} 
+                            <motion.div
+                              key={featureTitle}
                               className="space-y-1"
                               initial={{ width: 0 }}
                               animate={{ width: "100%" }}
@@ -444,7 +441,7 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                             </motion.div>
                           );
                         })}
-                        
+
                         {/* Show industry benchmark */}
                         {showBenchmark && (
                           <div className="mt-2 pt-2 border-t border-white/10 w-full">
@@ -480,7 +477,7 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                 key={feature.title}
                 className={`group relative overflow-hidden rounded-2xl`}
               >
-                <Card 
+                <Card
                   className={`bg-black/60 backdrop-blur-xl border border-white/10 hover:${feature.glow} group-hover:border-${feature.color}-500/30 h-full transition-all duration-300 group-hover:bg-${feature.gradient} group-hover:backdrop-blur-xl hover:shadow-xl overflow-hidden`}
                   onClick={() => handleFeatureClick(feature.title)}
                 >
@@ -490,7 +487,7 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                         <div className={`p-2 sm:p-3 rounded-lg bg-${feature.color}-500/10 backdrop-blur-xl border border-${feature.color}-500/20 text-${feature.color}-500`}>
                           {feature.icon}
                         </div>
-                        
+
                         {comparisonMode && (
                           <Button
                             variant="ghost"
@@ -509,22 +506,22 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                           </Button>
                         )}
                       </div>
-                      
+
                       <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-white group-hover:text-white transition-colors duration-300">
                         {feature.title}
                       </h3>
-                      
+
                       <p className="text-sm text-white/70 line-clamp-3 sm:line-clamp-none mb-3 sm:mb-4">
                         {feature.description}
                       </p>
                     </div>
-                    
+
                     <div className="mt-auto w-full">
                       <div className="flex justify-between items-center text-sm sm:text-base">
                         <span className="text-white/60">{feature.stats.label}</span>
                         <span className={`text-${feature.color}-400 font-medium`}>{feature.stats.value}</span>
                       </div>
-                      
+
                       <div className="w-full h-1.5 bg-white/10 rounded-full mt-2">
                         <motion.div
                           className={`h-full rounded-full bg-${feature.color}-500`}
@@ -566,7 +563,7 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                 </Link>
               </Button>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {capabilities.map((capability, index) => (
                 <div
@@ -587,7 +584,7 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                 </div>
               ))}
             </div>
-            
+
             <div className="mt-6 flex justify-center sm:hidden">
               <Button variant="link" className="text-red-400 hover:text-red-300 transition-colors duration-300" asChild>
                 <Link href="/capabilities">
@@ -621,8 +618,8 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-2xl font-bold">{activeFeature}</h3>
-                  <Button 
-                    variant="ghost" 
+                  <Button
+                    variant="ghost"
                     size="icon"
                     onClick={() => setIsDetailModalOpen(false)}
                     className="rounded-full h-8 w-8 hover:bg-white/10"
@@ -630,12 +627,12 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                     ✕
                   </Button>
                 </div>
-                
+
                 <div className="space-y-6">
                   <div>
                     <p className="text-white/80 mb-4">{featureDetails[activeFeature as keyof typeof featureDetails]?.description}</p>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="bg-white/5 rounded-lg p-4 border border-white/10">
                       <h4 className="text-lg font-semibold mb-2 flex items-center">
@@ -653,7 +650,7 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                         ))}
                       </ul>
                     </div>
-                    
+
                     <div className="bg-white/5 rounded-lg p-4 border border-white/10">
                       <h4 className="text-lg font-semibold mb-2 flex items-center">
                         <Activity className="mr-2 h-5 w-5 text-green-500" />
@@ -666,16 +663,16 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                               <span className="text-white/70 capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
                               <span className="text-white font-medium">
                                 {Array.isArray(value) ? value.join(', ') : value}
-                                {key === 'accuracy' || key === 'scalability' || key === 'threatDetection' ? '%' : 
-                                 key === 'latency' ? 'ms' : 
-                                 key === 'throughput' && !String(value).includes('TB') ? 'TB/s' : ''}
+                                {key === 'accuracy' || key === 'scalability' || key === 'threatDetection' ? '%' :
+                                  key === 'latency' ? 'ms' :
+                                    key === 'throughput' && !String(value).includes('TB') ? 'TB/s' : ''}
                               </span>
                             </div>
                             {typeof value === 'number' && !Array.isArray(value) && (
                               <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                                <div 
-                                  className="h-full rounded-full bg-blue-500" 
-                                  style={{ width: `${Math.min(100, value)}%` }} 
+                                <div
+                                  className="h-full rounded-full bg-blue-500"
+                                  style={{ width: `${Math.min(100, value)}%` }}
                                 />
                               </div>
                             )}
@@ -684,7 +681,7 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="bg-white/5 rounded-lg p-4 border border-white/10">
                     <h4 className="text-lg font-semibold mb-2 flex items-center">
                       <BarChart2 className="mr-2 h-5 w-5 text-blue-500" />
@@ -699,13 +696,13 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                       <Clock className="mr-2 h-5 w-5 text-purple-500" />
                       Industry Benchmark Comparison
                     </h4>
-                    
+
                     <div className="space-y-4">
                       {(["performance", "reliability", "scalability", "costEfficiency"] as const).map(metric => {
                         const value = featureComparison[metric as MetricKey][activeFeature];
                         const benchmark = industryBenchmarks[metric as MetricKey];
                         const difference = value - benchmark;
-                        
+
                         return (
                           <div key={metric} className="space-y-1">
                             <div className="flex justify-between text-sm mb-1">
@@ -719,23 +716,23 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                                 <span className="text-white/70">vs. industry</span>
                               </div>
                             </div>
-                            
+
                             <div className="h-2.5 w-full bg-white/10 rounded-full overflow-hidden relative">
                               {/* Industry benchmark line */}
-                              <div 
+                              <div
                                 className="absolute h-full w-px bg-yellow-500 z-10"
                                 style={{ left: `${benchmark}%` }}
                               >
                                 <div className="w-2 h-2 rounded-full bg-yellow-500 absolute -top-0.5 -left-1"></div>
                               </div>
-                              
+
                               {/* Feature value */}
-                              <div 
-                                className="h-full rounded-full bg-blue-500" 
+                              <div
+                                className="h-full rounded-full bg-blue-500"
                                 style={{ width: `${value}%` }}
                               />
                             </div>
-                            
+
                             <div className="flex justify-between text-xs text-white/50 mt-1">
                               <span>0%</span>
                               <span>Industry: {benchmark}%</span>
@@ -746,7 +743,7 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                       })}
                     </div>
                   </div>
-                  
+
                   <div className="flex justify-between mt-4">
                     <div className="flex items-center">
                       <Badge variant="outline" className="mr-2 bg-white/5">
@@ -758,7 +755,7 @@ export default function FeaturesSection({ fullWidth = true }: FeaturesSectionPro
                         SOC 2 Compliant
                       </Badge>
                     </div>
-                    
+
                     <Button className="bg-white/10 hover:bg-white/20 text-white border-0">
                       Request Demo
                       <ArrowRight className="ml-2 h-4 w-4" />

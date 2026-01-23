@@ -6,8 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import EnhancedHeader from "@/components/enhanced-header"
 import Footer from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
-import { GlobalLoadingScreen } from "@/components/global-loading-screen"
 import { NavigationEvents } from "@/components/navigation-events"
+import { AILoader } from "@/components/ui/ai-loader"
 
 // A fallback component for the navigation events suspense
 function NavigationEventsFallback() {
@@ -17,6 +17,7 @@ function NavigationEventsFallback() {
 // Add an image prefetcher component
 function ImagePrefetcher() {
   useEffect(() => {
+    if (typeof window === 'undefined') return
     // Prefetch critical images for better performance
     const criticalImages = [
       '/images/logo.png',
@@ -44,13 +45,14 @@ export default function RootLayoutContent({
   fullWidth = true // Set default to true
 }: RootLayoutContentProps) {
   const pathname = usePathname()
+  const [mounted, setMounted] = useState(false)
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false)
+
   const isDashboard = pathname?.startsWith('/dashboard')
   const isDocs = pathname?.startsWith('/docs')
 
-  // Track when initial loading is complete
-  const [initialLoadComplete, setInitialLoadComplete] = useState(false)
-
   useEffect(() => {
+    setMounted(true)
     // Mark initial load as complete after a short delay
     const timer = setTimeout(() => {
       setInitialLoadComplete(true)
@@ -69,7 +71,7 @@ export default function RootLayoutContent({
   const showFooter = !pagesWithoutFooter.some(Boolean)
 
   return (
-    <body className={`${inter.className} antialiased zoom-fix w-full max-w-[100vw]`} suppressHydrationWarning>
+    <body className={`${inter.className} antialiased zoom-fix w-full max-w-[100vw] bg-black`} suppressHydrationWarning>
       <ThemeProvider
         attribute="class"
         defaultTheme="dark"
@@ -79,29 +81,33 @@ export default function RootLayoutContent({
         {/* Prefetch critical images */}
         <ImagePrefetcher />
 
-        {/* Monitor navigation events - wrapped in Suspense */}
-        <Suspense fallback={<NavigationEventsFallback />}>
-          <NavigationEvents />
-        </Suspense>
-
-        {/* Global Loading Screen */}
-        <GlobalLoadingScreen disableOnPaths={["/dashboard"]} />
+        {/* Branded AI Loading Screen */}
+        {/* We render this initially on both server and client to avoid flicker. 
+            Once mounted and timer completes, it will be removed. */}
+        {!initialLoadComplete && <AILoader text="Mindscape Analytics" />}
 
         <div className="relative min-h-screen min-w-[320px] w-full max-w-[100vw] mx-auto xl:max-w-[1920px] bg-gradient-to-b from-black to-zinc-950">
-          {!isDashboard && <EnhancedHeader fullWidth={true} />}
+          {/* We only render the rest of the UI after mounting to reduce hydration risks with complex components */}
+          {mounted && (
+            <>
+              {!isDashboard && <EnhancedHeader fullWidth={true} />}
 
-          <div className="w-full max-w-[100vw] mx-auto xl:max-w-[1920px] relative z-10 zoom-friendly">
-            {/* Wrap children in a div with a key to force remount on route change */}
-            <div key={pathname}>
-              {children}
-            </div>
-          </div>
+              {/* Monitor navigation events - wrapped in Suspense */}
+              <Suspense fallback={<NavigationEventsFallback />}>
+                <NavigationEvents />
+              </Suspense>
 
-          {/* Main footer - consistently applied to all pages except excluded ones */}
-          {showFooter && <Footer key="main-footer" fullWidth={true} />}
+              <div className="w-full max-w-[100vw] mx-auto xl:max-w-[1920px] relative z-10 zoom-friendly">
+                {children}
+              </div>
+
+              {/* Main footer - consistently applied to all pages except excluded ones */}
+              {showFooter && <Footer key="main-footer" fullWidth={true} />}
+            </>
+          )}
           <Toaster />
         </div>
       </ThemeProvider>
     </body>
   )
-} 
+}

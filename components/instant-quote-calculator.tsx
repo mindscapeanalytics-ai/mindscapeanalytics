@@ -78,23 +78,23 @@ export default function InstantQuoteCalculator() {
     const estimatedTime = Math.ceil(timeline[0] * selectedServices.length * complexityMultipliers[complexity].multiplier / 2)
 
     return (
-        <section className="py-10 md:py-14 relative overflow-hidden bg-black">
-            {/* Background elements */}
-            <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black,transparent)]"></div>
+        <section className="py-2 relative overflow-hidden bg-black/0">
+            {/* Background elements - Adjusted for transparency */}
+            <div className="absolute inset-0 bg-transparent"></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-red-500/10 blur-[120px]"></div>
 
-            <div className="container mx-auto px-4 md:px-6 relative z-10">
-                <div className="text-center mb-8">
+            <div className="container mx-auto px-0 md:px-2 relative z-10">
+                <div className="text-center mb-6">
                     <div className="inline-flex items-center justify-center mb-3">
                         <Badge variant="outline" className="bg-red-500/10 border-red-500/20 text-red-400 px-4 py-1.5 text-xs tracking-[0.2em] uppercase backdrop-blur-sm">
                             <Calculator className="h-3 w-3 mr-1.5" />
                             INSTANT QUOTE
                         </Badge>
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+                    <h2 className="text-3xl md:text-3xl font-bold text-white mb-3 tracking-tight">
                         Get Your <span className="text-red-500">Instant Estimate</span>
                     </h2>
-                    <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-xs md:text-sm text-white/50 max-w-xl mx-auto leading-relaxed">
                         Calculate your project cost in seconds. Transparent pricing, no surprises!
                     </p>
                 </div>
@@ -121,8 +121,8 @@ export default function InstantQuoteCalculator() {
                                                     <div
                                                         onClick={() => toggleService(service.id)}
                                                         className={`p-3 rounded-lg border cursor-pointer transition-all duration-200 ${selectedServices.includes(service.id)
-                                                                ? 'border-red-500 bg-red-500/10 shadow-lg shadow-red-500/10'
-                                                                : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10'
+                                                            ? 'border-red-500 bg-red-500/10 shadow-lg shadow-red-500/10'
+                                                            : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10'
                                                             }`}
                                                     >
                                                         <div className="flex items-center justify-between mb-1.5">
@@ -152,8 +152,8 @@ export default function InstantQuoteCalculator() {
                                                         setShowQuote(false)
                                                     }}
                                                     className={`p-2.5 rounded-lg border cursor-pointer transition-all text-center ${complexity === key
-                                                            ? 'border-red-500 bg-red-500/10 shadow-md shadow-red-500/10'
-                                                            : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10'
+                                                        ? 'border-red-500 bg-red-500/10 shadow-md shadow-red-500/10'
+                                                        : 'border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10'
                                                         }`}
                                                 >
                                                     <div className="font-semibold text-xs mb-0.5">{value.label}</div>

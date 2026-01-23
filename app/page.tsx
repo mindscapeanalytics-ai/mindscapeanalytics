@@ -1,272 +1,181 @@
 "use client"
 
-import EnhancedHero from "@/components/enhanced-hero"
-import { TrustBanner } from "@/components/enhanced-hero/trust-banner"
-import ServicesShowcase from "@/components/services-showcase"
-
-import ProjectsShowcase from "@/components/projects-showcase"
-import EnhancedIndustrySolutions from "@/components/enhanced-industry-solutions"
-import TechStackShowcase from "@/components/tech-stack-showcase"
-import TestimonialCarousel from "@/components/testimonial-carousel"
-
-import EnhancedCTASection from "@/components/enhanced-cta-section"
-import { SectionDivider } from "@/components/section-divider"
-import { ScrollToTop } from "@/components/scroll-to-top"
-import { FloatingChatWidget } from "@/components/floating-chat-widget"
-import { CookieConsent } from "@/components/cookie-consent"
-import UnifiedAIPlatform from "@/components/unified-ai-platform"
-import SocialProofSection from "@/components/social-proof-section"
-import WhyChooseUs from "@/components/why-choose-us"
-import InstantQuoteCalculator from "@/components/instant-quote-calculator"
-import ProductsShowcase from "@/components/products-showcase"
-import TeamSection from "@/components/team-section"
-import CaseStudiesSection from "@/components/case-studies-section"
-
+import React, { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
-import { Database } from "lucide-react"
-import { FlexibleSection } from "@/components/flexible-section"
-import { getContainerClasses } from "@/lib/container-utils"
-import AIChatbot from "@/components/ai-chatbot"
+import { SectionDivider } from "@/components/section-divider"
+import { StandardBackground } from "@/components/shared/background"
+import { ScrollToTop } from "@/components/scroll-to-top"
+import { CookieConsent } from "@/components/cookie-consent"
 import UnifiedChat from "@/components/unified-chat"
 
-// Feature data
-const features = [
-  {
-    title: "Blockchain Solutions",
-    description: "Enterprise-grade blockchain platform with DeFi, NFT, and cross-chain capabilities",
-    icon: Database,
-    color: "red",
-  },
-  // ... existing features ...
-];
-
-// Solution data
-const solutions = [
-  {
-    title: "Blockchain Platform",
-    description: "Build, deploy, and scale blockchain applications with our comprehensive PaaS solution",
-    icon: Database,
-    color: "red",
-    href: "/solutions/blockchain",
-  },
-  // ... existing solutions ...
-];
-
-// Enhanced Background gradient styles matching projects section theme
-const backgroundStyles = {
-  global: "fixed inset-0 w-full",
-  gradient: "bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-950/10 via-black to-black z-0",
-  overlay: "bg-gradient-to-b from-red-950/15 via-black/0 to-transparent z-0 opacity-20",
-  secondaryGradient: "bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-red-950/5 via-transparent to-transparent z-0",
-  particles: "fixed inset-0 w-full h-full overflow-hidden z-0 pointer-events-none",
-  grid: "absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black)]",
-  glow: "absolute rounded-full bg-red-500/5 blur-[100px] animate-pulse-slow",
-  glowSecondary: "absolute rounded-full bg-red-500/5 blur-[120px] animate-pulse-slow"
-};
-
-// Enhanced Section background styles with modern design
-const sectionBackgroundStyles = {
-  container: "absolute inset-0 w-full h-full pointer-events-none z-0",
-  gradient: "absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent opacity-50",
-  glow: "hidden" // Hiding per-section glows to significantly improve scroll performance
-};
+// Modular Section Components
+import EnhancedHero from "@/components/enhanced-hero"
+import { OnboardingChecklist } from "@/components/ui/onboarding-checklist"
+import ServicesShowcase from "@/components/services-showcase"
+import ProductsShowcase from "@/components/products-showcase"
+import ProjectsShowcase from "@/components/projects-showcase"
+import CaseStudiesSection from "@/components/case-studies-section"
+import EnhancedIndustrySolutions from "@/components/enhanced-industry-solutions"
+import UnifiedAIPlatform from "@/components/unified-ai-platform"
+import TechStackShowcase from "@/components/tech-stack-showcase"
+import TeamSection from "@/components/team-section"
+import TestimonialCarousel from "@/components/testimonial-carousel"
+import InstantQuoteCalculator from "@/components/instant-quote-calculator"
+import WhyChooseUs from "@/components/why-choose-us"
+import EnhancedCTASection from "@/components/enhanced-cta-section"
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
+
+  // Parallax and scroll effects for the hero section
   const { scrollYProgress } = useScroll({
-    target: containerRef,
     offset: ["start start", "end start"]
   })
 
-  // Ensure we have default values as fallbacks for transform to prevent null issues
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50], { clamp: false })
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0], { clamp: false })
+  // We want the hero transition to complete within the first 15% of the page scroll
+  const heroY = useTransform(scrollYProgress, [0, 0.15], [0, -120])
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0])
 
   return (
-    <main ref={containerRef} className="min-h-screen w-full max-w-[100vw] bg-black text-white relative overflow-x-hidden">
-      {/* Enhanced Global Background Elements */}
-      <div className={`${backgroundStyles.global} ${backgroundStyles.gradient}`} aria-hidden="true"></div>
-      <div className={`${backgroundStyles.global} ${backgroundStyles.overlay}`} aria-hidden="true"></div>
-      <div className={`${backgroundStyles.global} ${backgroundStyles.secondaryGradient}`} aria-hidden="true"></div>
+    <main ref={containerRef} className="min-h-screen w-full bg-black text-white relative overflow-x-hidden selection:bg-red-500/30">
+      <StandardBackground />
 
-      {/* Enhanced Animated Background Particles */}
-      <div className={backgroundStyles.particles} aria-hidden="true">
-        <div className={backgroundStyles.grid}></div>
-        {/* Primary glow orb */}
-        <div className={`${backgroundStyles.glow} top-1/4 right-1/4 w-96 h-96`} style={{ animationDelay: '0s' }}></div>
-        {/* Secondary glow orb */}
-        <div className={`${backgroundStyles.glowSecondary} bottom-1/4 left-1/4 w-80 h-80`} style={{ animationDelay: '1s' }}></div>
-        {/* Tertiary subtle glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-500/5 rounded-full blur-[150px] animate-pulse-very-slow"></div>
-      </div>
-
-      {/* Hero Section - First Impression */}
-      <FlexibleSection
-        id="hero"
-        fullWidth={true}
-        className="relative z-10 overflow-hidden pt-16 md:pt-16"
-        noPadding
-      >
-        <motion.div
-          style={{ y, opacity }}
-        >
+      <section id="hero" className="relative z-20">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }}>
           <EnhancedHero fullWidth={true} />
         </motion.div>
-      </FlexibleSection>
+      </section>
 
+      <section id="onboarding" className="relative z-10 py-12 md:py-20">
+        <OnboardingChecklist
+          videoUrl="https://www.youtube.com/embed/RnJAvSKHGzw"
+          videoThumbnailUrl="https://img.youtube.com/vi/RnJAvSKHGzw/maxresdefault.jpg"
+          slides={[
+            {
+              id: "what-we-do",
+              title: "What We Do",
+              description: "Mindscape Analytics architecture helps enterprises turn increasing complexity into structured, high-performance systems aligned with business goals.",
+              items: [
+                { id: 1, text: "Data Platforms & Architecture" },
+                { id: 2, text: "AI & Intelligent Systems" },
+                { id: 3, text: "Analytics & Decision Systems" },
+                { id: 4, text: "Automation & Optimization" }
+              ]
+            },
+            {
+              id: "capabilities",
+              title: "Our Core Capabilities",
+              description: "We architect intelligence across data, analytics, and AI initiatives for long-term scalability and production stability.",
+              items: [
+                { id: 1, text: "Large-scale Processing" },
+                { id: 2, text: "Cloud-native Architectures" },
+                { id: 3, text: "Agent-based Systems" },
+                { id: 4, text: "Intelligent Workflows" }
+              ]
+            },
+            {
+              id: "how-we-work",
+              title: "How We Work",
+              description: "We take a practical, execution-first approach focused on real enterprise constraints and measurable ROI.",
+              items: [
+                { id: 1, text: "Understand Objectives" },
+                { id: 2, text: "Design Scalable Architectures" },
+                { id: 3, text: "Build Production Systems" },
+                { id: 4, text: "Optimize Performance" }
+              ]
+            },
+            {
+              id: "why-choose-us",
+              title: "Why Choose Us",
+              description: "Organizations choose Mindscape for deep expertise and a focus on mission-critical delivery.",
+              items: [
+                { id: 1, text: "Senior AI Engineering" },
+                { id: 2, text: "Security-first Defaults" },
+                { id: 3, text: "Complex Environment Exp" },
+                { id: 4, text: "Result-driven Delivery" }
+              ]
+            },
+            {
+              id: "standards",
+              title: "Enterprise Standards",
+              description: "Our work is designed for organizations where technology is critical and zero-downtime is mandatory.",
+              items: [
+                { id: 1, text: "SOC2-aligned Design" },
+                { id: 2, text: "High-level Encryption" },
+                { id: 3, text: "Audit-ready Architecture" },
+                { id: 4, text: "Fault-tolerant Systems" }
+              ]
+            }
+          ]}
+        />
+      </section>
 
+      <SectionDivider variant="gradient" className="opacity-50" />
 
-
-
-
-      {/* 1. OUR SERVICES - What We Offer */}
-      <FlexibleSection
-        id="services"
-        fullWidth={true}
-        className="relative z-10 py-8 md:py-12 lg:py-16 overflow-hidden"
-      >
-        <div className={sectionBackgroundStyles.container} aria-hidden="true">
-          <div className={sectionBackgroundStyles.gradient}></div>
-        </div>
+      <section id="services" className="relative z-10 py-12 md:py-20">
         <ServicesShowcase />
-      </FlexibleSection>
+      </section>
 
+      <SectionDivider variant="dots" />
 
-      {/* 2. TRY OUT OUR PRODUCTS - Product Showcase */}
-      <FlexibleSection
-        id="products"
-        fullWidth={true}
-        className="relative z-10 py-8 md:py-12 lg:py-16 overflow-hidden"
-      >
-        <div className={sectionBackgroundStyles.container} aria-hidden="true">
-          <div className={sectionBackgroundStyles.gradient}></div>
-        </div>
+      <section id="products" className="relative z-10 py-12 md:py-20">
         <ProductsShowcase />
-      </FlexibleSection>
+      </section>
 
-      {/* 3. OUR PROJECTS - Innovations - Moved here to be after Products */}
-      <FlexibleSection
-        id="projects"
-        fullWidth={true}
-        className="relative z-10 py-8 md:py-12 lg:py-16 overflow-hidden"
-      >
-        <div className={sectionBackgroundStyles.container} aria-hidden="true">
-          <div className={sectionBackgroundStyles.gradient}></div>
-        </div>
+      <section id="projects" className="relative z-10 py-12 md:py-20 overflow-hidden">
         <ProjectsShowcase />
-      </FlexibleSection>
+      </section>
 
-      {/* CASE STUDIES - Real Projects & Results - Moved here */}
-      <FlexibleSection
-        id="case-studies"
-        fullWidth={true}
-        className="relative z-10 py-8 md:py-12 lg:py-16 overflow-hidden"
-      >
+      <SectionDivider variant="gradient" className="rotate-180 opacity-30" />
+
+      <section id="case-studies" className="relative z-10 py-12 md:py-20">
         <CaseStudiesSection />
-      </FlexibleSection>
+      </section>
 
-
-
-      {/* 4. INDUSTRY SOLUTIONS - Vertical Focus */}
-      <FlexibleSection
-        id="solutions"
-        fullWidth={true}
-        className="relative z-10 py-8 md:py-12 lg:py-16 overflow-hidden"
-      >
-        <div className={sectionBackgroundStyles.container} aria-hidden="true">
-          <div className={sectionBackgroundStyles.gradient}></div>
-        </div>
+      <section id="solutions" className="relative z-10 py-12 md:py-20">
         <EnhancedIndustrySolutions />
-      </FlexibleSection>
+      </section>
 
-      {/* AI Capabilities & Interactive Demos - Unified Platform Section */}
-      <FlexibleSection
-        id="ai-platform"
-        fullWidth={true}
-        className="relative z-10 py-12 md:py-16 lg:py-20 overflow-hidden"
-      >
-        <div className={sectionBackgroundStyles.container} aria-hidden="true">
-          <div className={sectionBackgroundStyles.gradient}></div>
-        </div>
+      <SectionDivider variant="shadow" />
 
+      <section id="ai-platform" className="relative z-10 py-12 md:py-20">
         <UnifiedAIPlatform />
-      </FlexibleSection>
+      </section>
 
-
-      {/* 6. TECHNOLOGY STACK - Our Technology */}
-      <FlexibleSection
-        id="tech-stack"
-        fullWidth={true}
-        className="relative z-10 py-8 md:py-12 lg:py-16 overflow-hidden"
-      >
-        <div className={sectionBackgroundStyles.container} aria-hidden="true">
-          <div className={sectionBackgroundStyles.gradient}></div>
-        </div>
+      <section id="tech-stack" className="relative z-10 py-12 md:py-20">
         <TechStackShowcase />
-      </FlexibleSection>
+      </section>
 
-      {/* 7. OUR TEAM - Experts & Leadership */}
-      <FlexibleSection
-        id="team"
-        fullWidth={true}
-        className="relative z-10 py-8 md:py-12 lg:py-16 overflow-hidden"
-      >
+      <SectionDivider variant="dots" />
+
+      <section id="team" className="relative z-10 py-12 md:py-20">
         <TeamSection />
-      </FlexibleSection>
+      </section>
 
-
-
-      {/* Testimonials - Social Proof */}
-      <FlexibleSection
-        id="testimonials"
-        fullWidth={true}
-        className="relative z-10 py-6 md:py-8 overflow-hidden"
-      >
-        <div className={sectionBackgroundStyles.container} aria-hidden="true">
-          <div className={sectionBackgroundStyles.gradient}></div>
-        </div>
+      <section id="testimonials" className="relative z-10 py-12 md:py-20">
         <TestimonialCarousel />
-      </FlexibleSection>
+      </section>
 
-      {/* INSTANT QUOTE - Lead Generation */}
-      <FlexibleSection
-        id="instant-quote"
-        fullWidth={true}
-        className="relative z-10 py-6 md:py-8 overflow-hidden"
-      >
-        <InstantQuoteCalculator />
-      </FlexibleSection>
-
-      {/* WHY CHOOSE US - USA-Based Advantages */}
-      <FlexibleSection
-        id="why-choose-us"
-        fullWidth={true}
-        className="relative z-10 py-6 md:py-8 overflow-hidden"
-      >
-        <WhyChooseUs />
-      </FlexibleSection>
-
-      {/* Start Today - Call to Action */}
-      <FlexibleSection
-        id="start-today"
-        fullWidth={true}
-        className="relative z-10 py-12 md:py-16 lg:py-20 overflow-hidden"
-      >
-        <div className={sectionBackgroundStyles.container} aria-hidden="true">
-          <div className={sectionBackgroundStyles.gradient}></div>
+      <section id="tools" className="relative z-10 py-8 md:py-12 bg-zinc-950/40 border-t border-white/5">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
+            <div className="w-full">
+              <InstantQuoteCalculator />
+            </div>
+            <div className="w-full">
+              <WhyChooseUs />
+            </div>
+          </div>
         </div>
-        <EnhancedCTASection />
-      </FlexibleSection>
+      </section>
 
-      {/* Floating Elements - User Experience */}
+      <section id="cta" className="relative z-10 py-16 md:py-24">
+        <EnhancedCTASection />
+      </section>
+
       <ScrollToTop />
       <UnifiedChat initialStyle="floating" allowStyleToggle={true} theme="landing" />
-
-      {/* Existing chat widgets - comment these out if using UnifiedChat */}
-      {/* <FloatingChatWidget /> */}
-      {/* <AIChatbot /> */}
       <CookieConsent />
     </main>
   )
-} 
+}

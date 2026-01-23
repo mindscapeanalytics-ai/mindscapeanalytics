@@ -40,6 +40,7 @@ import {
   LayoutGrid,
   BookOpen,
   DollarSign,
+  Truck,
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -225,6 +226,12 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       href: "/solutions/real-estate",
       description: "Advanced AI-powered analytics and management for real estate",
       icon: <Home className="h-5 w-5 text-orange-500" />,
+    },
+    {
+      title: "Supply Chain Solutions",
+      href: "/solutions/supply-chain",
+      description: "Autonomous logistics and predictive supply chain optimization",
+      icon: <Truck className="h-5 w-5 text-emerald-500" />,
     },
   ]
 
@@ -768,14 +775,17 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       return (
         <div className="flex flex-col space-y-1 my-2">
           <div className="shadow-inner shadow-black/10 pb-3 mb-2">
-            <div className="flex items-center space-x-2 mb-2 px-3">
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                setIsCommandOpen(true);
+              }}
+              className="flex items-center space-x-2 w-full px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-left"
+              aria-label="Search"
+            >
               <Search className="h-4 w-4 text-white/50" />
-              <Input
-                placeholder="Search..."
-                className="border-none bg-white/5 text-white"
-                aria-label="Search in mobile menu"
-              />
-            </div>
+              <span className="text-white/50 text-sm">Search...</span>
+            </button>
           </div>
 
           {/* Our Tools Section */}

@@ -1,20 +1,20 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import { Search, Brain, Cpu, Database, Cloud, Code, Shield, Network, Zap, Globe, Layers } from "lucide-react"
+import { Search, Brain, Cpu, Database, Cloud, Code, Shield, Network, Zap, Globe } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 // Reliable icon source: SimpleIcons via CDN
 // Using generic format: https://cdn.simpleicons.org/[slug]/[color]
 
-const TechIcon = ({ name, iconSlug, fallbackIcon: FallbackIcon, color }: { name: string; iconSlug?: string, fallbackIcon?: any, color?: string }) => {
+const TechIcon = ({ name, iconSlug, fallbackIcon: FallbackIcon }: { name: string; iconSlug?: string, fallbackIcon?: any }) => {
   const [imgError, setImgError] = useState(false)
 
-  // Construct URL - prefer white/light gray for dark mode consistency, or allow color override
-  // Using a slight transparency white for a sleek look: dddddd or white
-  const iconUrl = iconSlug ? `https://cdn.simpleicons.org/${iconSlug}/ffffff` : null
+  // OpenAI slug fix if needed, but 'openai' is correct. 
+  // Adding /white ensures it's visible on dark backgrounds and might bypass some 404s depending on the CDN's cache state.
+  const iconUrl = iconSlug ? `https://cdn.simpleicons.org/${iconSlug}/white` : null
 
   if (!iconUrl || imgError) {
     return (
@@ -31,12 +31,11 @@ const TechIcon = ({ name, iconSlug, fallbackIcon: FallbackIcon, color }: { name:
   }
 
   return (
-    <div className="w-10 h-10 flex items-center justify-center p-1.5">
-      {/* Use a simpleimg that is performant */}
+    <div className="w-10 h-10 flex items-center justify-center p-1.5 overflow-hidden">
       <img
         src={iconUrl}
         alt={name}
-        className="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-all duration-300 filter grayscale group-hover:grayscale-0"
+        className="w-full h-full object-contain opacity-60 group-hover:opacity-100 transition-all duration-300"
         onError={() => setImgError(true)}
         loading="lazy"
       />
@@ -71,11 +70,11 @@ const techStackData: TechItem[] = [
   { name: "MongoDB", category: "data", iconSlug: "mongodb", fallbackIcon: Database },
   { name: "Elasticsearch", category: "data", iconSlug: "elasticsearch", fallbackIcon: Search },
   { name: "Kafka", category: "data", iconSlug: "apachekafka", fallbackIcon: Network },
-  { name: "Pinecone", category: "data", iconSlug: "pinecone", fallbackIcon: Database }, // Check generic if fails
-  { name: "Weaviate", category: "data", iconSlug: "weaviate", fallbackIcon: Database }, // Check generic if fails
+  { name: "Pinecone", category: "data", iconSlug: "pinecone", fallbackIcon: Database },
+  { name: "Weaviate", category: "data", iconSlug: "weaviate", fallbackIcon: Database },
 
   // Cloud
-  { name: "AWS", category: "cloud", iconSlug: "amazonaws", fallbackIcon: Cloud },
+  { name: "AWS", category: "cloud", iconSlug: "amazonwebservices", fallbackIcon: Cloud },
   { name: "Google Cloud", category: "cloud", iconSlug: "googlecloud", fallbackIcon: Cloud },
   { name: "Azure", category: "cloud", iconSlug: "microsoftazure", fallbackIcon: Cloud },
   { name: "Vercel", category: "cloud", iconSlug: "vercel", fallbackIcon: Globe },
@@ -106,6 +105,11 @@ const categories = [
 export default function TechStackShowcase() {
   const [activeCategory, setActiveCategory] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
+  const [hasMounted, setHasMounted] = useState(false)
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
 
   const filteredTech = techStackData.filter(tech => {
     const matchesCategory = activeCategory === "all" || tech.category === activeCategory
@@ -113,8 +117,25 @@ export default function TechStackShowcase() {
     return matchesCategory && matchesSearch
   })
 
+  // Hydration safety: render a shell during server rendering and initial client mount
+  if (!hasMounted) {
+    return (
+      <section className="w-full py-10 bg-black min-h-[400px] border-t border-white/5 animate-pulse">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="h-8 w-48 bg-white/5 rounded-lg mb-4" />
+          <div className="h-12 w-96 bg-white/5 rounded-lg mb-12" />
+          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-3">
+            {Array.from({ length: 16 }).map((_, i) => (
+              <div key={i} className="aspect-square bg-white/5 rounded-xl" />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   return (
-    <section className="w-full py-10 bg-black relative overflow-hidden border-t border-white/5">
+    <div className="w-full bg-black relative overflow-hidden border-t border-white/5">
       <div className="max-w-6xl mx-auto px-4">
         {/* Compact Header */}
         <div className="flex flex-col md:flex-row items-end justify-between gap-6 mb-8 border-b border-white/5 pb-6">
@@ -162,7 +183,7 @@ export default function TechStackShowcase() {
         {/* Compact Logo Grid */}
         <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-3">
           <AnimatePresence mode="popLayout">
-            {filteredTech.map((item, idx) => (
+            {filteredTech.map((item) => (
               <motion.div
                 layout
                 key={item.name}
@@ -183,10 +204,10 @@ export default function TechStackShowcase() {
 
         {filteredTech.length === 0 && (
           <div className="text-center py-10 text-white/20">
-            <p className="text-xs">No matching value technologies found</p>
+            <p className="text-xs">No matching technologies found</p>
           </div>
         )}
       </div>
-    </section>
+    </div>
   )
 }

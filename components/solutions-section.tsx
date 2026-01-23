@@ -72,7 +72,6 @@ export default function SolutionsSection() {
 
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
-    target: containerRef,
     offset: ["start end", "end start"],
   })
 

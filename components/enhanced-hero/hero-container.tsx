@@ -17,7 +17,7 @@ interface HeroContainerProps {
  */
 export function HeroContainer({ performanceConfig, className }: HeroContainerProps) {
   const { backgroundLayers, animations } = performanceConfig
-  
+
   // Define the 4 strategic background layers with priority system
   const layers: BackgroundLayer[] = [
     {
@@ -28,14 +28,14 @@ export function HeroContainer({ performanceConfig, className }: HeroContainerPro
     },
     {
       type: "radial",
-      priority: 2, 
+      priority: 2,
       styles: "bg-[radial-gradient(ellipse_80%_80%_at_30%_20%,rgba(220,38,38,0.12),transparent_60%)]",
       lazyLoad: backgroundLayers.lazyLoad
     },
     {
       type: "radial",
       priority: 3,
-      styles: "bg-[radial-gradient(ellipse_70%_70%_at_70%_80%,rgba(59,130,246,0.08),transparent_60%)]", 
+      styles: "bg-[radial-gradient(ellipse_70%_70%_at_70%_80%,rgba(59,130,246,0.08),transparent_60%)]",
       lazyLoad: backgroundLayers.lazyLoad
     },
     {
@@ -48,7 +48,7 @@ export function HeroContainer({ performanceConfig, className }: HeroContainerPro
 
   // Filter layers based on performance config (max 4 layers)
   const activeLayers = layers.slice(0, Math.min(backgroundLayers.maxLayers, 4))
-  
+
   // Animation classes with performance optimization
   const getAnimationClass = () => {
     if (animations.respectReducedMotion) {
@@ -73,7 +73,7 @@ export function HeroContainer({ performanceConfig, className }: HeroContainerPro
     <div className={`absolute inset-0 ${className || ''}`}>
       {/* Base Layer - Always present for LCP optimization */}
       <div className="absolute inset-0 bg-black" />
-      
+
       {/* Strategic Gradient Layers with lazy loading */}
       {activeLayers.map((layer, index) => {
         if (layer.type === "gradient" || layer.type === "radial") {
@@ -100,35 +100,37 @@ export function HeroContainer({ performanceConfig, className }: HeroContainerPro
         }
         return null
       })}
-      
+
       {/* Optimized Animated Glow Orbs - Only if glow layer is active */}
       {activeLayers.some(layer => layer.type === "glow") && (
         <>
-          {/* Primary glow orb with performance optimization */}
-          <div 
-            className={`absolute top-1/4 right-1/3 w-[500px] h-[500px] bg-red-500/6 rounded-full blur-[120px] ${getAnimationClass()}`}
+          {/* Primary glow orb with performance optimization - Using radial gradient instead of blur */}
+          <div
+            className={`absolute top-1/4 right-1/3 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(239,68,68,0.1)_0%,transparent_70%)] ${getAnimationClass()}`}
             style={{
               ...getGPUStyles(),
-              animationDelay: '0s'
+              animationDelay: '0s',
+              willChange: 'transform, opacity'
             }}
             aria-hidden="true"
           />
-          
-          {/* Secondary glow orb with staggered animation */}
-          <div 
-            className={`absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] ${getAnimationClass()}`}
+
+          {/* Secondary glow orb with staggered animation - Using radial gradient instead of blur */}
+          <div
+            className={`absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(59,130,246,0.08)_0%,transparent_70%)] ${getAnimationClass()}`}
             style={{
               ...getGPUStyles(),
-              animationDelay: '2s'
+              animationDelay: '2s',
+              willChange: 'transform, opacity'
             }}
             aria-hidden="true"
           />
         </>
       )}
-      
+
       {/* Optional Grid Pattern - Only if we have layer capacity and it adds value */}
       {activeLayers.length < backgroundLayers.maxLayers && backgroundLayers.maxLayers >= 4 && (
-        <div 
+        <div
           className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black_40%,transparent_100%)]"
           style={getGPUStyles()}
           aria-hidden="true"

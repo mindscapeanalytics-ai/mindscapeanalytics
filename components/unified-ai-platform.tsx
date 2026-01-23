@@ -144,11 +144,62 @@ const result = await pipeline.process(stream);
 ]
 
 export default function UnifiedAIPlatform() {
+    const [hasMounted, setHasMounted] = useState(false)
     const [activeTab, setActiveTab] = useState("genai")
     const [isDemoActive, setIsDemoActive] = useState(false)
     const [terminalOutput, setTerminalOutput] = useState<string[]>(["> System initialized...", "> Waiting for input..."])
 
+    useEffect(() => {
+        setHasMounted(true)
+    }, [])
+
     const activeCapability = platformCapabilities.find(c => c.id === activeTab) || platformCapabilities[0]
+
+    // Helper to highlight code safely
+    const highlightCode = (line: string) => {
+        // Single pass would be better, but we can also just do it in a safe order:
+        // 1. Keywords and Types (no quotes)
+        // 2. Comments (wraps everything else)
+        // 3. Strings (last, but we must be careful not to match class="...")
+
+        let highlighted = line;
+
+        // Match identifiers/keywords first (no overlapping with tag attributes)
+        highlighted = highlighted
+            .replace(/const|await|new|return/g, '<span class="text-purple-400">$&</span>')
+            .replace(/MindscapeAI|Analytics|WorkflowAgent|NLPPipeline/g, '<span class="text-yellow-400">$&</span>');
+
+        // Match strings LAST, but use a regex that avoids matching content inside tags
+        // This is complex, so instead let's just do strings first but make sure keywords don't match our tag attributes.
+        // Actually, the previous order was almost fine except strings matching OTHER tag attributes.
+
+        // Let's use a safer approach:
+        const parts: { text: string; type: 'none' | 'keyword' | 'type' | 'string' | 'comment' }[] = [];
+
+        // For simplicity in this specific component, we'll just fix the order and use a negative lookahead if available,
+        // or just ensure we don't match our own tags.
+
+        // Fixed order:
+        // 1. Strings (so they don't match our future tags)
+        // 2. Keywords
+        // 3. Types
+        // 4. Comments (last to wrap everything)
+
+        let result = line;
+        // String replacement
+        result = result.replace(/".*?"/g, '<span class="text-green-400">$&</span>');
+
+        // Keywords - but ONLY match if NOT inside a tag
+        // Since our tags start with <span class="text-..., we just need to make sure we don't match inside the class name.
+        // The keywords are "const", "new", etc. None of these are in "text-green-400".
+        result = result.replace(/\b(const|await|new|return)\b/g, '<span class="text-purple-400">$&</span>');
+        result = result.replace(/\b(MindscapeAI|Analytics|WorkflowAgent|NLPPipeline)\b/g, '<span class="text-yellow-400">$&</span>');
+
+        // Comments
+        result = result.replace(/\/\/.*$/g, '<span class="text-gray-500">$&</span>');
+
+        return result;
+    };
 
     // Simulate terminal activity when tab changes
     useEffect(() => {
@@ -159,6 +210,8 @@ export default function UnifiedAIPlatform() {
             "> Ready."
         ])
     }, [activeCapability])
+
+    if (!hasMounted) return <div className="min-h-[600px] w-full" />;
 
     return (
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans">
@@ -316,11 +369,7 @@ export default function UnifiedAIPlatform() {
                                                     <div key={i} className="flex">
                                                         <span className="w-6 inline-block text-white/20 select-none text-right mr-4">{i + 1}</span>
                                                         <span dangerouslySetInnerHTML={{
-                                                            __html: line
-                                                                .replace(/const|await|new|return/g, '<span class="text-purple-400">$&</span>')
-                                                                .replace(/".*?"/g, '<span class="text-green-400">$&</span>')
-                                                                .replace(/\/\/.*$/g, '<span class="text-gray-500">$&</span>')
-                                                                .replace(/MindscapeAI|Analytics|WorkflowAgent|NLPPipeline/g, '<span class="text-yellow-400">$&</span>')
+                                                            __html: highlightCode(line)
                                                         }} />
                                                     </div>
                                                 ))}
