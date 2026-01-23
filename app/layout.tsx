@@ -25,10 +25,13 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "Mindscape - AI Analytics Platform",
-  description: "Enterprise-grade AI analytics platform for data-driven decision making",
-  metadataBase: new URL("https://mindscape-analytics.com"),
-  keywords: "AI, machine learning, analytics, data visualization, enterprise AI, computer vision, NLP",
+  title: {
+    default: "Mindscape Analytics | AI Analytics Platform & Machine Learning Solutions",
+    template: "%s | Mindscape Analytics"
+  },
+  description: "Leading AI analytics platform offering machine learning, computer vision, NLP, and custom AI solutions. Transform your business with enterprise-grade AI technology. Expert AI consultants ready to help.",
+  metadataBase: new URL("https://mindscapeanalytics.com"),
+  keywords: "AI analytics platform, machine learning solutions, artificial intelligence services, AI consulting, enterprise AI, computer vision, NLP services, custom AI development, predictive analytics, AI automation, GPT integration, AI chatbot, voice AI",
   authors: [{ name: "Mindscape Analytics" }],
   creator: "Mindscape Analytics",
   publisher: "Mindscape Analytics",
@@ -44,10 +47,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://mindscape-analytics.com",
-    title: "Mindscape Analytics | Advanced AI Solutions for Enterprise",
+    url: "https://mindscapeanalytics.com",
+    title: "Mindscape Analytics | Enterprise AI & Machine Learning Solutions",
     description:
-      "Transform your business with our AI-powered analytics platform. Harness the power of machine learning, computer vision, and natural language processing.",
+      "Transform your business with cutting-edge AI analytics. Expert machine learning, computer vision, NLP, and custom AI development. Trusted by Fortune 500 companies. Schedule a free consultation today.",
     siteName: "Mindscape Analytics",
     images: [
       {
@@ -60,13 +63,30 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mindscape Analytics | Advanced AI Solutions for Enterprise",
+    title: "Mindscape Analytics | AI Analytics & Machine Learning Platform",
     description:
-      "Transform your business with our AI-powered analytics platform. Harness the power of machine learning, computer vision, and natural language processing.",
-    creator: "@mindscapeai",
+      "Enterprise AI solutions: Machine Learning, Computer Vision, NLP & Custom AI Development. Transform your business with advanced analytics. Get started today.",
+    creator: "@mindscapeanalytics",
+    site: "@mindscapeanalytics",
     images: ["/images/twitter-image.jpg"]
   },
-  robots: "index, follow",
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://mindscapeanalytics.com',
+  },
+  category: 'Technology',
   generator: "v0.dev"
 }
 
