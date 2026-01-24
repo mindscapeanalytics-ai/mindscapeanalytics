@@ -6,7 +6,7 @@ import { withRateLimit } from '@/lib/rate-limit';
 
 // Lazy initialization to avoid build-time errors
 function getResend() {
-  const apiKey = process.env.RESEND_API_KEY || 're_L5fhCnUH_Ejgr1sgPkqY35AJzGz9Jxxry';
+  const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     throw new Error('RESEND_API_KEY is not configured');
   }
@@ -16,6 +16,7 @@ function getResend() {
 // Validation schema
 const newsletterSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
+  source: z.string().optional().default('general'),
 });
 
 export async function POST(request: NextRequest) {
@@ -36,10 +37,10 @@ export async function POST(request: NextRequest) {
     // Validate request body
     const validationResult = newsletterSchema.safeParse(body);
     if (!validationResult.success) {
-      throw new BadRequestError('Invalid email address', validationResult.error.errors);
+      throw new BadRequestError('Invalid email address', validationResult.error.format());
     }
 
-    const { email } = validationResult.data;
+    const { email, source } = validationResult.data;
 
     // Get Resend instance
     const resend = getResend();
@@ -71,6 +72,10 @@ export async function POST(request: NextRequest) {
                 <span class="value"><a href="mailto:${email}">${email}</a></span>
               </div>
               <div class="field">
+                <span class="label">Source:</span>
+                <span class="value">${source}</span>
+              </div>
+              <div class="field">
                 <span class="label">Subscribed At:</span>
                 <span class="value">${new Date().toLocaleString()}</span>
               </div>
@@ -84,15 +89,17 @@ export async function POST(request: NextRequest) {
 New Newsletter Subscription
 
 Email: ${email}
+Source: ${source}
 Subscribed At: ${new Date().toLocaleString()}
     `.trim();
 
     // Send email using Resend
+    const recipientEmail = process.env.RECIPIENT_EMAIL || 'zeeshan.keerio@mindscapeanalytics.com';
     const { data, error } = await resend.emails.send({
       from: 'Mindscape Analytics <noreply@mindscapeanalytics.com>',
-      to: ['zeeshan.keerio@mindscapeanalytics.com'],
+      to: [recipientEmail],
       replyTo: email,
-      subject: 'New Newsletter Subscription',
+      subject: `Newsletter Signup: [${source}] ${email}`,
       html: emailHtml,
       text: emailText,
     });

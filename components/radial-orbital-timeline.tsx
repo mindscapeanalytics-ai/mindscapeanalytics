@@ -66,7 +66,7 @@ export default function RadialOrbitalTimeline({
 
   return (
     <div
-      className="w-full h-full flex flex-col items-center justify-start bg-transparent overflow-hidden mt-8 md:-mt-8"
+      className="w-full h-full flex flex-col items-center justify-start bg-transparent overflow-visible mt-8 md:-mt-8"
       ref={containerRef}
       onClick={() => {
         setExpandedItems({});

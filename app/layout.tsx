@@ -156,11 +156,11 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Mindscape Analytics",
-              "url": "https://mindscape-analytics.com",
-              "logo": "https://mindscape-analytics.com/images/logo.png",
+              "url": "https://mindscapeanalytics.com",
+              "logo": "https://mindscapeanalytics.com/images/logo.png",
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+1-123-456-7890",
+                "telephone": "+1-307-210-6155",
                 "contactType": "customer service"
               },
               "sameAs": [

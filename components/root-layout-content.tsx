@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { NavigationEvents } from "@/components/navigation-events"
 import { AILoader } from "@/components/ui/ai-loader"
 import ExitIntentPopup from "@/components/exit-intent-popup"
+import AdvancedAnalytics from "@/components/advanced-analytics"
 
 // A fallback component for the navigation events suspense
 function NavigationEventsFallback() {
@@ -73,6 +74,7 @@ export default function RootLayoutContent({
 
   return (
     <body className={`${inter.className} antialiased zoom-fix w-full max-w-[100vw] bg-black`} suppressHydrationWarning>
+      <AdvancedAnalytics />
       <ThemeProvider
         attribute="class"
         defaultTheme="dark"

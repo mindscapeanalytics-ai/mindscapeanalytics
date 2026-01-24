@@ -6,7 +6,7 @@ import { withRateLimit } from '@/lib/rate-limit';
 
 // Lazy initialization to avoid build-time errors
 function getResend() {
-  const apiKey = process.env.RESEND_API_KEY || 're_L5fhCnUH_Ejgr1sgPkqY35AJzGz9Jxxry';
+  const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     throw new Error('RESEND_API_KEY is not configured');
   }
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     // Validate request body
     const validationResult = contactFormSchema.safeParse(body);
     if (!validationResult.success) {
-      throw new BadRequestError('Invalid form data', validationResult.error.errors);
+      throw new BadRequestError('Invalid form data', validationResult.error.format());
     }
 
     const { name, email, company, phone, subject, message, interest } = validationResult.data;
@@ -128,9 +128,10 @@ ${message}
     `.trim();
 
     // Send email using Resend
+    const recipientEmail = process.env.RECIPIENT_EMAIL || 'zeeshan.keerio@mindscapeanalytics.com';
     const { data, error } = await resend.emails.send({
       from: 'Mindscape Analytics <noreply@mindscapeanalytics.com>',
-      to: ['zeeshan.keerio@mindscapeanalytics.com'],
+      to: [recipientEmail],
       replyTo: email,
       subject: `Contact Form: ${subject}`,
       html: emailHtml,

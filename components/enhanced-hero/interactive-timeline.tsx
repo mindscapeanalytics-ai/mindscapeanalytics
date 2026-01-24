@@ -46,7 +46,7 @@ export function InteractiveTimeline({
       role="region"
       aria-label={ariaLabels.timeline.container}
     >
-      <div className="w-full h-[450px] flex items-center justify-center relative z-30 pt-0">
+      <div className="w-full h-[550px] flex items-center justify-center relative z-30 pt-0">
         {/* Enhanced glow effect behind timeline - Using performant radial gradient instead of blur */}
         <div className="absolute inset-x-[-20%] inset-y-[-10%] bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.06)_0%,rgba(59,130,246,0.04)_40%,transparent_70%)] z-10 pointer-events-none"></div>
 

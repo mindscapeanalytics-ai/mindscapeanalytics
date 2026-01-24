@@ -15,6 +15,7 @@ import { useToast } from "@/hooks/use-toast"
 export function ExitIntentPopup() {
     const [isVisible, setIsVisible] = useState(false)
     const [email, setEmail] = useState("")
+    const [name, setName] = useState("")
     const [isSubmitting, setIsSubmitting] = useState(false)
     const { toast } = useToast()
 
@@ -60,6 +61,16 @@ export function ExitIntentPopup() {
         }
     }, [])
 
+    // New effect for auto-dismiss after 1 minute
+    useEffect(() => {
+        if (isVisible) {
+            const timer = setTimeout(() => {
+                setIsVisible(false)
+            }, 60000) // 60 seconds auto-dismiss
+            return () => clearTimeout(timer)
+        }
+    }, [isVisible])
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         setIsSubmitting(true)
@@ -78,11 +89,17 @@ export function ExitIntentPopup() {
                 }
             }
 
-            // Submit to your email service (e.g., Mailchimp, ConvertKit)
-            const response = await fetch('/api/newsletter', {
+            // Using contact form logic (/api/contact) for better lead tracking
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, source: 'exit_intent' }),
+                body: JSON.stringify({
+                    name: name || "Exit Intent Prospect",
+                    email,
+                    subject: "Free AI Strategy Guide Request",
+                    message: "User requested the free AI strategy guide and consultation via exit intent popup.",
+                    interest: "AI Implementation roadmap",
+                }),
             })
 
             if (response.ok) {
@@ -91,11 +108,16 @@ export function ExitIntentPopup() {
                     description: "Check your email for the free AI strategy guide!",
                 })
                 setIsVisible(false)
+                setName("")
+                setEmail("")
+            } else {
+                const data = await response.json();
+                throw new Error(data.error?.message || 'Failed to send');
             }
         } catch (error) {
             toast({
                 title: "Error",
-                description: "Please try again or contact us directly.",
+                description: error instanceof Error ? error.message : "Please try again or contact us directly.",
                 variant: "destructive",
             })
         } finally {
@@ -106,27 +128,27 @@ export function ExitIntentPopup() {
     return (
         <AnimatePresence>
             {isVisible && (
-                <>
+                <div className="fixed inset-0 z-[9998] flex items-center justify-center p-4">
                     {/* Backdrop */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9998]"
+                        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
                         onClick={() => setIsVisible(false)}
                     />
 
-                    {/* Popup */}
+                    {/* Popup Container */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md bg-gradient-to-br from-zinc-900 to-black border border-red-500/20 rounded-2xl shadow-2xl z-[9999] p-6 md:p-8"
+                        className="relative w-full max-w-md bg-gradient-to-br from-zinc-900 to-black border border-red-500/20 rounded-2xl shadow-2xl p-6 md:p-8 overflow-hidden z-[9999]"
                     >
                         {/* Close button */}
                         <button
                             onClick={() => setIsVisible(false)}
-                            className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors"
+                            className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors z-10"
                         >
                             <X className="h-5 w-5" />
                         </button>
@@ -169,6 +191,14 @@ export function ExitIntentPopup() {
                         {/* Form */}
                         <form onSubmit={handleSubmit} className="space-y-3">
                             <Input
+                                type="text"
+                                placeholder="Your full name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                                className="bg-zinc-900/80 border-white/10 focus:border-red-500/50 h-11 text-white placeholder:text-zinc-500"
+                            />
+                            <Input
                                 type="email"
                                 placeholder="Enter your work email"
                                 value={email}
@@ -179,7 +209,7 @@ export function ExitIntentPopup() {
                             <Button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold h-11 rounded-md shadow-lg shadow-red-900/20"
+                                className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold h-11 rounded-md shadow-lg shadow-red-900/20 transition-all active:scale-[0.98]"
                             >
                                 {isSubmitting ? (
                                     "Sending..."
@@ -202,9 +232,10 @@ export function ExitIntentPopup() {
                             <span className="text-red-500 font-semibold">2,847</span> business leaders already downloaded this guide
                         </p>
                     </motion.div>
-                </>
-            )}
-        </AnimatePresence>
+                </div>
+            )
+            }
+        </AnimatePresence >
     )
 }
 

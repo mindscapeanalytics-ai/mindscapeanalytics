@@ -90,7 +90,7 @@ export default function EnhancedHero({
     <PerformanceOptimizer config={mergedPerformanceConfig}>
       <div
         ref={containerRef}
-        className={`relative w-full min-h-[85vh] lg:min-h-[90vh] flex flex-col overflow-hidden ${className || ''}`}
+        className={`relative w-full min-h-[85vh] lg:min-h-[90vh] flex flex-col overflow-visible ${className || ''}`}
         role="banner"
         aria-label={ariaLabels.hero.main}
       >

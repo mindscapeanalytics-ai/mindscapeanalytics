@@ -18,38 +18,36 @@ interface HeroContainerProps {
 export function HeroContainer({ performanceConfig, className }: HeroContainerProps) {
   const { backgroundLayers, animations } = performanceConfig
 
-  // Define the 4 strategic background layers with priority system
+  // Define the strategic background layers with priority system
   const layers: BackgroundLayer[] = [
     {
       type: "gradient",
       priority: 1,
-      styles: "bg-gradient-to-br from-black via-gray-900/50 to-black",
-      lazyLoad: false // Base layer loads immediately for LCP
+      styles: "bg-gradient-to-br from-black via-zinc-950 to-black",
+      lazyLoad: false
     },
     {
       type: "radial",
       priority: 2,
-      styles: "bg-[radial-gradient(ellipse_80%_80%_at_30%_20%,rgba(220,38,38,0.12),transparent_60%)]",
+      styles: "bg-[radial-gradient(ellipse_80%_80%_at_30%_20%,rgba(220,38,38,0.15),transparent_60%)]",
       lazyLoad: backgroundLayers.lazyLoad
     },
     {
       type: "radial",
       priority: 3,
-      styles: "bg-[radial-gradient(ellipse_70%_70%_at_70%_80%,rgba(59,130,246,0.08),transparent_60%)]",
+      styles: "bg-[radial-gradient(ellipse_70%_70%_at_70%_80%,rgba(59,130,246,0.1),transparent_60%)]",
       lazyLoad: backgroundLayers.lazyLoad
     },
     {
       type: "glow",
       priority: 4,
-      styles: "", // Handled by animated elements
+      styles: "",
       lazyLoad: backgroundLayers.lazyLoad
     }
   ]
 
-  // Filter layers based on performance config (max 4 layers)
   const activeLayers = layers.slice(0, Math.min(backgroundLayers.maxLayers, 4))
 
-  // Animation classes with performance optimization
   const getAnimationClass = () => {
     if (animations.respectReducedMotion) {
       return "motion-safe:animate-pulse-slow motion-reduce:animate-none"
@@ -57,24 +55,30 @@ export function HeroContainer({ performanceConfig, className }: HeroContainerPro
     return "animate-pulse-slow"
   }
 
-  // GPU acceleration helper
   const getGPUStyles = (): React.CSSProperties => {
-    if (backgroundLayers.animationOptimization === "css-transforms") {
-      return {
-        transform: "translateZ(0)", // Force GPU layer
-        willChange: "transform, opacity",
-        backfaceVisibility: "hidden" as const
-      }
+    return {
+      transform: "translateZ(0)",
+      willChange: "transform, opacity",
+      backfaceVisibility: "hidden" as const
     }
-    return {}
   }
 
   return (
     <div className={`absolute inset-0 ${className || ''}`}>
-      {/* Base Layer - Always present for LCP optimization */}
+      {/* Base Layer */}
       <div className="absolute inset-0 bg-black" />
 
-      {/* Strategic Gradient Layers with lazy loading */}
+      {/* Stunning Technical Background Effect: Animated Beams */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-red-500/20 to-transparent animate-beam-slow" />
+        <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-blue-500/10 to-transparent animate-beam-medium" />
+        <div className="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-transparent via-red-500/15 to-transparent animate-beam-fast" />
+
+        {/* Horizontal scanlines */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,rgba(255,255,255,0.03)_50%,transparent_100%)] bg-[length:100%_4px] animate-scanline pointer-events-none opacity-20" />
+      </div>
+
+      {/* Strategic Gradient Layers */}
       {activeLayers.map((layer, index) => {
         if (layer.type === "gradient" || layer.type === "radial") {
           return (
@@ -85,15 +89,6 @@ export function HeroContainer({ performanceConfig, className }: HeroContainerPro
                 zIndex: layer.priority,
                 ...getGPUStyles()
               }}
-              {...(layer.lazyLoad && {
-                onLoad: () => {
-                  // Fade in lazy-loaded layers
-                  const element = document.querySelector(`[data-layer="${index}"]`) as HTMLElement
-                  if (element) {
-                    element.style.opacity = '1'
-                  }
-                }
-              })}
               data-layer={index}
             />
           )
@@ -101,74 +96,69 @@ export function HeroContainer({ performanceConfig, className }: HeroContainerPro
         return null
       })}
 
-      {/* Optimized Animated Glow Orbs - Only if glow layer is active */}
+      {/* Animated Glow Orbs */}
       {activeLayers.some(layer => layer.type === "glow") && (
         <>
-          {/* Primary glow orb with performance optimization - Using radial gradient instead of blur */}
           <div
-            className={`absolute top-1/4 right-1/3 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(239,68,68,0.1)_0%,transparent_70%)] ${getAnimationClass()}`}
+            className={`absolute top-1/4 right-1/4 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(239,68,68,0.12)_0%,transparent_70%)] ${getAnimationClass()}`}
             style={{
               ...getGPUStyles(),
               animationDelay: '0s',
-              willChange: 'transform, opacity'
             }}
             aria-hidden="true"
           />
-
-          {/* Secondary glow orb with staggered animation - Using radial gradient instead of blur */}
           <div
-            className={`absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(59,130,246,0.08)_0%,transparent_70%)] ${getAnimationClass()}`}
+            className={`absolute bottom-1/4 left-1/4 w-[700px] h-[700px] bg-[radial-gradient(circle,rgba(59,130,246,0.1)_0%,transparent_70%)] ${getAnimationClass()}`}
             style={{
               ...getGPUStyles(),
               animationDelay: '2s',
-              willChange: 'transform, opacity'
             }}
             aria-hidden="true"
           />
         </>
       )}
 
-      {/* Optional Grid Pattern - Only if we have layer capacity and it adds value */}
-      {activeLayers.length < backgroundLayers.maxLayers && backgroundLayers.maxLayers >= 4 && (
-        <div
-          className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black_40%,transparent_100%)]"
-          style={getGPUStyles()}
-          aria-hidden="true"
-        />
-      )}
+      {/* Enhanced Technical Grid */}
+      <div
+        className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,black_40%,transparent_90%)]"
+        style={getGPUStyles()}
+        aria-hidden="true"
+      />
     </div>
   )
 }
 
-// Enhanced CSS styles for optimized animations and performance
+// Added new technical animations
 export const heroContainerStyles = `
+  @keyframes beam {
+    0% { transform: translateY(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(100%); opacity: 0; }
+  }
+  
+  .animate-beam-slow { animation: beam 8s linear infinite; }
+  .animate-beam-medium { animation: beam 6s linear infinite; animation-delay: 2s; }
+  .animate-beam-fast { animation: beam 4s linear infinite; animation-delay: 1s; }
+
+  @keyframes scanline {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100%); }
+  }
+  .animate-scanline { animation: scanline 10s linear infinite; }
+
   @keyframes pulse-slow {
-    0%, 100% { 
-      opacity: 0.3; 
-      transform: scale(1) translateZ(0); 
-    }
-    50% { 
-      opacity: 0.6; 
-      transform: scale(1.05) translateZ(0); 
-    }
+    0%, 100% { opacity: 0.4; transform: scale(1) translateZ(0); }
+    50% { opacity: 0.8; transform: scale(1.05) translateZ(0); }
   }
 
   @keyframes fade-in {
-    from { 
-      opacity: 0; 
-    }
-    to { 
-      opacity: 1; 
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   .animate-pulse-slow {
-    animation: pulse-slow 4s ease-in-out infinite;
+    animation: pulse-slow 6s ease-in-out infinite;
     will-change: transform, opacity;
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.6s ease-out forwards;
   }
 
   /* Respect reduced motion preferences */

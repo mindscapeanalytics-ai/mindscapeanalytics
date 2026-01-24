@@ -10,12 +10,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
+import { useToast } from "@/hooks/use-toast"
 
 type Message = {
   id: string
   content: string
   role: "user" | "assistant"
   timestamp: Date
+  type?: "text" | "form"
 }
 
 type ChatStyle = "floating" | "sidebar"
@@ -26,6 +28,67 @@ interface UnifiedChatProps {
   allowStyleToggle?: boolean
   theme?: ChatTheme
   embedded?: boolean
+}
+
+// Inline Lead Form Component for Chat
+function ChatLeadForm({ onSuccess }: { onSuccess: () => void }) {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { toast } = useToast()
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          subject: "Chat AI Lead",
+          interest: "Consultation Request via AI Assistant"
+        }),
+      })
+
+      if (response.ok) {
+        toast({ title: "Request Sent!", description: "An expert will contact you soon." })
+        onSuccess()
+      }
+    } catch (err) {
+      toast({ title: "Error", description: "Failed to send request.", variant: "destructive" })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-2 bg-black/40 p-3 rounded-lg border border-red-500/20 mt-2">
+      <Input
+        placeholder="Full Name"
+        required
+        value={formData.name}
+        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+        className="h-8 text-xs bg-white/5 border-white/10"
+      />
+      <Input
+        type="email"
+        placeholder="Email"
+        required
+        value={formData.email}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        className="h-8 text-xs bg-white/5 border-white/10"
+      />
+      <textarea
+        placeholder="How can we help?"
+        className="w-full h-16 p-2 text-xs bg-white/5 border border-white/10 rounded-md text-white focus:outline-none focus:ring-1 focus:ring-red-500/50"
+        value={formData.message}
+        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+      />
+      <Button size="sm" type="submit" disabled={isSubmitting} className="w-full bg-red-600 hover:bg-red-700 h-8 text-xs font-bold">
+        {isSubmitting ? "Sending..." : "Connect with Expert"}
+      </Button>
+    </form>
+  )
 }
 
 export default function UnifiedChat({
@@ -48,14 +111,30 @@ export default function UnifiedChat({
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const { toast } = useToast()
 
   // Scroll to bottom of messages
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
+  const triggerLeadForm = () => {
+    const formMessage: Message = {
+      id: Date.now().toString(),
+      content: "I'd be happy to connect you with one of our AI experts. Please provide your details below:",
+      role: "assistant",
+      timestamp: new Date(),
+      type: "form"
+    }
+    setMessages((prev) => [...prev, formMessage])
+  }
+
   const handleSendMessage = async () => {
     if (!input.trim()) return
+
+    // Intent Detection
+    const leadKeywords = ["pricing", "consultation", "expert", "contact", "talk to human", "sales", "demo", "cost"]
+    const hasLeadIntent = leadKeywords.some(kw => input.toLowerCase().includes(kw))
 
     // Add user message
     const userMessage: Message = {
@@ -67,6 +146,12 @@ export default function UnifiedChat({
 
     setMessages((prev) => [...prev, userMessage])
     setInput("")
+
+    if (hasLeadIntent) {
+      setTimeout(triggerLeadForm, 500)
+      return
+    }
+
     setIsLoading(true)
 
     try {
@@ -195,6 +280,14 @@ export default function UnifiedChat({
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={triggerLeadForm}
+                    className="h-7 px-2 text-[10px] text-white/70 hover:text-white border border-white/10 hover:bg-white/10 rounded-full"
+                  >
+                    Consult Expert
+                  </Button>
                   {allowStyleToggle && (
                     <Button
                       variant="ghost"
@@ -224,11 +317,21 @@ export default function UnifiedChat({
                 <div key={message.id} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div
                     className={`max-w-[80%] rounded-lg p-3 ${message.role === "user"
-                        ? isDashboard ? "bg-primary text-primary-foreground" : "bg-red-600 text-white"
-                        : embedded ? "bg-accent" : "bg-white/5 border border-white/10 text-white"
+                      ? isDashboard ? "bg-primary text-primary-foreground" : "bg-red-600 text-white"
+                      : embedded ? "bg-accent" : "bg-white/5 border border-white/10 text-white"
                       }`}
                   >
                     <p className="text-sm">{message.content}</p>
+                    {message.type === "form" && (
+                      <ChatLeadForm onSuccess={() => {
+                        setMessages(prev => [...prev, {
+                          id: Date.now().toString(),
+                          content: "Thank you! We've received your request.",
+                          role: "assistant",
+                          timestamp: new Date()
+                        }])
+                      }} />
+                    )}
                     <p className="text-xs mt-1 opacity-70">
                       {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                     </p>
@@ -329,6 +432,14 @@ export default function UnifiedChat({
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={triggerLeadForm}
+                    className="h-7 px-2 text-[10px] text-white/70 hover:text-white border border-white/10 hover:bg-white/10 rounded-full"
+                  >
+                    Consult Expert
+                  </Button>
                   {allowStyleToggle && (
                     <Button
                       variant="ghost"
@@ -367,11 +478,21 @@ export default function UnifiedChat({
                   <div key={message.id} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                     <div
                       className={`max-w-[80%] rounded-lg p-3 ${message.role === "user"
-                          ? isDashboard ? "bg-primary text-primary-foreground" : "bg-red-600 text-white"
-                          : "bg-white/10 text-white"
+                        ? isDashboard ? "bg-primary text-primary-foreground" : "bg-red-600 text-white"
+                        : "bg-white/10 text-white"
                         }`}
                     >
                       <p>{message.content}</p>
+                      {message.type === "form" && (
+                        <ChatLeadForm onSuccess={() => {
+                          setMessages(prev => [...prev, {
+                            id: Date.now().toString(),
+                            content: "Thank you! We've received your request.",
+                            role: "assistant",
+                            timestamp: new Date()
+                          }])
+                        }} />
+                      )}
                       <div className="text-xs mt-1 opacity-70 text-right">
                         {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                       </div>
