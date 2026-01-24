@@ -18,24 +18,24 @@ interface HeroContainerProps {
 export function HeroContainer({ performanceConfig, className }: HeroContainerProps) {
   const { backgroundLayers, animations } = performanceConfig
 
-  // Define the strategic background layers with priority system
+  // Define the strategic background layers with semi-transparency
   const layers: BackgroundLayer[] = [
     {
       type: "gradient",
       priority: 1,
-      styles: "bg-gradient-to-br from-black via-zinc-950 to-black",
+      styles: "bg-gradient-to-br from-black/60 via-zinc-950/40 to-black/60",
       lazyLoad: false
     },
     {
       type: "radial",
       priority: 2,
-      styles: "bg-[radial-gradient(ellipse_80%_80%_at_30%_20%,rgba(220,38,38,0.15),transparent_60%)]",
+      styles: "bg-[radial-gradient(ellipse_80%_80%_at_30%_20%,rgba(220,38,38,0.25),transparent_60%)]",
       lazyLoad: backgroundLayers.lazyLoad
     },
     {
       type: "radial",
       priority: 3,
-      styles: "bg-[radial-gradient(ellipse_70%_70%_at_70%_80%,rgba(59,130,246,0.1),transparent_60%)]",
+      styles: "bg-[radial-gradient(ellipse_70%_70%_at_70%_80%,rgba(59,130,246,0.2),transparent_60%)]",
       lazyLoad: backgroundLayers.lazyLoad
     },
     {
@@ -65,26 +65,16 @@ export function HeroContainer({ performanceConfig, className }: HeroContainerPro
 
   return (
     <div className={`absolute inset-0 ${className || ''}`}>
-      {/* Base Layer */}
-      <div className="absolute inset-0 bg-black" />
+      {/* Base Layer - Semi-transparent to let global BG show through */}
+      <div className="absolute inset-0 bg-black/40" />
 
-      {/* Stunning Technical Background Effect: Animated Beams */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-red-500/20 to-transparent animate-beam-slow" />
-        <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-blue-500/10 to-transparent animate-beam-medium" />
-        <div className="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-transparent via-red-500/15 to-transparent animate-beam-fast" />
-
-        {/* Horizontal scanlines */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,rgba(255,255,255,0.03)_50%,transparent_100%)] bg-[length:100%_4px] animate-scanline pointer-events-none opacity-20" />
-      </div>
-
-      {/* Strategic Gradient Layers */}
+      {/* Strategic Gradient Layers - Smoother, more immersive */}
       {activeLayers.map((layer, index) => {
         if (layer.type === "gradient" || layer.type === "radial") {
           return (
             <div
               key={`layer-${index}`}
-              className={`absolute inset-0 ${layer.styles} ${layer.lazyLoad ? 'opacity-0 animate-fade-in' : ''}`}
+              className={`absolute inset-0 ${layer.styles}`}
               style={{
                 zIndex: layer.priority,
                 ...getGPUStyles()
@@ -96,31 +86,29 @@ export function HeroContainer({ performanceConfig, className }: HeroContainerPro
         return null
       })}
 
-      {/* Animated Glow Orbs */}
+      {/* Ambient Moving Glow Orbs - Floating and Pulse combined */}
       {activeLayers.some(layer => layer.type === "glow") && (
-        <>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div
-            className={`absolute top-1/4 right-1/4 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(239,68,68,0.12)_0%,transparent_70%)] ${getAnimationClass()}`}
+            className={`absolute top-1/4 right-1/4 w-[900px] h-[900px] bg-[radial-gradient(circle,rgba(239,68,68,0.1)_0%,transparent_70%)] animate-ambient-float-slow`}
             style={{
               ...getGPUStyles(),
-              animationDelay: '0s',
             }}
             aria-hidden="true"
           />
           <div
-            className={`absolute bottom-1/4 left-1/4 w-[700px] h-[700px] bg-[radial-gradient(circle,rgba(59,130,246,0.1)_0%,transparent_70%)] ${getAnimationClass()}`}
+            className={`absolute bottom-1/4 left-1/4 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(59,130,246,0.08)_0%,transparent_70%)] animate-ambient-float-medium`}
             style={{
               ...getGPUStyles(),
-              animationDelay: '2s',
             }}
             aria-hidden="true"
           />
-        </>
+        </div>
       )}
 
-      {/* Enhanced Technical Grid */}
+      {/* Refined Technical Grid - Subtle and professional */}
       <div
-        className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,black_40%,transparent_90%)]"
+        className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,black_30%,transparent_100%)] opacity-40"
         style={getGPUStyles()}
         aria-hidden="true"
       />
@@ -128,23 +116,17 @@ export function HeroContainer({ performanceConfig, className }: HeroContainerPro
   )
 }
 
-// Added new technical animations
+// sophisticated ambient animations
 export const heroContainerStyles = `
-  @keyframes beam {
-    0% { transform: translateY(-100%); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(100%); opacity: 0; }
+  @keyframes ambient-float {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    33% { transform: translate(2%, 4%) scale(1.05); opacity: 0.6; }
+    66% { transform: translate(-1%, 2%) scale(0.95); opacity: 0.3; }
+    100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
   }
   
-  .animate-beam-slow { animation: beam 8s linear infinite; }
-  .animate-beam-medium { animation: beam 6s linear infinite; animation-delay: 2s; }
-  .animate-beam-fast { animation: beam 4s linear infinite; animation-delay: 1s; }
-
-  @keyframes scanline {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(100%); }
-  }
-  .animate-scanline { animation: scanline 10s linear infinite; }
+  .animate-ambient-float-slow { animation: ambient-float 25s ease-in-out infinite; }
+  .animate-ambient-float-medium { animation: ambient-float 18s ease-in-out infinite; animation-delay: -5s; }
 
   @keyframes pulse-slow {
     0%, 100% { opacity: 0.4; transform: scale(1) translateZ(0); }
@@ -157,17 +139,15 @@ export const heroContainerStyles = `
   }
 
   .animate-pulse-slow {
-    animation: pulse-slow 6s ease-in-out infinite;
+    animation: pulse-slow 8s ease-in-out infinite;
     will-change: transform, opacity;
   }
 
   /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
-    .motion-safe\\:animate-pulse-slow {
-      animation: none;
-    }
-    
-    .motion-reduce\\:animate-none {
+    .animate-ambient-float-slow,
+    .animate-ambient-float-medium,
+    .animate-pulse-slow {
       animation: none !important;
     }
   }
@@ -183,16 +163,6 @@ export const heroContainerStyles = `
   .bg-layer-optimized {
     contain: layout style paint;
     transform: translateZ(0);
-  }
-
-  /* Intersection observer optimization for lazy loading */
-  .lazy-bg-layer {
-    opacity: 0;
-    transition: opacity 0.6s ease-out;
-  }
-
-  .lazy-bg-layer.loaded {
-    opacity: 1;
   }
 
   /* High contrast mode support */
