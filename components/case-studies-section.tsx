@@ -181,8 +181,8 @@ export default function CaseStudiesSection() {
   const currentStudy = caseStudies[currentIndex]
 
   return (
-    <div className="w-full bg-black relative overflow-hidden border-t border-white/5">
-      <div className="max-w-[90vw] mx-auto px-4 sm:px-6">
+    <div className="w-full bg-transparent relative overflow-hidden border-t border-white/5">
+      <div className="w-full mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center mb-4">

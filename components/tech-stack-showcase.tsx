@@ -120,8 +120,8 @@ export default function TechStackShowcase() {
   // Hydration safety: render a shell during server rendering and initial client mount
   if (!hasMounted) {
     return (
-      <section className="w-full py-10 bg-black min-h-[400px] border-t border-white/5 animate-pulse">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="w-full py-10 bg-transparent min-h-[400px] border-t border-white/5 animate-pulse">
+        <div className="w-full px-4 md:px-8">
           <div className="h-8 w-48 bg-white/5 rounded-lg mb-4" />
           <div className="h-12 w-96 bg-white/5 rounded-lg mb-12" />
           <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-3">
@@ -135,12 +135,12 @@ export default function TechStackShowcase() {
   }
 
   return (
-    <div className="w-full bg-black relative overflow-hidden border-t border-white/5">
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="w-full bg-transparent relative overflow-hidden border-t border-white/5">
+      <div className="w-full px-4 md:px-8">
         {/* Compact Header */}
         <div className="flex flex-col md:flex-row items-end justify-between gap-6 mb-8 border-b border-white/5 pb-6">
           <div className="text-left">
-            <Badge variant="outline" className="mb-3 bg-red-500/10 text-red-400 border-red-500/20 px-3 py-1 text-[10px] tracking-widest uppercase">
+            <Badge variant="outline" className="mb-3 bg-zinc-800/30 text-zinc-300 border-zinc-700/50 px-3 py-1 text-[10px] tracking-widest uppercase">
               Technology Stack
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">

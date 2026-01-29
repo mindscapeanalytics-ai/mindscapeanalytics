@@ -68,7 +68,7 @@ const clientLogos = [
 
 export default function SocialProofSection() {
     return (
-        <section className="py-16 md:py-24 relative overflow-hidden bg-black">
+        <section className="py-16 md:py-24 relative overflow-hidden bg-transparent">
             {/* Background elements */}
             <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black,transparent)]"></div>
             <div className="absolute top-1/2 left-1/4 w-64 h-64 rounded-full bg-red-500/10 blur-[100px]"></div>

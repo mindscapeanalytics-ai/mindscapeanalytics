@@ -115,7 +115,7 @@ function ContactFormContent() {
               <CheckCircle2 className="h-8 w-8 text-green-500" />
             </div>
             <h3 className="text-xl font-bold mb-2 text-white">Message Sent!</h3>
-            <p className="text-zinc-400 text-center max-w-xs text-sm">
+            <p className="text-red-400 text-center max-w-xs text-sm">
               Thank you for reaching out. We'll get back to you shortly.
             </p>
           </motion.div>
@@ -130,7 +130,7 @@ function ContactFormContent() {
               name="name"
               render={({ field }) => (
                 <FormItem className="space-y-1.5">
-                  <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Full Name</FormLabel>
+                  <FormLabel className="text-xs uppercase tracking-wider text-red-400 font-semibold ml-1">Full Name</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="John Doe"
@@ -147,7 +147,7 @@ function ContactFormContent() {
               name="email"
               render={({ field }) => (
                 <FormItem className="space-y-1.5">
-                  <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Email Address</FormLabel>
+                  <FormLabel className="text-xs uppercase tracking-wider text-red-400 font-semibold ml-1">Email Address</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="john@example.com"
@@ -167,7 +167,7 @@ function ContactFormContent() {
               name="company"
               render={({ field }) => (
                 <FormItem className="space-y-1.5">
-                  <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Company</FormLabel>
+                  <FormLabel className="text-xs uppercase tracking-wider text-red-400 font-semibold ml-1">Company</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Your Company"
@@ -184,7 +184,7 @@ function ContactFormContent() {
               name="phone"
               render={({ field }) => (
                 <FormItem className="space-y-1.5">
-                  <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Phone</FormLabel>
+                  <FormLabel className="text-xs uppercase tracking-wider text-red-400 font-semibold ml-1">Phone</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="+1 (555) 000-0000"
@@ -204,7 +204,7 @@ function ContactFormContent() {
               name="interest"
               render={({ field }) => (
                 <FormItem className="space-y-1.5">
-                  <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Interest</FormLabel>
+                  <FormLabel className="text-xs uppercase tracking-wider text-red-400 font-semibold ml-1">Interest</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className="bg-zinc-900/80 border-white/10 focus:border-red-500/50 focus:ring-red-500/20 h-10 text-zinc-300">
@@ -231,7 +231,7 @@ function ContactFormContent() {
               name="subject"
               render={({ field }) => (
                 <FormItem className="space-y-1.5">
-                  <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Subject</FormLabel>
+                  <FormLabel className="text-xs uppercase tracking-wider text-red-400 font-semibold ml-1">Subject</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="How can we help?"
@@ -250,7 +250,7 @@ function ContactFormContent() {
             name="message"
             render={({ field }) => (
               <FormItem className="space-y-1.5">
-                <FormLabel className="text-xs uppercase tracking-wider text-zinc-400 font-semibold ml-1">Message</FormLabel>
+                <FormLabel className="text-xs uppercase tracking-wider text-red-400 font-semibold ml-1">Message</FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder="Tell us about your project requirements..."

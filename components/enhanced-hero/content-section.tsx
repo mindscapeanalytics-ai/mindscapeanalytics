@@ -13,7 +13,7 @@ import { useTypography } from "@/lib/typography-system"
 interface ContentSectionProps {
   typographyConfig: TypographyConfig
   className?: string
-  mode?: 'full' | 'heading' | 'content' // Added mode prop
+  mode?: 'full' | 'text' | 'actions' // Updated mode prop
 }
 
 /**
@@ -69,21 +69,21 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
 
   const renderHeading = () => (
     <>
-      {/* Professional Badges - Repositioned above headline for maximum impact */}
+      {/* Professional Badges - Monochrome Industrial Look */}
       <motion.div
         className={`flex flex-nowrap gap-2 justify-center lg:justify-start w-full overflow-x-auto scrollbar-hide pb-1 ${spacing.badgeSpacing}`}
         variants={itemVariants}
       >
-        <Badge className={`bg-red-950/90 border border-red-600/40 text-red-200 px-3 py-1 text-[11px] sm:text-sm sm:px-4 sm:py-2 font-semibold backdrop-blur-xl shadow-lg hover:bg-red-900/90 transition-colors duration-300 whitespace-nowrap ${getFocusStyles()}`}>
-          <Database className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" aria-hidden="true" />
+        <Badge className={`bg-zinc-900/90 border border-zinc-700/50 text-zinc-300 px-3 py-1 text-[11px] sm:text-sm sm:px-4 sm:py-2 font-medium backdrop-blur-xl shadow-lg hover:bg-zinc-800 transition-colors duration-300 whitespace-nowrap ${getFocusStyles()}`}>
+          <Database className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2 text-red-500" aria-hidden="true" />
           Data Platforms
         </Badge>
-        <Badge className={`bg-blue-950/90 border border-blue-600/40 text-blue-200 px-3 py-1 text-[11px] sm:text-sm sm:px-4 sm:py-2 font-semibold backdrop-blur-xl shadow-lg hover:bg-blue-900/90 transition-colors duration-300 whitespace-nowrap ${getFocusStyles()}`}>
-          <Brain className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" aria-hidden="true" />
+        <Badge className={`bg-zinc-900/90 border border-zinc-700/50 text-zinc-300 px-3 py-1 text-[11px] sm:text-sm sm:px-4 sm:py-2 font-medium backdrop-blur-xl shadow-lg hover:bg-zinc-800 transition-colors duration-300 whitespace-nowrap ${getFocusStyles()}`}>
+          <Brain className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2 text-red-500" aria-hidden="true" />
           AI Systems
         </Badge>
-        <Badge className={`bg-green-950/90 border border-green-600/40 text-green-200 px-3 py-1 text-[11px] sm:text-sm sm:px-4 sm:py-2 font-semibold backdrop-blur-xl shadow-lg hover:bg-green-900/90 transition-colors duration-300 whitespace-nowrap ${getFocusStyles()}`}>
-          <Zap className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" aria-hidden="true" />
+        <Badge className={`bg-zinc-900/90 border border-zinc-700/50 text-zinc-300 px-3 py-1 text-[11px] sm:text-sm sm:px-4 sm:py-2 font-medium backdrop-blur-xl shadow-lg hover:bg-zinc-800 transition-colors duration-300 whitespace-nowrap ${getFocusStyles()}`}>
+          <Zap className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2 text-red-500" aria-hidden="true" />
           Automation
         </Badge>
       </motion.div>
@@ -91,22 +91,23 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
       {/* Enhanced Main Headline with improved typography */}
       <motion.div variants={itemVariants}>
         <h1
-          className={`${getResponsiveFontSize()} text-3xl sm:text-5xl font-black tracking-tight ${spacing.headlineSpacing} hero-headline`}
+          className={`${getResponsiveFontSize()} text-5xl sm:text-7xl lg:text-7xl xl:text-7xl font-bold tracking-tighter ${spacing.headlineSpacing} hero-headline`}
           style={{
             ...getLineHeightStyles(),
-            ...getTextShadowStyles()
+            ...getTextShadowStyles(),
+            lineHeight: '1.05'
           }}
         >
-          <span className="block text-white font-black">Engineering</span>
-          <span className="block text-white font-black">Intelligent Data</span>
-          <span className="block text-white font-black">& AI Systems</span>
-          <span className="block text-red-500 font-black">for Modern Enterprises</span>
+          <span className="block text-white">Engineering</span>
+          <span className="block text-white">Intelligent Data</span>
+          <span className="block text-red-500">& AI Systems</span>
+          <span className="block text-red-500 font-medium italic">for Modern Enterprises</span>
         </h1>
       </motion.div>
     </>
   )
 
-  const renderContent = () => (
+  const renderText = () => (
     <>
       {/* Enhanced Description with clear visual hierarchy */}
       <motion.div
@@ -115,7 +116,7 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
       >
         {/* Primary description with enhanced styling */}
         <p
-          className="text-sm sm:text-lg text-white/95 leading-relaxed font-light hero-text"
+          className="text-sm sm:text-lg text-zinc-300 leading-relaxed font-normal hero-text text-center lg:text-left"
           style={getTextShadowStyles()}
         >
           Mindscape Analytics delivers scalable data platforms, AI systems, and automation solutions that help organizations operate smarter, faster, and with greater control.
@@ -123,13 +124,17 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
 
         {/* Secondary description with proper hierarchy */}
         <p
-          className="text-sm lg:text-base text-white/80 leading-relaxed hero-text"
+          className="text-sm lg:text-base text-zinc-500 leading-relaxed hero-text text-center lg:text-left"
           style={getTextShadowStyles()}
         >
           We design, build, and optimize systems that perform in real-world production environments.
         </p>
       </motion.div>
+    </>
+  )
 
+  const renderButtons = () => (
+    <>
       {/* Enhanced CTA Buttons - Single row on mobile with reduced size */}
       <motion.div
         className={`flex flex-row items-center justify-center lg:justify-start gap-2 sm:gap-4 ${spacing.ctaSpacing}`}
@@ -138,13 +143,12 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
         {/* Primary CTA - Compact on mobile */}
         <Button
           size="default"
-          className={`group relative flex-1 sm:flex-none px-4 py-2.5 sm:px-8 sm:py-4 text-xs sm:text-lg font-bold text-white rounded-lg sm:rounded-xl hover:brightness-110 transition-all duration-300 overflow-hidden shadow-2xl hover:shadow-red-500/30 hover:scale-[1.02] border border-red-500/20 ${getFocusStyles()}`}
+          className={`group relative flex-1 sm:flex-none px-4 py-2.5 sm:px-8 sm:py-6 text-xs sm:text-lg font-bold text-white rounded-full hover:brightness-110 transition-all duration-300 overflow-hidden shadow-2xl hover:shadow-red-500/20 hover:scale-[1.02] border border-red-500/50 bg-red-600 ${getFocusStyles()}`}
           onClick={handleGetStartedClick}
           aria-label="Get started with Mindscape Analytics - Contact us for consultation"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 group-hover:from-red-500 group-hover:via-red-400 group-hover:to-red-500 transition-all duration-500 rounded-lg sm:rounded-xl"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg sm:rounded-xl"></div>
-          <span className="relative z-10 flex items-center justify-center gap-1.5 sm:gap-2">
+          <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 transition-all duration-500 rounded-full"></div>
+          <span className="relative z-10 flex items-center justify-center gap-1.5 sm:gap-2 text-white">
             Get Started
             <ArrowRight className="h-3.5 w-3.5 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </span>
@@ -155,10 +159,9 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
           <Button
             size="default"
             variant="outline"
-            className={`group relative w-full px-3 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-base font-semibold text-white border border-white/30 sm:border-2 hover:border-white/50 hover:bg-white/10 rounded-lg sm:rounded-xl backdrop-blur-md transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-white/10 ${getFocusStyles()}`}
+            className={`group relative w-full px-3 py-2.5 sm:px-6 sm:py-6 text-xs sm:text-base font-medium text-white border border-zinc-700 hover:border-zinc-500 hover:bg-zinc-800 rounded-full backdrop-blur-md transition-all duration-300 hover:scale-[1.02] ${getFocusStyles()}`}
             aria-label="View our solutions and services"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg sm:rounded-xl"></div>
             <span className="relative z-10 flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap">
               View Services
               <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -171,13 +174,18 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
 
   return (
     <motion.div
-      className={`flex flex-col justify-center space-y-4 text-center lg:text-left ${className || ''}`}
+      className={`flex flex-col justify-center space-y-4 text-center lg:text-left items-center lg:items-start ${className || ''}`}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      {(mode === 'full' || mode === 'heading') && renderHeading()}
-      {(mode === 'full' || mode === 'content') && renderContent()}
+      {(mode === 'full' || mode === 'text') && (
+        <>
+          {renderHeading()}
+          {renderText()}
+        </>
+      )}
+      {(mode === 'full' || mode === 'actions') && renderButtons()}
     </motion.div>
   )
 }

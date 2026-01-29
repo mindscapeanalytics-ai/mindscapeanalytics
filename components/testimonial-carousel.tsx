@@ -252,12 +252,12 @@ export default function TestimonialCarousel() {
   }
 
   return (
-    <div className="relative overflow-hidden bg-black">
+    <div className="relative overflow-hidden bg-transparent">
       {/* Background decorations */}
-      <div className="absolute inset-0 bg-grid-white/[0.02] [mask-image:radial-gradient(ellipse_at_center,black,transparent)]" />
+      <div className="absolute inset-0 pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="w-full px-4 md:px-8 relative z-10">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center mb-3">
             <Badge variant="outline" className="bg-red-500/10 border-red-500/20 text-red-400 px-4 py-1.5 text-xs tracking-[0.2em] uppercase backdrop-blur-sm">

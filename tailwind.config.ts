@@ -117,24 +117,24 @@ const config: Config = {
         },
         "glow-pulse": {
           "0%, 100%": {
-            boxShadow: "0 0 20px rgba(185, 28, 28, 0.4)",
+            boxShadow: "0 0 20px rgba(255, 255, 255, 0.1)",
           },
           "50%": {
-            boxShadow: "0 0 30px rgba(185, 28, 28, 0.7)",
+            boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)",
           },
         },
         "blink": {
           "0%": {
             opacity: "1",
-            filter: "brightness(1) drop-shadow(0 0 5px rgba(220, 38, 38, 0.5))"
+            filter: "brightness(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.2))"
           },
           "50%": {
             opacity: "0.6",
-            filter: "brightness(0.8) drop-shadow(0 0 2px rgba(220, 38, 38, 0.3))"
+            filter: "brightness(0.8) drop-shadow(0 0 2px rgba(255, 255, 255, 0.1))"
           },
           "100%": {
             opacity: "1",
-            filter: "brightness(1) drop-shadow(0 0 5px rgba(220, 38, 38, 0.5))"
+            filter: "brightness(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.2))"
           },
         },
         wave: {
@@ -143,66 +143,77 @@ const config: Config = {
         },
         "enhanced-pulse": {
           "0%": {
-            filter: "drop-shadow(0 0 2px rgba(255, 0, 0, 0.5)) brightness(0.9)",
+            filter: "drop-shadow(0 0 2px rgba(255, 255, 255, 0.2)) brightness(0.9)",
             transform: "scale(1)",
           },
           "50%": {
-            filter: "drop-shadow(0 0 10px rgba(255, 0, 0, 0.8)) brightness(1.2)",
+            filter: "drop-shadow(0 0 10px rgba(255, 255, 255, 0.4)) brightness(1.2)",
             transform: "scale(1.05)",
           },
           "100%": {
-            filter: "drop-shadow(0 0 2px rgba(255, 0, 0, 0.5)) brightness(0.9)",
+            filter: "drop-shadow(0 0 2px rgba(255, 255, 255, 0.2)) brightness(0.9)",
             transform: "scale(1)",
           },
         },
         "logo-pulse": {
           "0%": {
             opacity: "1",
-            filter: "drop-shadow(0 0 2px rgba(139, 0, 0, 0.3))",
+            filter: "drop-shadow(0 0 2px rgba(255, 255, 255, 0.1))",
             transform: "scale(1)",
           },
           "15%": {
             opacity: "0.8",
-            filter: "drop-shadow(0 0 8px rgba(139, 0, 0, 0.7))",
+            filter: "drop-shadow(0 0 8px rgba(255, 255, 255, 0.3))",
             transform: "scale(1.12)",
           },
           "30%": {
             opacity: "0.95",
-            filter: "drop-shadow(0 0 4px rgba(139, 0, 0, 0.5))",
+            filter: "drop-shadow(0 0 4px rgba(255, 255, 255, 0.2))",
             transform: "scale(1.05)",
           },
           "45%": {
             opacity: "0.85",
-            filter: "drop-shadow(0 0 6px rgba(139, 0, 0, 0.6))",
+            filter: "drop-shadow(0 0 6px rgba(255, 255, 255, 0.25))",
             transform: "scale(1.08)",
           },
           "70%": {
             opacity: "1",
-            filter: "drop-shadow(0 0 3px rgba(139, 0, 0, 0.4))",
+            filter: "drop-shadow(0 0 3px rgba(255, 255, 255, 0.15))",
             transform: "scale(1)",
           },
           "100%": {
             opacity: "1",
-            filter: "drop-shadow(0 0 2px rgba(139, 0, 0, 0.3))",
+            filter: "drop-shadow(0 0 2px rgba(255, 255, 255, 0.1))",
             transform: "scale(1)",
           },
         },
         "svg-blink": {
           "0%": {
-            filter: "brightness(1) drop-shadow(0 0 5px rgba(220, 38, 38, 0.7))",
+            filter: "brightness(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))",
           },
           "50%": {
-            filter: "brightness(1.6) drop-shadow(0 0 15px rgba(220, 38, 38, 0.9))",
+            filter: "brightness(1.6) drop-shadow(0 0 15px rgba(255, 255, 255, 0.5))",
           },
           "100%": {
-            filter: "brightness(1) drop-shadow(0 0 5px rgba(220, 38, 38, 0.7))",
+            filter: "brightness(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))",
+          },
+        },
+        spotlight: {
+          "0%": {
+            opacity: "0",
+            transform: "translate(-72%, -62%) scale(0.5)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translate(-50%,-40%) scale(1)",
           },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "gradient-x": "gradient-x 8s ease infinite",
+        "gradient-x": "gradient-x 15s ease infinite",
+        spotlight: "spotlight 2s ease .75s 1 forwards",
         "typing-cursor": "typing-cursor 0.8s ease-in-out infinite",
         "spin-slow": "spin 8s linear infinite",
         "border-blink": "border-blink 3s ease-in-out infinite",

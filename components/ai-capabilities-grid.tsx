@@ -43,16 +43,16 @@ interface CapabilityData {
 // Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: { 
+  visible: {
     opacity: 1,
     transition: { staggerChildren: 0.1, delayChildren: 0.2 }
   }
 }
-  
+
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
-  visible: { 
-    y: 0, 
+  visible: {
+    y: 0,
     opacity: 1,
     transition: { type: "spring", stiffness: 300, damping: 24 }
   }
@@ -114,7 +114,7 @@ const CAPABILITY_DATA: CapabilityData[] = [
     title: "Computer Vision",
     shortTitle: "Vision",
     icon: <Eye className="h-7 w-7" />,
-    bgColor: "from-orange-500/20 to-orange-600/5",
+    bgColor: "from-red-500/20 to-red-600/5",
     description:
       "Our computer vision systems can identify objects, people, text, and activities in images and video with exceptional accuracy.",
     features: [
@@ -161,7 +161,7 @@ const CAPABILITY_DATA: CapabilityData[] = [
     title: "Machine Learning",
     shortTitle: "ML",
     icon: <Brain className="h-7 w-7" />,
-    bgColor: "from-blue-500/20 to-blue-600/5",
+    bgColor: "from-red-500/20 to-red-600/5",
     description:
       "Our machine learning algorithms learn from data patterns to make predictions, classifications, and recommendations.",
     features: [
@@ -178,7 +178,7 @@ const CAPABILITY_DATA: CapabilityData[] = [
     title: "Generative AI",
     shortTitle: "Gen AI",
     icon: <Wand2 className="h-7 w-7" />,
-    bgColor: "from-purple-500/20 to-purple-600/5",
+    bgColor: "from-red-500/20 to-red-600/5",
     description:
       "Our generative AI creates new content, designs, and solutions based on learned patterns and specific requirements.",
     features: ["Text Generation", "Image Synthesis", "Code Generation", "Design Creation", "Content Personalization"],
@@ -189,7 +189,7 @@ const CAPABILITY_DATA: CapabilityData[] = [
     title: "Document AI",
     shortTitle: "Doc AI",
     icon: <FileText className="h-7 w-7" />,
-    bgColor: "from-green-500/20 to-green-600/5",
+    bgColor: "from-red-500/20 to-red-600/5",
     description:
       "Our Document AI extracts, analyzes, and processes information from various document types with high precision.",
     features: [
@@ -206,7 +206,7 @@ const CAPABILITY_DATA: CapabilityData[] = [
     title: "Code AI",
     shortTitle: "Code AI",
     icon: <Code className="h-7 w-7" />,
-    bgColor: "from-yellow-500/20 to-yellow-600/5",
+    bgColor: "from-red-500/20 to-red-600/5",
     description:
       "Our Code AI assists developers by generating, reviewing, and optimizing code across multiple programming languages.",
     features: ["Code Generation", "Code Completion", "Bug Detection", "Code Refactoring", "Documentation Generation"],
@@ -223,34 +223,34 @@ const PERFORMANCE_METRICS = {
     { name: "Efficiency", value: 89, color: "bg-red-800" },
   ],
   "cv": [
-    { name: "Accuracy", value: 94, color: "bg-orange-500" },
-    { name: "Speed", value: 82, color: "bg-orange-600" },
-    { name: "Scale", value: 88, color: "bg-orange-700" },
-    { name: "Efficiency", value: 91, color: "bg-orange-800" },
+    { name: "Accuracy", value: 94, color: "bg-red-500" },
+    { name: "Speed", value: 82, color: "bg-red-600" },
+    { name: "Scale", value: 88, color: "bg-red-700" },
+    { name: "Efficiency", value: 91, color: "bg-red-800" },
   ],
   "ml": [
-    { name: "Accuracy", value: 96, color: "bg-blue-500" },
-    { name: "Speed", value: 79, color: "bg-blue-600" },
-    { name: "Scale", value: 93, color: "bg-blue-700" },
-    { name: "Efficiency", value: 85, color: "bg-blue-800" },
+    { name: "Accuracy", value: 96, color: "bg-red-500" },
+    { name: "Speed", value: 79, color: "bg-red-600" },
+    { name: "Scale", value: 93, color: "bg-red-700" },
+    { name: "Efficiency", value: 85, color: "bg-red-800" },
   ],
   "gen-ai": [
-    { name: "Accuracy", value: 91, color: "bg-purple-500" },
-    { name: "Speed", value: 84, color: "bg-purple-600" },
-    { name: "Scale", value: 97, color: "bg-purple-700" },
-    { name: "Efficiency", value: 88, color: "bg-purple-800" },
+    { name: "Accuracy", value: 91, color: "bg-red-500" },
+    { name: "Speed", value: 84, color: "bg-red-600" },
+    { name: "Scale", value: 97, color: "bg-red-700" },
+    { name: "Efficiency", value: 88, color: "bg-red-800" },
   ],
   "doc-ai": [
-    { name: "Accuracy", value: 98, color: "bg-green-500" },
-    { name: "Speed", value: 90, color: "bg-green-600" },
-    { name: "Scale", value: 85, color: "bg-green-700" },
-    { name: "Efficiency", value: 92, color: "bg-green-800" },
+    { name: "Accuracy", value: 98, color: "bg-red-500" },
+    { name: "Speed", value: 90, color: "bg-red-600" },
+    { name: "Scale", value: 85, color: "bg-red-700" },
+    { name: "Efficiency", value: 92, color: "bg-red-800" },
   ],
   "code-ai": [
-    { name: "Accuracy", value: 93, color: "bg-yellow-500" },
-    { name: "Speed", value: 85, color: "bg-yellow-600" },
-    { name: "Scale", value: 90, color: "bg-yellow-700" },
-    { name: "Efficiency", value: 94, color: "bg-yellow-800" },
+    { name: "Accuracy", value: 93, color: "bg-red-500" },
+    { name: "Speed", value: 85, color: "bg-red-600" },
+    { name: "Scale", value: 90, color: "bg-red-700" },
+    { name: "Efficiency", value: 94, color: "bg-red-800" },
   ],
 };
 
@@ -297,11 +297,11 @@ const INTERACTIVE_PROMPTS = {
 // Enhanced background animation component
 const AnimatedBackground = ({ animate = true }) => {
   if (!animate) return null;
-  
+
   return (
     <>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
-        <motion.div 
+        <motion.div
           className="absolute top-1/4 left-1/3 w-[35rem] h-[35rem] rounded-full bg-gradient-to-r from-red-500/30 to-red-600/30 blur-[10rem]"
           animate={{
             x: [0, 50, -50, 0],
@@ -314,8 +314,8 @@ const AnimatedBackground = ({ animate = true }) => {
             ease: "linear"
           }}
         />
-        <motion.div 
-          className="absolute bottom-1/3 right-1/4 w-[30rem] h-[30rem] rounded-full bg-gradient-to-r from-blue-500/30 to-purple-600/30 blur-[10rem]"
+        <motion.div
+          className="absolute bottom-1/3 right-1/4 w-[30rem] h-[30rem] rounded-full bg-gradient-to-r from-red-500/30 to-red-600/30 blur-[10rem]"
           animate={{
             x: [0, -40, 40, 0],
             y: [0, 40, -40, 0],
@@ -327,8 +327,8 @@ const AnimatedBackground = ({ animate = true }) => {
             ease: "linear"
           }}
         />
-        <motion.div 
-          className="absolute top-1/2 right-1/3 w-[25rem] h-[25rem] rounded-full bg-gradient-to-r from-orange-500/20 to-yellow-600/20 blur-[8rem]"
+        <motion.div
+          className="absolute top-1/2 right-1/3 w-[25rem] h-[25rem] rounded-full bg-gradient-to-r from-red-500/20 to-red-600/20 blur-[8rem]"
           animate={{
             x: [0, 30, -30, 0],
             y: [0, -20, 20, 0],
@@ -347,11 +347,11 @@ const AnimatedBackground = ({ animate = true }) => {
 };
 
 // Model parameters component
-function ModelParameters({ 
-  settings, 
+function ModelParameters({
+  settings,
   onChange,
   activeTab
-}: { 
+}: {
   settings: { temperature: number; maxTokens: number; topP: number };
   onChange: (setting: string, value: number) => void;
   activeTab: CapabilityId;
@@ -359,16 +359,16 @@ function ModelParameters({
   // Get the primary color based on capability
   const getSliderStyles = () => {
     const colorMap = {
-      'nlp': 'rgb(239, 68, 68)', // red-600
-      'cv': 'rgb(234, 88, 12)', // orange-600
-      'ml': 'rgb(37, 99, 235)', // blue-600
-      'gen-ai': 'rgb(147, 51, 234)', // purple-600
-      'doc-ai': 'rgb(22, 163, 74)', // green-600
-      'code-ai': 'rgb(202, 138, 4)', // yellow-600
+      'nlp': 'rgb(200, 200, 200)',
+      'cv': 'rgb(180, 180, 180)',
+      'ml': 'rgb(160, 160, 160)',
+      'gen-ai': 'rgb(140, 140, 140)',
+      'doc-ai': 'rgb(120, 120, 120)',
+      'code-ai': 'rgb(100, 100, 100)',
     };
-    
+
     const baseColor = colorMap[activeTab] || colorMap['nlp'];
-    
+
     return {
       track: {
         backgroundColor: `${baseColor}30`, // 30% opacity
@@ -382,7 +382,7 @@ function ModelParameters({
       }
     };
   };
-  
+
   const styles = getSliderStyles();
 
   return (
@@ -411,7 +411,7 @@ function ModelParameters({
         </div>
         <p className="text-xs text-white/50">Controls randomness: lower is more deterministic</p>
       </div>
-      
+
       <div className="space-y-2">
         <div className="flex justify-between items-center">
           <label htmlFor="max-tokens-slider" className="text-sm text-white/70">Max Tokens</label>
@@ -436,7 +436,7 @@ function ModelParameters({
         </div>
         <p className="text-xs text-white/50">Maximum length of generated output</p>
       </div>
-      
+
       <div className="space-y-2">
         <div className="flex justify-between items-center">
           <label htmlFor="top-p-slider" className="text-sm text-white/70">Top P</label>
@@ -478,13 +478,13 @@ function ModelParameters({
 }
 
 // Component for showing capability details
-const CapabilityDetail = ({ 
-  capability, 
-  metrics, 
-  prompts, 
-  modelSettings, 
-  onModelSettingsChange 
-}: { 
+const CapabilityDetail = ({
+  capability,
+  metrics,
+  prompts,
+  modelSettings,
+  onModelSettingsChange
+}: {
   capability: CapabilityData;
   metrics: MetricItem[];
   prompts: string[];
@@ -493,37 +493,37 @@ const CapabilityDetail = ({
 }) => {
   // Get appropriate color based on capability type
   const getAccentColor = () => {
-    switch(capability.id) {
+    switch (capability.id) {
       case 'nlp': return 'from-red-500 to-red-600';
-      case 'cv': return 'from-orange-500 to-orange-600';
-      case 'ml': return 'from-blue-500 to-blue-600';
-      case 'gen-ai': return 'from-purple-500 to-purple-600';
-      case 'doc-ai': return 'from-green-500 to-green-600';
-      case 'code-ai': return 'from-yellow-500 to-yellow-600';
+      case 'cv': return 'from-red-500 to-red-600';
+      case 'ml': return 'from-red-500 to-red-600';
+      case 'gen-ai': return 'from-red-500 to-red-600';
+      case 'doc-ai': return 'from-red-500 to-red-600';
+      case 'code-ai': return 'from-red-500 to-red-600';
       default: return 'from-red-500 to-red-600';
     }
   };
 
   const getDotColor = () => {
-    switch(capability.id) {
+    switch (capability.id) {
       case 'nlp': return 'bg-red-500';
-      case 'cv': return 'bg-orange-500';
-      case 'ml': return 'bg-blue-500';
-      case 'gen-ai': return 'bg-purple-500';
-      case 'doc-ai': return 'bg-green-500';
-      case 'code-ai': return 'bg-yellow-500';
+      case 'cv': return 'bg-red-500';
+      case 'ml': return 'bg-red-500';
+      case 'gen-ai': return 'bg-red-500';
+      case 'doc-ai': return 'bg-red-500';
+      case 'code-ai': return 'bg-red-500';
       default: return 'bg-red-500';
     }
   };
 
   const getIconColor = () => {
-    switch(capability.id) {
+    switch (capability.id) {
       case 'nlp': return 'text-red-500';
-      case 'cv': return 'text-orange-500';
-      case 'ml': return 'text-blue-500';
-      case 'gen-ai': return 'text-purple-500';
-      case 'doc-ai': return 'text-green-500';
-      case 'code-ai': return 'text-yellow-500';
+      case 'cv': return 'text-red-500';
+      case 'ml': return 'text-red-500';
+      case 'gen-ai': return 'text-red-500';
+      case 'doc-ai': return 'text-red-500';
+      case 'code-ai': return 'text-red-500';
       default: return 'text-red-500';
     }
   };
@@ -582,7 +582,7 @@ const CapabilityDetail = ({
           <CardHeader className="p-6 pb-3">
             <div className="flex items-center justify-between">
               <CardTitle className="text-lg font-semibold flex items-center">
-                <motion.div 
+                <motion.div
                   initial={{ rotate: 0 }}
                   animate={{ rotate: 360 }}
                   transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
@@ -620,14 +620,14 @@ const CapabilityDetail = ({
             </div>
           </CardHeader>
           <CardContent className="p-6 pt-2">
-            <TryItYourself 
-              capability={capability.id} 
-              prompts={prompts} 
+            <TryItYourself
+              capability={capability.id}
+              prompts={prompts}
             />
-            
+
             {/* Add model parameters UI for generative capabilities */}
             {(capability.id === "gen-ai" || capability.id === "code-ai" || capability.id === "nlp") && (
-              <ModelParameters 
+              <ModelParameters
                 settings={modelSettings}
                 onChange={onModelSettingsChange}
                 activeTab={capability.id}
@@ -650,25 +650,25 @@ export default function AICapabilitiesGrid() {
 
   // Function to get border gradients based on capability
   const getBorderGradient = (capabilityId: CapabilityId) => {
-    switch(capabilityId) {
+    switch (capabilityId) {
       case 'nlp': return 'from-red-500/80 to-red-600/80';
-      case 'cv': return 'from-orange-500/80 to-orange-600/80';
-      case 'ml': return 'from-blue-500/80 to-blue-600/80';
-      case 'gen-ai': return 'from-purple-500/80 to-purple-600/80';
-      case 'doc-ai': return 'from-green-500/80 to-green-600/80';
-      case 'code-ai': return 'from-yellow-500/80 to-yellow-600/80';
+      case 'cv': return 'from-red-500/80 to-red-600/80';
+      case 'ml': return 'from-red-500/80 to-red-600/80';
+      case 'gen-ai': return 'from-red-500/80 to-red-600/80';
+      case 'doc-ai': return 'from-red-500/80 to-red-600/80';
+      case 'code-ai': return 'from-red-500/80 to-red-600/80';
       default: return 'from-red-500/80 to-red-600/80';
     }
   };
 
   const getHoverGradient = (capabilityId: CapabilityId) => {
-    switch(capabilityId) {
+    switch (capabilityId) {
       case 'nlp': return 'from-red-500/5 to-transparent';
-      case 'cv': return 'from-orange-500/5 to-transparent';
-      case 'ml': return 'from-blue-500/5 to-transparent';
-      case 'gen-ai': return 'from-purple-500/5 to-transparent';
-      case 'doc-ai': return 'from-green-500/5 to-transparent';
-      case 'code-ai': return 'from-yellow-500/5 to-transparent';
+      case 'cv': return 'from-red-500/5 to-transparent';
+      case 'ml': return 'from-red-500/5 to-transparent';
+      case 'gen-ai': return 'from-red-500/5 to-transparent';
+      case 'doc-ai': return 'from-red-500/5 to-transparent';
+      case 'code-ai': return 'from-red-500/5 to-transparent';
       default: return 'from-red-500/5 to-transparent';
     }
   };
@@ -784,9 +784,9 @@ export default function AICapabilitiesGrid() {
                   <CapabilityDetail
                     capability={CAPABILITY_DATA.find(c => c.id === selectedCapability)!}
                     metrics={[
-                      { name: "Accuracy", value: 95, color: "red" },
-                      { name: "Speed", value: 88, color: "blue" },
-                      { name: "Efficiency", value: 92, color: "green" }
+                      { name: "Accuracy", value: 95, color: "zinc" },
+                      { name: "Speed", value: 88, color: "slate" },
+                      { name: "Efficiency", value: 92, color: "gray" }
                     ]}
                     prompts={[
                       "Analyze sentiment in customer feedback",

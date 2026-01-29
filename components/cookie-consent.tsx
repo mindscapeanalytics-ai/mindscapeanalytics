@@ -56,7 +56,7 @@ export function CookieConsent() {
               >
                 Decline
               </Button>
-              <Button className="bg-red-600 hover:bg-red-700 text-white" onClick={acceptCookies}>
+              <Button className="bg-red-600 hover:bg-red-700 text-white font-semibold shadow-lg shadow-red-500/20" onClick={acceptCookies}>
                 Accept All
               </Button>
               <Button

@@ -20,23 +20,23 @@ export default function MindscapeLogo({
   // Define color variations
   const colors = {
     default: {
-      primary: "#8B0000", // Dark red
-      secondary: "#630000", // Darker red
+      primary: "#EF4444", // Brand Red
+      secondary: "#1A1A1A", // Blackish
       text: "#FFFFFF", // White text
     },
     white: {
       primary: "#FFFFFF",
       secondary: "#F0F0F0",
-      text: "#8B0000",
+      text: "#333333",
     },
     dark: {
-      primary: "#8B0000",
-      secondary: "#630000",
+      primary: "#333333",
+      secondary: "#1A1A1A",
       text: "#1A1A1A",
     },
     light: {
-      primary: "#8B0000",
-      secondary: "#630000",
+      primary: "#333333",
+      secondary: "#1A1A1A",
       text: "#000000",
     }
   }

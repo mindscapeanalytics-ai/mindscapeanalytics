@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import RootLayoutContent from "@/components/root-layout-content"
+import RootLayoutContent from "@/components/root-layout-content-container"
 import PreloadCriticalImages from "@/components/preload-critical-images"
 import Script from "next/script"
 
@@ -107,10 +107,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-        {/* Add QuickLink for prefetching visible links */}
-        {/* Quicklink disabled to prevent Webpack runtime conflicts */}
-        {/* <Script id="quicklink" strategy="afterInteractive"> ... </Script> */}
-
         {/* Add critical CSS inline to reduce render-blocking resources */}
         <style dangerouslySetInnerHTML={{
           __html: `
@@ -172,23 +168,14 @@ export default function RootLayout({
             }
           `}
         </Script>
-
-        {/* Web Vitals measurement */}
-        {/* Web Vitals disabled to prevent Webpack runtime conflicts */}
-        {/* <Script id="web-vitals" strategy="lazyOnload"> ... </Script> */}
       </head>
-      {/* 
-        RootLayoutContent handles the main structure of the site, including:
-        1. Consistent header across non-dashboard pages
-        2. Main footer with consistent styling on all non-dashboard/docs pages
-        3. Proper theme and layout management
-      */}
-      <RootLayoutContent inter={inter} fullWidth={true}>
-        {/* Preload critical images for faster page load */}
-        <PreloadCriticalImages />
-
-        {children}
-      </RootLayoutContent>
+      <body className="antialiased zoom-fix w-full max-w-[100vw] bg-black" suppressHydrationWarning>
+        <RootLayoutContent fullWidth={true}>
+          {/* Preload critical images for faster page load */}
+          <PreloadCriticalImages />
+          {children}
+        </RootLayoutContent>
+      </body>
     </html>
   )
 }

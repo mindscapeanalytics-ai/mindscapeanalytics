@@ -187,15 +187,14 @@ export default function ProductsShowcase() {
   }
 
   return (
-    <div className="w-full relative overflow-hidden bg-black">
+    <div className="w-full relative overflow-hidden bg-transparent">
       {/* Immersive background effects */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-red-500/50 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-red-500/20 to-transparent"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-red-900/10 blur-[150px] rounded-full"></div>
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="w-full px-4 md:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -204,12 +203,12 @@ export default function ProductsShowcase() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <Badge className="mb-4 bg-red-500/10 text-red-500 border-red-500/20 px-4 py-1 text-xs tracking-widest uppercase">
+          <Badge className="mb-4 bg-zinc-800/50 text-zinc-300 border-zinc-700/50 px-4 py-1 text-xs tracking-widest uppercase">
             Innovate • Scale • Dominate
           </Badge>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter">
             <span className="text-white">Try Out Our </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-red-500 to-red-600">
+            <span className="text-red-500">
               Elite Products
             </span>
           </h2>
@@ -218,7 +217,7 @@ export default function ProductsShowcase() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-12 gap-8 items-center max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-8 items-center w-full mx-auto">
           {/* Main Visualizer (Frame-less) */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}

@@ -1,0 +1,1107 @@
+﻿
+> my-v0-project@0.1.0 lint
+> next lint
+
+
+./app/about/page.tsx
+3:28  Warning: 'useEffect' is defined but never used.  @typescript-eslint/no-unused-vars
+5:29  Warning: 'CardDescription' is defined but never used.  @typescript-eslint/no-unused-vars
+5:46  Warning: 'CardFooter' is defined but never used.  @typescript-eslint/no-unused-vars
+5:58  Warning: 'CardHeader' is defined but never used.  @typescript-eslint/no-unused-vars
+5:70  Warning: 'CardTitle' is defined but never used.  @typescript-eslint/no-unused-vars
+7:10  Warning: 'Tabs' is defined but never used.  @typescript-eslint/no-unused-vars
+7:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+7:29  Warning: 'TabsList' is defined but never used.  @typescript-eslint/no-unused-vars
+7:39  Warning: 'TabsTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+10:29  Warning: 'Code' is defined but never used.  @typescript-eslint/no-unused-vars
+10:35  Warning: 'Database' is defined but never used.  @typescript-eslint/no-unused-vars
+10:45  Warning: 'LineChart' is defined but never used.  @typescript-eslint/no-unused-vars
+10:56  Warning: 'Users' is defined but never used.  @typescript-eslint/no-unused-vars
+10:63  Warning: 'Zap' is defined but never used.  @typescript-eslint/no-unused-vars
+10:68  Warning: 'Linkedin' is defined but never used.  @typescript-eslint/no-unused-vars
+10:78  Warning: 'Twitter' is defined but never used.  @typescript-eslint/no-unused-vars
+10:87  Warning: 'Github' is defined but never used.  @typescript-eslint/no-unused-vars
+10:95  Warning: 'Mail' is defined but never used.  @typescript-eslint/no-unused-vars
+46:10  Warning: 'isAutoScrolling' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+61:11  Warning: 'cardsPerView' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./app/about/teamcard.tsx
+4:37  Warning: 'Mail' is defined but never used.  @typescript-eslint/no-unused-vars
+4:50  Warning: 'Briefcase' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./app/api/create-payment-intent/route.ts
+3:43  Warning: 'InternalServerError' is defined but never used.  @typescript-eslint/no-unused-vars
+14:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./app/api/vision/analyze/route.ts
+47:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./app/api/webhooks/stripe/route.ts
+58:48  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+73:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+78:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+79:45  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+80:51  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+88:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+103:26  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+121:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./app/blog/page.tsx
+3:20  Warning: 'useEffect' is defined but never used.  @typescript-eslint/no-unused-vars
+5:8  Warning: 'Link' is defined but never used.  @typescript-eslint/no-unused-vars
+25:3  Warning: 'BookmarkIcon' is defined but never used.  @typescript-eslint/no-unused-vars
+305:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+332:23  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+369:25  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/careers/page.tsx
+3:10  Warning: 'motion' is defined but never used.  @typescript-eslint/no-unused-vars
+4:8  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+12:3  Warning: 'Code' is defined but never used.  @typescript-eslint/no-unused-vars
+13:3  Warning: 'Palette' is defined but never used.  @typescript-eslint/no-unused-vars
+14:3  Warning: 'LayoutDashboard' is defined but never used.  @typescript-eslint/no-unused-vars
+15:3  Warning: 'Database' is defined but never used.  @typescript-eslint/no-unused-vars
+16:3  Warning: 'Brain' is defined but never used.  @typescript-eslint/no-unused-vars
+17:3  Warning: 'Settings' is defined but never used.  @typescript-eslint/no-unused-vars
+291:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+297:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+302:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+387:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+445:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./app/case-studies/page.tsx
+4:8  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+8:10  Warning: 'Tabs' is defined but never used.  @typescript-eslint/no-unused-vars
+8:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+8:29  Warning: 'TabsList' is defined but never used.  @typescript-eslint/no-unused-vars
+8:39  Warning: 'TabsTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+11:10  Warning: 'ArrowRight' is defined but never used.  @typescript-eslint/no-unused-vars
+11:22  Warning: 'BarChart2' is defined but never used.  @typescript-eslint/no-unused-vars
+11:33  Warning: 'Brain' is defined but never used.  @typescript-eslint/no-unused-vars
+11:62  Warning: 'Shield' is defined but never used.  @typescript-eslint/no-unused-vars
+11:70  Warning: 'Zap' is defined but never used.  @typescript-eslint/no-unused-vars
+11:75  Warning: 'Filter' is defined but never used.  @typescript-eslint/no-unused-vars
+11:93  Warning: 'TrendingUp' is defined but never used.  @typescript-eslint/no-unused-vars
+155:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+169:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/contact/page.tsx
+8:3  Warning: 'Mail' is defined but never used.  @typescript-eslint/no-unused-vars
+10:3  Warning: 'MapPin' is defined but never used.  @typescript-eslint/no-unused-vars
+11:3  Warning: 'Clock' is defined but never used.  @typescript-eslint/no-unused-vars
+12:3  Warning: 'Heart' is defined but never used.  @typescript-eslint/no-unused-vars
+13:3  Warning: 'Building' is defined but never used.  @typescript-eslint/no-unused-vars
+14:3  Warning: 'Building2' is defined but never used.  @typescript-eslint/no-unused-vars
+15:3  Warning: 'HelpCircle' is defined but never used.  @typescript-eslint/no-unused-vars
+31:26  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+52:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./app/docs/api/page.tsx
+329:25  Warning: Image elements must have an alt prop, either with meaningful text, or an empty string for decorative images.  jsx-a11y/alt-text
+
+./app/docs/page.tsx
+5:29  Warning: 'CardDescription' is defined but never used.  @typescript-eslint/no-unused-vars
+5:46  Warning: 'CardFooter' is defined but never used.  @typescript-eslint/no-unused-vars
+5:58  Warning: 'CardHeader' is defined but never used.  @typescript-eslint/no-unused-vars
+5:70  Warning: 'CardTitle' is defined but never used.  @typescript-eslint/no-unused-vars
+7:10  Warning: 'Tabs' is defined but never used.  @typescript-eslint/no-unused-vars
+7:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+7:29  Warning: 'TabsList' is defined but never used.  @typescript-eslint/no-unused-vars
+7:39  Warning: 'TabsTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+8:18  Warning: 'Book' is defined but never used.  @typescript-eslint/no-unused-vars
+8:40  Warning: 'MessageSquare' is defined but never used.  @typescript-eslint/no-unused-vars
+8:55  Warning: 'HelpCircle' is defined but never used.  @typescript-eslint/no-unused-vars
+8:67  Warning: 'ChevronRight' is defined but never used.  @typescript-eslint/no-unused-vars
+9:10  Warning: 'motion' is defined but never used.  @typescript-eslint/no-unused-vars
+28:10  Warning: 'searchQuery' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+28:23  Warning: 'setSearchQuery' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+29:10  Warning: 'heroRef' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+29:19  Warning: 'heroInView' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+30:10  Warning: 'contentRef' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+30:22  Warning: 'contentInView' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./app/feature-preview/page.tsx
+3:10  Warning: 'useState' is defined but never used.  @typescript-eslint/no-unused-vars
+17:9  Warning: 'y' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+18:9  Warning: 'opacity' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+93:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/founder/page.tsx
+5:18  Warning: 'AnimatePresence' is defined but never used.  @typescript-eslint/no-unused-vars
+7:10  Warning: 'Card' is defined but never used.  @typescript-eslint/no-unused-vars
+7:16  Warning: 'CardContent' is defined but never used.  @typescript-eslint/no-unused-vars
+7:29  Warning: 'CardDescription' is defined but never used.  @typescript-eslint/no-unused-vars
+7:46  Warning: 'CardFooter' is defined but never used.  @typescript-eslint/no-unused-vars
+7:58  Warning: 'CardHeader' is defined but never used.  @typescript-eslint/no-unused-vars
+7:70  Warning: 'CardTitle' is defined but never used.  @typescript-eslint/no-unused-vars
+13:10  Warning: 'Slider' is defined but never used.  @typescript-eslint/no-unused-vars
+23:12  Warning: 'MedalIcon' is defined but never used.  @typescript-eslint/no-unused-vars
+32:3  Warning: 'DollarSign' is defined but never used.  @typescript-eslint/no-unused-vars
+34:3  Warning: 'Sparkles' is defined but never used.  @typescript-eslint/no-unused-vars
+37:3  Warning: 'LineChart' is defined but never used.  @typescript-eslint/no-unused-vars
+38:3  Warning: 'BookOpenCheck' is defined but never used.  @typescript-eslint/no-unused-vars
+39:3  Warning: 'BookText' is defined but never used.  @typescript-eslint/no-unused-vars
+40:3  Warning: 'Brain' is defined but never used.  @typescript-eslint/no-unused-vars
+41:3  Warning: 'BarChart' is defined but never used.  @typescript-eslint/no-unused-vars
+43:3  Warning: 'Heart' is defined but never used.  @typescript-eslint/no-unused-vars
+44:3  Warning: 'Globe' is defined but never used.  @typescript-eslint/no-unused-vars
+45:3  Warning: 'X' is defined but never used.  @typescript-eslint/no-unused-vars
+46:3  Warning: 'Menu' is defined but never used.  @typescript-eslint/no-unused-vars
+48:3  Warning: 'Laptop' is defined but never used.  @typescript-eslint/no-unused-vars
+49:3  Warning: 'ArrowUp' is defined but never used.  @typescript-eslint/no-unused-vars
+50:3  Warning: 'Terminal' is defined but never used.  @typescript-eslint/no-unused-vars
+52:3  Warning: 'ArrowRightCircle' is defined but never used.  @typescript-eslint/no-unused-vars
+54:3  Warning: 'Twitter' is defined but never used.  @typescript-eslint/no-unused-vars
+55:3  Warning: 'Calendar' is defined but never used.  @typescript-eslint/no-unused-vars
+56:3  Warning: 'Building' is defined but never used.  @typescript-eslint/no-unused-vars
+59:3  Warning: 'Command' is defined but never used.  @typescript-eslint/no-unused-vars
+60:3  Warning: 'BarChart2' is defined but never used.  @typescript-eslint/no-unused-vars
+61:3  Warning: 'Crown' is defined but never used.  @typescript-eslint/no-unused-vars
+357:17  Warning: 'e' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+463:9  Warning: 'aiParticles' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2656:10  Warning: 'Trophy' is defined but never used.  @typescript-eslint/no-unused-vars
+2680:7  Warning: 'styles' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./app/global-error.tsx
+4:8  Warning: 'Link' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./app/marketplace/checkout/page.tsx
+15:10  Warning: 'Badge' is defined but never used.  @typescript-eslint/no-unused-vars
+17:19  Warning: 'CheckCircle2' is defined but never used.  @typescript-eslint/no-unused-vars
+288:9  Warning: 'searchParams' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./app/marketplace/orders/page.tsx
+46:9  Warning: 'router' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+57:6  Warning: React Hook useEffect has a missing dependency: 'fetchOrders'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+182:83  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./app/marketplace/page.tsx
+37:5  Warning: 'Clock' is defined but never used.  @typescript-eslint/no-unused-vars
+38:5  Warning: 'Download' is defined but never used.  @typescript-eslint/no-unused-vars
+39:5  Warning: 'Award' is defined but never used.  @typescript-eslint/no-unused-vars
+40:5  Warning: 'Users' is defined but never used.  @typescript-eslint/no-unused-vars
+41:5  Warning: 'CheckCircle2' is defined but never used.  @typescript-eslint/no-unused-vars
+42:5  Warning: 'Lock' is defined but never used.  @typescript-eslint/no-unused-vars
+43:5  Warning: 'HeadphonesIcon' is defined but never used.  @typescript-eslint/no-unused-vars
+46:5  Warning: 'Cloud' is defined but never used.  @typescript-eslint/no-unused-vars
+47:5  Warning: 'Activity' is defined but never used.  @typescript-eslint/no-unused-vars
+55:7  Warning: 'marketplaceTestimonials' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+301:12  Warning: 'checkoutForm' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+301:26  Warning: 'setCheckoutForm' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+431:11  Warning: 'handleCheckout' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./app/marketplace/success/page.tsx
+25:9  Warning: 'router' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./app/predictive-analytics.tsx
+3:20  Warning: 'useEffect' is defined but never used.  @typescript-eslint/no-unused-vars
+3:31  Warning: 'useMemo' is defined but never used.  @typescript-eslint/no-unused-vars
+9:3  Warning: 'ArrowUpRight' is defined but never used.  @typescript-eslint/no-unused-vars
+12:3  Warning: 'TrendingUp' is defined but never used.  @typescript-eslint/no-unused-vars
+16:3  Warning: 'Check' is defined but never used.  @typescript-eslint/no-unused-vars
+20:3  Warning: 'DollarSign' is defined but never used.  @typescript-eslint/no-unused-vars
+34:10  Warning: 'activeView' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+34:22  Warning: 'setActiveView' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+42:10  Warning: 'marketFactors' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+42:25  Warning: 'setMarketFactors' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+45:10  Warning: 'dataTimeframe' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+45:25  Warning: 'setDataTimeframe' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+276:9  Warning: 'marketTrends' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./app/pricing/page.tsx
+10:52  Warning: 'TooltipTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+464:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+500:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+537:42  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./app/projects/page.tsx
+7:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+13:3  Warning: 'PenTool' is defined but never used.  @typescript-eslint/no-unused-vars
+21:3  Warning: 'DollarSign' is defined but never used.  @typescript-eslint/no-unused-vars
+22:3  Warning: 'Target' is defined but never used.  @typescript-eslint/no-unused-vars
+28:3  Warning: 'ShoppingCart' is defined but never used.  @typescript-eslint/no-unused-vars
+29:3  Warning: 'Car' is defined but never used.  @typescript-eslint/no-unused-vars
+30:3  Warning: 'Box' is defined but never used.  @typescript-eslint/no-unused-vars
+31:3  Warning: 'Database' is defined but never used.  @typescript-eslint/no-unused-vars
+33:3  Warning: 'BarChart' is defined but never used.  @typescript-eslint/no-unused-vars
+34:3  Warning: 'TrendingUp' is defined but never used.  @typescript-eslint/no-unused-vars
+1093:10  Warning: 'currentSlide' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1093:24  Warning: 'setCurrentSlide' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1094:9  Warning: 'sliderRef' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./app/services/page.tsx
+296:46  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+318:24  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+347:44  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+358:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+374:58  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+387:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+552:36  Warning: 'index' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./app/services/[service]/page.tsx
+3:10  Warning: 'StandardBackground' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./app/solutions/blockchain/components/navigation.tsx
+3:10  Warning: 'useState' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./app/solutions/blockchain/portfolio/page.tsx
+5:10  Warning: 'Badge' is defined but never used.  @typescript-eslint/no-unused-vars
+8:10  Warning: 'Tabs' is defined but never used.  @typescript-eslint/no-unused-vars
+8:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+8:29  Warning: 'TabsList' is defined but never used.  @typescript-eslint/no-unused-vars
+8:39  Warning: 'TabsTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+10:3  Warning: 'ArrowUpDown' is defined but never used.  @typescript-eslint/no-unused-vars
+11:3  Warning: 'Wallet' is defined but never used.  @typescript-eslint/no-unused-vars
+12:3  Warning: 'TrendingUp' is defined but never used.  @typescript-eslint/no-unused-vars
+13:3  Warning: 'TrendingDown' is defined but never used.  @typescript-eslint/no-unused-vars
+14:3  Warning: 'DollarSign' is defined but never used.  @typescript-eslint/no-unused-vars
+16:3  Warning: 'BarChart2' is defined but never used.  @typescript-eslint/no-unused-vars
+17:3  Warning: 'Activity' is defined but never used.  @typescript-eslint/no-unused-vars
+59:10  Warning: 'activeTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+59:21  Warning: 'setActiveTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./app/solutions/blockchain/screeners/page.tsx
+8:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+12:3  Warning: 'Search' is defined but never used.  @typescript-eslint/no-unused-vars
+15:3  Warning: 'TrendingUp' is defined but never used.  @typescript-eslint/no-unused-vars
+16:3  Warning: 'TrendingDown' is defined but never used.  @typescript-eslint/no-unused-vars
+17:3  Warning: 'DollarSign' is defined but never used.  @typescript-eslint/no-unused-vars
+18:3  Warning: 'BarChart2' is defined but never used.  @typescript-eslint/no-unused-vars
+19:3  Warning: 'Activity' is defined but never used.  @typescript-eslint/no-unused-vars
+92:10  Warning: 'isLoading' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./app/solutions/cloud/page.tsx
+4:18  Warning: 'AnimatePresence' is defined but never used.  @typescript-eslint/no-unused-vars
+20:3  Warning: 'CloudRain' is defined but never used.  @typescript-eslint/no-unused-vars
+22:3  Warning: 'Activity' is defined but never used.  @typescript-eslint/no-unused-vars
+23:3  Warning: 'ChevronRight' is defined but never used.  @typescript-eslint/no-unused-vars
+24:3  Warning: 'LineChart' is defined but never used.  @typescript-eslint/no-unused-vars
+36:69  Warning: 'CardFooter' is defined but never used.  @typescript-eslint/no-unused-vars
+85:10  Warning: 'activeTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+302:25  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+488:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/solutions/enterprise/page.tsx
+3:20  Warning: 'useEffect' is defined but never used.  @typescript-eslint/no-unused-vars
+3:31  Warning: 'useRef' is defined but never used.  @typescript-eslint/no-unused-vars
+18:3  Warning: 'ChevronRight' is defined but never used.  @typescript-eslint/no-unused-vars
+19:3  Warning: 'Clock' is defined but never used.  @typescript-eslint/no-unused-vars
+21:3  Warning: 'Cpu' is defined but never used.  @typescript-eslint/no-unused-vars
+43:3  Warning: 'Copy' is defined but never used.  @typescript-eslint/no-unused-vars
+47:3  Warning: 'PieChart' is defined but never used.  @typescript-eslint/no-unused-vars
+48:3  Warning: 'AreaChart' is defined but never used.  @typescript-eslint/no-unused-vars
+51:3  Warning: 'Lightbulb' is defined but never used.  @typescript-eslint/no-unused-vars
+52:3  Warning: 'ArrowUpRight' is defined but never used.  @typescript-eslint/no-unused-vars
+54:3  Warning: 'Share' is defined but never used.  @typescript-eslint/no-unused-vars
+55:3  Warning: 'WifiIcon' is defined but never used.  @typescript-eslint/no-unused-vars
+65:10  Warning: 'Switch' is defined but never used.  @typescript-eslint/no-unused-vars
+75:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+92:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+99:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+128:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+135:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+786:10  Warning: 'activeTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+792:10  Warning: 'activeFeature' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+792:25  Warning: 'setActiveFeature' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+880:57  Warning: 'dataVolume' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2042:23  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/solutions/genai/page.tsx
+3:20  Warning: 'useRef' is defined but never used.  @typescript-eslint/no-unused-vars
+3:28  Warning: 'useEffect' is defined but never used.  @typescript-eslint/no-unused-vars
+4:18  Warning: 'useInView' is defined but never used.  @typescript-eslint/no-unused-vars
+12:3  Warning: 'Lock' is defined but never used.  @typescript-eslint/no-unused-vars
+19:3  Warning: 'Cloud' is defined but never used.  @typescript-eslint/no-unused-vars
+22:3  Warning: 'Sparkles' is defined but never used.  @typescript-eslint/no-unused-vars
+23:3  Warning: 'Bot' is defined but never used.  @typescript-eslint/no-unused-vars
+24:3  Warning: 'Microscope' is defined but never used.  @typescript-eslint/no-unused-vars
+25:3  Warning: 'Palette' is defined but never used.  @typescript-eslint/no-unused-vars
+27:3  Warning: 'Clock' is defined but never used.  @typescript-eslint/no-unused-vars
+34:3  Warning: 'Play' is defined but never used.  @typescript-eslint/no-unused-vars
+35:3  Warning: 'Pause' is defined but never used.  @typescript-eslint/no-unused-vars
+36:3  Warning: 'Download' is defined but never used.  @typescript-eslint/no-unused-vars
+37:3  Warning: 'Share' is defined but never used.  @typescript-eslint/no-unused-vars
+38:3  Warning: 'Copy' is defined but never used.  @typescript-eslint/no-unused-vars
+39:3  Warning: 'Check' is defined but never used.  @typescript-eslint/no-unused-vars
+46:10  Warning: 'Textarea' is defined but never used.  @typescript-eslint/no-unused-vars
+47:10  Warning: 'Slider' is defined but never used.  @typescript-eslint/no-unused-vars
+48:10  Warning: 'Switch' is defined but never used.  @typescript-eslint/no-unused-vars
+49:10  Warning: 'Label' is defined but never used.  @typescript-eslint/no-unused-vars
+74:10  Warning: 'activeTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+76:10  Warning: 'isPlaying' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+76:21  Warning: 'setIsPlaying' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+81:10  Warning: 'temperature' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+81:23  Warning: 'setTemperature' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+82:10  Warning: 'maxTokens' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+82:21  Warning: 'setMaxTokens' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+83:22  Warning: 'setPromptVars' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+88:10  Warning: 'selectedModel' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+88:25  Warning: 'setSelectedModel' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+89:10  Warning: 'isCopied' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+90:10  Warning: 'isShared' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+91:10  Warning: 'activeDemo' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+91:22  Warning: 'setActiveDemo' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+99:10  Warning: 'agentStatus' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+104:10  Warning: 'searchQuery' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+104:23  Warning: 'setSearchQuery' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+105:10  Warning: 'searchResults' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+106:10  Warning: 'trainingConfig' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+106:26  Warning: 'setTrainingConfig' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+113:10  Warning: 'trainingProgress' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+333:9  Warning: 'copyToClipboard' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+341:9  Warning: 'shareContent' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+816:31  Warning: Image elements must have an alt prop, either with meaningful text, or an empty string for decorative images.  jsx-a11y/alt-text
+829:35  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/solutions/industry/page.tsx
+4:18  Warning: 'AnimatePresence' is defined but never used.  @typescript-eslint/no-unused-vars
+8:3  Warning: 'Briefcase' is defined but never used.  @typescript-eslint/no-unused-vars
+19:3  Warning: 'Pause' is defined but never used.  @typescript-eslint/no-unused-vars
+20:3  Warning: 'Volume2' is defined but never used.  @typescript-eslint/no-unused-vars
+21:3  Warning: 'VolumeX' is defined but never used.  @typescript-eslint/no-unused-vars
+31:3  Warning: 'Wifi' is defined but never used.  @typescript-eslint/no-unused-vars
+33:3  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+35:3  Warning: 'ShoppingCart' is defined but never used.  @typescript-eslint/no-unused-vars
+46:3  Warning: 'Package' is defined but never used.  @typescript-eslint/no-unused-vars
+55:3  Warning: 'Banknote' is defined but never used.  @typescript-eslint/no-unused-vars
+56:3  Warning: 'Store' is defined but never used.  @typescript-eslint/no-unused-vars
+57:3  Warning: 'HeartPulse' is defined but never used.  @typescript-eslint/no-unused-vars
+58:3  Warning: 'GraduationCap' is defined but never used.  @typescript-eslint/no-unused-vars
+59:3  Warning: 'X' is defined but never used.  @typescript-eslint/no-unused-vars
+61:3  Warning: 'Download' is defined but never used.  @typescript-eslint/no-unused-vars
+62:3  Warning: 'Phone' is defined but never used.  @typescript-eslint/no-unused-vars
+64:3  Warning: 'ClipboardList' is defined but never used.  @typescript-eslint/no-unused-vars
+65:3  Warning: 'TestTube' is defined but never used.  @typescript-eslint/no-unused-vars
+70:29  Warning: 'CardDescription' is defined but never used.  @typescript-eslint/no-unused-vars
+70:46  Warning: 'CardHeader' is defined but never used.  @typescript-eslint/no-unused-vars
+70:58  Warning: 'CardTitle' is defined but never used.  @typescript-eslint/no-unused-vars
+74:10  Warning: 'Switch' is defined but never used.  @typescript-eslint/no-unused-vars
+81:10  Warning: 'Checkbox' is defined but never used.  @typescript-eslint/no-unused-vars
+87:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+128:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+146:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+153:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+160:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+201:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+228:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+241:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+253:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+262:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+272:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+281:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+290:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+302:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+311:9  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+1812:10  Warning: 'activeTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1815:10  Warning: 'volume' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1819:10  Warning: 'showFloatingNav' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1820:10  Warning: 'activeSection' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1821:21  Warning: 'setRoiInputs' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1827:10  Warning: 'formData' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1834:10  Warning: 'isSubmitting' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1862:10  Warning: 'visualizationData' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1869:10  Warning: 'activeDeploymentOption' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1869:34  Warning: 'setActiveDeploymentOption' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1870:10  Warning: 'showArchitectureDiagram' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1870:35  Warning: 'setShowArchitectureDiagram' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1871:10  Warning: 'selectedIntegration' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1871:31  Warning: 'setSelectedIntegration' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1874:10  Warning: 'activeFeature' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1874:25  Warning: 'setActiveFeature' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1875:10  Warning: 'showFeatureDemo' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1875:27  Warning: 'setShowFeatureDemo' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1876:10  Warning: 'activePackage' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1876:25  Warning: 'setActivePackage' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1877:10  Warning: 'showPackageDetails' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1877:30  Warning: 'setShowPackageDetails' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1880:10  Warning: 'activePaasFeature' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1880:29  Warning: 'setActivePaasFeature' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1881:10  Warning: 'deploymentType' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1881:26  Warning: 'setDeploymentType' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1882:10  Warning: 'showApiFlow' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1882:23  Warning: 'setShowApiFlow' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1890:26  Warning: 'setActiveServices' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1891:10  Warning: 'showDataFlowDiagram' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1891:31  Warning: 'setShowDataFlowDiagram' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1894:9  Warning: 'handleDemoInteraction' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2102:9  Warning: 'calculateRoi' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2119:9  Warning: 'handleSubmit' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2138:9  Warning: 'handleInputChange' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2150:9  Warning: 'closeCaseStudyModal' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2156:9  Warning: 'handleSelectChange' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2241:9  Warning: 'togglePlayPause' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2252:9  Warning: 'toggleMute' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2259:9  Warning: 'handleVolumeChange' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2284:9  Warning: 'renderComparisonMatrix' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2405:63  Warning: 'i' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+4430:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/solutions/page.tsx
+3:10  Warning: 'useState' is defined but never used.  @typescript-eslint/no-unused-vars
+8:30  Warning: 'SectionBackground' is defined but never used.  @typescript-eslint/no-unused-vars
+101:37  Warning: 'index' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./app/solutions/real-estate/components.tsx
+3:20  Warning: 'useRef' is defined but never used.  @typescript-eslint/no-unused-vars
+8:3  Warning: 'PieChart' is defined but never used.  @typescript-eslint/no-unused-vars
+10:3  Warning: 'Wrench' is defined but never used.  @typescript-eslint/no-unused-vars
+12:3  Warning: 'DollarSign' is defined but never used.  @typescript-eslint/no-unused-vars
+13:3  Warning: 'Cpu' is defined but never used.  @typescript-eslint/no-unused-vars
+16:3  Warning: 'UserCheck' is defined but never used.  @typescript-eslint/no-unused-vars
+18:3  Warning: 'BellRing' is defined but never used.  @typescript-eslint/no-unused-vars
+20:3  Warning: 'BarChart' is defined but never used.  @typescript-eslint/no-unused-vars
+22:3  Warning: 'Settings' is defined but never used.  @typescript-eslint/no-unused-vars
+26:3  Warning: 'Globe' is defined but never used.  @typescript-eslint/no-unused-vars
+27:3  Warning: 'Calendar' is defined but never used.  @typescript-eslint/no-unused-vars
+28:3  Warning: 'Lock' is defined but never used.  @typescript-eslint/no-unused-vars
+31:3  Warning: 'CheckCircle' is defined but never used.  @typescript-eslint/no-unused-vars
+32:3  Warning: 'Database' is defined but never used.  @typescript-eslint/no-unused-vars
+40:3  Warning: 'Filter' is defined but never used.  @typescript-eslint/no-unused-vars
+41:3  Warning: 'X' is defined but never used.  @typescript-eslint/no-unused-vars
+43:3  Warning: 'Download' is defined but never used.  @typescript-eslint/no-unused-vars
+45:3  Warning: 'EyeOff' is defined but never used.  @typescript-eslint/no-unused-vars
+65:10  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+66:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+102:3  Warning: 'imagePath' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+110:10  Warning: 'imageError' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+112:9  Warning: 'handleImageError' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+850:6  Warning: React Hook useEffect has a missing dependency: 'bankRates'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+1919:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2130:6  Warning: React Hook useEffect has a missing dependency: 'handleSearch'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./app/solutions/real-estate/page.tsx
+6:10  Warning: 'Tabs' is defined but never used.  @typescript-eslint/no-unused-vars
+6:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+6:29  Warning: 'TabsList' is defined but never used.  @typescript-eslint/no-unused-vars
+6:39  Warning: 'TabsTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+12:3  Warning: 'Users' is defined but never used.  @typescript-eslint/no-unused-vars
+13:3  Warning: 'Wrench' is defined but never used.  @typescript-eslint/no-unused-vars
+14:3  Warning: 'LineChart' is defined but never used.  @typescript-eslint/no-unused-vars
+15:3  Warning: 'DollarSign' is defined but never used.  @typescript-eslint/no-unused-vars
+16:3  Warning: 'Cpu' is defined but never used.  @typescript-eslint/no-unused-vars
+18:3  Warning: 'BarChart3' is defined but never used.  @typescript-eslint/no-unused-vars
+20:3  Warning: 'Settings' is defined but never used.  @typescript-eslint/no-unused-vars
+21:3  Warning: 'BellRing' is defined but never used.  @typescript-eslint/no-unused-vars
+23:3  Warning: 'Upload' is defined but never used.  @typescript-eslint/no-unused-vars
+25:3  Warning: 'Fingerprint' is defined but never used.  @typescript-eslint/no-unused-vars
+27:3  Warning: 'Lock' is defined but never used.  @typescript-eslint/no-unused-vars
+29:3  Warning: 'Globe' is defined but never used.  @typescript-eslint/no-unused-vars
+30:3  Warning: 'Receipt' is defined but never used.  @typescript-eslint/no-unused-vars
+31:3  Warning: 'Calendar' is defined but never used.  @typescript-eslint/no-unused-vars
+34:3  Warning: 'Search' is defined but never used.  @typescript-eslint/no-unused-vars
+35:3  Warning: 'Filter' is defined but never used.  @typescript-eslint/no-unused-vars
+38:3  Warning: 'Briefcase' is defined but never used.  @typescript-eslint/no-unused-vars
+39:3  Warning: 'X' is defined but never used.  @typescript-eslint/no-unused-vars
+43:3  Warning: 'LocateFixed' is defined but never used.  @typescript-eslint/no-unused-vars
+44:3  Warning: 'Download' is defined but never used.  @typescript-eslint/no-unused-vars
+51:3  Warning: 'MetricCard' is defined but never used.  @typescript-eslint/no-unused-vars
+52:3  Warning: 'DashboardPreview' is defined but never used.  @typescript-eslint/no-unused-vars
+54:3  Warning: 'RealEstateTestimonial' is defined but never used.  @typescript-eslint/no-unused-vars
+56:3  Warning: 'item' is defined but never used.  @typescript-eslint/no-unused-vars
+58:16  Warning: 'containerAnimation' is defined but never used.  @typescript-eslint/no-unused-vars
+59:3  Warning: 'VRPropertyTour' is defined but never used.  @typescript-eslint/no-unused-vars
+61:3  Warning: 'AIPropertySearch' is defined but never used.  @typescript-eslint/no-unused-vars
+72:10  Warning: 'FlexibleSection' is defined but never used.  @typescript-eslint/no-unused-vars
+73:10  Warning: 'getContainerClasses' is defined but never used.  @typescript-eslint/no-unused-vars
+118:10  Warning: 'activeTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+118:21  Warning: 'setActiveTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+124:9  Warning: 'metricsInView' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+125:9  Warning: 'testimonialsInView' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./app/solutions/supply-chain/page.tsx
+3:20  Warning: 'useEffect' is defined but never used.  @typescript-eslint/no-unused-vars
+3:31  Warning: 'useRef' is defined but never used.  @typescript-eslint/no-unused-vars
+8:5  Warning: 'Factory' is defined but never used.  @typescript-eslint/no-unused-vars
+9:5  Warning: 'BarChart' is defined but never used.  @typescript-eslint/no-unused-vars
+12:5  Warning: 'Globe' is defined but never used.  @typescript-eslint/no-unused-vars
+16:5  Warning: 'MapPin' is defined but never used.  @typescript-eslint/no-unused-vars
+17:5  Warning: 'AlertTriangle' is defined but never used.  @typescript-eslint/no-unused-vars
+18:5  Warning: 'RefreshCcw' is defined but never used.  @typescript-eslint/no-unused-vars
+20:5  Warning: 'Search' is defined but never used.  @typescript-eslint/no-unused-vars
+22:5  Warning: 'ChevronRight' is defined but never used.  @typescript-eslint/no-unused-vars
+23:5  Warning: 'Plus' is defined but never used.  @typescript-eslint/no-unused-vars
+24:5  Warning: 'Play' is defined but never used.  @typescript-eslint/no-unused-vars
+25:5  Warning: 'Settings' is defined but never used.  @typescript-eslint/no-unused-vars
+26:5  Warning: 'Database' is defined but never used.  @typescript-eslint/no-unused-vars
+27:5  Warning: 'Users' is defined but never used.  @typescript-eslint/no-unused-vars
+30:5  Warning: 'Activity' is defined but never used.  @typescript-eslint/no-unused-vars
+33:5  Warning: 'Lock' is defined but never used.  @typescript-eslint/no-unused-vars
+34:5  Warning: 'MessageSquare' is defined but never used.  @typescript-eslint/no-unused-vars
+38:29  Warning: 'CardDescription' is defined but never used.  @typescript-eslint/no-unused-vars
+103:12  Warning: 'activeTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/ai-capabilities-grid.tsx
+3:20  Warning: 'useMemo' is defined but never used.  @typescript-eslint/no-unused-vars
+3:29  Warning: 'useCallback' is defined but never used.  @typescript-eslint/no-unused-vars
+7:10  Warning: 'Button' is defined but never used.  @typescript-eslint/no-unused-vars
+9:83  Warning: 'Settings' is defined but never used.  @typescript-eslint/no-unused-vars
+9:93  Warning: 'MoveRight' is defined but never used.  @typescript-eslint/no-unused-vars
+9:104  Warning: 'ArrowLeft' is defined but never used.  @typescript-eslint/no-unused-vars
+9:115  Warning: 'ChevronLeft' is defined but never used.  @typescript-eslint/no-unused-vars
+11:10  Warning: 'Switch' is defined but never used.  @typescript-eslint/no-unused-vars
+12:10  Warning: 'Tooltip' is defined but never used.  @typescript-eslint/no-unused-vars
+12:19  Warning: 'TooltipContent' is defined but never used.  @typescript-eslint/no-unused-vars
+12:35  Warning: 'TooltipProvider' is defined but never used.  @typescript-eslint/no-unused-vars
+12:52  Warning: 'TooltipTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+13:10  Warning: 'ContextMenu' is defined but never used.  @typescript-eslint/no-unused-vars
+13:23  Warning: 'ContextMenuContent' is defined but never used.  @typescript-eslint/no-unused-vars
+13:43  Warning: 'ContextMenuTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+15:10  Warning: 'Separator' is defined but never used.  @typescript-eslint/no-unused-vars
+21:10  Warning: 'AIParticlesEffect' is defined but never used.  @typescript-eslint/no-unused-vars
+218:7  Warning: 'PERFORMANCE_METRICS' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+258:7  Warning: 'INTERACTIVE_PROMPTS' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+298:7  Warning: 'AnimatedBackground' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+785:33  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+
+./components/ai-capabilities-showcase.tsx
+3:37  Warning: 'useCallback' is defined but never used.  @typescript-eslint/no-unused-vars
+4:8  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+9:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+10:71  Warning: 'ArrowLeftRight' is defined but never used.  @typescript-eslint/no-unused-vars
+10:142  Warning: 'ArrowRight' is defined but never used.  @typescript-eslint/no-unused-vars
+10:154  Warning: 'ActivityIcon' is defined but never used.  @typescript-eslint/no-unused-vars
+10:189  Warning: 'Info' is defined but never used.  @typescript-eslint/no-unused-vars
+10:243  Warning: 'Download' is defined but never used.  @typescript-eslint/no-unused-vars
+11:10  Warning: 'Checkbox' is defined but never used.  @typescript-eslint/no-unused-vars
+13:10  Warning: 'Switch' is defined but never used.  @typescript-eslint/no-unused-vars
+15:10  Warning: 'ContextMenu' is defined but never used.  @typescript-eslint/no-unused-vars
+15:23  Warning: 'ContextMenuContent' is defined but never used.  @typescript-eslint/no-unused-vars
+15:43  Warning: 'ContextMenuItem' is defined but never used.  @typescript-eslint/no-unused-vars
+15:60  Warning: 'ContextMenuTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+16:10  Warning: 'ScrollArea' is defined but never used.  @typescript-eslint/no-unused-vars
+17:10  Warning: 'Separator' is defined but never used.  @typescript-eslint/no-unused-vars
+20:10  Warning: 'CapabilityDemo' is defined but never used.  @typescript-eslint/no-unused-vars
+21:10  Warning: 'PerformanceComparison' is defined but never used.  @typescript-eslint/no-unused-vars
+218:7  Warning: 'tabFadeVariants' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+225:7  Warning: 'sectionVariants' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+954:54  Warning: 'index' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+1065:7  Warning: 'MinimalBackground' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1135:32  Warning: Forbidden non-null assertion.  @typescript-eslint/no-non-null-assertion
+
+./components/ai-capability/capability-demo.tsx
+4:8  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/ai-capability/try-it-yourself.tsx
+76:23  Warning: 'setTypingSpeed' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/ai-demo.tsx
+5:8  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+50:10  Warning: 'response' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+334:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+492:23  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/ai-platform-demo.tsx
+36:10  Warning: 'activeTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+189:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+200:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+745:9  Warning: 'getDatasetMetric' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/ai-vision-demo.tsx
+5:8  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+23:42  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+110:6  Warning: React Hook useEffect has missing dependencies: 'initCamera' and 'stopCamera'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+227:39  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+285:6  Warning: React Hook useEffect has a missing dependency: 'drawDetections'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+369:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+396:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/analytics-dashboard.tsx
+177:7  Warning: 'CustomTooltip' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+177:82  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+182:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./components/analytics-preview.tsx
+4:18  Warning: 'AnimatePresence' is defined but never used.  @typescript-eslint/no-unused-vars
+5:10  Warning: 'Badge' is defined but never used.  @typescript-eslint/no-unused-vars
+7:46  Warning: 'CardFooter' is defined but never used.  @typescript-eslint/no-unused-vars
+8:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+12:10  Warning: 'Calendar' is defined but never used.  @typescript-eslint/no-unused-vars
+19:3  Warning: 'CalendarIcon' is defined but never used.  @typescript-eslint/no-unused-vars
+20:3  Warning: 'ChevronDown' is defined but never used.  @typescript-eslint/no-unused-vars
+29:3  Warning: 'Settings' is defined but never used.  @typescript-eslint/no-unused-vars
+31:3  Warning: 'Share2' is defined but never used.  @typescript-eslint/no-unused-vars
+36:3  Warning: 'BarChart' is defined but never used.  @typescript-eslint/no-unused-vars
+54:3  Warning: 'Scatter' is defined but never used.  @typescript-eslint/no-unused-vars
+55:3  Warning: 'ScatterChart' is defined but never used.  @typescript-eslint/no-unused-vars
+56:3  Warning: 'ZAxis' is defined but never used.  @typescript-eslint/no-unused-vars
+63:3  Warning: 'Brush' is defined but never used.  @typescript-eslint/no-unused-vars
+66:3  Warning: 'Sector' is defined but never used.  @typescript-eslint/no-unused-vars
+70:10  Warning: 'ChartContainer' is defined but never used.  @typescript-eslint/no-unused-vars
+220:7  Warning: 'generateForecastData' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+336:7  Warning: 'renderActiveShape' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+462:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+476:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+480:10  Warning: 'ChartTooltipContent' is defined but never used.  @typescript-eslint/no-unused-vars
+496:10  Warning: 'CustomPieChart' is defined but never used.  @typescript-eslint/no-unused-vars
+521:11  Warning: 'ChartTooltipProps' is defined but never used.  @typescript-eslint/no-unused-vars
+530:7  Warning: 'ErrorDistributionChart' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+640:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+641:16  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+642:13  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+643:21  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+644:12  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+645:14  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+659:11  Warning: 'RadarClickEvent' is defined but never used.  @typescript-eslint/no-unused-vars
+661:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+737:10  Warning: 'selectedMetric' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+737:26  Warning: 'setSelectedMetric' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+747:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+961:10  Warning: 'selectedMetric' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1023:29  Warning: 'data' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+1029:29  Warning: 'data' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+1039:29  Warning: 'data' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+1046:29  Warning: 'data' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+1055:25  Warning: 'data' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+1096:27  Warning: 'data' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+1103:27  Warning: 'data' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+1139:29  Warning: 'data' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+1147:29  Warning: 'data' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+1155:27  Warning: 'data' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+1188:82  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+1610:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+1619:7  Warning: 'RealTimeDataStream' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2038:10  Warning: 'date' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2038:16  Warning: 'setDate' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2041:9  Warning: 'chartContainerRef' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2051:10  Warning: 'errorDistribution' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/blockchain-visualizer.tsx
+19:3  Warning: 'Tabs' is defined but never used.  @typescript-eslint/no-unused-vars
+20:3  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+21:3  Warning: 'TabsList' is defined but never used.  @typescript-eslint/no-unused-vars
+22:3  Warning: 'TabsTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+34:3  Warning: 'DropdownMenuItem' is defined but never used.  @typescript-eslint/no-unused-vars
+76:10  Warning: 'activeTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+76:21  Warning: 'setActiveTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+193:18  Warning: 'setBlocks' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/case-studies-section.tsx
+5:144  Warning: 'ArrowRight' is defined but never used.  @typescript-eslint/no-unused-vars
+7:46  Warning: 'CardHeader' is defined but never used.  @typescript-eslint/no-unused-vars
+9:10  Warning: 'Progress' is defined but never used.  @typescript-eslint/no-unused-vars
+345:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/case-studies.tsx
+64:10  Warning: 'hoveredItem' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/customer-segmentation-modal.tsx
+3:10  Warning: 'useState' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/developer-resources.tsx
+13:10  Warning: 'activeTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+13:21  Warning: 'setActiveTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/dynamic-component.tsx
+7:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./components/enhanced-cta-section.tsx
+10:3  Warning: 'ArrowUpRight' is defined but never used.  @typescript-eslint/no-unused-vars
+11:3  Warning: 'Sparkles' is defined but never used.  @typescript-eslint/no-unused-vars
+12:3  Warning: 'CheckCircle2' is defined but never used.  @typescript-eslint/no-unused-vars
+17:3  Warning: 'ChevronRight' is defined but never used.  @typescript-eslint/no-unused-vars
+18:3  Warning: 'Play' is defined but never used.  @typescript-eslint/no-unused-vars
+20:3  Warning: 'Zap' is defined but never used.  @typescript-eslint/no-unused-vars
+23:3  Warning: 'TrendingUp' is defined but never used.  @typescript-eslint/no-unused-vars
+24:3  Warning: 'Lock' is defined but never used.  @typescript-eslint/no-unused-vars
+41:7  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+70:3  Warning: 'secondaryButtonHref' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+75:10  Warning: 'isPrimaryHovering' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+75:29  Warning: 'setIsPrimaryHovering' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+76:10  Warning: 'isSecondaryHovering' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+76:31  Warning: 'setIsSecondaryHovering' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+77:10  Warning: 'activeFeature' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+201:9  Warning: 'toggleVideo' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+212:9  Warning: 'handleScroll' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+333:53  Warning: 'index' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./components/enhanced-header.tsx
+9:42  Warning: 'fullWidth' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/enhanced-hero/content-section.tsx
+43:9  Warning: 'redGradient' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+44:9  Warning: 'blueGradient' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/enhanced-hero/hero-container.tsx
+51:9  Warning: 'getAnimationClass' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/enhanced-hero/index.tsx
+4:10  Warning: 'motion' is defined but never used.  @typescript-eslint/no-unused-vars
+14:10  Warning: 'MobileShowcase' is defined but never used.  @typescript-eslint/no-unused-vars
+15:10  Warning: 'TrustBanner' is defined but never used.  @typescript-eslint/no-unused-vars
+33:3  Warning: 'fullWidth' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+47:5  Warning: 'announce' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+48:5  Warning: 'focusFirst' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+66:9  Warning: 'mergedMobileConfig' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+72:9  Warning: 'mergedTrustConfig' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/enhanced-hero/interactive-timeline.tsx
+23:3  Warning: 'performanceConfig' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./components/enhanced-hero/mobile-showcase.tsx
+7:10  Warning: 'ariaLabels' is defined but never used.  @typescript-eslint/no-unused-vars
+27:34  Warning: 'handleCardActivation' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+33:9  Warning: 'toggleAccordion' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/enhanced-hero/performance-optimizer.tsx
+115:42  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+133:64  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+134:58  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+166:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+181:29  Warning: 'config' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./components/enhanced-industry-solutions.tsx
+7:10  Warning: 'Card' is defined but never used.  @typescript-eslint/no-unused-vars
+7:16  Warning: 'CardContent' is defined but never used.  @typescript-eslint/no-unused-vars
+7:29  Warning: 'CardDescription' is defined but never used.  @typescript-eslint/no-unused-vars
+7:46  Warning: 'CardHeader' is defined but never used.  @typescript-eslint/no-unused-vars
+7:58  Warning: 'CardTitle' is defined but never used.  @typescript-eslint/no-unused-vars
+8:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+9:10  Warning: 'Progress' is defined but never used.  @typescript-eslint/no-unused-vars
+10:10  Warning: 'Dialog' is defined but never used.  @typescript-eslint/no-unused-vars
+10:18  Warning: 'DialogContent' is defined but never used.  @typescript-eslint/no-unused-vars
+10:33  Warning: 'DialogHeader' is defined but never used.  @typescript-eslint/no-unused-vars
+10:47  Warning: 'DialogTitle' is defined but never used.  @typescript-eslint/no-unused-vars
+10:60  Warning: 'DialogDescription' is defined but never used.  @typescript-eslint/no-unused-vars
+16:3  Warning: 'Stethoscope' is defined but never used.  @typescript-eslint/no-unused-vars
+19:3  Warning: 'Lightbulb' is defined but never used.  @typescript-eslint/no-unused-vars
+20:3  Warning: 'ChevronRight' is defined but never used.  @typescript-eslint/no-unused-vars
+26:3  Warning: 'CheckCircle2' is defined but never used.  @typescript-eslint/no-unused-vars
+28:3  Warning: 'Sparkles' is defined but never used.  @typescript-eslint/no-unused-vars
+33:3  Warning: 'Database' is defined but never used.  @typescript-eslint/no-unused-vars
+38:3  Warning: 'Minus' is defined but never used.  @typescript-eslint/no-unused-vars
+39:3  Warning: 'ArrowUp' is defined but never used.  @typescript-eslint/no-unused-vars
+40:3  Warning: 'ArrowDown' is defined but never used.  @typescript-eslint/no-unused-vars
+42:3  Warning: 'RefreshCw' is defined but never used.  @typescript-eslint/no-unused-vars
+43:3  Warning: 'Rocket' is defined but never used.  @typescript-eslint/no-unused-vars
+50:3  Warning: 'AlertCircle' is defined but never used.  @typescript-eslint/no-unused-vars
+54:3  Warning: 'Info' is defined but never used.  @typescript-eslint/no-unused-vars
+55:3  Warning: 'Trophy' is defined but never used.  @typescript-eslint/no-unused-vars
+56:3  Warning: 'X' is defined but never used.  @typescript-eslint/no-unused-vars
+268:11  Warning: 'ComparisonAnalysis' is defined but never used.  @typescript-eslint/no-unused-vars
+946:10  Warning: 'Card3D' is defined but never used.  @typescript-eslint/no-unused-vars
+1007:10  Warning: 'EnhancedIndustryCard' is defined but never used.  @typescript-eslint/no-unused-vars
+1068:10  Warning: 'EnhancedSolutionCard' is defined but never used.  @typescript-eslint/no-unused-vars
+1139:10  Warning: 'activeTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1139:21  Warning: 'setActiveTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1141:10  Warning: 'hoverIndex' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1141:22  Warning: 'setHoverIndex' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1153:10  Warning: 'isScrollPaused' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1153:26  Warning: 'setIsScrollPaused' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1154:9  Warning: 'containerRef' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1174:10  Warning: 'viewOptions' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1174:23  Warning: 'setViewOptions' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1226:9  Warning: 'handleRoiInputChange' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1234:9  Warning: 'roiResults' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1274:9  Warning: 'generateRoiReport' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1487:9  Warning: 'activeTabData' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2083:10  Warning: 'Particles' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/enhanced-roi-calculator.tsx
+3:31  Warning: 'ClassAttributes' is defined but never used.  @typescript-eslint/no-unused-vars
+3:48  Warning: 'HTMLAttributes' is defined but never used.  @typescript-eslint/no-unused-vars
+3:64  Warning: 'JSX' is defined but never used.  @typescript-eslint/no-unused-vars
+4:96  Warning: 'Share2' is defined but never used.  @typescript-eslint/no-unused-vars
+30:26  Warning: 'ChartTooltip' is defined but never used.  @typescript-eslint/no-unused-vars
+30:40  Warning: 'ChartTooltipContent' is defined but never used.  @typescript-eslint/no-unused-vars
+35:51  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+169:7  Warning: 'COLORS' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+289:42  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+293:56  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+295:64  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+1056:48  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+1091:74  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+1158:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+1172:42  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+1262:15  Warning: 'simpleLogo' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1331:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2230:63  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2250:63  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./components/exit-intent-popup.tsx
+5:29  Warning: 'ArrowRight' is defined but never used.  @typescript-eslint/no-unused-vars
+40:65  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+41:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+81:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+82:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+87:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+88:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./components/features-section.tsx
+4:10  Warning: 'useInView' is defined but never used.  @typescript-eslint/no-unused-vars
+14:3  Warning: 'Cpu' is defined but never used.  @typescript-eslint/no-unused-vars
+15:3  Warning: 'Database' is defined but never used.  @typescript-eslint/no-unused-vars
+19:3  Warning: 'RefreshCw' is defined but never used.  @typescript-eslint/no-unused-vars
+21:3  Warning: 'Sparkles' is defined but never used.  @typescript-eslint/no-unused-vars
+22:3  Warning: 'Target' is defined but never used.  @typescript-eslint/no-unused-vars
+23:3  Warning: 'Lock' is defined but never used.  @typescript-eslint/no-unused-vars
+24:3  Warning: 'Gauge' is defined but never used.  @typescript-eslint/no-unused-vars
+30:3  Warning: 'ChevronUp' is defined but never used.  @typescript-eslint/no-unused-vars
+238:10  Warning: 'animatedStats' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+244:25  Warning: 'setShowBenchmark' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+568:46  Warning: 'index' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./components/flexible-section.tsx
+26:3  Warning: 'maxWidth' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/footer.tsx
+3:20  Warning: 'useEffect' is defined but never used.  @typescript-eslint/no-unused-vars
+7:10  Warning: 'motion' is defined but never used.  @typescript-eslint/no-unused-vars
+240:58  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+242:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+248:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./components/industry-use-cases.tsx
+3:62  Warning: 'useCallback' is defined but never used.  @typescript-eslint/no-unused-vars
+4:8  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+5:76  Warning: 'MotionValue' is defined but never used.  @typescript-eslint/no-unused-vars
+8:10  Warning: 'Card' is defined but never used.  @typescript-eslint/no-unused-vars
+9:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+17:3  Warning: 'Lightbulb' is defined but never used.  @typescript-eslint/no-unused-vars
+32:3  Warning: 'MousePointerClick' is defined but never used.  @typescript-eslint/no-unused-vars
+479:24  Warning: 'setExpandedCase' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+982:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+1006:27  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/loading-overlay.tsx
+98:9  Warning: 'pathname' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+99:9  Warning: 'searchParams' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/loading-screen.tsx
+47:6  Warning: React Hook useEffect has a missing dependency: 'isDashboard'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./components/main-navigation.tsx
+10:3  Warning: 'Bell' is defined but never used.  @typescript-eslint/no-unused-vars
+14:3  Warning: 'CreditCard' is defined but never used.  @typescript-eslint/no-unused-vars
+18:3  Warning: 'LogOut' is defined but never used.  @typescript-eslint/no-unused-vars
+23:3  Warning: 'User' is defined but never used.  @typescript-eslint/no-unused-vars
+27:3  Warning: 'Info' is defined but never used.  @typescript-eslint/no-unused-vars
+47:10  Warning: 'Input' is defined but never used.  @typescript-eslint/no-unused-vars
+48:10  Warning: 'Avatar' is defined but never used.  @typescript-eslint/no-unused-vars
+48:18  Warning: 'AvatarFallback' is defined but never used.  @typescript-eslint/no-unused-vars
+48:34  Warning: 'AvatarImage' is defined but never used.  @typescript-eslint/no-unused-vars
+57:3  Warning: 'navigationMenuTriggerStyle' is defined but never used.  @typescript-eslint/no-unused-vars
+59:10  Warning: 'DropdownMenu' is defined but never used.  @typescript-eslint/no-unused-vars
+59:24  Warning: 'DropdownMenuContent' is defined but never used.  @typescript-eslint/no-unused-vars
+59:45  Warning: 'DropdownMenuItem' is defined but never used.  @typescript-eslint/no-unused-vars
+59:63  Warning: 'DropdownMenuLabel' is defined but never used.  @typescript-eslint/no-unused-vars
+59:82  Warning: 'DropdownMenuSeparator' is defined but never used.  @typescript-eslint/no-unused-vars
+59:105  Warning: 'DropdownMenuTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+60:10  Warning: 'Badge' is defined but never used.  @typescript-eslint/no-unused-vars
+63:10  Warning: 'mainNav' is defined but never used.  @typescript-eslint/no-unused-vars
+80:11  Warning: 'NavigationItem' is defined but never used.  @typescript-eslint/no-unused-vars
+93:42  Warning: 'fullWidth' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+97:10  Warning: 'searchOpen' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+99:10  Warning: 'scrollProgress' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+114:10  Warning: 'navigationError' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+114:27  Warning: 'setNavigationError' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+468:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+587:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./components/network-status.tsx
+3:37  Warning: 'Wifi' is defined but never used.  @typescript-eslint/no-unused-vars
+3:43  Warning: 'WifiOff' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/newsletter-subscription.tsx
+5:16  Warning: 'CheckCircle' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/optimized-image.tsx
+39:3  Warning: 'lazyBoundary' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+89:11  Warning: 'extension' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/partner-ecosystem.tsx
+4:8  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+196:27  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/preload-critical-images.tsx
+44:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./components/products-showcase.tsx
+6:50  Warning: 'Sparkles' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/projects-showcase.tsx
+3:18  Warning: 'AnimatePresence' is defined but never used.  @typescript-eslint/no-unused-vars
+7:10  Warning: 'TypeAnimation' is defined but never used.  @typescript-eslint/no-unused-vars
+13:3  Warning: 'Zap' is defined but never used.  @typescript-eslint/no-unused-vars
+14:3  Warning: 'Clock' is defined but never used.  @typescript-eslint/no-unused-vars
+15:3  Warning: 'Eye' is defined but never used.  @typescript-eslint/no-unused-vars
+16:3  Warning: 'Github' is defined but never used.  @typescript-eslint/no-unused-vars
+17:3  Warning: 'ExternalLink' is defined but never used.  @typescript-eslint/no-unused-vars
+18:3  Warning: 'Filter' is defined but never used.  @typescript-eslint/no-unused-vars
+19:3  Warning: 'Star' is defined but never used.  @typescript-eslint/no-unused-vars
+20:3  Warning: 'ChevronLeft' is defined but never used.  @typescript-eslint/no-unused-vars
+21:3  Warning: 'ChevronRight' is defined but never used.  @typescript-eslint/no-unused-vars
+22:3  Warning: 'Pen' is defined but never used.  @typescript-eslint/no-unused-vars
+25:3  Warning: 'Pizza' is defined but never used.  @typescript-eslint/no-unused-vars
+30:3  Warning: 'RefreshCw' is defined but never used.  @typescript-eslint/no-unused-vars
+35:3  Warning: 'Building' is defined but never used.  @typescript-eslint/no-unused-vars
+36:3  Warning: 'Home' is defined but never used.  @typescript-eslint/no-unused-vars
+42:10  Warning: 'cn' is defined but never used.  @typescript-eslint/no-unused-vars
+74:7  Warning: 'getRandomProjectImage' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+79:11  Warning: 'ProjectFeature' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/radial-orbital-timeline.tsx
+3:20  Warning: 'useEffect' is defined but never used.  @typescript-eslint/no-unused-vars
+5:10  Warning: 'ArrowRight' is defined but never used.  @typescript-eslint/no-unused-vars
+5:22  Warning: 'Link' is defined but never used.  @typescript-eslint/no-unused-vars
+5:28  Warning: 'Zap' is defined but never used.  @typescript-eslint/no-unused-vars
+7:10  Warning: 'Button' is defined but never used.  @typescript-eslint/no-unused-vars
+32:10  Warning: 'activeNodeId' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/roi-calculator-modal.tsx
+3:33  Warning: 'DialogTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+5:10  Warning: 'Button' is defined but never used.  @typescript-eslint/no-unused-vars
+6:10  Warning: 'Calculator' is defined but never used.  @typescript-eslint/no-unused-vars
+7:10  Warning: 'useState' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/roi-calculator.tsx
+6:10  Warning: 'Badge' is defined but never used.  @typescript-eslint/no-unused-vars
+12:26  Warning: 'ChartTooltip' is defined but never used.  @typescript-eslint/no-unused-vars
+12:40  Warning: 'ChartTooltipContent' is defined but never used.  @typescript-eslint/no-unused-vars
+17:52  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+22:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./components/roi-metrics-dashboard.tsx
+7:3  Warning: 'BarChart2' is defined but never used.  @typescript-eslint/no-unused-vars
+9:3  Warning: 'CreditCard' is defined but never used.  @typescript-eslint/no-unused-vars
+11:16  Warning: 'LineChartIcon' is defined but never used.  @typescript-eslint/no-unused-vars
+12:15  Warning: 'PieChartIcon' is defined but never used.  @typescript-eslint/no-unused-vars
+13:3  Warning: 'Share2' is defined but never used.  @typescript-eslint/no-unused-vars
+15:3  Warning: 'Users' is defined but never used.  @typescript-eslint/no-unused-vars
+19:10  Warning: 'Tabs' is defined but never used.  @typescript-eslint/no-unused-vars
+19:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+19:29  Warning: 'TabsList' is defined but never used.  @typescript-eslint/no-unused-vars
+19:39  Warning: 'TabsTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+23:3  Warning: 'LineChart' is defined but never used.  @typescript-eslint/no-unused-vars
+24:3  Warning: 'Line' is defined but never used.  @typescript-eslint/no-unused-vars
+44:52  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+49:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+131:9  Warning: 'implementationData' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/roi-showcase.tsx
+4:18  Warning: 'AnimatePresence' is defined but never used.  @typescript-eslint/no-unused-vars
+14:26  Warning: 'ChartTooltip' is defined but never used.  @typescript-eslint/no-unused-vars
+14:40  Warning: 'ChartTooltipContent' is defined but never used.  @typescript-eslint/no-unused-vars
+17:52  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+22:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./components/roi-strategy-comparison.tsx
+9:10  Warning: 'Tabs' is defined but never used.  @typescript-eslint/no-unused-vars
+9:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+9:29  Warning: 'TabsList' is defined but never used.  @typescript-eslint/no-unused-vars
+9:39  Warning: 'TabsTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+11:10  Warning: 'Switch' is defined but never used.  @typescript-eslint/no-unused-vars
+24:3  Warning: 'PieChart' is defined but never used.  @typescript-eslint/no-unused-vars
+25:3  Warning: 'Pie' is defined but never used.  @typescript-eslint/no-unused-vars
+26:3  Warning: 'Cell' is defined but never used.  @typescript-eslint/no-unused-vars
+37:3  Warning: 'Copy' is defined but never used.  @typescript-eslint/no-unused-vars
+39:3  Warning: 'FileSpreadsheet' is defined but never used.  @typescript-eslint/no-unused-vars
+42:3  Warning: 'Save' is defined but never used.  @typescript-eslint/no-unused-vars
+119:82  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+124:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+250:42  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+262:42  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+300:38  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+302:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./components/root-layout-content.tsx
+40:10  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+47:3  Warning: 'fullWidth' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/section-divider.tsx
+11:56  Warning: 'color' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/seo.tsx
+16:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./components/services-showcase.tsx
+15:24  Warning: 'Info' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/smart-contract-builder.tsx
+20:10  Warning: 'Card' is defined but never used.  @typescript-eslint/no-unused-vars
+92:10  Warning: 'activeTab' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/social-proof-section.tsx
+7:8  Warning: 'Image' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/solutions-section.tsx
+10:3  Warning: 'Zap' is defined but never used.  @typescript-eslint/no-unused-vars
+13:3  Warning: 'Cpu' is defined but never used.  @typescript-eslint/no-unused-vars
+14:3  Warning: 'Database' is defined but never used.  @typescript-eslint/no-unused-vars
+15:3  Warning: 'LineChart' is defined but never used.  @typescript-eslint/no-unused-vars
+16:3  Warning: 'MessageSquare' is defined but never used.  @typescript-eslint/no-unused-vars
+17:3  Warning: 'Search' is defined but never used.  @typescript-eslint/no-unused-vars
+20:3  Warning: 'Sparkles' is defined but never used.  @typescript-eslint/no-unused-vars
+22:3  Warning: 'Lock' is defined but never used.  @typescript-eslint/no-unused-vars
+23:3  Warning: 'Gauge' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/solutions-showcase.tsx
+7:10  Warning: 'Badge' is defined but never used.  @typescript-eslint/no-unused-vars
+9:10  Warning: 'Tabs' is defined but never used.  @typescript-eslint/no-unused-vars
+9:16  Warning: 'TabsList' is defined but never used.  @typescript-eslint/no-unused-vars
+9:26  Warning: 'TabsTrigger' is defined but never used.  @typescript-eslint/no-unused-vars
+9:39  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+15:3  Warning: 'Brain' is defined but never used.  @typescript-eslint/no-unused-vars
+23:3  Warning: 'Share2' is defined but never used.  @typescript-eslint/no-unused-vars
+24:3  Warning: 'ChevronRight' is defined but never used.  @typescript-eslint/no-unused-vars
+226:10  Warning: 'isExpanded' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+226:22  Warning: 'setIsExpanded' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+260:9  Warning: 'handleMouseMove' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+262:24  Warning: 'width' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+262:31  Warning: 'height' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+269:9  Warning: 'rotateX' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+270:9  Warning: 'rotateY' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+271:9  Warning: 'brightness' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+274:9  Warning: 'floatingVariants' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/spline-scene.tsx
+3:10  Warning: 'Suspense' is defined but never used.  @typescript-eslint/no-unused-vars
+3:20  Warning: 'lazy' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/tech-stack-showcase.tsx
+12:117  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+35:7  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+51:17  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./components/tech-stack.tsx
+11:3  Warning: 'Code' is defined but never used.  @typescript-eslint/no-unused-vars
+13:3  Warning: 'BarChart2' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/testimonial-carousel.tsx
+4:10  Warning: 'motion' is defined but never used.  @typescript-eslint/no-unused-vars
+151:41  Warning: 'index' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+211:10  Warning: 'showLeftArrow' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+211:25  Warning: 'setShowLeftArrow' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+212:10  Warning: 'showRightArrow' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+212:26  Warning: 'setShowRightArrow' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/three-scene.tsx
+174:38  Warning: The ref value 'containerRef.current' will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by React, copy 'containerRef.current' to a variable inside the effect, and use that variable in the cleanup function.  react-hooks/exhaustive-deps
+
+./components/Todo.tsx
+16:16  Warning: 'TabsContent' is defined but never used.  @typescript-eslint/no-unused-vars
+18:3  Warning: 'CheckCircle2' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/ui/ai-loader.tsx
+21:3  Warning: 'text' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./components/ui/calendar.tsx
+57:25  Warning: 'props' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+58:26  Warning: 'props' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./components/ui/chart.tsx
+16:3  Warning: 'config' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./components/ui/navigation-menu.tsx
+4:10  Warning: 'ChevronDown' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/ui/onboarding-checklist.tsx
+6:36  Warning: 'ChevronRight' is defined but never used.  @typescript-eslint/no-unused-vars
+126:41  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/unified-ai-platform.tsx
+6:5  Warning: 'Brain' is defined but never used.  @typescript-eslint/no-unused-vars
+8:5  Warning: 'Eye' is defined but never used.  @typescript-eslint/no-unused-vars
+11:5  Warning: 'Code' is defined but never used.  @typescript-eslint/no-unused-vars
+12:5  Warning: 'ArrowRight' is defined but never used.  @typescript-eslint/no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules

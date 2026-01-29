@@ -76,7 +76,7 @@ interface BaseProject {
     accuracy?: number;
     performance?: string;
     languages?: number;
-    timeReduction?: string;
+    timereduction?: string;
     improvement?: string;
     fps?: number;
     deploymentTime?: string;
@@ -133,9 +133,9 @@ const EXPERIENCE = [
       "Optimized Big Data Performance: Enhanced Hadoop environments in Cloudera, significantly boosting performance and reliability",
       "Fortified System Security: Conducted proactive updates and integrated cutting-edge technologies to maintain robust defenses",
       "Drove Innovation: Integrated advanced tools to elevate data processing capabilities and operational efficiency",
-      "Provided Expert-Level Support: Delivered high-level 3rd-tier technical support, resolving complex issues for data engineers and scientists",
+      "Provided Expert-Level Support: delivered high-level 3rd-tier technical support, resolving complex issues for data engineers and scientists",
       "Streamlined Linux Administration: Improved system reliability and performance through efficient management with RedHat",
-      "Mastered Cloudera Management: Deployed and managed Cloudera clusters, ensuring optimal operation of HDFS, Kafka, Impala, Hive, StreamSets, and YARN",
+      "mastered Cloudera Management: Deployed and managed Cloudera clusters, ensuring optimal operation of HDFS, Kafka, Impala, Hive, StreamSets, and YARN",
       "Advanced Data Science Initiatives: Leveraged technical expertise to drive actionable insights and enhance data workflows"
     ]
   },
@@ -145,7 +145,7 @@ const EXPERIENCE = [
     period: "Mar 2022 - Oct 2023",
     responsibilities: [
       "Automated daily reporting with Python and SQL, significantly boosting efficiency",
-      "Delivered BI solutions by collaborating with cross-functional teams",
+      "delivered BI solutions by collaborating with cross-functional teams",
       "Cut reporting time from 5 hours to 15 minutes through automation with Oracle Analytics",
       "Translated business needs into actionable big data insights",
       "Created BI dashboards and KPIs for targeted analysis",
@@ -208,8 +208,8 @@ const PROJECTS: Project[] = [
     tags: ["Analytics", "Full Stack", "Next.js"]
   },
   {
-    title: "Real Time Stock Market Prediction Web App",
-    description: "An advanced machine learning-powered platform that provides real-time stock market predictions using multiple data sources, technical indicators, and sentiment analysis. Features include predictive analytics, pattern recognition, and automated alert systems for market movements.",
+    title: "Real Time Stock Market prediction Web App",
+    description: "An advanced machine learning-powered platform that provides real-time stock market predictions using multiple data sources, technical indicators, and sentiment analysis. Features include Predictive analytics, pattern recognition, and automated alert systems for market movements.",
     imageUrl: "/images/projects/KStock_Analyzer.png",
     youtubeUrl: "https://youtu.be/CcPag_gW78Y",
     tags: ["Machine Learning", "Stock Market", "Real-time"]
@@ -230,7 +230,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "Real Estate Advanced App",
-    description: "A cutting-edge real estate platform combining AI-powered market analysis, virtual property tours, and predictive pricing models. Designed for agents, buyers, and sellers to make data-driven decisions with interactive visualizations, investment ROI calculators, and neighborhood analytics.",
+    description: "A cutting-edge real estate platform combining AI-powered market analysis, virtual property tours, and Predictive pricing models. Designed for agents, buyers, and sellers to make data-driven decisions with interactive visualizations, investment ROI calculators, and neighborhood analytics.",
     imageUrl: "/images/projects/real_estate_solutions.png",
     youtubeUrl: "https://youtu.be/cd75TIAM9X0",
     tags: ["Real Estate", "AI", "Analytics"]
@@ -251,7 +251,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "AgriChain Analytics",
-    description: "A revolutionary agricultural management platform that combines IoT sensors, satellite imagery, and AI to optimize farming operations. Provides real-time crop monitoring, predictive yield analysis, and automated resource management for sustainable agriculture.",
+    description: "A revolutionary agricultural management platform that combines IoT sensors, satellite imagery, and AI to optimize farming operations. Provides real-time crop monitoring, Predictive yield analysis, and automated resource management for sustainable agriculture.",
     imageUrl: "/images/projects/AgriChian.jpg",
     youtubeUrl: "https://youtu.be/Fn2a55UKkhU",
     tags: ["Agriculture", "IoT", "Analytics"]
@@ -265,7 +265,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "Vehicle Market Analytics Dashboard",
-    description: "A sophisticated platform for analyzing the European vehicle market, tracking trends, predicting price movements, and identifying optimal buy/sell opportunities. Features comprehensive market data, competitor analysis, and customizable alerts.",
+    description: "A sophisticated platform for analyzing the European vehicle market, tracking trends, pslateicting price movements, and identifying optimal buy/sell opportunities. Features comprehensive market data, competitor analysis, and customizable alerts.",
     imageUrl: "/images/projects/vehicle_analysis_dashboard.png",
     youtubeUrl: "https://youtu.be/cd75TIAM9X0",
     tags: ["Automotive", "Analytics", "Market Analysis"]
@@ -416,10 +416,10 @@ export default function ZeeshanKeerioPage() {
     const revenueIncrease = (annualRevenue * 0.05) / 12;
 
     // Calculate cost reduction (10% of current costs, distributed monthly)
-    const costReduction = (currentCosts * 0.1) / 12;
+    const costreduction = (currentCosts * 0.1) / 12;
 
     // Total monthly savings
-    const monthlySavings = productivityGain + revenueIncrease + costReduction;
+    const monthlySavings = productivityGain + revenueIncrease + costreduction;
 
     // Annual savings
     const annualSavings = monthlySavings * 12;
@@ -466,7 +466,7 @@ export default function ZeeshanKeerioPage() {
       particles.push(
         <motion.div
           key={i}
-          className="absolute w-3 h-3 rounded-full bg-gradient-to-r from-red-500/30 to-purple-500/30"
+          className="absolute w-3 h-3 rounded-full bg-gradient-to-r from-slate-500/30 to-zinc-500/30"
           initial={{
             x: Math.random() * 300 - 150,
             y: Math.random() * 300 - 150,
@@ -509,15 +509,15 @@ export default function ZeeshanKeerioPage() {
     <main className="relative min-h-screen bg-gradient-to-b from-black via-black/95 to-black text-white overflow-x-hidden">
       {/* Advanced dynamic background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] rounded-full bg-red-600/5 blur-[80px] sm:blur-[120px] animate-pulse-slow" />
-        <div className="absolute bottom-1/3 right-1/3 w-[250px] sm:w-[400px] md:w-[600px] h-[250px] sm:h-[400px] md:h-[600px] rounded-full bg-purple-600/5 blur-[100px] sm:blur-[150px] animate-pulse-slow" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-2/3 left-1/3 w-[200px] sm:w-[300px] md:w-[400px] h-[200px] sm:h-[300px] md:h-[400px] rounded-full bg-blue-600/5 blur-[60px] sm:blur-[100px] animate-pulse-slow" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-1/4 left-1/4 w-[300px] sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] rounded-full bg-zinc-600/5 blur-[80px] sm:blur-[120px] animate-pulse-slow" />
+        <div className="absolute bottom-1/3 right-1/3 w-[250px] sm:w-[400px] md:w-[600px] h-[250px] sm:h-[400px] md:h-[600px] rounded-full bg-zinc-800/5 blur-[100px] sm:blur-[150px] animate-pulse-slow" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-2/3 left-1/3 w-[200px] sm:w-[300px] md:w-[400px] h-[200px] sm:h-[300px] md:h-[400px] rounded-full bg-zinc-700/5 blur-[60px] sm:blur-[100px] animate-pulse-slow" style={{ animationDelay: '3s' }} />
 
         {/* AI Neural Network Background Effect */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,50,250,0.03)_0,rgba(255,30,86,0.03)_25%,rgba(0,0,0,0)_50%)]"></div>
 
         {/* Digital Circuit Pattern */}
-        <div className="absolute inset-0 opacity-[0.03] bg-gradient-to-br from-red-500/5 to-purple-500/5"></div>
+        <div className="absolute inset-0 opacity-[0.03] bg-gradient-to-br from-zinc-500/5 to-zinc-800/5"></div>
       </div>
 
       <StandardBackground />
@@ -533,20 +533,20 @@ export default function ZeeshanKeerioPage() {
         >
           {/* Subtle background elements */}
           <div className="absolute top-0 left-0 w-full h-full opacity-30">
-            <svg className="absolute top-20 right-10 w-24 sm:w-32 text-red-500/5" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <svg className="absolute top-20 right-10 w-24 sm:w-32 text-slate-500/5" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
               <path fill="currentColor" d="M45.4,-51.3C58.3,-39.2,68,-24.1,70.9,-7.8C73.8,8.6,70,26.1,59.7,38.9C49.4,51.7,32.5,59.8,14.9,63.5C-2.8,67.1,-21.1,66.3,-36.9,58.9C-52.7,51.5,-66,37.5,-70.9,21.1C-75.8,4.7,-72.3,-14.2,-63.3,-29.4C-54.2,-44.7,-39.6,-56.5,-24.1,-67.4C-8.7,-78.2,7.6,-88.1,22,-83.8C36.3,-79.4,48.8,-60.8,50.8,-47.8" />
             </svg>
-            <svg className="absolute bottom-10 left-10 w-20 sm:w-24 text-purple-500/5" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <svg className="absolute bottom-10 left-10 w-20 sm:w-24 text-red-500/5" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
               <path fill="currentColor" d="M37.7,-47.4C50.9,-35.9,65.2,-26.2,72.5,-11.6C79.8,3,80.1,22.5,72.1,38.3C64.2,54.1,48,66.1,30.4,71.8C12.9,77.5,-6,76.8,-23.5,71C-41,65.1,-57.1,54.1,-68.3,38.1C-79.5,22.1,-85.8,1.1,-81.5,-17.4C-77.2,-35.9,-62.2,-51.9,-45.9,-63.1C-29.6,-74.3,-12,-79.8,-0.2,-79.5C11.6,-79.3,24.5,-58.9,37.7,-47.4Z" />
             </svg>
           </div>
 
-          {/* Hero Container - Redesigned Layout */}
+          {/* Hero Container - redesigned Layout */}
           <div className="bg-gradient-to-r from-black/40 to-gray-900/40 border border-white/5 rounded-xl shadow-xl backdrop-blur-sm overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-6">
 
               {/* Left Side - Profile Image Section with Modern Circle on Mobile, Rectangle on Desktop */}
-              <div className="lg:col-span-4 relative bg-gradient-to-br from-red-500/5 to-purple-500/5 p-4 sm:p-6 flex flex-col sm:flex-row lg:flex-col items-center justify-center">
+              <div className="lg:col-span-4 relative bg-gradient-to-br from-zinc-500/5 to-zinc-800/5 p-4 sm:p-6 flex flex-col sm:flex-row lg:flex-col items-center justify-center">
                 <motion.div
                   className="relative flex justify-center mb-4 sm:mb-0 lg:mb-0"
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -556,14 +556,14 @@ export default function ZeeshanKeerioPage() {
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
                 >
-                  {/* Modern circle/rectangle frame with layered design */}
+                  {/* Modern circle/rectangle frame with layeslate design */}
                   <div className="relative mx-auto sm:mx-0 max-w-[85vw] sm:max-w-none">
                     {/* Bottom layer - decorative gradient border - circular for mobile */}
-                    <div className="absolute -inset-0.5 bg-gradient-to-br from-red-500/50 via-purple-500/50 to-blue-500/50 rounded-full sm:rounded-[12px] blur-[1px]"></div>
+                    <div className="absolute -inset-0.5 bg-gradient-to-br from-red-500/50 via-red-700/50 to-red-900/50 rounded-full sm:rounded-[12px] blur-[1px]"></div>
 
                     {/* Middle layer - soft glow effect */}
                     <motion.div
-                      className="absolute -inset-3 bg-gradient-to-r from-red-500/20 to-purple-500/20 rounded-full sm:rounded-[14px] opacity-70 blur-md"
+                      className="absolute -inset-3 bg-gradient-to-r from-red-500/20 to-red-800/20 rounded-full sm:rounded-[14px] opacity-70 blur-md"
                       animate={{
                         opacity: [0.4, 0.6, 0.4],
                       }}
@@ -587,7 +587,7 @@ export default function ZeeshanKeerioPage() {
                       {imageLoadingState === 'loading' && (
                         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-gray-900/90 to-black/90 z-20">
                           <motion.div
-                            className="h-8 w-8 sm:h-10 sm:w-10 border-3 border-t-red-500 border-r-transparent border-b-transparent border-l-transparent rounded-full"
+                            className="h-8 w-8 sm:h-10 sm:w-10 border-3 border-t-zinc-500 border-r-transparent border-b-transparent border-l-transparent rounded-full"
                             animate={{ rotate: 360 }}
                             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                           />
@@ -597,8 +597,8 @@ export default function ZeeshanKeerioPage() {
                       {/* Error state */}
                       {imageLoadingState === 'error' && (
                         <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 to-black z-20">
-                          <User className="h-8 w-8 sm:h-10 sm:w-10 text-red-500/50 mb-2" />
-                          <p className="text-xs text-red-500/80">Image unavailable</p>
+                          <User className="h-8 w-8 sm:h-10 sm:w-10 text-slate-500/50 mb-2" />
+                          <p className="text-xs text-slate-500/80">Image unavailable</p>
                         </div>
                       )}
 
@@ -624,7 +624,7 @@ export default function ZeeshanKeerioPage() {
                       />
 
                       {/* Subtle scanline overlay effect - only for desktop */}
-                      <div className="absolute inset-0 hidden sm:block bg-gradient-to-b from-transparent via-red-500/5 to-transparent 
+                      <div className="absolute inset-0 hidden sm:block bg-gradient-to-b from-transparent via-slate-500/5 to-transparent 
                         opacity-70 pointer-events-none z-10" style={{ backgroundSize: '100% 8px', backgroundImage: 'linear-gradient(0deg, transparent 50%, rgba(255,255,255,0.02) 50%)' }}></div>
 
                       {/* Light reflection effect */}
@@ -643,17 +643,17 @@ export default function ZeeshanKeerioPage() {
                     </div>
 
                     {/* Modern frame corner accents - visible only on desktop */}
-                    <div className="absolute top-0 left-0 w-0 h-0 sm:w-5 sm:h-5 border-t-0 sm:border-t-2 border-l-0 sm:border-l-2 border-red-400/30 rounded-tl-[5px]"></div>
-                    <div className="absolute top-0 right-0 w-0 h-0 sm:w-5 sm:h-5 border-t-0 sm:border-t-2 border-r-0 sm:border-r-2 border-purple-400/30 rounded-tr-[5px]"></div>
-                    <div className="absolute bottom-0 left-0 w-0 h-0 sm:w-5 sm:h-5 border-b-0 sm:border-b-2 border-l-0 sm:border-l-2 border-blue-400/30 rounded-bl-[5px]"></div>
-                    <div className="absolute bottom-0 right-0 w-0 h-0 sm:w-5 sm:h-5 border-b-0 sm:border-b-2 border-r-0 sm:border-r-2 border-red-400/30 rounded-br-[5px]"></div>
+                    <div className="absolute top-0 left-0 w-0 h-0 sm:w-5 sm:h-5 border-t-0 sm:border-t-2 border-l-0 sm:border-l-2 border-slate-400/30 rounded-tl-[5px]"></div>
+                    <div className="absolute top-0 right-0 w-0 h-0 sm:w-5 sm:h-5 border-t-0 sm:border-t-2 border-r-0 sm:border-r-2 border-zinc-400/30 rounded-tr-[5px]"></div>
+                    <div className="absolute bottom-0 left-0 w-0 h-0 sm:w-5 sm:h-5 border-b-0 sm:border-b-2 border-l-0 sm:border-l-2 border-slate-400/30 rounded-bl-[5px]"></div>
+                    <div className="absolute bottom-0 right-0 w-0 h-0 sm:w-5 sm:h-5 border-b-0 sm:border-b-2 border-r-0 sm:border-r-2 border-slate-400/30 rounded-br-[5px]"></div>
                   </div>
                 </motion.div>
 
                 {/* Mobile-optimized credential badges in flex row - visible only on small screens */}
                 <div className="flex sm:hidden gap-2 mt-2 mb-2 justify-center">
                   <motion.div
-                    className="bg-gradient-to-r from-red-600/90 to-red-700/90 px-2 py-1 rounded-full text-[10px] font-medium shadow-md flex items-center gap-1 text-white"
+                    className="bg-gradient-to-r from-slate-600/90 to-slate-700/90 px-2 py-1 rounded-full text-[10px] font-medium shadow-md flex items-center gap-1 text-white"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.8 }}
@@ -663,7 +663,7 @@ export default function ZeeshanKeerioPage() {
                   </motion.div>
 
                   <motion.div
-                    className="bg-gradient-to-r from-purple-600/90 to-purple-700/90 px-2 py-1 rounded-full text-[10px] font-medium shadow-md flex items-center gap-1 text-white"
+                    className="bg-gradient-to-r from-zinc-600/90 to-zinc-700/90 px-2 py-1 rounded-full text-[10px] font-medium shadow-md flex items-center gap-1 text-white"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1 }}
@@ -676,7 +676,7 @@ export default function ZeeshanKeerioPage() {
                 {/* Desktop-only credential badges - positioned absolutely */}
                 <div className="hidden sm:block">
                   <motion.div
-                    className="absolute -right-3 top-6 bg-gradient-to-r from-red-600/90 to-red-700/90 px-2 py-1 rounded-md text-xs font-medium shadow-md flex items-center gap-1 text-white"
+                    className="absolute -right-3 top-6 bg-gradient-to-r from-zinc-700/90 to-zinc-800/90 px-2 py-1 rounded-md text-xs font-medium shadow-md flex items-center gap-1 text-white"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.8 }}
@@ -686,7 +686,7 @@ export default function ZeeshanKeerioPage() {
                   </motion.div>
 
                   <motion.div
-                    className="absolute -left-3 bottom-6 bg-gradient-to-r from-purple-600/90 to-purple-700/90 px-2 py-1 rounded-md text-xs font-medium shadow-md flex items-center gap-1 text-white"
+                    className="absolute -left-3 bottom-6 bg-gradient-to-r from-zinc-700/90 to-zinc-800/90 px-2 py-1 rounded-md text-xs font-medium shadow-md flex items-center gap-1 text-white"
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1 }}
@@ -714,7 +714,7 @@ export default function ZeeshanKeerioPage() {
                     </motion.div>
 
                     <motion.h1
-                      className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-purple-500 tracking-tight mb-2 sm:mb-3"
+                      className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500 tracking-tight mb-2 sm:mb-3"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 }}
@@ -746,21 +746,21 @@ export default function ZeeshanKeerioPage() {
                       >
                         <motion.div variants={fadeIn} className="bg-white/5 border border-white/10 px-2 sm:px-3 py-1 sm:py-1.5 rounded backdrop-blur-sm">
                           <span className="flex items-center text-white text-xs sm:text-sm">
-                            <BrainCircuit className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 text-red-400" />
+                            <BrainCircuit className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 text-slate-400" />
                             AI Expert
                           </span>
                         </motion.div>
 
                         <motion.div variants={fadeIn} className="bg-white/5 border border-white/10 px-2 sm:px-3 py-1 sm:py-1.5 rounded backdrop-blur-sm">
                           <span className="flex items-center text-white text-xs sm:text-sm">
-                            <Network className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 text-purple-400" />
+                            <Network className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 text-red-400" />
                             Big Data Architect
                           </span>
                         </motion.div>
 
                         <motion.div variants={fadeIn} className="bg-white/5 border border-white/10 px-2 sm:px-3 py-1 sm:py-1.5 rounded backdrop-blur-sm">
                           <span className="flex items-center text-white text-xs sm:text-sm">
-                            <Cpu className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 text-blue-400" />
+                            <Cpu className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 text-slate-400" />
                             ML Engineer
                           </span>
                         </motion.div>
@@ -788,9 +788,9 @@ export default function ZeeshanKeerioPage() {
                       {/* Professional metrics - compact grid with better mobile spacing */}
                       <div className="grid grid-cols-3 gap-1.5 sm:gap-3 mb-3 sm:mb-4">
                         {[
-                          { label: "Experience", value: "7+", icon: Briefcase, color: "text-red-400" },
-                          { label: "AI Projects", value: "25+", icon: BrainCircuit, color: "text-purple-400" },
-                          { label: "ML Models", value: "40+", icon: Code, color: "text-blue-400" }
+                          { label: "Experience", value: "7+", icon: Briefcase, color: "text-slate-400" },
+                          { label: "AI Projects", value: "25+", icon: BrainCircuit, color: "text-red-400" },
+                          { label: "ML Models", value: "40+", icon: Code, color: "text-slate-400" }
                         ].map((stat, index) => (
                           <motion.div
                             key={index}
@@ -819,12 +819,12 @@ export default function ZeeshanKeerioPage() {
                         </h3>
                         <ul className="grid grid-cols-1 gap-1">
                           <li className="flex items-start">
-                            <ChevronRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-red-400 mt-0.5 mr-1 flex-shrink-0" />
+                            <ChevronRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-slate-400 mt-0.5 mr-1 flex-shrink-0" />
                             <span className="text-[10px] sm:text-xs text-white/80">Big Data Optimization</span>
                           </li>
                           <li className="flex items-start">
-                            <ChevronRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-red-400 mt-0.5 mr-1 flex-shrink-0" />
-                            <span className="text-[10px] sm:text-xs text-white/80">AI-Powered Analytics</span>
+                            <ChevronRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-slate-400 mt-0.5 mr-1 flex-shrink-0" />
+                            <span className="text-[10px] sm:text-xs text-white/80">AI-powered Analytics</span>
                           </li>
                         </ul>
                       </motion.div>
@@ -840,7 +840,7 @@ export default function ZeeshanKeerioPage() {
                   >
                     <motion.a
                       href="mailto:zeeshan.keerio@mindscapeanalytics.com"
-                      className="flex items-center justify-center gap-1 bg-gradient-to-r from-red-600 to-purple-600 text-white font-medium rounded px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-sm transition-all hover:from-red-700 hover:to-purple-700"
+                      className="flex items-center justify-center gap-1 bg-gradient-to-r from-slate-600 to-zinc-600 text-white font-medium rounded px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-sm transition-all hover:from-slate-700 hover:to-zinc-700"
                       whileHover={{ scale: 1.02 }}
                     >
                       <Mail className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
@@ -852,7 +852,7 @@ export default function ZeeshanKeerioPage() {
                       className="flex items-center justify-center gap-1 bg-white/10 border border-white/10 hover:bg-white/15 text-white font-medium rounded px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-sm transition-all"
                       whileHover={{ scale: 1.02 }}
                     >
-                      <Calculator className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-red-400" />
+                      <Calculator className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-slate-400" />
                       Calculate ROI
                     </motion.button>
 
@@ -863,7 +863,7 @@ export default function ZeeshanKeerioPage() {
                       className="flex items-center justify-center gap-1 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-medium rounded px-2 sm:px-3 py-1.5 sm:py-2 text-[10px] sm:text-sm transition-all"
                       whileHover={{ scale: 1.02 }}
                     >
-                      <Linkedin className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-blue-400" />
+                      <Linkedin className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-slate-400" />
                       LinkedIn
                     </motion.a>
                   </motion.div>
@@ -877,10 +877,10 @@ export default function ZeeshanKeerioPage() {
         <section className="py-8 sm:py-12 md:py-16 relative">
           {/* AI-themed background elements */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <svg className="absolute top-10 right-5 w-48 sm:w-72 text-red-500/5" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <svg className="absolute top-10 right-5 w-48 sm:w-72 text-slate-500/5" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
               <path fill="currentColor" d="M39.5,-65.3C48.3,-55.1,50.4,-39.7,55.9,-26.3C61.5,-12.9,70.5,-1.5,73.1,11.9C75.7,25.4,71.9,40.9,63.2,53.3C54.4,65.7,40.5,74.9,25.9,77.4C11.2,79.9,-4.1,75.7,-19.9,71.7C-35.7,67.7,-51.9,64,-62.2,54C-72.5,44,-76.8,27.6,-77.9,11.4C-79,-4.8,-76.9,-21,-70.3,-35.6C-63.7,-50.3,-52.6,-63.3,-39.2,-71.4C-25.9,-79.6,-9.9,-82.9,3.3,-88C16.6,-93.1,30.7,-75.5,39.5,-65.3Z" transform="translate(100 100)" />
             </svg>
-            <svg className="absolute bottom-10 left-5 w-40 sm:w-64 text-purple-500/5" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <svg className="absolute bottom-10 left-5 w-40 sm:w-64 text-red-500/5" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
               <path fill="currentColor" d="M47.7,-73.6C62.1,-67.5,74.7,-55.1,79.1,-40.5C83.6,-25.9,79.9,-9.1,76.3,6.5C72.8,22.2,69.4,36.7,60.9,47.9C52.5,59.1,38.9,67,24.8,70.8C10.8,74.6,-3.7,74.3,-17,70.1C-30.2,65.9,-42.1,57.8,-49.7,47C-57.2,36.2,-60.4,22.7,-64.2,8.2C-68,-6.3,-72.5,-21.8,-69.3,-35.9C-66.1,-50,-55.2,-62.7,-41.8,-69C-28.4,-75.3,-12.5,-75.2,2.4,-79C17.4,-82.8,33.3,-79.7,47.7,-73.6Z" transform="translate(100 100)" />
             </svg>
           </div>
@@ -888,33 +888,33 @@ export default function ZeeshanKeerioPage() {
           <Tabs defaultValue={activeTab} className="w-full relative z-10" onValueChange={handleTabChange}>
             <div className="overflow-x-auto scrollbar-hide pb-2">
               <TabsList className="grid grid-flow-col auto-cols-auto min-w-max md:grid-cols-6 mb-6 sm:mb-8 bg-gradient-to-r from-black/60 to-black/40 border border-white/10 p-1 rounded-lg backdrop-blur-sm shadow-lg">
-                <TabsTrigger value="experience" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-500/20 data-[state=active]:to-purple-600/20 data-[state=active]:text-white group">
-                  <Briefcase className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-data-[state=active]:text-red-400 transition-colors" />
+                <TabsTrigger value="experience" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-slate-500/20 data-[state=active]:to-zinc-600/20 data-[state=active]:text-white group">
+                  <Briefcase className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-data-[state=active]:text-slate-400 transition-colors" />
                   <span className="text-xs sm:text-sm">Experience</span>
                 </TabsTrigger>
-                <TabsTrigger value="education" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-500/20 data-[state=active]:to-purple-600/20 data-[state=active]:text-white group">
-                  <GraduationCap className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-data-[state=active]:text-red-400 transition-colors" />
+                <TabsTrigger value="education" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-slate-500/20 data-[state=active]:to-zinc-600/20 data-[state=active]:text-white group">
+                  <GraduationCap className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-data-[state=active]:text-slate-400 transition-colors" />
                   <span className="text-xs sm:text-sm">Education</span>
                 </TabsTrigger>
-                <TabsTrigger value="skills" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-500/20 data-[state=active]:to-purple-600/20 data-[state=active]:text-white group">
-                  <Code className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-data-[state=active]:text-red-400 transition-colors" />
+                <TabsTrigger value="skills" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-slate-500/20 data-[state=active]:to-zinc-600/20 data-[state=active]:text-white group">
+                  <Code className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-data-[state=active]:text-slate-400 transition-colors" />
                   <span className="text-xs sm:text-sm">Skills</span>
                 </TabsTrigger>
-                <TabsTrigger value="projects" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-500/20 data-[state=active]:to-purple-600/20 data-[state=active]:text-white group">
-                  <FileText className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-data-[state=active]:text-red-400 transition-colors" />
+                <TabsTrigger value="projects" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-slate-500/20 data-[state=active]:to-zinc-600/20 data-[state=active]:text-white group">
+                  <FileText className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-data-[state=active]:text-slate-400 transition-colors" />
                   <span className="text-xs sm:text-sm">Projects</span>
                 </TabsTrigger>
-                <TabsTrigger value="ai-projects" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-500/20 data-[state=active]:to-purple-600/20 data-[state=active]:text-white group relative">
-                  <BrainCircuit className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-data-[state=active]:text-red-400 transition-colors" />
+                <TabsTrigger value="ai-projects" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-slate-500/20 data-[state=active]:to-zinc-600/20 data-[state=active]:text-white group relative">
+                  <BrainCircuit className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-data-[state=active]:text-slate-400 transition-colors" />
                   <span className="text-xs sm:text-sm">AI Projects</span>
                   <motion.div
-                    className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"
+                    className="absolute -top-1 -right-1 w-2 h-2 bg-slate-500 rounded-full"
                     animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.7, 1, 0.7] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
                 </TabsTrigger>
-                <TabsTrigger value="achievements" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-500/20 data-[state=active]:to-purple-600/20 data-[state=active]:text-white group">
-                  <Award className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-data-[state=active]:text-red-400 transition-colors" />
+                <TabsTrigger value="achievements" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-slate-500/20 data-[state=active]:to-zinc-600/20 data-[state=active]:text-white group">
+                  <Award className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 group-data-[state=active]:text-slate-400 transition-colors" />
                   <span className="text-xs sm:text-sm">Achievements</span>
                 </TabsTrigger>
               </TabsList>
@@ -928,10 +928,10 @@ export default function ZeeshanKeerioPage() {
                 transition={{ delay: 0.1 }}
               >
                 <h3 className="text-xl font-bold mb-6 flex items-center">
-                  <Briefcase className="mr-2 h-5 w-5 text-red-400" />
+                  <Briefcase className="mr-2 h-5 w-5 text-slate-400" />
                   Professional Experience
                   <div className="ml-auto flex items-center text-sm text-white/60">
-                    <Cpu className="h-4 w-4 mr-1 text-red-400" />
+                    <Cpu className="h-4 w-4 mr-1 text-slate-400" />
                     <span>AI-Focused Roles</span>
                   </div>
                 </h3>
@@ -940,7 +940,7 @@ export default function ZeeshanKeerioPage() {
                   {EXPERIENCE.map((job, index) => (
                     <motion.div
                       key={index}
-                      className="bg-gradient-to-r from-black/60 to-black/40 border border-white/10 rounded-xl p-6 backdrop-blur-sm hover:border-red-500/20 transition-colors duration-300 hover:shadow-[0_0_25px_rgba(220,38,38,0.1)] relative overflow-hidden group"
+                      className="bg-gradient-to-r from-black/60 to-black/40 border border-white/10 rounded-xl p-6 backdrop-blur-sm hover:border-slate-500/20 transition-colors duration-300 hover:shadow-[0_0_25px_rgba(220,38,38,0.1)] relative overflow-hidden group"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 + 0.2 }}
@@ -951,12 +951,12 @@ export default function ZeeshanKeerioPage() {
 
                       {/* Animated highlight corner */}
                       <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-red-500/20 to-transparent transform origin-top-right -rotate-45 translate-x-8 -translate-y-8 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500"></div>
+                        <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-slate-500/20 to-transparent transform origin-top-right -rotate-45 translate-x-8 -translate-y-8 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500"></div>
                       </div>
 
                       {/* Content with AI theme */}
                       <div className="flex flex-col md:flex-row md:items-start gap-4 mb-4 relative z-10">
-                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-red-500/30 to-purple-600/30 rounded-full flex items-center justify-center">
+                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-slate-500/30 to-zinc-600/30 rounded-full flex items-center justify-center">
                           {job.role.includes("AI") || job.role.includes("Data") ? (
                             <BrainCircuit className="h-5 w-5 text-white" />
                           ) : (
@@ -965,8 +965,8 @@ export default function ZeeshanKeerioPage() {
                         </div>
                         <div className="flex-grow">
                           <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                            <h4 className="text-xl font-bold text-white group-hover:text-red-400 transition-colors">{job.role}</h4>
-                            <span className="text-sm text-red-400 font-medium bg-red-500/10 px-3 py-1 rounded-full">{job.period}</span>
+                            <h4 className="text-xl font-bold text-white group-hover:text-slate-400 transition-colors">{job.role}</h4>
+                            <span className="text-sm text-slate-400 font-medium bg-slate-500/10 px-3 py-1 rounded-full">{job.period}</span>
                           </div>
                           <div className="text-white/70 font-medium mb-3">{job.company}</div>
                           <ul className="space-y-2 mt-4">
@@ -978,7 +978,7 @@ export default function ZeeshanKeerioPage() {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: itemIndex * 0.05 + index * 0.2 }}
                               >
-                                <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></span>
+                                <span className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-2 flex-shrink-0 group-hover/item:scale-150 transition-transform"></span>
                                 <span className="text-white/70">{item}</span>
                               </motion.li>
                             ))}
@@ -1000,7 +1000,7 @@ export default function ZeeshanKeerioPage() {
               >
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
                   <h3 className="text-2xl font-bold flex items-center">
-                    <BrainCircuit className="mr-2 h-6 w-6 text-red-400" />
+                    <BrainCircuit className="mr-2 h-6 w-6 text-slate-400" />
                     Advanced AI & ML Portfolio
                   </h3>
 
@@ -1009,7 +1009,7 @@ export default function ZeeshanKeerioPage() {
                     {["All", "Computer Vision", "NLP", "Predictive", "MLOps"].map((category, index) => (
                       <button
                         key={category}
-                        className={`px-3 py-1.5 text-sm rounded-md transition-all ${index === 0 ? 'bg-red-500/20 text-white font-medium' : 'text-white/60 hover:text-white/90 hover:bg-white/5'}`}
+                        className={`px-3 py-1.5 text-sm rounded-md transition-all ${index === 0 ? 'bg-slate-500/20 text-white font-medium' : 'text-white/60 hover:text-white/90 hover:bg-white/5'}`}
                       >
                         {category}
                       </button>
@@ -1025,9 +1025,9 @@ export default function ZeeshanKeerioPage() {
                   transition={{ delay: 0.2 }}
                 >
                   {[
-                    { label: "Total Projects", value: "30+", icon: FileText, color: "text-red-400" },
-                    { label: "Success Rate", value: "98%", icon: CheckCircle, color: "text-green-400" },
-                    { label: "Technologies", value: "15+", icon: Cpu, color: "text-blue-400" },
+                    { label: "Total Projects", value: "30+", icon: FileText, color: "text-slate-400" },
+                    { label: "Success Rate", value: "98%", icon: CheckCircle, color: "text-slate-400" },
+                    { label: "Technologies", value: "15+", icon: Cpu, color: "text-slate-400" },
                     { label: "Client Satisfaction", value: "4.9/5", icon: Star, color: "text-yellow-400" }
                   ].map((stat, index) => (
                     <div key={index} className="bg-gradient-to-br from-black/60 to-black/30 border border-white/10 rounded-xl p-4 flex flex-col items-center md:items-start">
@@ -1040,7 +1040,7 @@ export default function ZeeshanKeerioPage() {
                   ))}
                 </motion.div>
 
-                {/* Featured project */}
+                {/* Featuslate project */}
                 <motion.div
                   className="mb-8 bg-gradient-to-r from-black/60 to-black/40 border border-white/10 rounded-xl overflow-hidden relative"
                   initial={{ opacity: 0, y: 20 }}
@@ -1163,7 +1163,7 @@ export default function ZeeshanKeerioPage() {
                       {/* Interactive overlay */}
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 flex items-end justify-start p-4">
                         <motion.button
-                          className="bg-red-500/20 hover:bg-red-500/30 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+                          className="bg-slate-500/20 hover:bg-slate-500/30 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.98 }}
                         >
@@ -1181,8 +1181,8 @@ export default function ZeeshanKeerioPage() {
                     {/* Project details */}
                     <div className="p-6 md:p-8 md:w-3/5">
                       <div className="flex items-center mb-2">
-                        <Badge className="bg-gradient-to-r from-red-500/20 to-purple-500/20 text-white mr-2">FEATURED</Badge>
-                        <Badge className="bg-blue-500/20 text-blue-400">Computer Vision</Badge>
+                        <Badge className="bg-gradient-to-r from-slate-500/20 to-zinc-500/20 text-white mr-2">FEATUslate</Badge>
+                        <Badge className="bg-slate-500/20 text-slate-400">Computer Vision</Badge>
                         <span className="ml-auto text-xs text-white/50">Last updated: 2 weeks ago</span>
                       </div>
 
@@ -1202,7 +1202,7 @@ export default function ZeeshanKeerioPage() {
                             "Anti-spoofing protection"
                           ].map((item, i) => (
                             <li key={i} className="flex items-center text-sm">
-                              <div className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></div>
+                              <div className="w-1.5 h-1.5 bg-slate-500 rounded-full mr-2"></div>
                               <span className="text-white/80">{item}</span>
                             </li>
                           ))}
@@ -1224,7 +1224,7 @@ export default function ZeeshanKeerioPage() {
                       {/* Call to action */}
                       <div className="mt-6 flex items-center gap-3">
                         <motion.button
-                          className="bg-gradient-to-r from-red-500 to-purple-600 text-white px-4 py-2 rounded-lg flex items-center gap-2"
+                          className="bg-gradient-to-r from-slate-500 to-zinc-600 text-white px-4 py-2 rounded-lg flex items-center gap-2"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.98 }}
                         >
@@ -1249,7 +1249,7 @@ export default function ZeeshanKeerioPage() {
                   {PROJECTS.map((project: Project, index) => (
                     <motion.div
                       key={index}
-                      className="bg-gradient-to-br from-black/60 to-black/40 border border-white/10 rounded-xl overflow-hidden shadow-lg hover:shadow-red-500/10 transition-all group relative"
+                      className="bg-gradient-to-br from-black/60 to-black/40 border border-white/10 rounded-xl overflow-hidden shadow-lg hover:shadow-slate-500/10 transition-all group relative"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 + 0.3 }}
@@ -1269,7 +1269,7 @@ export default function ZeeshanKeerioPage() {
                           />
                           {/* Gradient overlays */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700" />
-                          <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-purple-500/20 opacity-0 group-hover:opacity-30 transition-opacity duration-700" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-slate-500/20 to-zinc-500/20 opacity-0 group-hover:opacity-30 transition-opacity duration-700" />
                         </div>
 
                         {/* Project tags */}
@@ -1288,7 +1288,7 @@ export default function ZeeshanKeerioPage() {
                         {project.youtubeUrl && (
                           <Link href={project.youtubeUrl} target="_blank" rel="noopener noreferrer">
                             <motion.button
-                              className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm text-white/90 rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-red-500/80"
+                              className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm text-white/90 rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-slate-500/80"
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
                             >
@@ -1300,7 +1300,7 @@ export default function ZeeshanKeerioPage() {
 
                       {/* Project content */}
                       <div className="p-5 flex-grow flex flex-col relative z-10">
-                        <h4 className="text-lg font-bold text-white mb-2 group-hover:text-red-400 transition-colors duration-300">
+                        <h4 className="text-lg font-bold text-white mb-2 group-hover:text-slate-400 transition-colors duration-300">
                           {project.title}
                         </h4>
 
@@ -1313,9 +1313,9 @@ export default function ZeeshanKeerioPage() {
                           <div className="grid grid-cols-2 gap-2 mb-3 text-xs">
                             {project.metrics.accuracy && (
                               <div className="flex items-center">
-                                <BarChart3 className="w-3 h-3 text-green-400 mr-1" />
+                                <BarChart3 className="w-3 h-3 text-slate-400 mr-1" />
                                 <span className="text-white/70">Accuracy: </span>
-                                <span className="text-green-400 ml-1 font-medium">{project.metrics.accuracy}%</span>
+                                <span className="text-slate-400 ml-1 font-medium">{project.metrics.accuracy}%</span>
                               </div>
                             )}
                             {project.metrics.performance && (
@@ -1335,7 +1335,7 @@ export default function ZeeshanKeerioPage() {
                           <Dialog>
                             <DialogTrigger asChild>
                               <motion.button
-                                className="text-sm text-red-400 hover:text-red-300 flex items-center justify-center font-medium group/btn"
+                                className="text-sm text-slate-400 hover:text-slate-300 flex items-center justify-center font-medium group/btn"
                                 whileHover={{ x: 5 }}
                               >
                                 <span>View Details</span>
@@ -1346,7 +1346,7 @@ export default function ZeeshanKeerioPage() {
                               <DialogHeader>
                                 <DialogTitle className="text-2xl font-bold text-white flex items-center">
                                   {project.title}
-                                  <Badge className="ml-3 bg-gradient-to-r from-red-500/20 to-purple-500/20 text-white">
+                                  <Badge className="ml-3 bg-gradient-to-r from-slate-500/20 to-zinc-500/20 text-white">
                                     {project.tags?.[0]}
                                   </Badge>
                                 </DialogTitle>
@@ -1401,7 +1401,7 @@ export default function ZeeshanKeerioPage() {
                                       "Comprehensive data visualization"
                                     ].map((feature, i) => (
                                       <li key={i} className="flex items-start gap-2">
-                                        <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                                        <CheckCircle className="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0" />
                                         <span className="text-white/80 text-sm">{feature}</span>
                                       </li>
                                     ))}
@@ -1411,15 +1411,15 @@ export default function ZeeshanKeerioPage() {
                                   <div className="grid grid-cols-2 gap-x-4 gap-y-2 mb-4">
                                     <div className="flex items-center justify-between">
                                       <span className="text-white/70 text-sm">Accuracy:</span>
-                                      <span className="text-green-400 font-medium">98.7%</span>
+                                      <span className="text-slate-400 font-medium">98.7%</span>
                                     </div>
                                     <div className="flex items-center justify-between">
                                       <span className="text-white/70 text-sm">Response Time:</span>
-                                      <span className="text-blue-400 font-medium">45ms</span>
+                                      <span className="text-slate-400 font-medium">45ms</span>
                                     </div>
                                     <div className="flex items-center justify-between">
                                       <span className="text-white/70 text-sm">Scalability:</span>
-                                      <span className="text-purple-400 font-medium">High</span>
+                                      <span className="text-red-400 font-medium">High</span>
                                     </div>
                                     <div className="flex items-center justify-between">
                                       <span className="text-white/70 text-sm">Dev Time:</span>
@@ -1439,7 +1439,7 @@ export default function ZeeshanKeerioPage() {
                                     <Github className="mr-2 h-4 w-4" />
                                     View Code
                                   </Button>
-                                  <Button className="bg-gradient-to-r from-red-500 to-purple-600 text-white hover:from-red-600 hover:to-purple-700">
+                                  <Button className="bg-gradient-to-r from-slate-500 to-zinc-600 text-white hover:from-slate-600 hover:to-zinc-700">
                                     <ExternalLink className="mr-2 h-4 w-4" />
                                     Live Demo
                                   </Button>
@@ -1451,7 +1451,7 @@ export default function ZeeshanKeerioPage() {
                           {project.youtubeUrl && (
                             <Link href={project.youtubeUrl} target="_blank" rel="noopener noreferrer">
                               <motion.button
-                                className="text-red-400 hover:text-red-300 p-1.5 rounded-full hover:bg-white/5 transition-colors"
+                                className="text-slate-400 hover:text-slate-300 p-1.5 rounded-full hover:bg-white/5 transition-colors"
                                 whileHover={{ scale: 1.1, rotate: 5 }}
                                 whileTap={{ scale: 0.9 }}
                               >
@@ -1468,7 +1468,7 @@ export default function ZeeshanKeerioPage() {
                 {/* Load more button with improved styling */}
                 <div className="mt-10 text-center">
                   <motion.button
-                    className="px-6 py-3 bg-gradient-to-r from-red-500/20 to-purple-500/20 rounded-lg border border-white/10 text-white hover:from-red-500/30 hover:to-purple-500/30 transition-colors flex items-center gap-2 mx-auto group"
+                    className="px-6 py-3 bg-gradient-to-r from-slate-500/20 to-zinc-500/20 rounded-lg border border-white/10 text-white hover:from-slate-500/30 hover:to-zinc-500/30 transition-colors flex items-center gap-2 mx-auto group"
                     whileHover={{ y: -3, boxShadow: "0 10px 25px -5px rgba(220,38,38,0.3)" }}
                     whileTap={{ y: 0 }}
                   >
@@ -1487,42 +1487,42 @@ export default function ZeeshanKeerioPage() {
                 transition={{ delay: 0.1 }}
               >
                 <h3 className="text-xl font-bold mb-6 flex items-center">
-                  <GraduationCap className="mr-2 h-5 w-5 text-red-400" />
+                  <GraduationCap className="mr-2 h-5 w-5 text-slate-400" />
                   Educational Background
                 </h3>
                 <div className="space-y-8">
                   {EDUCATION.map((edu, index) => (
                     <motion.div
                       key={index}
-                      className="bg-gradient-to-r from-black/60 to-black/40 border border-white/10 rounded-xl p-6 backdrop-blur-sm relative overflow-hidden hover:border-red-500/20 transition-colors duration-300 hover:shadow-[0_0_25px_rgba(220,38,38,0.1)]"
+                      className="bg-gradient-to-r from-black/60 to-black/40 border border-white/10 rounded-xl p-6 backdrop-blur-sm relative overflow-hidden hover:border-slate-500/20 transition-colors duration-300 hover:shadow-[0_0_25px_rgba(220,38,38,0.1)]"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 + 0.2 }}
                       whileHover={{ y: -5, boxShadow: "0 15px 30px rgba(220,38,38,0.15)" }}
                     >
                       {/* Decorative elements */}
-                      <div className="absolute right-0 top-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-red-500/5 rounded-full -mr-10 -mt-10 blur-2xl"></div>
+                      <div className="absolute right-0 top-0 w-32 h-32 bg-gradient-to-br from-zinc-500/10 to-slate-500/5 rounded-full -mr-10 -mt-10 blur-2xl"></div>
 
                       <div className="flex flex-col md:flex-row md:items-start gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-red-500/30 to-purple-600/30 rounded-full flex items-center justify-center">
+                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-slate-500/30 to-zinc-600/30 rounded-full flex items-center justify-center">
                           <GraduationCap className="h-6 w-6 text-white" />
                         </div>
                         <div className="flex-grow">
                           <h4 className="text-xl font-bold text-white mb-1">{edu.degree}</h4>
-                          <div className="text-red-400 font-medium mb-2">{edu.institution}</div>
+                          <div className="text-slate-400 font-medium mb-2">{edu.institution}</div>
                           <div className="text-sm text-white/70 mb-4 bg-white/5 inline-block px-3 py-1 rounded-full">{edu.period}</div>
 
-                          <div className="mt-4 bg-black/20 p-4 rounded-lg border-l-2 border-red-500/50">
+                          <div className="mt-4 bg-black/20 p-4 rounded-lg border-l-2 border-slate-500/50">
                             <h5 className="text-white font-semibold mb-2 flex items-center gap-2">
-                              <BookOpen className="h-4 w-4 text-red-400" />
+                              <BookOpen className="h-4 w-4 text-slate-400" />
                               Course Highlights
                             </h5>
                             <p className="text-white/70">{edu.details}</p>
                           </div>
 
-                          <div className="mt-4 bg-black/20 p-4 rounded-lg border-l-2 border-purple-500/50">
+                          <div className="mt-4 bg-black/20 p-4 rounded-lg border-l-2 border-red-500/50">
                             <h5 className="text-white font-semibold mb-2 flex items-center gap-2">
-                              <FileText className="h-4 w-4 text-purple-400" />
+                              <FileText className="h-4 w-4 text-red-400" />
                               Key Project
                             </h5>
                             <p className="text-white/70">{edu.project}</p>
@@ -1543,7 +1543,7 @@ export default function ZeeshanKeerioPage() {
                 transition={{ delay: 0.1 }}
               >
                 <h3 className="text-xl font-bold mb-6 flex items-center">
-                  <Code className="mr-2 h-5 w-5 text-red-400" />
+                  <Code className="mr-2 h-5 w-5 text-slate-400" />
                   Skills & Expertise
                 </h3>
 
@@ -1554,7 +1554,7 @@ export default function ZeeshanKeerioPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <div className="absolute right-0 bottom-0 w-64 h-64 bg-gradient-to-br from-red-500/10 to-purple-500/5 rounded-full -mr-20 -mb-20 blur-3xl"></div>
+                  <div className="absolute right-0 bottom-0 w-64 h-64 bg-gradient-to-br from-slate-500/10 to-zinc-500/5 rounded-full -mr-20 -mb-20 blur-3xl"></div>
 
                   <div className="grid md:grid-cols-2 gap-6 items-center">
                     <div className="relative z-10">
@@ -1565,19 +1565,19 @@ export default function ZeeshanKeerioPage() {
 
                       <div className="grid grid-cols-2 gap-4 mt-6">
                         <div className="bg-black/30 p-4 rounded-lg border border-white/5 text-center">
-                          <h5 className="text-red-400 text-xl font-bold mb-1">7+</h5>
+                          <h5 className="text-slate-400 text-xl font-bold mb-1">7+</h5>
                           <p className="text-xs text-white/60">Years Experience</p>
                         </div>
                         <div className="bg-black/30 p-4 rounded-lg border border-white/5 text-center">
-                          <h5 className="text-purple-400 text-xl font-bold mb-1">25+</h5>
+                          <h5 className="text-red-400 text-xl font-bold mb-1">25+</h5>
                           <p className="text-xs text-white/60">Projects Completed</p>
                         </div>
                         <div className="bg-black/30 p-4 rounded-lg border border-white/5 text-center">
-                          <h5 className="text-blue-400 text-xl font-bold mb-1">10+</h5>
+                          <h5 className="text-slate-400 text-xl font-bold mb-1">10+</h5>
                           <p className="text-xs text-white/60">Certifications</p>
                         </div>
                         <div className="bg-black/30 p-4 rounded-lg border border-white/5 text-center">
-                          <h5 className="text-green-400 text-xl font-bold mb-1">40+</h5>
+                          <h5 className="text-slate-400 text-xl font-bold mb-1">40+</h5>
                           <p className="text-xs text-white/60">ML Models Built</p>
                         </div>
                       </div>
@@ -1623,7 +1623,7 @@ export default function ZeeshanKeerioPage() {
 
                       {/* Skill points */}
                       <motion.div
-                        className="absolute top-10 left-1/2 transform -translate-x-1/2 w-3 h-3 rounded-full bg-red-500"
+                        className="absolute top-10 left-1/2 transform -translate-x-1/2 w-3 h-3 rounded-full bg-slate-500"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.5 }}
@@ -1631,7 +1631,7 @@ export default function ZeeshanKeerioPage() {
                         <span className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-6 text-xs text-white/80">AI</span>
                       </motion.div>
                       <motion.div
-                        className="absolute top-1/3 left-[85%] transform -translate-y-1/2 w-3 h-3 rounded-full bg-red-500"
+                        className="absolute top-1/3 left-[85%] transform -translate-y-1/2 w-3 h-3 rounded-full bg-slate-500"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.6 }}
@@ -1639,7 +1639,7 @@ export default function ZeeshanKeerioPage() {
                         <span className="absolute top-0 left-0 transform translate-x-2 text-xs text-white/80">Data Science</span>
                       </motion.div>
                       <motion.div
-                        className="absolute top-3/4 left-[80%] transform -translate-y-1/2 w-3 h-3 rounded-full bg-red-500"
+                        className="absolute top-3/4 left-[80%] transform -translate-y-1/2 w-3 h-3 rounded-full bg-slate-500"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.7 }}
@@ -1647,7 +1647,7 @@ export default function ZeeshanKeerioPage() {
                         <span className="absolute top-0 left-0 transform translate-x-2 text-xs text-white/80">Backend</span>
                       </motion.div>
                       <motion.div
-                        className="absolute top-3/4 left-[20%] transform -translate-y-1/2 w-3 h-3 rounded-full bg-red-500"
+                        className="absolute top-3/4 left-[20%] transform -translate-y-1/2 w-3 h-3 rounded-full bg-slate-500"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.8 }}
@@ -1655,7 +1655,7 @@ export default function ZeeshanKeerioPage() {
                         <span className="absolute top-0 right-0 transform -translate-x-2 text-xs text-white/80">Frontend</span>
                       </motion.div>
                       <motion.div
-                        className="absolute top-1/3 left-[15%] transform -translate-y-1/2 w-3 h-3 rounded-full bg-red-500"
+                        className="absolute top-1/3 left-[15%] transform -translate-y-1/2 w-3 h-3 rounded-full bg-slate-500"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.9 }}
@@ -1675,11 +1675,11 @@ export default function ZeeshanKeerioPage() {
                     transition={{ delay: 0.3 }}
                     whileHover={{ y: -5, boxShadow: "0 15px 30px rgba(220,38,38,0.15)" }}
                   >
-                    <div className="absolute right-0 bottom-0 w-40 h-40 bg-gradient-to-br from-red-500/10 to-purple-500/5 rounded-full -mr-10 -mb-10 blur-3xl"></div>
+                    <div className="absolute right-0 bottom-0 w-40 h-40 bg-gradient-to-br from-slate-500/10 to-zinc-500/5 rounded-full -mr-10 -mb-10 blur-3xl"></div>
 
                     <h4 className="text-lg font-bold mb-4 flex items-center gap-2 relative z-10">
-                      <div className="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center">
-                        <Code className="h-4 w-4 text-red-400" />
+                      <div className="w-8 h-8 bg-slate-500/20 rounded-full flex items-center justify-center">
+                        <Code className="h-4 w-4 text-slate-400" />
                       </div>
                       Technical Expertise
                     </h4>
@@ -1687,16 +1687,16 @@ export default function ZeeshanKeerioPage() {
                     {/* Skill bars with animations */}
                     <div className="space-y-5 relative z-10">
                       {[
-                        { skill: "Python", level: 95, color: "from-red-500 to-red-600" },
-                        { skill: "Machine Learning", level: 90, color: "from-purple-500 to-purple-600" },
-                        { skill: "Deep Learning", level: 88, color: "from-blue-500 to-blue-600" },
-                        { skill: "Big Data", level: 92, color: "from-green-500 to-green-600" },
+                        { skill: "Python", level: 95, color: "from-slate-500 to-slate-600" },
+                        { skill: "Machine Learning", level: 90, color: "from-zinc-500 to-zinc-600" },
+                        { skill: "Deep Learning", level: 88, color: "from-slate-500 to-slate-600" },
+                        { skill: "Big Data", level: 92, color: "from-slate-500 to-slate-600" },
                         { skill: "SQL", level: 85, color: "from-yellow-500 to-yellow-600" }
                       ].map((item, index) => (
                         <div key={index} className="space-y-1">
                           <div className="flex justify-between text-sm">
                             <span className="text-white/80">{item.skill}</span>
-                            <span className="text-red-400">{item.level}%</span>
+                            <span className="text-slate-400">{item.level}%</span>
                           </div>
                           <div className="h-2 bg-white/5 rounded-full overflow-hidden">
                             <motion.div
@@ -1714,7 +1714,7 @@ export default function ZeeshanKeerioPage() {
                       {SKILLS.technicalSkills.slice(0, 12).map((skill, index) => (
                         <motion.span
                           key={index}
-                          className="bg-gradient-to-r from-red-500/20 to-red-600/10 px-3 py-1.5 rounded-full text-sm font-medium text-white/90 backdrop-blur-sm"
+                          className="bg-gradient-to-r from-slate-500/20 to-slate-600/10 px-3 py-1.5 rounded-full text-sm font-medium text-white/90 backdrop-blur-sm"
                           initial={{ opacity: 0, scale: 0.5 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: index * 0.05 + 0.3 }}
@@ -1724,7 +1724,7 @@ export default function ZeeshanKeerioPage() {
                         </motion.span>
                       ))}
                       <motion.span
-                        className="bg-gradient-to-r from-purple-500/20 to-purple-600/10 px-3 py-1.5 rounded-full text-sm font-medium text-white/90 backdrop-blur-sm"
+                        className="bg-gradient-to-r from-zinc-500/20 to-zinc-600/10 px-3 py-1.5 rounded-full text-sm font-medium text-white/90 backdrop-blur-sm"
                         initial={{ opacity: 0, scale: 0.5 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.9 }}
@@ -1743,11 +1743,11 @@ export default function ZeeshanKeerioPage() {
                     transition={{ delay: 0.4 }}
                     whileHover={{ y: -5, boxShadow: "0 15px 30px rgba(220,38,38,0.15)" }}
                   >
-                    <div className="absolute left-0 bottom-0 w-40 h-40 bg-gradient-to-br from-purple-500/10 to-red-500/5 rounded-full -ml-10 -mb-10 blur-3xl"></div>
+                    <div className="absolute left-0 bottom-0 w-40 h-40 bg-gradient-to-br from-zinc-500/10 to-slate-500/5 rounded-full -ml-10 -mb-10 blur-3xl"></div>
 
                     <h4 className="text-lg font-bold mb-6 flex items-center gap-2 relative z-10">
-                      <div className="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center">
-                        <User className="h-4 w-4 text-purple-400" />
+                      <div className="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center">
+                        <User className="h-4 w-4 text-red-400" />
                       </div>
                       Professional Skills
                     </h4>
@@ -1755,10 +1755,10 @@ export default function ZeeshanKeerioPage() {
                     {/* Circular progress bars */}
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6 relative z-10">
                       {[
-                        { skill: "Problem Solving", level: 95, color: "text-red-400" },
-                        { skill: "Communication", level: 85, color: "text-purple-400" },
-                        { skill: "Leadership", level: 80, color: "text-blue-400" },
-                        { skill: "Time Management", level: 90, color: "text-green-400" },
+                        { skill: "Problem Solving", level: 95, color: "text-slate-400" },
+                        { skill: "Communication", level: 85, color: "text-red-400" },
+                        { skill: "Leadership", level: 80, color: "text-slate-400" },
+                        { skill: "Time Management", level: 90, color: "text-slate-400" },
                         { skill: "Adaptability", level: 92, color: "text-yellow-400" },
                         { skill: "Creativity", level: 88, color: "text-pink-400" }
                       ].map((item, index) => (
@@ -1804,7 +1804,7 @@ export default function ZeeshanKeerioPage() {
                         {SKILLS.generalSkills.map((skill, index) => (
                           <motion.span
                             key={index}
-                            className="bg-gradient-to-r from-purple-500/20 to-purple-600/10 px-3 py-1.5 rounded-full text-sm font-medium text-white/90 backdrop-blur-sm"
+                            className="bg-gradient-to-r from-zinc-500/20 to-zinc-600/10 px-3 py-1.5 rounded-full text-sm font-medium text-white/90 backdrop-blur-sm"
                             initial={{ opacity: 0, scale: 0.5 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.05 + 0.5 }}
@@ -1826,7 +1826,7 @@ export default function ZeeshanKeerioPage() {
                   transition={{ delay: 0.5 }}
                 >
                   <h4 className="text-lg font-bold mb-6 flex items-center gap-2">
-                    <Cpu className="h-4 w-4 text-blue-400" />
+                    <Cpu className="h-4 w-4 text-slate-400" />
                     Tools & Technologies
                   </h4>
 
@@ -1847,7 +1847,7 @@ export default function ZeeshanKeerioPage() {
                     ].map((tool, index) => (
                       <motion.div
                         key={index}
-                        className="bg-black/30 p-4 rounded-lg border border-white/10 hover:border-blue-500/30 transition-colors duration-300"
+                        className="bg-black/30 p-4 rounded-lg border border-white/10 hover:border-slate-500/30 transition-colors duration-300"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.05 + 0.6 }}
@@ -1872,7 +1872,7 @@ export default function ZeeshanKeerioPage() {
               >
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-bold flex items-center">
-                    <FileText className="mr-2 h-5 w-5 text-red-400" />
+                    <FileText className="mr-2 h-5 w-5 text-slate-400" />
                     Portfolio Showcase
                   </h3>
 
@@ -1881,7 +1881,7 @@ export default function ZeeshanKeerioPage() {
                     {["All", "Data & Analytics", "Machine Learning", "Web Development"].map((category) => (
                       <button
                         key={category}
-                        className={`px-3 py-1 text-sm rounded-md ${category === 'All' ? 'bg-red-500/20 text-white' : 'text-white/60 hover:text-white/90'}`}
+                        className={`px-3 py-1 text-sm rounded-md ${category === 'All' ? 'bg-slate-500/20 text-white' : 'text-white/60 hover:text-white/90'}`}
                       >
                         {category}
                       </button>
@@ -1889,7 +1889,7 @@ export default function ZeeshanKeerioPage() {
                   </div>
                 </div>
 
-                {/* Featured Project - Large Card */}
+                {/* Featuslate Project - Large Card */}
                 <motion.div
                   className="mb-8 bg-gradient-to-r from-black/60 to-black/40 border border-white/10 rounded-xl overflow-hidden relative"
                   initial={{ opacity: 0, y: 20 }}
@@ -1920,7 +1920,7 @@ export default function ZeeshanKeerioPage() {
                                 initial={{ width: 0 }}
                                 animate={{ width: "70%" }}
                                 transition={{ delay: 1, duration: 2, ease: "easeOut" }}
-                                className="h-1 bg-red-500/70 rounded-full mb-2"
+                                className="h-1 bg-slate-500/70 rounded-full mb-2"
                               />
                               <div className="flex items-center justify-between">
                                 <span className="text-xs text-white/70">www.mindscapeanalytics.com</span>
@@ -1935,8 +1935,8 @@ export default function ZeeshanKeerioPage() {
                     {/* Project details */}
                     <div className="p-6 md:p-8 md:w-2/5">
                       <div className="flex items-center mb-2">
-                        <Badge className="bg-gradient-to-r from-red-500/20 to-purple-500/20 text-white mr-2">FEATURED</Badge>
-                        <Badge className="bg-blue-500/20 text-blue-400">Personal Project</Badge>
+                        <Badge className="bg-gradient-to-r from-slate-500/20 to-zinc-500/20 text-white mr-2">FEATUslate</Badge>
+                        <Badge className="bg-slate-500/20 text-slate-400">Personal Project</Badge>
                       </div>
 
                       <h4 className="text-2xl font-bold mb-3">Mindscape Analytics</h4>
@@ -1955,7 +1955,7 @@ export default function ZeeshanKeerioPage() {
                             "Responsive design across devices"
                           ].map((item, i) => (
                             <li key={i} className="flex items-center text-sm">
-                              <div className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></div>
+                              <div className="w-1.5 h-1.5 bg-slate-500 rounded-full mr-2"></div>
                               <span className="text-white/80">{item}</span>
                             </li>
                           ))}
@@ -1977,7 +1977,7 @@ export default function ZeeshanKeerioPage() {
                       {/* CTA */}
                       <div className="mt-4">
                         <Link href="https://www.mindscapeanalytics.com" target="_blank" rel="noopener noreferrer">
-                          <Button className="bg-gradient-to-r from-red-600 to-purple-700 hover:from-red-700 hover:to-purple-800 text-white transition-all duration-300 shadow-lg shadow-red-900/30 px-6 py-2 w-full">
+                          <Button className="bg-gradient-to-r from-slate-600 to-zinc-700 hover:from-slate-700 hover:to-zinc-800 text-white transition-all duration-300 shadow-lg shadow-slate-900/30 px-6 py-2 w-full">
                             Visit Website
                           </Button>
                         </Link>
@@ -2015,7 +2015,7 @@ export default function ZeeshanKeerioPage() {
                           />
                           {/* Gradient overlays */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700" />
-                          <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-purple-500/20 opacity-0 group-hover:opacity-30 transition-opacity duration-700" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-slate-500/20 to-zinc-500/20 opacity-0 group-hover:opacity-30 transition-opacity duration-700" />
                         </div>
 
                         {/* Project tags */}
@@ -2039,7 +2039,7 @@ export default function ZeeshanKeerioPage() {
                             transition={{ delay: 0.1 }}
                           >
                             <motion.button
-                              className="px-4 py-2 bg-red-500 text-white rounded-md shadow-lg shadow-red-500/30 hover:bg-red-600 transition-colors"
+                              className="px-4 py-2 bg-slate-500 text-white rounded-md shadow-lg shadow-slate-500/30 hover:bg-slate-600 transition-colors"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                             >
@@ -2051,7 +2051,7 @@ export default function ZeeshanKeerioPage() {
 
                       {/* Project content */}
                       <div className="p-6 flex-grow flex flex-col relative z-10">
-                        <h4 className="text-lg font-bold text-white mb-3 group-hover:text-red-400 transition-colors duration-300">
+                        <h4 className="text-lg font-bold text-white mb-3 group-hover:text-slate-400 transition-colors duration-300">
                           {project.title}
                         </h4>
 
@@ -2064,7 +2064,7 @@ export default function ZeeshanKeerioPage() {
                       <div className="bg-gradient-to-r from-black/90 to-black/80 p-3 border-t border-white/5">
                         <div className="flex justify-between items-center">
                           <motion.button
-                            className="text-sm text-red-400 hover:text-red-300 flex items-center justify-center font-medium group/btn"
+                            className="text-sm text-slate-400 hover:text-slate-300 flex items-center justify-center font-medium group/btn"
                             whileHover={{ x: 5 }}
                           >
                             <span>View Details</span>
@@ -2073,7 +2073,7 @@ export default function ZeeshanKeerioPage() {
                           {project.youtubeUrl && (
                             <Link href={project.youtubeUrl} target="_blank" rel="noopener noreferrer">
                               <motion.button
-                                className="text-red-400 hover:text-red-300 p-1.5 rounded-full hover:bg-white/5 transition-colors"
+                                className="text-slate-400 hover:text-slate-300 p-1.5 rounded-full hover:bg-white/5 transition-colors"
                                 whileHover={{ scale: 1.1, rotate: 5 }}
                                 whileTap={{ scale: 0.9 }}
                               >
@@ -2090,7 +2090,7 @@ export default function ZeeshanKeerioPage() {
                 {/* View All Projects Button */}
                 <div className="mt-8 text-center">
                   <motion.button
-                    className="px-6 py-3 bg-gradient-to-r from-red-500/20 to-purple-500/20 rounded-lg border border-white/10 text-white hover:from-red-500/30 hover:to-purple-500/30 transition-colors flex items-center gap-2 mx-auto"
+                    className="px-6 py-3 bg-gradient-to-r from-slate-500/20 to-zinc-500/20 rounded-lg border border-white/10 text-white hover:from-slate-500/30 hover:to-zinc-500/30 transition-colors flex items-center gap-2 mx-auto"
                     whileHover={{ y: -3 }}
                     whileTap={{ y: 0 }}
                   >
@@ -2112,11 +2112,11 @@ export default function ZeeshanKeerioPage() {
                 className="relative"
               >
                 {/* Decorative background elements */}
-                <div className="absolute right-0 top-0 w-64 h-64 bg-gradient-to-br from-red-500/5 to-purple-500/3 rounded-full -mr-10 -mt-10 blur-3xl"></div>
-                <div className="absolute left-1/4 bottom-1/4 w-48 h-48 bg-gradient-to-tl from-purple-500/5 to-red-500/3 rounded-full blur-3xl"></div>
+                <div className="absolute right-0 top-0 w-64 h-64 bg-gradient-to-br from-slate-500/5 to-zinc-500/3 rounded-full -mr-10 -mt-10 blur-3xl"></div>
+                <div className="absolute left-1/4 bottom-1/4 w-48 h-48 bg-gradient-to-tl from-zinc-500/5 to-slate-500/3 rounded-full blur-3xl"></div>
 
                 <h3 className="text-xl font-bold mb-6 flex items-center relative z-10">
-                  <Star className="mr-2 h-5 w-5 text-red-400" />
+                  <Star className="mr-2 h-5 w-5 text-slate-400" />
                   Key Achievements
                 </h3>
 
@@ -2124,13 +2124,13 @@ export default function ZeeshanKeerioPage() {
                   {ACHIEVEMENTS.map((achievement, index) => (
                     <motion.div
                       key={index}
-                      className="bg-gradient-to-r from-black/60 to-black/40 border border-white/10 rounded-xl p-5 backdrop-blur-sm flex items-start gap-4 group hover:border-red-500/20 transition-colors duration-300"
+                      className="bg-gradient-to-r from-black/60 to-black/40 border border-white/10 rounded-xl p-5 backdrop-blur-sm flex items-start gap-4 group hover:border-slate-500/20 transition-colors duration-300"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 + 0.2 }}
                       whileHover={{ y: -5, boxShadow: "0 15px 30px rgba(220,38,38,0.15)" }}
                     >
-                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-red-500/20 to-purple-500/20 rounded-full flex items-center justify-center">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-slate-500/20 to-zinc-500/20 rounded-full flex items-center justify-center">
                         <motion.div
                           animate={{ rotate: [0, 10, 0] }}
                           transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
@@ -2153,7 +2153,7 @@ export default function ZeeshanKeerioPage() {
                   transition={{ delay: 0.5 }}
                 >
                   <h3 className="text-xl font-bold mb-6 flex items-center">
-                    <Award className="mr-2 h-5 w-5 text-red-400" />
+                    <Award className="mr-2 h-5 w-5 text-slate-400" />
                     Certifications
                   </h3>
 
@@ -2168,7 +2168,7 @@ export default function ZeeshanKeerioPage() {
                           transition={{ delay: index * 0.05 + 0.6 }}
                           whileHover={{ x: 5 }}
                         >
-                          <Award className="h-5 w-5 text-red-400 mt-0.5 flex-shrink-0 group-hover:rotate-12 transition-transform" />
+                          <Award className="h-5 w-5 text-slate-400 mt-0.5 flex-shrink-0 group-hover:rotate-12 transition-transform" />
                           <span className="text-white/80">{cert}</span>
                         </motion.div>
                       ))}
@@ -2188,14 +2188,14 @@ export default function ZeeshanKeerioPage() {
           className="py-16 relative"
         >
           {/* Decorative elements */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-red-500/10 to-purple-500/5 rounded-full -ml-32 blur-3xl"></div>
-          <div className="absolute right-0 top-1/3 w-80 h-80 bg-gradient-to-tl from-purple-500/10 to-red-500/5 rounded-full -mr-40 blur-3xl"></div>
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-slate-500/10 to-zinc-500/5 rounded-full -ml-32 blur-3xl"></div>
+          <div className="absolute right-0 top-1/3 w-80 h-80 bg-gradient-to-tl from-zinc-500/10 to-slate-500/5 rounded-full -mr-40 blur-3xl"></div>
 
           <div className="relative z-10">
             <div className="text-center mb-12">
-              <Badge className="mb-4 bg-gradient-to-r from-red-500/20 to-purple-500/20 text-white px-4 py-1">TESTIMONIALS</Badge>
+              <Badge className="mb-4 bg-gradient-to-r from-slate-500/20 to-zinc-500/20 text-white px-4 py-1">TESTIMONIALS</Badge>
               <h2 className="text-3xl font-bold">What Partners & Clients Say</h2>
-              <div className="mt-4 w-20 h-1 bg-gradient-to-r from-red-500 to-purple-500 mx-auto"></div>
+              <div className="mt-4 w-20 h-1 bg-gradient-to-r from-slate-500 to-zinc-500 mx-auto"></div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -2211,7 +2211,7 @@ export default function ZeeshanKeerioPage() {
                   name: "Michael Chen",
                   role: "VP of Engineering, AI Innovations",
                   image: "/testimonial-2.jpg",
-                  quote: "Working with Zeeshan on our predictive analytics platform was exceptional. His deep technical knowledge and problem-solving abilities are truly impressive.",
+                  quote: "Working with Zeeshan on our Predictive analytics platform was exceptional. His deep technical knowledge and problem-solving abilities are truly impressive.",
                   rating: 5
                 },
                 {
@@ -2231,7 +2231,7 @@ export default function ZeeshanKeerioPage() {
                   whileHover={{ y: -5, boxShadow: "0 15px 30px rgba(220,38,38,0.15)" }}
                 >
                   {/* Decorative quote mark */}
-                  <div className="absolute -top-2 -right-2 text-6xl text-red-500/10 font-serif">"</div>
+                  <div className="absolute -top-2 -right-2 text-6xl text-slate-500/10 font-serif">"</div>
 
                   <div className="relative z-10">
                     {/* Quote */}
@@ -2250,7 +2250,7 @@ export default function ZeeshanKeerioPage() {
 
                     {/* Author */}
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full border-2 border-red-500/30 overflow-hidden flex-shrink-0 bg-black/50">
+                      <div className="w-12 h-12 rounded-full border-2 border-slate-500/30 overflow-hidden flex-shrink-0 bg-black/50">
                         <div className="flex items-center justify-center h-full text-xl">
                           {testimonial.name.charAt(0)}
                         </div>
@@ -2275,8 +2275,8 @@ export default function ZeeshanKeerioPage() {
           className="py-16 relative"
         >
           {/* Decorative elements */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-red-500/10 to-purple-500/5 rounded-full -ml-32 blur-3xl"></div>
-          <div className="absolute right-0 top-1/3 w-80 h-80 bg-gradient-to-tl from-purple-500/10 to-red-500/5 rounded-full -mr-40 blur-3xl"></div>
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-slate-500/10 to-zinc-500/5 rounded-full -ml-32 blur-3xl"></div>
+          <div className="absolute right-0 top-1/3 w-80 h-80 bg-gradient-to-tl from-zinc-500/10 to-slate-500/5 rounded-full -mr-40 blur-3xl"></div>
 
           <div className="relative z-10 max-w-5xl mx-auto">
             <div className="bg-gradient-to-r from-black/80 to-black/60 border border-white/10 rounded-2xl overflow-hidden shadow-xl">
@@ -2288,7 +2288,7 @@ export default function ZeeshanKeerioPage() {
                 {Array.from({ length: 20 }).map((_, i) => (
                   <motion.div
                     key={`floating-particle-${i}`}
-                    className="absolute w-1 h-1 rounded-full bg-red-500/30"
+                    className="absolute w-1 h-1 rounded-full bg-slate-500/30"
                     style={{
                       top: `${Math.random() * 100}%`,
                       left: `${Math.random() * 100}%`,
@@ -2328,7 +2328,7 @@ export default function ZeeshanKeerioPage() {
                         return (
                           <motion.div
                             key={i}
-                            className="absolute w-3 h-3 rounded-full bg-red-500"
+                            className="absolute w-3 h-3 rounded-full bg-slate-500"
                             style={{
                               left: `${col * 33.33}%`,
                               top: `${row * 50}%`,
@@ -2389,7 +2389,7 @@ export default function ZeeshanKeerioPage() {
 
                 {/* Right content area */}
                 <div className="md:col-span-3 p-8 md:p-10">
-                  <Badge className="mb-4 bg-gradient-to-r from-red-500/20 to-purple-500/20 text-white px-4 py-1">GET IN TOUCH</Badge>
+                  <Badge className="mb-4 bg-gradient-to-r from-slate-500/20 to-zinc-500/20 text-white px-4 py-1">GET IN TOUCH</Badge>
                   <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Data Strategy?</h2>
                   <p className="text-white/70 mb-6">
                     Let's collaborate on your next data science or AI project. Whether you need expertise in machine learning, big data analytics, or custom AI solutions, I'm here to help turn your vision into reality.
@@ -2401,10 +2401,10 @@ export default function ZeeshanKeerioPage() {
                       className="flex items-center gap-3 group"
                       whileHover={{ x: 5 }}
                     >
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-red-500/20 to-red-600/20 flex items-center justify-center">
-                        <Mail className="h-5 w-5 text-red-400" />
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-slate-500/20 to-slate-600/20 flex items-center justify-center">
+                        <Mail className="h-5 w-5 text-slate-400" />
                       </div>
-                      <div className="group-hover:text-red-400 transition-colors">zeeshan.keerio@mindscapeanalytics.com</div>
+                      <div className="group-hover:text-slate-400 transition-colors">zeeshan.keerio@mindscapeanalytics.com</div>
                     </motion.a>
 
                     <motion.a
@@ -2412,10 +2412,10 @@ export default function ZeeshanKeerioPage() {
                       className="flex items-center gap-3 group"
                       whileHover={{ x: 5 }}
                     >
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-red-500/20 to-red-600/20 flex items-center justify-center">
-                        <Phone className="h-5 w-5 text-red-400" />
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-slate-500/20 to-slate-600/20 flex items-center justify-center">
+                        <Phone className="h-5 w-5 text-slate-400" />
                       </div>
-                      <div className="group-hover:text-red-400 transition-colors">+1 (307) 210-6155</div>
+                      <div className="group-hover:text-slate-400 transition-colors">+1 (307) 210-6155</div>
                     </motion.a>
 
                     <motion.a
@@ -2425,21 +2425,21 @@ export default function ZeeshanKeerioPage() {
                       className="flex items-center gap-3 group"
                       whileHover={{ x: 5 }}
                     >
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-red-500/20 to-red-600/20 flex items-center justify-center">
-                        <Linkedin className="h-5 w-5 text-red-400" />
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-slate-500/20 to-slate-600/20 flex items-center justify-center">
+                        <Linkedin className="h-5 w-5 text-slate-400" />
                       </div>
-                      <div className="group-hover:text-red-400 transition-colors">linkedin.com/in/zeeshankeerio</div>
+                      <div className="group-hover:text-slate-400 transition-colors">linkedin.com/in/zeeshankeerio</div>
                     </motion.a>
                   </div>
 
                   {/* ROI Calculator Button */}
                   <motion.button
                     onClick={() => setShowRoiCalculator(true)}
-                    className="mt-6 bg-gradient-to-r from-red-600/20 to-purple-600/20 hover:from-red-600/30 hover:to-purple-600/30 text-white rounded-lg border border-white/10 px-5 py-2.5 text-sm font-medium flex items-center justify-center gap-2"
+                    className="mt-6 bg-gradient-to-r from-slate-600/20 to-zinc-600/20 hover:from-slate-600/30 hover:to-zinc-600/30 text-white rounded-lg border border-white/10 px-5 py-2.5 text-sm font-medium flex items-center justify-center gap-2"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <Calculator className="h-4 w-4 text-red-400" />
+                    <Calculator className="h-4 w-4 text-slate-400" />
                     Calculate AI Project ROI
                     <ChevronRight className="h-4 w-4 ml-1" />
                   </motion.button>
@@ -2449,8 +2449,8 @@ export default function ZeeshanKeerioPage() {
 
             {/* Event/Calendar availability */}
             <div className="mt-12 bg-gradient-to-r from-black/80 to-black/60 border border-white/10 rounded-xl p-6 flex flex-col md:flex-row items-center gap-6 backdrop-blur-sm shadow-xl text-center md:text-left">
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-red-500/20 to-purple-500/10 flex items-center justify-center flex-shrink-0">
-                <svg className="w-8 h-8 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-slate-500/20 to-zinc-500/10 flex items-center justify-center flex-shrink-0">
+                <svg className="w-8 h-8 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                   <line x1="16" y1="2" x2="16" y2="6"></line>
                   <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -2480,7 +2480,7 @@ export default function ZeeshanKeerioPage() {
           className="py-16 text-center max-w-3xl mx-auto"
         >
           <div className="relative">
-            <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-6xl text-red-500/20">"</div>
+            <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-6xl text-slate-500/20">"</div>
             <blockquote className="text-xl md:text-2xl italic text-white/80 mb-6 relative z-10">
               The future belongs to those who believe in the beauty of their dreams and harness the power of data to make them a reality.
             </blockquote>
@@ -2526,7 +2526,7 @@ export default function ZeeshanKeerioPage() {
         <DialogContent className="sm:max-w-[600px] bg-black/90 border-white/10 text-white backdrop-blur-md">
           <DialogHeader>
             <DialogTitle className="text-xl flex items-center gap-2">
-              <Calculator className="h-5 w-5 text-red-400" />
+              <Calculator className="h-5 w-5 text-slate-400" />
               AI Project ROI Calculator
             </DialogTitle>
             <DialogDescription>
@@ -2602,7 +2602,7 @@ export default function ZeeshanKeerioPage() {
             </div>
 
             {roiResults && (
-              <div className="mt-4 p-4 rounded-lg bg-gradient-to-r from-red-500/10 to-purple-500/10 border border-white/10">
+              <div className="mt-4 p-4 rounded-lg bg-gradient-to-r from-slate-500/10 to-zinc-500/10 border border-white/10">
                 <h3 className="text-lg font-medium mb-3">ROI Analysis Results</h3>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -2639,7 +2639,7 @@ export default function ZeeshanKeerioPage() {
               Reset
             </Button>
             <Button
-              className="bg-gradient-to-r from-red-600 to-purple-600 hover:from-red-700 hover:to-purple-700"
+              className="bg-gradient-to-r from-slate-600 to-zinc-600 hover:from-slate-700 hover:to-zinc-700"
               onClick={calculateRoi}
             >
               <Calculator className="mr-2 h-4 w-4" />

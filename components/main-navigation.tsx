@@ -195,43 +195,43 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       title: "Industry Solutions",
       href: "/solutions/industry",
       description: "Tailored AI solutions for specific industries",
-      icon: <Building className="h-5 w-5 text-red-500" />,
+      icon: <Building className="h-5 w-5 text-zinc-500" />,
     },
     {
       title: "Blockchain Solutions",
       href: "/solutions/blockchain",
       description: "Enterprise-grade blockchain and Web3 solutions",
-      icon: <Code className="h-5 w-5 text-blue-500" />,
+      icon: <Code className="h-5 w-5 text-zinc-400" />,
     },
     {
       title: "Generative AI",
       href: "/solutions/genai",
       description: "Advanced language models and content generation",
-      icon: <MessageSquare className="h-5 w-5 text-blue-500" />,
+      icon: <MessageSquare className="h-5 w-5 text-red-500" />,
     },
     {
       title: "Enterprise Solutions",
       href: "/solutions/enterprise",
       description: "Comprehensive AI for large organizations",
-      icon: <Brain className="h-5 w-5 text-purple-500" />,
+      icon: <Brain className="h-5 w-5 text-zinc-600" />,
     },
     {
       title: "Cloud Solutions",
       href: "/solutions/cloud",
       description: "Scalable cloud AI infrastructure",
-      icon: <Cloud className="h-5 w-5 text-green-500" />,
+      icon: <Cloud className="h-5 w-5 text-zinc-300" />,
     },
     {
       title: "Real Estate Solutions",
       href: "/solutions/real-estate",
       description: "Advanced AI-powered analytics and management for real estate",
-      icon: <Home className="h-5 w-5 text-orange-500" />,
+      icon: <Home className="h-5 w-5 text-zinc-500" />,
     },
     {
       title: "Supply Chain Solutions",
       href: "/solutions/supply-chain",
       description: "Autonomous logistics and predictive supply chain optimization",
-      icon: <Truck className="h-5 w-5 text-emerald-500" />,
+      icon: <Truck className="h-5 w-5 text-zinc-400" />,
     },
   ]
 
@@ -240,13 +240,13 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       title: "Documentation",
       href: "/docs",
       description: "Comprehensive guides and API references",
-      icon: <FileText className="h-5 w-5 text-orange-500" />,
+      icon: <FileText className="h-5 w-5 text-zinc-300" />,
     },
     {
       title: "Blog",
       href: "/blog",
       description: "Latest news, updates, and insights",
-      icon: <FileText className="h-5 w-5 text-yellow-500" />,
+      icon: <FileText className="h-5 w-5 text-zinc-400" />,
     },
     {
       title: "Support",
@@ -261,19 +261,19 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       title: "About Us",
       href: "/about",
       description: "Learn about our mission and vision",
-      icon: <Building2 className="h-5 w-5 text-blue-500" />,
+      icon: <Building2 className="h-5 w-5 text-red-500" />,
     },
     {
       title: "Careers",
       href: "/careers",
       description: "Join our growing team",
-      icon: <Briefcase className="h-5 w-5 text-green-500" />,
+      icon: <Briefcase className="h-5 w-5 text-red-500" />,
     },
     {
       title: "Contact",
       href: "/contact",
       description: "Get in touch with our team",
-      icon: <MessageSquare className="h-5 w-5 text-purple-500" />,
+      icon: <MessageSquare className="h-5 w-5 text-zinc-600" />,
     },
   ]
 
@@ -282,26 +282,26 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       title: "Strategy & Roadmapping",
       href: "/services/strategy",
       description: "Strategic planning and technology roadmapping for your business",
-      icon: <FileText className="h-5 w-5 text-emerald-500" />,
+      icon: <FileText className="h-5 w-5 text-red-500" />,
     },
     {
       title: "Implementation & Integration",
       href: "#",
       description: "Coming soon - Enterprise implementation and system integration",
-      icon: <Code className="h-5 w-5 text-amber-500" />,
+      icon: <Code className="h-5 w-5 text-red-500" />,
       comingSoon: true,
     },
     {
       title: "Managed Services",
       href: "/services",
       description: "Ongoing management and optimization of your solutions",
-      icon: <Settings className="h-5 w-5 text-indigo-500" />,
+      icon: <Settings className="h-5 w-5 text-red-500" />,
     },
     {
       title: "Training & Support",
       href: "/services/training",
       description: "Expert training and dedicated support for your team",
-      icon: <Users className="h-5 w-5 text-pink-500" />,
+      icon: <Users className="h-5 w-5 text-zinc-500" />,
     },
   ]
 
@@ -310,19 +310,19 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       title: "Case Studies",
       href: "/case-studies",
       description: "Explore our successful client implementations and outcomes",
-      icon: <FileText className="h-5 w-5 text-blue-500" />,
+      icon: <FileText className="h-5 w-5 text-red-500" />,
     },
     {
       title: "Client Portfolio",
       href: "/projects",
       description: "Our complete portfolio of enterprise client projects",
-      icon: <BarChart2 className="h-5 w-5 text-green-500" />,
+      icon: <BarChart2 className="h-5 w-5 text-red-500" />,
     },
     {
       title: "Success Stories",
       href: "/projects/success-stories",
       description: "Transformative business impacts we've delivered for our clients",
-      icon: <CheckCircle2 className="h-5 w-5 text-amber-500" />,
+      icon: <CheckCircle2 className="h-5 w-5 text-zinc-300" />,
     },
   ]
 
@@ -333,7 +333,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       status: "Coming Next Month",
       description: "Database analysis and synchronization tool",
       image: "/images/projects/dblynx-database-intelligence-mindscapeanalytics.PNG",
-      icon: <Database className="h-5 w-5 text-blue-500" />,
+      icon: <Database className="h-5 w-5 text-red-500" />,
     },
     {
       title: "Inventory",
@@ -341,7 +341,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       status: "This Month",
       description: "Enterprise inventory management system",
       image: "/images/projects/inventory.png",
-      icon: <ShoppingCart className="h-5 w-5 text-emerald-500" />,
+      icon: <ShoppingCart className="h-5 w-5 text-red-500" />,
     },
     {
       title: "CyberTraderX",
@@ -349,7 +349,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       status: "Coming Soon",
       description: "High-performance trading platform",
       image: "/images/projects/CYBERTRADERX.png",
-      icon: <Zap className="h-5 w-5 text-amber-500" />,
+      icon: <Zap className="h-5 w-5 text-red-500" />,
     },
     {
       title: "Mindscape LMS",
@@ -357,7 +357,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       status: "Live",
       description: "Learning Management System for enterprise",
       image: "/images/projects/mindscape-lms.png",
-      icon: <BookOpen className="h-5 w-5 text-indigo-500" />,
+      icon: <BookOpen className="h-5 w-5 text-red-500" />,
     },
     {
       title: "Mindscape Market",
@@ -365,7 +365,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       status: "Live",
       description: "AI model and digital asset marketplace",
       image: "/images/projects/amazon_sales_management.png",
-      icon: <ShoppingCart className="h-5 w-5 text-pink-500" />,
+      icon: <ShoppingCart className="h-5 w-5 text-red-500" />,
     },
     {
       title: "BreachData",
@@ -381,7 +381,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       status: "Coming Soon",
       description: "Precision agriculture management platform",
       image: "/images/projects/cattle_farm.png",
-      icon: <Users className="h-5 w-5 text-orange-500" />,
+      icon: <Users className="h-5 w-5 text-red-500" />,
     },
     {
       title: "Mindscape Formations",
@@ -389,7 +389,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       status: "Live",
       description: "Enterprise formation and LLC management",
       image: "/images/projects/ll-mindscapeanalytics.png",
-      icon: <Building2 className="h-5 w-5 text-blue-400" />,
+      icon: <Building2 className="h-5 w-5 text-red-400" />,
     },
     {
       title: "Mindscape Mortgage",
@@ -397,7 +397,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
       status: "Live",
       description: "Advanced AI mortgage and financial analysis suite",
       image: "/images/projects/mindscape-mortgage.png",
-      icon: <DollarSign className="h-5 w-5 text-purple-500" />,
+      icon: <DollarSign className="h-5 w-5 text-red-500" />,
     },
   ]
 
@@ -499,14 +499,14 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
             <NavigationMenuLink asChild>
               <Link
                 href={menuItem.href || "#"}
-                className="flex p-4 select-none rounded-lg hover:bg-red-900/20 transition-all duration-300 group"
+                className="flex p-4 select-none rounded-lg hover:bg-zinc-800/30 transition-all duration-300 group"
               >
                 <div className="flex items-start gap-4">
-                  <div className="bg-black/20 p-2.5 rounded-xl backdrop-blur-lg group-hover:bg-red-500/10 group-hover:scale-110 transition-all duration-300">
+                  <div className="bg-black/20 p-2.5 rounded-xl backdrop-blur-lg group-hover:bg-zinc-500/10 group-hover:scale-110 transition-all duration-300">
                     {menuItem.icon}
                   </div>
                   <div className="space-y-1.5">
-                    <div className="text-sm font-medium text-white group-hover:text-red-400 transition-colors">
+                    <div className="text-sm font-medium text-white group-hover:text-zinc-200 transition-colors">
                       {menuItem.title}
                     </div>
                     <p className="line-clamp-2 text-xs text-white/70 leading-relaxed">{menuItem.description}</p>
@@ -522,7 +522,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
             <NavigationMenuLink asChild>
               <Link
                 href={menuItem.href || "#"}
-                className="flex p-4 select-none rounded-lg hover:bg-red-900/20 transition-all duration-300 group"
+                className="flex p-4 select-none rounded-lg hover:bg-red-500/10 transition-all duration-300 group"
               >
                 <div className="flex items-start gap-4">
                   <div className="bg-black/20 p-2.5 rounded-xl backdrop-blur-lg group-hover:bg-red-500/10 group-hover:scale-110 transition-all duration-300">
@@ -545,7 +545,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
             <NavigationMenuLink asChild>
               <Link
                 href={menuItem.href || "#"}
-                className="flex p-4 select-none rounded-lg hover:bg-red-900/20 transition-all duration-300 group"
+                className="flex p-4 select-none rounded-lg hover:bg-red-500/10 transition-all duration-300 group"
               >
                 <div className="flex items-start gap-4">
                   <div className="bg-black/20 p-2.5 rounded-xl backdrop-blur-lg group-hover:bg-red-500/10 group-hover:scale-110 transition-all duration-300">
@@ -568,7 +568,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
             <NavigationMenuLink asChild>
               <Link
                 href={menuItem.href || "#"}
-                className={`flex p-4 select-none rounded-lg hover:bg-red-900/20 transition-all duration-300 group ${menuItem.comingSoon ? 'opacity-70 cursor-not-allowed' : ''}`}
+                className={`flex p-4 select-none rounded-lg hover:bg-zinc-800/30 transition-all duration-300 group ${menuItem.comingSoon ? 'opacity-70 cursor-not-allowed' : ''}`}
                 onClick={(e) => menuItem.comingSoon && e.preventDefault()}
               >
                 <div className="flex items-start gap-4">
@@ -579,7 +579,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                     <div className="text-sm font-medium text-white group-hover:text-red-400 transition-colors flex items-center">
                       {menuItem.title}
                       {menuItem.comingSoon && (
-                        <span className="ml-2 text-[9px] uppercase bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded-full">Coming Soon</span>
+                        <span className="ml-2 text-[9px] uppercase bg-red-500/20 text-red-400 px-1.5 py-0.5 rounded-full">Coming Soon</span>
                       )}
                     </div>
                     <p className="line-clamp-2 text-xs text-white/70 leading-relaxed">{menuItem.description}</p>
@@ -595,7 +595,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
             <NavigationMenuLink asChild>
               <Link
                 href={menuItem.href || "#"}
-                className={`flex p-3 select-none rounded-xl hover:bg-red-900/10 transition-all duration-300 group ${menuItem.status.includes('Coming') ? 'opacity-80' : ''}`}
+                className={`flex p-3 select-none rounded-xl hover:bg-zinc-800/30 transition-all duration-300 group ${menuItem.status.includes('Coming') ? 'opacity-80' : ''}`}
                 onMouseEnter={() => setHoveredToolImage(menuItem.image)}
                 onMouseLeave={() => setHoveredToolImage(null)}
                 onMouseMove={(e) => {
@@ -612,8 +612,8 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                       <span className={cn(
                         "text-[7px] h-3.5 px-1 py-0 leading-none font-bold uppercase rounded-sm flex items-center justify-center",
                         menuItem.status === "Live" ? "bg-green-500/20 text-green-400" :
-                          menuItem.status === "This Month" ? "bg-blue-500/20 text-blue-400" :
-                            "bg-amber-500/20 text-amber-400"
+                          menuItem.status === "This Month" ? "bg-red-500/20 text-red-400" :
+                            "bg-red-500/20 text-red-400"
                       )}>
                         {menuItem.status}
                       </span>
@@ -633,7 +633,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
             <NavigationMenuLink asChild>
               <Link
                 href={menuItem.href || "#"}
-                className="flex p-4 select-none rounded-lg hover:bg-red-900/20 transition-all duration-300 group"
+                className="flex p-4 select-none rounded-lg hover:bg-red-500/10 transition-all duration-300 group"
               >
                 <div className="flex items-start gap-4">
                   <div className="bg-black/20 p-2.5 rounded-xl backdrop-blur-lg group-hover:bg-red-500/10 group-hover:scale-110 transition-all duration-300">
@@ -671,7 +671,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
     if (item.hasMegaMenu) {
       return (
         <NavigationMenuItem key={`${item.title}-${index}`} className="mx-0.5">
-          <NavigationMenuTrigger className="bg-transparent hover:bg-red-900/20 text-white rounded-full text-sm px-3.5 py-1.5 font-medium group">
+          <NavigationMenuTrigger className="bg-transparent hover:bg-red-500/10 text-white rounded-full text-sm px-3.5 py-1.5 font-medium group">
             {item.title}
             <ChevronDown className="h-4 w-4 ml-0.5 text-white/70 group-hover:text-red-400 transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-180" />
           </NavigationMenuTrigger>
@@ -691,8 +691,8 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
           <Link href={item.href || "/"} legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
-                "flex items-center text-sm px-3.5 py-1.5 rounded-full bg-transparent hover:bg-red-900/20 text-white font-medium transition-colors duration-300 ease-in-out",
-                pathname === item.href && "bg-red-900/30",
+                "flex items-center text-sm px-3.5 py-1.5 rounded-full bg-transparent hover:bg-red-500/10 text-white font-medium transition-colors duration-300 ease-in-out",
+                pathname === item.href && "bg-red-500/20",
                 item.highlight && "bg-gradient-to-r from-red-700/80 to-red-600/80 hover:from-red-600 hover:to-red-500",
               )}
               onKeyDown={(e) => handleKeyNavigation(e, item.href || "/")}
@@ -792,7 +792,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
           <div className="mb-2">
             <button
               onClick={() => toggleSection('tools')}
-              className="flex items-center justify-between w-full rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors"
+              className="flex items-center justify-between w-full rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors"
             >
               <div className="flex items-center space-x-2.5">
                 <div className="text-white/70"><LayoutGrid className="h-5 w-5" /></div>
@@ -808,8 +808,8 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                     key={`mobile-tools-${index}`}
                     href={item.href || "#"}
                     className={cn(
-                      "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors",
-                      pathname === item.href ? "bg-red-900/30" : ""
+                      "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors",
+                      pathname === item.href ? "bg-red-500/20" : ""
                     )}
                     onClick={() => setIsOpen(false)}
                   >
@@ -820,8 +820,8 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                         <span className={cn(
                           "text-[9px] font-bold uppercase px-1 rounded-sm w-fit",
                           item.badge === "Live" ? "text-green-400" :
-                            item.badge === "This Month" ? "text-blue-400" :
-                              "text-amber-400"
+                            item.badge === "This Month" ? "text-red-400" :
+                              "text-red-400"
                         )}>
                           {item.badge}
                         </span>
@@ -837,7 +837,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
           <div className="mb-2">
             <button
               onClick={() => toggleSection('solutions')}
-              className="flex items-center justify-between w-full rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors"
+              className="flex items-center justify-between w-full rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors"
             >
               <div className="flex items-center space-x-2.5">
                 <div className="text-white/70"><Building className="h-5 w-5" /></div>
@@ -853,8 +853,8 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                     key={`mobile-solutions-${index}`}
                     href={item.href || "#"}
                     className={cn(
-                      "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors",
-                      pathname === item.href ? "bg-red-900/30" : ""
+                      "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors",
+                      pathname === item.href ? "bg-red-500/20" : ""
                     )}
                     onClick={() => setIsOpen(false)}
                   >
@@ -870,7 +870,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
           <div className="mb-2">
             <button
               onClick={() => toggleSection('services')}
-              className="flex items-center justify-between w-full rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors"
+              className="flex items-center justify-between w-full rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors"
             >
               <div className="flex items-center space-x-2.5">
                 <div className="text-white/70"><Settings className="h-5 w-5" /></div>
@@ -886,8 +886,8 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                     key={`mobile-services-${index}`}
                     href={item.href || "#"}
                     className={cn(
-                      "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors",
-                      pathname === item.href ? "bg-red-900/30" : "",
+                      "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors",
+                      pathname === item.href ? "bg-red-500/20" : "",
                       item.title === "Implementation & Integration" ? "opacity-70" : ""
                     )}
                     onClick={(e) => {
@@ -902,7 +902,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                     <div className="flex flex-col">
                       <span className="text-sm">{item.title}</span>
                       {item.title === "Implementation & Integration" && (
-                        <span className="text-[9px] text-amber-400">Coming Soon</span>
+                        <span className="text-[9px] text-red-400">Coming Soon</span>
                       )}
                     </div>
                   </Link>
@@ -915,7 +915,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
           <div className="mb-2">
             <button
               onClick={() => toggleSection('projects')}
-              className="flex items-center justify-between w-full rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors"
+              className="flex items-center justify-between w-full rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors"
             >
               <div className="flex items-center space-x-2.5">
                 <div className="text-white/70"><FileText className="h-5 w-5" /></div>
@@ -931,8 +931,8 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                     key={`mobile-projects-${index}`}
                     href={item.href || "#"}
                     className={cn(
-                      "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors",
-                      pathname === item.href ? "bg-red-900/30" : ""
+                      "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors",
+                      pathname === item.href ? "bg-red-500/20" : ""
                     )}
                     onClick={() => setIsOpen(false)}
                   >
@@ -948,7 +948,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
           <div className="mb-2">
             <button
               onClick={() => toggleSection('resources')}
-              className="flex items-center justify-between w-full rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors"
+              className="flex items-center justify-between w-full rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors"
             >
               <div className="flex items-center space-x-2.5">
                 <div className="text-white/70"><HelpCircle className="h-5 w-5" /></div>
@@ -964,8 +964,8 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                     key={`mobile-resources-${index}`}
                     href={item.href || "#"}
                     className={cn(
-                      "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors",
-                      pathname === item.href ? "bg-red-900/30" : ""
+                      "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors",
+                      pathname === item.href ? "bg-red-500/20" : ""
                     )}
                     onClick={() => setIsOpen(false)}
                   >
@@ -981,7 +981,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
           <div className="mb-2">
             <button
               onClick={() => toggleSection('company')}
-              className="flex items-center justify-between w-full rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors"
+              className="flex items-center justify-between w-full rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors"
             >
               <div className="flex items-center space-x-2.5">
                 <div className="text-white/70"><Building2 className="h-5 w-5" /></div>
@@ -997,8 +997,8 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                     key={`mobile-company-${index}`}
                     href={item.href || "#"}
                     className={cn(
-                      "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors",
-                      pathname === item.href ? "bg-red-900/30" : ""
+                      "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors",
+                      pathname === item.href ? "bg-red-500/20" : ""
                     )}
                     onClick={() => setIsOpen(false)}
                   >
@@ -1016,8 +1016,8 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
               key={`mobile-main-${index}`}
               href={item.href || "#"}
               className={cn(
-                "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors",
-                pathname === item.href ? "bg-red-900/30" : ""
+                "flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors",
+                pathname === item.href ? "bg-red-500/20" : ""
               )}
               onClick={() => setIsOpen(false)}
             >
@@ -1053,7 +1053,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
             </Button>
           </div>
 
-          <Link href="/" className="flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-900/20 transition-colors">
+          <Link href="/" className="flex items-center space-x-2.5 rounded-lg px-3 py-2 text-white hover:bg-red-500/10 transition-colors">
             <div className="text-white/70"><Home className="h-5 w-5" /></div>
             <span className="text-sm">Home</span>
           </Link>
@@ -1068,13 +1068,12 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
         initial={{ y: -20 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
-        className="fixed top-0 w-full z-50 transition-all duration-300 will-change-transform bg-black/60 backdrop-blur-xl"
+        className="fixed top-0 w-full z-50 transition-all duration-300 will-change-transform bg-black/40 backdrop-blur-md border-b border-white/5"
       >
         {/* Background effects - simplified for consistent black blur effect */}
-        <div className="absolute inset-0 w-full">
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-xl"></div>
-          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-red-500/20 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+        <div className="absolute inset-0 w-full pointer-events-none">
+          <div className="absolute inset-0 bg-black/20 backdrop-blur-md"></div>
+          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
         </div>
 
         <div className={getContainerClasses({ fullWidth: true, noPadding: false, className: "w-full" })}>
@@ -1097,7 +1096,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                   <div>
                     <h1 className="text-2xl font-bold tracking-tight font-sans">
                       <span className="text-white">Mindscape</span>
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-700/80 via-red-600 to-red-700/80 ml-1.5">Analytics</span>
+                      <span className="text-red-500 font-medium ml-1.5">Analytics</span>
                     </h1>
                     <p className="text-xs text-white/70 mt-0.5">Where AI Meets Innovation</p>
                   </div>
@@ -1133,7 +1132,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                 size="icon"
                 className={cn(
                   "text-white ml-2 transition-all duration-300",
-                  isScrolled ? "hover:bg-black/40" : "hover:bg-red-900/20"
+                  isScrolled ? "hover:bg-black/40" : "hover:bg-red-500/10"
                 )}
                 onClick={() => setIsOpen(!isOpen)}
               >
@@ -1203,7 +1202,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                     {mobileNavItems.map((item) => (
                       <Command.Item
                         key={item.title}
-                        className="rounded-lg px-2 py-1.5 cursor-pointer text-white aria-selected:bg-red-900/30 flex items-center justify-between group"
+                        className="rounded-lg px-2 py-1.5 cursor-pointer text-white aria-selected:bg-red-500/20 flex items-center justify-between group"
                       >
                         <div className="flex items-center gap-2">
                           <div className="text-white/60 group-aria-selected:text-red-400 group-hover:text-red-400">
@@ -1221,7 +1220,7 @@ export default function MainNavigation({ fullWidth = true }: MainNavigationProps
                     {quickActions.map((action) => (
                       <Command.Item
                         key={action.title}
-                        className="rounded-lg px-2 py-1.5 cursor-pointer text-white aria-selected:bg-red-900/30 flex items-center justify-between group"
+                        className="rounded-lg px-2 py-1.5 cursor-pointer text-white aria-selected:bg-red-500/20 flex items-center justify-between group"
                       >
                         <div className="flex items-center gap-2">
                           <div className="text-white/60 group-aria-selected:text-red-400 group-hover:text-red-400">

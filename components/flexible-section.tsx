@@ -38,7 +38,7 @@ export function FlexibleSection({
       )}
     >
       <div className={cn(
-        asContainer ? getContainerClasses({ fullWidth, noPadding }) : "w-full",
+        asContainer ? getContainerClasses({ fullWidth, noPadding, removePadding: noPadding }) : "w-full",
         "w-full mobile-zoom-out"
       )}>
         {children}

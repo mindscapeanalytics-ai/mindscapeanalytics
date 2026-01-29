@@ -62,7 +62,7 @@ function ChatLeadForm({ onSuccess }: { onSuccess: () => void }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-2 bg-black/40 p-3 rounded-lg border border-red-500/20 mt-2">
+    <form onSubmit={handleSubmit} className="space-y-2 bg-black/40 p-3 rounded-lg border border-zinc-400/20 mt-2">
       <Input
         placeholder="Full Name"
         required
@@ -80,11 +80,11 @@ function ChatLeadForm({ onSuccess }: { onSuccess: () => void }) {
       />
       <textarea
         placeholder="How can we help?"
-        className="w-full h-16 p-2 text-xs bg-white/5 border border-white/10 rounded-md text-white focus:outline-none focus:ring-1 focus:ring-red-500/50"
+        className="w-full h-16 p-2 text-xs bg-white/5 border border-white/10 rounded-md text-white focus:outline-none focus:ring-1 focus:ring-zinc-400/50"
         value={formData.message}
         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
       />
-      <Button size="sm" type="submit" disabled={isSubmitting} className="w-full bg-red-600 hover:bg-red-700 h-8 text-xs font-bold">
+      <Button size="sm" type="submit" disabled={isSubmitting} className="w-full bg-red-600 hover:bg-red-700 text-white h-8 text-xs font-bold font-semibold border border-red-500">
         {isSubmitting ? "Sending..." : "Connect with Expert"}
       </Button>
     </form>
@@ -105,7 +105,7 @@ export default function UnifiedChat({
       id: "1",
       content: "Hello! I'm Mindscape AI Assistant. How can I help you today?",
       role: "assistant",
-      timestamp: new Date(),
+      timestamp: new Date("2024-01-01T00:00:00Z"), // Deterministic timestamp for hydration
     },
   ])
   const [input, setInput] = useState("")
@@ -233,7 +233,7 @@ export default function UnifiedChat({
       return `fixed bottom-6 right-6 h-12 w-12 rounded-full shadow-md z-40 ${isOpen ? "bg-primary/90 hover:bg-primary/100" : "bg-primary hover:bg-primary/90"
         }`
     }
-    return `fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-50 ${isOpen ? "bg-red-700 hover:bg-red-800" : "bg-red-600 hover:bg-red-700"
+    return `fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg z-50 ${isOpen ? "bg-zinc-300 hover:bg-zinc-400" : "bg-zinc-200 hover:bg-zinc-300"
       }`
   }
 
@@ -265,12 +265,12 @@ export default function UnifiedChat({
             {!embedded && (
               <div className={isDashboard
                 ? "bg-primary p-3 flex items-center justify-between"
-                : "bg-gradient-to-r from-red-600 to-red-500 p-3 flex items-center justify-between"
+                : "bg-zinc-900 border-b border-white/10 p-3 flex items-center justify-between"
               }>
                 <div className="flex items-center gap-2">
                   <Avatar className="h-8 w-8 border-2 border-white/20">
                     <AvatarImage src="/placeholder.svg" />
-                    <AvatarFallback className={isDashboard ? "bg-primary-foreground" : "bg-red-700"}>
+                    <AvatarFallback className={isDashboard ? "bg-primary-foreground" : "bg-zinc-300"}>
                       <Brain className="h-4 w-4" />
                     </AvatarFallback>
                   </Avatar>
@@ -317,7 +317,7 @@ export default function UnifiedChat({
                 <div key={message.id} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div
                     className={`max-w-[80%] rounded-lg p-3 ${message.role === "user"
-                      ? isDashboard ? "bg-primary text-primary-foreground" : "bg-red-600 text-white"
+                      ? isDashboard ? "bg-primary text-primary-foreground" : "bg-white text-black font-medium"
                       : embedded ? "bg-accent" : "bg-white/5 border border-white/10 text-white"
                       }`}
                   >
@@ -366,7 +366,7 @@ export default function UnifiedChat({
                   onKeyDown={handleKeyDown}
                 />
                 <Button
-                  className={isDashboard ? "" : "bg-red-600 hover:bg-red-700 text-white"}
+                  className={isDashboard ? "" : "bg-white hover:bg-zinc-200 text-black font-semibold"}
                   size="icon"
                   onClick={handleSendMessage}
                   disabled={isLoading || !input.trim()}
@@ -419,7 +419,7 @@ export default function UnifiedChat({
                 <div className="flex items-center gap-3">
                   <Avatar className="h-8 w-8">
                     <AvatarImage src="/placeholder.svg" />
-                    <AvatarFallback className={isDashboard ? "bg-primary" : "bg-red-600"}>
+                    <AvatarFallback className={isDashboard ? "bg-primary" : "bg-zinc-200"}>
                       <Bot className="h-4 w-4" />
                     </AvatarFallback>
                   </Avatar>
@@ -478,8 +478,8 @@ export default function UnifiedChat({
                   <div key={message.id} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                     <div
                       className={`max-w-[80%] rounded-lg p-3 ${message.role === "user"
-                        ? isDashboard ? "bg-primary text-primary-foreground" : "bg-red-600 text-white"
-                        : "bg-white/10 text-white"
+                        ? isDashboard ? "bg-primary text-primary-foreground" : "bg-red-600 text-white shadow-lg shadow-red-500/20"
+                        : "bg-white/10 text-white border border-white/5"
                         }`}
                     >
                       <p>{message.content}</p>
@@ -526,7 +526,7 @@ export default function UnifiedChat({
                   <Button
                     onClick={handleSendMessage}
                     disabled={!input.trim() || isLoading}
-                    className={isDashboard ? "" : "bg-red-600 hover:bg-red-700 text-white"}
+                    className={isDashboard ? "" : "bg-red-600 hover:bg-red-700 text-white font-semibold shadow-lg shadow-red-500/20"}
                   >
                     <Send className="h-4 w-4" />
                   </Button>

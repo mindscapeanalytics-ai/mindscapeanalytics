@@ -5,15 +5,15 @@ import { motion, useAnimation, useInView, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn, navigateToContactForm } from "@/lib/utils"
-import { 
-  ArrowRight, 
-  ArrowUpRight, 
-  Sparkles, 
-  CheckCircle2, 
-  Rocket, 
-  Clock, 
-  Users, 
-  BarChart4, 
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Sparkles,
+  CheckCircle2,
+  Rocket,
+  Clock,
+  Users,
+  BarChart4,
   ChevronRight,
   Play,
   Shield,
@@ -27,20 +27,20 @@ import {
 // Avatar component with error handling
 function Avatar({ src, alt }: { src: string, alt: string }) {
   const [imgError, setImgError] = useState(false)
-  
+
   if (imgError) {
     return (
-      <div className="w-8 h-8 md:w-10 md:h-10 bg-red-500/30 flex items-center justify-center rounded-full">
+      <div className="w-8 h-8 md:w-10 md:h-10 bg-zinc-700/30 flex items-center justify-center rounded-full">
         <span className="text-white font-medium text-xs md:text-sm">{alt.charAt(0).toUpperCase()}</span>
       </div>
     )
   }
-  
+
   return (
     <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-700 rounded-full overflow-hidden flex-shrink-0">
-      <img 
-        src={src} 
-        alt={alt} 
+      <img
+        src={src}
+        alt={alt}
         className="w-full h-full object-cover"
         onError={() => setImgError(true)}
       />
@@ -143,13 +143,13 @@ export default function EnhancedCTASection({
   // 3D card effect calculation
   const calculateTransform = useMemo(() => {
     if (!cardRef.current || window.innerWidth < 768) return { rotateX: 0, rotateY: 0 };
-    
+
     const card = cardRef.current.getBoundingClientRect();
     const centerX = card.left + card.width / 2;
     const centerY = card.top + card.height / 2;
     const rotateX = (mousePosition.y - centerY) / 25;
     const rotateY = (centerX - mousePosition.x) / 25;
-    
+
     return { rotateX, rotateY };
   }, [mousePosition, cardRef]);
 
@@ -223,7 +223,7 @@ export default function EnhancedCTASection({
   // Handle contact form navigation
   const handlePrimaryButtonClick = (e: React.MouseEvent) => {
     e.preventDefault()
-    
+
     // If this is a dashboard button, navigate directly
     if (primaryButtonHref === "/dashboard") {
       window.location.href = primaryButtonHref
@@ -232,7 +232,7 @@ export default function EnhancedCTASection({
       navigateToContactForm("ai-analytics", "Get Started with Mindscape AI")
     }
   }
-  
+
   const handleSecondaryButtonClick = (e: React.MouseEvent) => {
     e.preventDefault()
     navigateToContactForm("custom", "Sales Inquiry")
@@ -242,18 +242,17 @@ export default function EnhancedCTASection({
     <section
       ref={sectionRef}
       className={cn(
-        "relative overflow-hidden py-16 md:py-24 lg:py-32",
-        "bg-black",
+        "relative overflow-hidden py-12 md:py-16 lg:py-20",
         className
       )}
     >
       {/* Background elements */}
-      <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-black to-blue-500/10"></div>
-      
+      <div className="absolute inset-0 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 via-black to-red-900/10"></div>
+
       {/* Animated gradient orbs */}
-      <motion.div 
-        className="absolute top-1/4 -left-24 w-64 md:w-96 h-64 md:h-96 rounded-full bg-red-500/20 blur-[80px] md:blur-[120px] opacity-70"
+      <motion.div
+        className="absolute top-1/4 -left-24 w-64 md:w-96 h-64 md:h-96 rounded-full bg-red-500/10 blur-[80px] md:blur-[120px] opacity-70"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.5, 0.7, 0.5],
@@ -264,8 +263,8 @@ export default function EnhancedCTASection({
           ease: "easeInOut"
         }}
       />
-      <motion.div 
-        className="absolute bottom-1/4 -right-24 w-64 md:w-96 h-64 md:h-96 rounded-full bg-blue-500/20 blur-[80px] md:blur-[120px] opacity-70"
+      <motion.div
+        className="absolute bottom-1/4 -right-24 w-64 md:w-96 h-64 md:h-96 rounded-full bg-red-900/10 blur-[80px] md:blur-[120px] opacity-70"
         animate={{
           scale: [1, 1.3, 1],
           opacity: [0.5, 0.8, 0.5],
@@ -277,65 +276,65 @@ export default function EnhancedCTASection({
         }}
       />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="w-full px-4 md:px-8 relative z-10">
         {/* Enhanced variant uses 3D-ish card layout */}
         {variant === "enhanced" && (
           <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12">
             {/* Left Column - Main CTA Content */}
-            <motion.div 
+            <motion.div
               className="flex-1 text-center lg:text-left space-y-6"
               initial={{ opacity: 0, y: 20 }}
               animate={controls}
             >
-              <Badge className="bg-gradient-to-r from-red-500/80 to-red-600/80 text-white border-none shadow-lg shadow-red-900/20 px-2 py-1 md:px-3 md:py-1.5 text-xs">
+              <Badge className="bg-gradient-to-r from-red-600/80 to-red-700/80 text-white border-none shadow-lg shadow-zinc-900/20 px-2 py-1 md:px-3 md:py-1.5 text-xs">
                 {badge}
               </Badge>
-              
+
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white/90 to-white/80">
                 {title}
               </h2>
-              
+
               <p className="text-base md:text-lg text-white/70 max-w-2xl mx-auto lg:mx-0">
                 {description}
               </p>
-              
+
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
                 <Button
                   size="lg"
                   className="group relative px-6 py-4 text-base font-semibold text-white rounded-full hover:brightness-110 transition-all duration-300 overflow-hidden w-full sm:w-auto"
                   onClick={handlePrimaryButtonClick}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-red-700 via-red-600 to-red-700 group-hover:from-red-600 group-hover:via-red-500 group-hover:to-red-600 transition-all duration-500 rounded-full"></div>
-                  <div className="absolute -inset-full h-full w-1/3 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shine" />
-                  <span className="relative z-10 flex items-center justify-center">
-                  {primaryButtonText}
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 transition-all duration-500 rounded-full"></div>
+                  <div className="absolute -inset-full h-full w-1/3 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shine" />
+                  <span className="relative z-10 flex items-center justify-center text-white">
+                    {primaryButtonText}
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Button>
-              
+
                 <Button
                   variant="outline"
                   size="lg"
-                  className="group relative px-6 py-4 text-base font-semibold text-white border border-white/30 hover:border-white/50 hover:bg-white/5 rounded-full backdrop-blur-sm transition-all duration-300 overflow-hidden w-full sm:w-auto"
+                  className="group relative px-6 py-4 text-base font-semibold text-white border border-red-500/30 hover:border-red-500/50 hover:bg-red-500/5 rounded-full backdrop-blur-sm transition-all duration-300 overflow-hidden w-full sm:w-auto"
                   onClick={handleSecondaryButtonClick}
                 >
-                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 bg-white/5 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 bg-red-500/5 transition-opacity duration-300"></div>
                   <div className="absolute -inset-full h-full w-1/3 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shine" />
-                  <span className="relative z-10 flex items-center justify-center">
-                  {secondaryButtonText}
+                  <span className="relative z-10 flex items-center justify-center text-white/90 group-hover:text-white">
+                    {secondaryButtonText}
                     <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Button>
               </div>
-              
+
               {/* Feature highlights */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 pt-8">
                 {features.slice(0, 3).map((feature, index) => (
-                  <div 
+                  <div
                     key={feature.title}
                     className="flex items-start gap-2"
                   >
-                    <div className="p-1.5 md:p-2 bg-red-500/10 rounded-lg text-red-500">
+                    <div className="p-1.5 md:p-2 bg-red-900/20 rounded-lg text-white">
                       {feature.icon}
                     </div>
                     <div>
@@ -345,18 +344,18 @@ export default function EnhancedCTASection({
                   </div>
                 ))}
               </div>
-          </motion.div>
+            </motion.div>
 
             {/* Right Column - Social Proof & Testimonial */}
-          <motion.div
+            <motion.div
               ref={cardRef}
               className="flex-1 w-full max-w-md"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={controls}
-                style={{
-                  transform: `perspective(1000px) rotateX(${calculateTransform.rotateX}deg) rotateY(${calculateTransform.rotateY}deg)`,
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={controls}
+              style={{
+                transform: `perspective(1000px) rotateX(${calculateTransform.rotateX}deg) rotateY(${calculateTransform.rotateY}deg)`,
                 transition: "transform 0.2s ease-out",
-                }}
+              }}
             >
               <div className="bg-gradient-to-b from-black/60 to-black/40 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden shadow-2xl shadow-black/50 p-4 md:p-6">
                 {/* Testimonial */}
@@ -372,23 +371,23 @@ export default function EnhancedCTASection({
                       ))}
                     </div>
                   </div>
-                  
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={testimonialIndex}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
+
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={testimonialIndex}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.5 }}
                     >
                       <blockquote className="text-sm md:text-base text-white/80 italic mb-4">
                         "{testimonials[testimonialIndex].quote}"
                       </blockquote>
-                      
+
                       <div className="flex items-center gap-3">
-                        <Avatar 
-                          src={testimonials[testimonialIndex].avatar} 
-                          alt={testimonials[testimonialIndex].author} 
+                        <Avatar
+                          src={testimonials[testimonialIndex].avatar}
+                          alt={testimonials[testimonialIndex].author}
                         />
                         <div>
                           <div className="text-sm md:text-base font-medium">{testimonials[testimonialIndex].author}</div>
@@ -408,67 +407,67 @@ export default function EnhancedCTASection({
                         {client}
                       </div>
                     ))}
-                </div>
+                  </div>
                 </div>
 
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-2 md:gap-4 mt-6 border-t border-white/10 pt-4 md:pt-6">
                   <div className="text-center">
-                    <div className="text-lg md:text-2xl font-bold text-red-500">99.9%</div>
+                    <div className="text-lg md:text-2xl font-bold text-white">99.9%</div>
                     <div className="text-xs text-white/60">Uptime</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-lg md:text-2xl font-bold text-blue-500">24/7</div>
+                    <div className="text-lg md:text-2xl font-bold text-red-400">24/7</div>
                     <div className="text-xs text-white/60">Support</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-lg md:text-2xl font-bold text-green-500">500+</div>
+                    <div className="text-lg md:text-2xl font-bold text-red-500">500+</div>
                     <div className="text-xs text-white/60">Clients</div>
                   </div>
                 </div>
-            </div>
-          </motion.div>
-        </div>
+              </div>
+            </motion.div>
+          </div>
         )}
-        
+
         {/* Centered variant */}
         {variant === "centered" && (
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <Badge className="bg-gradient-to-r from-red-500/80 to-red-600/80 text-white border-none shadow-lg shadow-red-900/20 px-2 py-1 md:px-3 md:py-1.5 text-xs">
+            <Badge className="bg-gradient-to-r from-red-600/80 to-red-700/80 text-white border-none shadow-lg shadow-zinc-900/20 px-2 py-1 md:px-3 md:py-1.5 text-xs">
               {badge}
             </Badge>
-            
+
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white/90 to-white/80">
               {title}
             </h2>
-            
+
             <p className="text-base md:text-lg text-white/70">
               {description}
             </p>
-            
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Button 
+              <Button
                 size="lg"
                 className="group relative px-6 py-4 text-base font-semibold text-white rounded-full hover:brightness-110 transition-all duration-300 overflow-hidden w-full sm:w-auto"
                 onClick={handlePrimaryButtonClick}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-red-700 via-red-600 to-red-700 group-hover:from-red-600 group-hover:via-red-500 group-hover:to-red-600 transition-all duration-500 rounded-full"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-500 to-red-600 transition-all duration-500 rounded-full"></div>
                 <div className="absolute -inset-full h-full w-1/3 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shine" />
-                <span className="relative z-10 flex items-center justify-center">
+                <span className="relative z-10 flex items-center justify-center text-white">
                   {primaryButtonText}
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </Button>
-              
+
               <Button
                 variant="outline"
                 size="lg"
-                className="group relative px-6 py-4 text-base font-semibold text-white border border-white/30 hover:border-white/50 hover:bg-white/5 rounded-full backdrop-blur-sm transition-all duration-300 overflow-hidden w-full sm:w-auto"
+                className="group relative px-6 py-4 text-base font-semibold text-white border border-red-500/30 hover:border-red-500/50 hover:bg-red-500/5 rounded-full backdrop-blur-sm transition-all duration-300 overflow-hidden w-full sm:w-auto"
                 onClick={handleSecondaryButtonClick}
               >
-                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 bg-white/5 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 bg-red-500/5 transition-opacity duration-300"></div>
                 <div className="absolute -inset-full h-full w-1/3 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shine" />
-                <span className="relative z-10 flex items-center justify-center">
+                <span className="relative z-10 flex items-center justify-center text-white/90 group-hover:text-white">
                   {secondaryButtonText}
                   <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>

@@ -77,7 +77,7 @@ const CompanyLogo = memo(() => (
       <div>
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight font-sans drop-shadow-md">
           <span className="text-white">Mindscape</span>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-700/80 via-red-600 to-red-700/80 ml-2">Analytics</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-red-500 to-red-600 ml-2">Analytics</span>
         </h1>
         <p className="text-sm text-white/70 mt-1 drop-shadow-sm">Where AI Meets Innovation</p>
       </div>

@@ -214,7 +214,7 @@ export default function UnifiedAIPlatform() {
     if (!hasMounted) return <div className="min-h-[600px] w-full" />;
 
     return (
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans">
+        <div className="w-full px-4 sm:px-6 lg:px-8 font-sans">
             {/* Section Header */}
             <div className="text-center mb-16">
                 <div className="inline-flex items-center justify-center mb-4">
@@ -259,12 +259,12 @@ export default function UnifiedAIPlatform() {
                                 {activeTab === cap.id && (
                                     <motion.div
                                         layoutId="activeTabGlow"
-                                        className="absolute left-0 top-0 bottom-0 w-1 bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)]"
+                                        className="absolute left-0 top-0 bottom-0 w-1 bg-white/10 shadow-[0_0_10px_rgba(255,255,255,0.1)]"
                                     />
                                 )}
                                 <div className={cn(
                                     "p-2 rounded-lg transition-all duration-300",
-                                    activeTab === cap.id ? "bg-red-500/20 text-red-500" : "bg-white/5 text-white/20 group-hover:text-white/50"
+                                    activeTab === cap.id ? "bg-zinc-800 text-white" : "bg-white/5 text-white/40 group-hover:text-white/70"
                                 )}>
                                     <cap.icon className="h-5 w-5" />
                                 </div>
@@ -294,9 +294,9 @@ export default function UnifiedAIPlatform() {
                                 className="flex-1 flex flex-col"
                             >
                                 <div className="mb-8">
-                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-medium mb-4">
-                                        <Activity className="h-3 w-3" />
-                                        {activeCapability.id.toUpperCase()}_MODULE_V4.2
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-zinc-300 text-xs font-medium mb-4">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></div>
+                                        {platformCapabilities.find(c => c.id === activeTab)?.title}
                                     </div>
                                     <h3 className="text-3xl font-bold text-white mb-2 tracking-tight">{activeCapability.title}</h3>
                                     <p className="text-lg text-white/50 font-light">{activeCapability.subtitle}</p>
@@ -309,8 +309,8 @@ export default function UnifiedAIPlatform() {
                                 <div className="space-y-3 mb-8">
                                     {activeCapability.features.map((feature, idx) => (
                                         <div key={idx} className="flex items-center gap-3 group">
-                                            <div className="flex-shrink-0 w-5 h-5 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-red-500/50 transition-colors">
-                                                <Check className="h-3 w-3 text-white/40 group-hover:text-red-400 transition-colors" />
+                                            <div className="flex-shrink-0 w-5 h-5 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-white/50 transition-colors">
+                                                <Check className="h-3 w-3 text-white/60 group-hover:text-white transition-colors" />
                                             </div>
                                             <span className="text-sm text-white/60 group-hover:text-white transition-colors">{feature}</span>
                                         </div>

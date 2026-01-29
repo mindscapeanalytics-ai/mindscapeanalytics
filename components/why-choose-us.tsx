@@ -13,57 +13,60 @@ import {
     Award,
     HeadphonesIcon,
     ArrowRight,
-    CheckCircle
+    CheckCircle,
+    Code2,
+    Cpu,
+    Rocket
 } from "lucide-react"
 
 const advantages = [
     {
-        icon: Flag,
-        title: "USA-Based",
-        description: "Wyoming LLC",
-        highlight: "Same timezone",
-        color: "from-blue-500 to-blue-600",
-        iconColor: "text-blue-400"
+        icon: <Zap className="h-6 w-6" />,
+        title: "Senior AI Engineering",
+        description: "Direct access to senior AI engineers, not just account managers.",
+        highlight: "Expert-led development",
+        color: "from-zinc-700 to-zinc-800", // Neutral gradient for card background
+        iconColor: "text-white"
     },
     {
-        icon: DollarSign,
-        title: "Transparent",
-        description: "Fixed Pricing",
-        highlight: "No hidden fees",
-        color: "from-green-500 to-green-600",
-        iconColor: "text-green-400"
+        icon: <Shield className="h-6 w-6" />,
+        title: "Security-First",
+        description: "Enterprise-grade security defaults with SOC2 compliance alignment.",
+        highlight: "Data protection",
+        color: "from-zinc-700 to-zinc-800",
+        iconColor: "text-zinc-400"
     },
     {
-        icon: Zap,
-        title: "Fast Delivery",
-        description: "MVP in 2-4 weeks",
-        highlight: "Daily updates",
-        color: "from-yellow-500 to-yellow-600",
-        iconColor: "text-yellow-400"
+        icon: <Code2 className="h-6 w-6" />,
+        title: "Clean Architecture",
+        description: "Scalable, maintainable codebases built for long-term production use.",
+        highlight: "Future-proof solutions",
+        color: "from-zinc-700 to-zinc-800",
+        iconColor: "text-zinc-300"
     },
     {
-        icon: Shield,
-        title: "Secure",
-        description: "SOC 2 Compliant",
-        highlight: "Enterprise security",
-        color: "from-purple-500 to-purple-600",
-        iconColor: "text-purple-400"
+        icon: <Cpu className="h-6 w-6" />,
+        title: "High Performance",
+        description: "Optimized for speed and efficiency at every layer of the stack.",
+        highlight: "Blazing fast",
+        color: "from-zinc-700 to-zinc-800",
+        iconColor: "text-zinc-500"
     },
     {
-        icon: Award,
-        title: "Guaranteed",
-        description: "30-Day Refund",
-        highlight: "Free revisions",
-        color: "from-red-500 to-red-600",
-        iconColor: "text-red-400"
+        icon: <Rocket className="h-6 w-6" />,
+        title: "Rapid Deployment",
+        description: "From concept to production in weeks, not months.",
+        highlight: "Quick market entry",
+        color: "from-zinc-700 to-zinc-800",
+        iconColor: "text-white/80"
     },
     {
-        icon: HeadphonesIcon,
+        icon: <HeadphonesIcon className="h-6 w-6" />,
         title: "24/7 Support",
         description: "Always Available",
         highlight: "Dedicated manager",
-        color: "from-cyan-500 to-cyan-600",
-        iconColor: "text-cyan-400"
+        color: "from-red-500 to-red-600",
+        iconColor: "text-red-400"
     }
 ]
 
@@ -107,7 +110,7 @@ export default function WhyChooseUs() {
                                 <CardContent className="p-3 relative z-10 flex flex-col h-full items-start">
                                     {/* Icon */}
                                     <div className={`w-8 h-8 rounded-md bg-gradient-to-br ${advantage.color} flex items-center justify-center mb-2 group-hover:scale-110 transition-transform shadow-lg`}>
-                                        <advantage.icon className="h-4 w-4 text-white" />
+                                        {advantage.icon}
                                     </div>
 
                                     {/* Title */}
@@ -143,7 +146,7 @@ export default function WhyChooseUs() {
                                     </div>
                                 </div>
                                 <div className="flex gap-2">
-                                    <Button size="sm" className="h-7 text-xs bg-red-600 hover:bg-red-700 text-white" asChild>
+                                    <Button size="sm" className="h-7 text-xs bg-red-600 hover:bg-red-700 text-white font-semibold" asChild>
                                         <a href="#instant-quote">
                                             Get Quote
                                             <ArrowRight className="ml-1.5 h-3 w-3" />

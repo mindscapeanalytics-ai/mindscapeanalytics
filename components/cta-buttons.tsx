@@ -19,7 +19,7 @@ export default function CTAButtons({ variant = "hero", showSecondary = true }: C
             <>
                 <Button
                     onClick={() => setShowConsultation(true)}
-                    className="bg-red-600 hover:bg-red-700 text-white"
+                    className="bg-white hover:bg-zinc-200 text-black font-semibold"
                 >
                     <Calendar className="mr-2 h-4 w-4" />
                     Free Consultation
@@ -39,7 +39,7 @@ export default function CTAButtons({ variant = "hero", showSecondary = true }: C
                     <Button
                         onClick={() => setShowConsultation(true)}
                         size="lg"
-                        className="bg-red-600 hover:bg-red-700 text-white"
+                        className="bg-white hover:bg-zinc-200 text-black font-bold"
                     >
                         <Calendar className="mr-2 h-5 w-5" />
                         Book Free Consultation
@@ -79,7 +79,7 @@ export default function CTAButtons({ variant = "hero", showSecondary = true }: C
                 <Button
                     onClick={() => setShowConsultation(true)}
                     size="lg"
-                    className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg shadow-red-900/50 text-lg px-8 py-6"
+                    className="bg-zinc-100 hover:bg-white text-black shadow-lg shadow-white/10 text-lg px-8 py-6 font-bold"
                 >
                     <Calendar className="mr-2 h-5 w-5" />
                     Book Free Consultation

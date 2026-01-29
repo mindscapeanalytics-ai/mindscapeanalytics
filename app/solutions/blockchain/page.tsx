@@ -55,7 +55,7 @@ export default function BlockchainSolutionsPage() {
       {/* Enhanced Hero Section */}
       <section className="w-full py-16 md:py-20 lg:py-24 bg-gradient-to-b from-gray-950 via-gray-900 to-black text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5"></div>
-        <div className="absolute inset-0 bg-gradient-radial from-indigo-900/20 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-radial from-zinc-900/20 via-transparent to-transparent"></div>
         <div className="container px-4 md:px-6 relative">
           <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
             <div className="flex flex-col justify-center space-y-6">
@@ -65,12 +65,12 @@ export default function BlockchainSolutionsPage() {
                 transition={{ duration: 0.5 }}
                 className="space-y-4"
               >
-                <div className="inline-flex items-center rounded-lg bg-indigo-500/10 px-3 py-1 text-sm text-indigo-400">
+                <div className="inline-flex items-center rounded-lg bg-red-500/10 px-3 py-1 text-sm text-red-400">
                   <Sparkles className="mr-2 h-4 w-4" />
                   Blockchain Platform as a Service
                 </div>
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-                  Enterprise-Grade <span className="text-indigo-400">Blockchain</span> Platform
+                  Enterprise-Grade <span className="text-red-400">Blockchain</span> Platform
                 </h1>
                 <p className="max-w-[600px] text-gray-300 md:text-xl">
                   Complete blockchain infrastructure, development tools, and advanced analytics platform for building and scaling next-generation decentralized applications.
@@ -83,13 +83,13 @@ export default function BlockchainSolutionsPage() {
                 className="flex flex-col gap-4 min-[400px]:flex-row"
               >
                 <Link href="/contact">
-                  <Button size="lg" className="bg-indigo-600 text-white hover:bg-indigo-700">
+                  <Button size="lg" className="bg-red-600 text-white hover:bg-zinc-700">
                     Start Building
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
                 <Link href="/demo">
-                  <Button size="lg" variant="outline" className="border-indigo-400 text-indigo-400 hover:bg-indigo-500/10">
+                  <Button size="lg" variant="outline" className="border-red-400 text-red-400 hover:bg-red-500/10">
                     Request Demo
                   </Button>
                 </Link>
@@ -103,7 +103,7 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="backdrop-blur-sm bg-gray-950/70 border-none shadow-[0_0_15px_rgba(79,70,229,0.15)] text-white w-full">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-indigo-400">
+                  <CardTitle className="flex items-center gap-2 text-red-400">
                     <Activity className="h-5 w-5" />
                     Platform Performance
                   </CardTitle>
@@ -117,12 +117,12 @@ export default function BlockchainSolutionsPage() {
                           <div className="text-sm text-gray-400">Network Throughput</div>
                           <div className="text-2xl font-bold">50,000 TPS</div>
                         </div>
-                        <div className="h-12 w-12 rounded-full bg-indigo-500/20 flex items-center justify-center">
-                          <BarChart3 className="h-6 w-6 text-indigo-400" />
+                        <div className="h-12 w-12 rounded-full bg-red-500/20 flex items-center justify-center">
+                          <BarChart3 className="h-6 w-6 text-red-400" />
                         </div>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800 overflow-hidden">
-                        <div className="h-full w-4/5 rounded-full bg-gradient-to-r from-indigo-500 to-blue-500"></div>
+                        <div className="h-full w-4/5 rounded-full bg-gradient-to-r from-red-500 to-red-500"></div>
                       </div>
                     </div>
                     <div className="grid grid-cols-3 gap-4">
@@ -157,7 +157,7 @@ export default function BlockchainSolutionsPage() {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
           >
-            <div className="inline-flex items-center rounded-lg bg-indigo-500/10 px-3 py-1 text-sm text-indigo-400">
+            <div className="inline-flex items-center rounded-lg bg-red-500/10 px-3 py-1 text-sm text-red-400">
               <Sparkles className="mr-2 h-4 w-4" />
               Platform Features
             </div>
@@ -179,14 +179,14 @@ export default function BlockchainSolutionsPage() {
               >
                 <Card className="h-full group hover:shadow-[0_0_25px_rgba(79,70,229,0.2)] transition-all duration-300 border-none bg-gray-900/50 shadow-lg shadow-black/20">
                   <CardHeader className="pb-2">
-                    <div className="mb-4 w-14 h-14 rounded-xl bg-indigo-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <feature.icon className="h-7 w-7 text-indigo-400" />
+                    <div className="mb-4 w-14 h-14 rounded-xl bg-red-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <feature.icon className="h-7 w-7 text-red-400" />
                     </div>
-                    <CardTitle className="text-xl text-white group-hover:text-indigo-400 transition-colors duration-300">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl text-white group-hover:text-red-400 transition-colors duration-300">{feature.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">{feature.description}</p>
-                    <div className="mt-4 flex items-center text-sm text-indigo-400 group-hover:text-indigo-300 transition-colors duration-300">
+                    <div className="mt-4 flex items-center text-sm text-red-400 group-hover:text-zinc-300 transition-colors duration-300">
                       <ArrowRight className="mr-2 h-4 w-4" />
                       Learn more about {feature.title.toLowerCase()}
                     </div>
@@ -208,7 +208,7 @@ export default function BlockchainSolutionsPage() {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
           >
-            <div className="inline-flex items-center rounded-lg bg-indigo-500/10 px-3 py-1 text-sm text-indigo-400">
+            <div className="inline-flex items-center rounded-lg bg-red-500/10 px-3 py-1 text-sm text-red-400">
               <Sparkles className="mr-2 h-4 w-4" />
               Enterprise Features
             </div>
@@ -230,14 +230,14 @@ export default function BlockchainSolutionsPage() {
               >
                 <Card className="h-full group hover:shadow-[0_0_25px_rgba(79,70,229,0.2)] transition-all duration-300 border-none bg-gray-900/50 shadow-lg shadow-black/20">
                   <CardHeader className="pb-2">
-                    <div className="mb-4 w-14 h-14 rounded-xl bg-indigo-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <feature.icon className="h-7 w-7 text-indigo-400" />
+                    <div className="mb-4 w-14 h-14 rounded-xl bg-red-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <feature.icon className="h-7 w-7 text-red-400" />
                     </div>
-                    <CardTitle className="text-xl text-white group-hover:text-indigo-400 transition-colors duration-300">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl text-white group-hover:text-red-400 transition-colors duration-300">{feature.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">{feature.description}</p>
-                    <div className="mt-4 flex items-center text-sm text-indigo-400 group-hover:text-indigo-300 transition-colors duration-300">
+                    <div className="mt-4 flex items-center text-sm text-red-400 group-hover:text-zinc-300 transition-colors duration-300">
                       <ArrowRight className="mr-2 h-4 w-4" />
                       Learn more about {feature.title.toLowerCase()}
                     </div>
@@ -259,7 +259,7 @@ export default function BlockchainSolutionsPage() {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
           >
-            <div className="inline-flex items-center rounded-lg bg-indigo-500/10 px-3 py-1 text-sm text-indigo-400">
+            <div className="inline-flex items-center rounded-lg bg-red-500/10 px-3 py-1 text-sm text-red-400">
               <Code2 className="mr-2 h-4 w-4" />
               Interactive Development
             </div>
@@ -278,8 +278,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-4 w-14 h-14 rounded-xl bg-indigo-500/10 flex items-center justify-center">
-                    <Code2 className="h-7 w-7 text-indigo-400" />
+                  <div className="mb-4 w-14 h-14 rounded-xl bg-red-500/10 flex items-center justify-center">
+                    <Code2 className="h-7 w-7 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Interactive Development</CardTitle>
                   <CardDescription className="text-gray-400">Real-time smart contract development and testing</CardDescription>
@@ -292,7 +292,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">Solidity, Vyper, Rust</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-full rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-full rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -301,7 +301,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">1s</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-4/5 rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-4/5 rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -310,7 +310,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">80% Reduction</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-4/5 rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-4/5 rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -326,8 +326,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-4 w-14 h-14 rounded-xl bg-indigo-500/10 flex items-center justify-center">
-                    <TestTube2 className="h-7 w-7 text-indigo-400" />
+                  <div className="mb-4 w-14 h-14 rounded-xl bg-red-500/10 flex items-center justify-center">
+                    <TestTube2 className="h-7 w-7 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Advanced Testing</CardTitle>
                   <CardDescription className="text-gray-400">Comprehensive testing and debugging tools</CardDescription>
@@ -340,7 +340,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">95%</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-[95%] rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-[95%] rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -349,7 +349,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">Real-time</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-full rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-full rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -358,7 +358,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">Advanced</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-full rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-full rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -371,7 +371,7 @@ export default function BlockchainSolutionsPage() {
           
           <div className="mt-16 flex justify-center">
             <Link href="/docs/smart-contracts">
-              <Button variant="outline" className="border-indigo-500/20 text-indigo-400 hover:bg-indigo-500/10">
+              <Button variant="outline" className="border-red-500/20 text-red-400 hover:bg-red-500/10">
                 View Documentation
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -390,7 +390,7 @@ export default function BlockchainSolutionsPage() {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
           >
-            <div className="inline-flex items-center rounded-lg bg-indigo-500/10 px-3 py-1 text-sm text-indigo-400">
+            <div className="inline-flex items-center rounded-lg bg-red-500/10 px-3 py-1 text-sm text-red-400">
               <LineChart className="mr-2 h-4 w-4" />
               Advanced Trading Solutions
             </div>
@@ -409,8 +409,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <BarChart3 className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <BarChart3 className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">AI-Powered Portfolio Management</CardTitle>
                 </CardHeader>
@@ -425,7 +425,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">Real-time</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-4/5 rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-4/5 rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -434,7 +434,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">Optimized</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-3/4 rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-3/4 rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -450,8 +450,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <Activity className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <Activity className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Real-Time Market Prediction</CardTitle>
                 </CardHeader>
@@ -466,7 +466,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">85%</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-[85%] rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-[85%] rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -475,7 +475,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">100+</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-full rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-full rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -491,8 +491,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <Zap className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <Zap className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Automated Trading</CardTitle>
                 </CardHeader>
@@ -507,7 +507,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">50ms</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-4/5 rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-4/5 rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -516,7 +516,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">92%</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-[92%] rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-[92%] rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -534,8 +534,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <Database className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <Database className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Market Data Analytics</CardTitle>
                 </CardHeader>
@@ -567,8 +567,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <Layers className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <Layers className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Risk Management</CardTitle>
                 </CardHeader>
@@ -595,7 +595,7 @@ export default function BlockchainSolutionsPage() {
 
           <div className="mt-16 flex justify-center">
             <Link href="/docs/trading">
-              <Button variant="outline" className="border-indigo-500/20 text-indigo-400 hover:bg-indigo-500/10">
+              <Button variant="outline" className="border-red-500/20 text-red-400 hover:bg-red-500/10">
                 Learn More About Trading Solutions
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -614,7 +614,7 @@ export default function BlockchainSolutionsPage() {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
           >
-            <div className="inline-flex items-center rounded-lg bg-indigo-500/10 px-3 py-1 text-sm text-indigo-400">
+            <div className="inline-flex items-center rounded-lg bg-red-500/10 px-3 py-1 text-sm text-red-400">
               <Atom className="mr-2 h-4 w-4" />
               Advanced Simulations
             </div>
@@ -633,8 +633,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <ServerCog className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <ServerCog className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Network Simulation</CardTitle>
                 </CardHeader>
@@ -649,7 +649,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">100,000+</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-4/5 rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-4/5 rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -658,7 +658,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">Comprehensive</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-full rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-full rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -674,8 +674,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <Microscope className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <Microscope className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Attack Simulation</CardTitle>
                 </CardHeader>
@@ -690,7 +690,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">25+</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-full rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-full rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -699,7 +699,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">99.8%</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-[95%] rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-[95%] rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -715,8 +715,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <GanttChart className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <GanttChart className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Protocol Testing</CardTitle>
                 </CardHeader>
@@ -731,7 +731,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">12+</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-4/5 rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-4/5 rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -740,7 +740,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">Advanced</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-full rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-full rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -751,7 +751,7 @@ export default function BlockchainSolutionsPage() {
 
           <div className="mt-16 flex justify-center">
             <Link href="/docs/simulations">
-              <Button variant="outline" className="border-indigo-500/20 text-indigo-400 hover:bg-indigo-500/10">
+              <Button variant="outline" className="border-red-500/20 text-red-400 hover:bg-red-500/10">
                 Explore Simulation Capabilities
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -770,7 +770,7 @@ export default function BlockchainSolutionsPage() {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
           >
-            <div className="inline-flex items-center rounded-lg bg-indigo-500/10 px-3 py-1 text-sm text-indigo-400">
+            <div className="inline-flex items-center rounded-lg bg-red-500/10 px-3 py-1 text-sm text-red-400">
               <BrainCircuit className="mr-2 h-4 w-4" />
               AI-Powered Analytics
             </div>
@@ -789,8 +789,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <TrendingUp className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <TrendingUp className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Market Trend Prediction</CardTitle>
                 </CardHeader>
@@ -805,7 +805,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">87%</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-[87%] rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-[87%] rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -814,7 +814,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">1-30 days</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-4/5 rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-4/5 rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -830,8 +830,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <Landmark className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <Landmark className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Institutional Strategy Analysis</CardTitle>
                 </CardHeader>
@@ -846,7 +846,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">High Precision</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-4/5 rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-4/5 rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -855,7 +855,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">Premium</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-full rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-full rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -871,8 +871,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <Eye className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <Eye className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Sentiment Analysis</CardTitle>
                 </CardHeader>
@@ -887,7 +887,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">200+</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-full rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-full rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -896,7 +896,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">Real-time</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-4/5 rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-4/5 rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -914,8 +914,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <Coins className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <Coins className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Real-time Crypto Stock Analytics</CardTitle>
                 </CardHeader>
@@ -947,8 +947,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <GanttChart className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <GanttChart className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Strategic Decision Support</CardTitle>
                 </CardHeader>
@@ -975,7 +975,7 @@ export default function BlockchainSolutionsPage() {
 
           <div className="mt-16 flex justify-center">
             <Link href="/docs/analytics">
-              <Button variant="outline" className="border-indigo-500/20 text-indigo-400 hover:bg-indigo-500/10">
+              <Button variant="outline" className="border-red-500/20 text-red-400 hover:bg-red-500/10">
                 Explore Analytics Capabilities
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -994,7 +994,7 @@ export default function BlockchainSolutionsPage() {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
           >
-            <div className="inline-flex items-center rounded-lg bg-indigo-500/10 px-3 py-1 text-sm text-indigo-400">
+            <div className="inline-flex items-center rounded-lg bg-red-500/10 px-3 py-1 text-sm text-red-400">
               <Network className="mr-2 h-4 w-4" />
               Network Visualization
             </div>
@@ -1008,7 +1008,7 @@ export default function BlockchainSolutionsPage() {
           
           <div className="mt-16 flex justify-center">
             <Link href="/docs/blockchain">
-              <Button variant="outline" className="border-indigo-500/20 text-indigo-400 hover:bg-indigo-500/10">
+              <Button variant="outline" className="border-red-500/20 text-red-400 hover:bg-red-500/10">
                 Learn More
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -1027,7 +1027,7 @@ export default function BlockchainSolutionsPage() {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
           >
-            <div className="inline-flex items-center rounded-lg bg-indigo-500/10 px-3 py-1 text-sm text-indigo-400">
+            <div className="inline-flex items-center rounded-lg bg-red-500/10 px-3 py-1 text-sm text-red-400">
               <Globe className="mr-2 h-4 w-4" />
               Real-World Applications
             </div>
@@ -1046,7 +1046,7 @@ export default function BlockchainSolutionsPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Card className="overflow-hidden hover:shadow-[0_0_25px_rgba(79,70,229,0.2)] transition-shadow border-none shadow-lg shadow-black/20 bg-gray-900/50">
-                  <div className="h-48 bg-gradient-to-r from-indigo-600 to-blue-600 relative">
+                  <div className="h-48 bg-gradient-to-r from-red-600 to-red-600 relative">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <useCase.icon className="h-16 w-16 text-white opacity-30" />
                     </div>
@@ -1057,7 +1057,7 @@ export default function BlockchainSolutionsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-400 mb-4">{useCase.description}</p>
-                    <div className="flex items-center text-sm text-indigo-400">
+                    <div className="flex items-center text-sm text-red-400">
                       <Clock className="mr-1 h-4 w-4" />
                       <span>ROI: {useCase.roi}</span>
                     </div>
@@ -1070,9 +1070,9 @@ export default function BlockchainSolutionsPage() {
       </section>
       
       {/* CTA */}
-      <section className="w-full py-16 md:py-20 lg:py-24 bg-gradient-to-r from-indigo-900 to-blue-900 text-white relative overflow-hidden">
+      <section className="w-full py-16 md:py-20 lg:py-24 bg-gradient-to-r from-zinc-900 to-slate-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/70 to-blue-900/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/70 to-slate-900/70"></div>
         <div className="container px-4 md:px-6 relative">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -1093,7 +1093,7 @@ export default function BlockchainSolutionsPage() {
             </p>
             <div className="mt-4 grid gap-4 min-[400px]:grid-cols-2">
               <Link href="/contact">
-                <Button size="lg" className="w-full bg-white text-indigo-900 hover:bg-gray-200 shadow-lg">
+                <Button size="lg" className="w-full bg-white text-zinc-900 hover:bg-gray-200 shadow-lg">
                   <div className="flex items-center justify-center">
                     Contact Sales
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -1137,7 +1137,7 @@ export default function BlockchainSolutionsPage() {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
           >
-            <div className="inline-flex items-center rounded-lg bg-indigo-500/10 px-3 py-1 text-sm text-indigo-400">
+            <div className="inline-flex items-center rounded-lg bg-red-500/10 px-3 py-1 text-sm text-red-400">
               <Cpu className="mr-2 h-4 w-4" />
               Advanced Infrastructure
             </div>
@@ -1156,8 +1156,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <Network className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <Network className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Multi-Chain Architecture</CardTitle>
                 </CardHeader>
@@ -1172,7 +1172,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">15+</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-full rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-full rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -1181,7 +1181,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">50,000 TPS</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-4/5 rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-4/5 rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -1197,8 +1197,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <Shield className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <Shield className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Advanced Security</CardTitle>
                 </CardHeader>
@@ -1213,7 +1213,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">7+</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-full rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-full rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -1222,7 +1222,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">100%</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-full rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-full rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -1238,8 +1238,8 @@ export default function BlockchainSolutionsPage() {
             >
               <Card className="h-full border-none shadow-lg shadow-black/20 bg-gray-900/50">
                 <CardHeader>
-                  <div className="mb-2 w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <Database className="h-6 w-6 text-indigo-400" />
+                  <div className="mb-2 w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                    <Database className="h-6 w-6 text-red-400" />
                   </div>
                   <CardTitle className="text-white">Scalable Storage</CardTitle>
                 </CardHeader>
@@ -1254,7 +1254,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">PB+</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-full rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-full rounded-full bg-red-500"></div>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -1263,7 +1263,7 @@ export default function BlockchainSolutionsPage() {
                         <span className="font-medium text-white">10ms</span>
                       </div>
                       <div className="h-2 w-full rounded-full bg-gray-800">
-                        <div className="h-full w-4/5 rounded-full bg-indigo-500"></div>
+                        <div className="h-full w-4/5 rounded-full bg-red-500"></div>
                       </div>
                     </div>
                   </div>
@@ -1284,7 +1284,7 @@ export default function BlockchainSolutionsPage() {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
           >
-            <div className="inline-flex items-center rounded-lg bg-indigo-500/10 px-3 py-1 text-sm text-indigo-400">
+            <div className="inline-flex items-center rounded-lg bg-red-500/10 px-3 py-1 text-sm text-red-400">
               <Code2 className="mr-2 h-4 w-4" />
               Smart Contract Innovation
             </div>
@@ -1306,8 +1306,8 @@ export default function BlockchainSolutionsPage() {
                 <Card className="h-full hover:shadow-[0_0_25px_rgba(79,70,229,0.2)] transition-shadow border-none shadow-lg shadow-black/20 bg-gray-900/50">
                   <CardHeader>
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                        <tool.icon className="h-6 w-6 text-indigo-400" />
+                      <div className="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center">
+                        <tool.icon className="h-6 w-6 text-red-400" />
                       </div>
                       <div>
                         <CardTitle className="text-white">{tool.title}</CardTitle>
@@ -1319,14 +1319,14 @@ export default function BlockchainSolutionsPage() {
                     <div className="space-y-4">
                       {tool.features.map((feature, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <Check className="h-5 w-5 text-indigo-400 mt-0.5" />
+                          <Check className="h-5 w-5 text-red-400 mt-0.5" />
                           <span className="text-sm text-gray-400">{feature}</span>
                         </div>
                       ))}
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button variant="outline" className="w-full border-indigo-500/20 text-indigo-400 hover:bg-indigo-500/10">
+                    <Button variant="outline" className="w-full border-red-500/20 text-red-400 hover:bg-red-500/10">
                       Learn More
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>

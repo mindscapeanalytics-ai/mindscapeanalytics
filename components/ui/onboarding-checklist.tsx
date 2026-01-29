@@ -15,7 +15,7 @@ export interface ChecklistItem {
 
 export interface OnboardingSlide {
     id: number | string;
-    title: string;
+    title: React.ReactNode;
     description: string;
     items: ChecklistItem[];
 }
@@ -49,15 +49,15 @@ export const OnboardingChecklist = ({
     }, [hasMounted, slides.length]);
 
     if (!hasMounted) {
-        return <section className={cn("w-full py-12 md:py-20 bg-black/40 backdrop-blur-sm border-y border-white/5 min-h-[500px]", className)} />;
+        return <section className={cn("w-full py-12 md:py-20 bg-transparent min-h-[500px]", className)} />;
     }
 
     const slide = slides[currentSlide];
 
     return (
-        <section className={cn("w-full py-12 md:py-20 bg-black/40 backdrop-blur-sm border-y border-white/5", className)}>
-            <div className="container mx-auto px-4">
-                <div className="max-w-6xl mx-auto bg-zinc-900/40 border border-white/10 rounded-[32px] p-6 md:p-12 overflow-hidden shadow-2xl relative">
+        <section className={cn("w-full py-12 md:py-20 bg-transparent", className)}>
+            <div className="w-full px-4 md:px-8">
+                <div className="w-full mx-auto bg-zinc-900/20 backdrop-blur-md border border-white/10 rounded-[32px] p-6 md:p-12 overflow-hidden shadow-2xl relative">
                     {/* Background Decoration */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/5 rounded-full blur-[100px] -z-10" />
 

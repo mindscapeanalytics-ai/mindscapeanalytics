@@ -369,7 +369,7 @@ const industries: Industry[] = [
       time: "60% faster loan processing",
       compliance: "100% regulatory adherence",
       customerSatisfaction: "92% customer satisfaction score",
-      costReduction: "35% reduction in infrastructure costs",
+      costreduction: "35% reduction in infrastructure costs",
       scalability: "400% improved transaction throughput",
       security: "Zero data breaches since implementation"
     },
@@ -433,9 +433,9 @@ const industries: Industry[] = [
         icon: Shield,
         benefits: [
           "Instant notification of suspicious activities",
-          "Reduced false positives through machine learning",
+          "reduced false positives through machine learning",
           "Adaptive learning from new fraud patterns",
-          "Multi-layered detection approach",
+          "Multi-layeslate detection approach",
           "Behavioral biometrics integration",
           "Transaction anomaly detection",
           "Continuous model retraining"
@@ -574,7 +574,7 @@ const industries: Industry[] = [
       },
       {
         title: "Multi-factor Authentication",
-        description: "Layered security approach requiring multiple verification methods",
+        description: "Layeslate security approach requiring multiple verification methods",
         icon: ShieldCheck,
         benefits: [
           "Significantly reduces account takeover risks",
@@ -603,7 +603,7 @@ const industries: Industry[] = [
         description: "AI-powered real-time fraud detection and prevention",
         icon: AlertCircle,
         benefits: [
-          "Reduces financial losses from fraudulent transactions",
+          "reduces financial losses from fraudulent transactions",
           "Minimizes false positives to improve customer experience",
           "Provides early warning of emerging fraud patterns"
         ],
@@ -658,7 +658,7 @@ const industries: Industry[] = [
         icon: Code,
         benefits: [
           "Identifies security issues early in the development process",
-          "Reduces the cost of fixing security vulnerabilities",
+          "reduces the cost of fixing security vulnerabilities",
           "Accelerates delivery of secure financial applications"
         ],
         standards: [
@@ -785,7 +785,7 @@ const industries: Industry[] = [
     ],
     advancedFeatures: [
       {
-        title: "AI-Powered Risk Analytics",
+        title: "AI-powered Risk Analytics",
         description: "Advanced machine learning models for real-time risk assessment and fraud detection",
         icon: Shield,
         benefits: [
@@ -835,7 +835,7 @@ const industries: Industry[] = [
           technologies: [
             "Python",
             "CUDA",
-            "Redis",
+            "slateis",
             "WebSocket"
           ],
           integrations: [
@@ -927,7 +927,7 @@ const industries: Industry[] = [
       },
       {
         title: "Predictive Financial Analytics",
-        description: "Time-series forecasting and predictive modeling for financial markets",
+        description: "Time-series forecasting and Predictive modeling for financial markets",
         icon: LineChart,
         capabilities: [
           "Market trend forecasting",
@@ -975,11 +975,11 @@ const industries: Industry[] = [
       },
       {
         title: "Automated Credit Scoring",
-        description: "Machine learning models for accurate and fair credit risk assessment",
+        description: "Machine learning models for accurate and fair Credit risk assessment",
         icon: BarChart,
         capabilities: [
           "Alternative data analysis",
-          "Explainable AI credit decisions",
+          "Explainable AI Credit decisions",
           "Real-time scoring",
           "Behavioral factor analysis",
           "Multi-factor risk assessment"
@@ -1035,8 +1035,8 @@ const industries: Industry[] = [
         ],
         deployment: {
           locations: ["NY4", "LD4", "TY3", "SG1"],
-          requirements: ["10Gbps connectivity", "99.999% uptime", "Redundant power"],
-          connectivity: ["Direct market access", "Cross-connect options", "Redundant routes"]
+          requirements: ["10Gbps connectivity", "99.999% uptime", "redundant power"],
+          connectivity: ["Direct market access", "Cross-connect options", "redundant routes"]
         }
       }
     ],
@@ -1502,12 +1502,12 @@ const industries: Industry[] = [
     ],
     features: [
       {
-        title: "AI-Powered Diagnostics",
+        title: "AI-powered Diagnostics",
         description: "Advanced image recognition for accurate medical diagnosis",
         icon: Lightbulb,
         benefits: [
           "Early detection of conditions",
-          "Reduced diagnostic errors",
+          "reduced diagnostic errors",
           "Support for rare disease identification",
         ],
         standards: ["ISO 27001", "SOC 2 Type II", "PCI DSS"],
@@ -1517,7 +1517,7 @@ const industries: Industry[] = [
         description: "Intelligent scheduling and resource allocation systems",
         icon: BarChart,
         benefits: [
-          "Reduced wait times",
+          "reduced wait times",
           "Optimized staff allocation",
           "Improved patient experience",
         ],
@@ -1598,7 +1598,7 @@ const industries: Industry[] = [
           "Low-latency processing for critical applications",
           "Local data processing with cloud analytics",
           "Works in environments with limited connectivity",
-          "Reduces bandwidth requirements for medical imaging"
+          "reduces bandwidth requirements for medical imaging"
         ]
       }
     ]
@@ -1625,7 +1625,7 @@ const industries: Industry[] = [
         company: "Smart Factory Solutions",
         industry: "Manufacturing",
         challenge: "High defect rates and frequent equipment failures",
-        solution: "Implemented AI-powered quality control and predictive maintenance system",
+        solution: "Implemented AI-powered quality control and Predictive maintenance system",
         results: [
           "80% reduction in defect rates",
           "60% decrease in unplanned downtime",
@@ -1637,10 +1637,10 @@ const industries: Industry[] = [
     features: [
       {
         title: "Predictive Maintenance",
-        description: "AI-driven system that predicts equipment failures before they occur",
+        description: "AI-driven system that pslateicts equipment failures before they occur",
         icon: BarChart,
         benefits: [
-          "Reduced equipment downtime",
+          "reduced equipment downtime",
           "Optimized maintenance schedules",
           "Extended equipment lifespan",
         ],
@@ -1652,7 +1652,7 @@ const industries: Industry[] = [
         name: "David Chen",
         role: "Operations Director",
         company: "Smart Factory Solutions",
-        quote: "The predictive maintenance system has revolutionized our operations, significantly reducing downtime and maintenance costs.",
+        quote: "The Predictive maintenance system has revolutionized our operations, significantly reducing downtime and maintenance costs.",
         imageUrl: "/images/testimonials/david-chen.jpg",
       },
     ],
@@ -1694,7 +1694,7 @@ const industries: Industry[] = [
         description: "AI-powered system for optimal inventory levels and demand forecasting",
         icon: BarChart,
         benefits: [
-          "Reduced stockouts and overstock",
+          "reduced stockouts and overstock",
           "Optimized supply chain",
           "Improved cash flow",
         ],
@@ -1748,7 +1748,7 @@ const industries: Industry[] = [
         description: "AI-driven system for optimal route planning and real-time adjustments",
         icon: BarChart,
         benefits: [
-          "Reduced fuel consumption",
+          "reduced fuel consumption",
           "Faster deliveries",
           "Improved customer satisfaction",
         ],
@@ -1867,12 +1867,12 @@ export default function IndustrySolutionsPage() {
   
   // Add new state variables for PaaS features
   const [activeDeploymentOption, setActiveDeploymentOption] = useState<DeploymentOption | null>(null);
-  const [showArchitectureDiagram, setShowArchitectureDiagram] = useState(false);
+  const [showArchitectuslateiagram, setShowArchitectuslateiagram] = useState(false);
   const [selectedIntegration, setSelectedIntegration] = useState<string | null>(null);
   
   // Add new state variables for advanced features
   const [activeFeature, setActiveFeature] = useState<AdvancedFeature | null>(null);
-  const [showFeatureDemo, setShowFeatureDemo] = useState(false);
+  const [showFeatuslateemo, setShowFeatuslateemo] = useState(false);
   const [activePackage, setActivePackage] = useState<SolutionPackage | null>(null);
   const [showPackageDetails, setShowPackageDetails] = useState(false);
   
@@ -1961,7 +1961,7 @@ export default function IndustrySolutionsPage() {
       case "financial":
         return {
           metrics: {
-            costReduction: 42,
+            costreduction: 42,
             fraudDetection: 95,
             customerSatisfaction: 88,
             processEfficiency: 74
@@ -1973,7 +1973,7 @@ export default function IndustrySolutionsPage() {
           ],
           recommendations: [
             "Implement advanced fraud pattern detection",
-            "Expand predictive analytics to new market segments",
+            "Expand Predictive analytics to new market segments",
             "Integrate customer feedback loop for continuous AI improvement"
           ]
         };
@@ -1992,14 +1992,14 @@ export default function IndustrySolutionsPage() {
           ],
           recommendations: [
             "Expand medical imaging AI to additional departments",
-            "Implement predictive patient outcome modeling",
+            "Implement Predictive patient outcome modeling",
             "Develop personalized treatment recommendation system"
           ]
         };
       case "manufacturing":
         return {
           metrics: {
-            downTimeReduction: 68,
+            downTimereduction: 68,
             qualityImprovement: 87,
             supplyChainOptimization: 72,
             energyEfficiency: 45
@@ -2021,7 +2021,7 @@ export default function IndustrySolutionsPage() {
             improvement: 75,
             efficiency: 80,
             satisfaction: 85,
-            costReduction: 40
+            costreduction: 40
           },
           insights: [
             "AI implementation showing positive ROI within 6 months",
@@ -2063,7 +2063,7 @@ export default function IndustrySolutionsPage() {
         break;
       default:
         setVisualizationData({
-          labels: ["Efficiency", "Quality", "Cost Reduction", "Innovation", "Customer Satisfaction"],
+          labels: ["Efficiency", "Quality", "Cost reduction", "Innovation", "Customer Satisfaction"],
           values: [80, 75, 68, 82, 77],
           colors: ["#3b82f6", "#22c55e", "#ef4444", "#8b5cf6", "#f59e0b"]
         });
@@ -2173,7 +2173,7 @@ export default function IndustrySolutionsPage() {
         newMemUtil.push(Math.floor(Math.random() * 40) + 20);
       }
       
-      // Reduce simulated response time and increase data ingestion capacity
+      // reduce simulated response time and increase data ingestion capacity
       const newResponseTime = prev.responseTime.map(time => Math.max(time * 0.7, 25));
       
       return {
@@ -2227,7 +2227,7 @@ export default function IndustrySolutionsPage() {
         toast.warning("Data processor service degraded - activating failover");
       } else {
         services['data-processor'] = 'healthy';
-        toast.success("Failover complete - all services restored");
+        toast.success("Failover complete - all services restoslate");
       }
       
       return {
@@ -2333,14 +2333,14 @@ export default function IndustrySolutionsPage() {
   return (
     <div className="min-h-screen bg-black text-white w-full">
       {/* Modern Hero with Animated Elements */}
-      <section className="relative w-full py-20 md:py-28 overflow-hidden bg-gradient-to-br from-blue-950 via-black to-indigo-950">
+      <section className="relative w-full py-20 md:py-28 overflow-hidden bg-gradient-to-br from-slate-950 via-black to-zinc-950">
         <div className="absolute inset-0 bg-grid-pattern opacity-20 z-0"></div>
         
         {/* Animated floating elements */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/4 left-1/5 w-20 h-20 bg-blue-500/20 rounded-full blur-xl animate-float"></div>
-          <div className="absolute top-3/4 left-2/3 w-32 h-32 bg-indigo-500/20 rounded-full blur-xl animate-float-slow"></div>
-          <div className="absolute top-1/2 left-1/4 w-40 h-40 bg-purple-500/10 rounded-full blur-xl animate-float-reverse"></div>
+          <div className="absolute top-1/4 left-1/5 w-20 h-20 bg-red-500/20 rounded-full blur-xl animate-float"></div>
+          <div className="absolute top-3/4 left-2/3 w-32 h-32 bg-red-500/20 rounded-full blur-xl animate-float-slow"></div>
+          <div className="absolute top-1/2 left-1/4 w-40 h-40 bg-red-500/10 rounded-full blur-xl animate-float-reverse"></div>
           <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-cyan-500/15 rounded-full blur-xl animate-pulse"></div>
         </div>
 
@@ -2352,7 +2352,7 @@ export default function IndustrySolutionsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <Badge className="px-3 py-1 text-sm bg-gradient-to-r from-blue-600/20 to-indigo-600/20 border-blue-500/30 text-blue-300">
+                <Badge className="px-3 py-1 text-sm bg-gradient-to-r from-red-600/20 to-red-600/20 border-red-500/30 text-slate-300">
                   ENTERPRISE PLATFORM-AS-A-SERVICE
                 </Badge>
               </motion.div>
@@ -2363,11 +2363,11 @@ export default function IndustrySolutionsPage() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
               >
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-200 to-indigo-200">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-zinc-200">
                   Industry-Specific
                 </span>
                 <br />
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-500">
                   Cloud Platform Solutions
                 </span>
               </motion.h1>
@@ -2387,10 +2387,10 @@ export default function IndustrySolutionsPage() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="flex flex-wrap gap-4 pt-2"
               >
-                <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-md px-6 py-3 font-medium text-lg">
+                <Button className="bg-gradient-to-r from-red-600 to-red-600 hover:from-slate-700 hover:to-zinc-700 text-white rounded-md px-6 py-3 font-medium text-lg">
                   Deploy Your Platform
                 </Button>
-                <Button variant="outline" className="border-blue-500/40 bg-blue-500/10 hover:bg-blue-500/20 text-white rounded-md px-6 py-3 font-medium text-lg flex items-center gap-2">
+                <Button variant="outline" className="border-red-500/40 bg-red-500/10 hover:bg-red-500/20 text-white rounded-md px-6 py-3 font-medium text-lg flex items-center gap-2">
                   <Play className="h-4 w-4" /> Watch Demo
                 </Button>
               </motion.div>
@@ -2403,7 +2403,7 @@ export default function IndustrySolutionsPage() {
               >
                 <div className="flex -space-x-2">
                   {['AWS', 'GCP', 'Azure', 'IBM'].map((cloud, i) => (
-                    <div key={cloud} className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 border-2 border-blue-500/30 flex items-center justify-center text-xs font-bold">
+                    <div key={cloud} className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 border-2 border-red-500/30 flex items-center justify-center text-xs font-bold">
                       {cloud.substring(0, 2)}
                     </div>
                   ))}
@@ -2419,14 +2419,14 @@ export default function IndustrySolutionsPage() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7 }}
-                className="rounded-xl overflow-hidden shadow-2xl shadow-blue-500/20 border border-white/10"
+                className="rounded-xl overflow-hidden shadow-2xl shadow-red-500/20 border border-white/10"
               >
-                <div className="bg-gradient-to-br from-blue-900/40 to-indigo-900/40 p-1">
+                <div className="bg-gradient-to-br from-slate-900/40 to-zinc-900/40 p-1">
                   <div className="flex items-center gap-2 px-3 py-2 border-b border-white/10 bg-black/30">
                     <div className="flex gap-1.5">
                       <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
                       <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                      <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
                     </div>
                     <div className="text-xs text-gray-400 flex-1 text-center">Platform Dashboard</div>
                   </div>
@@ -2439,7 +2439,7 @@ export default function IndustrySolutionsPage() {
                           {[35, 45, 60, 50, 65, 40, 55].map((val, i) => (
                             <div key={i} className="h-full flex-1 flex flex-col justify-end px-0.5">
                               <div 
-                                className="bg-gradient-to-t from-blue-500 to-indigo-500 rounded-sm" 
+                                className="bg-gradient-to-t from-red-500 to-red-500 rounded-sm" 
                                 style={{height: `${val}%`}}
                               ></div>
                             </div>
@@ -2448,33 +2448,33 @@ export default function IndustrySolutionsPage() {
                       </div>
                       <div className="col-span-2 row-span-1 rounded bg-black/80 border border-white/10 p-3 flex flex-col">
                         <div className="text-xs text-gray-400 mb-1">Active Services</div>
-                        <div className="text-xl font-bold text-blue-400">12</div>
+                        <div className="text-xl font-bold text-red-400">12</div>
                         <div className="mt-auto flex justify-between items-center">
-                          <div className="text-xs text-green-400">99.2% Uptime</div>
+                          <div className="text-xs text-red-400">99.2% Uptime</div>
                           <div className="h-1 w-20 bg-black/50 rounded-full overflow-hidden">
-                            <div className="h-full w-[99.2%] bg-green-500"></div>
+                            <div className="h-full w-[99.2%] bg-red-500"></div>
                           </div>
                         </div>
                       </div>
                       <div className="col-span-1 row-span-1 rounded bg-black/80 border border-white/10 p-3 flex flex-col">
                         <div className="text-xs text-gray-400">Nodes</div>
-                        <div className="text-xl font-bold text-indigo-400">5</div>
+                        <div className="text-xl font-bold text-red-400">5</div>
                         <div className="flex gap-1 mt-auto">
                           {Array(5).fill(0).map((_, i) => (
-                            <div key={i} className="h-2 w-2 rounded-full bg-indigo-500"></div>
+                            <div key={i} className="h-2 w-2 rounded-full bg-red-500"></div>
                           ))}
                         </div>
                       </div>
                       <div className="col-span-1 row-span-1 rounded bg-black/80 border border-white/10 p-3 flex flex-col">
                         <div className="text-xs text-gray-400">API Calls</div>
-                        <div className="text-xl font-bold text-blue-400">2.4k/s</div>
-                        <div className="mt-auto text-xs text-blue-300">+18% ↑</div>
+                        <div className="text-xl font-bold text-red-400">2.4k/s</div>
+                        <div className="mt-auto text-xs text-slate-300">+18% ↑</div>
                       </div>
                       <div className="col-span-2 row-span-1 rounded bg-black/80 border border-white/10 p-3 flex flex-col">
                         <div className="text-xs text-gray-400 mb-2">Deployments</div>
                         <div className="flex justify-between items-center">
                           <div className="flex gap-1 items-center">
-                            <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                            <div className="h-2 w-2 rounded-full bg-red-500"></div>
                             <div className="text-xs">Successful</div>
                           </div>
                           <div className="text-xs font-medium">36</div>
@@ -2497,7 +2497,7 @@ export default function IndustrySolutionsPage() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
-                className="absolute -right-4 top-1/4 bg-blue-900/90 bg-opacity-80 backdrop-blur-sm rounded px-3 py-2 text-xs border border-blue-500/30 shadow-lg"
+                className="absolute -right-4 top-1/4 bg-slate-900/90 bg-opacity-80 backdrop-blur-sm rounded px-3 py-2 text-xs border border-red-500/30 shadow-lg"
               >
                 Auto-scaling enabled
               </motion.div>
@@ -2506,7 +2506,7 @@ export default function IndustrySolutionsPage() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
-                className="absolute -left-4 bottom-1/4 bg-indigo-900/90 bg-opacity-80 backdrop-blur-sm rounded px-3 py-2 text-xs border border-indigo-500/30 shadow-lg"
+                className="absolute -left-4 bottom-1/4 bg-zinc-900/90 bg-opacity-80 backdrop-blur-sm rounded px-3 py-2 text-xs border border-red-500/30 shadow-lg"
               >
                 Multi-region deployment
               </motion.div>
@@ -2519,7 +2519,7 @@ export default function IndustrySolutionsPage() {
       <section className="py-16 bg-gradient-to-b from-black to-slate-950">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <Badge variant="outline" className="mb-3 border-blue-500/50 text-blue-400 px-3">
+            <Badge variant="outline" className="mb-3 border-red-500/50 text-red-400 px-3">
               <LineChart className="h-3.5 w-3.5 mr-1.5" />
               Solution Comparison
             </Badge>
@@ -2545,7 +2545,7 @@ export default function IndustrySolutionsPage() {
                   <tr key={index} className={`border-b border-white/5 ${index % 2 === 0 ? 'bg-white/[0.02]' : ''}`}>
                     <td className="py-4 px-6">
                       <div className="flex items-start gap-3">
-                        <div className="rounded-full p-2 bg-gradient-to-br from-blue-600/20 to-indigo-600/20 text-blue-400 shrink-0">
+                        <div className="rounded-full p-2 bg-gradient-to-br from-red-600/20 to-red-600/20 text-red-400 shrink-0">
                           {/* Using a different icon for each solution based on index */}
                           {index === 0 ? <Shield className="h-5 w-5" /> : 
                            index === 1 ? <BarChart className="h-5 w-5" /> :
@@ -2566,7 +2566,7 @@ export default function IndustrySolutionsPage() {
                       </div>
                     </td>
                     <td className="py-4 px-6 text-center">
-                      <span className="inline-block px-3 py-1 rounded-full text-xs bg-gradient-to-r from-blue-900/30 to-indigo-900/30 border border-blue-500/20">
+                      <span className="inline-block px-3 py-1 rounded-full text-xs bg-gradient-to-r from-slate-900/30 to-zinc-900/30 border border-red-500/20">
                         {index === 0 ? "Large Enterprises" : 
                          index === 1 ? "Financial Analysts" :
                          index === 2 ? "Customer Service" :
@@ -2593,7 +2593,7 @@ export default function IndustrySolutionsPage() {
                     </td>
                     <td className="py-4 px-6 text-center">
                       <div className="flex items-center justify-center gap-2">
-                        <Clock className="h-4 w-4 text-blue-400" />
+                        <Clock className="h-4 w-4 text-red-400" />
                         <span className="text-sm">
                           {index === 0 ? "4-6 weeks" : 
                            index === 1 ? "2-4 weeks" :
@@ -2605,7 +2605,7 @@ export default function IndustrySolutionsPage() {
                     </td>
                     <td className="py-4 px-6">
                       <div className="flex justify-center">
-                        <Button variant="outline" size="sm" className="border-blue-500/30 text-blue-400 hover:bg-blue-950/50">
+                        <Button variant="outline" size="sm" className="border-red-500/30 text-red-400 hover:bg-slate-950/50">
                           Learn More
                         </Button>
                       </div>
@@ -2618,7 +2618,7 @@ export default function IndustrySolutionsPage() {
 
           {activeIndustry.solutions.length > 5 && (
             <div className="mt-6 text-center">
-              <Button variant="outline" className="border-blue-500/30 text-blue-400 hover:bg-blue-950/50">
+              <Button variant="outline" className="border-red-500/30 text-red-400 hover:bg-slate-950/50">
                 View All {activeIndustry.solutions.length} Solutions
               </Button>
             </div>
@@ -2630,7 +2630,7 @@ export default function IndustrySolutionsPage() {
       <section className="sticky top-0 z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-4">
           <div className="flex items-center py-3 overflow-x-auto hide-scrollbar gap-1">
-            <div className="text-blue-400 mr-3 font-medium">Industries:</div>
+            <div className="text-red-400 mr-3 font-medium">Industries:</div>
             {industries.map((industry) => (
               <Button
                 key={industry.name}
@@ -2638,7 +2638,7 @@ export default function IndustrySolutionsPage() {
                 size="sm"
                 className={`rounded-full flex items-center gap-1.5 whitespace-nowrap px-4 ${
                   activeIndustry.name === industry.name
-                    ? "bg-blue-600/90 hover:bg-blue-700/90 text-white"
+                    ? "bg-red-600/90 hover:bg-slate-700/90 text-white"
                     : "hover:bg-white/10 text-gray-300"
                 }`}
                 onClick={() => setActiveIndustry(industry)}
@@ -2648,7 +2648,7 @@ export default function IndustrySolutionsPage() {
               </Button>
             ))}
             <div className="ml-auto">
-              <Button variant="outline" size="sm" className="rounded-full text-blue-400 border-blue-500/30 bg-blue-500/10">
+              <Button variant="outline" size="sm" className="rounded-full text-red-400 border-red-500/30 bg-red-500/10">
                 <Sparkles className="h-4 w-4 mr-1" /> Compare Industries
               </Button>
             </div>
@@ -2657,10 +2657,10 @@ export default function IndustrySolutionsPage() {
       </section>
 
       {/* Platform Capabilities Overview - Enhanced with interactive elements */}
-      <section className="w-full py-16 md:py-24 bg-gradient-to-b from-black to-blue-950/30">
+      <section className="w-full py-16 md:py-24 bg-gradient-to-b from-black to-slate-950/30">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-16">
-            <Badge variant="outline" className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-4 py-1 mb-4">
+            <Badge variant="outline" className="bg-red-500/20 text-slate-300 border-red-500/30 px-4 py-1 mb-4">
               PLATFORM CAPABILITIES
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -2688,74 +2688,74 @@ export default function IndustrySolutionsPage() {
             <TabsContent value="overview" className="space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
                 <div className="lg:col-span-2 space-y-6">
-                  <div className="p-6 rounded-xl border border-blue-500/20 bg-blue-950/10 space-y-4">
+                  <div className="p-6 rounded-xl border border-red-500/20 bg-slate-950/10 space-y-4">
                     <h3 className="text-2xl font-bold flex items-center">
-                      <Server className="h-6 w-6 mr-2 text-blue-400" />
+                      <Server className="h-6 w-6 mr-2 text-red-400" />
                       Platform Health
                     </h3>
                     
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                       <div className="p-4 rounded-lg bg-black/40 border border-white/10 flex flex-col">
                         <div className="text-xs text-gray-400 mb-1">Uptime</div>
-                        <div className="text-xl font-bold text-green-400">99.99%</div>
-                        <div className="mt-auto text-xs text-green-300 flex items-center">
+                        <div className="text-xl font-bold text-red-400">99.99%</div>
+                        <div className="mt-auto text-xs text-slate-300 flex items-center">
                           <ArrowUp className="h-3 w-3 mr-1" /> 30 days
                         </div>
                       </div>
                       
                       <div className="p-4 rounded-lg bg-black/40 border border-white/10 flex flex-col">
                         <div className="text-xs text-gray-400 mb-1">Response Time</div>
-                        <div className="text-xl font-bold text-blue-400">45ms</div>
-                        <div className="mt-auto text-xs text-green-300 flex items-center">
+                        <div className="text-xl font-bold text-red-400">45ms</div>
+                        <div className="mt-auto text-xs text-slate-300 flex items-center">
                           <ArrowDown className="h-3 w-3 mr-1" /> 12% vs last week
                         </div>
                       </div>
                       
                       <div className="p-4 rounded-lg bg-black/40 border border-white/10 flex flex-col">
                         <div className="text-xs text-gray-400 mb-1">Active Services</div>
-                        <div className="text-xl font-bold text-indigo-400">{activeServices}</div>
-                        <div className="mt-auto text-xs text-blue-300 flex items-center">
-                          <div className="h-2 w-2 rounded-full bg-green-500 mr-1"></div> All operational
+                        <div className="text-xl font-bold text-red-400">{activeServices}</div>
+                        <div className="mt-auto text-xs text-slate-300 flex items-center">
+                          <div className="h-2 w-2 rounded-full bg-red-500 mr-1"></div> All operational
                         </div>
                       </div>
                       
                       <div className="p-4 rounded-lg bg-black/40 border border-white/10 flex flex-col">
                         <div className="text-xs text-gray-400 mb-1">Region Status</div>
                         <div className="flex mt-1 mb-auto gap-1.5">
-                          <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                          <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                          <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                          <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                          <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                          <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                          <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                          <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                          <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                          <div className="h-3 w-3 rounded-full bg-red-500"></div>
                         </div>
-                        <div className="mt-auto text-xs text-blue-300">5/5 regions online</div>
+                        <div className="mt-auto text-xs text-slate-300">5/5 regions online</div>
                       </div>
                     </div>
                     
                     <div className="mt-6 space-y-1">
                       <div className="flex justify-between items-center text-sm">
                         <span className="flex items-center">
-                          <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
+                          <div className="h-2 w-2 rounded-full bg-red-500 mr-2"></div>
                           Platform Load
                         </span>
-                        <span className="text-green-400">Normal</span>
+                        <span className="text-red-400">Normal</span>
                       </div>
                       <div className="h-2 rounded-full bg-black/50 overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-green-500 to-green-400 rounded-full" style={{ width: '35%' }}></div>
+                        <div className="h-full bg-gradient-to-r from-red-500 to-red-400 rounded-full" style={{ width: '35%' }}></div>
                       </div>
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="p-6 rounded-xl border border-purple-500/20 bg-purple-950/10 space-y-4">
+                    <div className="p-6 rounded-xl border border-red-500/20 bg-zinc-950/10 space-y-4">
                       <h3 className="text-xl font-bold flex items-center">
-                        <Sparkles className="h-5 w-5 mr-2 text-purple-400" />
+                        <Sparkles className="h-5 w-5 mr-2 text-red-400" />
                         {activeIndustry.name} Optimizations
                       </h3>
                       <div className="space-y-2">
                         {activeIndustry.paasFeatures?.slice(0, 3).map((feature, index) => (
                           <div key={index} className="flex items-start gap-3">
-                            <div className="p-1.5 rounded-full bg-purple-500/20 text-purple-300 mt-0.5">
+                            <div className="p-1.5 rounded-full bg-red-500/20 text-zinc-300 mt-0.5">
                               <Check className="h-3.5 w-3.5" />
                             </div>
                             <div>
@@ -2766,21 +2766,21 @@ export default function IndustrySolutionsPage() {
                         ))}
                       </div>
                       
-                      <Button variant="link" className="p-0 h-auto text-sm text-purple-400 hover:text-purple-300 flex items-center">
+                      <Button variant="link" className="p-0 h-auto text-sm text-red-400 hover:text-zinc-300 flex items-center">
                         View all optimizations
                         <ChevronRight className="h-3.5 w-3.5 ml-1" />
                       </Button>
                     </div>
                     
-                    <div className="p-6 rounded-xl border border-blue-500/20 bg-blue-950/10 space-y-4">
+                    <div className="p-6 rounded-xl border border-red-500/20 bg-slate-950/10 space-y-4">
                       <h3 className="text-xl font-bold flex items-center">
-                        <Shield className="h-5 w-5 mr-2 text-blue-400" />
+                        <Shield className="h-5 w-5 mr-2 text-red-400" />
                         Compliance Status
                       </h3>
                       <div className="space-y-3">
                         {activeIndustry.complianceStandards?.slice(0, 3).map((compliance, index) => (
                           <div key={index} className="flex items-start gap-3">
-                            <div className="p-1.5 rounded-full bg-blue-500/20 text-blue-300 mt-0.5">
+                            <div className="p-1.5 rounded-full bg-red-500/20 text-slate-300 mt-0.5">
                               <Check className="h-3.5 w-3.5" />
                             </div>
                             <div>
@@ -2791,7 +2791,7 @@ export default function IndustrySolutionsPage() {
                         ))}
                       </div>
                       
-                      <Button variant="link" className="p-0 h-auto text-sm text-blue-400 hover:text-blue-300 flex items-center">
+                      <Button variant="link" className="p-0 h-auto text-sm text-red-400 hover:text-slate-300 flex items-center">
                         View compliance details
                         <ChevronRight className="h-3.5 w-3.5 ml-1" />
                       </Button>
@@ -2802,7 +2802,7 @@ export default function IndustrySolutionsPage() {
                 <div className="space-y-4">
                   <div className="p-6 rounded-xl border border-white/10 bg-black/40 space-y-4">
                     <h3 className="text-xl font-bold flex items-center">
-                      <Activity className="h-5 w-5 mr-2 text-blue-400" />
+                      <Activity className="h-5 w-5 mr-2 text-red-400" />
                       Live Platform Metrics
                     </h3>
                     
@@ -2813,7 +2813,7 @@ export default function IndustrySolutionsPage() {
                           <span>{resourceMetrics.cpu[6]}%</span>
                         </div>
                         <div className="h-2 rounded-full bg-black/50 overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" style={{ width: `${resourceMetrics.cpu[6]}%` }}></div>
+                          <div className="h-full bg-gradient-to-r from-red-500 to-red-400 rounded-full" style={{ width: `${resourceMetrics.cpu[6]}%` }}></div>
                         </div>
                       </div>
                       
@@ -2823,7 +2823,7 @@ export default function IndustrySolutionsPage() {
                           <span>{resourceMetrics.memory[6]}%</span>
                         </div>
                         <div className="h-2 rounded-full bg-black/50 overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-indigo-500 to-indigo-400 rounded-full" style={{ width: `${resourceMetrics.memory[6]}%` }}></div>
+                          <div className="h-full bg-gradient-to-r from-red-500 to-red-400 rounded-full" style={{ width: `${resourceMetrics.memory[6]}%` }}></div>
                         </div>
                       </div>
                       
@@ -2833,7 +2833,7 @@ export default function IndustrySolutionsPage() {
                           <span>{resourceMetrics.network[6]}%</span>
                         </div>
                         <div className="h-2 rounded-full bg-black/50 overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-purple-500 to-purple-400 rounded-full" style={{ width: `${resourceMetrics.network[6]}%` }}></div>
+                          <div className="h-full bg-gradient-to-r from-red-500 to-red-400 rounded-full" style={{ width: `${resourceMetrics.network[6]}%` }}></div>
                         </div>
                       </div>
                       
@@ -2843,7 +2843,7 @@ export default function IndustrySolutionsPage() {
                           <span>{resourceMetrics.storage[6]}%</span>
                         </div>
                         <div className="h-2 rounded-full bg-black/50 overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-green-500 to-green-400 rounded-full" style={{ width: `${resourceMetrics.storage[6]}%` }}></div>
+                          <div className="h-full bg-gradient-to-r from-red-500 to-red-400 rounded-full" style={{ width: `${resourceMetrics.storage[6]}%` }}></div>
                         </div>
                       </div>
                     </div>
@@ -2852,7 +2852,7 @@ export default function IndustrySolutionsPage() {
                   <div className="p-6 rounded-xl border border-white/10 bg-black/40 space-y-4">
                     <h3 className="text-lg font-bold flex items-center justify-between">
                       <div className="flex items-center">
-                        <Cpu className="h-5 w-5 mr-2 text-blue-400" />
+                        <Cpu className="h-5 w-5 mr-2 text-red-400" />
                         Resource Scaling
                       </div>
                       <Badge variant="outline" className="text-xs">Live Control</Badge>
@@ -2894,7 +2894,7 @@ export default function IndustrySolutionsPage() {
                       <Button 
                         size="sm" 
                         variant="default" 
-                        className="w-full bg-blue-600 hover:bg-blue-700"
+                        className="w-full bg-red-600 hover:bg-slate-700"
                         onClick={() => simulateLoad(clusterNodes * 10)}
                       >
                         <RefreshCw className="h-3.5 w-3.5 mr-1.5" />
@@ -2910,73 +2910,73 @@ export default function IndustrySolutionsPage() {
               </div>
               
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div className="p-6 rounded-xl border border-white/10 bg-gradient-to-b from-black/60 to-blue-950/20">
+                <div className="p-6 rounded-xl border border-white/10 bg-gradient-to-b from-black/60 to-slate-950/20">
                   <h3 className="text-xl font-bold mb-4 flex items-center">
-                    <Database className="h-5 w-5 mr-2 text-blue-400" />
+                    <Database className="h-5 w-5 mr-2 text-red-400" />
                     Key Technology Stack
                   </h3>
                   
                   <div className="grid grid-cols-3 gap-4">
                     <div className="p-3 rounded-lg border border-white/10 bg-black/40 text-center">
-                      <div className="w-12 h-12 mx-auto rounded-full bg-blue-900/30 flex items-center justify-center mb-2">
-                        <Cloud className="h-6 w-6 text-blue-400" />
+                      <div className="w-12 h-12 mx-auto rounded-full bg-slate-900/30 flex items-center justify-center mb-2">
+                        <Cloud className="h-6 w-6 text-red-400" />
                       </div>
                       <div className="text-sm font-medium">Kubernetes</div>
                       <div className="text-xs text-muted-foreground">Orchestration</div>
                     </div>
                     
                     <div className="p-3 rounded-lg border border-white/10 bg-black/40 text-center">
-                      <div className="w-12 h-12 mx-auto rounded-full bg-purple-900/30 flex items-center justify-center mb-2">
-                        <Network className="h-6 w-6 text-purple-400" />
+                      <div className="w-12 h-12 mx-auto rounded-full bg-zinc-900/30 flex items-center justify-center mb-2">
+                        <Network className="h-6 w-6 text-red-400" />
                       </div>
                       <div className="text-sm font-medium">Istio</div>
                       <div className="text-xs text-muted-foreground">Service Mesh</div>
                     </div>
                     
                     <div className="p-3 rounded-lg border border-white/10 bg-black/40 text-center">
-                      <div className="w-12 h-12 mx-auto rounded-full bg-indigo-900/30 flex items-center justify-center mb-2">
-                        <Database className="h-6 w-6 text-indigo-400" />
+                      <div className="w-12 h-12 mx-auto rounded-full bg-zinc-900/30 flex items-center justify-center mb-2">
+                        <Database className="h-6 w-6 text-red-400" />
                       </div>
                       <div className="text-sm font-medium">PostgreSQL</div>
                       <div className="text-xs text-muted-foreground">Database</div>
                     </div>
                     
                     <div className="p-3 rounded-lg border border-white/10 bg-black/40 text-center">
-                      <div className="w-12 h-12 mx-auto rounded-full bg-blue-900/30 flex items-center justify-center mb-2">
-                        <LineChart className="h-6 w-6 text-blue-400" />
+                      <div className="w-12 h-12 mx-auto rounded-full bg-slate-900/30 flex items-center justify-center mb-2">
+                        <LineChart className="h-6 w-6 text-red-400" />
                       </div>
                       <div className="text-sm font-medium">Prometheus</div>
                       <div className="text-xs text-muted-foreground">Monitoring</div>
                     </div>
                     
                     <div className="p-3 rounded-lg border border-white/10 bg-black/40 text-center">
-                      <div className="w-12 h-12 mx-auto rounded-full bg-green-900/30 flex items-center justify-center mb-2">
-                        <Shield className="h-6 w-6 text-green-400" />
+                      <div className="w-12 h-12 mx-auto rounded-full bg-slate-900/30 flex items-center justify-center mb-2">
+                        <Shield className="h-6 w-6 text-red-400" />
                       </div>
                       <div className="text-sm font-medium">Vault</div>
                       <div className="text-xs text-muted-foreground">Security</div>
                     </div>
                     
                     <div className="p-3 rounded-lg border border-white/10 bg-black/40 text-center">
-                      <div className="w-12 h-12 mx-auto rounded-full bg-red-900/30 flex items-center justify-center mb-2">
+                      <div className="w-12 h-12 mx-auto rounded-full bg-slate-900/30 flex items-center justify-center mb-2">
                         <Zap className="h-6 w-6 text-red-400" />
                       </div>
-                      <div className="text-sm font-medium">Redis</div>
+                      <div className="text-sm font-medium">slateis</div>
                       <div className="text-xs text-muted-foreground">Caching</div>
                     </div>
                   </div>
                 </div>
                 
-                <div className="p-6 rounded-xl border border-white/10 bg-gradient-to-b from-black/60 to-blue-950/20">
+                <div className="p-6 rounded-xl border border-white/10 bg-gradient-to-b from-black/60 to-slate-950/20">
                   <h3 className="text-xl font-bold mb-4 flex items-center">
-                    <GitBranch className="h-5 w-5 mr-2 text-blue-400" />
+                    <GitBranch className="h-5 w-5 mr-2 text-red-400" />
                     Deployment Pipeline
                   </h3>
                   
                   <div className="flex flex-col space-y-3">
                     <div className="relative pl-8">
-                      <div className="absolute left-3 top-0 bottom-0 w-px bg-blue-500/30"></div>
-                      <div className="absolute left-1.5 top-1 h-3 w-3 rounded-full bg-blue-500"></div>
+                      <div className="absolute left-3 top-0 bottom-0 w-px bg-red-500/30"></div>
+                      <div className="absolute left-1.5 top-1 h-3 w-3 rounded-full bg-red-500"></div>
                       <div className="py-1">
                         <div className="text-sm font-medium">Code Commit</div>
                         <div className="text-xs text-muted-foreground">Secure source control with branch protection</div>
@@ -2984,8 +2984,8 @@ export default function IndustrySolutionsPage() {
                     </div>
                     
                     <div className="relative pl-8">
-                      <div className="absolute left-3 top-0 bottom-0 w-px bg-blue-500/30"></div>
-                      <div className="absolute left-1.5 top-1 h-3 w-3 rounded-full bg-blue-500"></div>
+                      <div className="absolute left-3 top-0 bottom-0 w-px bg-red-500/30"></div>
+                      <div className="absolute left-1.5 top-1 h-3 w-3 rounded-full bg-red-500"></div>
                       <div className="py-1">
                         <div className="text-sm font-medium">CI Automation</div>
                         <div className="text-xs text-muted-foreground">Automated testing and security scanning</div>
@@ -2993,8 +2993,8 @@ export default function IndustrySolutionsPage() {
                     </div>
                     
                     <div className="relative pl-8">
-                      <div className="absolute left-3 top-0 bottom-0 w-px bg-blue-500/30"></div>
-                      <div className="absolute left-1.5 top-1 h-3 w-3 rounded-full bg-blue-500"></div>
+                      <div className="absolute left-3 top-0 bottom-0 w-px bg-red-500/30"></div>
+                      <div className="absolute left-1.5 top-1 h-3 w-3 rounded-full bg-red-500"></div>
                       <div className="py-1">
                         <div className="text-sm font-medium">Artifact Building</div>
                         <div className="text-xs text-muted-foreground">Container and package creation with versioning</div>
@@ -3002,8 +3002,8 @@ export default function IndustrySolutionsPage() {
                     </div>
                     
                     <div className="relative pl-8">
-                      <div className="absolute left-3 top-0 bottom-0 w-px bg-blue-500/30"></div>
-                      <div className="absolute left-1.5 top-1 h-3 w-3 rounded-full bg-blue-500"></div>
+                      <div className="absolute left-3 top-0 bottom-0 w-px bg-red-500/30"></div>
+                      <div className="absolute left-1.5 top-1 h-3 w-3 rounded-full bg-red-500"></div>
                       <div className="py-1">
                         <div className="text-sm font-medium">Staging Deployment</div>
                         <div className="text-xs text-muted-foreground">Automated deployment to staging environment</div>
@@ -3011,8 +3011,8 @@ export default function IndustrySolutionsPage() {
                     </div>
                     
                     <div className="relative pl-8">
-                      <div className="absolute left-3 top-0 bottom-0 w-px bg-blue-500/30"></div>
-                      <div className="absolute left-1.5 top-1 h-3 w-3 rounded-full bg-blue-500"></div>
+                      <div className="absolute left-3 top-0 bottom-0 w-px bg-red-500/30"></div>
+                      <div className="absolute left-1.5 top-1 h-3 w-3 rounded-full bg-red-500"></div>
                       <div className="py-1">
                         <div className="text-sm font-medium">Integration Testing</div>
                         <div className="text-xs text-muted-foreground">Automated end-to-end testing on staging</div>
@@ -3020,7 +3020,7 @@ export default function IndustrySolutionsPage() {
                     </div>
                     
                     <div className="relative pl-8">
-                      <div className="absolute left-1.5 top-1 h-3 w-3 rounded-full bg-green-500"></div>
+                      <div className="absolute left-1.5 top-1 h-3 w-3 rounded-full bg-red-500"></div>
                       <div className="py-1">
                         <div className="text-sm font-medium">Production Deployment</div>
                         <div className="text-xs text-muted-foreground">Zero-downtime production deployment</div>
@@ -3048,8 +3048,8 @@ export default function IndustrySolutionsPage() {
                     
                     <div className="space-y-4 mt-6">
                       <div className="flex items-start gap-4">
-                        <div className="p-2.5 rounded-lg bg-blue-900/20 border border-blue-500/30">
-                          <Zap className="h-5 w-5 text-blue-400" />
+                        <div className="p-2.5 rounded-lg bg-slate-900/20 border border-red-500/30">
+                          <Zap className="h-5 w-5 text-red-400" />
                         </div>
                         <div>
                           <h4 className="font-semibold">Function-as-a-Service (FaaS)</h4>
@@ -3058,19 +3058,19 @@ export default function IndustrySolutionsPage() {
                           </p>
                           <div className="grid grid-cols-2 gap-4 mt-3">
                             <div className="flex items-center gap-2">
-                              <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                              <div className="h-2 w-2 rounded-full bg-red-500"></div>
                               <span className="text-xs">Auto-scaling</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                              <div className="h-2 w-2 rounded-full bg-red-500"></div>
                               <span className="text-xs">Event-driven</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                              <div className="h-2 w-2 rounded-full bg-red-500"></div>
                               <span className="text-xs">Pay-per-use</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                              <div className="h-2 w-2 rounded-full bg-red-500"></div>
                               <span className="text-xs">Zero maintenance</span>
                             </div>
                           </div>
@@ -3078,8 +3078,8 @@ export default function IndustrySolutionsPage() {
                       </div>
                       
                       <div className="flex items-start gap-4">
-                        <div className="p-2.5 rounded-lg bg-purple-900/20 border border-purple-500/30">
-                          <Database className="h-5 w-5 text-purple-400" />
+                        <div className="p-2.5 rounded-lg bg-zinc-900/20 border border-red-500/30">
+                          <Database className="h-5 w-5 text-red-400" />
                         </div>
                         <div>
                           <h4 className="font-semibold">Serverless Databases</h4>
@@ -3088,19 +3088,19 @@ export default function IndustrySolutionsPage() {
                           </p>
                           <div className="grid grid-cols-2 gap-4 mt-3">
                             <div className="flex items-center gap-2">
-                              <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                              <div className="h-2 w-2 rounded-full bg-red-500"></div>
                               <span className="text-xs">Automatic backups</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                              <div className="h-2 w-2 rounded-full bg-red-500"></div>
                               <span className="text-xs">Point-in-time recovery</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                              <div className="h-2 w-2 rounded-full bg-red-500"></div>
                               <span className="text-xs">Global distribution</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                              <div className="h-2 w-2 rounded-full bg-red-500"></div>
                               <span className="text-xs">Built-in encryption</span>
                             </div>
                           </div>
@@ -3109,9 +3109,9 @@ export default function IndustrySolutionsPage() {
                     </div>
                   </div>
                   
-                  <div className="p-6 rounded-xl border border-blue-500/20 bg-blue-950/10">
+                  <div className="p-6 rounded-xl border border-red-500/20 bg-slate-950/10">
                     <h4 className="text-lg font-bold mb-4">Code Sample: Serverless Function</h4>
-                    <pre className="bg-black/80 p-4 rounded-md text-xs text-blue-300 overflow-x-auto">
+                    <pre className="bg-black/80 p-4 rounded-md text-xs text-slate-300 overflow-x-auto">
 {`// Example serverless function for ${activeIndustry.name}
 export async function processTransaction(event, context) {
   // Log the event for audit purposes
@@ -3149,7 +3149,7 @@ export async function processTransaction(event, context) {
                   <div className="p-6 rounded-xl border border-white/10 bg-black/40 space-y-4">
                     <div className="flex items-center justify-between mb-4">
                       <h4 className="font-bold">Live Function Demo</h4>
-                      <Badge variant="outline" className={`${demoState.isSimulationRunning ? 'bg-green-500/20 text-green-400 border-green-500/30' : 'bg-blue-500/20 text-blue-400 border-blue-500/30'}`}>
+                      <Badge variant="outline" className={`${demoState.isSimulationRunning ? 'bg-red-500/20 text-red-400 border-red-500/30' : 'bg-red-500/20 text-red-400 border-red-500/30'}`}>
                         {demoState.isSimulationRunning ? 'Running' : 'Ready'}
                       </Badge>
                     </div>
@@ -3216,7 +3216,7 @@ export async function processTransaction(event, context) {
                     </div>
                     
                     <Button 
-                      className="w-full mt-4 bg-blue-600 hover:bg-blue-700" 
+                      className="w-full mt-4 bg-red-600 hover:bg-slate-700" 
                       onClick={() => startSimulation('serverless')}
                       disabled={demoState.isSimulationRunning}
                     >
@@ -3245,8 +3245,8 @@ export async function processTransaction(event, context) {
                     
                     {demoState.simulationResults && !demoState.isSimulationRunning && (
                       <div className="mt-4 space-y-3">
-                        <div className="p-3 rounded-lg bg-green-950/20 border border-green-500/30">
-                          <div className="text-sm font-medium text-green-400 flex items-center">
+                        <div className="p-3 rounded-lg bg-slate-950/20 border border-red-500/30">
+                          <div className="text-sm font-medium text-red-400 flex items-center">
                             <Check className="h-4 w-4 mr-1.5" />
                             Execution Successful
                           </div>
@@ -3291,7 +3291,7 @@ export async function processTransaction(event, context) {
       <section className="py-16 bg-gradient-to-b from-black via-slate-950 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <Badge variant="outline" className="mb-3 border-indigo-500/50 text-indigo-400 px-3">
+            <Badge variant="outline" className="mb-3 border-red-500/50 text-red-400 px-3">
               <Sparkles className="h-3.5 w-3.5 mr-1.5" />
               Comprehensive Solutions
             </Badge>
@@ -3306,10 +3306,10 @@ export async function processTransaction(event, context) {
             {activeIndustry.solutions.map((solution, index) => (
               <div 
                 key={index}
-                className="p-5 rounded-xl border border-white/10 bg-gradient-to-br from-slate-900 to-black/60 hover:from-blue-950/20 hover:to-indigo-950/20 hover:border-blue-500/30 transition-all duration-300"
+                className="p-5 rounded-xl border border-white/10 bg-gradient-to-br from-slate-900 to-black/60 hover:from-slate-950/20 hover:to-zinc-950/20 hover:border-red-500/30 transition-all duration-300"
               >
-                <div className="rounded-full w-10 h-10 bg-gradient-to-br from-blue-600/20 to-indigo-600/20 flex items-center justify-center mb-4">
-                  <Check className="h-5 w-5 text-blue-400" />
+                <div className="rounded-full w-10 h-10 bg-gradient-to-br from-red-600/20 to-red-600/20 flex items-center justify-center mb-4">
+                  <Check className="h-5 w-5 text-red-400" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{solution}</h3>
                 <p className="text-sm text-muted-foreground">
@@ -3332,7 +3332,7 @@ export async function processTransaction(event, context) {
               <div className="bg-gradient-to-br from-slate-900/70 to-black/70 border border-white/10 rounded-xl p-6 mb-8">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                   <div className="text-center md:text-left">
-                    <div className="text-sm text-blue-400 mb-2">Industry Average vs. Our Solution</div>
+                    <div className="text-sm text-red-400 mb-2">Industry Average vs. Our Solution</div>
                     <h4 className="text-2xl font-bold">Performance Improvement</h4>
                     <p className="text-sm text-muted-foreground mt-1 max-w-md">
                       Our {activeIndustry.name.toLowerCase()} solutions consistently outperform industry averages across all key metrics
@@ -3341,21 +3341,21 @@ export async function processTransaction(event, context) {
                   
                   <div className="flex gap-4 md:gap-8">
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-blue-400">
+                      <div className="text-4xl font-bold text-red-400">
                         {activeIndustry.successMetrics.reduce((acc, metric) => acc + metric.improvementPercentage, 0) / activeIndustry.successMetrics.length > 50 ? '2-5x' : '1.5-3x'}
                       </div>
                       <div className="text-sm text-muted-foreground">Performance Gain</div>
                     </div>
                     
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-green-400">
+                      <div className="text-4xl font-bold text-red-400">
                         {activeIndustry.successMetrics.length}+
                       </div>
                       <div className="text-sm text-muted-foreground">Key Metrics</div>
                     </div>
                     
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-indigo-400">
+                      <div className="text-4xl font-bold text-red-400">
                         100%
                       </div>
                       <div className="text-sm text-muted-foreground">Satisfied Clients</div>
@@ -3368,11 +3368,11 @@ export async function processTransaction(event, context) {
                 {activeIndustry.successMetrics.map((metric, index) => (
                   <div 
                     key={index}
-                    className="p-6 rounded-xl border border-white/10 bg-black/40 relative overflow-hidden group hover:bg-gradient-to-br hover:from-slate-900/40 hover:to-blue-950/10 transition-all duration-300 hover:border-blue-500/30"
+                    className="p-6 rounded-xl border border-white/10 bg-black/40 relative overflow-hidden group hover:bg-gradient-to-br hover:from-slate-900/40 hover:to-slate-950/10 transition-all duration-300 hover:border-red-500/30"
                   >
-                    <div className="absolute w-full h-1 -top-0 left-0 bg-gradient-to-r from-blue-500 to-indigo-500 opacity-70"></div>
+                    <div className="absolute w-full h-1 -top-0 left-0 bg-gradient-to-r from-red-500 to-red-500 opacity-70"></div>
                     <div className="flex items-start gap-4">
-                      <div className="rounded-lg p-3 bg-blue-900/20 text-blue-400">
+                      <div className="rounded-lg p-3 bg-slate-900/20 text-red-400">
                         <metric.icon className="w-6 h-6" />
                       </div>
                       <div>
@@ -3385,17 +3385,17 @@ export async function processTransaction(event, context) {
                         </div>
                         <div className="flex justify-between items-center mb-3">
                           <span className="text-sm">Our Solution</span>
-                          <span className="text-sm font-medium text-green-400">{metric.benchmarks.ourSolution}{metric.benchmarks.unit}</span>
+                          <span className="text-sm font-medium text-red-400">{metric.benchmarks.ourSolution}{metric.benchmarks.unit}</span>
                         </div>
                         
                         <div className="h-2 w-full bg-gray-900 rounded-full overflow-hidden">
                           <div 
-                            className="h-full bg-gradient-to-r from-blue-500 to-green-500 rounded-full"
+                            className="h-full bg-gradient-to-r from-red-500 to-red-500 rounded-full"
                             style={{ width: `${(metric.benchmarks.ourSolution / (metric.benchmarks.industry * 1.5)) * 100}%` }}
                           ></div>
                         </div>
                         
-                        <div className="mt-3 text-sm text-green-400 font-medium flex items-center justify-between">
+                        <div className="mt-3 text-sm text-red-400 font-medium flex items-center justify-between">
                           <span>{metric.improvementPercentage}% Improvement</span>
                           <ChevronRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
@@ -3403,11 +3403,11 @@ export async function processTransaction(event, context) {
                     </div>
                     
                     {/* Interactive tooltip that appears on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 to-indigo-900/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none p-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 to-zinc-900/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none p-6">
                       <div className="text-center">
                         <div className="text-3xl font-bold mb-2">{metric.improvementPercentage}%</div>
                         <div className="text-sm mb-4">Performance Improvement</div>
-                        <div className="text-xs text-blue-200">Click to see detailed analysis</div>
+                        <div className="text-xs text-slate-200">Click to see detailed analysis</div>
                       </div>
                     </div>
                   </div>
@@ -3415,7 +3415,7 @@ export async function processTransaction(event, context) {
               </div>
               
               <div className="mt-8 text-center">
-                <Button variant="outline" className="border-blue-500/40 bg-blue-500/10 hover:bg-blue-500/20">
+                <Button variant="outline" className="border-red-500/40 bg-red-500/10 hover:bg-red-500/20">
                   <BarChart className="h-4 w-4 mr-2" />
                   Request Performance Benchmark
                 </Button>
@@ -3428,21 +3428,21 @@ export async function processTransaction(event, context) {
             <div className="mb-16">
               <h3 className="text-2xl font-bold mb-8 text-center">Implementation Roadmap</h3>
               <div className="relative">
-                <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-indigo-500 to-purple-500 transform -translate-x-1/2 hidden md:block"></div>
+                <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-red-500 via-red-500 to-red-500 transform -translate-x-1/2 hidden md:block"></div>
                 
                 <div className="space-y-12">
                   {activeIndustry.implementationTimeline.map((phase, index) => (
                     <div key={index} className={`relative ${index % 2 === 0 ? 'md:pr-1/2' : 'md:pl-1/2 md:ml-auto'} md:w-1/2`}>
-                      <div className="hidden md:block absolute top-6 w-4 h-4 rounded-full bg-white border-4 border-blue-500 z-10 transform -translate-y-1/2 ${index % 2 === 0 ? 'right-0 translate-x-1/2' : 'left-0 -translate-x-1/2'}"></div>
+                      <div className="hidden md:block absolute top-6 w-4 h-4 rounded-full bg-white border-4 border-red-500 z-10 transform -translate-y-1/2 ${index % 2 === 0 ? 'right-0 translate-x-1/2' : 'left-0 -translate-x-1/2'}"></div>
                       
-                      <div className="rounded-xl overflow-hidden border border-white/10 bg-gradient-to-br from-black to-slate-900 hover:from-blue-950/10 hover:to-indigo-950/10 transition-all duration-300 p-6">
+                      <div className="rounded-xl overflow-hidden border border-white/10 bg-gradient-to-br from-black to-slate-900 hover:from-slate-950/10 hover:to-zinc-950/10 transition-all duration-300 p-6">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="rounded-lg p-2.5 bg-indigo-900/30 text-indigo-400">
+                          <div className="rounded-lg p-2.5 bg-zinc-900/30 text-red-400">
                             <phase.icon className="w-5 h-5" />
                           </div>
                           <div>
                             <h4 className="text-lg font-bold">{phase.name}</h4>
-                            <div className="text-sm text-blue-400">{phase.duration}</div>
+                            <div className="text-sm text-red-400">{phase.duration}</div>
                           </div>
                         </div>
                         
@@ -3454,7 +3454,7 @@ export async function processTransaction(event, context) {
                             <div className="grid grid-cols-1 gap-1.5">
                               {phase.keyMilestones.map((milestone, i) => (
                                 <div key={i} className="flex items-start gap-2">
-                                  <div className="rounded-full p-1 bg-blue-900/20 text-blue-400 mt-0.5 shrink-0">
+                                  <div className="rounded-full p-1 bg-slate-900/20 text-red-400 mt-0.5 shrink-0">
                                     <Check className="h-3 w-3" />
                                   </div>
                                   <span className="text-sm text-gray-300">{milestone}</span>
@@ -3468,7 +3468,7 @@ export async function processTransaction(event, context) {
                             <div className="grid grid-cols-1 gap-1.5">
                               {phase.deliverables.map((deliverable, i) => (
                                 <div key={i} className="flex items-start gap-2">
-                                  <div className="rounded-full p-1 bg-indigo-900/20 text-indigo-400 mt-0.5 shrink-0">
+                                  <div className="rounded-full p-1 bg-zinc-900/20 text-red-400 mt-0.5 shrink-0">
                                     <CheckCircle2 className="h-3 w-3" />
                                   </div>
                                   <span className="text-sm text-gray-300">{deliverable}</span>
@@ -3493,11 +3493,11 @@ export async function processTransaction(event, context) {
                 {activeIndustry.ecosystemPartners.map((partner, index) => (
                   <div 
                     key={index}
-                    className="flex flex-col items-center p-5 rounded-xl border border-white/10 bg-black/40 hover:border-blue-500/30 transition-all duration-300"
+                    className="flex flex-col items-center p-5 rounded-xl border border-white/10 bg-black/40 hover:border-red-500/30 transition-all duration-300"
                   >
                     <div className="w-16 h-16 mb-4 rounded-full bg-white/5 flex items-center justify-center">
                       {/* Replace with actual partner logos */}
-                      <span className="text-lg font-bold text-blue-400">{partner.name.substring(0, 2)}</span>
+                      <span className="text-lg font-bold text-red-400">{partner.name.substring(0, 2)}</span>
                     </div>
                     <h4 className="text-sm font-medium mb-1 text-center">{partner.name}</h4>
                     <p className="text-xs text-muted-foreground text-center">{partner.partnerType}</p>
@@ -3506,7 +3506,7 @@ export async function processTransaction(event, context) {
               </div>
               
               <div className="flex justify-center">
-                <Button variant="outline" className="border-blue-500/40 bg-blue-500/10 hover:bg-blue-500/20">
+                <Button variant="outline" className="border-red-500/40 bg-red-500/10 hover:bg-red-500/20">
                   <Users className="mr-2 h-4 w-4" />
                   View All Partners
                 </Button>
@@ -3519,7 +3519,7 @@ export async function processTransaction(event, context) {
       <section className="py-16 bg-gradient-to-b from-slate-950 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <Badge variant="outline" className="mb-3 border-blue-500/50 text-blue-400 px-3">
+            <Badge variant="outline" className="mb-3 border-red-500/50 text-red-400 px-3">
               <Zap className="h-3.5 w-3.5 mr-1.5" />
               Advanced Capabilities
             </Badge>
@@ -3533,8 +3533,8 @@ export async function processTransaction(event, context) {
             <div className="rounded-xl border border-white/10 bg-black/30 overflow-hidden h-full flex flex-col">
               <div className="p-6 space-y-6 flex-1">
                 <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 shrink-0">
-                    <Brain className="h-6 w-6 text-blue-400" />
+                  <div className="p-2.5 rounded-lg bg-gradient-to-br from-red-500/20 to-red-500/20 border border-red-500/30 shrink-0">
+                    <Brain className="h-6 w-6 text-red-400" />
                   </div>
                   <div>
                     <h4 className="text-xl font-bold">Predictive Analytics Engine</h4>
@@ -3546,25 +3546,25 @@ export async function processTransaction(event, context) {
                   <div className="text-sm font-medium">Key Benefits</div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>98.5% prediction accuracy</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Early trend detection</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Anomaly identification</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Custom model training</span>
@@ -3572,10 +3572,10 @@ export async function processTransaction(event, context) {
                   </div>
                 </div>
                 
-                <div className="bg-blue-950/30 border border-blue-500/20 rounded-lg p-4 space-y-3">
+                <div className="bg-slate-950/30 border border-red-500/20 rounded-lg p-4 space-y-3">
                   <div className="flex items-center justify-between">
-                    <div className="text-sm font-medium text-blue-400">Interactive Demo</div>
-                    <Badge variant="outline" className="text-xs border-blue-500/30 text-blue-400">
+                    <div className="text-sm font-medium text-red-400">Interactive Demo</div>
+                    <Badge variant="outline" className="text-xs border-red-500/30 text-red-400">
                       Live Preview
                     </Badge>
                   </div>
@@ -3595,7 +3595,7 @@ export async function processTransaction(event, context) {
                       <Progress value={92} className="h-1.5" />
                     </div>
                   </div>
-                  <Button size="sm" variant="outline" className="w-full border-blue-500/30 text-blue-400 hover:bg-blue-950/50">
+                  <Button size="sm" variant="outline" className="w-full border-red-500/30 text-red-400 hover:bg-slate-950/50">
                     <Play className="h-3.5 w-3.5 mr-1.5" />
                     Run Demo
                   </Button>
@@ -3606,8 +3606,8 @@ export async function processTransaction(event, context) {
             <div className="rounded-xl border border-white/10 bg-black/30 overflow-hidden h-full flex flex-col">
               <div className="p-6 space-y-6 flex-1">
                 <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-lg bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 shrink-0">
-                    <Shield className="h-6 w-6 text-indigo-400" />
+                  <div className="p-2.5 rounded-lg bg-gradient-to-br from-red-500/20 to-red-500/20 border border-red-500/30 shrink-0">
+                    <Shield className="h-6 w-6 text-red-400" />
                   </div>
                   <div>
                     <h4 className="text-xl font-bold">Security & Compliance Framework</h4>
@@ -3619,25 +3619,25 @@ export async function processTransaction(event, context) {
                   <div className="text-sm font-medium">Key Benefits</div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Quantum-resistant encryption</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Automated compliance</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Threat intelligence</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Identity-based access</span>
@@ -3645,42 +3645,42 @@ export async function processTransaction(event, context) {
                   </div>
                 </div>
                 
-                <div className="bg-indigo-950/30 border border-indigo-500/20 rounded-lg p-4 space-y-3">
+                <div className="bg-zinc-950/30 border border-red-500/20 rounded-lg p-4 space-y-3">
                   <div className="flex items-center justify-between">
-                    <div className="text-sm font-medium text-indigo-400">Compliance Status</div>
-                    <Badge variant="outline" className="text-xs border-indigo-500/30 text-indigo-400">
+                    <div className="text-sm font-medium text-red-400">Compliance Status</div>
+                    <Badge variant="outline" className="text-xs border-red-500/30 text-red-400">
                       Live Status
                     </Badge>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-3">
                     <div className="flex items-center gap-2 bg-black/30 rounded p-2.5">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400">
                         <Check className="h-3.5 w-3.5" />
                       </div>
                       <span className="text-xs font-medium">GDPR</span>
                     </div>
                     <div className="flex items-center gap-2 bg-black/30 rounded p-2.5">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400">
                         <Check className="h-3.5 w-3.5" />
                       </div>
                       <span className="text-xs font-medium">ISO 27001</span>
                     </div>
                     <div className="flex items-center gap-2 bg-black/30 rounded p-2.5">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400">
                         <Check className="h-3.5 w-3.5" />
                       </div>
                       <span className="text-xs font-medium">HIPAA</span>
                     </div>
                     <div className="flex items-center gap-2 bg-black/30 rounded p-2.5">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400">
                         <Check className="h-3.5 w-3.5" />
                       </div>
                       <span className="text-xs font-medium">SOC 2</span>
                     </div>
                   </div>
                   
-                  <Button size="sm" variant="outline" className="w-full border-indigo-500/30 text-indigo-400 hover:bg-indigo-950/50">
+                  <Button size="sm" variant="outline" className="w-full border-red-500/30 text-red-400 hover:bg-zinc-950/50">
                     <ShieldCheck className="h-3.5 w-3.5 mr-1.5" />
                     Security Assessment
                   </Button>
@@ -3695,7 +3695,7 @@ export async function processTransaction(event, context) {
       <section className="py-16 bg-gradient-to-b from-black to-slate-950">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <Badge variant="outline" className="mb-3 border-blue-500/50 text-blue-400 px-3">
+            <Badge variant="outline" className="mb-3 border-red-500/50 text-red-400 px-3">
               <GitBranch className="h-3.5 w-3.5 mr-1.5" />
               Seamless Integration
             </Badge>
@@ -3709,10 +3709,10 @@ export async function processTransaction(event, context) {
             {integrations.map((integration: Integration, index: number) => (
               <div 
                 key={index} 
-                className="border border-white/10 rounded-lg p-4 flex flex-col items-center justify-center text-center hover:border-blue-500/30 hover:bg-blue-900/5 transition-all duration-300 h-full group"
+                className="border border-white/10 rounded-lg p-4 flex flex-col items-center justify-center text-center hover:border-red-500/30 hover:bg-slate-900/5 transition-all duration-300 h-full group"
               >
-                <div className="p-3 rounded-full bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-white/10 group-hover:border-blue-500/20 mb-3">
-                  <integration.icon className="h-6 w-6 text-blue-400" />
+                <div className="p-3 rounded-full bg-gradient-to-br from-red-500/10 to-red-500/10 border border-white/10 group-hover:border-red-500/20 mb-3">
+                  <integration.icon className="h-6 w-6 text-red-400" />
                 </div>
                 <div className="text-sm font-medium">{integration.name}</div>
                 <div className="text-xs text-muted-foreground mt-1">{integration.category}</div>
@@ -3723,10 +3723,10 @@ export async function processTransaction(event, context) {
       </section>
 
       {/* Comprehensive Compliance & Security Section */}
-      <section className="py-16 bg-gradient-to-br from-slate-950 via-blue-950/10 to-slate-950">
+      <section className="py-16 bg-gradient-to-br from-slate-950 via-slate-950/10 to-slate-950">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <Badge variant="outline" className="mb-3 border-green-500/50 text-green-400 px-3">
+            <Badge variant="outline" className="mb-3 border-red-500/50 text-red-400 px-3">
               <ShieldCheck className="h-3.5 w-3.5 mr-1.5" />
               Enterprise-Grade Protection
             </Badge>
@@ -3747,13 +3747,13 @@ export async function processTransaction(event, context) {
                     className="p-6 rounded-xl border border-white/10 bg-black/40 hover:bg-black/50 transition-all duration-300 relative overflow-hidden group"
                   >
                     {standard.industrySpecific && (
-                      <div className="absolute top-0 right-0 bg-green-500/90 text-xs font-medium text-white px-2 py-1 rounded-bl-md">
+                      <div className="absolute top-0 right-0 bg-red-500/90 text-xs font-medium text-white px-2 py-1 rounded-bl-md">
                         Industry-Specific
                       </div>
                     )}
                     
                     <div className="flex items-start gap-4">
-                      <div className="rounded-lg p-3 bg-green-900/20 text-green-400 shrink-0">
+                      <div className="rounded-lg p-3 bg-slate-900/20 text-red-400 shrink-0">
                         <standard.icon className="w-5 h-5" />
                       </div>
                       <div>
@@ -3766,14 +3766,14 @@ export async function processTransaction(event, context) {
                             <div className="space-y-1.5">
                               {standard.requirements.slice(0, 3).map((req, i) => (
                                 <div key={i} className="flex items-start gap-2">
-                                  <div className="rounded-full p-1 bg-green-900/20 text-green-400 mt-0.5 shrink-0">
+                                  <div className="rounded-full p-1 bg-slate-900/20 text-red-400 mt-0.5 shrink-0">
                                     <Check className="h-3 w-3" />
                                   </div>
                                   <span className="text-sm text-gray-300">{req}</span>
                                 </div>
                               ))}
                               {standard.requirements.length > 3 && (
-                                <div className="text-xs text-blue-400 pl-6 hover:underline cursor-pointer">
+                                <div className="text-xs text-red-400 pl-6 hover:underline cursor-pointer">
                                   +{standard.requirements.length - 3} more requirements
                                 </div>
                               )}
@@ -3806,11 +3806,11 @@ export async function processTransaction(event, context) {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="md:col-span-1 space-y-6">
                   <div className="rounded-xl border border-white/10 bg-gradient-to-br from-slate-900 to-black p-6 relative overflow-hidden">
-                    <div className="absolute -right-8 -top-8 w-24 h-24 rounded-full bg-green-500/20 blur-xl"></div>
-                    <div className="absolute -left-8 -bottom-8 w-24 h-24 rounded-full bg-blue-500/20 blur-xl"></div>
+                    <div className="absolute -right-8 -top-8 w-24 h-24 rounded-full bg-red-500/20 blur-xl"></div>
+                    <div className="absolute -left-8 -bottom-8 w-24 h-24 rounded-full bg-red-500/20 blur-xl"></div>
                     
                     <h4 className="text-xl font-bold mb-6 flex items-center">
-                      <ShieldCheck className="h-5 w-5 mr-2 text-green-400" />
+                      <ShieldCheck className="h-5 w-5 mr-2 text-red-400" />
                       Security By Design
                     </h4>
 
@@ -3823,13 +3823,13 @@ export async function processTransaction(event, context) {
                         <div className="text-sm font-medium mb-3">Security Posture Score</div>
                         <div className="flex items-center gap-2">
                           <div className="flex-1 h-2.5 bg-gray-900 rounded-full overflow-hidden">
-                            <div className="h-full bg-gradient-to-r from-green-500 to-green-400 rounded-full" style={{width: "95%"}}></div>
+                            <div className="h-full bg-gradient-to-r from-red-500 to-red-400 rounded-full" style={{width: "95%"}}></div>
                           </div>
-                          <div className="text-sm font-bold text-green-400">95/100</div>
+                          <div className="text-sm font-bold text-red-400">95/100</div>
                         </div>
                       </div>
                       
-                      <Button variant="default" className="w-full bg-green-600 hover:bg-green-700 mt-4">
+                      <Button variant="default" className="w-full bg-red-600 hover:bg-slate-700 mt-4">
                         <FileText className="h-4 w-4 mr-2" />
                         Security Whitepaper
                       </Button>
@@ -3842,35 +3842,35 @@ export async function processTransaction(event, context) {
                       <div className="flex items-center justify-between">
                         <div className="text-sm">Threat Detection</div>
                         <div className="flex items-center">
-                          <Activity className="h-4 w-4 text-green-400 mr-1.5" />
+                          <Activity className="h-4 w-4 text-red-400 mr-1.5" />
                           <span className="text-sm">Active</span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="text-sm">Vulnerability Scanning</div>
                         <div className="flex items-center">
-                          <Activity className="h-4 w-4 text-green-400 mr-1.5" />
+                          <Activity className="h-4 w-4 text-red-400 mr-1.5" />
                           <span className="text-sm">Active</span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="text-sm">Compliance Auditing</div>
                         <div className="flex items-center">
-                          <Activity className="h-4 w-4 text-green-400 mr-1.5" />
+                          <Activity className="h-4 w-4 text-red-400 mr-1.5" />
                           <span className="text-sm">Active</span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="text-sm">Access Control</div>
                         <div className="flex items-center">
-                          <Activity className="h-4 w-4 text-green-400 mr-1.5" />
+                          <Activity className="h-4 w-4 text-red-400 mr-1.5" />
                           <span className="text-sm">Active</span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="text-sm">Data Loss Prevention</div>
                         <div className="flex items-center">
-                          <Activity className="h-4 w-4 text-green-400 mr-1.5" />
+                          <Activity className="h-4 w-4 text-red-400 mr-1.5" />
                           <span className="text-sm">Active</span>
                         </div>
                       </div>
@@ -3883,10 +3883,10 @@ export async function processTransaction(event, context) {
                     {activeIndustry.securityFeatures.map((feature, index) => (
                       <div 
                         key={index}
-                        className="rounded-xl border border-white/10 bg-black/40 p-5 hover:bg-black/60 hover:border-blue-500/30 transition-all duration-300"
+                        className="rounded-xl border border-white/10 bg-black/40 p-5 hover:bg-black/60 hover:border-red-500/30 transition-all duration-300"
                       >
                         <div className="flex items-start gap-3">
-                          <div className="rounded-lg p-2.5 bg-blue-900/20 text-blue-400 shrink-0">
+                          <div className="rounded-lg p-2.5 bg-slate-900/20 text-red-400 shrink-0">
                             <feature.icon className="w-5 h-5" />
                           </div>
                           <div>
@@ -3895,7 +3895,7 @@ export async function processTransaction(event, context) {
                             
                             <div className="space-y-2">
                               <div>
-                                <div className="text-xs font-medium mb-1 text-blue-400">Features</div>
+                                <div className="text-xs font-medium mb-1 text-red-400">Features</div>
                                 <div className="flex flex-wrap gap-1.5">
                                   {feature.features?.slice(0, 3).map((item, i) => (
                                     <div key={i} className="text-xs bg-white/5 text-gray-300 rounded-full px-2 py-0.5">
@@ -3903,7 +3903,7 @@ export async function processTransaction(event, context) {
                                     </div>
                                   ))}
                                   {feature.features?.length > 3 && (
-                                    <div className="text-xs text-blue-400 cursor-pointer hover:underline">
+                                    <div className="text-xs text-red-400 cursor-pointer hover:underline">
                                       +{feature.features.length - 3} more
                                     </div>
                                   )}
@@ -3911,15 +3911,15 @@ export async function processTransaction(event, context) {
                               </div>
                               
                               <div>
-                                <div className="text-xs font-medium mb-1 text-green-400">Standards</div>
+                                <div className="text-xs font-medium mb-1 text-red-400">Standards</div>
                                 <div className="flex flex-wrap gap-1.5">
                                   {feature.standards?.slice(0, 2).map((item, i) => (
-                                    <div key={i} className="text-xs bg-green-900/10 text-green-400 rounded-full px-2 py-0.5">
+                                    <div key={i} className="text-xs bg-slate-900/10 text-red-400 rounded-full px-2 py-0.5">
                                       {item}
                                     </div>
                                   ))}
                                   {feature.standards?.length > 2 && (
-                                    <div className="text-xs text-green-400 cursor-pointer hover:underline">
+                                    <div className="text-xs text-red-400 cursor-pointer hover:underline">
                                       +{feature.standards.length - 2} more
                                     </div>
                                   )}
@@ -3937,7 +3937,7 @@ export async function processTransaction(event, context) {
           )}
           
           <div className="mt-12 text-center">
-            <Button variant="default" className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700">
+            <Button variant="default" className="bg-gradient-to-r from-red-600 to-red-600 hover:from-slate-700 hover:to-slate-700">
               Request Security Assessment
             </Button>
           </div>
@@ -3945,10 +3945,10 @@ export async function processTransaction(event, context) {
       </section>
 
       {/* ROI Calculator Section */}
-      <section className="py-16 bg-gradient-to-b from-slate-950 via-blue-950/10 to-slate-950">
+      <section className="py-16 bg-gradient-to-b from-slate-950 via-slate-950/10 to-slate-950">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <Badge variant="outline" className="mb-3 border-green-500/50 text-green-400 px-3">
+            <Badge variant="outline" className="mb-3 border-red-500/50 text-red-400 px-3">
               <Rocket className="h-3.5 w-3.5 mr-1.5" />
               ROI Calculator
             </Badge>
@@ -3962,8 +3962,8 @@ export async function processTransaction(event, context) {
             <div className="rounded-xl border border-white/10 bg-black/30 overflow-hidden h-full flex flex-col">
               <div className="p-6 space-y-6 flex-1">
                 <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 shrink-0">
-                    <Brain className="h-6 w-6 text-blue-400" />
+                  <div className="p-2.5 rounded-lg bg-gradient-to-br from-red-500/20 to-red-500/20 border border-red-500/30 shrink-0">
+                    <Brain className="h-6 w-6 text-red-400" />
                   </div>
                   <div>
                     <h4 className="text-xl font-bold">Predictive Analytics Engine</h4>
@@ -3975,25 +3975,25 @@ export async function processTransaction(event, context) {
                   <div className="text-sm font-medium">Key Benefits</div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>98.5% prediction accuracy</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Early trend detection</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Anomaly identification</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Custom model training</span>
@@ -4001,10 +4001,10 @@ export async function processTransaction(event, context) {
                   </div>
                 </div>
                 
-                <div className="bg-blue-950/30 border border-blue-500/20 rounded-lg p-4 space-y-3">
+                <div className="bg-slate-950/30 border border-red-500/20 rounded-lg p-4 space-y-3">
                   <div className="flex items-center justify-between">
-                    <div className="text-sm font-medium text-blue-400">Interactive Demo</div>
-                    <Badge variant="outline" className="text-xs border-blue-500/30 text-blue-400">
+                    <div className="text-sm font-medium text-red-400">Interactive Demo</div>
+                    <Badge variant="outline" className="text-xs border-red-500/30 text-red-400">
                       Live Preview
                     </Badge>
                   </div>
@@ -4024,7 +4024,7 @@ export async function processTransaction(event, context) {
                       <Progress value={92} className="h-1.5" />
                     </div>
                   </div>
-                  <Button size="sm" variant="outline" className="w-full border-blue-500/30 text-blue-400 hover:bg-blue-950/50">
+                  <Button size="sm" variant="outline" className="w-full border-red-500/30 text-red-400 hover:bg-slate-950/50">
                     <Play className="h-3.5 w-3.5 mr-1.5" />
                     Run Demo
                   </Button>
@@ -4035,8 +4035,8 @@ export async function processTransaction(event, context) {
             <div className="rounded-xl border border-white/10 bg-black/30 overflow-hidden h-full flex flex-col">
               <div className="p-6 space-y-6 flex-1">
                 <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-lg bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 shrink-0">
-                    <Shield className="h-6 w-6 text-indigo-400" />
+                  <div className="p-2.5 rounded-lg bg-gradient-to-br from-red-500/20 to-red-500/20 border border-red-500/30 shrink-0">
+                    <Shield className="h-6 w-6 text-red-400" />
                   </div>
                   <div>
                     <h4 className="text-xl font-bold">Security & Compliance Framework</h4>
@@ -4048,25 +4048,25 @@ export async function processTransaction(event, context) {
                   <div className="text-sm font-medium">Key Benefits</div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Quantum-resistant encryption</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Automated compliance</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Threat intelligence</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                         <Check className="h-3 w-3" />
                       </div>
                       <span>Identity-based access</span>
@@ -4074,42 +4074,42 @@ export async function processTransaction(event, context) {
                   </div>
                 </div>
                 
-                <div className="bg-indigo-950/30 border border-indigo-500/20 rounded-lg p-4 space-y-3">
+                <div className="bg-zinc-950/30 border border-red-500/20 rounded-lg p-4 space-y-3">
                   <div className="flex items-center justify-between">
-                    <div className="text-sm font-medium text-indigo-400">Compliance Status</div>
-                    <Badge variant="outline" className="text-xs border-indigo-500/30 text-indigo-400">
+                    <div className="text-sm font-medium text-red-400">Compliance Status</div>
+                    <Badge variant="outline" className="text-xs border-red-500/30 text-red-400">
                       Live Status
                     </Badge>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-3">
                     <div className="flex items-center gap-2 bg-black/30 rounded p-2.5">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400">
                         <Check className="h-3.5 w-3.5" />
                       </div>
                       <span className="text-xs font-medium">GDPR</span>
                     </div>
                     <div className="flex items-center gap-2 bg-black/30 rounded p-2.5">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400">
                         <Check className="h-3.5 w-3.5" />
                       </div>
                       <span className="text-xs font-medium">ISO 27001</span>
                     </div>
                     <div className="flex items-center gap-2 bg-black/30 rounded p-2.5">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400">
                         <Check className="h-3.5 w-3.5" />
                       </div>
                       <span className="text-xs font-medium">HIPAA</span>
                     </div>
                     <div className="flex items-center gap-2 bg-black/30 rounded p-2.5">
-                      <div className="p-1 rounded-full bg-green-500/20 text-green-400">
+                      <div className="p-1 rounded-full bg-red-500/20 text-red-400">
                         <Check className="h-3.5 w-3.5" />
                       </div>
                       <span className="text-xs font-medium">SOC 2</span>
                     </div>
                   </div>
                   
-                  <Button size="sm" variant="outline" className="w-full border-indigo-500/30 text-indigo-400 hover:bg-indigo-950/50">
+                  <Button size="sm" variant="outline" className="w-full border-red-500/30 text-red-400 hover:bg-zinc-950/50">
                     <ShieldCheck className="h-3.5 w-3.5 mr-1.5" />
                     Security Assessment
                   </Button>
@@ -4122,10 +4122,10 @@ export async function processTransaction(event, context) {
       
       {/* Competitive Advantage Matrix */}
       {activeIndustry.comparisonMatrix && (
-        <section className="py-16 bg-gradient-to-br from-black to-purple-950/20">
+        <section className="py-16 bg-gradient-to-br from-black to-zinc-950/20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center mb-12">
-              <Badge variant="outline" className="mb-3 border-purple-500/50 text-purple-400 px-3">
+              <Badge variant="outline" className="mb-3 border-red-500/50 text-red-400 px-3">
                 <LineChart className="h-3.5 w-3.5 mr-1.5" />
                 Competitive Analysis
               </Badge>
@@ -4180,12 +4180,12 @@ export async function processTransaction(event, context) {
 
       {/* AI Solutions Showcase */}
       {activeIndustry.aiSolutions && (
-        <section className="py-16 bg-gradient-to-br from-black via-indigo-950/10 to-black">
+        <section className="py-16 bg-gradient-to-br from-black via-zinc-950/10 to-black">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center mb-12">
-              <Badge variant="outline" className="mb-3 border-indigo-500/50 text-indigo-400 px-3">
+              <Badge variant="outline" className="mb-3 border-red-500/50 text-red-400 px-3">
                 <Brain className="h-3.5 w-3.5 mr-1.5" />
-                AI-Powered Solutions
+                AI-powered Solutions
               </Badge>
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">Advanced AI Capabilities</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -4194,14 +4194,14 @@ export async function processTransaction(event, context) {
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="rounded-xl border border-white/10 bg-gradient-to-br from-indigo-950/20 to-black/60 p-6 relative overflow-hidden">
-                <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-indigo-500/10 blur-xl"></div>
-                <div className="absolute -left-10 -bottom-10 w-40 h-40 rounded-full bg-blue-500/10 blur-xl"></div>
+              <div className="rounded-xl border border-white/10 bg-gradient-to-br from-zinc-950/20 to-black/60 p-6 relative overflow-hidden">
+                <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-red-500/10 blur-xl"></div>
+                <div className="absolute -left-10 -bottom-10 w-40 h-40 rounded-full bg-red-500/10 blur-xl"></div>
                 
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-6">
                     <h3 className="text-2xl font-bold">AI Solution Performance</h3>
-                    <Badge variant="outline" className="border-blue-500/50 text-blue-400">Enterprise-Grade</Badge>
+                    <Badge variant="outline" className="border-red-500/50 text-red-400">Enterprise-Grade</Badge>
                   </div>
                   
                   <div className="space-y-6">
@@ -4209,14 +4209,14 @@ export async function processTransaction(event, context) {
                       <div key={index} className="space-y-2">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
-                            <solution.icon className="h-4.5 w-4.5 text-indigo-400" />
+                            <solution.icon className="h-4.5 w-4.5 text-red-400" />
                             <div className="text-sm font-medium">{solution.title}</div>
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <div className="text-xs font-medium bg-green-900/20 text-green-400 px-2 py-0.5 rounded-full">
+                            <div className="text-xs font-medium bg-slate-900/20 text-red-400 px-2 py-0.5 rounded-full">
                               {solution.performance.accuracy}% Accuracy
                             </div>
-                            <div className="text-xs font-medium bg-blue-900/20 text-blue-400 px-2 py-0.5 rounded-full">
+                            <div className="text-xs font-medium bg-slate-900/20 text-red-400 px-2 py-0.5 rounded-full">
                               {solution.performance.latency}ms
                             </div>
                           </div>
@@ -4224,7 +4224,7 @@ export async function processTransaction(event, context) {
                         
                         <div className="h-1.5 w-full bg-black/40 rounded-full overflow-hidden">
                           <div 
-                            className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"
+                            className="h-full bg-gradient-to-r from-red-500 to-red-500 rounded-full"
                             style={{ width: `${solution.performance.scalability}%` }}
                           ></div>
                         </div>
@@ -4237,7 +4237,7 @@ export async function processTransaction(event, context) {
                     ))}
                   </div>
                   
-                  <Button variant="default" className="mt-6 w-full bg-indigo-600 hover:bg-indigo-700">
+                  <Button variant="default" className="mt-6 w-full bg-red-600 hover:bg-zinc-700">
                     <Play className="h-4 w-4 mr-2" />
                     Schedule AI Demo
                   </Button>
@@ -4250,7 +4250,7 @@ export async function processTransaction(event, context) {
                     <AccordionItem value={`item-${index}`} className="border border-white/10 rounded-xl overflow-hidden bg-black/40">
                       <AccordionTrigger className="px-6 py-4 hover:bg-white/5">
                         <div className="flex items-center gap-3 text-left">
-                          <div className="rounded-lg p-2.5 bg-indigo-900/20 text-indigo-400 shrink-0">
+                          <div className="rounded-lg p-2.5 bg-zinc-900/20 text-red-400 shrink-0">
                             <solution.icon className="w-5 h-5" />
                           </div>
                           <div>
@@ -4262,11 +4262,11 @@ export async function processTransaction(event, context) {
                       <AccordionContent className="px-6 pb-4">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                           <div>
-                            <div className="text-sm font-medium mb-2 text-indigo-400">Key Capabilities</div>
+                            <div className="text-sm font-medium mb-2 text-red-400">Key Capabilities</div>
                             <div className="space-y-1.5">
                               {solution.capabilities.map((capability, i) => (
                                 <div key={i} className="flex items-start gap-2">
-                                  <div className="rounded-full p-1 bg-indigo-900/20 text-indigo-400 mt-0.5 shrink-0">
+                                  <div className="rounded-full p-1 bg-zinc-900/20 text-red-400 mt-0.5 shrink-0">
                                     <Check className="h-3 w-3" />
                                   </div>
                                   <span className="text-sm text-gray-300">{capability}</span>
@@ -4276,11 +4276,11 @@ export async function processTransaction(event, context) {
                           </div>
                           
                           <div>
-                            <div className="text-sm font-medium mb-2 text-blue-400">Use Cases</div>
+                            <div className="text-sm font-medium mb-2 text-red-400">Use Cases</div>
                             <div className="space-y-1.5">
                               {solution.useCases.map((useCase, i) => (
                                 <div key={i} className="flex items-start gap-2">
-                                  <div className="rounded-full p-1 bg-blue-900/20 text-blue-400 mt-0.5 shrink-0">
+                                  <div className="rounded-full p-1 bg-slate-900/20 text-red-400 mt-0.5 shrink-0">
                                     <CheckCircle2 className="h-3 w-3" />
                                   </div>
                                   <span className="text-sm text-gray-300">{useCase}</span>
@@ -4295,15 +4295,15 @@ export async function processTransaction(event, context) {
                           <div className="grid grid-cols-3 gap-3">
                             <div className="p-3 rounded-lg bg-black/40 border border-white/10">
                               <div className="text-xs text-muted-foreground mb-1">Accuracy</div>
-                              <div className="text-lg font-bold text-green-400">{solution.performance.accuracy}%</div>
+                              <div className="text-lg font-bold text-red-400">{solution.performance.accuracy}%</div>
                             </div>
                             <div className="p-3 rounded-lg bg-black/40 border border-white/10">
                               <div className="text-xs text-muted-foreground mb-1">Latency</div>
-                              <div className="text-lg font-bold text-blue-400">{solution.performance.latency}ms</div>
+                              <div className="text-lg font-bold text-red-400">{solution.performance.latency}ms</div>
                             </div>
                             <div className="p-3 rounded-lg bg-black/40 border border-white/10">
                               <div className="text-xs text-muted-foreground mb-1">Scalability</div>
-                              <div className="text-lg font-bold text-indigo-400">{solution.performance.scalability}/100</div>
+                              <div className="text-lg font-bold text-red-400">{solution.performance.scalability}/100</div>
                             </div>
                           </div>
                         </div>
@@ -4329,16 +4329,16 @@ export async function processTransaction(event, context) {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <div className="bg-gradient-to-br from-blue-900/40 to-indigo-900/40 rounded-lg overflow-hidden mb-4">
+                  <div className="bg-gradient-to-br from-slate-900/40 to-zinc-900/40 rounded-lg overflow-hidden mb-4">
                     <div className="aspect-video bg-cover bg-center" style={{ backgroundImage: `url(${activeCaseStudy.imageUrl || '/images/case-studies/placeholder.jpg'})` }}></div>
                   </div>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-lg font-bold text-blue-400">Challenge</h4>
+                      <h4 className="text-lg font-bold text-red-400">Challenge</h4>
                       <p className="text-sm text-muted-foreground">{activeCaseStudy.challenge}</p>
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-indigo-400">Solution</h4>
+                      <h4 className="text-lg font-bold text-red-400">Solution</h4>
                       <p className="text-sm text-muted-foreground">{activeCaseStudy.solution}</p>
                     </div>
                   </div>
@@ -4349,7 +4349,7 @@ export async function processTransaction(event, context) {
                   <div className="space-y-4">
                     {activeCaseStudy.results.map((result, index) => (
                       <div key={index} className="flex items-start gap-3">
-                        <div className="rounded-full p-2 bg-green-900/20 text-green-400 shrink-0">
+                        <div className="rounded-full p-2 bg-slate-900/20 text-red-400 shrink-0">
                           <TrendingUp className="h-5 w-5" />
                         </div>
                         <div>
@@ -4360,7 +4360,7 @@ export async function processTransaction(event, context) {
                   </div>
                   
                   <div className="mt-8">
-                    <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600">
+                    <Button className="w-full bg-gradient-to-r from-red-600 to-red-600">
                       Download Full Case Study
                     </Button>
                   </div>
@@ -4374,7 +4374,7 @@ export async function processTransaction(event, context) {
            <section className="py-16 bg-black">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-10">
-            <Badge variant="outline" className="mb-3 border-blue-500/50 text-blue-400 px-3">
+            <Badge variant="outline" className="mb-3 border-red-500/50 text-red-400 px-3">
               <CheckCircle2 className="h-3.5 w-3.5 mr-1.5" />
               Success Stories
             </Badge>
@@ -4418,10 +4418,10 @@ export async function processTransaction(event, context) {
             ).map((caseStudy, index) => (
               <Card 
                 key={index}
-                className="group border-white/10 bg-black/30 backdrop-blur-sm overflow-hidden hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col relative"
+                className="group border-white/10 bg-black/30 backdrop-blur-sm overflow-hidden hover:border-red-500/50 transition-all duration-300 h-full flex flex-col relative"
               >
                 {/* Background Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 {/* Image Section */}
                 <div className="h-48 overflow-hidden relative">
@@ -4433,7 +4433,7 @@ export async function processTransaction(event, context) {
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-900/40 to-indigo-900/40">
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-900/40 to-zinc-900/40">
                       <Building2 className="h-16 w-16 text-white/30" />
                     </div>
                   )}
@@ -4444,7 +4444,7 @@ export async function processTransaction(event, context) {
                       </div>
                       <div>
                         <div className="text-lg font-bold line-clamp-1">{caseStudy.company}</div>
-                        <div className="text-sm text-blue-300/80">{caseStudy.industry}</div>
+                        <div className="text-sm text-slate-300/80">{caseStudy.industry}</div>
                       </div>
                     </div>
                   </div>
@@ -4467,10 +4467,10 @@ export async function processTransaction(event, context) {
                     {/* Solution Section */}
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <div className="h-6 w-6 rounded-full bg-blue-500/20 flex items-center justify-center">
-                          <Lightbulb className="h-3 w-3 text-blue-400" />
+                        <div className="h-6 w-6 rounded-full bg-red-500/20 flex items-center justify-center">
+                          <Lightbulb className="h-3 w-3 text-red-400" />
                         </div>
-                        <h4 className="text-sm font-medium text-blue-400">Solution</h4>
+                        <h4 className="text-sm font-medium text-red-400">Solution</h4>
                       </div>
                       <p className="text-sm text-white/70 group-hover:text-white/90 transition-colors">{caseStudy.solution}</p>
                     </div>
@@ -4478,15 +4478,15 @@ export async function processTransaction(event, context) {
                     {/* Results Section */}
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <div className="h-6 w-6 rounded-full bg-green-500/20 flex items-center justify-center">
-                          <TrendingUp className="h-3 w-3 text-green-400" />
+                        <div className="h-6 w-6 rounded-full bg-red-500/20 flex items-center justify-center">
+                          <TrendingUp className="h-3 w-3 text-red-400" />
                         </div>
-                        <h4 className="text-sm font-medium text-green-400">Results</h4>
+                        <h4 className="text-sm font-medium text-red-400">Results</h4>
                       </div>
                       <div className="space-y-2">
                         {caseStudy.results.map((result, idx) => (
                           <div key={idx} className="flex items-start gap-2">
-                            <div className="rounded-full p-1 bg-green-500/20 text-green-400 mt-0.5 shrink-0">
+                            <div className="rounded-full p-1 bg-red-500/20 text-red-400 mt-0.5 shrink-0">
                               <Check className="h-3 w-3" />
                             </div>
                             <span className="text-xs text-white/70 group-hover:text-white/90 transition-colors">{result}</span>
@@ -4500,7 +4500,7 @@ export async function processTransaction(event, context) {
                   <div className="mt-6 pt-4 border-t border-white/10">
                     <Button 
                       variant="ghost" 
-                      className="w-full text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 p-2 h-auto font-medium text-sm flex items-center justify-center gap-2 group/btn"
+                      className="w-full text-red-400 hover:text-slate-300 hover:bg-red-500/10 p-2 h-auto font-medium text-sm flex items-center justify-center gap-2 group/btn"
                       onClick={() => openCaseStudy(caseStudy)}
                     >
                       View Full Case Study
@@ -4515,30 +4515,30 @@ export async function processTransaction(event, context) {
       </section>
 
       {/* Comprehensive CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-950 via-indigo-950/50 to-slate-950 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-slate-950 via-zinc-950/50 to-slate-950 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-10 z-0"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <Badge variant="outline" className="mb-3 border-blue-500/50 text-blue-400 px-3">
+              <Badge variant="outline" className="mb-3 border-red-500/50 text-red-400 px-3">
                 <Rocket className="h-3.5 w-3.5 mr-1.5" />
                 Start Your Transformation
               </Badge>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-200 to-indigo-200">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-zinc-200">
                 Transform Your {activeIndustry.name} Operations
               </h2>
-              <p className="text-xl text-blue-100/80 max-w-3xl mx-auto mb-8">
+              <p className="text-xl text-slate-100/80 max-w-3xl mx-auto mb-8">
                 Join leading organizations that have revolutionized their business with our enterprise solutions.
               </p>
               
               <div className="flex flex-wrap justify-center gap-4 mb-12">
-                <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-md px-8 py-6 font-medium text-lg">
+                <Button className="bg-gradient-to-r from-red-600 to-red-600 hover:from-slate-700 hover:to-zinc-700 text-white rounded-md px-8 py-6 font-medium text-lg">
                   Schedule a Demo
                 </Button>
-                <Button variant="outline" className="border-blue-500/40 bg-blue-500/10 hover:bg-blue-500/20 text-white rounded-md px-8 py-6 font-medium text-lg">
+                <Button variant="outline" className="border-red-500/40 bg-red-500/10 hover:bg-red-500/20 text-white rounded-md px-8 py-6 font-medium text-lg">
                   Download Solution Brief
                 </Button>
               </div>
@@ -4546,46 +4546,46 @@ export async function processTransaction(event, context) {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               <div className="rounded-xl border border-white/10 bg-black/30 p-6 text-center flex flex-col items-center">
-                <div className="rounded-full w-16 h-16 bg-gradient-to-br from-blue-600/20 to-indigo-600/20 flex items-center justify-center mb-4">
-                  <Shield className="h-8 w-8 text-blue-400" />
+                <div className="rounded-full w-16 h-16 bg-gradient-to-br from-red-600/20 to-red-600/20 flex items-center justify-center mb-4">
+                  <Shield className="h-8 w-8 text-red-400" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Enterprise Security</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   Bank-grade security with compliance for {activeIndustry.name.toLowerCase()} regulations.
                 </p>
-                <Button variant="link" className="text-blue-400 mt-auto">
+                <Button variant="link" className="text-red-400 mt-auto">
                   Learn More <ArrowRight className="h-4 w-4 ml-1" />
                 </Button>
               </div>
               
               <div className="rounded-xl border border-white/10 bg-black/30 p-6 text-center flex flex-col items-center">
-                <div className="rounded-full w-16 h-16 bg-gradient-to-br from-blue-600/20 to-indigo-600/20 flex items-center justify-center mb-4">
-                  <Brain className="h-8 w-8 text-blue-400" />
+                <div className="rounded-full w-16 h-16 bg-gradient-to-br from-red-600/20 to-red-600/20 flex items-center justify-center mb-4">
+                  <Brain className="h-8 w-8 text-red-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">AI-Powered Insights</h3>
+                <h3 className="text-xl font-bold mb-2">AI-powered Insights</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   Advanced analytics and machine learning tailored for {activeIndustry.name.toLowerCase()} data.
                 </p>
-                <Button variant="link" className="text-blue-400 mt-auto">
+                <Button variant="link" className="text-red-400 mt-auto">
                   Learn More <ArrowRight className="h-4 w-4 ml-1" />
                 </Button>
               </div>
               
               <div className="rounded-xl border border-white/10 bg-black/30 p-6 text-center flex flex-col items-center">
-                <div className="rounded-full w-16 h-16 bg-gradient-to-br from-blue-600/20 to-indigo-600/20 flex items-center justify-center mb-4">
-                  <Zap className="h-8 w-8 text-blue-400" />
+                <div className="rounded-full w-16 h-16 bg-gradient-to-br from-red-600/20 to-red-600/20 flex items-center justify-center mb-4">
+                  <Zap className="h-8 w-8 text-red-400" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Rapid Implementation</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   Go live in weeks, not months, with our proven implementation methodology.
                 </p>
-                <Button variant="link" className="text-blue-400 mt-auto">
+                <Button variant="link" className="text-red-400 mt-auto">
                   Learn More <ArrowRight className="h-4 w-4 ml-1" />
                 </Button>
               </div>
             </div>
             
-            <div className="bg-gradient-to-br from-blue-950/50 to-indigo-950/50 border border-white/10 rounded-xl p-8">
+            <div className="bg-gradient-to-br from-slate-950/50 to-zinc-950/50 border border-white/10 rounded-xl p-8">
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-bold mb-4">Ready to get started?</h3>
@@ -4595,21 +4595,21 @@ export async function processTransaction(event, context) {
                   
                   <div className="space-y-3 mb-6">
                     <div className="flex items-start gap-3">
-                      <div className="rounded-full p-1.5 bg-green-500/20 text-green-400 shrink-0 mt-0.5">
+                      <div className="rounded-full p-1.5 bg-red-500/20 text-red-400 shrink-0 mt-0.5">
                         <Check className="h-4 w-4" />
                       </div>
                       <div className="text-sm">Free consultation with industry experts</div>
                     </div>
                     
                     <div className="flex items-start gap-3">
-                      <div className="rounded-full p-1.5 bg-green-500/20 text-green-400 shrink-0 mt-0.5">
+                      <div className="rounded-full p-1.5 bg-red-500/20 text-red-400 shrink-0 mt-0.5">
                         <Check className="h-4 w-4" />
                       </div>
-                      <div className="text-sm">Tailored solution proposal within 48 hours</div>
+                      <div className="text-sm">tailored solution proposal within 48 hours</div>
                     </div>
                     
                     <div className="flex items-start gap-3">
-                      <div className="rounded-full p-1.5 bg-green-500/20 text-green-400 shrink-0 mt-0.5">
+                      <div className="rounded-full p-1.5 bg-red-500/20 text-red-400 shrink-0 mt-0.5">
                         <Check className="h-4 w-4" />
                       </div>
                       <div className="text-sm">Dedicated implementation team</div>
@@ -4617,8 +4617,8 @@ export async function processTransaction(event, context) {
                   </div>
                   
                   <div className="flex items-center gap-3">
-                    <ShieldCheck className="h-5 w-5 text-blue-400" />
-                    <span className="text-sm text-blue-300">30-day satisfaction guarantee</span>
+                    <ShieldCheck className="h-5 w-5 text-red-400" />
+                    <span className="text-sm text-slate-300">30-day satisfaction guarantee</span>
                   </div>
                 </div>
                 
@@ -4631,7 +4631,7 @@ export async function processTransaction(event, context) {
                         <Input 
                           id="name" 
                           placeholder="Your name" 
-                          className="bg-white/5 border-white/10 focus:border-blue-500/50"
+                          className="bg-white/5 border-white/10 focus:border-red-500/50"
                         />
                       </div>
                       <div>
@@ -4640,7 +4640,7 @@ export async function processTransaction(event, context) {
                           id="email" 
                           type="email" 
                           placeholder="you@company.com" 
-                          className="bg-white/5 border-white/10 focus:border-blue-500/50"
+                          className="bg-white/5 border-white/10 focus:border-red-500/50"
                         />
                       </div>
                     </div>
@@ -4650,7 +4650,7 @@ export async function processTransaction(event, context) {
                       <Input 
                         id="company" 
                         placeholder="Your company" 
-                        className="bg-white/5 border-white/10 focus:border-blue-500/50"
+                        className="bg-white/5 border-white/10 focus:border-red-500/50"
                       />
                     </div>
                     
@@ -4659,11 +4659,11 @@ export async function processTransaction(event, context) {
                       <Textarea 
                         id="message" 
                         placeholder="Tell us about your project" 
-                        className="bg-white/5 border-white/10 focus:border-blue-500/50 min-h-[100px]"
+                        className="bg-white/5 border-white/10 focus:border-red-500/50 min-h-[100px]"
                       />
                     </div>
                     
-                    <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                    <Button className="w-full bg-gradient-to-r from-red-600 to-red-600 hover:from-slate-700 hover:to-zinc-700">
                       Send Message
                     </Button>
                   </form>

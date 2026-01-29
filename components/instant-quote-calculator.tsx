@@ -219,12 +219,12 @@ export default function InstantQuoteCalculator() {
                                                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-red-600/5"></div>
                                                 <CardContent className="p-5 text-center relative z-10">
                                                     <div className="text-xs text-white/70 mb-2 uppercase tracking-wide">Estimated Project Cost</div>
-                                                    <div className="text-3xl md:text-4xl font-bold text-red-400 mb-3">
+                                                    <div className="text-3xl md:text-4xl font-bold text-zinc-300 mb-3">
                                                         ${estimatedQuote.toLocaleString()}
                                                     </div>
                                                     <div className="grid grid-cols-2 gap-2 text-xs">
                                                         <div className="flex items-center justify-center gap-1.5 bg-black/40 rounded-lg p-2 border border-white/10">
-                                                            <Clock className="h-3.5 w-3.5 text-red-400" />
+                                                            <Clock className="h-3.5 w-3.5 text-zinc-300" />
                                                             <span>{estimatedTime} weeks</span>
                                                         </div>
                                                         <div className="flex items-center justify-center gap-1.5 bg-black/40 rounded-lg p-2 border border-white/10">
@@ -243,7 +243,7 @@ export default function InstantQuoteCalculator() {
                                                         const service = services.find(s => s.id === serviceId)
                                                         return (
                                                             <div key={serviceId} className="flex items-center gap-2 text-xs bg-white/5 rounded-lg p-2 border border-white/10">
-                                                                <CheckCircle className="h-3.5 w-3.5 text-red-400 flex-shrink-0" />
+                                                                <CheckCircle className="h-3.5 w-3.5 text-zinc-300 flex-shrink-0" />
                                                                 <span className="truncate">{service?.icon} {service?.name}</span>
                                                             </div>
                                                         )
@@ -265,7 +265,7 @@ export default function InstantQuoteCalculator() {
                                                         onClick={handleEmailQuote}
                                                         disabled={!email}
                                                         size="sm"
-                                                        className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 whitespace-nowrap"
+                                                        className="bg-white hover:bg-zinc-200 text-black font-bold whitespace-nowrap"
                                                     >
                                                         Email Quote
                                                         <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
@@ -290,21 +290,21 @@ export default function InstantQuoteCalculator() {
                                 >
                                     <div className="grid grid-cols-3 gap-3 text-center">
                                         <div className="flex flex-col items-center">
-                                            <div className="flex items-center gap-1 text-red-400 mb-1">
+                                            <div className="flex items-center gap-1 text-zinc-300 mb-1">
                                                 <TrendingUp className="h-3.5 w-3.5" />
                                                 <span className="text-xs font-semibold">Transparent</span>
                                             </div>
                                             <p className="text-[10px] text-white/60">No hidden fees</p>
                                         </div>
                                         <div className="flex flex-col items-center">
-                                            <div className="flex items-center gap-1 text-red-400 mb-1">
+                                            <div className="flex items-center gap-1 text-zinc-300 mb-1">
                                                 <DollarSign className="h-3.5 w-3.5" />
                                                 <span className="text-xs font-semibold">Flexible</span>
                                             </div>
                                             <p className="text-[10px] text-white/60">Payment plans</p>
                                         </div>
                                         <div className="flex flex-col items-center">
-                                            <div className="flex items-center gap-1 text-red-400 mb-1">
+                                            <div className="flex items-center gap-1 text-zinc-300 mb-1">
                                                 <Sparkles className="h-3.5 w-3.5" />
                                                 <span className="text-xs font-semibold">Guaranteed</span>
                                             </div>

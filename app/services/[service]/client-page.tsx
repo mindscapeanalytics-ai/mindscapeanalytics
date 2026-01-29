@@ -60,7 +60,7 @@ export default function ServicePageClient({ serviceData }: ServicePageClientProp
           <h1 className="text-3xl font-bold mb-4">Service Not Found</h1>
           <p className="mb-8">The service you're looking for doesn't exist or hasn't been added yet.</p>
           <Link href="/services">
-            <Button className="bg-red-600 hover:bg-red-700 text-white">
+            <Button className="bg-white hover:bg-zinc-200 text-black font-semibold">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Services
             </Button>
@@ -120,7 +120,7 @@ export default function ServicePageClient({ serviceData }: ServicePageClientProp
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {serviceData.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-2">
-                      <div className="h-1.5 w-1.5 rounded-full bg-red-500 mt-1.5"></div>
+                      <div className="h-1.5 w-1.5 rounded-full bg-zinc-500 mt-1.5"></div>
                       <span className="text-white/70">{feature}</span>
                     </li>
                   ))}
@@ -133,8 +133,8 @@ export default function ServicePageClient({ serviceData }: ServicePageClientProp
                 <div className="space-y-6">
                   {serviceData.processSteps.map((step, index) => (
                     <div key={index} className="relative pl-8">
-                      <div className="absolute left-0 top-0 flex items-center justify-center w-6 h-6 rounded-full bg-red-500/20 border border-red-500">
-                        <span className="text-sm font-bold text-red-500">{index + 1}</span>
+                      <div className="absolute left-0 top-0 flex items-center justify-center w-6 h-6 rounded-full bg-zinc-800/20 border border-zinc-700">
+                        <span className="text-sm font-bold text-white">{index + 1}</span>
                       </div>
                       <h3 className="text-lg font-semibold text-white">{step.title}</h3>
                       <p className="text-white/70 mt-1">{step.description}</p>
@@ -148,10 +148,10 @@ export default function ServicePageClient({ serviceData }: ServicePageClientProp
                 <h2 className="text-2xl font-bold mb-6 text-white">Case Studies</h2>
                 <div className="space-y-6">
                   {serviceData.caseStudies.map((caseStudy, index) => (
-                    <div key={index} className="border-l-2 border-red-500 pl-4">
+                    <div key={index} className="border-l-2 border-zinc-700 pl-4">
                       <h3 className="text-lg font-semibold text-white">{caseStudy.title}</h3>
                       <p className="text-white/70 mt-1">{caseStudy.description}</p>
-                      <p className="text-red-400 font-medium mt-2">Result: {caseStudy.result}</p>
+                      <p className="text-zinc-400 font-medium mt-2">Result: {caseStudy.result}</p>
                     </div>
                   ))}
                 </div>
@@ -178,7 +178,7 @@ export default function ServicePageClient({ serviceData }: ServicePageClientProp
                 <h2 className="text-2xl font-bold mb-6 text-white">Technologies We Use</h2>
                 <div className="flex flex-wrap gap-2">
                   {serviceData.technologies.map((tech, index) => (
-                    <span key={index} className="px-3 py-1 bg-red-500/10 border border-red-500/20 rounded-full text-sm text-white/90">
+                    <span key={index} className="px-3 py-1 bg-zinc-800/10 border border-zinc-700/20 rounded-full text-sm text-white/90">
                       {tech}
                     </span>
                   ))}
@@ -190,7 +190,7 @@ export default function ServicePageClient({ serviceData }: ServicePageClientProp
                 <h2 className="text-xl font-bold mb-3 text-white">Ready to get started?</h2>
                 <p className="text-white/70 mb-4">Contact us today to discuss your project requirements.</p>
                 <Link href="/contact">
-                  <Button className="w-full bg-red-600 hover:bg-red-700 text-white">
+                  <Button className="w-full bg-white hover:bg-zinc-200 text-black font-bold">
                     Contact Us
                   </Button>
                 </Link>

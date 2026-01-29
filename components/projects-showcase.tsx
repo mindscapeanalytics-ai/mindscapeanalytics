@@ -113,7 +113,7 @@ const currentProjects: CurrentProject[] = [
     features: ["Predictive UI", "Live Streams"],
     status: "Live",
     imageUrl: "/images/projects/mindscapeanalytics.png",
-    color: "indigo"
+    color: "zinc"
   },
   {
     id: "cryptotrader",
@@ -125,7 +125,7 @@ const currentProjects: CurrentProject[] = [
     features: ["Auto-Execution", "Risk Bot"],
     status: "Beta",
     imageUrl: "/images/projects/cryptotrader2.png",
-    color: "blue"
+    color: "slate"
   },
   {
     id: "agrichan",
@@ -137,7 +137,7 @@ const currentProjects: CurrentProject[] = [
     features: ["Smart Yield", "Tracking"],
     status: "Beta",
     imageUrl: "/images/projects/AgriChian.jpg",
-    color: "green"
+    color: "zinc"
   },
   {
     id: "image-annotation",
@@ -149,7 +149,7 @@ const currentProjects: CurrentProject[] = [
     features: ["Auto-Label", "QA Mode"],
     status: "Beta",
     imageUrl: "/images/projects/image_annotation_tool.png",
-    color: "purple"
+    color: "slate"
   },
   {
     id: "quantum-crypto",
@@ -161,7 +161,7 @@ const currentProjects: CurrentProject[] = [
     features: ["Optimized P&L", "DeFi Hub"],
     status: "Beta",
     imageUrl: "/images/projects/Crypto_folio_App.png",
-    color: "cyan"
+    color: "zinc"
   },
   {
     id: "amazon-inventory",
@@ -173,7 +173,7 @@ const currentProjects: CurrentProject[] = [
     features: ["Restock AI", "Profit Map"],
     status: "Live",
     imageUrl: "/images/projects/amazon_invontry_management_system.png",
-    color: "amber"
+    color: "slate"
   },
   {
     id: "vehicle-eu-analytics",
@@ -185,7 +185,7 @@ const currentProjects: CurrentProject[] = [
     features: ["Euro-Pricing", "Fleet AI"],
     status: "Live",
     imageUrl: "/images/projects/vehicle_analysis_dashboard.png",
-    color: "pink"
+    color: "slate"
   },
   {
     id: "jfbz-token",
@@ -197,7 +197,7 @@ const currentProjects: CurrentProject[] = [
     features: ["Cold Staking", "Audit Log"],
     status: "Live",
     imageUrl: "/images/projects/jfbz_token.png",
-    color: "violet"
+    color: "slate"
   },
   {
     id: "kstock-analyzer",
@@ -209,7 +209,7 @@ const currentProjects: CurrentProject[] = [
     features: ["Signal Filter", "P&L Hub"],
     status: "Live",
     imageUrl: "/images/projects/KStock_Analyzer.png",
-    color: "emerald"
+    color: "zinc"
   },
   {
     id: "crypto-tracker",
@@ -221,7 +221,7 @@ const currentProjects: CurrentProject[] = [
     features: ["Tax Export", "Hot Alerts"],
     status: "Live",
     imageUrl: "/images/projects/Crypto_Tracker.png",
-    color: "orange"
+    color: "slate"
   },
   {
     id: "kitools",
@@ -233,7 +233,7 @@ const currentProjects: CurrentProject[] = [
     features: ["Query Map", "Auto-Fix"],
     status: "Live",
     imageUrl: "/images/projects/dblynx-database-intelligence-mindscapeanalytics.PNG",
-    color: "rose"
+    color: "zinc"
   },
   {
     id: "amazon-sales-analytics",
@@ -245,7 +245,7 @@ const currentProjects: CurrentProject[] = [
     features: ["Ad Optimizer", "ROI Hub"],
     status: "Live",
     imageUrl: "/images/projects/amazon_sales_management.png",
-    color: "yellow"
+    color: "slate"
   },
   {
     id: "mindscape-mortgage",
@@ -332,96 +332,24 @@ const upcomingProjects: UpcomingProject[] = [
   }
 ]
 
-// Helper function to get background gradient based on color
+// Helper function to get background gradient based on color - Standardized to Monochrome
 const getBackgroundGradient = (color: string) => {
-  const colorMap: Record<string, string> = {
-    red: "from-red-600/10 to-red-900/10",
-    blue: "from-blue-600/10 to-blue-900/10",
-    green: "from-green-600/10 to-green-900/10",
-    purple: "from-purple-600/10 to-purple-900/10",
-    indigo: "from-indigo-600/10 to-indigo-900/10",
-    pink: "from-pink-600/10 to-pink-900/10",
-    yellow: "from-yellow-600/10 to-yellow-900/10",
-    orange: "from-orange-600/10 to-orange-900/10",
-    teal: "from-teal-600/10 to-teal-900/10",
-    cyan: "from-cyan-600/10 to-cyan-900/10",
-    amber: "from-amber-600/10 to-amber-900/10",
-    lime: "from-lime-600/10 to-lime-900/10",
-    emerald: "from-emerald-600/10 to-emerald-900/10",
-    rose: "from-rose-600/10 to-rose-900/10",
-    violet: "from-violet-600/10 to-violet-900/10",
-  };
-
-  return colorMap[color] || "from-red-600/10 to-red-900/10";
+  return "from-white/5 to-white/10";
 };
 
-// Helper function to get border color based on color
+// Helper function to get border color based on color - Standardized
 const getBorderColor = (color: string) => {
-  const colorMap: Record<string, string> = {
-    red: "border-red-500/20 hover:border-red-500/40",
-    blue: "border-blue-500/20 hover:border-blue-500/40",
-    green: "border-green-500/20 hover:border-green-500/40",
-    purple: "border-purple-500/20 hover:border-purple-500/40",
-    indigo: "border-indigo-500/20 hover:border-indigo-500/40",
-    pink: "border-pink-500/20 hover:border-pink-500/40",
-    yellow: "border-yellow-500/20 hover:border-yellow-500/40",
-    orange: "border-orange-500/20 hover:border-orange-500/40",
-    teal: "border-teal-500/20 hover:border-teal-500/40",
-    cyan: "border-cyan-500/20 hover:border-cyan-500/40",
-    amber: "border-amber-500/20 hover:border-amber-500/40",
-    lime: "border-lime-500/20 hover:border-lime-500/40",
-    emerald: "border-emerald-500/20 hover:border-emerald-500/40",
-    rose: "border-rose-500/20 hover:border-rose-500/40",
-    violet: "border-violet-500/20 hover:border-violet-500/40",
-  };
-
-  return colorMap[color] || "border-red-500/20 hover:border-red-500/40";
+  return "border-red-500/20 hover:border-red-500/50";
 };
 
-// Helper function to get text color based on color
+// Helper function to get text color based on color - Standardized
 const getTextColor = (color: string) => {
-  const colorMap: Record<string, string> = {
-    red: "text-red-400",
-    blue: "text-blue-400",
-    green: "text-green-400",
-    purple: "text-purple-400",
-    indigo: "text-indigo-400",
-    pink: "text-pink-400",
-    yellow: "text-yellow-400",
-    orange: "text-orange-400",
-    teal: "text-teal-400",
-    cyan: "text-cyan-400",
-    amber: "text-amber-400",
-    lime: "text-lime-400",
-    emerald: "text-emerald-400",
-    rose: "text-rose-400",
-    violet: "text-violet-400",
-  };
-
-  return colorMap[color] || "text-red-400";
+  return "text-red-500 group-hover:text-white";
 };
 
-// Helper function to get badge background color
+// Helper function to get badge background color - Standardized
 const getBadgeBackground = (color: string) => {
-  const colorMap: Record<string, string> = {
-    red: "bg-red-500/10 text-red-400",
-    blue: "bg-blue-500/10 text-blue-400",
-    green: "bg-green-500/10 text-green-400",
-    purple: "bg-purple-500/10 text-purple-400",
-    indigo: "bg-indigo-500/10 text-indigo-400",
-    pink: "bg-pink-500/10 text-pink-400",
-    yellow: "bg-yellow-500/10 text-yellow-400",
-    orange: "bg-orange-500/10 text-orange-400",
-    teal: "bg-teal-500/10 text-teal-400",
-    cyan: "bg-cyan-500/10 text-cyan-400",
-    amber: "bg-amber-500/10 text-amber-400",
-    lime: "bg-lime-500/10 text-lime-400",
-    emerald: "bg-emerald-500/10 text-emerald-400",
-    rose: "bg-rose-500/10 text-rose-400",
-    violet: "bg-violet-500/10 text-violet-400",
-  };
-
-  return colorMap[color] || "bg-red-500/10 text-red-400";
+  return "bg-red-500/10 text-red-500 border-red-500/20";
 };
 
 export default function ProjectsShowcase() {
@@ -438,16 +366,16 @@ export default function ProjectsShowcase() {
   const panStartX = useRef(0)
   const upcomingPanStartX = useRef(0)
 
-  // Duplicate projects for seamless marquee effect
+  // Duplicate projects for seamless marquee effect - Optimized duplication count
   const duplicatedCurrentProjects = useMemo(() => [...currentProjects, ...currentProjects], [])
-  const duplicatedUpcomingProjects = useMemo(() => [...upcomingProjects, ...upcomingProjects], [])
+  const duplicatedUpcomingProjects = useMemo(() => [...upcomingProjects, ...upcomingProjects, ...upcomingProjects, ...upcomingProjects], [])
 
   const startMarquee = useCallback(() => {
     if (!isPaused && isInView) {
       marqueeControls.start({
-        x: ["0%", "-100%"],
+        x: ["0%", "-50%"],
         transition: {
-          duration: 120,
+          duration: 90, // Even slower for an ultra-premium "slow motion" experience
           ease: "linear",
           repeat: Infinity,
           repeatType: "loop",
@@ -462,9 +390,9 @@ export default function ProjectsShowcase() {
   const startUpcomingMarquee = useCallback(() => {
     if (!isUpcomingPaused && isInView) {
       upcomingMarqueeControls.start({
-        x: ["0%", "-100%"],
+        x: ["0%", "-25%"],
         transition: {
-          duration: 120,
+          duration: 60, // Slower for consistency
           ease: "linear",
           repeat: Infinity,
           repeatType: "loop",
@@ -497,34 +425,30 @@ export default function ProjectsShowcase() {
   }, [upcomingDragX, pauseUpcomingMarquee])
 
   const handleDragEnd = useCallback((event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    const velocity = info.velocity.x
-    const offset = info.offset.x
-
-    if (Math.abs(velocity) > 500 || Math.abs(offset) > 100) {
-      const direction = velocity > 0 ? 1 : -1
-      const newX = panStartX.current + direction * 300
-      marqueeControls.start({ x: newX, transition: { duration: 0.5 } })
-    } else {
-      marqueeControls.start({ x: panStartX.current, transition: { duration: 0.5 } })
-    }
-
-    // setIsPaused(false) // Keep paused after interaction to prevent jump and allow manual navigation
-  }, [marqueeControls])
+    marqueeControls.start({
+      x: panStartX.current + info.offset.x,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20
+      }
+    }).then(() => {
+      if (!isPaused) startMarquee()
+    })
+  }, [marqueeControls, isPaused, startMarquee])
 
   const handleUpcomingDragEnd = useCallback((event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    const velocity = info.velocity.x
-    const offset = info.offset.x
-
-    if (Math.abs(velocity) > 500 || Math.abs(offset) > 100) {
-      const direction = velocity > 0 ? 1 : -1
-      const newX = upcomingPanStartX.current + direction * 300
-      upcomingMarqueeControls.start({ x: newX, transition: { duration: 0.5 } })
-    } else {
-      upcomingMarqueeControls.start({ x: upcomingPanStartX.current, transition: { duration: 0.5 } })
-    }
-
-    // setIsUpcomingPaused(false) // Keep paused after interaction
-  }, [upcomingMarqueeControls])
+    upcomingMarqueeControls.start({
+      x: upcomingPanStartX.current + info.offset.x,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20
+      }
+    }).then(() => {
+      if (!isUpcomingPaused) startUpcomingMarquee()
+    })
+  }, [upcomingMarqueeControls, isUpcomingPaused, startUpcomingMarquee])
 
   useEffect(() => {
     startMarquee()
@@ -548,8 +472,8 @@ export default function ProjectsShowcase() {
       y: 0,
       transition: {
         delay: index * 0.05,
-        duration: 0.4,
-        ease: [0.22, 1, 0.36, 1]
+        duration: 0.6, // Slower entrance
+        ease: [0.23, 1, 0.32, 1] // Custom cubic-bezier for more luxury feel
       }
     }),
     hover: {
@@ -565,12 +489,12 @@ export default function ProjectsShowcase() {
   return (
     <div ref={containerRef} className="relative overflow-hidden">
       {/* Enhanced Background Elements - Simplified for performance */}
-      <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black)] pointer-events-none"></div>
+      <div className="absolute inset-0 pointer-events-none"></div>
 
       {/* Reduced particle count and complexity */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-red-500/5 blur-[80px]"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-red-500/5 blur-[100px]"></div>
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-white/5 blur-[80px] opacity-20"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-white/5 blur-[100px] opacity-10"></div>
       </div>
 
       <div className="relative z-10">
@@ -587,28 +511,28 @@ export default function ProjectsShowcase() {
             <div className="mb-4 inline-flex items-center">
               <Badge
                 variant="outline"
-                className="text-sm font-medium bg-red-500/10 border-red-500/20 text-red-400 px-4 py-1.5"
+                className="text-sm font-medium bg-red-600/50 border-zinc-700/50 text-red-300 px-4 py-1.5"
               >
                 INNOVATION PORTFOLIO
               </Badge>
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/70">
-              Our Cutting-Edge <span className="text-red-500">AI Projects</span>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-white">
+              Our Cutting-Edge <span className="text-red-400">AI Projects</span>
             </h2>
 
-            <p className="text-base md:text-lg text-white/70 max-w-3xl">
+            <p className="text-base md:text-lg text-white/50 max-w-3xl font-light">
               Explore our diverse portfolio of innovative solutions transforming industries and creating business value.
             </p>
           </motion.div>
         </div>
 
         <Tabs defaultValue="current" className="w-full" onValueChange={setActiveTab}>
-          <TabsList className="grid grid-cols-2 max-w-[400px] mx-auto mb-8 bg-black/40 border border-white/10 p-1 rounded-full overflow-hidden">
-            <TabsTrigger value="current" className="data-[state=active]:bg-red-600 data-[state=active]:text-white text-white/70 rounded-full transition-all duration-300">
+          <TabsList className="grid grid-cols-2 max-w-[400px] mx-auto mb-8 bg-zinc-900/20 backdrop-blur-md border border-white/10 p-1 rounded-full overflow-hidden">
+            <TabsTrigger value="current" className="data-[state=active]:bg-red-600 data-[state=active]:text-white text-white/50 rounded-full transition-all duration-300 hover:text-white/80">
               Current Projects
             </TabsTrigger>
-            <TabsTrigger value="upcoming" className="data-[state=active]:bg-red-600 data-[state=active]:text-white text-white/70 rounded-full transition-all duration-300">
+            <TabsTrigger value="upcoming" className="data-[state=active]:bg-red-600 data-[state=active]:text-white text-white/50 rounded-full transition-all duration-300 hover:text-white/80">
               Upcoming Projects
             </TabsTrigger>
           </TabsList>
@@ -641,20 +565,25 @@ export default function ProjectsShowcase() {
               <div
                 className="relative w-full overflow-hidden cursor-grab active:cursor-grabbing"
                 style={{
-                  maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
-                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
+                  maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
                 }}
+                onMouseEnter={() => pauseMarquee()}
+                onMouseLeave={() => !isPaused && startMarquee()}
               >
                 <motion.div
-                  className="flex gap-6 py-4 pl-4"
+                  className="flex gap-6 py-4 pl-4 items-stretch"
                   animate={marqueeControls}
                   style={{
                     x: dragX,
-                    willChange: 'transform', // Hardware acceleration hint
+                    willChange: 'transform',
+                    transform: 'translateZ(0)',
+                    backfaceVisibility: 'hidden', // Prevent flicker
+                    transformStyle: 'preserve-3d', // Better 3D handling
                   }}
                   drag="x"
-                  dragConstraints={{ left: -1000, right: 1000 }}
-                  dragElastic={0.2}
+                  dragConstraints={{ left: -2000, right: 2000 }}
+                  dragElastic={0.05}
                   onDragStart={handleDragStart}
                   onDragEnd={handleDragEnd}
                   key={activeTab}
@@ -668,9 +597,9 @@ export default function ProjectsShowcase() {
                       whileInView="visible"
                       viewport={{ once: true }}
                       whileHover="hover"
-                      className="flex-shrink-0 w-[85vw] sm:w-[350px] md:w-[400px]"
+                      className="flex-shrink-0 w-[85vw] sm:w-[350px] md:w-[400px] h-full"
                     >
-                      <Card className={`backdrop-blur-xl border ${getBorderColor(project.color || 'red')} bg-black/40 hover:bg-black/60 transition-all duration-500 h-full group overflow-hidden flex flex-col shadow-2xl relative`}>
+                      <Card className={`backdrop-blur-md border ${getBorderColor(project.color || 'red')} bg-zinc-900/10 hover:bg-zinc-900/20 transition-all duration-500 h-full group overflow-hidden flex flex-col shadow-2xl relative`}>
                         {/* Animated gradient background overlay */}
                         <div className={`absolute inset-0 bg-gradient-to-br ${getBackgroundGradient(project.color || 'red')} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
                         <CardHeader className="relative p-4">
@@ -682,10 +611,10 @@ export default function ProjectsShowcase() {
                               <project.icon className={`h-5 w-5 ${getTextColor(project.color || 'red')}`} />
                             </div>
                             <Badge variant="outline" className={`text-xs ${project.status === "Live"
-                              ? "bg-green-500/10 text-green-400 border-green-500/20"
+                              ? "bg-red-600 text-white border-zinc-700"
                               : project.status === "Beta"
-                                ? "bg-blue-500/10 text-blue-400 border-blue-500/20"
-                                : "bg-purple-500/10 text-purple-400 border-purple-500/20"
+                                ? "bg-red-600/50 text-red-400 border-zinc-700/50"
+                                : "bg-black/50 text-zinc-500 border-zinc-800"
                               }`}>
                               {project.status}
                             </Badge>
@@ -702,9 +631,10 @@ export default function ProjectsShowcase() {
                               src={project.imageUrl || availableProjectImages[0]}
                               alt={project.title}
                               fill
-                              className="object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
+                              className="object-cover object-center transform transition-transform duration-1000 group-hover:scale-105"
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              loading="lazy"
+                              loading={index < 4 ? "eager" : "lazy"} // Eager load first few for zero lag start
+                              priority={index < 2} // Prioritize first two
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
 
@@ -780,20 +710,22 @@ export default function ProjectsShowcase() {
               <div
                 className="relative w-full overflow-hidden cursor-grab active:cursor-grabbing"
                 style={{
-                  maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
-                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
+                  maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
                 }}
+                onMouseEnter={() => pauseUpcomingMarquee()}
+                onMouseLeave={() => !isUpcomingPaused && startUpcomingMarquee()}
               >
                 <motion.div
-                  className="flex gap-6 py-4 pl-4"
+                  className="flex gap-6 py-4 pl-4 items-stretch"
                   animate={upcomingMarqueeControls}
                   style={{
                     x: upcomingDragX,
                     willChange: 'transform',
                   }}
                   drag="x"
-                  dragConstraints={{ left: -1000, right: 1000 }}
-                  dragElastic={0.2}
+                  dragConstraints={{ left: -2000, right: 2000 }}
+                  dragElastic={0.05}
                   onDragStart={handleUpcomingDragStart}
                   onDragEnd={handleUpcomingDragEnd}
                   key={activeTab}
@@ -809,7 +741,7 @@ export default function ProjectsShowcase() {
                       whileHover="hover"
                       className="flex-shrink-0 w-[85vw] sm:w-[350px] md:w-[400px]"
                     >
-                      <Card className={`backdrop-blur-xl border ${getBorderColor(project.color || 'red')} bg-black/40 hover:bg-black/60 transition-all duration-500 h-full group overflow-hidden flex flex-col shadow-2xl relative`}>
+                      <Card className={`backdrop-blur-md border ${getBorderColor(project.color || 'red')} bg-zinc-900/10 hover:bg-zinc-900/20 transition-all duration-500 h-full group overflow-hidden flex flex-col shadow-2xl relative`}>
                         {/* Animated gradient background overlay */}
                         <div className={`absolute inset-0 bg-gradient-to-br ${getBackgroundGradient(project.color || 'red')} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
                         <CardHeader className="relative p-4">

@@ -206,11 +206,18 @@ export default function TeamSection() {
   const [showRightArrow, setShowRightArrow] = useState(false)
   const [isAutoScrolling, setIsAutoScrolling] = useState(true)
 
-  // Auto-scroll functionality (Infinite Circulating Effect)
+  // Auto-scroll functionality using requestAnimationFrame for smoothness
   useEffect(() => {
     if (!scrollContainerRef.current || !isAutoScrolling) return
 
-    const interval = setInterval(() => {
+    let animationFrameId: number
+    let lastTimestamp = 0
+    const scrollSpeed = 0.5 // pixels per frame approx
+
+    const step = (timestamp: number) => {
+      if (!lastTimestamp) lastTimestamp = timestamp
+      const progress = timestamp - lastTimestamp
+
       if (scrollContainerRef.current) {
         const { scrollLeft, scrollWidth } = scrollContainerRef.current
         const halfWidth = scrollWidth / 2
@@ -221,13 +228,15 @@ export default function TeamSection() {
           scrollContainerRef.current.scrollLeft += 1
         }
 
-        // Update arrow visibility
         setShowLeftArrow(scrollLeft > 10)
         setShowRightArrow(true)
       }
-    }, 30)
 
-    return () => clearInterval(interval)
+      animationFrameId = requestAnimationFrame(step)
+    }
+
+    animationFrameId = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(animationFrameId)
   }, [isAutoScrolling])
 
   const scroll = (direction: "left" | "right") => {
@@ -255,13 +264,13 @@ export default function TeamSection() {
   }
 
   return (
-    <div className="relative overflow-hidden bg-black">
+    <div className="relative overflow-hidden bg-transparent">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
+      <div className="absolute inset-0 pointer-events-none"></div>
       <div className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full bg-red-500/10 blur-[100px]"></div>
       <div className="absolute bottom-1/3 right-1/3 w-80 h-80 rounded-full bg-blue-500/10 blur-[120px]"></div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="w-full px-4 md:px-8 relative z-10">
         <div className="text-center mb-16">
           <Badge className="mb-4 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm">OUR TEAM</Badge>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">

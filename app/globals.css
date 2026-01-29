@@ -6,53 +6,53 @@
 
 @layer base {
   :root {
-    --background: 0 0% 3.9%;
+    --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
+    --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
+    --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 72.2% 50.6%;
-    --primary-foreground: 0 85.7% 97.3%;
-    --secondary: 0 0% 14.9%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 0% 45%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 72.2% 50.6%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
     --radius: 0.5rem;
-    --chart-1: 199 89% 48%;
-    --chart-2: 52 100% 50%;
-    --chart-3: 203 74% 40%;
-    --chart-4: 325 78% 50%;
+    --chart-1: 0 0% 80%;
+    --chart-2: 0 0% 60%;
+    --chart-3: 0 0% 40%;
+    --chart-4: 0 0% 20%;
     scroll-behavior: smooth;
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 0 0% 95%;
-    --card: 24 9.8% 10%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 346.8 77.2% 49.8%;
-    --primary-foreground: 355.7 100% 97.3%;
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
+    --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-    --accent: 12 6.5% 15.1%;
+    --accent: 240 3.7% 15.9%;
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
+    --destructive: 0 0% 45%;
+    --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 346.8 77.2% 49.8%;
+    --ring: 240 4.9% 83.9%;
   }
 
   * {
@@ -126,11 +126,11 @@ body {
 
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(185, 28, 28, 0.4);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
   }
 
   50% {
-    box-shadow: 0 0 30px rgba(185, 28, 28, 0.7);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
   }
 }
 
@@ -182,12 +182,12 @@ body {
 
 /* Glow effects */
 .glow-effect {
-  box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(to right, #ffffff, #ef4444);
+  background: linear-gradient(to right, #ffffff, #888888);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -249,24 +249,16 @@ body {
   /* Ensure sections are full width without forced padding */
   section,
   .section {
-    width: 100% !important;
-    max-width: 100vw !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 0;
-    padding-right: 0;
+    width: 100%;
+    max-width: 100vw;
   }
 
   /* Ensure containers have spacing but allow full width backgrounds */
   [class*="container"],
   [class*="max-width-"],
   .container {
-    width: 100% !important;
-    max-width: 100vw !important;
     padding-left: 1rem;
     padding-right: 1rem;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
   }
 }
 
@@ -467,9 +459,9 @@ canvas {
   height: 2px;
   background: linear-gradient(90deg,
       transparent,
-      rgba(185, 28, 28, 0.3) 20%,
-      rgba(185, 28, 28, 0.8) 50%,
-      rgba(185, 28, 28, 0.3) 80%,
+      rgba(255, 255, 255, 0.1) 20%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.1) 80%,
       transparent);
   background-size: 200% 100%;
   animation: border-blink 3s ease-in-out infinite,
@@ -678,21 +670,37 @@ aside>* {
 
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.4);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
   }
 
   50% {
-    box-shadow: 0 0 0 10px rgba(244, 63, 94, 0);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
   }
 }
 
 /* Orbit Animations */
 @keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  14% { transform: scale(1.1); }
-  28% { transform: scale(1); }
-  42% { transform: scale(1.1); }
-  70% { transform: scale(1); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.1);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.1);
+  }
+
+  70% {
+    transform: scale(1);
+  }
 }
 
 .animate-heartbeat {
@@ -700,8 +708,15 @@ aside>* {
 }
 
 @keyframes blink-dark {
-  0%, 100% { filter: brightness(1) drop-shadow(0 0 0px transparent); }
-  50% { filter: brightness(0.7) drop-shadow(0 0 10px rgba(0,0,0,0.5)); }
+
+  0%,
+  100% {
+    filter: brightness(1) drop-shadow(0 0 0px transparent);
+  }
+
+  50% {
+    filter: brightness(0.7) drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+  }
 }
 
 .animate-blink-dark {
@@ -709,8 +724,13 @@ aside>* {
 }
 
 @keyframes rotate-orbit {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .animate-rotate-orbit {

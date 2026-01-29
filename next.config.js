@@ -23,7 +23,6 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
   },
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: [
       'lucide-react',
       'framer-motion',
@@ -38,7 +37,6 @@ const nextConfig = {
       '@react-three/fiber',
       '@radix-ui/react-accordion'
     ],
-    webpackBuildWorker: true,
   },
   reactStrictMode: true,
   swcMinify: true,

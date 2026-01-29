@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo } from "react"
 import { motion } from "framer-motion"
+import { Database, Brain } from "lucide-react"
 import { useMobile } from "@/hooks/use-mobile"
 import { useAccessibility } from "@/hooks/use-accessibility"
 import { FlexibleSection } from "@/components/flexible-section"
@@ -9,8 +10,6 @@ import { EnhancedHeroProps, TypographyConfig, PerformanceConfig, MobileShowcaseC
 
 // Import modular components and configurations
 import { HeroContainer } from "./hero-container"
-import { ContentSection } from "./content-section"
-import { InteractiveTimeline } from "./interactive-timeline"
 import { MobileShowcase } from "./mobile-showcase"
 import { TrustBanner } from "./trust-banner"
 import { PerformanceOptimizer } from "./performance-optimizer"
@@ -21,6 +20,8 @@ import {
   defaultTrustConfig,
   defaultTimelineData
 } from "./config"
+import { ContentSection } from "./content-section"
+import { HeroVisual } from "./hero-visual"
 
 /**
  * Enhanced Hero Component
@@ -90,7 +91,7 @@ export default function EnhancedHero({
     <PerformanceOptimizer config={mergedPerformanceConfig}>
       <div
         ref={containerRef}
-        className={`relative w-full min-h-[85vh] lg:min-h-[90vh] flex flex-col overflow-visible ${className || ''}`}
+        className={`relative w-full min-h-[85vh] lg:min-h-[90vh] flex flex-col items-center justify-center overflow-visible ${className || ''}`}
         role="banner"
         aria-label={ariaLabels.hero.main}
       >
@@ -100,60 +101,56 @@ export default function EnhancedHero({
           className="absolute inset-0"
         />
 
-        {/* Main Content - Improved vertical alignment to clear fixed nav */}
+        {/* Main Content - Centered Single Column Layout */}
         <FlexibleSection
           fullWidth={true}
-          className="relative z-10 flex-1 flex items-center pt-24 lg:pt-32 pb-12 lg:pb-16"
+          className="relative z-10 flex-1 flex items-center justify-center pt-16 lg:pt-20 pb-12 lg:pb-16 min-h-[500px]"
           noPadding={true}
           id="hero-content"
         >
-          <div className="w-full max-w-7xl mx-auto px-4">
-            {/* Conditional Layout based on device */}
-            {isMobile ? (
-              // Mobile Layout: Heading -> Timeline (Background) -> Content
-              <div className="flex flex-col relative w-full px-4 min-h-[450px] justify-center">
-                {/* Timeline as absolute background overlay */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
-                  <InteractiveTimeline
-                    timelineData={finalTimelineData}
-                    performanceConfig={mergedPerformanceConfig}
-                    className="flex items-center justify-center scale-[0.45] opacity-25 mix-blend-screen -mt-20"
-                  />
-                </div>
+          <div className="container mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+              {/* Left Column: Content Section */}
+              <div className="flex flex-col justify-center items-center lg:items-start text-left w-full order-1 lg:order-1 sm:mt-10 lg:mt-0 lg:pr-4">
 
-                {/* Foreground Content */}
-                <div className="relative z-10 flex flex-col space-y-4">
+                {/* Mobile Layout: Text -> Image -> Actions */}
+                <div className="block lg:hidden w-full space-y-0">
                   <ContentSection
                     typographyConfig={mergedTypographyConfig}
-                    className="flex flex-col justify-center items-center text-center pt-2 px-1"
-                    mode="heading"
+                    className="w-full"
+                    mode="text"
                   />
+
+                  <div className="flex justify-center items-center w-full py-0">
+                    <div className="relative w-full aspect-square max-w-[600px] flex items-center justify-center">
+                      <HeroVisual />
+                    </div>
+                  </div>
 
                   <ContentSection
                     typographyConfig={mergedTypographyConfig}
-                    className="flex flex-col justify-center items-center text-center px-1"
-                    mode="content"
+                    className="w-full"
+                    mode="actions"
+                  />
+                </div>
+
+                {/* Desktop Layout: Full Content */}
+                <div className="hidden lg:block w-full">
+                  <ContentSection
+                    typographyConfig={mergedTypographyConfig}
+                    className="w-full"
+                    mode="full"
                   />
                 </div>
               </div>
-            ) : (
-              // Desktop Layout: Side by Side
-              <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
-                {/* Left Column - Enhanced Content */}
-                <ContentSection
-                  typographyConfig={mergedTypographyConfig}
-                  className="flex flex-col justify-center space-y-8 text-center lg:text-left pt-0"
-                  mode="full"
-                />
 
-                {/* Right Column - Interactive Elements - Full height */}
-                <InteractiveTimeline
-                  timelineData={finalTimelineData}
-                  performanceConfig={mergedPerformanceConfig}
-                  className="hidden lg:flex items-center justify-center relative z-40 h-[60vh] pt-0"
-                />
+              {/* Right Column: AI Visual Section (Desktop Only) */}
+              <div className="hidden lg:flex justify-center items-center w-full order-1 lg:order-2">
+                <div className="relative w-full aspect-square max-w-[600px] flex items-center justify-center">
+                  <HeroVisual />
+                </div>
               </div>
-            )}
+            </div>
           </div>
         </FlexibleSection>
 
@@ -169,10 +166,4 @@ export default function EnhancedHero({
   )
 }
 
-// Export individual components for testing and customization
-export { HeroContainer } from "./hero-container"
-export { ContentSection } from "./content-section"
-export { InteractiveTimeline } from "./interactive-timeline"
-export { MobileShowcase } from "./mobile-showcase"
-export { TrustBanner } from "./trust-banner"
-export { PerformanceOptimizer } from "./performance-optimizer"
+// End of file

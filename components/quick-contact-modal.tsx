@@ -99,7 +99,7 @@ export function QuickContactModal({
             <DialogContent className="sm:max-w-[380px] bg-zinc-950 border-white/10 text-white p-5">
                 <DialogHeader className="space-y-1">
                     <DialogTitle className="text-lg font-bold">{title}</DialogTitle>
-                    <DialogDescription className="text-zinc-400 text-xs">
+                    <DialogDescription className="text-red-400 text-xs">
                         {description}
                     </DialogDescription>
                 </DialogHeader>
@@ -118,7 +118,7 @@ export function QuickContactModal({
                                     <CheckCircle2 className="h-6 w-6 text-green-500" />
                                 </div>
                                 <h3 className="text-base font-bold mb-1 text-white">Message Sent!</h3>
-                                <p className="text-zinc-400 text-center text-xs">
+                                <p className="text-red-400 text-center text-xs">
                                     Thank you for reaching out. We'll get back to you shortly.
                                 </p>
                             </motion.div>
@@ -135,7 +135,7 @@ export function QuickContactModal({
                                             name="name"
                                             render={({ field }) => (
                                                 <FormItem className="space-y-1">
-                                                    <FormLabel className="text-[10px] uppercase tracking-wider text-zinc-400 font-semibold">Name</FormLabel>
+                                                    <FormLabel className="text-[10px] uppercase tracking-wider text-red-400 font-semibold">Name</FormLabel>
                                                     <FormControl>
                                                         <Input
                                                             placeholder="Your name"
@@ -153,7 +153,7 @@ export function QuickContactModal({
                                             name="email"
                                             render={({ field }) => (
                                                 <FormItem className="space-y-1">
-                                                    <FormLabel className="text-[10px] uppercase tracking-wider text-zinc-400 font-semibold">Email</FormLabel>
+                                                    <FormLabel className="text-[10px] uppercase tracking-wider text-red-400 font-semibold">Email</FormLabel>
                                                     <FormControl>
                                                         <Input
                                                             placeholder="your@email.com"
@@ -171,7 +171,7 @@ export function QuickContactModal({
                                             name="message"
                                             render={({ field }) => (
                                                 <FormItem className="space-y-1">
-                                                    <FormLabel className="text-[10px] uppercase tracking-wider text-zinc-400 font-semibold">Message</FormLabel>
+                                                    <FormLabel className="text-[10px] uppercase tracking-wider text-red-400 font-semibold">Message</FormLabel>
                                                     <FormControl>
                                                         <Textarea
                                                             placeholder="How can we help you?"

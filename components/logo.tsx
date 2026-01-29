@@ -14,36 +14,36 @@ export default function Logo() {
         >
           {/* Top red nodes */}
           <motion.div
-            className="absolute top-0 left-1/4 w-2 h-2 bg-primary rounded-full"
+            className="absolute top-0 left-1/4 w-2 h-2 bg-red-600 rounded-full"
             animate={{ y: [0, -2, 0] }}
             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
           />
           <motion.div
-            className="absolute top-0 right-1/4 w-2 h-2 bg-primary rounded-full"
+            className="absolute top-0 right-1/4 w-2 h-2 bg-red-600 rounded-full"
             animate={{ y: [0, 2, 0] }}
             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, delay: 0.3 }}
           />
 
           {/* Center squares */}
           <motion.div
-            className="absolute top-1/4 left-1/4 w-3 h-3 bg-primary rotate-45"
+            className="absolute top-1/4 left-1/4 w-3 h-3 bg-red-600 rotate-45"
             animate={{ rotate: [45, 90, 45] }}
             transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
           />
           <motion.div
-            className="absolute bottom-1/4 right-1/4 w-3 h-3 bg-gray-700 rotate-45"
+            className="absolute bottom-1/4 right-1/4 w-3 h-3 bg-red-800 rotate-45"
             animate={{ rotate: [45, 0, 45] }}
             transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
           />
 
           {/* Bottom nodes */}
           <motion.div
-            className="absolute bottom-0 left-1/4 w-2 h-2 bg-gray-600 rounded-full"
+            className="absolute bottom-0 left-1/4 w-2 h-2 bg-red-400 rounded-full"
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
           />
           <motion.div
-            className="absolute bottom-0 right-1/4 w-2 h-2 bg-gray-800 rounded-full"
+            className="absolute bottom-0 right-1/4 w-2 h-2 bg-red-900 rounded-full"
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, delay: 0.5 }}
           />
@@ -60,7 +60,7 @@ export default function Logo() {
             />
             <motion.path
               d="M 4 12 L 8 8 L 12 12"
-              stroke="rgba(75, 75, 75, 0.5)"
+              stroke="rgba(239, 68, 68, 0.5)"
               strokeWidth="0.5"
               fill="none"
               animate={{ pathLength: [0, 1] }}
@@ -80,7 +80,7 @@ export default function Logo() {
           MINDSCAPE
         </motion.span>
         <motion.span
-          className="text-xs text-primary font-medium"
+          className="text-xs text-red-500 font-medium"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}

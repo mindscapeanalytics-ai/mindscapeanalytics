@@ -58,7 +58,7 @@ import {
   ChevronDown,
   Download
 } from "lucide-react"
-import Image from "next/legacy/image"
+import Image from "next/image"
 import "@/styles/industry-solutions.css"
 import MindscapeBrainLogo from "@/components/mindscape-brain-logo"
 
@@ -320,9 +320,9 @@ const industries: Industry[] = [
       { label: "Implementation", value: "6 weeks", icon: <Clock className="h-4 w-4" /> },
     ],
     technologies: ["Machine Learning", "NLP", "Predictive Analytics", "Pattern Recognition"],
-    color: "from-blue-600 via-blue-500 to-blue-700",
+    color: "from-zinc-800 via-zinc-700 to-black",
     image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=2070&auto=format&fit=crop",
-    particleColor: "#3b82f6",
+    particleColor: "#52525b",
     solutions: [
       "Risk Assessment & Fraud Detection",
       "Algorithmic Trading",
@@ -636,9 +636,9 @@ const industries: Industry[] = [
       { label: "Implementation", value: "5 weeks", icon: <Clock className="h-4 w-4" /> },
     ],
     technologies: ["Recommendation Systems", "Demand Forecasting", "Customer Segmentation", "Dynamic Pricing"],
-    color: "from-purple-500 to-purple-700",
+    color: "from-zinc-700 to-zinc-900",
     image: "https://images.unsplash.com/photo-1481437156560-3205f6a55735?q=80&w=2095&auto=format&fit=crop",
-    particleColor: "#a855f7",
+    particleColor: "#71717a",
     solutions: [
       "Demand Forecasting",
       "Inventory Optimization",
@@ -727,9 +727,9 @@ const industries: Industry[] = [
       { label: "Implementation", value: "10 weeks", icon: <Clock className="h-4 w-4" /> },
     ],
     technologies: ["IoT Integration", "Predictive Maintenance", "Computer Vision", "Digital Twin"],
-    color: "from-yellow-500 to-yellow-700",
+    color: "from-zinc-600 to-zinc-800",
     image: "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?q=80&w=2070&auto=format&fit=crop",
-    particleColor: "#eab308",
+    particleColor: "#a1a1aa",
     solutions: [
       "Predictive Maintenance",
       "Quality Control Automation",
@@ -849,9 +849,9 @@ const industries: Industry[] = [
       { label: "Implementation", value: "7 weeks", icon: <Clock className="h-4 w-4" /> },
     ],
     technologies: ["Document Processing", "Anomaly Detection", "Risk Modeling", "Auto Classification"],
-    color: "from-red-500 to-red-700",
+    color: "from-zinc-700 to-zinc-900",
     image: "https://images.unsplash.com/photo-1556742031-c6961e8560b0?q=80&w=2070&auto=format&fit=crop",
-    particleColor: "#ef4444",
+    particleColor: "#d4d4d8",
     aiSolutions: [
       {
         title: "Claims Processing Automation",
@@ -900,9 +900,9 @@ const industries: Industry[] = [
       { label: "Implementation", value: "6 weeks", icon: <Clock className="h-4 w-4" /> },
     ],
     technologies: ["Dynamic Pricing", "Personalization", "Sentiment Analysis", "Demand Forecasting"],
-    color: "from-cyan-500 to-cyan-700",
+    color: "from-zinc-600 to-zinc-800",
     image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=2070&auto=format&fit=crop",
-    particleColor: "#06b6d4",
+    particleColor: "#e4e4e7",
     solutions: [
       "Route Optimization",
       "Fleet Management",
@@ -1493,7 +1493,7 @@ export default function EnhancedIndustrySolutions() {
   return (
     <div className="relative w-full">
       {/* Enhanced Background Elements */}
-      <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
+      <div className="absolute inset-0 pointer-events-none"></div>
       <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-red-500/10 blur-[100px] animate-pulse-slow"></div>
       <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-red-500/10 blur-[120px] animate-pulse-slow"></div>
 

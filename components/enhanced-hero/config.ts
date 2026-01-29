@@ -34,10 +34,10 @@ export const defaultTypographyConfig: TypographyConfig = {
   },
   gradientText: {
     colors: [
-      "from-red-400 via-red-500 to-red-600",
-      "from-blue-400 via-blue-500 to-blue-600"
+      "from-white via-zinc-400 to-zinc-600",
+      "from-zinc-200 via-zinc-500 to-zinc-700"
     ],
-    fallbackColor: "#ef4444", // red-500 fallback
+    fallbackColor: "#ffffff", // white fallback
     contrastRatio: 4.5
   },
   textShadow: {
@@ -81,19 +81,19 @@ export const defaultTrustConfig: TrustBannerConfig = {
       label: "Uptime",
       value: "99.9%",
       icon: ActivityIcon,
-      color: "text-green-400"
+      color: "text-zinc-300"
     },
     {
       label: "Enterprise Clients",
       value: "500+",
       icon: Shield,
-      color: "text-blue-400"
+      color: "text-zinc-300"
     },
     {
       label: "Processing Speed",
       value: "< 100ms",
       icon: Zap,
-      color: "text-red-400"
+      color: "text-zinc-300"
     }
   ],
   certifications: [

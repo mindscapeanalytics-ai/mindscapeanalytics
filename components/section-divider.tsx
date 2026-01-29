@@ -9,33 +9,33 @@ interface SectionDividerProps {
 }
 
 export function SectionDivider({ variant = "gradient", color = "red", className = "" }: SectionDividerProps) {
-  // Always default to red color scheme regardless of the passed color
+  // Always default to monochrome/white scheme to match professional theme
   const currentColor = "red"
-  
+
   const colorMap = {
     red: {
-      from: "from-red-500",
-      to: "to-red-500",
-      fill: "fill-red-500",
-      shadow: "shadow-red-500/20",
+      from: "from-zinc-400",
+      to: "to-zinc-100",
+      fill: "fill-zinc-200",
+      shadow: "shadow-white/5",
     },
     blue: {
-      from: "from-red-500",
-      to: "to-red-500",
-      fill: "fill-red-500",
-      shadow: "shadow-red-500/20",
+      from: "from-zinc-400",
+      to: "to-zinc-100",
+      fill: "fill-zinc-200",
+      shadow: "shadow-white/5",
     },
     purple: {
-      from: "from-red-500",
-      to: "to-red-500",
-      fill: "fill-red-500",
-      shadow: "shadow-red-500/20",
+      from: "from-zinc-400",
+      to: "to-zinc-100",
+      fill: "fill-zinc-200",
+      shadow: "shadow-white/5",
     },
     green: {
-      from: "from-red-500",
-      to: "to-red-500",
-      fill: "fill-red-500",
-      shadow: "shadow-red-500/20",
+      from: "from-zinc-400",
+      to: "to-zinc-100",
+      fill: "fill-zinc-200",
+      shadow: "shadow-white/5",
     },
   }
 
@@ -50,7 +50,7 @@ export function SectionDivider({ variant = "gradient", color = "red", className 
 
   if (variant === "dots") {
     return (
-      <div className={`py-12 w-full flex justify-center ${className}`}>
+      <div className={`py-6 w-full flex justify-center ${className}`}>
         <motion.div
           className="flex space-x-3"
           initial={{ opacity: 0 }}
