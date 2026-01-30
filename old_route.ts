@@ -1,38 +1,38 @@
-import { NextRequest, NextResponse } from 'next/server';
+﻿import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { z } from 'zod';
 import { handleApiError, BadRequestError } from '@/lib/api-error';
 import { withRateLimit } from '@/lib/rate-limit';
-import { z } from 'zod';
 
 // Lazy initialization to avoid build-time errors
 function getResend() {
   const apiKey = process.env.RESEND_API_KEY || 're_L5fhCnUH_Ejgr1sgPkqY35AJzGz9Jxxry';
   if (!apiKey) {
-    // Return null to allow falling back to mock mode during development
-    return null;
+    throw new Error('RESEND_API_KEY is not configured');
   }
   return new Resend(apiKey);
 }
 
 // Validation schema
-const customRequestSchema = z.object({
+const contactFormSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
+  email: z.string().email('Please enter a valid email address'),
   company: z.string().optional(),
   phone: z.string().optional(),
-  projectDescription: z.string().min(10, 'Project description must be at least 10 characters'),
-  budget: z.string().optional(),
-  timeline: z.string().optional(),
+  subject: z.string().min(5, 'Subject must be at least 5 characters'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+  interest: z.string().min(1, 'Please select an area of interest'),
 });
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting: 5 requests per hour per client
-    const rateLimitResponse = await withRateLimit(5, 3600000)(request);
+    // Rate limiting: 5 submissions per minute per client
+    const rateLimitResponse = await withRateLimit(5, 60000)(request);
     if (rateLimitResponse) {
       return rateLimitResponse;
     }
 
+    // Parse and validate request body
     let body;
     try {
       body = await request.json();
@@ -41,12 +41,12 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate request body
-    const validationResult = customRequestSchema.safeParse(body);
+    const validationResult = contactFormSchema.safeParse(body);
     if (!validationResult.success) {
-      throw new BadRequestError('Invalid request format', validationResult.error.format());
+      throw new BadRequestError('Invalid form data', validationResult.error.errors);
     }
 
-    const { name, email, company, phone, projectDescription, budget, timeline } = validationResult.data;
+    const { name, email, company, phone, subject, message, interest } = validationResult.data;
 
     // Get Resend instance
     const resend = getResend();
@@ -66,13 +66,12 @@ export async function POST(request: NextRequest) {
             .label { font-weight: bold; color: #1f2937; margin-bottom: 5px; display: block; }
             .value { color: #4b5563; }
             .message-box { background: white; padding: 15px; border-left: 4px solid #dc2626; margin-top: 10px; }
-            .badge { display: inline-block; background: #dc2626; color: white; padding: 4px 12px; border-radius: 4px; font-size: 12px; margin-left: 8px; }
           </style>
         </head>
         <body>
           <div class="container">
             <div class="header">
-              <h2 style="margin: 0;">New Custom Software Request <span class="badge">Marketplace</span></h2>
+              <h2 style="margin: 0;">New Contact Form Submission</h2>
             </div>
             <div class="content">
               <div class="field">
@@ -95,22 +94,18 @@ export async function POST(request: NextRequest) {
                 <span class="value">${phone}</span>
               </div>
               ` : ''}
-              ${budget ? `
               <div class="field">
-                <span class="label">Budget Range:</span>
-                <span class="value">${budget}</span>
+                <span class="label">Area of Interest:</span>
+                <span class="value">${interest}</span>
               </div>
-              ` : ''}
-              ${timeline ? `
               <div class="field">
-                <span class="label">Timeline:</span>
-                <span class="value">${timeline}</span>
+                <span class="label">Subject:</span>
+                <span class="value">${subject}</span>
               </div>
-              ` : ''}
               <div class="field">
-                <span class="label">Project Description:</span>
+                <span class="label">Message:</span>
                 <div class="message-box">
-                  <p style="margin: 0; white-space: pre-wrap;">${projectDescription}</p>
+                  <p style="margin: 0; white-space: pre-wrap;">${message}</p>
                 </div>
               </div>
             </div>
@@ -120,39 +115,27 @@ export async function POST(request: NextRequest) {
     `;
 
     const emailText = `
-New Custom Software Request - Marketplace
+New Contact Form Submission
 
 Name: ${name}
 Email: ${email}
-${company ? `Company: ${company}\n` : ''}${phone ? `Phone: ${phone}\n` : ''}${budget ? `Budget: ${budget}\n` : ''}${timeline ? `Timeline: ${timeline}\n` : ''}
-Project Description:
-${projectDescription}
+${company ? `Company: ${company}\n` : ''}${phone ? `Phone: ${phone}\n` : ''}
+Area of Interest: ${interest}
+Subject: ${subject}
+
+Message:
+${message}
     `.trim();
 
     // Send email using Resend
-    let data, error;
-
-    const recipientEmail = process.env.RECIPIENT_EMAIL || 'zeeshan.keerio@mindscapeanalytics.com';
-
-    if (resend) {
-      const result = await resend.emails.send({
-        from: 'Mindscape Analytics <noreply@mindscapeanalytics.com>',
-        to: [recipientEmail],
-        replyTo: email,
-        subject: `Custom Software Request: ${name}${company ? ` - ${company}` : ''}`,
-        html: emailHtml,
-        text: emailText,
-      });
-      data = result.data;
-      error = result.error;
-    } else {
-      // Mock successful response when API key is missing
-      console.warn('RESEND_API_KEY is not configured. Simulating successful custom request submission.');
-      data = { id: 'mock-id-' + Date.now() };
-      error = null;
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 800));
-    }
+    const { data, error } = await resend.emails.send({
+      from: 'Mindscape Analytics <noreply@mindscapeanalytics.com>',
+      to: ['zeeshan.keerio@mindscapeanalytics.com'],
+      replyTo: email,
+      subject: `Contact Form: ${subject}`,
+      html: emailHtml,
+      text: emailText,
+    });
 
     if (error) {
       console.error('Resend error:', error);
@@ -164,10 +147,11 @@ ${projectDescription}
 
     return NextResponse.json({
       success: true,
-      message: 'Custom request submitted successfully',
+      message: 'Your message has been sent successfully!',
       data,
     });
   } catch (error) {
+    console.error('Contact form error:', error);
     return handleApiError(error);
   }
 }

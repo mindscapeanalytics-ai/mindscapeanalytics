@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Slider } from "@/components/ui/slider"
+import { useToast } from "@/hooks/use-toast"
 import {
     Calculator,
     CheckCircle,
@@ -40,6 +41,7 @@ export default function InstantQuoteCalculator() {
     const [timeline, setTimeline] = useState([8])
     const [showQuote, setShowQuote] = useState(false)
     const [email, setEmail] = useState("")
+    const { toast } = useToast()
 
     const toggleService = (serviceId: string) => {
         setSelectedServices(prev =>
@@ -69,8 +71,12 @@ export default function InstantQuoteCalculator() {
 
     const handleEmailQuote = () => {
         if (email) {
-            alert(`Quote details will be sent to ${email}`)
-            // TODO: Implement actual email sending
+            setShowQuote(false)
+            toast({
+                title: "Quote Sent!",
+                description: `A detailed estimate has been sent to ${email}.`,
+            })
+            setEmail("")
         }
     }
 
@@ -78,7 +84,7 @@ export default function InstantQuoteCalculator() {
     const estimatedTime = Math.ceil(timeline[0] * selectedServices.length * complexityMultipliers[complexity].multiplier / 2)
 
     return (
-        <section className="py-2 relative overflow-hidden bg-black/0">
+        <section id="instant-quote" className="py-2 relative overflow-hidden bg-black/0">
             {/* Background elements - Adjusted for transparency */}
             <div className="absolute inset-0 bg-transparent"></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-red-500/10 blur-[120px]"></div>

@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     // Validate request body
     const validationResult = visionRequestSchema.safeParse(body);
     if (!validationResult.success) {
-      throw new BadRequestError('Invalid request format', validationResult.error.errors);
+      throw new BadRequestError('Invalid request format', validationResult.error.format());
     }
 
     const { imageUrl, options = {} } = validationResult.data;

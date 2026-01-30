@@ -221,14 +221,23 @@ export default function CaseStudiesSection() {
             {/* Dark overlay to ensure text readability */}
             <div className="absolute inset-0 bg-black/80 z-0" />
 
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={currentIndex}
                 initial={{ opacity: 0, x: 50, scale: 0.95 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 exit={{ opacity: 0, x: -50, scale: 0.95 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="relative z-10 p-8 md:p-12 lg:p-16"
+                className="relative z-10 p-8 md:p-12 lg:p-16 min-h-[500px] flex flex-col justify-center"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                onDragEnd={(_, info) => {
+                  if (info.offset.x > 100) {
+                    prevSlide()
+                  } else if (info.offset.x < -100) {
+                    nextSlide()
+                  }
+                }}
               >
                 <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
                   {/* Left: Enhanced Content */}

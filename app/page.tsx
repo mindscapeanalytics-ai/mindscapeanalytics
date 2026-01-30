@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react"
 import { motion, useScroll, useTransform, useMotionValue } from "framer-motion"
 import { StandardBackground } from "@/components/shared/background"
+import { SectionDivider } from "@/components/section-divider"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { CookieConsent } from "@/components/cookie-consent"
 import UnifiedChat from "@/components/unified-chat"
@@ -20,81 +21,62 @@ import { SectionSkeleton, HeroSkeleton } from "@/components/ui/section-skeleton"
 // Dynamic imports for heavy interactive components with proper loading states
 import dynamic from 'next/dynamic'
 
-// Hero with custom skeleton
+// Hero with custom skeleton - SSR enabled for better performance
 const EnhancedHero = dynamic(() => import("@/components/enhanced-hero"), {
-  ssr: false,
   loading: () => <HeroSkeleton />
 })
 
 const ProjectsShowcase = dynamic(() => import("@/components/projects-showcase"), {
-  ssr: false,
   loading: () => <SectionSkeleton height="600px" />
 })
 
 const CaseStudiesSection = dynamic(() => import("@/components/case-studies-section"), {
-  ssr: false,
   loading: () => <SectionSkeleton height="700px" />
 })
 
 const EnhancedIndustrySolutions = dynamic(() => import("@/components/enhanced-industry-solutions"), {
-  ssr: false,
   loading: () => <SectionSkeleton height="800px" />
 })
 
 const UnifiedAIPlatform = dynamic(() => import("@/components/unified-ai-platform"), {
-  ssr: false,
   loading: () => <SectionSkeleton height="900px" />
 })
 
 const TechStackShowcase = dynamic(() => import("@/components/tech-stack-showcase"), {
-  ssr: false,
   loading: () => <SectionSkeleton height="600px" />
 })
 
 const TeamSection = dynamic(() => import("@/components/team-section"), {
-  ssr: false,
   loading: () => <SectionSkeleton height="700px" />
 })
 
 const TestimonialCarousel = dynamic(() => import("@/components/testimonial-carousel"), {
-  ssr: false,
   loading: () => <SectionSkeleton height="500px" />
 })
 
 const InstantQuoteCalculator = dynamic(() => import("@/components/instant-quote-calculator"), {
-  ssr: false,
   loading: () => <SectionSkeleton height="600px" showSpinner={false} />
 })
 
 const WhyChooseUs = dynamic(() => import("@/components/why-choose-us"), {
-  ssr: false,
-  loading: () => <SectionSkeleton height="600px" showSpinner={false} />
+  loading: () => <SectionSkeleton height="500px" showSpinner={false} />
 })
 
 const EnhancedCTASection = dynamic(() => import("@/components/enhanced-cta-section"), {
-  ssr: false,
   loading: () => <SectionSkeleton height="400px" />
 })
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [heroMounted, setHeroMounted] = useState(false)
 
   // Parallax and scroll effects for the hero section
-  // Only setup after Hero is mounted to prevent unnecessary calculations
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   })
 
-  // Use motion values that update only when Hero is mounted
-  const heroY = heroMounted
-    ? useTransform(scrollYProgress, [0, 0.15], [0, -120])
-    : useMotionValue(0)
-
-  const heroOpacity = heroMounted
-    ? useTransform(scrollYProgress, [0, 0.1], [1, 0])
-    : useMotionValue(1)
+  const heroY = useTransform(scrollYProgress, [0, 0.15], [0, -120])
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0])
 
   return (
     <main ref={containerRef} className="min-h-screen w-full text-white relative overflow-x-hidden selection:bg-red-500/30">
@@ -198,6 +180,8 @@ export default function Home() {
         </ErrorBoundary>
       </section>
 
+      <SectionDivider variant="dots" className="opacity-20" />
+
       <section id="ai-platform" className="relative z-10 py-8 md:py-12">
         <ErrorBoundary>
           <UnifiedAIPlatform />
@@ -215,6 +199,8 @@ export default function Home() {
           <TeamSection />
         </ErrorBoundary>
       </section>
+
+      <SectionDivider variant="gradient" className="opacity-30" />
 
       <section id="testimonials" className="relative z-10 py-8 md:py-12">
         <ErrorBoundary>

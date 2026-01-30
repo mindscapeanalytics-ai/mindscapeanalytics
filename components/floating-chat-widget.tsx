@@ -5,10 +5,14 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { MessageSquare, X, Send, Loader2, Brain, UserPlus } from "lucide-react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { QuickContactModal } from "@/components/quick-contact-modal"
+import dynamic from "next/dynamic"
+const QuickContactModal = dynamic(() => import("@/components/quick-contact-modal"), {
+  ssr: false,
+})
 
 type Message = {
   text: string;
@@ -207,9 +211,9 @@ export function FloatingChatWidget() {
               </div>
               <p className="text-xs text-white/50 mt-2 text-center">
                 Powered by Mindscape AI |{" "}
-                <a href="#" className="underline">
+                <Link href="/privacy" className="underline hover:text-white transition-colors">
                   Privacy Policy
-                </a>
+                </Link>
               </p>
             </div>
           </motion.div>

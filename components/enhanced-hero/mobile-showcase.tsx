@@ -22,28 +22,28 @@ interface MobileShowcaseProps {
 export function MobileShowcase({ config, className }: MobileShowcaseProps) {
   const { format, content, animations, touchTargets } = config
   const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set())
-  
+
   // Initialize mobile showcase accessibility
   const { announceCardExpansion, handleCardActivation } = useMobileShowcaseAccessibility()
-  
+
   // Sort content by visual priority for mobile
   const sortedContent = [...content].sort((a, b) => a.visualPriority - b.visualPriority)
-  
+
   // Handle accordion toggle
   const toggleAccordion = (itemId: number, title: string) => {
     const newExpanded = new Set(expandedItems)
     const isExpanding = !expandedItems.has(itemId)
-    
+
     if (isExpanding) {
       newExpanded.add(itemId)
     } else {
       newExpanded.delete(itemId)
     }
-    
+
     setExpandedItems(newExpanded)
     announceCardExpansion(title, isExpanding)
   }
-  
+
   if (format === "vertical-cards") {
     return (
       <div className={`space-y-4 ${className || ''}`}>
@@ -52,8 +52,8 @@ export function MobileShowcase({ config, className }: MobileShowcaseProps) {
             key={item.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.6, 
+            transition={{
+              duration: 0.6,
               delay: index * 0.1,
               ease: animations === "engaging" ? [0.22, 1, 0.36, 1] : "easeOut"
             }}
@@ -68,13 +68,12 @@ export function MobileShowcase({ config, className }: MobileShowcaseProps) {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-2">
                     <h3 className="text-sm font-semibold text-white">{item.title}</h3>
-                    <Badge 
-                      variant="outline" 
-                      className={`text-xs ${
-                        item.status === 'completed' ? 'border-green-500/50 text-green-400' :
+                    <Badge
+                      variant="outline"
+                      className={`text-xs ${item.status === 'completed' ? 'border-green-500/50 text-green-400' :
                         item.status === 'in-progress' ? 'border-blue-500/50 text-blue-400' :
-                        'border-gray-500/50 text-gray-400'
-                      }`}
+                          'border-gray-500/50 text-gray-400'
+                        }`}
                     >
                       {item.status}
                     </Badge>
@@ -95,32 +94,37 @@ export function MobileShowcase({ config, className }: MobileShowcaseProps) {
       </div>
     )
   }
-  
+
   // Horizontal scroll format
   if (format === "horizontal-scroll") {
     return (
-      <div className={`${className || ''}`}>
-        <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-4">
+      <div className="relative group">
+        <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-6 px-4 -mx-4 snap-x">
           {sortedContent.map((item, index) => (
             <motion.div
               key={item.id}
-              className="flex-shrink-0 w-64"
+              className="flex-shrink-0 w-72 snap-center"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card className="bg-black/60 backdrop-blur-md border border-white/20 p-4 h-full">
+              <Card className="bg-black/60 backdrop-blur-md border border-white/20 p-5 h-full hover:border-red-500/30 transition-all duration-300">
                 <div className="flex flex-col h-full">
-                  <div className="flex items-center gap-2 mb-3">
-                    <item.icon className="h-5 w-5 text-white" />
-                    <h3 className="text-sm font-semibold text-white">{item.title}</h3>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 rounded-lg bg-white/5">
+                      <item.icon className="h-5 w-5 text-white" />
+                    </div>
+                    <h3 className="text-sm font-bold text-white tracking-tight">{item.title}</h3>
                   </div>
                   <p className="text-xs text-white/70 leading-relaxed flex-1">
                     {item.mobileContent}
                   </p>
                   {item.metrics && (
-                    <div className="mt-3 text-xs text-green-400 font-medium">
-                      {item.metrics.improvement} {item.metrics.metric}
+                    <div className="mt-4 pt-4 border-t border-white/5">
+                      <div className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Impact</div>
+                      <div className="text-xs text-green-400 font-bold flex items-center gap-1">
+                        {item.metrics.improvement > 0 ? '+' : ''}{item.metrics.improvement} {item.metrics.metric}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -128,10 +132,17 @@ export function MobileShowcase({ config, className }: MobileShowcaseProps) {
             </motion.div>
           ))}
         </div>
+
+        {/* Scroll Indicator Dots */}
+        <div className="flex justify-center gap-1.5 mt-2">
+          {sortedContent.map((_, i) => (
+            <div key={i} className="w-1.5 h-1.5 rounded-full bg-white/10" />
+          ))}
+        </div>
       </div>
     )
   }
-  
+
   // Accordion format
   return (
     <div className={`space-y-2 ${className || ''}`}>
@@ -143,7 +154,7 @@ export function MobileShowcase({ config, className }: MobileShowcaseProps) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
         >
-          <summary 
+          <summary
             className="flex items-center gap-3 p-3 bg-black/60 backdrop-blur-md border border-white/20 rounded-lg cursor-pointer hover:border-white/30 transition-colors duration-300 list-none"
             style={{ minHeight: touchTargets === "44px-minimum" ? "44px" : "auto" }}
           >

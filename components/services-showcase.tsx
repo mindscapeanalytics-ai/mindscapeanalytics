@@ -13,7 +13,10 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { Check, Phone, Info, Sparkles, ArrowLeft, ArrowRight } from "lucide-react"
-import { QuickContactModal } from "@/components/quick-contact-modal"
+import dynamic from "next/dynamic"
+const QuickContactModal = dynamic(() => import("@/components/quick-contact-modal"), {
+    ssr: false,
+})
 
 // Service Data with updated prices (starting from $499)
 const services = [

@@ -1,3 +1,5 @@
+"use client"
+
 import { motion, AnimatePresence, useAnimation, useMotionValue, PanInfo, useInView } from "framer-motion"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -361,8 +363,8 @@ export default function ProjectsShowcase() {
   const [isUpcomingPaused, setIsUpcomingPaused] = useState(false)
   const marqueeControls = useAnimation()
   const upcomingMarqueeControls = useAnimation()
-  const dragX = useMotionValue(0)
-  const upcomingDragX = useMotionValue(0)
+  const x = useMotionValue(0)
+  const upcomingX = useMotionValue(0)
   const panStartX = useRef(0)
   const upcomingPanStartX = useRef(0)
 
@@ -370,39 +372,61 @@ export default function ProjectsShowcase() {
   const duplicatedCurrentProjects = useMemo(() => [...currentProjects, ...currentProjects], [])
   const duplicatedUpcomingProjects = useMemo(() => [...upcomingProjects, ...upcomingProjects, ...upcomingProjects, ...upcomingProjects], [])
 
-  const startMarquee = useCallback(() => {
-    if (!isPaused && isInView) {
-      marqueeControls.start({
-        x: ["0%", "-50%"],
-        transition: {
-          duration: 60, // Optimized speed for smooth, visible scrolling
-          ease: "linear",
-          repeat: Infinity,
-          repeatType: "loop",
-          repeatDelay: 0
-        },
-      })
-    } else {
-      marqueeControls.stop()
-    }
-  }, [marqueeControls, isPaused, isInView])
+  const startMarquee = useCallback(async () => {
+    if (!containerRef.current || isPaused || !isInView) return
 
-  const startUpcomingMarquee = useCallback(() => {
-    if (!isUpcomingPaused && isInView) {
-      upcomingMarqueeControls.start({
-        x: ["0%", "-25%"],
-        transition: {
-          duration: 60, // Slower for consistency
-          ease: "linear",
-          repeat: Infinity,
-          repeatType: "loop",
-          repeatDelay: 0
-        },
-      })
-    } else {
-      upcomingMarqueeControls.stop()
-    }
-  }, [upcomingMarqueeControls, isUpcomingPaused, isInView])
+    const track = containerRef.current.querySelector('.marquee-track-current') as HTMLDivElement
+    if (!track) return
+
+    const scrollWidth = track.scrollWidth
+    const loopWidth = scrollWidth / 2
+    const currentX = x.get()
+
+    // Calculate duration based on distance to end of first set
+    const remainingDistance = loopWidth + currentX
+    const speed = 40 // Pixels per second
+    const duration = remainingDistance / speed
+
+    await marqueeControls.start({
+      x: -loopWidth,
+      transition: {
+        duration: Math.abs(duration),
+        ease: "linear",
+      }
+    })
+
+    // Reset to start and repeat
+    x.set(0)
+    startMarquee()
+  }, [marqueeControls, isPaused, isInView, x])
+
+  const startUpcomingMarquee = useCallback(async () => {
+    if (!containerRef.current || isUpcomingPaused || !isInView) return
+
+    const track = containerRef.current.querySelector('.marquee-track-upcoming') as HTMLDivElement
+    if (!track) return
+
+    const scrollWidth = track.scrollWidth
+    const loopWidth = scrollWidth / 4
+    const currentX = upcomingX.get()
+
+    // Calculate duration based on distance to end of first set
+    const remainingDistance = loopWidth + upcomingX.get()
+    const speed = 35 // Pixels per second
+    const duration = remainingDistance / speed
+
+    await upcomingMarqueeControls.start({
+      x: -loopWidth,
+      transition: {
+        duration: Math.abs(duration),
+        ease: "linear",
+      }
+    })
+
+    // Reset to start and repeat
+    upcomingX.set(0)
+    startUpcomingMarquee()
+  }, [upcomingMarqueeControls, isUpcomingPaused, isInView, upcomingX])
 
   const pauseMarquee = useCallback(() => {
     setIsPaused(true)
@@ -415,14 +439,14 @@ export default function ProjectsShowcase() {
   }, [upcomingMarqueeControls])
 
   const handleDragStart = useCallback(() => {
-    panStartX.current = dragX.get()
+    panStartX.current = x.get()
     pauseMarquee()
-  }, [dragX, pauseMarquee])
+  }, [x, pauseMarquee])
 
   const handleUpcomingDragStart = useCallback(() => {
-    upcomingPanStartX.current = upcomingDragX.get()
+    upcomingPanStartX.current = upcomingX.get()
     pauseUpcomingMarquee()
-  }, [upcomingDragX, pauseUpcomingMarquee])
+  }, [upcomingX, pauseUpcomingMarquee])
 
   const handleDragEnd = useCallback((event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     marqueeControls.start({
@@ -561,12 +585,12 @@ export default function ProjectsShowcase() {
                 </Badge>
               </div>
 
-              {/* Marquee container - full width */}
+              {/* Marquee container - full width with optimized GPU acceleration */}
               <div
                 className="relative w-full overflow-hidden cursor-grab active:cursor-grabbing"
                 style={{
-                  maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
-                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+                  maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
                 }}
                 onMouseEnter={() => pauseMarquee()}
                 onMouseLeave={() => !isPaused && startMarquee()}
@@ -575,13 +599,16 @@ export default function ProjectsShowcase() {
                   className="flex gap-6 py-4 pl-4 items-stretch"
                   animate={marqueeControls}
                   style={{
-                    x: dragX,
+                    x: x,
                     willChange: 'transform',
                     transform: 'translate3d(0, 0, 0)', // Force GPU
                     backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                    perspective: 1000,
+                    WebkitPerspective: 1000,
                   }}
                   drag="x"
-                  dragConstraints={{ left: -2000, right: 2000 }}
+                  dragConstraints={{ left: -10000, right: 10000 }} // Increased for more freedom
                   dragElastic={0.05}
                   onDragStart={handleDragStart}
                   onDragEnd={handleDragEnd}
@@ -597,6 +624,10 @@ export default function ProjectsShowcase() {
                       viewport={{ once: true }}
                       whileHover="hover"
                       className="flex-shrink-0 w-[85vw] sm:w-[350px] md:w-[400px] h-full"
+                      style={{
+                        transform: 'translateZ(0)', // GPU acceleration per card
+                        backfaceVisibility: 'hidden',
+                      }}
                     >
                       <Card className={`backdrop-blur-[2px] border ${getBorderColor(project.color || 'red')} bg-zinc-900/10 hover:bg-zinc-900/20 transition-all duration-500 h-full group overflow-hidden flex flex-col shadow-2xl relative`} style={{ transform: 'translateZ(0)' }}>
                         {/* Animated gradient background overlay */}
@@ -719,12 +750,12 @@ export default function ProjectsShowcase() {
                   className="flex gap-6 py-4 pl-4 items-stretch"
                   animate={upcomingMarqueeControls}
                   style={{
-                    x: upcomingDragX,
+                    x: upcomingX,
                     willChange: 'transform',
                     transform: 'translate3d(0, 0, 0)', // Force GPU
                   }}
                   drag="x"
-                  dragConstraints={{ left: -2000, right: 2000 }}
+                  dragConstraints={{ left: -10000, right: 10000 }}
                   dragElastic={0.05}
                   onDragStart={handleUpcomingDragStart}
                   onDragEnd={handleUpcomingDragEnd}

@@ -224,7 +224,7 @@ export default function ProductsShowcase() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:col-span-8 relative aspect-[16/10] md:aspect-video rounded-3xl overflow-hidden border border-white/5 shadow-2xl group w-[calc(100%+2rem)] -ml-4 md:w-full md:ml-0"
+            className="lg:col-span-8 relative aspect-[16/10] md:aspect-video rounded-3xl overflow-hidden border border-white/5 shadow-2xl group w-full"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
@@ -238,9 +238,19 @@ export default function ProductsShowcase() {
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                 exit={{ opacity: 0, scale: 0.9, filter: "blur(5px)" }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0 z-10 flex items-center justify-center p-4 md:p-8"
+                className="absolute inset-0 z-10 flex items-center justify-center p-0 md:p-8"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={1}
+                onDragEnd={(_, info) => {
+                  if (info.offset.x > 100) {
+                    goToPrevious()
+                  } else if (info.offset.x < -100) {
+                    goToNext()
+                  }
+                }}
               >
-                <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-red-500/30 transition-colors duration-500">
+                <div className="relative w-full h-full md:rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-red-500/30 transition-colors duration-500 cursor-grab active:cursor-grabbing">
                   <Image
                     src={productImages[currentIndex].src}
                     alt={productImages[currentIndex].alt}

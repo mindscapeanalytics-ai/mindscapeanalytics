@@ -115,7 +115,7 @@ function ContactFormContent() {
               <CheckCircle2 className="h-8 w-8 text-green-500" />
             </div>
             <h3 className="text-xl font-bold mb-2 text-white">Message Sent!</h3>
-            <p className="text-red-400 text-center max-w-xs text-sm">
+            <p className="text-zinc-400 text-center max-w-xs text-sm">
               Thank you for reaching out. We'll get back to you shortly.
             </p>
           </motion.div>

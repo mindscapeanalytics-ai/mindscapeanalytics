@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { handleApiError, UnauthorizedError, NotFoundError } from '@/lib/api-error';
+import { handleApiError, UnauthorizedError, NotFoundError, BadRequestError } from '@/lib/api-error';
 import { withRateLimit } from '@/lib/rate-limit';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
@@ -12,8 +12,8 @@ const createOrderSchema = z.object({
   amount: z.number().positive(),
   currency: z.string().default('usd'),
   items: z.array(z.any()),
-  customerInfo: z.record(z.any()),
-  metadata: z.record(z.any()).optional(),
+  customerInfo: z.record(z.string(), z.any()),
+  metadata: z.record(z.string(), z.any()).optional(),
 });
 
 // GET - Fetch user's orders
@@ -58,18 +58,9 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
     const validationResult = createOrderSchema.safeParse(body);
-    
+
     if (!validationResult.success) {
-      return NextResponse.json(
-        {
-          error: {
-            code: 'VALIDATION_ERROR',
-            message: 'Invalid request format',
-            details: validationResult.error.errors,
-          },
-        },
-        { status: 422 }
-      );
+      throw new BadRequestError('Invalid order format', validationResult.error.format());
     }
 
     const { paymentIntentId, amount, currency, items, customerInfo, metadata } = validationResult.data;

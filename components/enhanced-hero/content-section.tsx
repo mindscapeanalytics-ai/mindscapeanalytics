@@ -80,7 +80,11 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
         </Badge>
         <Badge className={`bg-zinc-900/90 border border-zinc-700/50 text-zinc-300 px-3 py-1 text-[11px] sm:text-sm sm:px-4 sm:py-2 font-medium backdrop-blur-xl shadow-lg hover:bg-zinc-800 transition-colors duration-300 whitespace-nowrap ${getFocusStyles()}`}>
           <Brain className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2 text-red-500" aria-hidden="true" />
-          AI Systems
+          AI & Voice Bots
+        </Badge>
+        <Badge className={`bg-zinc-900/90 border border-zinc-700/50 text-zinc-300 px-3 py-1 text-[11px] sm:text-sm sm:px-4 sm:py-2 font-medium backdrop-blur-xl shadow-lg hover:bg-zinc-800 transition-colors duration-300 whitespace-nowrap ${getFocusStyles()}`}>
+          <Database className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2 text-red-500" aria-hidden="true" />
+          Modern Web & SaaS
         </Badge>
         <Badge className={`bg-zinc-900/90 border border-zinc-700/50 text-zinc-300 px-3 py-1 text-[11px] sm:text-sm sm:px-4 sm:py-2 font-medium backdrop-blur-xl shadow-lg hover:bg-zinc-800 transition-colors duration-300 whitespace-nowrap ${getFocusStyles()}`}>
           <Zap className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2 text-red-500" aria-hidden="true" />
@@ -91,17 +95,17 @@ export function ContentSection({ typographyConfig, className, mode = 'full' }: C
       {/* Enhanced Main Headline with improved typography */}
       <motion.div variants={itemVariants}>
         <h1
-          className={`${getResponsiveFontSize()} text-5xl sm:text-7xl lg:text-7xl xl:text-7xl font-bold tracking-tighter ${spacing.headlineSpacing} hero-headline`}
+          className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tighter hero-headline leading-[1.1] text-center lg:text-left"
           style={{
-            ...getLineHeightStyles(),
             ...getTextShadowStyles(),
-            lineHeight: '1.05'
           }}
         >
-          <span className="block text-white">Engineering</span>
-          <span className="block text-white">Intelligent Data</span>
-          <span className="block text-red-500">& AI Systems</span>
-          <span className="block text-red-500 font-medium italic">for Modern Enterprises</span>
+          <span className="block text-white uppercase tracking-[-0.02em]">Engineering Intelligent</span>
+          <span className="block text-white uppercase tracking-[-0.02em]">AI & Modern Web Ecosystems</span>
+          <span className="block text-red-500 uppercase tracking-[-0.02em] mt-1">Powering Global Innovation</span>
+          <span className="block text-zinc-500 font-medium text-base sm:text-xl lg:text-2xl mt-6 normal-case tracking-normal leading-relaxed">
+            Scalable AI Automation • Smart Chatbots • Voice Bots <br className="hidden sm:block lg:hidden" /> Elite SaaS Applications
+          </span>
         </h1>
       </motion.div>
     </>

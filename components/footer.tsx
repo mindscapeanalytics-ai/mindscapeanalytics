@@ -3,8 +3,9 @@
 import { useState, useEffect, memo } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Github, Linkedin, Twitter, ChevronRight, Mail, MapPin, Phone, ArrowRight, AlertCircle } from "lucide-react"
+import { Github, Linkedin, Twitter, ChevronRight, Mail, MapPin, Phone, ArrowRight, AlertCircle, Loader2 } from "lucide-react"
 import { motion } from "framer-motion"
+import { useToast } from "@/hooks/use-toast"
 
 import { footerNav, siteConfig } from "@/config/site-config"
 import { Button } from "@/components/ui/button"
@@ -187,17 +188,21 @@ const ContactInfo = memo(({
 ));
 ContactInfo.displayName = 'ContactInfo';
 
-const Newsletter = memo(({
-  email,
-  isEmailValid,
-  handleEmailChange,
-  handleSubscribe
-}: {
+interface NewsletterProps {
   email: string;
   isEmailValid: boolean;
   handleEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubscribe: () => void;
-}) => (
+  isSubmitting: boolean;
+}
+
+const Newsletter = memo(({
+  email,
+  isEmailValid,
+  handleEmailChange,
+  handleSubscribe,
+  isSubmitting
+}: NewsletterProps) => (
   <div className="mb-12 sm:mb-16 rounded-2xl p-4 sm:p-8 backdrop-blur-sm bg-gradient-to-r from-black/90 to-black/80 border border-white/10 shadow-[0_5px_15px_rgba(0,0,0,0.3)] relative z-10">
     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
       <div className="max-w-md">
@@ -222,14 +227,21 @@ const Newsletter = memo(({
           </p>
         )}
         <Button
-          className="bg-red-600 hover:bg-red-700 text-white group transition-all duration-300 overflow-hidden relative mt-2 sm:mt-0 shadow-md hover:shadow-lg"
+          className="bg-red-600 hover:bg-red-700 text-white group transition-all duration-300 overflow-hidden relative mt-2 sm:mt-0 shadow-md hover:shadow-lg disabled:opacity-70"
           onClick={handleSubscribe}
+          disabled={isSubmitting}
           aria-label="Subscribe to newsletter"
         >
-          <span className="inline-flex items-center group-hover:-translate-x-2 transition-transform duration-300">
-            Subscribe
-          </span>
-          <ArrowRight className="h-4 w-4 ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 absolute right-4 transition-all duration-300" />
+          {isSubmitting ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            <>
+              <span className="inline-flex items-center group-hover:-translate-x-2 transition-transform duration-300">
+                Subscribe
+              </span>
+              <ArrowRight className="h-4 w-4 ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 absolute right-4 transition-all duration-300" />
+            </>
+          )}
         </Button>
       </div>
     </div>
@@ -331,7 +343,9 @@ export default function Footer({ fullWidth = true }: FooterProps) {
   const currentYear = 2025;
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [linkError, setLinkError] = useState(false);
+  const { toast } = useToast();
 
   // Email validation
   const validateEmail = (email: string): boolean => {
@@ -344,13 +358,26 @@ export default function Footer({ fullWidth = true }: FooterProps) {
     setIsEmailValid(true);
   };
 
-  const handleSubscribe = (): void => {
+  const handleSubscribe = async (): Promise<void> => {
     if (!email || !validateEmail(email)) {
       setIsEmailValid(false);
       return;
     }
+
+    setIsSubmitting(true);
+
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
     console.log("Subscribed with:", email);
+
+    toast({
+      title: "Successfully Subscribed!",
+      description: "You've been added to our newsletter for the latest AI insights.",
+    });
+
     setEmail("");
+    setIsSubmitting(false);
   };
 
   const handleExternalLink = (url: string, e: React.MouseEvent): void => {
@@ -373,6 +400,7 @@ export default function Footer({ fullWidth = true }: FooterProps) {
           isEmailValid={isEmailValid}
           handleEmailChange={handleEmailChange}
           handleSubscribe={handleSubscribe}
+          isSubmitting={isSubmitting}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">

@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useRef, useEffect, useMemo } from "react"
-import { motion } from "framer-motion"
+import { useState, useRef, useEffect, useMemo, useCallback } from "react"
+import { motion, useAnimation, useMotionValue, useInView, useScroll } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -208,62 +208,95 @@ function TestimonialCard({ testimonial, index }: { testimonial: typeof testimoni
 
 export default function TestimonialCarousel() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const [showLeftArrow, setShowLeftArrow] = useState(false)
-  const [showRightArrow, setShowRightArrow] = useState(true)
   const [isPaused, setIsPaused] = useState(false)
+  const { scrollXProgress } = useScroll({ container: scrollContainerRef })
+  const isInView = useInView(scrollContainerRef, { once: false, margin: "-100px" })
+  const controls = useAnimation()
+  const x = useMotionValue(0)
 
-  // Duplicate testimonials for seamless loop
-  const duplicatedTestimonials = useMemo(() => [...testimonials, ...testimonials, ...testimonials], [])
+  // Duplicated testimonials for seamless loop
+  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials]
 
-  // Smooth scroll using requestAnimationFrame for 60fps
-  useEffect(() => {
+  const startAnimation = useCallback(async () => {
     if (!scrollContainerRef.current || isPaused) return
 
-    let animationFrameId: number
-    const scrollSpeed = 0.5 // pixels per frame
+    const scrollWidth = scrollContainerRef.current.scrollWidth
+    const thirdWidth = scrollWidth / 3
+    const currentX = x.get()
 
-    const animate = () => {
-      if (scrollContainerRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
-        const singleSetWidth = scrollWidth / 3 // Since we have 3 copies
+    // Calculate duration based on distance to end of second set
+    const remainingDistance = (thirdWidth * 2) + currentX
+    const speed = 40 // Pixels per second
+    const duration = remainingDistance / speed
 
-        // Reset to beginning when we've scrolled past one full set
-        if (scrollLeft >= singleSetWidth) {
-          scrollContainerRef.current.scrollLeft = 0
-        } else {
-          scrollContainerRef.current.scrollLeft += scrollSpeed
-        }
-
-        // Update arrow visibility
-        setShowLeftArrow(scrollLeft > 10)
-        setShowRightArrow(true)
+    await controls.start({
+      x: -(thirdWidth * 2),
+      transition: {
+        duration: Math.abs(duration),
+        ease: "linear",
       }
+    })
 
-      animationFrameId = requestAnimationFrame(animate)
+    // Reset to first set position and repeat
+    x.set(-thirdWidth)
+    startAnimation()
+  }, [controls, isPaused, x])
+
+  useEffect(() => {
+    // Start in the middle set for seamless look
+    if (scrollContainerRef.current) {
+      const thirdWidth = scrollContainerRef.current.scrollWidth / 3
+      x.set(-thirdWidth)
     }
+  }, [])
 
-    animationFrameId = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationFrameId)
-  }, [isPaused])
+  useEffect(() => {
+    if (isInView && !isPaused) {
+      startAnimation()
+    } else {
+      controls.stop()
+    }
+  }, [isInView, isPaused, startAnimation, controls])
+
+  // Recalculate scroll width after images load
+  useEffect(() => {
+    const images = scrollContainerRef.current?.querySelectorAll('img');
+    if (!images) return;
+
+    let loadedCount = 0;
+    const handleLoad = () => {
+      loadedCount++;
+      if (loadedCount === images.length && scrollContainerRef.current) {
+        // Ensure accurate measurements
+      }
+    };
+
+    images.forEach(img => {
+      if (img.complete) handleLoad();
+      else img.addEventListener('load', handleLoad);
+    });
+
+    return () => images.forEach(img => img.removeEventListener('load', handleLoad));
+  }, []);
 
   const scroll = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      setIsPaused(true)
-      const scrollAmount = 300
-      const currentScroll = scrollContainerRef.current.scrollLeft
-      const newScroll = direction === "left"
-        ? currentScroll - scrollAmount
-        : currentScroll + scrollAmount
+    setIsPaused(true)
+    const scrollAmount = 300
+    const targetX = x.get() + (direction === "left" ? scrollAmount : -scrollAmount)
 
-      scrollContainerRef.current.scrollTo({
-        left: newScroll,
-        behavior: "smooth"
-      })
-
-      // Resume auto-scroll after 3 seconds
+    controls.start({
+      x: targetX,
+      transition: { type: "spring", stiffness: 300, damping: 30 }
+    }).then(() => {
       setTimeout(() => setIsPaused(false), 3000)
-    }
+    })
   }
+
+  // Adding missing imports
+  const { scrollYProgress } = useScroll({
+    target: scrollContainerRef,
+    offset: ["start end", "end start"]
+  })
 
   return (
     <div className="relative overflow-hidden bg-transparent">
@@ -287,11 +320,7 @@ export default function TestimonialCarousel() {
         </div>
 
         {/* Testimonials Slider */}
-        <div
-          className="relative group"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+        <div className="relative group">
           {/* Controls */}
           <div className="absolute -top-10 right-4 flex gap-2 z-20">
             <Button
@@ -315,30 +344,42 @@ export default function TestimonialCarousel() {
           </div>
 
           {/* Masking gradients */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-black via-black/50 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-black via-black/50 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-32 z-10 bg-gradient-to-r from-black via-black/80 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-32 z-10 bg-gradient-to-l from-black via-black/80 to-transparent" />
 
-          {/* Testimonials Grid - GPU Accelerated */}
+          {/* Testimonials Grid - GPU Accelerated with Proper Overflow */}
           <div
-            ref={scrollContainerRef}
-            className="flex gap-4 overflow-x-hidden scroll-smooth py-4 px-20"
+            className="overflow-hidden"
             style={{
-              willChange: 'scroll-position',
-              transform: 'translateZ(0)', // Force GPU acceleration
-              backfaceVisibility: 'hidden',
+              maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
             }}
           >
-            {duplicatedTestimonials.map((testimonial, index) => (
-              <div
-                key={`${testimonial.id}-${index}`}
-                className="flex-none"
-                style={{
-                  transform: 'translateZ(0)', // GPU acceleration for each card
-                }}
-              >
-                <TestimonialCard testimonial={testimonial} index={index} />
-              </div>
-            ))}
+            <motion.div
+              ref={scrollContainerRef}
+              className="flex gap-4 py-4 cursor-grab active:cursor-grabbing"
+              animate={controls}
+              style={{ x }}
+              drag="x"
+              dragConstraints={{ left: -10000, right: 10000 }}
+              onDragStart={() => setIsPaused(true)}
+              onDragEnd={(_, info) => {
+                const currentX = x.get()
+                x.set(currentX + info.offset.x)
+                setTimeout(() => setIsPaused(false), 2000)
+              }}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              {duplicatedTestimonials.map((testimonial, index) => (
+                <div
+                  key={`${testimonial.id}-${index}`}
+                  className="flex-none"
+                >
+                  <TestimonialCard testimonial={testimonial} index={index} />
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
 

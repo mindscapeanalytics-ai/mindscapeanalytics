@@ -21,12 +21,12 @@ const quickFormSchema = z.object({
 
 interface QuickContactModalProps {
     open: boolean
-    onOpenChange: (open: boolean) => void
+    onOpenChange: any
     title?: string
     description?: string
     defaultMessage?: string
 }
-export function QuickContactModal({
+export default function QuickContactModal({
     open,
     onOpenChange,
     title = "Quick Contact",
@@ -118,7 +118,7 @@ export function QuickContactModal({
                                     <CheckCircle2 className="h-6 w-6 text-green-500" />
                                 </div>
                                 <h3 className="text-base font-bold mb-1 text-white">Message Sent!</h3>
-                                <p className="text-red-400 text-center text-xs">
+                                <p className="text-zinc-400 text-center text-xs">
                                     Thank you for reaching out. We'll get back to you shortly.
                                 </p>
                             </motion.div>
