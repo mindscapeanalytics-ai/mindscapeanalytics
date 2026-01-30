@@ -118,7 +118,7 @@ const colorVariants = {
     cyan: { bg: "bg-cyan-600", text: "text-cyan-400", border: "border-cyan-500/50" }
 }
 
-const ServiceCard = ({ service, isCenter, onBookNow }: { service: typeof services[0], isCenter: boolean, onBookNow?: (service: typeof services[0]) => void }) => {
+const ServiceCard = React.memo(({ service, isCenter, onBookNow }: { service: typeof services[0], isCenter: boolean, onBookNow?: (service: typeof services[0]) => void }) => {
     const colors = colorVariants[service.color as keyof typeof colorVariants]
     const mouseX = useMotionValue(0)
     const mouseY = useMotionValue(0)
@@ -127,6 +127,7 @@ const ServiceCard = ({ service, isCenter, onBookNow }: { service: typeof service
     const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-10, 10]), { damping: 20, stiffness: 150 })
 
     function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+        if (!isCenter) return // Performance: Skip tilt for non-center cards
         const rect = e.currentTarget.getBoundingClientRect()
         const x = (e.clientX - rect.left) / rect.width - 0.5
         const y = (e.clientY - rect.top) / rect.height - 0.5
@@ -141,18 +142,23 @@ const ServiceCard = ({ service, isCenter, onBookNow }: { service: typeof service
 
     return (
         <motion.div
-            style={{ rotateX, rotateY, perspective: 1000 }}
+            style={{
+                rotateX,
+                rotateY,
+                perspective: 1000,
+                transform: "translateZ(0)" // GPU Acceleration
+            }}
             onMouseMove={onMouseMove}
             onMouseLeave={onMouseLeave}
             className={cn(
-                "relative transition-all duration-700 w-[300px] sm:w-[360px]",
-                isCenter ? "scale-100 z-30 opacity-100" : "scale-90 z-10 opacity-30 blur-[1px]"
+                "relative transition-all duration-700 w-[300px] sm:w-[360px] will-change-transform",
+                isCenter ? "scale-100 z-30 opacity-100" : "scale-90 z-10 opacity-30"
             )}
         >
             <TooltipProvider>
                 <Card className={cn(
-                    "h-full rounded-[32px] border bg-zinc-900/20 backdrop-blur-md text-white p-6 flex flex-col gap-5 shadow-2xl transition-all duration-500",
-                    isCenter ? "border-white/20 shadow-red-900/10 ring-1 ring-white/10" : "border-white/5 opacity-50"
+                    "h-full rounded-[32px] border bg-zinc-950/40 backdrop-blur-sm text-white p-6 flex flex-col gap-5 shadow-2xl transition-all duration-500",
+                    isCenter ? "border-white/20 shadow-red-900/10 ring-1 ring-white/10 backdrop-blur-md" : "border-white/5 opacity-50 backdrop-blur-none"
                 )}>
                     {/* Header */}
                     <div className="flex flex-col gap-1">
@@ -221,7 +227,9 @@ const ServiceCard = ({ service, isCenter, onBookNow }: { service: typeof service
             </TooltipProvider>
         </motion.div>
     )
-}
+})
+
+ServiceCard.displayName = "ServiceCard"
 
 export default function ServicesShowcase() {
     const [activeIndex, setActiveIndex] = useState(0)
@@ -390,18 +398,18 @@ export default function ServicesShowcase() {
             </div>
 
             {/* Modern Circular Background Effects - Refined for Metallic Look */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none -z-10 overflow-hidden">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none -z-10 overflow-hidden select-none">
                 <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[1100px] rounded-full border-[0.5px] border-white/5"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[1100px] rounded-full border-[0.5px] border-white/5 will-change-transform"
                 >
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-red-500/50 rounded-full shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
                 </motion.div>
                 <motion.div
                     animate={{ rotate: -360 }}
                     transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1500px] h-[1500px] rounded-full border-[0.5px] border-white/[0.02]"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1500px] h-[1500px] rounded-full border-[0.5px] border-white/[0.02] will-change-transform"
                 />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(220,38,38,0.05)_0%,transparent_70%)] rounded-full blur-[100px]" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,transparent_20%,#050505_80%)]" />

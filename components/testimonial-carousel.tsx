@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useMemo } from "react"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
@@ -210,32 +210,46 @@ export default function TestimonialCarousel() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [showLeftArrow, setShowLeftArrow] = useState(false)
   const [showRightArrow, setShowRightArrow] = useState(true)
-  const [isAutoScrolling, setIsAutoScrolling] = useState(true)
+  const [isPaused, setIsPaused] = useState(false)
 
-  // Auto-scroll loop
+  // Duplicate testimonials for seamless loop
+  const duplicatedTestimonials = useMemo(() => [...testimonials, ...testimonials, ...testimonials], [])
+
+  // Smooth scroll using requestAnimationFrame for 60fps
   useEffect(() => {
-    if (!scrollContainerRef.current || !isAutoScrolling) return
+    if (!scrollContainerRef.current || isPaused) return
 
-    const interval = setInterval(() => {
+    let animationFrameId: number
+    const scrollSpeed = 0.5 // pixels per frame
+
+    const animate = () => {
       if (scrollContainerRef.current) {
         const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
-        const maxScroll = scrollWidth - clientWidth
+        const singleSetWidth = scrollWidth / 3 // Since we have 3 copies
 
-        if (scrollLeft >= maxScroll - 1) {
-          scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' })
+        // Reset to beginning when we've scrolled past one full set
+        if (scrollLeft >= singleSetWidth) {
+          scrollContainerRef.current.scrollLeft = 0
         } else {
-          scrollContainerRef.current.scrollTo({ left: scrollLeft + 1, behavior: 'auto' })
+          scrollContainerRef.current.scrollLeft += scrollSpeed
         }
-      }
-    }, 30)
 
-    return () => clearInterval(interval)
-  }, [isAutoScrolling])
+        // Update arrow visibility
+        setShowLeftArrow(scrollLeft > 10)
+        setShowRightArrow(true)
+      }
+
+      animationFrameId = requestAnimationFrame(animate)
+    }
+
+    animationFrameId = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(animationFrameId)
+  }, [isPaused])
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
-      setIsAutoScrolling(false)
-      const scrollAmount = 264
+      setIsPaused(true)
+      const scrollAmount = 300
       const currentScroll = scrollContainerRef.current.scrollLeft
       const newScroll = direction === "left"
         ? currentScroll - scrollAmount
@@ -246,8 +260,8 @@ export default function TestimonialCarousel() {
         behavior: "smooth"
       })
 
-      // Resume auto-scroll after delay
-      setTimeout(() => setIsAutoScrolling(true), 5000)
+      // Resume auto-scroll after 3 seconds
+      setTimeout(() => setIsPaused(false), 3000)
     }
   }
 
@@ -275,8 +289,8 @@ export default function TestimonialCarousel() {
         {/* Testimonials Slider */}
         <div
           className="relative group"
-          onMouseEnter={() => setIsAutoScrolling(false)}
-          onMouseLeave={() => setIsAutoScrolling(true)}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           {/* Controls */}
           <div className="absolute -top-10 right-4 flex gap-2 z-20">
@@ -304,13 +318,24 @@ export default function TestimonialCarousel() {
           <div className="pointer-events-none absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-black via-black/50 to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-black via-black/50 to-transparent" />
 
-          {/* Testimonials Grid */}
+          {/* Testimonials Grid - GPU Accelerated */}
           <div
             ref={scrollContainerRef}
             className="flex gap-4 overflow-x-hidden scroll-smooth py-4 px-20"
+            style={{
+              willChange: 'scroll-position',
+              transform: 'translateZ(0)', // Force GPU acceleration
+              backfaceVisibility: 'hidden',
+            }}
           >
-            {[...testimonials, ...testimonials].map((testimonial, index) => (
-              <div key={`${testimonial.id}-${index}`} className="flex-none">
+            {duplicatedTestimonials.map((testimonial, index) => (
+              <div
+                key={`${testimonial.id}-${index}`}
+                className="flex-none"
+                style={{
+                  transform: 'translateZ(0)', // GPU acceleration for each card
+                }}
+              >
                 <TestimonialCard testimonial={testimonial} index={index} />
               </div>
             ))}

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { ChevronLeft, ChevronRight } from "lucide-react"
@@ -70,7 +70,7 @@ const teamMembers = [
   }
 ]
 
-function TeamCard({ member, index }: { member: typeof teamMembers[0], index: number }) {
+const TeamCard = React.memo(({ member, index }: { member: typeof teamMembers[0], index: number }) => {
   const isFounder = member.name === "Zeeshan Keerio"
 
   return (
@@ -79,7 +79,7 @@ function TeamCard({ member, index }: { member: typeof teamMembers[0], index: num
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
       viewport={{ once: true }}
-      className={`relative overflow-hidden rounded-xl group transition-all duration-300 w-[320px] h-[520px] ${isFounder
+      className={`relative overflow-hidden rounded-xl group transition-all duration-300 w-[320px] h-[520px] will-change-transform transform-gpu ${isFounder
         ? "bg-gradient-to-br from-red-500/10 to-black/40 border border-red-500/30 shadow-[0_0_25px_rgba(220,38,38,0.2)]"
         : "bg-black/40 border border-white/10"
         }`}
@@ -96,7 +96,7 @@ function TeamCard({ member, index }: { member: typeof teamMembers[0], index: num
         {isFounder && (
           <>
             <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 to-transparent z-0" />
-            <div className="absolute -inset-1 bg-gradient-to-r from-red-500/10 to-transparent blur-lg opacity-50 animate-pulse-slow" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-red-500/10 to-transparent blur-lg opacity-50 transition-opacity duration-1000 group-hover:animate-pulse" />
           </>
         )}
 
@@ -138,10 +138,10 @@ function TeamCard({ member, index }: { member: typeof teamMembers[0], index: num
         <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
           {isFounder ? (
             <Link href="/founder">
-              <h3 className="text-2xl font-bold text-white hover:text-red-400 transition-colors">{member.name}</h3>
+              <h3 className="text-2xl font-bold text-white hover:text-red-400 transition-colors uppercase tracking-tighter">{member.name}</h3>
             </Link>
           ) : (
-            <h3 className="text-2xl font-bold">{member.name}</h3>
+            <h3 className="text-2xl font-bold uppercase tracking-tighter">{member.name}</h3>
           )}
         </div>
       </div>
@@ -198,7 +198,9 @@ function TeamCard({ member, index }: { member: typeof teamMembers[0], index: num
       </div>
     </motion.div>
   )
-}
+})
+
+TeamCard.displayName = "TeamCard"
 
 export default function TeamSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -211,23 +213,21 @@ export default function TeamSection() {
     if (!scrollContainerRef.current || !isAutoScrolling) return
 
     let animationFrameId: number
-    let lastTimestamp = 0
-    const scrollSpeed = 0.5 // pixels per frame approx
+    const scrollSpeed = 0.8 // Increased speed for better visibility (pixels per frame)
 
-    const step = (timestamp: number) => {
-      if (!lastTimestamp) lastTimestamp = timestamp
-      const progress = timestamp - lastTimestamp
-
+    const step = () => {
       if (scrollContainerRef.current) {
-        const { scrollLeft, scrollWidth } = scrollContainerRef.current
-        const halfWidth = scrollWidth / 2
+        const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
+        const singleSetWidth = scrollWidth / 2 // We duplicate the team members
 
-        if (scrollLeft >= halfWidth) {
+        // Seamless loop: reset to beginning when we've scrolled past one full set
+        if (scrollLeft >= singleSetWidth) {
           scrollContainerRef.current.scrollLeft = 0
         } else {
-          scrollContainerRef.current.scrollLeft += 1
+          scrollContainerRef.current.scrollLeft += scrollSpeed
         }
 
+        // Update arrow visibility
         setShowLeftArrow(scrollLeft > 10)
         setShowRightArrow(true)
       }
@@ -294,10 +294,15 @@ export default function TeamSection() {
             </button>
           )}
 
-          {/* Team Members Grid */}
+          {/* Team Members Grid - GPU Accelerated */}
           <div
             ref={scrollContainerRef}
             className="flex gap-6 overflow-x-auto pb-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            style={{
+              willChange: 'scroll-position',
+              transform: 'translateZ(0)', // Force GPU acceleration
+              backfaceVisibility: 'hidden',
+            }}
             onMouseEnter={() => setIsAutoScrolling(false)}
             onMouseLeave={() => setIsAutoScrolling(true)}
             onScroll={(e) => {
@@ -315,7 +320,13 @@ export default function TeamSection() {
             }}
           >
             {[...teamMembers, ...teamMembers].map((member, index) => (
-              <div key={`${member.name}-${index}`} className="flex-none w-80">
+              <div
+                key={`${member.name}-${index}`}
+                className="flex-none w-80"
+                style={{
+                  transform: 'translateZ(0)', // GPU acceleration for each card
+                }}
+              >
                 <TeamCard member={member} index={index % teamMembers.length} />
               </div>
             ))}

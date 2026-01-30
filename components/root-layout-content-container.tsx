@@ -49,19 +49,45 @@ export default function RootLayoutContentContainer({
     const pathname = usePathname()
     const [mounted, setMounted] = useState(false)
     const [initialLoadComplete, setInitialLoadComplete] = useState(false)
+    const hasScrolledToTop = React.useRef(false)
 
     const isDashboard = pathname?.startsWith('/dashboard')
     const isDocs = pathname?.startsWith('/docs')
 
     useEffect(() => {
         setMounted(true)
-        // Mark initial load as complete after a short delay
-        const timer = setTimeout(() => {
-            setInitialLoadComplete(true)
-        }, 2000);
 
-        return () => clearTimeout(timer);
+        // Check if we've already shown the loader in this session
+        const hasLoaded = sessionStorage.getItem('mindscape_initial_load_complete')
+
+        if (hasLoaded) {
+            setInitialLoadComplete(true)
+        } else {
+            // Reduced from 2000ms to 800ms for better perceived performance
+            const timer = setTimeout(() => {
+                setInitialLoadComplete(true)
+                sessionStorage.setItem('mindscape_initial_load_complete', 'true')
+            }, 800);
+            return () => clearTimeout(timer);
+        }
     }, []);
+
+    // Ensure page always loads at the top (especially for homepage)
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            // Disable automatic scroll restoration
+            if ('scrollRestoration' in window.history) {
+                window.history.scrollRestoration = 'manual'
+            }
+
+            // Only scroll to top on initial load, not on every pathname change
+            // This prevents race conditions with component mounting
+            if (!hasScrolledToTop.current) {
+                window.scrollTo(0, 0)
+                hasScrolledToTop.current = true
+            }
+        }
+    }, [pathname]);
 
     // Explicitly define pages that should NOT have a footer
     const pagesWithoutFooter = [
@@ -84,12 +110,12 @@ export default function RootLayoutContentContainer({
                 {/* Prefetch critical images */}
                 <ImagePrefetcher />
 
-                {/* Branded AI Loading Screen */}
-                {!initialLoadComplete && <AILoader text="Mindscape Analytics" />}
+                {/* Branded AI Loading Screen - only show on client after mount */}
+                {mounted && !initialLoadComplete && <AILoader text="Mindscape Analytics" />}
 
                 <div className="relative min-h-screen min-w-[320px] w-full max-w-[100vw] mx-auto xl:max-w-[1920px]">
-                    {/* Main header - consistently applied. Use !mounted check to match SSR */}
-                    {(!mounted || !isDashboard) && <EnhancedHeader fullWidth={true} />}
+                    {/* Main header - always render for SSR, hide dashboard header */}
+                    {!isDashboard && <EnhancedHeader fullWidth={true} />}
 
                     {/* Monitor navigation events - wrapped in Suspense */}
                     <Suspense fallback={<NavigationEventsFallback />}>
@@ -100,11 +126,11 @@ export default function RootLayoutContentContainer({
                         {children}
                     </div>
 
-                    {/* Main footer - consistently applied. Use !mounted check to match SSR */}
-                    {(!mounted || showFooter) && <Footer key="main-footer" fullWidth={true} />}
+                    {/* Main footer - always render if needed for SSR */}
+                    {showFooter && <Footer key="main-footer" fullWidth={true} />}
 
-                    {/* Exit Intent Popup for Lead Generation */}
-                    <ExitIntentPopup />
+                    {/* Exit Intent Popup - only on client */}
+                    {mounted && <ExitIntentPopup />}
 
                     <Toaster />
                 </div>

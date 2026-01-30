@@ -7,10 +7,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle2, Download, Mail, ArrowRight, Home } from "lucide-react"
 import Link from "next/link"
 
-export default function SuccessPage() {
+function SuccessContent() {
   const searchParams = useSearchParams()
-  const router = useRouter()
-  const paymentIntentId = searchParams.get('payment_intent')
+  const paymentIntentId = searchParams?.get('payment_intent')
   const [orderDetails, setOrderDetails] = useState<any>(null)
 
   useEffect(() => {
@@ -143,6 +142,21 @@ export default function SuccessPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+import { Suspense } from "react"
+import { Loader2 } from "lucide-react"
+
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-red-500" />
+      </div>
+    }>
+      <SuccessContent />
+    </Suspense>
   )
 }
 

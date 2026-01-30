@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -65,7 +65,7 @@ export function VideoModal({ isOpen, onClose, videoUrl, title }: VideoModalProps
           aria-modal="true"
           aria-label={title || "Video player"}
         >
-          <div 
+          <div
             className="relative w-full max-w-4xl aspect-video"
             onClick={e => e.stopPropagation()}
           >

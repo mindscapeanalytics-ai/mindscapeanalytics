@@ -202,9 +202,10 @@ export default function CaseStudiesSection() {
         <div className="relative">
           {/* Main Card with modern design */}
           <Card
-            className="relative bg-gradient-to-br from-white/[0.03] via-white/[0.02] to-white/[0.01] border-2 border-white/10 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm"
+            className="relative bg-gradient-to-br from-white/[0.03] via-white/[0.02] to-white/[0.01] border-2 border-white/10 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-[2px]"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
+            style={{ transform: 'translateZ(0)' }}
           >
             {/* Background gradient & Image effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-black/50 to-blue-500/10 opacity-60 pointer-events-none z-0" />

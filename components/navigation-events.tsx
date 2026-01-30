@@ -21,16 +21,15 @@ export function NavigationEvents() {
       const newState = { ...window.history.state, previousPath }
       window.history.replaceState(newState, "", window.location.href)
     }
-    
+
     // Check if we are coming back from founder page
     const isFromFounderPage = previousPath?.includes('/founder') && pathname === '/'
-    
+
     // Special case: coming back from founder's page to home
     if (isFromFounderPage) {
       // When going back from founder to home, we don't show loading
-      console.log("Navigation: Back from founder to home - no loading")
-    } 
-    
+    }
+
     // Update the previous path for next navigation
     previousPath = pathname || ""
   }, [pathname])

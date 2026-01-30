@@ -78,7 +78,7 @@ function CheckoutForm({ items, total }: { items: CheckoutItem[], total: number }
         }
 
         const data = await response.json()
-        
+
         if (data.error) {
           throw new Error(data.error.message || 'Payment intent creation failed')
         }
@@ -115,7 +115,7 @@ function CheckoutForm({ items, total }: { items: CheckoutItem[], total: number }
         elements,
         clientSecret,
         confirmParams: {
-          return_url: `${window.location.origin}/marketplace/success?payment_intent=${paymentIntent?.id || ''}`,
+          return_url: `${window.location.origin}/marketplace/success`,
           payment_method_data: {
             billing_details: {
               name: customerInfo.name,
@@ -284,8 +284,7 @@ function CheckoutForm({ items, total }: { items: CheckoutItem[], total: number }
   )
 }
 
-export default function CheckoutPage() {
-  const searchParams = useSearchParams()
+function CheckoutContent() {
   const router = useRouter()
   const [items, setItems] = useState<CheckoutItem[]>([])
   const [total, setTotal] = useState(0)
@@ -297,7 +296,7 @@ export default function CheckoutPage() {
       try {
         const cartItems = JSON.parse(cartData)
         setItems(cartItems)
-        const cartTotal = cartItems.reduce((sum: number, item: CheckoutItem) => 
+        const cartTotal = cartItems.reduce((sum: number, item: CheckoutItem) =>
           sum + (item.price * item.quantity), 0
         )
         setTotal(cartTotal)
@@ -363,6 +362,20 @@ export default function CheckoutPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+import { Suspense } from "react"
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-red-500" />
+      </div>
+    }>
+      <CheckoutContent />
+    </Suspense>
   )
 }
 

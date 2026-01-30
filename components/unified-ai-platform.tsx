@@ -218,7 +218,7 @@ export default function UnifiedAIPlatform() {
             {/* Section Header */}
             <div className="text-center mb-16">
                 <div className="inline-flex items-center justify-center mb-4">
-                    <Badge variant="outline" className="bg-black/50 border-white/10 text-white/60 px-4 py-1.5 text-xs tracking-[0.2em] uppercase backdrop-blur-md">
+                    <Badge variant="outline" className="bg-black/50 border-white/10 text-white/60 px-4 py-1.5 text-xs tracking-[0.2em] uppercase backdrop-blur-sm">
                         AI Platform
                     </Badge>
                 </div>
@@ -232,7 +232,10 @@ export default function UnifiedAIPlatform() {
             </div>
 
             {/* Main Interface - "Frameless" on mobile, Glassmorphic on desktop */}
-            <div className="md:bg-[#0A0A0A]/80 md:border md:border-white/10 md:rounded-3xl md:overflow-hidden md:shadow-2xl md:ring-1 md:ring-white/5 relative group">
+            <div
+                className="md:bg-[#0A0A0A]/80 md:border md:border-white/10 md:rounded-3xl md:overflow-hidden md:shadow-2xl md:ring-1 md:ring-white/5 relative group"
+                style={{ transform: 'translateZ(0)' }}
+            >
                 {/* Background glow for the whole platform */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-red-600/20 to-red-900/20 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10" />
                 <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[650px]">
@@ -291,7 +294,7 @@ export default function UnifiedAIPlatform() {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 10 }}
                                 transition={{ duration: 0.2 }}
-                                className="flex-1 flex flex-col"
+                                className="flex-1 flex flex-col will-change-[transform,opacity]"
                             >
                                 <div className="mb-8">
                                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-zinc-300 text-xs font-medium mb-4">

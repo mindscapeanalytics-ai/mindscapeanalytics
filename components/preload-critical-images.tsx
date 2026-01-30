@@ -12,7 +12,7 @@ const CRITICAL_IMAGES = [
   '/images/optimized/founder-reduced.webp', // Optimized version of founder image
 
   // Logos and brand images
-  '/images/optimized/logo-original.webp',
+  '/images/optimized/logo-optimized.webp',
 
   // Icons that appear on every page
   '/icons/icon-192x192.png',

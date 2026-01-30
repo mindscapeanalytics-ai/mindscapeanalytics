@@ -30,11 +30,11 @@ export function HeroVisual() {
     }, [])
 
     return (
-        <div className="relative w-full h-[250px] sm:h-[500px] perspective-1000 flex items-center justify-center">
+        <div className="relative w-full h-[250px] sm:h-[500px] perspective-1000 flex items-center justify-center transform-gpu">
             {/* Ambient Glows - Subtle and wide */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-red-500/5 rounded-full blur-[100px] pointer-events-none" />
 
-            <div className="relative w-[280px] h-[190px] sm:w-[450px] sm:h-[280px] preserve-3d">
+            <div className="relative w-[280px] h-[190px] sm:w-[450px] sm:h-[280px] preserve-3d will-change-transform" style={{ transform: "translate3d(0,0,0)" }}>
                 <AnimatePresence mode="popLayout">
                     {heroProjectImages.map((src, index) => {
                         const offset = (index - currentIndex + heroProjectImages.length) % heroProjectImages.length;
@@ -65,7 +65,9 @@ export function HeroVisual() {
                                 }}
                                 style={{
                                     zIndex: heroProjectImages.length - offset,
-                                    transformStyle: "preserve-3d"
+                                    transformStyle: "preserve-3d",
+                                    transform: "translate3d(0,0,0)",
+                                    willChange: "transform, opacity"
                                 }}
                             >
                                 {/* Premium Border Gradient */}
@@ -104,7 +106,7 @@ export function HeroVisual() {
 
             {/* Enhanced Floating Tags */}
             <motion.div
-                className="absolute right-0 sm:-right-10 top-[15%] sm:top-1/4 bg-black/60 backdrop-blur-xl px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg border border-red-500/20 shadow-xl text-[10px] sm:text-xs font-mono text-red-500/90 flex items-center gap-2 z-50 pointer-events-none"
+                className="absolute right-0 sm:-right-10 top-[15%] sm:top-1/4 bg-black/60 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg border border-red-500/20 shadow-xl text-[10px] sm:text-xs font-mono text-red-500/90 flex items-center gap-2 z-50 pointer-events-none transform-gpu"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
@@ -113,7 +115,7 @@ export function HeroVisual() {
             </motion.div>
 
             <motion.div
-                className="absolute left-0 sm:-left-10 bottom-[15%] sm:bottom-1/4 bg-black/60 backdrop-blur-xl px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg border border-white/10 shadow-xl text-[10px] sm:text-xs font-mono text-white/60 flex items-center gap-2 z-50 pointer-events-none"
+                className="absolute left-0 sm:-left-10 bottom-[15%] sm:bottom-1/4 bg-black/60 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg border border-white/10 shadow-xl text-[10px] sm:text-xs font-mono text-white/60 flex items-center gap-2 z-50 pointer-events-none transform-gpu"
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             >

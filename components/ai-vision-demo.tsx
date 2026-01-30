@@ -366,7 +366,7 @@ export default function AIVisionDemo() {
                   />
 
                   {!results && (
-                    <img src={image || "/placeholder.svg"} alt="Uploaded" className="w-full h-auto rounded-lg" />
+                    <img src={image || "/images/placeholder.webp"} alt="Uploaded" className="w-full h-auto rounded-lg" />
                   )}
                 </div>
               </div>
@@ -393,7 +393,7 @@ export default function AIVisionDemo() {
             />
 
             {image && !results && (
-              <img src={image || "/placeholder.svg"} alt="Captured" className="w-full h-auto rounded-lg" />
+              <img src={image || "/images/placeholder.webp"} alt="Captured" className="w-full h-auto rounded-lg" />
             )}
 
             <div className="flex justify-between mt-2 gap-2">

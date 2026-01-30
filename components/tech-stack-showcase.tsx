@@ -52,16 +52,17 @@ type TechItem = {
 }
 
 // Data Handling - Correct Slugs for SimpleIcons
+// Note: Some icons don't exist on SimpleIcons CDN, so we use fallback icons
 const techStackData: TechItem[] = [
   // AI & ML
-  { name: "OpenAI", category: "ai", iconSlug: "openai", fallbackIcon: Brain },
-  { name: "LangChain", category: "ai", iconSlug: "langchain", fallbackIcon: Network },
+  { name: "OpenAI", category: "ai", iconSlug: undefined, fallbackIcon: Brain }, // Not available on SimpleIcons
+  { name: "LangChain", category: "ai", iconSlug: undefined, fallbackIcon: Network }, // Not available on SimpleIcons
   { name: "Anthropic", category: "ai", iconSlug: "anthropic", fallbackIcon: Brain },
   { name: "Meta AI", category: "ai", iconSlug: "meta", fallbackIcon: Globe },
   { name: "TensorFlow", category: "ai", iconSlug: "tensorflow", fallbackIcon: Cpu },
   { name: "PyTorch", category: "ai", iconSlug: "pytorch", fallbackIcon: Cpu },
   { name: "Hugging Face", category: "ai", iconSlug: "huggingface", fallbackIcon: Brain },
-  { name: "Cohere", category: "ai", iconSlug: "cohere", fallbackIcon: Brain },
+  { name: "Cohere", category: "ai", iconSlug: undefined, fallbackIcon: Brain }, // Not available on SimpleIcons
 
   // Data
   { name: "PostgreSQL", category: "data", iconSlug: "postgresql", fallbackIcon: Database },
@@ -70,11 +71,11 @@ const techStackData: TechItem[] = [
   { name: "MongoDB", category: "data", iconSlug: "mongodb", fallbackIcon: Database },
   { name: "Elasticsearch", category: "data", iconSlug: "elasticsearch", fallbackIcon: Search },
   { name: "Kafka", category: "data", iconSlug: "apachekafka", fallbackIcon: Network },
-  { name: "Pinecone", category: "data", iconSlug: "pinecone", fallbackIcon: Database },
-  { name: "Weaviate", category: "data", iconSlug: "weaviate", fallbackIcon: Database },
+  { name: "Pinecone", category: "data", iconSlug: undefined, fallbackIcon: Database }, // Not available on SimpleIcons
+  { name: "Weaviate", category: "data", iconSlug: undefined, fallbackIcon: Database }, // Not available on SimpleIcons
 
   // Cloud
-  { name: "AWS", category: "cloud", iconSlug: "amazonwebservices", fallbackIcon: Cloud },
+  { name: "AWS", category: "cloud", iconSlug: "amazonaws", fallbackIcon: Cloud }, // Corrected slug
   { name: "Google Cloud", category: "cloud", iconSlug: "googlecloud", fallbackIcon: Cloud },
   { name: "Azure", category: "cloud", iconSlug: "microsoftazure", fallbackIcon: Cloud },
   { name: "Vercel", category: "cloud", iconSlug: "vercel", fallbackIcon: Globe },

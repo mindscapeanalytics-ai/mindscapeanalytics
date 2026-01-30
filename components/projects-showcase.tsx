@@ -375,7 +375,7 @@ export default function ProjectsShowcase() {
       marqueeControls.start({
         x: ["0%", "-50%"],
         transition: {
-          duration: 90, // Even slower for an ultra-premium "slow motion" experience
+          duration: 60, // Optimized speed for smooth, visible scrolling
           ease: "linear",
           repeat: Infinity,
           repeatType: "loop",
@@ -528,7 +528,7 @@ export default function ProjectsShowcase() {
         </div>
 
         <Tabs defaultValue="current" className="w-full" onValueChange={setActiveTab}>
-          <TabsList className="grid grid-cols-2 max-w-[400px] mx-auto mb-8 bg-zinc-900/20 backdrop-blur-md border border-white/10 p-1 rounded-full overflow-hidden">
+          <TabsList className="grid grid-cols-2 max-w-[400px] mx-auto mb-8 bg-zinc-900/20 backdrop-blur-sm border border-white/10 p-1 rounded-full overflow-hidden">
             <TabsTrigger value="current" className="data-[state=active]:bg-red-600 data-[state=active]:text-white text-white/50 rounded-full transition-all duration-300 hover:text-white/80">
               Current Projects
             </TabsTrigger>
@@ -577,9 +577,8 @@ export default function ProjectsShowcase() {
                   style={{
                     x: dragX,
                     willChange: 'transform',
-                    transform: 'translateZ(0)',
-                    backfaceVisibility: 'hidden', // Prevent flicker
-                    transformStyle: 'preserve-3d', // Better 3D handling
+                    transform: 'translate3d(0, 0, 0)', // Force GPU
+                    backfaceVisibility: 'hidden',
                   }}
                   drag="x"
                   dragConstraints={{ left: -2000, right: 2000 }}
@@ -599,7 +598,7 @@ export default function ProjectsShowcase() {
                       whileHover="hover"
                       className="flex-shrink-0 w-[85vw] sm:w-[350px] md:w-[400px] h-full"
                     >
-                      <Card className={`backdrop-blur-md border ${getBorderColor(project.color || 'red')} bg-zinc-900/10 hover:bg-zinc-900/20 transition-all duration-500 h-full group overflow-hidden flex flex-col shadow-2xl relative`}>
+                      <Card className={`backdrop-blur-[2px] border ${getBorderColor(project.color || 'red')} bg-zinc-900/10 hover:bg-zinc-900/20 transition-all duration-500 h-full group overflow-hidden flex flex-col shadow-2xl relative`} style={{ transform: 'translateZ(0)' }}>
                         {/* Animated gradient background overlay */}
                         <div className={`absolute inset-0 bg-gradient-to-br ${getBackgroundGradient(project.color || 'red')} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
                         <CardHeader className="relative p-4">
@@ -722,6 +721,7 @@ export default function ProjectsShowcase() {
                   style={{
                     x: upcomingDragX,
                     willChange: 'transform',
+                    transform: 'translate3d(0, 0, 0)', // Force GPU
                   }}
                   drag="x"
                   dragConstraints={{ left: -2000, right: 2000 }}
@@ -741,7 +741,7 @@ export default function ProjectsShowcase() {
                       whileHover="hover"
                       className="flex-shrink-0 w-[85vw] sm:w-[350px] md:w-[400px]"
                     >
-                      <Card className={`backdrop-blur-md border ${getBorderColor(project.color || 'red')} bg-zinc-900/10 hover:bg-zinc-900/20 transition-all duration-500 h-full group overflow-hidden flex flex-col shadow-2xl relative`}>
+                      <Card className={`backdrop-blur-[2px] border ${getBorderColor(project.color || 'red')} bg-zinc-900/10 hover:bg-zinc-900/20 transition-all duration-500 h-full group overflow-hidden flex flex-col shadow-2xl relative`} style={{ transform: 'translateZ(0)' }}>
                         {/* Animated gradient background overlay */}
                         <div className={`absolute inset-0 bg-gradient-to-br ${getBackgroundGradient(project.color || 'red')} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
                         <CardHeader className="relative p-4">

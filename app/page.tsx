@@ -1,7 +1,7 @@
 "use client"
 
-import React, { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import React, { useRef, useState } from "react"
+import { motion, useScroll, useTransform, useMotionValue } from "framer-motion"
 import { StandardBackground } from "@/components/shared/background"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { CookieConsent } from "@/components/cookie-consent"
@@ -13,46 +13,99 @@ import { OnboardingChecklist } from "@/components/ui/onboarding-checklist"
 import ServicesShowcase from "@/components/services-showcase"
 import ProductsShowcase from "@/components/products-showcase"
 
-// Dynamic imports for heavy interactive components
+// Error handling and loading states
+import { ErrorBoundary } from "@/components/ui/error-boundary"
+import { SectionSkeleton, HeroSkeleton } from "@/components/ui/section-skeleton"
+
+// Dynamic imports for heavy interactive components with proper loading states
 import dynamic from 'next/dynamic'
 
-// Hero is critical but if it's causing generic object errors, we lazy load it to isolate
-const EnhancedHero = dynamic(() => import("@/components/enhanced-hero"), { ssr: false })
+// Hero with custom skeleton
+const EnhancedHero = dynamic(() => import("@/components/enhanced-hero"), {
+  ssr: false,
+  loading: () => <HeroSkeleton />
+})
 
 const ProjectsShowcase = dynamic(() => import("@/components/projects-showcase"), {
   ssr: false,
-  loading: () => <div className="h-[600px] w-full bg-black animate-pulse" />
+  loading: () => <SectionSkeleton height="600px" />
 })
-const CaseStudiesSection = dynamic(() => import("@/components/case-studies-section"), { ssr: false })
-const EnhancedIndustrySolutions = dynamic(() => import("@/components/enhanced-industry-solutions"), { ssr: false })
-const UnifiedAIPlatform = dynamic(() => import("@/components/unified-ai-platform"), { ssr: false })
-const TechStackShowcase = dynamic(() => import("@/components/tech-stack-showcase"), { ssr: false })
-const TeamSection = dynamic(() => import("@/components/team-section"), { ssr: false })
-const TestimonialCarousel = dynamic(() => import("@/components/testimonial-carousel"), { ssr: false })
-const InstantQuoteCalculator = dynamic(() => import("@/components/instant-quote-calculator"), { ssr: false })
-const WhyChooseUs = dynamic(() => import("@/components/why-choose-us"), { ssr: false })
-const EnhancedCTASection = dynamic(() => import("@/components/enhanced-cta-section"), { ssr: false })
+
+const CaseStudiesSection = dynamic(() => import("@/components/case-studies-section"), {
+  ssr: false,
+  loading: () => <SectionSkeleton height="700px" />
+})
+
+const EnhancedIndustrySolutions = dynamic(() => import("@/components/enhanced-industry-solutions"), {
+  ssr: false,
+  loading: () => <SectionSkeleton height="800px" />
+})
+
+const UnifiedAIPlatform = dynamic(() => import("@/components/unified-ai-platform"), {
+  ssr: false,
+  loading: () => <SectionSkeleton height="900px" />
+})
+
+const TechStackShowcase = dynamic(() => import("@/components/tech-stack-showcase"), {
+  ssr: false,
+  loading: () => <SectionSkeleton height="600px" />
+})
+
+const TeamSection = dynamic(() => import("@/components/team-section"), {
+  ssr: false,
+  loading: () => <SectionSkeleton height="700px" />
+})
+
+const TestimonialCarousel = dynamic(() => import("@/components/testimonial-carousel"), {
+  ssr: false,
+  loading: () => <SectionSkeleton height="500px" />
+})
+
+const InstantQuoteCalculator = dynamic(() => import("@/components/instant-quote-calculator"), {
+  ssr: false,
+  loading: () => <SectionSkeleton height="600px" showSpinner={false} />
+})
+
+const WhyChooseUs = dynamic(() => import("@/components/why-choose-us"), {
+  ssr: false,
+  loading: () => <SectionSkeleton height="600px" showSpinner={false} />
+})
+
+const EnhancedCTASection = dynamic(() => import("@/components/enhanced-cta-section"), {
+  ssr: false,
+  loading: () => <SectionSkeleton height="400px" />
+})
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [heroMounted, setHeroMounted] = useState(false)
 
   // Parallax and scroll effects for the hero section
+  // Only setup after Hero is mounted to prevent unnecessary calculations
   const { scrollYProgress } = useScroll({
+    target: containerRef,
     offset: ["start start", "end start"]
   })
 
-  // We want the hero transition to complete within the first 15% of the page scroll
-  const heroY = useTransform(scrollYProgress, [0, 0.15], [0, -120])
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0])
+  // Use motion values that update only when Hero is mounted
+  const heroY = heroMounted
+    ? useTransform(scrollYProgress, [0, 0.15], [0, -120])
+    : useMotionValue(0)
+
+  const heroOpacity = heroMounted
+    ? useTransform(scrollYProgress, [0, 0.1], [1, 0])
+    : useMotionValue(1)
 
   return (
     <main ref={containerRef} className="min-h-screen w-full text-white relative overflow-x-hidden selection:bg-red-500/30">
       <StandardBackground />
 
       <section id="hero" className="relative z-20">
-        <motion.div style={{ y: heroY, opacity: heroOpacity }}>
-          <EnhancedHero fullWidth={true} />
-        </motion.div>
+        <ErrorBoundary>
+          <motion.div style={{ y: heroY, opacity: heroOpacity }}>
+            <EnhancedHero fullWidth={true} />
+          </motion.div>
+        </ErrorBoundary>
       </section>
 
       <section id="onboarding" className="relative z-10 py-8 md:py-12">
@@ -128,48 +181,68 @@ export default function Home() {
       </section>
 
       <section id="projects" className="relative z-10 py-8 md:py-12 overflow-hidden">
-        <ProjectsShowcase />
+        <ErrorBoundary>
+          <ProjectsShowcase />
+        </ErrorBoundary>
       </section>
 
       <section id="case-studies" className="relative z-10 py-8 md:py-12">
-        <CaseStudiesSection />
+        <ErrorBoundary>
+          <CaseStudiesSection />
+        </ErrorBoundary>
       </section>
 
       <section id="solutions" className="relative z-10 py-8 md:py-12">
-        <EnhancedIndustrySolutions />
+        <ErrorBoundary>
+          <EnhancedIndustrySolutions />
+        </ErrorBoundary>
       </section>
 
       <section id="ai-platform" className="relative z-10 py-8 md:py-12">
-        <UnifiedAIPlatform />
+        <ErrorBoundary>
+          <UnifiedAIPlatform />
+        </ErrorBoundary>
       </section>
 
       <section id="tech-stack" className="relative z-10 py-8 md:py-12">
-        <TechStackShowcase />
+        <ErrorBoundary>
+          <TechStackShowcase />
+        </ErrorBoundary>
       </section>
 
       <section id="team" className="relative z-10 py-8 md:py-12">
-        <TeamSection />
+        <ErrorBoundary>
+          <TeamSection />
+        </ErrorBoundary>
       </section>
 
       <section id="testimonials" className="relative z-10 py-8 md:py-12">
-        <TestimonialCarousel />
+        <ErrorBoundary>
+          <TestimonialCarousel />
+        </ErrorBoundary>
       </section>
 
       <section id="tools" className="relative z-10 py-8 md:py-12 border-t border-white/5">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
             <div className="w-full">
-              <InstantQuoteCalculator />
+              <ErrorBoundary>
+                <InstantQuoteCalculator />
+              </ErrorBoundary>
             </div>
             <div className="w-full">
-              <WhyChooseUs />
+              <ErrorBoundary>
+                <WhyChooseUs />
+              </ErrorBoundary>
             </div>
           </div>
         </div>
       </section>
 
       <section id="cta" className="relative z-10 py-12 md:py-16">
-        <EnhancedCTASection />
+        <ErrorBoundary>
+          <EnhancedCTASection />
+        </ErrorBoundary>
       </section>
 
       <ScrollToTop />
