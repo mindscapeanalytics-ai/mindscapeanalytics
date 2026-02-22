@@ -1,0 +1,32 @@
+import { createAuthClient } from "better-auth/react"
+import { lastLoginMethodClient, twoFactorClient, usernameClient, adminClient } from "better-auth/client/plugins"
+
+export const authClient = createAuthClient({
+    baseURL: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+    user: {
+        additionalFields: {
+            role: {
+                type: "string",
+                required: false,
+            },
+            isSeller: {
+                type: "boolean",
+                required: false,
+            },
+            sellerVerified: {
+                type: "boolean",
+                required: false,
+            },
+            stripeAccountId: {
+                type: "string",
+                required: false,
+            },
+        },
+    },
+    plugins: [
+        adminClient(),
+        usernameClient(),
+        twoFactorClient(),
+        lastLoginMethodClient(),
+    ]
+})

@@ -1,0 +1,145 @@
+"use client"
+
+import React from "react"
+import { motion } from "framer-motion"
+import SolutionLayout from "@/components/layouts/SolutionLayout"
+import {
+    Shield,
+    Zap,
+    Lock,
+    Globe,
+    Database,
+    Link as LinkIcon,
+    Terminal,
+    Key,
+    Code,
+    ArrowRight
+} from "lucide-react"
+
+const features = [
+    {
+        title: "Smart Contract Engineering",
+        description: "Developing hyper-secure, gas-optimized smart contracts for Ethereum, Solana, and Layer 2 ecosystems.",
+        icon: Code
+    },
+    {
+        title: "DeFi Protocol Development",
+        description: "Architecting decentralized financial systems with robust liquidity mechanisms and governance models.",
+        icon: Database
+    },
+    {
+        title: "Private Ledger Integration",
+        description: "Implementing Hyperledger and Corda for enterprise-specific privacy and permissioned networks.",
+        icon: Lock
+    },
+    {
+        title: "Asset Tokenization (RWAs)",
+        description: "Bringing Real World Assets onto the chain with compliant, transparent tokenization frameworks.",
+        icon: LinkIcon
+    },
+    {
+        title: "Cross-Chain Interoperability",
+        description: "Building bridges and communication layers that allow value and data to move across chains seamlessly.",
+        icon: Globe
+    },
+    {
+        title: "Web3 Identity & Auth",
+        description: "Implementing decentralized identity solutions that put users in control of their own data and credentials.",
+        icon: Key
+    }
+]
+
+export default function BlockchainPage() {
+    return (
+        <SolutionLayout
+            currentSolutionId="blockchain"
+            title="Blockchain"
+            subtitle="Architecting decentralized trust systems that redefine transparency, security, and digital ownership."
+        >
+            <div className="space-y-32">
+                {/* Intro Section */}
+                <section>
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-6">
+                            <h2 className="text-4xl font-black">The Trust Layer</h2>
+                            <p className="text-body text-lg">
+                                Blockchain isn't about the hype. It's about building systems where trust is
+                                mathematical, not institutional. We help enterprises leverage decentralized
+                                architectures to solve complex coordination problems.
+                            </p>
+                            <div className="flex flex-wrap gap-4 pt-4">
+                                {["Solidity", "Rust", "Ethereum", "Solana", "Hyperledger", "Zero Knowledge"].map(tech => (
+                                    <span key={tech} className="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-white/40 font-bold uppercase tracking-wider">
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 to-white/10 border border-white/10 flex items-center justify-center group">
+                            <motion.div
+                                animate={{
+                                    scale: [1, 1.1, 1],
+                                    rotateY: [0, 360]
+                                }}
+                                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                            >
+                                <Shield className="w-40 h-40 text-white opacity-10 group-hover:opacity-20 transition-opacity" />
+                            </motion.div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                            <div className="absolute bottom-8 left-8 p-6 bg-transparent/60 backdrop-blur-xl border border-white/10 rounded-2xl">
+                                <span className="text-white font-black text-2xl block tracking-tighter">PHASE 0</span>
+                                <span className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em]">Compromised Contracts</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Features Grid */}
+                <section>
+                    <div className="mb-12">
+                        <span className="text-subheading mb-4">Ecosystem</span>
+                        <h2 className="text-4xl font-black">Web3 Engineering</h2>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        {features.map((feature, index) => (
+                            <motion.div
+                                key={feature.title}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="p-8 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/20 transition-all group"
+                            >
+                                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                    <feature.icon className="w-6 h-6 text-white/60 group-hover:text-white transition-colors" />
+                                </div>
+                                <h3 className="text-xl font-bold mb-3 tracking-tight">{feature.title}</h3>
+                                <p className="text-white/40 text-sm leading-relaxed font-medium">
+                                    {feature.description}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Blockchain CTA */}
+                <section className="relative p-12 rounded-[3rem] bg-zinc-950 border border-white/10 overflow-hidden group">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute top-0 right-0 p-12">
+                        <Lock className="w-20 h-20 text-white opacity-[0.03]" />
+                    </div>
+                    <div className="relative z-10 max-w-2xl">
+                        <h2 className="text-3xl font-black mb-6 leading-tight">Secure your digital future.</h2>
+                        <p className="text-white/40 mb-8 font-medium">
+                            From smart contract audits to full protocol design, our Web3 engineers deliver secure decentralization.
+                        </p>
+                        <button className="btn-primary">
+                            Protocol Strategy
+                            <ArrowRight className="ml-2 w-4 h-4" />
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </SolutionLayout>
+    )
+}

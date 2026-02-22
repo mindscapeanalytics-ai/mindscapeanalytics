@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Syncopate:wght@700&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-metallic: #0a0a0b;
+  --color-glossy: #121214;
+  --color-brand: #ffffff;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-syncopate: 'Syncopate', sans-serif;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 2rem;
+}
+
+:root {
+  --background: #0a0a0b;
+  --foreground: #ffffff;
+  --surface-matte: rgba(21, 21, 21, 0.4);
+  --surface-industrial: rgba(17, 17, 18, 0.5);
+  --card: rgba(22, 22, 24, 0.4);
+  --card-foreground: #ffffff;
+  --border: rgba(19, 19, 19, 0.05);
+}
+
+@layer base {
+  body {
+    background: #111112;
+    color: #ffffff;
+  }
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Premium Noise Overlay - Optimized for Performance (Non-SVG fractal noise) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: none;
+  /* Removed broken asset reference to noise_t6v6yq.png */
+  background-repeat: repeat;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-geist-sans);
+  letter-spacing: -0.04em;
+  @apply font-black;
+}
+
+p {
+  line-height: 1.6;
+}
+
+@layer utilities {
+  .metallic-gradient {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.02) 50%,
+        rgba(255, 255, 255, 0.05) 100%);
+  }
+
+  .glass {
+    background: rgba(10, 10, 11, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Logo Style - Robust 2D Brand Mark (Solid, Massive, Clean) */
+  .logo-robust-2d {
+    font-family: var(--font-syncopate);
+    @apply uppercase text-white;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-block;
+  }
+
+  /* Standard Primary Button - Solid High-Impact */
+  .btn-primary {
+    @apply px-8 py-4 bg-white text-black font-black rounded-xl hover:bg-white/90 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 uppercase text-xs tracking-[0.3em];
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+  }
+
+  /* Standard Secondary Button - Glossy/Dark */
+  .btn-secondary {
+    @apply px-8 py-4 bg-white/5 text-white/60 font-black rounded-xl hover:bg-white/10 hover:text-white active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 border border-white/10 uppercase text-xs tracking-[0.3em] backdrop-blur-md;
+  }
+
+  /* Outline Button - Sophisticated/Minimal */
+  .btn-outline {
+    @apply px-8 py-4 bg-transparent text-white/40 font-black rounded-xl border border-white/5 hover:border-white/20 hover:text-white active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 uppercase text-xs tracking-[0.3em];
+  }
+
+  /* Metadata Utility */
+  .text-meta {
+    @apply font-mono font-black uppercase tracking-[0.4em] text-[10px];
+  }
+
+  /* HUD Label */
+  .hud-tag {
+    @apply px-3 py-1 bg-white/5 border border-white/10 text-white/60 font-mono font-black uppercase tracking-[0.4em] text-[10px] rounded-lg flex items-center gap-2;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+  }
+
+  /* Professional Card Styling - Elite Elevation */
+  .card-premium {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(5px);
+  }
+
+  .card-premium:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.9);
+  }
+
+  .mask-radial {
+    mask-image: radial-gradient(circle at center, black 0%, transparent 100%);
+  }
+
+  .font-syncopate {
+    font-family: 'Syncopate', sans-serif;
+  }
+
+  /* Cinematic Background - Monochrome Depth with Subtle Light Effect */
+  .bg-monochrome-cinematic {
+    background: radial-gradient(circle at 50% 0%, #1d1d1f 0%, #111112 100%);
+  }
+
+  /* Duplicate SVG grid removed to rely purely on CinematicBackground and prevent overlaps */
+
+  /* Localized Atmospheric Glow - Optimized for Performance */
+  .glow-spot {
+    position: absolute;
+    border-radius: 9999px;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, transparent 80%);
+    filter: blur(100px);
+    /* Reduced from 150px for GPU efficiency but increased radius */
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* GPU Acceleration Utility */
+  .transform-gpu-fix {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  @keyframes float {
+    0% {
+      transform: translate3d(-10px, -5px, 0);
+    }
+
+    50% {
+      transform: translate3d(10px, 5px, 0);
+    }
+
+    100% {
+      transform: translate3d(-10px, -5px, 0);
+    }
+  }
+}

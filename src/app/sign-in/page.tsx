@@ -1,0 +1,184 @@
+
+"use client";
+
+import { authClient } from "@/lib/auth-client";
+import { useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import { motion } from "framer-motion";
+import { Shield, ArrowRight, Loader2, Mail, Lock } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+function SignInContent() {
+    const searchParams = useSearchParams();
+    const callbackUrl = searchParams.get("callbackUrl") || "";
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const router = useRouter();
+
+    const handleSignIn = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setError("");
+
+        try {
+            const { data, error: authError } = await authClient.signIn.email({
+                email,
+                password,
+            });
+
+            if (authError) {
+                setError(authError.message || "Failed to sign in. Please check your credentials.");
+            } else if (data) {
+                const userRole = (data.user as any).role || "user";
+                if (callbackUrl) {
+                    router.push(callbackUrl);
+                } else if (userRole === "admin" || userRole === "seller") {
+                    router.push("/admin");
+                } else {
+                    router.push("/shop");
+                }
+                router.refresh();
+            }
+        } catch (err) {
+            setError("A system error occurred. Please try again later.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="min-h-screen bg-transparent text-white selection:bg-white selection:text-black flex items-center justify-center p-6 relative overflow-hidden">
+            {/* Background Effects */}
+            <div className="fixed inset-0 z-0 pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white/5 blur-[120px] rounded-full" />
+                <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-white/[0.03] blur-[100px] rounded-full" />
+                <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
+            </div>
+
+            <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="w-full max-w-md relative z-10"
+            >
+                {/* Logo Area */}
+                <div className="text-center mb-10">
+                    <Link href="/" className="inline-block group">
+                        <div className="flex items-center justify-center gap-2 mb-6">
+                            <Image
+                                src="/images/logo/mindscape-analytics.png"
+                                alt="Mindscape Analytics"
+                                width={240}
+                                height={56}
+                                className="h-14 w-auto brightness-0 invert opacity-100 transition-all duration-500 group-hover:scale-110"
+                            />
+                        </div>
+                        <h1
+                            className="text-[10px] font-black tracking-[0.5em] uppercase text-white/40"
+                        >
+                            SECURE<span className="text-white/20"> // </span>GATEWAY
+                        </h1>
+                    </Link>
+                    <p className="text-white/40 text-xs font-black uppercase tracking-[0.3em] mt-4">
+                        Secure Authentication Protocol
+                    </p>
+                </div>
+
+                {/* Auth Card */}
+                <div className="bg-zinc-900/40 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-10 shadow-2xl">
+                    <form onSubmit={handleSignIn} className="space-y-6">
+                        {error && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 text-xs font-bold uppercase tracking-wider text-center"
+                            >
+                                {error}
+                            </motion.div>
+                        )}
+
+                        <div className="space-y-4">
+                            <div className="group relative">
+                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-2 ml-1">Terminal ID (Email)</label>
+                                <div className="relative">
+                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-white transition-colors" size={18} />
+                                    <input
+                                        type="email"
+                                        required
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        className="w-full bg-transparent/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/10 focus:outline-none focus:border-white/30 focus:bg-white/[0.07] transition-all"
+                                        placeholder="user@mindscape.com"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="group relative">
+                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-2 ml-1">Access Cipher (Password)</label>
+                                <div className="relative">
+                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-white transition-colors" size={18} />
+                                    <input
+                                        type="password"
+                                        required
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        className="w-full bg-transparent/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/10 focus:outline-none focus:border-white/30 focus:bg-white/[0.07] transition-all"
+                                        placeholder="••••••••"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.2em] text-xs rounded-2xl hover:bg-white/90 active:scale-[0.98] transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)] flex items-center justify-center gap-3"
+                        >
+                            {loading ? (
+                                <Loader2 className="animate-spin" size={18} />
+                            ) : (
+                                <>
+                                    Establish Link
+                                    <ArrowRight size={18} />
+                                </>
+                            )}
+                        </button>
+                    </form>
+
+                    <div className="mt-10 pt-8 border-t border-white/5 text-center space-y-4">
+                        <p className="text-white/40 text-[10px] font-black uppercase tracking-widest">
+                            New Personnel?
+                        </p>
+                        <Link
+                            href={callbackUrl ? `/sign-up?callbackUrl=${encodeURIComponent(callbackUrl)}` : "/sign-up"}
+                            className="inline-block text-white font-black uppercase tracking-widest text-[10px] hover:text-white/60 transition-colors underline underline-offset-8 decoration-white/20"
+                        >
+                            Request Access Profile
+                        </Link>
+                    </div>
+                </div>
+
+                {/* Footer Security Note */}
+                <div className="mt-10 flex items-center justify-center gap-2 text-white/20">
+                    <Shield size={12} />
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em]">End-to-End Encryption Enabled</span>
+                </div>
+            </motion.div>
+        </div>
+    );
+}
+
+export default function SignInPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-transparent flex items-center justify-center">
+                <div className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em] animate-pulse">Initializing Security Gateway...</div>
+            </div>
+        }>
+            <SignInContent />
+        </Suspense>
+    );
+}

@@ -1,0 +1,173 @@
+"use client"
+
+import React, { useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { cn } from "@/lib/utils"
+import Link from "next/link"
+import Image from "next/image"
+import {
+    BarChart3,
+    Brain,
+    TrendingUp,
+    Phone,
+    ArrowRight,
+    ExternalLink,
+    Landmark,
+    LineChart,
+    Factory
+} from "lucide-react"
+
+const caseStudies = [
+    {
+        title: "Tenvo",
+        category: "Hospitality POS",
+        icon: Brain,
+        metrics: "99.9% Uptime",
+        description: "Next-generation Restraint Management POS system engineered for high-volume environments. Features advanced seat-map automation and real-time inventory sync.",
+        image: "/images/projects/restraint-pos.webp"
+    },
+    {
+        title: "Enterprise ERP",
+        category: "Industrial Management",
+        icon: BarChart3,
+        metrics: "ROI +450%",
+        description: "Comprehensive 2026 ERP suite for large-scale operations. Automated resource planning with integrated AI forecasting and global supply chain visibility.",
+        image: "/images/projects/enterprise-erp.webp"
+    },
+    {
+        title: "DBLynx Bank Intelligence",
+        category: "Banking AI",
+        icon: Landmark,
+        metrics: "95% Faster Analytics",
+        description: "AI-powered database intelligence system for a regional bank, enabling real-time fraud detection on a $36.8M portfolio.",
+        image: "/images/projects/dblynx-database-intelligence-mindscapeanalytics.webp",
+        link: "/projects/dblynx-regional-bank"
+    },
+    {
+        title: "Fuel Station ERP",
+        category: "Energy Tech",
+        icon: Factory,
+        metrics: "Elite Security",
+        description: "Mission-critical Fuel Station management system with automated pump synchronization, hazardous material tracking, and enterprise-grade accounting.",
+        image: "/images/projects/fuel-station-erp.webp",
+        link: "/projects/fuel-station-erp"
+    }
+]
+
+export default function CaseStudies() {
+    const containerRef = useRef(null)
+
+    return (
+        <section ref={containerRef} id="case-studies" className="relative pt-0 pb-32 px-6 overflow-hidden bg-transparent">
+            <div className="max-w-7xl mx-auto">
+                <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-32 border-b border-white/5 pb-12">
+                    <div className="max-w-4xl space-y-6">
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="flex items-center gap-3"
+                        >
+                            <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                            <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.5em] font-black">Archive // MISSION_LOGS_v2</span>
+                        </motion.div>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-[-0.05em] font-syncopate leading-[0.8] uppercase"
+                            style={{ fontSize: "clamp(3.5rem, 12vw, 12rem)" }}
+                        >
+                            PROVEN <br /> <span className="text-white/20 italic font-black">SUCCESS.</span>
+                        </motion.h2>
+                    </div>
+                </div>
+                {/* Horizontal Layout / Staggered Cards */}
+                <div className="space-y-32">
+                    {caseStudies.map((study, index) => (
+                        <motion.div
+                            key={study.title}
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            className={cn(
+                                "flex flex-col lg:flex-row items-center gap-12 lg:gap-20",
+                                index % 2 === 1 && "lg:flex-row-reverse"
+                            )}
+                        >
+                            {/* Image Container */}
+                            <div className="w-full lg:w-1/2 relative group">
+                                <div className="absolute -inset-4 bg-white/5 blur-[100px] rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-1000" />
+                                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 group-hover:border-white/20 transition-all duration-500 shadow-2xl">
+                                    <Image
+                                        src={study.image}
+                                        alt={study.title}
+                                        fill
+                                        priority={index === 0}
+                                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+
+                                    {/* --- Industrial HUD --- */}
+                                    <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 flex items-center justify-center opacity-40">
+                                            <div className="w-full h-px bg-white/40" />
+                                            <div className="h-full w-px bg-white/40 absolute" />
+                                            <div className="w-12 h-12 border border-white/40 rounded-full" />
+                                        </div>
+                                        <div className="absolute top-6 left-6 w-8 h-8 border-t border-l border-white/60" />
+                                        <div className="absolute bottom-6 right-6 w-8 h-8 border-b border-r border-white/60" />
+                                    </div>
+
+                                    {/* Floating Metric Banner */}
+                                    <div className="absolute bottom-6 left-6 p-6 rounded-xl bg-transparent/95 backdrop-blur-2xl border border-white/5 flex items-center gap-4 z-20 transition-colors shadow-2xl group-hover:border-white/20">
+                                        <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/60">
+                                            <study.icon className="w-6 h-6" />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-white font-black text-xl leading-none tracking-tighter uppercase">{study.metrics}</span>
+                                            <span className="text-meta text-white/20 mt-2">Status // VERIFIED_DATA</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Text content */}
+                            <div className="w-full lg:w-1/2 space-y-10">
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" />
+                                        <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.5em] font-black">{study.category} // CASE_ID_0{index + 1}</span>
+                                    </div>
+                                    <h3 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-[-0.05em] uppercase font-syncopate group-hover:text-white transition-colors italic">
+                                        {study.title}
+                                    </h3>
+                                </div>
+
+                                <p className="text-white/40 text-sm md:text-lg leading-relaxed max-w-md font-medium tracking-tight">
+                                    {study.description}
+                                </p>
+
+                                <div className="flex flex-wrap items-center gap-8 pt-6">
+                                    <Link href="/projects">
+                                        <button className="btn-primary">
+                                            VIEW CASE STUDY
+                                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                        </button>
+                                    </Link>
+                                    <Link href="/contact">
+                                        <button className="text-meta text-white/20 hover:text-white transition-all flex items-center gap-3 group/docs">
+                                            TECHNICAL SPECIFICATIONS
+                                            <ExternalLink className="w-3.5 h-3.5 opacity-20 group-hover/docs:opacity-60" />
+                                        </button>
+                                    </Link>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div >
+        </section >
+    )
+}

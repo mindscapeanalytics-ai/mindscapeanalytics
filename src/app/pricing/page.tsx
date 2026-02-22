@@ -1,0 +1,299 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import { Check, Shield, Zap, Brain, ArrowRight, Database, Lock, Clock } from "lucide-react";
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+const pricingPlans = [
+    {
+        name: "AI Starter System",
+        subtitle: "Best for small service businesses",
+        price: "$4,800 – $8,500",
+        setupFee: "Starting Investment",
+        managedFee: "$297 – $497/mo",
+        icon: Zap,
+        description: "Foundational AI infrastructure to automate lead capture and basic CRM workflows.",
+        features: [
+            "AI Lead Capture Agent",
+            "Basic Automation Workflow",
+            "CRM Integration",
+            "Cloud Deployment",
+            "Managed Database (1 mo included)",
+            "System Performance Monitoring"
+        ],
+        cta: "Initiate Deployment",
+        highlight: false,
+        managedNote: "Managed Infrastructure Plan Required After Month 1"
+    },
+    {
+        name: "Growth Automation System",
+        subtitle: "Best for scaling companies",
+        price: "$12,000 – $25,000",
+        setupFee: "Starting Investment",
+        managedFee: "$750 – $1,500/mo",
+        icon: Brain,
+        description: "Comprehensive AI sales and operational systems built for high-growth global teams.",
+        features: [
+            "AI Sales Agent (Lead/Qualify/Book)",
+            "AI Email Automation Engine",
+            "Advanced CRM + API Integrations",
+            "Performance Analytics Dashboard",
+            "Managed Infrastructure Setup",
+            "Security + Triple Backup System",
+            "Priority Response Support"
+        ],
+        cta: "Scale Infrastructure",
+        highlight: true,
+        managedNote: "Includes Advanced Infrastructure Monitoring"
+    },
+    {
+        name: "Enterprise AI Ecosystem",
+        subtitle: "Custom built for Global Enterprise",
+        price: "Custom",
+        setupFee: "Architectural Pricing",
+        managedFee: "$2,000+/mo",
+        icon: Shield,
+        description: "Full-scale autonomous ecosystems integrating multi-agent reasoning and voice AI.",
+        features: [
+            "Multi-agent AI Clusters",
+            "AI Voice Integration (Vapi/Retell)",
+            "Advanced Workflow Orchestration",
+            "Scalable Cloud Cluster Architecture",
+            "Database Clustering & Sharding",
+            "Industrial Performance Engineering",
+            "24/7 Dedicated Support Node"
+        ],
+        cta: "Request Consultation",
+        highlight: false,
+        managedNote: "Full Infrastructure SLA & Optimization"
+    }
+];
+
+const faqs = [
+    {
+        q: "Why is a managed plan required?",
+        a: "To ensure system reliability, security, and peak AI performance. All deployments are supported by our Managed Infrastructure Plan which covers hosting, security patches, and database health."
+    },
+    {
+        q: "How long does deployment take?",
+        a: "Starter systems are typically live within 14-21 days. Growth and Enterprise systems require deeper architectural planning, usually 4-8 weeks for initial deployment."
+    },
+    {
+        q: "Do you offer custom integrations?",
+        a: "Yes. Our systems are built to integrate with existing tech stacks, including custom CRMs, ERPs, and legacy database architectures."
+    }
+];
+
+export default function PricingPage() {
+    return (
+        <div className="min-h-screen bg-transparent text-white relative">
+            <Navbar />
+
+            {/* --- Hero Section --- */}
+            <section className="relative pt-44 pb-32 overflow-hidden">
+                <div className="container mx-auto px-6 relative z-10 text-center space-y-12">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mx-auto"
+                    >
+                        <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
+                        <span className="text-white/60 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Investment_Protocol // v4.2</span>
+                    </motion.div>
+
+                    <motion.h1
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-6xl md:text-[10rem] lg:text-[12rem] font-black leading-[0.75] font-syncopate tracking-[-0.05em] uppercase"
+                        style={{ fontSize: "clamp(3.5rem, 12vw, 15rem)" }}
+                    >
+                        SYSTEM <br /> <span className="text-white/20 italic font-black">INVESTMENT.</span>
+                    </motion.h1>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="max-w-4xl border-t border-white/10 pt-12 mx-auto"
+                    >
+                        <p className="text-2xl md:text-3xl text-white/60 font-medium tracking-tight leading-snug uppercase">
+                            PRECISION-ENGINEERED PRICING MODELS BUILT FOR <span className="text-white font-black italic text-4xl">OUTCOMES + INFRASTRUCTURE.</span>
+                        </p>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* --- Pricing Grid --- */}
+            <section className="py-24 bg-transparent relative border-t border-white/5">
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                        {pricingPlans.map((plan, index) => (
+                            <motion.div
+                                key={plan.name}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className={`group relative p-6 xs:p-8 lg:p-10 rounded-[2.5rem] lg:rounded-[3rem] border transition-all duration-500 flex flex-col ${plan.highlight
+                                    ? "bg-white text-black border-white shadow-[0_0_80px_rgba(255,255,255,0.1)]"
+                                    : "bg-white/[0.02] border-white/10 hover:border-white/30 backdrop-blur-xl"
+                                    }`}
+                            >
+                                <div className="mb-10 flex items-start justify-between">
+                                    <div className={`p-4 rounded-2xl ${plan.highlight ? "bg-black text-white" : "bg-white/5 border border-white/10"}`}>
+                                        <plan.icon className="w-8 h-8" />
+                                    </div>
+                                    <div className={`text-[10px] font-mono font-black uppercase tracking-widest ${plan.highlight ? "text-black/40" : "text-white/20"}`}>
+                                        Tier_0{index + 1}
+                                    </div>
+                                </div>
+
+                                <div className="mb-8">
+                                    <h3 className={`text-3xl font-black uppercase font-syncopate tracking-tight leading-none mb-2 ${plan.highlight ? "text-black" : "text-white"}`}>
+                                        {plan.name}
+                                    </h3>
+                                    <p className={`text-[10px] font-mono font-black uppercase tracking-[0.2em] ${plan.highlight ? "text-black/40" : "text-white/20"}`}>
+                                        {plan.subtitle}
+                                    </p>
+                                </div>
+
+                                <div className="mb-10">
+                                    <div className="flex items-baseline gap-2">
+                                        <span className="text-4xl font-black font-syncopate">{plan.price}</span>
+                                    </div>
+                                    <div className={`text-[10px] font-mono font-bold uppercase tracking-widest mt-1 ${plan.highlight ? "text-black/60" : "text-white/40"}`}>
+                                        {plan.setupFee}
+                                    </div>
+                                </div>
+
+                                <div className="space-y-4 mb-10 flex-grow">
+                                    {plan.features.map((feature) => (
+                                        <div key={feature} className="flex items-center gap-3">
+                                            <Check className={`w-4 h-4 ${plan.highlight ? "text-black" : "text-white/40"}`} />
+                                            <span className={`text-[11px] font-black uppercase tracking-wider ${plan.highlight ? "text-black/80" : "text-white/60"}`}>
+                                                {feature}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className={`pt-8 border-t mb-10 ${plan.highlight ? "border-black/10" : "border-white/10"}`}>
+                                    <div className="flex items-center gap-3">
+                                        <Database className="w-4 h-4 opacity-40" />
+                                        <div className="flex flex-col">
+                                            <span className="text-[10px] font-black uppercase tracking-widest">{plan.managedFee}</span>
+                                            <span className={`text-[8px] font-medium uppercase opacity-60`}>Managed Infrastructure Plan</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <Link href="/contact" className="w-full">
+                                    <button className={`w-full py-6 rounded-2xl font-black uppercase text-[11px] tracking-[0.4em] transition-all flex items-center justify-center gap-2 group/btn ${plan.highlight
+                                        ? "bg-black text-white hover:scale-[1.02]"
+                                        : "bg-white text-black hover:scale-[1.02]"
+                                        }`}>
+                                        {plan.cta}
+                                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                    </button>
+                                </Link>
+
+                                <p className={`mt-6 text-[8px] font-mono text-center uppercase tracking-widest font-black leading-relaxed ${plan.highlight ? "text-black/40" : "text-white/20"}`}>
+                                    {plan.managedNote}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* --- Trust & Authority Section --- */}
+            <section className="py-32 border-t border-white/5 bg-transparent">
+                <div className="container mx-auto px-6">
+                    <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
+                        <div className="space-y-12">
+                            <div className="space-y-6">
+                                <span className="text-white/20 text-[11px] font-mono font-black uppercase tracking-[0.5em]">Authority // FAQ</span>
+                                <h2
+                                    className="text-6xl font-black font-syncopate uppercase tracking-[-0.05em]"
+                                    style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
+                                >
+                                    SYSTEM <br /> <span className="text-white/20 italic">INTEGRITY.</span>
+                                </h2>
+                                <p className="text-xl text-white/40 max-w-xl font-medium uppercase tracking-tight leading-relaxed">
+                                    We don't sell software licenses. We sell engineered performance and long-term technical stability.
+                                </p>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-6">
+                                {[
+                                    { icon: Lock, label: "Data Protection", value: "AES-256" },
+                                    { icon: Clock, label: "System Uptime", value: "99.99%" },
+                                    { icon: Shield, label: "Security Scale", value: "Industrial" },
+                                    { icon: Zap, label: "Latency Goal", value: "< 10MS" }
+                                ].map(item => (
+                                    <div key={item.label} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+                                        <item.icon className="w-6 h-6 text-white/20 mb-4" />
+                                        <div className="text-2xl font-black uppercase tracking-tight">{item.value}</div>
+                                        <div className="text-[9px] font-mono font-black text-white/20 uppercase tracking-[0.2em]">{item.label}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="space-y-8">
+                            {faqs.map((faq, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 group hover:border-white/20 transition-all"
+                                >
+                                    <h4 className="text-lg font-black uppercase tracking-tight mb-4 flex items-start gap-4">
+                                        <span className="text-white/20 font-mono text-[11px] pt-1.5">0{i + 1}</span>
+                                        {faq.q}
+                                    </h4>
+                                    <p className="text-white/40 text-[13px] leading-relaxed font-medium ml-10">
+                                        {faq.a}
+                                    </p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* --- Managed Infrastructure Callout --- */}
+            <section className="py-24 border-t border-white/5 bg-white text-black text-center">
+                <div className="container mx-auto px-6">
+                    <div className="max-w-4xl mx-auto space-y-8">
+                        <span className="text-black/40 text-[11px] font-mono font-black uppercase tracking-[0.5em]">System Reliability Standard</span>
+                        <h2
+                            className="text-5xl md:text-7xl font-black font-syncopate uppercase tracking-[-0.05em] leading-[0.85]"
+                            style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
+                        >
+                            MANAGED <br /> <span className="opacity-20 italic">OR IT'S BROKEN.</span>
+                        </h2>
+                        <p className="text-lg font-medium opacity-60 uppercase tracking-tighter max-w-2xl mx-auto">
+                            To ensure system reliability and performance, all deployments are supported by our Managed Infrastructure Plan. This protects your revenue and eliminates technical debt.
+                        </p>
+                        <div className="pt-8 flex flex-wrap justify-center gap-4">
+                            {["Uptime Monitoring", "Security Patching", "DB Health", "AI Tuning", "SLA Reports"].map(tag => (
+                                <span key={tag} className="px-4 py-2 rounded-full border border-black/10 text-[9px] font-black uppercase tracking-widest">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <Footer />
+        </div>
+    );
+}

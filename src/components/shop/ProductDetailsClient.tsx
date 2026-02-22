@@ -1,0 +1,101 @@
+"use client";
+
+import { useCart } from "@/contexts/CartContext";
+import { ShoppingCart, Check, ShieldCheck, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { createCheckoutSession } from "@/app/_actions/stripe";
+import { motion } from "framer-motion";
+
+interface ProductDetailsClientProps {
+    product: {
+        id: string;
+        name: string;
+        price: number;
+        description: string | null;
+        demoUrl?: string | null;
+        features?: any;
+        techStack?: any;
+        category: string;
+        images: { url: string }[];
+    };
+}
+
+export default function ProductDetailsClient({ product }: ProductDetailsClientProps) {
+    const { addToCart } = useCart();
+    const [isAdding, setIsAdding] = useState(false);
+    const [isBuying, setIsBuying] = useState(false);
+
+    const handleAddToCart = () => {
+        setIsAdding(true);
+        addToCart({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.images[0]?.url,
+        });
+        setTimeout(() => setIsAdding(false), 1000);
+    };
+
+    const handleBuyNow = async () => {
+        setIsBuying(true);
+        try {
+            const result = await createCheckoutSession(product.id);
+            if (result.url) {
+                window.location.href = result.url;
+            }
+        } catch (error) {
+            console.error("Checkout failed:", error);
+            alert("Checkout failed. Please try again.");
+        } finally {
+            setIsBuying(false);
+        }
+    };
+
+    return (
+        <div className="space-y-6">
+            <div className="flex flex-col gap-4">
+                <motion.button
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                    onClick={handleBuyNow}
+                    disabled={isBuying}
+                    className="w-full py-6 bg-white text-black font-black text-xs uppercase tracking-[0.3em] rounded-2xl hover:bg-white/90 disabled:bg-white/20 disabled:cursor-not-allowed transition-all shadow-[0_0_50px_rgba(255,255,255,0.1)] flex items-center justify-center gap-3 group"
+                >
+                    {isBuying ? "INITIALIZING SECURE LINK..." : (
+                        <>
+                            Immediate Acquisition
+                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </>
+                    )}
+                </motion.button>
+
+                <motion.button
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                    onClick={handleAddToCart}
+                    disabled={isAdding}
+                    className="w-full py-5 bg-white/5 border border-white/10 text-white font-black text-xs uppercase tracking-[0.3em] rounded-2xl hover:bg-white/10 disabled:bg-white/10 transition-all flex items-center justify-center gap-3"
+                >
+                    {isAdding ? (
+                        <>
+                            <Check size={14} />
+                            ALLOCATED TO CART
+                        </>
+                    ) : (
+                        <>
+                            <ShoppingCart size={14} className="text-white/40" />
+                            Add to Allocation
+                        </>
+                    )}
+                </motion.button>
+            </div>
+
+            <div className="pt-6 border-t border-white/5 space-y-3">
+                <div className="flex items-center gap-3 text-white/30 group">
+                    <ShieldCheck size={14} className="group-hover:text-white transition-colors" />
+                    <span className="text-[10px] font-black uppercase tracking-widest">Stripe Security Protocol Active</span>
+                </div>
+            </div>
+        </div>
+    );
+}
