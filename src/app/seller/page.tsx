@@ -7,6 +7,8 @@ import Link from "next/link";
 import { Plus, Package, DollarSign, TrendingUp, AlertTriangle } from "lucide-react";
 import { getSellerStats } from "@/app/_actions/dashboard";
 
+export const dynamic = "force-dynamic";
+
 export default async function SellerDashboard() {
     const session = await getSession();
 

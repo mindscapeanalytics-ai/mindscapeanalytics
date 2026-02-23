@@ -8,6 +8,8 @@ import Image from "next/image";
 import { LayoutDashboard, Package, ShoppingCart, Users, Settings, LogOut, ArrowLeft, DollarSign } from "lucide-react";
 import LogoutButton from "@/components/auth/LogoutButton";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminLayout({
     children,
 }: {

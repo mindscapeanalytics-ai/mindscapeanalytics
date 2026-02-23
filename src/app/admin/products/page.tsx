@@ -5,6 +5,8 @@ import Link from "next/link";
 import React from "react";
 import { deleteProduct } from "@/app/_actions/delete-product";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminProductsPage() {
     const session = await getSession();
 
