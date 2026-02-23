@@ -20,7 +20,7 @@ import {
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-export default async function ProductPage({ params }: { params: { id: string } }) {
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
 
     const product = await prisma.product.findUnique({
