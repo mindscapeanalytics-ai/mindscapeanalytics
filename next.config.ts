@@ -33,6 +33,9 @@ const nextConfig: NextConfig = {
       'clsx',
       'tailwind-merge'
     ],
+    "serverActions": {
+      "bodySizeLimit": "10mb"
+    }
   },
   webpack: (config, { isServer }) => {
     // Add any necessary webpack optimizations here

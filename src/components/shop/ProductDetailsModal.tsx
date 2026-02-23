@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ShoppingCart, ShieldCheck, CheckCircle2, Code, Zap, Globe, ArrowRight, ExternalLink, Activity } from "lucide-react";
+import { X, CheckCircle2, Code, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import ProductDetailsClient from "./ProductDetailsClient";
 import ProductGallery from "./ProductGallery";
@@ -132,7 +132,6 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-3 px-4 py-2 bg-white/5 rounded-xl border border-white/10">
-                                        <Activity size={10} className="text-green-500 animate-pulse" />
                                         <span className="text-[8px] font-black uppercase tracking-widest text-white/40">Verified Ready</span>
                                     </div>
                                 </div>

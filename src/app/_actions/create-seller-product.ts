@@ -14,7 +14,7 @@ export async function createSellerProduct(prevState: any, formData: FormData) {
 
     const isSeller = (session.user as any).isSeller || false;
     if (!isSeller) {
-        throw new Error("Only sellers can create products");
+        return { error: "Only sellers can create products" };
     }
 
     const name = formData.get("name") as string;

@@ -8,13 +8,13 @@ export async function deleteProduct(formData: FormData) {
     const { session, error } = await getRequiredSession();
     if (error || !session) {
         console.error(error || "Unauthorized");
-        return;
+        return { success: false, error: error || "Unauthorized" };
     }
 
     const productId = formData.get("id") as string;
     if (!productId) {
         console.error("Product ID missing");
-        return;
+        return { success: false, error: "Product ID missing" };
     }
 
     // Fetch product to check ownership
@@ -25,22 +25,23 @@ export async function deleteProduct(formData: FormData) {
 
     if (!product) {
         console.error("Product not found");
-        return;
+        return { success: false, error: "Product not found" };
     }
 
     if (session.user.role !== "admin" && product.sellerId !== session.user.id) {
         console.error("Unauthorized. You can only delete your own products.");
-        return;
+        return { success: false, error: "Unauthorized. You can only delete your own products." };
     }
 
     try {
         await prisma.product.delete({
             where: { id: productId }
         });
-    } catch (e) {
+        revalidatePath("/admin/products");
+        revalidatePath("/shop");
+        return { success: true };
+    } catch (e: any) {
         console.error("Failed to delete product:", e);
+        return { success: false, error: e.message || "Failed to delete product" };
     }
-
-    revalidatePath("/admin/products");
-    revalidatePath("/shop");
 }

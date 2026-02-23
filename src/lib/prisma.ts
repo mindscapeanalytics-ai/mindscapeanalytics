@@ -29,19 +29,7 @@ export const prisma = globalForPrisma.prisma || new PrismaClient({
 
 // Connection check in dev only, with timeout to avoid hanging
 if (process.env.NODE_ENV === 'development') {
-    const checkConnection = async () => {
-        try {
-            // Use a simple query instead of $connect to verify actual DB reachability
-            await prisma.$queryRaw`SELECT 1`;
-            console.log("Successfully connected to the database via Prisma.");
-        } catch (err: any) {
-            console.error("[Prisma_Link_Error] Could not verify DB connection:", err.message);
-            console.warn("[Prisma_Tip] 1. Check if your IP is whitelisted in Supabase.");
-            console.warn("[Prisma_Tip] 2. Supabase us-west-1 poolers are typically on aws-0-us-west-1. Try changing the subdomain in .env.");
-            console.warn("[Prisma_Tip] 3. Try using port 6543 for Transaction mode with ?pgbouncer=true.");
-        }
-    };
-    // checkConnection(); // Disabled to prevent pool exhaustion during hot reloads
+    // checkConnection logic disabled to prevent pool exhaustion during hot reloads
 }
 
 

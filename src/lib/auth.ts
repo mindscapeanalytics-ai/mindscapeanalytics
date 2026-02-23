@@ -3,7 +3,6 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "./prisma";
 import { nextCookies } from "better-auth/next-js";
 import { admin, username, twoFactor, lastLoginMethod } from "better-auth/plugins";
-import { sendEmail } from "./email";
 
 const allowedAdmins = (process.env.ALLOWED_ADMINS || "")
     .split(",")
@@ -58,6 +57,7 @@ export const auth = betterAuth({
         error: "/sign-in", // Default error back to sign-in
     },
     hooks: {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         after: async (ctx: any) => {
             const path = ctx.path || "";
             // Only execute elevation logic on successful signup
@@ -73,8 +73,9 @@ export const auth = betterAuth({
                         }).catch(err => {
                             console.error("[AUTH_ELEVATION_DB_ERROR]", err.message);
                         });
-                    } catch (e: any) {
-                        console.error("[AUTH_HOOK_CRASH_PREVENTED]", e.message);
+                    } catch (e: unknown) {
+                        const err = e as Error;
+                        console.error("[AUTH_HOOK_CRASH_PREVENTED]", err.message);
                     }
                 }
             }

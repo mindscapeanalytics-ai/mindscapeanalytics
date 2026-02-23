@@ -7,7 +7,7 @@ export class ApiError extends Error {
         public statusCode: number,
         message: string,
         public code?: string,
-        public details?: any
+        public details?: unknown
     ) {
         super(message);
         this.name = 'ApiError';
@@ -23,7 +23,7 @@ export class ApiError extends Error {
                 code: this.code || 'API_ERROR',
                 message: this.message,
                 statusCode: this.statusCode,
-                ...(this.details && { details: this.details }),
+                ...(this.details && typeof this.details === 'object' ? this.details : { details: this.details }),
             },
         };
     }
@@ -31,7 +31,7 @@ export class ApiError extends Error {
 
 // Predefined error classes for common scenarios
 export class BadRequestError extends ApiError {
-    constructor(message: string, details?: any) {
+    constructor(message: string, details?: unknown) {
         super(400, message, 'BAD_REQUEST', details);
         this.name = 'BadRequestError';
     }
@@ -59,7 +59,7 @@ export class NotFoundError extends ApiError {
 }
 
 export class ValidationError extends ApiError {
-    constructor(message: string, details?: any) {
+    constructor(message: string, details?: unknown) {
         super(422, message, 'VALIDATION_ERROR', details);
         this.name = 'ValidationError';
     }
@@ -73,7 +73,7 @@ export class RateLimitError extends ApiError {
 }
 
 export class InternalServerError extends ApiError {
-    constructor(message: string = 'Internal server error', details?: any) {
+    constructor(message: string = 'Internal server error', details?: unknown) {
         super(500, message, 'INTERNAL_SERVER_ERROR', details);
         this.name = 'InternalServerError';
     }

@@ -12,11 +12,12 @@ export async function getSession() {
             headers: headerList,
         });
         return session;
-    } catch (error: any) {
-        console.error("[GET_SESSION_CRITICAL_FAILURE]", error.message || error);
+    } catch (error) {
+        const err = error as Error;
+        console.error("[GET_SESSION_CRITICAL_FAILURE]", err.message || err);
         // If it's a headers error, it might be due to calling this in a client component 
         // or a non-standard server context.
-        if (error.message?.includes("headers")) {
+        if (err.message?.includes("headers")) {
             console.warn("[GET_SESSION_TIP] Ensure getSession() is called in a Server Component or Server Action.");
         }
         return null;
@@ -32,7 +33,8 @@ export async function getRequiredSession() {
         return { session: null, error: "Unauthorized: No valid session detected." };
     }
 
-    const role = session.user.role;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const role = (session.user as any).role;
     if (role !== "admin" && role !== "seller") {
         return { session: null, error: "Unauthorized: Insufficient privileges (Admin/Seller required)." };
     }

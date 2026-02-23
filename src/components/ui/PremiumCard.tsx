@@ -2,16 +2,16 @@
 
 import React from "react"
 import { motion } from "framer-motion"
-import { ArrowRight, CheckCircle2 } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 
 export interface PremiumCardProps {
     title: string
-    icon: any
+    icon: React.ComponentType<any>
     description: string
     features: string[]
-    gradient: string
+    gradient?: string
     link: string
     index?: number
 }

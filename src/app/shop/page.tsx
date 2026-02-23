@@ -1,7 +1,6 @@
 "use client";
-
 import React, { useEffect, useState, useMemo, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import ProductCard from "@/components/shop/ProductCard";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -44,8 +43,6 @@ const EXTENDED_CATEGORIES = [
 
 function ShopContent() {
     const searchParams = useSearchParams();
-    const router = import("next/navigation").then(m => m.useRouter) as any; // We will import useRouter cleanly later
-    const { useRouter } = require("next/navigation");
     const navRouter = useRouter();
     const categoryQuery = searchParams.get("category") || "";
     const urlSearchQuery = searchParams.get("search") || "";
@@ -53,14 +50,14 @@ function ShopContent() {
     // Add local state for instantaneous typing feedback
     const [searchQuery, setSearchQuery] = useState(urlSearchQuery);
 
-    const [dbProducts, setDbProducts] = React.useState<any[]>([]);
-    const [isLoading, setIsLoading] = React.useState(true);
-    const [viewMode, setViewMode] = React.useState<"grid" | "list">("grid");
+    const [dbProducts, setDbProducts] = useState<unknown[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [selectedProduct, setSelectedProduct] = useState<any>(null);
+    const [selectedProduct, setSelectedProduct] = useState<unknown>(null);
 
     // Debounce the actual URL update
-    React.useEffect(() => {
+    useEffect(() => {
         const timer = setTimeout(() => {
             if (searchQuery !== urlSearchQuery) {
                 const params = new URLSearchParams(window.location.search);
@@ -77,11 +74,11 @@ function ShopContent() {
     }, [searchQuery, urlSearchQuery, navRouter]);
 
     // Keep local state in sync if URL changes externally
-    React.useEffect(() => {
+    useEffect(() => {
         setSearchQuery(urlSearchQuery);
     }, [urlSearchQuery]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const load = async () => {
             setIsLoading(true);
             try {
@@ -97,8 +94,8 @@ function ShopContent() {
         load();
     }, []);
 
-    const products = React.useMemo(() => {
-        let list = [...dbProducts];
+    const products = useMemo(() => {
+        let list = [...(dbProducts as any[])];
 
         if (categoryQuery && categoryQuery !== "all") {
             list = list.filter(p => p.category === categoryQuery);

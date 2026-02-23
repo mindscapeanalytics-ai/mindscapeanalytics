@@ -42,8 +42,9 @@ export async function sendEmail({
         }
 
         return { success: true };
-    } catch (err: any) {
-        console.error("[EMAIL_CRITICAL_ERROR]", err.message);
-        return { success: false, error: err.message };
+    } catch (err: unknown) {
+        const error = err as Error;
+        console.error("[EMAIL_CRITICAL_ERROR]", error.message);
+        return { success: false, error: error.message };
     }
 }
