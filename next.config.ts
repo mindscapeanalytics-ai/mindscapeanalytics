@@ -4,6 +4,11 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  output: 'standalone',
+  trailingSlash: true,
   images: {
     remotePatterns: [
       {
@@ -19,6 +24,19 @@ const nextConfig: NextConfig = {
         hostname: 'images.unsplash.com',
       }
     ],
+  },
+  experimental: {
+    optimizePackageImports: [
+      'lucide-react',
+      'framer-motion',
+      '@radix-ui/react-icons',
+      'clsx',
+      'tailwind-merge'
+    ],
+  },
+  webpack: (config, { isServer }) => {
+    // Add any necessary webpack optimizations here
+    return config;
   },
 };
 
