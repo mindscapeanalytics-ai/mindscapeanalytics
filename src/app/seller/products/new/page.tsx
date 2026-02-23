@@ -12,8 +12,6 @@ const initialState = {
     error: null as string | null,
 };
 
-export const dynamic = "force-dynamic";
-
 export default function NewSellerProductPage() {
     const [state, formAction, isPending] = useActionState(createSellerProduct, initialState);
 

@@ -23,7 +23,7 @@ const IMG_HEIGHT = 170;
 // --- Projects Data ---
 const PROJECTS: ProjectData[] = [
     {
-        title: "Dblynzx",
+        title: "Tenvo",
         category: "Hospitality Tech",
         metrics: "99.9% Uptime • Real-time Sync",
         description: "Next-generation Restraint Management POS system with integrated biometric auth and seat-map automation.",

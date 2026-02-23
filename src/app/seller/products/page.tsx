@@ -6,8 +6,6 @@ import Link from "next/link";
 import { Plus, Package, CheckCircle, XCircle, Edit } from "lucide-react";
 import { redirect } from "next/navigation";
 
-export const dynamic = "force-dynamic";
-
 export default async function SellerProductsPage() {
     const session = await getSession();
 

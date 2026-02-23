@@ -23,7 +23,7 @@ const team = [
         name: "Muhammad Atif",
         role: "Full Stack Developer",
         bio: "Versatile developer specializing in creating scalable, user-friendly applications with modern technologies and robust architectures.",
-        image: "/images/team/muhammad-atif-new.jpeg",
+        image: "/images/team/muhammad-atif-new.webp",
         linkedin: "#",
         email: "mailto:atif@mindscapeanalytics.com"
     },
@@ -31,7 +31,7 @@ const team = [
         name: "Saleem Raza",
         role: "Finance Consultant",
         bio: "Expert in accounting modules and system integration, ensuring accurate data migration and seamless transition for enterprise clients.",
-        image: "/images/team/saleem-raza.jpeg",
+        image: "/images/team/saleem-raza.webp",
         linkedin: "#",
         email: "#"
     },

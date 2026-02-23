@@ -1,11 +1,10 @@
+"use server";
 
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/get-session";
 import { CreditCard, Wallet, Landmark, ArrowRight, ShieldCheck, AlertCircle } from "lucide-react";
 import React from "react";
 import PayoutForm from "./PayoutForm";
-
-export const dynamic = "force-dynamic";
 
 export default async function PaymentsPage() {
     const session = await getSession();

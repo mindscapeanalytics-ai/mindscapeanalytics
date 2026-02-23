@@ -1,4 +1,5 @@
 
+export const dynamic = "force-dynamic";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -7,8 +8,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { LayoutDashboard, Package, ShoppingCart, Users, Settings, LogOut, ArrowLeft, DollarSign } from "lucide-react";
 import LogoutButton from "@/components/auth/LogoutButton";
-
-export const dynamic = "force-dynamic";
 
 export default async function AdminLayout({
     children,
