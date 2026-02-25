@@ -75,7 +75,7 @@ export default function SolutionsClient() {
 
             {/* --- Industrial Hero Section --- */}
             <section className="relative pt-44 pb-16 overflow-hidden">
-                <div className="container mx-auto px-6 relative z-10 text-center space-y-12">
+                <div className="container-standard relative z-10 text-center space-y-12">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -109,9 +109,9 @@ export default function SolutionsClient() {
                 </div>
             </section>
 
-            <section className="py-24 bg-transparent relative border-t border-white/5">
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="grid md:grid-cols-2 gap-10 max-w-7xl mx-auto">
+            <section className="section-spacing bg-transparent relative border-t border-white/5">
+                <div className="container-standard relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-7xl mx-auto">
                         {solutions.map((solution, index) => (
                             <PremiumCard
                                 key={solution.title}
@@ -124,8 +124,8 @@ export default function SolutionsClient() {
             </section>
 
             {/* --- Managed CTA Section --- */}
-            <section className="py-24 border-t border-white/5 bg-white text-black">
-                <div className="container mx-auto px-6">
+            <section className="section-spacing border-t border-white/5 bg-white text-black">
+                <div className="container-standard">
                     <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
                         <div className="space-y-6 max-w-2xl">
                             <h2 className="text-5xl font-black font-syncopate uppercase tracking-tight">READY_FOR_DEPLOYMENT?</h2>

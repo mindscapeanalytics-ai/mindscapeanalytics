@@ -116,7 +116,7 @@ export default function RootLayout({
         <CartProvider>
           <CinematicBackground />
           {children}
-          <SpeedInsights />
+          {process.env.VERCEL && <SpeedInsights />}
         </CartProvider>
       </body>
     </html>

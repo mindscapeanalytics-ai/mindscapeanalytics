@@ -74,7 +74,39 @@
         @apply border-border;
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
-        @apply bg-background text-foreground;
+        @apply bg-background text-foreground antialiased;
+        overflow-x: clip; /* 2026 standard for catching overflows without breaking sticky */
+    }
+}
+
+@layer utilities {
+    .container-wide {
+        @apply max-w-screen-2xl mx-auto px-6 md:px-12 w-full;
+    }
+
+    .container-standard {
+        @apply max-w-7xl mx-auto px-6 md:px-12 w-full;
+    }
+
+    .section-spacing {
+        @apply py-24 md:py-32 lg:py-40;
+    }
+
+    /* Fluid Typography - scaled for enterprise visibility */
+    .fluid-h1 {
+        font-size: clamp(3rem, 10vw, 15rem);
+    }
+    
+    .fluid-h2 {
+        font-size: clamp(2.5rem, 8vw, 10rem);
+    }
+
+    .fluid-body {
+        font-size: clamp(1rem, 1.1vw, 1.25rem);
     }
 }

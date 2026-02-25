@@ -33,18 +33,19 @@ export async function becomeSeller(prevState: any, formData: FormData) {
 
         console.log(`[SELLER_ENROLLED] User ${session.user.id} enrolled locally - Store: ${storeName}`);
 
-        revalidatePath("/admin");
-        revalidatePath("/become-seller");
+        // Revalidate essential paths
+        revalidatePath("/", "layout");
         revalidatePath("/seller");
+        revalidatePath("/shop");
+        revalidatePath("/admin");
 
-        // Bypass Stripe Connect completely, redirect to admin dashboard
-        return { success: true, url: null, error: null };
+        return { success: true, url: "/seller", error: null };
     } catch (error: any) {
         console.error("[SELLER_ENROLLMENT_ERROR]", error);
 
         return {
             success: false,
-            error: error.message || "Seller enrollment failed due to database rejection. Please verify your inputs.",
+            error: error.message || "Seller enrollment failed due to database rejection.",
             url: null,
         };
     }

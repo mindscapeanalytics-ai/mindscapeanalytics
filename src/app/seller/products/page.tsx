@@ -1,10 +1,12 @@
 import { prisma } from "@/lib/prisma";
+export const dynamic = "force-dynamic";
 import { getSession } from "@/lib/get-session";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { Plus, Package, CheckCircle, XCircle, Edit } from "lucide-react";
+import { Plus, Package, CheckCircle, XCircle, Edit, Trash2 } from "lucide-react";
 import { redirect } from "next/navigation";
+import { deleteProduct } from "@/app/_actions/delete-product";
 
 export default async function SellerProductsPage() {
     const session = await getSession();
@@ -118,11 +120,33 @@ export default async function SellerProductsPage() {
                                                 <span className="text-[10px] text-white/20 mr-1">$</span>
                                                 {product.price}
                                             </div>
-                                            <Link href={`/seller/products/${product.id}/edit`}>
-                                                <button className="w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 rounded-2xl text-white/40 hover:text-white hover:bg-white/10 transition-all active:scale-90">
-                                                    <Edit size={16} />
-                                                </button>
-                                            </Link>
+                                            <div className="flex items-center gap-3">
+                                                <Link href={`/seller/products/${product.id}/edit`}>
+                                                    <button className="w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 rounded-2xl text-white/40 hover:text-white hover:bg-white/10 transition-all active:scale-90">
+                                                        <Edit size={16} />
+                                                    </button>
+                                                </Link>
+                                                <form action={async (formData: FormData) => {
+                                                    'use server';
+                                                    const { deleteProduct } = await import("@/app/_actions/delete-product");
+                                                    await deleteProduct(formData);
+                                                    const { revalidatePath } = await import("next/cache");
+                                                    revalidatePath("/seller/products");
+                                                }}>
+                                                    <input type="hidden" name="id" value={product.id} />
+                                                    <button
+                                                        type="submit"
+                                                        className="w-12 h-12 flex items-center justify-center bg-red-500/5 border border-red-500/10 rounded-2xl text-red-400/40 hover:text-red-400 hover:bg-red-500/10 transition-all active:scale-90"
+                                                        onClick={(e) => {
+                                                            if (!confirm('Are you sure you want to delete this product? This cannot be undone.')) {
+                                                                e.preventDefault();
+                                                            }
+                                                        }}
+                                                    >
+                                                        <Trash2 size={16} />
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

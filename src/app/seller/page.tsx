@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { getSession } from "@/lib/get-session";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
@@ -82,7 +83,7 @@ export default async function SellerDashboard() {
                             </h1>
                             <p className="text-white/40 text-[11px] font-black uppercase tracking-[0.5em] italic">Ecosystem Management & Strategic Allocation</p>
                         </div>
-                        <Link href="/admin/products/new">
+                        <Link href="/seller/products/new">
                             <button className="flex items-center gap-4 px-10 py-5 bg-white text-black rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white/90 shadow-2xl transition-all active:scale-95 group">
                                 <Plus size={16} />
                                 Release New Asset
@@ -101,11 +102,16 @@ export default async function SellerDashboard() {
                                     <p className="text-[10px] text-white/40 uppercase tracking-tight italic">You must complete Stripe Connect setup to enable settlements and list products.</p>
                                 </div>
                             </div>
-                            <Link href="/admin/payments">
-                                <button className="px-8 py-3 bg-white text-black rounded-xl font-black text-[9px] uppercase tracking-[0.3em] hover:bg-white/90 transition-all">
+                            <form action={async () => {
+                                'use server';
+                                const { createStripeAccountLink } = await import("@/app/_actions/stripe");
+                                const { url } = await createStripeAccountLink();
+                                redirect(url);
+                            }}>
+                                <button type="submit" className="px-8 py-3 bg-white text-black rounded-xl font-black text-[9px] uppercase tracking-[0.3em] hover:bg-white/90 transition-all">
                                     Configure Payouts
                                 </button>
-                            </Link>
+                            </form>
                         </div>
                     )}
 
@@ -139,7 +145,7 @@ export default async function SellerDashboard() {
                                 <span className="w-px h-6 bg-white/20" />
                                 Asset <span className="text-white/20 not-italic">Inventory</span>
                             </h2>
-                            <Link href="/admin/products" className="text-[9px] font-black uppercase tracking-[0.4em] text-white/20 hover:text-white transition-colors">
+                            <Link href="/seller/products" className="text-[9px] font-black uppercase tracking-[0.4em] text-white/20 hover:text-white transition-colors">
                                 View Full Registry //
                             </Link>
                         </div>
@@ -148,7 +154,7 @@ export default async function SellerDashboard() {
                             <div className="text-center py-24 border border-dashed border-white/5 rounded-[2.5rem]">
                                 <Package size={64} strokeWidth={0.5} className="mx-auto mb-10 text-white/5" />
                                 <p className="text-white/20 text-[10px] font-black uppercase tracking-[0.5em] mb-12 italic">No architectural assets localized in registry.</p>
-                                <Link href="/admin/products/new">
+                                <Link href="/seller/products/new">
                                     <button className="px-12 py-5 bg-white/5 border border-white/10 text-white/40 hover:text-white hover:bg-white/10 rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] transition-all">
                                         Initialize Protocol
                                     </button>
@@ -180,7 +186,7 @@ export default async function SellerDashboard() {
                                                     {product.approvedForSale ? 'ACTIVE' : 'PENDING_REVIEW'}
                                                 </div>
                                             </div>
-                                            <Link href={`/admin/products/${product.id}/edit`}>
+                                            <Link href={`/seller/products/${product.id}/edit`}>
                                                 <button className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[9px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">
                                                     Edit
                                                 </button>

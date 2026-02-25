@@ -7,8 +7,8 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  output: 'standalone',
-  trailingSlash: true,
+  // Output changed to default for local development and standard node start
+  trailingSlash: false,
   images: {
     remotePatterns: [
       {
@@ -28,17 +28,21 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: [
       'lucide-react',
-      'framer-motion',
       '@radix-ui/react-icons',
       'clsx',
       'tailwind-merge'
     ],
-    "serverActions": {
-      "bodySizeLimit": "10mb"
+    serverActions: {
+      bodySizeLimit: "10mb"
     }
   },
-  webpack: (config, { isServer }) => {
-    // Add any necessary webpack optimizations here
+  webpack: (config, { dev }) => {
+    if (dev) {
+      config.ignoreWarnings = [
+        { message: /Failed to parse source map/ },
+        { module: /node_modules\/framer-motion/ }
+      ];
+    }
     return config;
   },
 };

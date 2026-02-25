@@ -33,14 +33,14 @@ const steps = [
 
 export default function Process() {
     return (
-        <section id="process" className="relative pt-0 pb-32 px-4 overflow-hidden bg-transparent text-white">
-            <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-20 border-b border-white/5 pb-10 px-6">
+        <section id="process" className="relative section-spacing overflow-hidden bg-transparent text-white">
+            <div className="container-standard">
+                <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-20 border-b border-white/5 pb-10">
                     <div className="max-w-4xl">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.6 }}
                             className="flex items-center gap-3 mb-8"
                         >
@@ -50,8 +50,9 @@ export default function Process() {
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-6xl md:text-8xl lg:text-[9rem] font-black tracking-[-0.05em] font-syncopate leading-[0.8] uppercase text-white"
+                            viewport={{ once: true, margin: "-50px" }}
+                            className="text-[10vw] xs:text-6xl md:text-8xl lg:text-[9rem] font-black tracking-[-0.05em] font-syncopate leading-[0.8] uppercase text-white"
+                            style={{ fontSize: "clamp(2.4rem, 10vw, 9rem)" }}
                         >
                             OUR <span className="text-white/20 italic font-black">METHODOLOGY.</span>
                         </motion.h2>
@@ -70,7 +71,7 @@ export default function Process() {
                             key={step.number}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-50px" }}
                             transition={{ delay: index * 0.1 }}
                             className="relative p-6 lg:p-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/5 group transition-all duration-500 hover:bg-white/[0.08] hover:border-white/20 shadow-2xl overflow-hidden"
                         >

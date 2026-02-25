@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useRef } from "react"
-import { m, useScroll, useTransform, useSpring } from "framer-motion"
+import { motion, useScroll, useTransform, useSpring } from "framer-motion"
 import { ArrowRight, Play, Sparkles } from "lucide-react"
 import Link from "next/link";
 
@@ -47,7 +47,7 @@ export default function Hero() {
 
             {/* Hero Layer 2: Kinetic Atmospheric Glows - Kept lightweight */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
-                <m.div
+                <motion.div
                     animate={{
                         scale: [1, 1.15, 1],
                         opacity: [0.3, 0.5, 0.3],
@@ -55,7 +55,7 @@ export default function Hero() {
                     transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12)_0%,transparent_70%)] rounded-full will-change-transform"
                 />
-                <m.div
+                <motion.div
                     animate={{
                         scale: [1.15, 1, 1.15],
                         opacity: [0.2, 0.4, 0.2],
@@ -84,12 +84,12 @@ export default function Hero() {
             </div>
 
             {/* Content Overlay with focus on smoothness */}
-            <m.div
+            <motion.div
                 style={{ scale, opacity, y: titleY }}
-                className="container relative z-10 px-6 py-12 pointer-events-none flex flex-col items-center justify-center min-h-[60vh] md:min-h-[70vh]"
+                className="container-standard relative z-10 py-12 pointer-events-none flex flex-col items-center justify-center min-h-[60vh] md:min-h-[70vh]"
             >
                 <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
-                    <m.div
+                    <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
@@ -97,10 +97,10 @@ export default function Hero() {
                     >
                         <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
                         <span className="text-[9px] font-mono text-white/40 uppercase tracking-[0.5em] font-black">Architecture // MINDSCAPE_GLOBAL_v4_2026</span>
-                    </m.div>
+                    </motion.div>
 
                     <div className="space-y-3 flex flex-col items-center">
-                        <m.h1
+                        <motion.h1
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.2, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
@@ -109,19 +109,19 @@ export default function Hero() {
                         >
                             <span className="text-white text-center w-full break-words" style={{ overflowWrap: "break-word", hyphens: "auto" }}>MINDSCAPE</span>
                             <span className="text-white/20 italic font-black text-center w-full break-words mt-2 md:mt-4" style={{ overflowWrap: "break-word", hyphens: "auto" }}>ANALYTICS.</span>
-                        </m.h1>
+                        </motion.h1>
 
-                        <m.div
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.2, delay: 0.2 }}
                             className="text-xl md:text-3xl lg:text-4xl font-black text-white/30 font-syncopate tracking-[-0.05em] leading-[0.9] uppercase italic text-center max-w-4xl"
                         >
                             WE BUILD <span className="text-white italic">AI SYSTEMS</span> THAT REPLACE MANUAL WORK.
-                        </m.div>
+                        </motion.div>
                     </div>
 
-                    <m.div
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
@@ -133,9 +133,9 @@ export default function Hero() {
                         <p className="text-white/40 text-[10px] md:text-xs lg:text-sm font-medium tracking-[0.1em] uppercase text-center">
                             Managed Cloud & Database Infrastructure.
                         </p>
-                    </m.div>
+                    </motion.div>
 
-                    <m.div
+                    <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.4 }}
@@ -144,9 +144,9 @@ export default function Hero() {
                         <span>Scale_Ready</span>
                         <span>Performance_Grid</span>
                         <span>Managed_v2</span>
-                    </m.div>
+                    </motion.div>
 
-                    <m.div
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
@@ -179,16 +179,16 @@ export default function Hero() {
                             <div className="w-1 h-1 bg-white/20 rounded-full" />
                             <span>Long-Term Partner</span>
                         </div>
-                    </m.div>
+                    </motion.div>
                 </div>
-            </m.div>
+            </motion.div>
 
             {/* Remove duplicate static gradients that conflict with global backgrounds */}
 
             {/* Removed overlapping HUDs - handled cleanly by CinematicBackground */}
 
             {/* Scroll Indicator - Moved down and ensured visibility */}
-            <m.div
+            <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2, duration: 1 }}
@@ -196,13 +196,13 @@ export default function Hero() {
             >
                 <span className="text-[9px] font-mono font-bold tracking-[0.5em] text-white/20 uppercase">Initiate_Scroll</span>
                 <div className="w-px h-12 bg-gradient-to-b from-white/20 to-transparent relative">
-                    <m.div
+                    <motion.div
                         animate={{ y: [0, 30, 0], opacity: [0, 1, 0] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                         className="absolute top-0 left-[-1.5px] w-[4px] h-[4px] bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,1)]"
                     />
                 </div>
-            </m.div>
+            </motion.div>
         </section>
     )
 }

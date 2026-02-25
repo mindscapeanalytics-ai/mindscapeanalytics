@@ -9,6 +9,7 @@ import { Shield, ArrowRight, Loader2, Mail, Lock, User } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import * as zod from "zod";
 
 function SignUpContent() {
     const searchParams = useSearchParams();
@@ -24,85 +25,126 @@ function SignUpContent() {
     const handleSignUp = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
+        setError("");
+
         const trimmedEmail = email.trim().toLowerCase();
         const trimmedName = name.trim();
+        const trimmedUsername = username.trim().toLowerCase().replace(/[^a-z0-9_]/g, '_');
 
-        if (!trimmedEmail || !trimmedName) {
-            setError("All primary identifiers (Email, Full Name) must be finalized.");
-            setLoading(false);
-            return;
-        }
-
-        if (password.length < 8) {
-            setError("Password complexity insufficient. Minimum 8 characters required.");
-            setLoading(false);
-            return;
-        }
-
-        let finalUsername = username.trim().toLowerCase().replace(/[^a-z0-9_]/g, '_');
-
-        // Auto-generate username from name if blank
-        if (!finalUsername && trimmedName) {
-            finalUsername = trimmedName.toLowerCase()
-                .replace(/[^a-z0-9]/g, '_')
-                .replace(/_+/g, '_')
-                + '_' + Math.random().toString(36).substring(2, 7);
-        }
-
-        if (finalUsername && finalUsername.length < 3) {
-            setError("Nomenclature error: Username must be at least 3 characters.");
-            setLoading(false);
-            return;
-        }
-
+        // Best Practice: Schema Validation
         try {
-            console.log("[AUTH_SIGNUP_ATTEMPT]", { email: trimmedEmail, name: trimmedName, username: finalUsername });
-
-            const { data, error: authError } = await authClient.signUp.email({
-                email: trimmedEmail,
-                password,
-                name: trimmedName,
-                username: finalUsername || undefined,
+            const signupSchema = zod.object({
+                name: zod.string().min(2, "Identity must be at least 2 characters."),
+                email: zod.string().email("Invalid terminal ID format."),
+                password: zod.string().min(8, "Establish Cipher must be at least 8 characters."),
+                username: zod.string().min(3, "Nomenclature error: Username must be at least 3 characters.").optional().or(zod.literal("")),
             });
 
-            if (authError) {
-                console.error("[AUTH_SIGNUP_DIAGNOSTIC]", {
-                    message: authError.message,
-                    status: (authError as any).status,
-                    code: (authError as any).code
+            signupSchema.parse({ name: trimmedName, email: trimmedEmail, password, username: trimmedUsername });
+        } catch (err: any) {
+            if (err instanceof zod.ZodError) {
+                setError(err.issues[0]?.message || "Validation rejection.");
+            } else {
+                setError("Protocol validation failed.");
+            }
+            setLoading(false);
+            return;
+        }
+
+        // Helper: Utility for synchronization delays
+        const wait = (ms: number) => new Promise(res => setTimeout(res, ms));
+
+        // Auto-generate username from name if blank
+        const generateUsername = () => {
+            const base = trimmedName.toLowerCase()
+                .replace(/[^a-z0-9]/g, '_')
+                .replace(/_+/g, '_');
+            return base + '_' + Math.random().toString(36).substring(2, 7);
+        };
+
+        let finalUsername = trimmedUsername;
+        if (!finalUsername && trimmedName) {
+            finalUsername = generateUsername();
+        }
+
+        // Single attempt with targeted retry only for auto-generated username collisions
+        const attemptSignUp = async (uname: string, retryCount = 0): Promise<{ success: boolean; shouldRetry: boolean; errorMsg: string }> => {
+            try {
+                console.log(`[AUTH_SIGNUP_ATTEMPT] Attempt ${retryCount + 1}`, { email: trimmedEmail, username: uname });
+
+                const { data, error: authError } = await authClient.signUp.email({
+                    email: trimmedEmail,
+                    password,
+                    name: trimmedName,
+                    username: uname,
                 });
 
-                // Hardened Error Mapping
-                const status = (authError as any).status;
-                const code = (authError as any).code;
+                if (authError) {
+                    const code = (authError as any).code || "";
+                    const status = (authError as any).status;
 
-                if (status === 422 || code === "USER_ALREADY_EXISTS") {
-                    setError("Identity collision: This email or name is already registered in the MSA network.");
-                } else if (status === 400) {
-                    setError(`Protocol Error: ${authError.message || "Invalid registration parameters."}`);
-                } else if (status === 500) {
-                    setError("Server Error: Identity registry is currently undergoing maintenance. Please try again soon.");
-                } else {
-                    setError(authError.message || "Registration failed. Please check your data.");
+                    console.warn("[AUTH_SIGNUP_ERROR]", { code, status, message: authError.message });
+
+                    // Username collision — retry only if auto-generated
+                    if (code === "USERNAME_IS_ALREADY_TAKEN_PLEASE_TRY_ANOTHER" || code === "USERNAME_IS_ALREADY_TAKEN") {
+                        if (!username.trim() && retryCount < 3) {
+                            return { success: false, shouldRetry: true, errorMsg: "" };
+                        }
+                        return { success: false, shouldRetry: false, errorMsg: `Nomenclature Conflict: "${uname}" is already registered.` };
+                    }
+
+                    // Email already registered — user needs to sign in instead
+                    if (status === 422 || code === "USER_ALREADY_EXISTS") {
+                        return { success: false, shouldRetry: false, errorMsg: "Identity localized in existing registry. Access Console instead." };
+                    }
+
+                    // Unknown auth error
+                    return { success: false, shouldRetry: false, errorMsg: authError.message || "Registry synchronization failed." };
                 }
-            } else {
-                console.log("[AUTH_SIGNUP_SUCCESS]");
-                if (callbackUrl) {
-                    window.location.href = callbackUrl;
-                } else {
-                    window.location.href = "/shop";
+
+                return { success: true, shouldRetry: false, errorMsg: "" };
+            } catch (err: any) {
+                const isNetworkError = err instanceof TypeError && err.message?.includes("fetch");
+
+                // Exponential Backoff for Network Errors (Cold Starts)
+                if (isNetworkError && retryCount < 2) {
+                    const delay = [1000, 3000][retryCount] || 5000;
+                    console.log(`[AUTH_SIGNUP_BACKOFF] Network jitter detected. Retrying in ${delay}ms...`);
+                    await wait(delay);
+                    return attemptSignUp(uname, retryCount + 1);
                 }
+
+                console.error("[AUTH_SIGNUP_CRITICAL]", err?.message);
+                return {
+                    success: false,
+                    shouldRetry: false,
+                    errorMsg: isNetworkError
+                        ? "Connection timed out. Registry warming up — please try again momentarily."
+                        : (err?.message || "Unexpected terminal rejection.")
+                };
             }
-        } catch (err: any) {
-            console.error("[AUTH_SIGNUP_CRITICAL_CATCH]", err);
-            if (err instanceof TypeError && err.message.includes("fetch")) {
-                setError("Protocol Disconnected: The identity registry server failed to finalize the handshake. Please check your connection or try a different browser.");
-            } else {
-                setError(`System Error: ${err.message || "An unexpected error occurred during registration."}`);
+        };
+
+        // Main Execution Loop
+        let result = await attemptSignUp(finalUsername);
+
+        // Handle auto-username retries separately to maintain backoff scope
+        if (result.shouldRetry && !username.trim()) {
+            for (let retry = 0; retry < 2; retry++) {
+                finalUsername = generateUsername();
+                result = await attemptSignUp(finalUsername, retry + 1);
+                if (!result.shouldRetry) break;
             }
-        } finally {
-            setLoading(false);
         }
+
+        if (result.success) {
+            console.log("[AUTH_SIGNUP_SUCCESS] Redirecting to terminal...");
+            window.location.href = callbackUrl || "/shop";
+            return;
+        }
+
+        setError(result.errorMsg);
+        setLoading(false);
     };
 
     return (
@@ -148,9 +190,17 @@ function SignUpContent() {
                             <motion.div
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 text-xs font-bold uppercase tracking-wider text-center"
+                                className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 text-xs font-bold uppercase tracking-wider text-center space-y-3"
                             >
-                                {error}
+                                <p>{error}</p>
+                                {error.toLowerCase().includes("sign in") && (
+                                    <Link
+                                        href={callbackUrl ? `/sign-in?callbackUrl=${encodeURIComponent(callbackUrl)}` : "/sign-in"}
+                                        className="inline-block text-white bg-white/10 border border-white/20 px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/20 transition-all"
+                                    >
+                                        Go to Sign In →
+                                    </Link>
+                                )}
                             </motion.div>
                         )}
 
@@ -236,7 +286,7 @@ function SignUpContent() {
                             Authorized Personnel?
                         </p>
                         <Link
-                            href="/sign-in"
+                            href={callbackUrl ? `/sign-in?callbackUrl=${encodeURIComponent(callbackUrl)}` : "/sign-in"}
                             className="inline-block text-white font-black uppercase tracking-widest text-[10px] hover:text-white/60 transition-colors underline underline-offset-8 decoration-white/20"
                         >
                             Access Console Sign-In

@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 
 /**
  * Standardized session retrieval for Next.js Server Components and Server Actions.
- * Handles the async headers() call and provides a consistent interface.
+ * Handles the async headers() call, provides a consistent interface.
  */
 export async function getSession() {
     try {
@@ -13,14 +13,19 @@ export async function getSession() {
         });
         return session;
     } catch (error) {
-        const err = error as Error;
-        console.error("[GET_SESSION_CRITICAL_FAILURE]", err.message || err);
-        // If it's a headers error, it might be due to calling this in a client component 
-        // or a non-standard server context.
-        if (err.message?.includes("headers")) {
-            console.warn("[GET_SESSION_TIP] Ensure getSession() is called in a Server Component or Server Action.");
+        const err = error as any;
+
+        // Next.js internal error for dynamic rendering - must be re-thrown
+        if (err.digest?.includes("DYNAMIC_SERVER_USAGE") || err.name === "DynamicServerError") {
+            throw error;
         }
-        return null;
+
+        console.error("[GET_SESSION_FAILURE]", err.message || err);
+
+        if (err.message?.includes("connect") || err.message?.includes("ECONNREFUSED") || err.message?.includes("timeout")) {
+            console.warn("[GET_SESSION_TIP] Database appears unreachable. Check connections.");
+        }
+        return null; // Return null so the UI can decide how to handle it
     }
 }
 
@@ -33,9 +38,11 @@ export async function getRequiredSession() {
         return { session: null, error: "Unauthorized: No valid session detected." };
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const role = (session.user as any).role;
-    if (role !== "admin" && role !== "seller") {
+    const user = session.user as any;
+    const isAdmin = user.role === "admin";
+    const isSeller = user.role === "seller" || user.isSeller;
+
+    if (!isAdmin && !isSeller) {
         return { session: null, error: "Unauthorized: Insufficient privileges (Admin/Seller required)." };
     }
 

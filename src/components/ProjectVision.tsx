@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo, useRef } from "react";
-import { m, useTransform, useSpring, useMotionValue, useScroll, AnimatePresence } from "framer-motion";
+import { motion, useTransform, useSpring, useMotionValue, useScroll, AnimatePresence } from "framer-motion";
 import { Sparkles, ArrowRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -151,7 +151,7 @@ export default function ProjectVision() {
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] opacity-20" />
 
                 {/* Localized Glow Spots (Reactive) - Consolidated and Optimized */}
-                <m.div
+                <motion.div
                     style={{
                         x: useTransform(smoothMouseX, (v: number) => v * 1.5),
                         y: useTransform(smoothMouseY, (v: number) => v * 1.5)
@@ -160,7 +160,7 @@ export default function ProjectVision() {
                 />
             </div>
 
-            <div className="relative z-10 w-full max-w-screen-2xl mx-auto flex flex-col gap-12">
+            <div className="container-wide flex flex-col gap-12">
                 {/* --- Section Header --- */}
                 <div className="flex flex-col md:flex-row items-end justify-between gap-6 border-b border-white/5 pb-10">
                     <div className="space-y-4">
@@ -221,7 +221,7 @@ export default function ProjectVision() {
                                     )} />
 
                                     {activeIndex === i && (
-                                        <m.div
+                                        <motion.div
                                             layoutId="active-indicator"
                                             className="absolute left-0 w-1 h-1/2 bg-white rounded-r-full shadow-[0_0_8px_rgba(255,255,255,0.8)]"
                                         />
@@ -251,7 +251,7 @@ export default function ProjectVision() {
                         </div>
 
                         <AnimatePresence mode="wait">
-                            <m.div
+                            <motion.div
                                 key={activeIndex}
                                 initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
                                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
@@ -295,7 +295,7 @@ export default function ProjectVision() {
                                 </div>
 
                                 {/* Floating Detail Label - Hidden on mobile if it overlaps, or positioned better */}
-                                <m.div
+                                <motion.div
                                     initial={{ y: 20, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{ delay: 0.3 }}
@@ -303,8 +303,8 @@ export default function ProjectVision() {
                                 >
                                     <h4 className="text-white text-lg lg:text-xl font-black uppercase tracking-tighter mb-1 lg:mb-2">{activeProject.title}</h4>
                                     <p className="text-white/40 text-[9px] lg:text-[10px] leading-relaxed font-mono uppercase tracking-tight">{activeProject.description}</p>
-                                </m.div>
-                            </m.div>
+                                </motion.div>
+                            </motion.div>
                         </AnimatePresence>
                     </div>
 
@@ -333,7 +333,7 @@ export default function ProjectVision() {
                             <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest block border-b border-white/10 pb-4">Internal Systems</span>
                             <div className="space-y-3">
                                 {activeProject.details.map((detail: string, idx: number) => (
-                                    <m.div
+                                    <motion.div
                                         key={idx}
                                         initial={{ x: 10, opacity: 0 }}
                                         animate={{ x: 0, opacity: 1 }}
@@ -347,13 +347,13 @@ export default function ProjectVision() {
                                             <span className="text-[10px] font-bold text-white/60 group-hover/sys:text-white transition-colors">{detail}</span>
                                         </div>
                                         <div className="h-1 w-8 bg-white/5 rounded-full overflow-hidden">
-                                            <m.div
+                                            <motion.div
                                                 initial={{ width: 0 }}
                                                 animate={{ width: "70%" }}
                                                 className="h-full bg-white/30"
                                             />
                                         </div>
-                                    </m.div>
+                                    </motion.div>
                                 ))}
                             </div>
                         </div>

@@ -16,26 +16,32 @@ import {
 } from "lucide-react";
 
 interface ProductFormProps {
-    action: (formData: FormData) => void;
-    isPending: boolean;
-    state: { error: string | null };
-    submitLabel: string;
+    action: (prevState: any, formData: FormData) => Promise<any>;
+    submitLabel?: string;
     initialData?: any;
 }
 
 const CATEGORIES = [
-    { id: "ui_ux", name: "UI/UX Kits" },
+    { id: "web_projects", name: "Web Projects" },
     { id: "saas", name: "SaaS Templates" },
-    { id: "automations", name: "Automations" },
-    { id: "apps", name: "Apps" },
+    { id: "ai_agents", name: "AI Agents" },
+    { id: "workflows", name: "Workflows" },
+    { id: "excel_dashboards", name: "Excel Dashboards" },
+    { id: "powerbi_dashboards", name: "PowerBI Dashboards" },
+    { id: "data_viz", name: "Tableau / Looker / Dashboards" },
+    { id: "ideas_templates", name: "Ideas & Templates" },
+    { id: "ui_ux", name: "UI/UX Kits" },
     { id: "management_systems", name: "Management Systems" },
-    { id: "excel_powerbi_dashboards", name: "Dashboards" },
 ];
 
-export default function ProductForm({ action, isPending, state, submitLabel, initialData }: ProductFormProps) {
+export default function ProductForm({ action, submitLabel = "Execute Deployment", initialData }: ProductFormProps) {
+    const [state, formAction, isPending] = React.useActionState(action, { error: null });
     const [techStack, setTechStack] = React.useState<string[]>(initialData?.techStack || []);
     const [features, setFeatures] = React.useState<string[]>(initialData?.features || []);
     const [imageUrls, setImageUrls] = React.useState<string[]>(initialData?.images?.map((img: any) => img.url) || [""]);
+    const [productFiles, setProductFiles] = React.useState<Array<{ filename: string; url: string }>>(
+        initialData?.productFiles || [{ filename: "", url: "" }]
+    );
 
     const addImage = () => setImageUrls([...imageUrls, ""]);
     const removeImage = (index: number) => {
@@ -49,6 +55,20 @@ export default function ProductForm({ action, isPending, state, submitLabel, ini
         const newImages = [...imageUrls];
         newImages[index] = value;
         setImageUrls(newImages);
+    };
+
+    const addFile = () => setProductFiles([...productFiles, { filename: "", url: "" }]);
+    const removeFile = (index: number) => {
+        if (productFiles.length > 1) {
+            setProductFiles(productFiles.filter((_, i) => i !== index));
+        } else {
+            setProductFiles([{ filename: "", url: "" }]);
+        }
+    };
+    const updateFile = (index: number, field: "filename" | "url", value: string) => {
+        const newFiles = [...productFiles];
+        newFiles[index][field] = value;
+        setProductFiles(newFiles);
     };
 
     const addTech = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -73,14 +93,25 @@ export default function ProductForm({ action, isPending, state, submitLabel, ini
         }
     };
 
+    const handleSubmit = (formData: FormData) => {
+        techStack.forEach(t => formData.append('techStack', t));
+        features.forEach(f => formData.append('features', f));
+        imageUrls.filter(url => url.trim() !== "").forEach(url => formData.append('imageUrl', url));
+        productFiles.filter(f => f.url.trim() !== "").forEach(f => {
+            formData.append('fileUrl', f.url);
+            formData.append('fileName', f.filename || "Digital_Asset");
+        });
+
+        if (initialData?.id && !formData.has("id")) {
+            formData.append("id", initialData.id);
+        }
+
+        formAction(formData);
+    };
+
     return (
         <form
-            action={(formData) => {
-                techStack.forEach(t => formData.append('techStack', t));
-                features.forEach(f => formData.append('features', f));
-                imageUrls.filter(url => url.trim() !== "").forEach(url => formData.append('imageUrl', url));
-                action(formData);
-            }}
+            action={handleSubmit}
             className="space-y-12"
         >
             {state?.error && (
@@ -250,6 +281,60 @@ export default function ProductForm({ action, isPending, state, submitLabel, ini
                         </div>
                     ))}
                     <p className="text-[8px] text-white/10 uppercase tracking-widest ml-2 italic">Recommendation: 1200x800 industrial aspect ratio. First image is the primary thumbnail.</p>
+                </div>
+            </div>
+
+            {/* Asset Deliverables */}
+            <div className="bg-white/[0.02] border border-white/5 rounded-[2.5rem] p-10">
+                <div className="flex items-center justify-between mb-8">
+                    <div className="flex items-center gap-4">
+                        <Save size={16} className="text-white/20" />
+                        <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Asset Deliverables (Digital Files)</h3>
+                    </div>
+                    <button
+                        type="button"
+                        onClick={addFile}
+                        className="p-2 bg-white/5 hover:bg-white/10 rounded-lg text-[10px] font-black uppercase tracking-widest flex items-center gap-2 transition-all"
+                    >
+                        <Plus size={12} />
+                        Add Package
+                    </button>
+                </div>
+                <div className="space-y-6">
+                    {productFiles.map((file, index) => (
+                        <div key={index} className="p-6 bg-black/20 border border-white/5 rounded-3xl space-y-4 relative group">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                    <label className="text-[8px] font-black text-white/20 uppercase tracking-widest ml-1">Package Name</label>
+                                    <input
+                                        type="text"
+                                        value={file.filename}
+                                        onChange={(e) => updateFile(index, "filename", e.target.value)}
+                                        placeholder="E.G. CORE_REPOSITORY_V1"
+                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-[10px] font-bold text-white uppercase tracking-wider focus:outline-none focus:border-white/20"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-[8px] font-black text-white/20 uppercase tracking-widest ml-1">Secure Download URL</label>
+                                    <input
+                                        type="url"
+                                        value={file.url}
+                                        onChange={(e) => updateFile(index, "url", e.target.value)}
+                                        placeholder="HTTPS://GITHUB.COM/MSA/REPOSITORY"
+                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-[10px] font-mono text-white/40 focus:text-white transition-all uppercase"
+                                    />
+                                </div>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => removeFile(index)}
+                                className="absolute -top-3 -right-3 p-2 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-all shadow-xl hover:scale-110"
+                            >
+                                <X size={12} />
+                            </button>
+                        </div>
+                    ))}
+                    <p className="text-[8px] text-white/10 uppercase tracking-widest ml-2 italic">Secure downloads are only exposed to verified purchasers post-settlement.</p>
                 </div>
             </div>
 

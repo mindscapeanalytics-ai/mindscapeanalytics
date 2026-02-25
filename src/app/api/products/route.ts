@@ -10,18 +10,39 @@ export async function GET() {
             orderBy: { createdAt: 'desc' }
         });
         return NextResponse.json(products);
-    } catch (error) {
-        console.error("[SELLER_API_PRODUCTS_FATAL]", {
-            message: error instanceof Error ? error.message : "Architecture failure",
-            stack: error instanceof Error ? error.stack : "NO_STACK",
-            errorObject: JSON.stringify(error, Object.getOwnPropertyNames(error)),
+    } catch (error: any) {
+        const err = error instanceof Error ? error : new Error("Unknown error");
+        const message = err.message || "";
+        const isConnectionError = message.includes("connect") ||
+            message.includes("ECONNREFUSED") ||
+            message.includes("timeout") ||
+            message.includes("Can't reach database") ||
+            message.includes("initial connection");
+
+        console.error("[PRODUCTS_API_CRITICAL]", {
+            type: isConnectionError ? "CONNECTION_FAILURE" : "QUERY_FAILURE",
+            message: message,
             timestamp: new Date().toISOString()
         });
 
+        const headers = {
+            'Cache-Control': 'no-store, max-age=0, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0',
+        };
+
+        if (isConnectionError) {
+            return NextResponse.json({
+                error: "Registry Connection Severed",
+                details: "The database terminal is initializing or unreachable. This often occurs during cold starts. The client should retry.",
+                code: "DB_INIT_RETRY"
+            }, { status: 503, headers });
+        }
+
         return NextResponse.json({
-            error: "System Integrity Failure",
-            details: "Prisma or database connection was severed during asset retrieval.",
-            code: (error as any)?.code || "INTERNAL_FLOW_FAULT"
-        }, { status: 500 });
+            error: "Data Query Exception",
+            details: message,
+            code: "INTERNAL_CORE_ERROR"
+        }, { status: 500, headers });
     }
 }

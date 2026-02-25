@@ -58,14 +58,14 @@ export default function CaseStudies() {
     const containerRef = useRef(null)
 
     return (
-        <section ref={containerRef} id="case-studies" className="relative pt-0 pb-32 px-6 overflow-hidden bg-transparent">
-            <div className="max-w-7xl mx-auto">
+        <section ref={containerRef} id="case-studies" className="relative section-spacing overflow-hidden bg-transparent">
+            <div className="container-standard">
                 <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-32 border-b border-white/5 pb-12">
                     <div className="max-w-4xl space-y-6">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-50px" }}
                             className="flex items-center gap-3"
                         >
                             <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
@@ -74,7 +74,7 @@ export default function CaseStudies() {
                         <motion.h2
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-50px" }}
                             className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-[-0.05em] font-syncopate leading-[0.8] uppercase"
                             style={{ fontSize: "clamp(3.5rem, 12vw, 12rem)" }}
                         >

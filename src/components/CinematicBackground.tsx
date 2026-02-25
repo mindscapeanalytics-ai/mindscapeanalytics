@@ -1,9 +1,9 @@
 "use client";
 
-import { m, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import React from "react";
 
-export default function CinematicBackground() {
+const CinematicBackground = React.memo(function CinematicBackground() {
     const { scrollYProgress } = useScroll();
 
     // Smoothed progress for less jittery animations
@@ -22,11 +22,25 @@ export default function CinematicBackground() {
     const glowScale = useTransform(smoothProgress, [0, 0.5, 1], [1, 1.2, 1.1]);
 
     return (
-        <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-monochrome-cinematic">
+        <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#0a0a0c]">
+            {/* Premium Subtle Gradient Mesh Layer */}
+            <div className="absolute inset-0 opacity-[0.4] mix-blend-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent" />
+            <div className="absolute inset-0 opacity-[0.3] mix-blend-screen bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent" />
+
+            {/* CSS Noise Texture for Tactile Feel */}
+            <svg
+                className="absolute inset-0 w-full h-full opacity-[0.02] mix-blend-overlay pointer-events-none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <filter id="noiseFilter">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+                </filter>
+                <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+            </svg>
             {/* High-Performance Atmospheric Orbs - Using Radial Gradients instead of filter:blur */}
             <div className="absolute inset-0 transform-gpu will-change-transform">
                 {/* Large Background Orb (Deepest) - Subtle Smooth Light */}
-                <m.div
+                <motion.div
                     style={{
                         y: y0,
                         scale: glowScale,
@@ -37,7 +51,7 @@ export default function CinematicBackground() {
                 />
 
                 {/* Dynamic Mid-layer Orbs */}
-                <m.div
+                <motion.div
                     style={{
                         y: y1,
                         scale: glowScale,
@@ -47,7 +61,7 @@ export default function CinematicBackground() {
                     className="absolute top-[10%] right-[-5%] w-[60%] h-[60%]"
                 />
 
-                <m.div
+                <motion.div
                     style={{
                         y: y2,
                         scale: glowScale,
@@ -90,4 +104,6 @@ export default function CinematicBackground() {
             </div>
         </div>
     );
-}
+});
+
+export default CinematicBackground;

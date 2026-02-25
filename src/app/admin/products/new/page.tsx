@@ -11,8 +11,6 @@ const initialState = {
 };
 
 export default function NewProductPage() {
-    const [state, formAction, isPending] = useActionState(createProduct, initialState);
-
     return (
         <div className="max-w-3xl mx-auto">
             <div className="mb-12">
@@ -29,9 +27,7 @@ export default function NewProductPage() {
             </div>
 
             <ProductForm
-                action={formAction}
-                isPending={isPending}
-                state={state}
+                action={createProduct}
                 submitLabel="Deploy to Marketplace"
             />
         </div>

@@ -25,26 +25,44 @@ function SignInContent() {
         setError("");
 
         try {
+            console.log("[AUTH_SIGNIN_ATTEMPT]", { email });
             const { data, error: authError } = await authClient.signIn.email({
                 email,
                 password,
             });
 
             if (authError) {
-                setError(authError.message || "Failed to sign in. Please check your credentials.");
+                console.warn("[AUTH_SIGNIN_ERROR]", authError);
+                const code = (authError as any).code || "";
+
+                if (code === "INVALID_EMAIL_OR_PASSWORD") {
+                    setError("ACCESS DENIED: Credentials mismatch. Please verify or request a new profile.");
+                } else {
+                    setError(`SYSTEM EXCEPTION: ${authError.message || "Authentication attempt failed."}`);
+                }
             } else if (data) {
                 const userRole = (data.user as any).role || "user";
+                const isSeller = (data.user as any).isSeller || false;
+
+                let target = "/shop";
                 if (callbackUrl) {
-                    router.push(callbackUrl);
-                } else if (userRole === "admin" || userRole === "seller") {
-                    router.push("/admin");
-                } else {
-                    router.push("/shop");
+                    target = callbackUrl;
+                } else if (userRole === "admin") {
+                    target = "/admin";
+                } else if (userRole === "seller" || isSeller) {
+                    target = "/seller";
                 }
-                router.refresh();
+
+                console.log("[AUTH_SIGNIN_SUCCESS] Handshaking with terminal...", { target });
+                window.location.href = target;
             }
-        } catch (err) {
-            setError("A system error occurred. Please try again later.");
+        } catch (err: any) {
+            console.error("[AUTH_SIGNIN_CRITICAL_CATCH]", err);
+            if (err instanceof TypeError && err.message?.includes("fetch")) {
+                setError("Protocol Timeout: The registry is currently warming up. Please wait 10 seconds and retry.");
+            } else {
+                setError("Critical Gateway Failure. Please verify your network and retry.");
+            }
         } finally {
             setLoading(false);
         }
@@ -94,9 +112,17 @@ function SignInContent() {
                             <motion.div
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 text-xs font-bold uppercase tracking-wider text-center"
+                                className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 text-xs font-bold uppercase tracking-wider text-center space-y-3"
                             >
-                                {error}
+                                <p>{error}</p>
+                                {error.includes("Credentials mismatch") && (
+                                    <Link
+                                        href={callbackUrl ? `/sign-up?callbackUrl=${encodeURIComponent(callbackUrl)}` : "/sign-up"}
+                                        className="inline-block text-white bg-white/10 border border-white/20 px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/20 transition-all font-bold"
+                                    >
+                                        Register New Account →
+                                    </Link>
+                                )}
                             </motion.div>
                         )}
 

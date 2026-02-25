@@ -11,18 +11,18 @@ const allowedAdmins = (process.env.ALLOWED_ADMINS || "")
 
 // Core Auth Configuration - Hardened for MSA high-performance registry
 export const auth = betterAuth({
-    baseURL: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-    secret: process.env.BETTER_AUTH_SECRET || "fallback_secret_for_dev_only", // Enforce secret exists
-    trustHost: true, // Crucial for proxy/handshake stability
+    baseURL: (process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000").replace(/\/$/, ""),
+    secret: process.env.BETTER_AUTH_SECRET,
+    trustHost: true,
     database: prismaAdapter(prisma, {
         provider: "postgresql",
     }),
     emailAndPassword: {
         enabled: true,
-        // requireEmailVerification: process.env.NODE_ENV === "production",
     },
     user: {
         additionalFields: {
+            // 'username' is handled by the username() plugin
             role: {
                 type: "string",
                 required: false,
@@ -44,6 +44,9 @@ export const auth = betterAuth({
             },
         },
     },
+    logger: {
+        level: "debug", // Protocol-level observability for 422/500 diagnostics
+    },
     plugins: [
         admin(),
         username(),
@@ -51,33 +54,28 @@ export const auth = betterAuth({
         lastLoginMethod(),
         nextCookies()
     ],
-    pages: {
-        signIn: "/sign-in",
-        signUp: "/sign-up",
-        error: "/sign-in", // Default error back to sign-in
-    },
     hooks: {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         after: async (ctx: any) => {
-            const path = ctx.path || "";
-            // Only execute elevation logic on successful signup
-            if (path.includes("sign-up/email") && ctx.user?.id && ctx.user?.email) {
-                const email = ctx.user.email.toLowerCase();
-                if (allowedAdmins.length > 0 && allowedAdmins.includes(email)) {
-                    try {
-                        console.log(`[AUTH_SUCCESS] Attempting auto-elevation for ${email}`);
-                        // Use a separate try-catch block for the database operation
+            try {
+                if (!ctx) return;
+                const path = ctx.path || "";
+
+                // Only execute elevation logic on successful signup
+                if (path.includes("sign-up/email") && ctx.user?.id && ctx.user?.email) {
+                    const email = ctx.user.email.toLowerCase();
+                    if (allowedAdmins.length > 0 && allowedAdmins.includes(email)) {
+                        console.log(`[AUTH_SUCCESS] Initializing admin handshake for ${email}`);
                         await prisma.user.update({
                             where: { id: ctx.user.id },
                             data: { role: "admin" }
                         }).catch(err => {
-                            console.error("[AUTH_ELEVATION_DB_ERROR]", err.message);
+                            console.error("[AUTH_ELEVATION_DB_ERROR] Registry rejection:", err.message);
                         });
-                    } catch (e: unknown) {
-                        const err = e as Error;
-                        console.error("[AUTH_HOOK_CRASH_PREVENTED]", err.message);
                     }
                 }
+            } catch (e: unknown) {
+                const err = e as Error;
+                console.error("[AUTH_HOOK_ERROR] Stream integrity protected:", err.message);
             }
             return ctx;
         }

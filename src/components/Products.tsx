@@ -1,6 +1,6 @@
 "use client"
 
-import { m } from "framer-motion"
+import { motion } from "framer-motion"
 import { Sparkles, Terminal, Shield, Zap, Database } from "lucide-react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
@@ -42,15 +42,15 @@ export default function Products() {
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="flex flex-col items-center text-center mb-12">
-                    <m.div
+                    <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true, margin: "-50px" }}
                         className="flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 mb-10 backdrop-blur-md"
                     >
                         <Sparkles className="w-4 h-4 text-white/60" />
                         <span className="text-white/40 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Elite Product Suite // CATALOG_v4</span>
-                    </m.div>
+                    </motion.div>
 
                     <h2 className="text-5xl md:text-[7rem] lg:text-[9rem] font-black tracking-[-0.05em] mb-12 leading-[0.85] font-syncopate uppercase">
                         BATTLE-TESTED <br />
@@ -62,10 +62,10 @@ export default function Products() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 rounded-[3rem] overflow-hidden border border-white/10">
                     {products.map((product, index) => (
                         <Link key={product.title} href="/shop" className="flex h-full">
-                            <m.div
+                            <motion.div
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
+                                viewport={{ once: true, margin: "-50px" }}
                                 transition={{ delay: index * 0.1 }}
                                 className={cn(
                                     "relative p-10 lg:p-14 bg-white/5 backdrop-blur-md group overflow-hidden hover:bg-white/[0.08] transition-all duration-500 hover:border-white/10 w-full h-full",
@@ -112,9 +112,10 @@ export default function Products() {
                                         </p>
 
                                         <div className="mt-16 w-full h-px bg-white/5 rounded-full overflow-hidden relative">
-                                            <m.div
+                                            <motion.div
                                                 initial={{ width: 0 }}
                                                 whileInView={{ width: "100%" }}
+                                                viewport={{ once: true, margin: "-50px" }}
                                                 transition={{ duration: 1.5, delay: index * 0.2 }}
                                                 className="h-full bg-white/20 leading-none shadow-[0_0_15px_rgba(255,255,255,0.2)]"
                                             />
@@ -122,7 +123,7 @@ export default function Products() {
                                         </div>
                                     </div>
                                 </div>
-                            </m.div>
+                            </motion.div>
                         </Link>
                     ))}
                 </div>

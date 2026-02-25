@@ -62,11 +62,11 @@ export default function SolutionLayout({
     const pathname = usePathname()
 
     return (
-        <div className="min-h-screen bg-transparent text-white relative">
+        <div className="min-h-screen bg-transparent text-white relative overflow-x-clip">
             {/* Cinematic Background Layer - Harmonized with Global */}
             <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
-                <div className="absolute top-10 left-[-10%] w-[60%] h-[60%] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08)_0%,transparent_70%)] opacity-20" />
-                <div className="absolute bottom-10 right-[-10%] w-[50%] h-[50%] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_0%,transparent_70%)] opacity-15" />
+                <div className="absolute top-10 left-0 w-[60%] h-[60%] -translate-x-1/2 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08)_0%,transparent_70%)] opacity-20" />
+                <div className="absolute bottom-10 right-0 w-[50%] h-[50%] translate-x-1/2 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_0%,transparent_70%)] opacity-15" />
             </div>
             <Navbar />
 
@@ -78,7 +78,7 @@ export default function SolutionLayout({
                 {/* Background Glow - Optimized */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)] rounded-full pointer-events-none" />
 
-                <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+                <div className="container-standard relative z-10 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ export default function SolutionLayout({
                 </div>
             </section>
 
-            <div className="max-w-7xl mx-auto px-6 py-20">
+            <div className="container-standard py-20">
                 <div className="flex flex-col lg:flex-row gap-20">
                     {/* Sticky Sidebar Navigation */}
                     <aside className="w-full lg:w-80 shrink-0">

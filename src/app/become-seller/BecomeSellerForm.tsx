@@ -26,14 +26,21 @@ export default function BecomeSellerForm() {
     const isSessionPending = sessionResult.isPending;
 
     useEffect(() => {
-        if (state.success) {
-            if ((state as any).url) {
-                window.location.href = (state as any).url;
-            } else {
-                router.push("/admin");
+        const finalizeEnrollment = async () => {
+            if (state.success) {
+                console.log("[BECOME_SELLER_SUCCESS] Refreshing session logic...");
+                // Force client session refresh before redirecting
+                await authClient.getSession({ query: { disableCookieCache: true } });
+
+                if (state.url) {
+                    window.location.href = state.url;
+                } else {
+                    router.push("/seller");
+                }
             }
-        }
-    }, [state.success, state, router]);
+        };
+        finalizeEnrollment();
+    }, [state.success, state.url, router]);
 
     if (isSessionPending) {
         return (

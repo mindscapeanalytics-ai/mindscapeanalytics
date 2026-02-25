@@ -1,13 +1,26 @@
-
+export const dynamic = "force-dynamic";
 import { prisma } from "@/lib/prisma";
+import { getSession } from "@/lib/get-session";
 import React from "react";
 
 export default async function AdminOrdersPage() {
+    const session = await getSession();
+    const isSeller = session?.user?.role === "seller";
+    const userId = session?.user?.id;
+
     const orders = await prisma.order.findMany({
+        where: isSeller ? {
+            items: {
+                some: {
+                    product: {
+                        sellerId: userId
+                    }
+                }
+            }
+        } : {},
         orderBy: { createdAt: 'desc' },
         include: { user: true }
     }).catch(() => []) as any[];
-
     return (
         <div>
             <h1

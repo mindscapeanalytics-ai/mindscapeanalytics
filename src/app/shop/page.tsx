@@ -27,18 +27,18 @@ import { ProductDetailsModal } from "@/components/shop/ProductDetailsModal";
 const PRIMARY_CATEGORIES = [
     { id: "all", name: "All Products", slug: "" },
     { id: "ai_agents", name: "AI Agents", slug: "ai_agents" },
+    { id: "web_projects", name: "Web Projects", slug: "web_projects" },
     { id: "saas", name: "SaaS Templates", slug: "saas" },
-    { id: "automations", name: "Automations", slug: "automations" },
-    { id: "ideas", name: "Ideas to Sell", slug: "ideas" },
+    { id: "workflows", name: "Workflows", slug: "workflows" },
 ];
 
 const EXTENDED_CATEGORIES = [
-    { id: "data_tools", name: "Data Tools", slug: "data_tools" },
-    { id: "security", name: "Security", slug: "security" },
+    { id: "excel_dashboards", name: "Excel Dashboards", slug: "excel_dashboards" },
+    { id: "powerbi_dashboards", name: "PowerBI Dashboards", slug: "powerbi_dashboards" },
+    { id: "data_viz", name: "Dashboards (Other)", slug: "data_viz" },
+    { id: "ideas_templates", name: "Ideas & Templates", slug: "ideas_templates" },
     { id: "ui_ux", name: "UI/UX Kits", slug: "ui_ux" },
     { id: "management_systems", name: "Management Systems", slug: "management_systems" },
-    { id: "excel_powerbi_dashboards", name: "Dashboards", slug: "excel_powerbi_dashboards" },
-    { id: "boilerplates", name: "Boilerplates", slug: "boilerplates" },
 ];
 
 function ShopContent() {
@@ -52,6 +52,7 @@ function ShopContent() {
 
     const [dbProducts, setDbProducts] = useState<unknown[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [fetchError, setFetchError] = useState<string | null>(null);
     const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState<unknown>(null);
@@ -79,13 +80,46 @@ function ShopContent() {
     }, [urlSearchQuery]);
 
     useEffect(() => {
-        const load = async () => {
+        const load = async (retryCount = 0) => {
             setIsLoading(true);
+            setFetchError(null);
             try {
-                const res = await fetch('/api/products').then(r => r.json()).catch(() => []);
-                setDbProducts(Array.isArray(res) ? res : []);
-            } catch (err) {
+                // Use cache-busting to prevent stale redirects/404s in dev mode
+                const res = await fetch(`/api/products?t=${Date.now()}`, {
+                    cache: 'no-store',
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (!res.ok) {
+                    throw new Error(`Terminal Response Error: ${res.status}`);
+                }
+
+                const data = await res.json();
+
+                // Check if the API returned an error object
+                if (data?.error) {
+                    setFetchError(data.details || data.error);
+                    setDbProducts([]);
+                } else {
+                    setDbProducts(Array.isArray(data) ? data : []);
+                }
+            } catch (err: any) {
                 console.error("Failed to load products:", err);
+
+                // If it's a 'Failed to fetch' (TypeError), it's likely a network/timeout issue (DB cold start)
+                const isNetworkError = err instanceof TypeError || err.message?.includes("fetch");
+
+                if (isNetworkError && retryCount < 2) {
+                    console.warn(`[SHOP_RETRY] Attempt ${retryCount + 1} failed. Retrying in 2s...`);
+                    setTimeout(() => load(retryCount + 1), 2000);
+                    return;
+                }
+
+                const msg = isNetworkError
+                    ? "Connectivity Interrupted: The product registry is warming up or unreachable. Please refresh in a moment."
+                    : `Registry Error: ${err.message}`;
+
+                setFetchError(msg);
                 setDbProducts([]);
             } finally {
                 setIsLoading(false);
@@ -151,7 +185,9 @@ function ShopContent() {
                         >
                             <div className="flex flex-col items-center">
                                 <span className="text-[9px] font-black text-white/30 uppercase tracking-[0.4em] mb-2">Total Assets</span>
-                                <span className="text-4xl font-black tracking-tighter text-white/90">2,480+</span>
+                                <span className="text-4xl font-black tracking-tighter text-white/90">
+                                    {isLoading ? "—" : dbProducts.length.toLocaleString()}
+                                </span>
                             </div>
                             <div className="w-px h-12 bg-white/5 hidden md:block" />
                             <p className="max-w-xs text-[11px] text-white/40 font-black uppercase tracking-widest leading-relaxed italic text-center md:text-left">
@@ -160,18 +196,20 @@ function ShopContent() {
                             <div className="w-px h-12 bg-white/5 hidden md:block" />
                             <div className="flex flex-col items-center">
                                 <span className="text-[9px] font-black text-white/30 uppercase tracking-[0.4em] mb-2">Elite Creators</span>
-                                <span className="text-4xl font-black tracking-tighter text-white/90">156</span>
+                                <span className="text-4xl font-black tracking-tighter text-white/90">
+                                    {isLoading ? "—" : new Set((dbProducts as any[]).map(p => p.sellerId).filter(Boolean)).size || "—"}
+                                </span>
                             </div>
                         </motion.div>
                     </div>
                 </header>
 
                 {/* Unified Control Hub (Sticky) */}
-                <div className="sticky top-24 z-40 mb-12">
+                <div className="sticky top-24 z-[100] mb-12">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="bg-white/[0.03] backdrop-blur-3xl border border-white/10 rounded-[2rem] p-3 flex flex-col lg:flex-row gap-3 items-center shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] border-white/5 overflow-hidden"
+                        className="bg-white/[0.03] backdrop-blur-3xl border border-white/10 rounded-[2rem] p-3 flex flex-col lg:flex-row gap-3 items-center shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] overflow-visible"
                     >
                         {/* Integrated Search */}
                         <div className="flex-1 w-full relative group">
@@ -228,7 +266,7 @@ function ShopContent() {
                                             initial={{ opacity: 0, y: 10, scale: 0.95 }}
                                             animate={{ opacity: 1, y: 0, scale: 1 }}
                                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                                            className="absolute top-full right-0 mt-3 w-64 bg-zinc-900/95 backdrop-blur-3xl border border-white/10 rounded-2xl p-2 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.7)] z-50 overflow-hidden no-scrollbar flex flex-col gap-1"
+                                            className="absolute top-full right-0 lg:left-0 lg:right-auto mt-3 w-64 bg-zinc-900/95 backdrop-blur-3xl border border-white/10 rounded-2xl p-2 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.7)] z-[110] flex flex-col gap-1 pointer-events-auto"
                                         >
                                             <div className="text-[8px] font-mono text-white/20 uppercase tracking-[0.3em] mb-2 px-4 pt-2">Extended Protocols</div>
                                             {EXTENDED_CATEGORIES.map((cat) => (
@@ -300,7 +338,21 @@ function ShopContent() {
                         </div>
                     </div>
 
-                    {isLoading ? (
+                    {fetchError ? (
+                        <div className="text-center py-32 bg-red-500/[0.02] rounded-[4rem] border border-dashed border-red-500/10">
+                            <Database size={64} strokeWidth={0.5} className="text-red-400/20 mx-auto mb-10" />
+                            <h3 className="text-2xl font-black uppercase tracking-tighter mb-6 italic text-red-400/60">Connection Failure</h3>
+                            <p className="text-white/30 text-[11px] mb-8 uppercase tracking-[0.3em] font-medium leading-relaxed max-w-md mx-auto">
+                                {fetchError}
+                            </p>
+                            <button
+                                onClick={() => window.location.reload()}
+                                className="inline-block bg-white/5 border border-white/10 text-white/60 text-[10px] font-black uppercase tracking-[0.4em] px-12 py-5 rounded-2xl hover:bg-white/10 transition-all active:scale-95"
+                            >
+                                Retry Connection
+                            </button>
+                        </div>
+                    ) : isLoading ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                             {[1, 2, 3, 4, 5, 6].map((n) => (
                                 <div key={n} className="aspect-square bg-white/[0.02] border border-white/5 rounded-[2.5rem] animate-pulse" />

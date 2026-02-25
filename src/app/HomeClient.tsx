@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { LazyMotion, domAnimation, m, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -32,7 +32,7 @@ function ScrollSection({
     className?: string;
 }) {
     return (
-        <m.div
+        <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
@@ -44,7 +44,7 @@ function ScrollSection({
             className={cn("will-change-transform transform-gpu", className)}
         >
             {children}
-        </m.div>
+        </motion.div>
     );
 }
 
@@ -52,53 +52,51 @@ export default function HomeClient() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     return (
-        <LazyMotion features={domAnimation}>
-            <main ref={containerRef} className="relative bg-transparent min-h-screen overflow-hidden">
-                <Navbar />
+        <main ref={containerRef} className="relative bg-transparent min-h-screen overflow-hidden">
+            <Navbar />
 
-                {/* Hero section - no wrapper needed as it has its own animations */}
-                <Hero />
+            {/* Hero section - no wrapper needed as it has its own animations */}
+            <Hero />
 
-                {/* Project Vision - High Impact Intro Animation */}
-                <ProjectVision />
+            {/* Project Vision - High Impact Intro Animation */}
+            <ProjectVision />
 
-                {/* Main content sections with staggered reveal */}
-                <div className="relative z-10">
-                    <ScrollSection delay={0.05}>
-                        <ProblemAgitation />
-                    </ScrollSection>
+            {/* Main content sections with staggered reveal */}
+            <div className="relative z-10">
+                <ScrollSection delay={0.05}>
+                    <ProblemAgitation />
+                </ScrollSection>
 
-                    <ScrollSection delay={0.05}>
-                        <Solutions />
-                    </ScrollSection>
+                <ScrollSection delay={0.05}>
+                    <Solutions />
+                </ScrollSection>
 
-                    <ScrollSection delay={0.1}>
-                        <InfrastructureAdvantage />
-                    </ScrollSection>
+                <ScrollSection delay={0.1}>
+                    <InfrastructureAdvantage />
+                </ScrollSection>
 
-                    <ScrollSection delay={0.1}>
-                        <CaseStudies />
-                    </ScrollSection>
+                <ScrollSection delay={0.1}>
+                    <CaseStudies />
+                </ScrollSection>
 
-                    <ScrollSection delay={0.15}>
-                        <BusinessImpact />
-                    </ScrollSection>
+                <ScrollSection delay={0.15}>
+                    <BusinessImpact />
+                </ScrollSection>
 
-                    <ScrollSection delay={0.15}>
-                        <Process />
-                    </ScrollSection>
+                <ScrollSection delay={0.15}>
+                    <Process />
+                </ScrollSection>
 
-                    <ScrollSection delay={0.2}>
-                        <Products />
-                    </ScrollSection>
+                <ScrollSection delay={0.2}>
+                    <Products />
+                </ScrollSection>
 
-                    <ScrollSection delay={0.25}>
-                        <CTA />
-                    </ScrollSection>
-                </div>
+                <ScrollSection delay={0.25}>
+                    <CTA />
+                </ScrollSection>
+            </div>
 
-                <Footer />
-            </main>
-        </LazyMotion>
+            <Footer />
+        </main>
     );
 }

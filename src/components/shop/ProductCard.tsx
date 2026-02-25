@@ -53,7 +53,7 @@ export default function ProductCard({
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ y: -8 }}
                 className="group relative rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-white/10 transition-all duration-500 cursor-pointer card-premium"
             >

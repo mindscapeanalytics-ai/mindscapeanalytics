@@ -18,13 +18,22 @@ import {
 } from "lucide-react";
 import { createMultiItemCheckout } from "@/app/_actions/stripe";
 import { motion, AnimatePresence } from "framer-motion";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 export default function CartPage() {
     const { items, removeFromCart, updateQuantity, total, itemCount } = useCart();
     const [isProcessing, setIsProcessing] = useState(false);
+    const { data: session } = authClient.useSession();
+    const router = useRouter();
 
     const handleCheckout = async () => {
         if (items.length === 0) return;
+
+        if (!session) {
+            router.push("/sign-in?callbackUrl=/cart");
+            return;
+        }
 
         setIsProcessing(true);
         try {

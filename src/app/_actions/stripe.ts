@@ -117,3 +117,55 @@ export async function createMultiItemCheckout(
 
     return { url: stripeSession.url };
 }
+
+export async function createStripeAccountLink() {
+    const session = await getSession();
+    if (!session?.user) throw new Error("Authentication required");
+
+    const user = await prisma.user.findUnique({
+        where: { id: session.user.id },
+        select: { stripeAccountId: true, email: true }
+    });
+
+    if (!user) throw new Error("User record not found");
+
+    let accountId = user.stripeAccountId;
+
+    // Create the account if it doesn't exist
+    if (!accountId) {
+        const account = await stripe.accounts.create({
+            type: 'express',
+            email: user.email,
+            capabilities: {
+                card_payments: { requested: true },
+                transfers: { requested: true },
+            },
+            settings: {
+                payouts: {
+                    schedule: { interval: 'manual' }
+                }
+            },
+            metadata: {
+                userId: session.user.id
+            }
+        });
+        accountId = account.id;
+
+        await prisma.user.update({
+            where: { id: session.user.id },
+            data: { stripeAccountId: accountId }
+        });
+    }
+
+    const origin = (await headers()).get("origin") || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+
+    // Create account link for onboarding
+    const accountLink = await stripe.accountLinks.create({
+        account: accountId,
+        refresh_url: `${origin}/seller`,
+        return_url: `${origin}/seller`,
+        type: 'account_onboarding',
+    });
+
+    return { url: accountLink.url };
+}

@@ -1,5 +1,4 @@
-"use server";
-
+export const dynamic = "force-dynamic";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/get-session";
 import { CreditCard, Wallet, Landmark, ArrowRight, ShieldCheck, AlertCircle } from "lucide-react";

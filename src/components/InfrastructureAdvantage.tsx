@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 const advantages = [
@@ -23,8 +23,8 @@ const risks = [
 
 export default function InfrastructureAdvantage() {
     return (
-        <section className="relative py-32 px-6 overflow-hidden bg-transparent">
-            <div className="max-w-7xl mx-auto">
+        <section className="relative section-spacing overflow-hidden bg-transparent">
+            <div className="container-standard">
                 {/* Header Band */}
                 <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-24 border-b border-white/5 pb-10">
                     <div className="max-w-3xl space-y-6">
@@ -60,7 +60,7 @@ export default function InfrastructureAdvantage() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-2xl overflow-hidden">
                             {advantages.map((adv, i) => (
-                                <m.div
+                                <motion.div
                                     key={adv}
                                     initial={{ opacity: 0 }}
                                     whileInView={{ opacity: 1 }}
@@ -73,7 +73,7 @@ export default function InfrastructureAdvantage() {
                                         <Check className="w-4 h-4" />
                                     </div>
                                     <span className="text-[11px] font-black text-white/40 group-hover:text-white transition-colors uppercase tracking-[0.1em]">{adv}</span>
-                                </m.div>
+                                </motion.div>
                             ))}
                         </div>
                     </div>
@@ -98,12 +98,12 @@ export default function InfrastructureAdvantage() {
                             <p className="text-white/40 text-[13px] leading-relaxed font-medium uppercase tracking-widest text-center italic">
                                 hosting without expertise leads to vulnerabilities, high latency, and mission-critical failure.
                             </p>
-                            <m.div
+                            <motion.div
                                 whileHover={{ scale: 1.02 }}
                                 className="p-8 rounded-2xl bg-white text-black font-black uppercase tracking-[-0.05em] text-lg text-center shadow-[0_0_50px_rgba(255,255,255,0.1)]"
                             >
                                 WE BECOME YOUR LONG-TERM <br /> AI SYSTEMS PARTNER.
-                            </m.div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>

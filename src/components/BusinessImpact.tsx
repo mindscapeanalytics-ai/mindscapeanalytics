@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 
 const impacts = [
     { label: "Cost Reduction", value: "40-70%" },
@@ -14,18 +14,18 @@ const impacts = [
 
 export default function BusinessImpact() {
     return (
-        <section className="relative py-32 px-6 overflow-hidden bg-transparent">
-            <div className="max-w-7xl mx-auto">
+        <section className="relative section-spacing overflow-hidden bg-transparent">
+            <div className="container-standard">
                 <div className="text-center mb-24 space-y-6">
-                    <m.div
+                    <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true, margin: "-50px" }}
                         className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
                     >
                         <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
                         <span className="text-white/60 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Value Metrics // DATA_VERIFIED</span>
-                    </m.div>
+                    </motion.div>
                     <h2 className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-[-0.05em] font-syncopate leading-[0.8] uppercase">
                         BUSINESS <br /> <span className="text-white/20 italic">IMPACT.</span>
                     </h2>
@@ -33,11 +33,11 @@ export default function BusinessImpact() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5 overflow-hidden">
                     {impacts.map((impact, i) => (
-                        <m.div
+                        <motion.div
                             key={impact.label}
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-50px" }}
                             transition={{ delay: i * 0.1 }}
                             className="group p-8 lg:p-12 bg-white/[0.03] backdrop-blur-md flex flex-col items-center justify-center text-center transition-all hover:bg-white/[0.06] overflow-hidden relative min-h-[280px]"
                         >
@@ -47,17 +47,17 @@ export default function BusinessImpact() {
                             </div>
                             <div className="absolute top-6 right-6 text-[8px] font-mono text-white/5 tracking-[0.1em] uppercase">SYSTEM_NOMINAL</div>
 
-                            <m.div
+                            <motion.div
                                 className="text-5xl md:text-6xl lg:text-[min(5.5vw,5.5rem)] font-black text-white mb-4 tracking-[-0.05em] font-syncopate uppercase leading-[0.85] group-hover:scale-105 transition-transform duration-1000"
                             >
                                 {impact.value}
-                            </m.div>
+                            </motion.div>
                             <div className="text-[10px] font-mono font-black text-white/20 group-hover:text-white/60 transition-colors uppercase tracking-[0.3em]">{impact.label}</div>
 
                             {/* HUD Micro Corner */}
                             <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-white/5 group-hover:border-white/20 transition-colors" />
                             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-8 h-[1px] bg-white/10" />
-                        </m.div>
+                        </motion.div>
                     ))}
                 </div>
 

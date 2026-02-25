@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { getSession } from "@/lib/get-session";
 import { redirect } from "next/navigation";
 import Navbar from "@/components/Navbar";
@@ -9,13 +10,14 @@ export default async function BecomeSellerPage() {
     const session = await getSession();
 
     if (!session?.user) {
-        redirect("/sign-in?callbackUrl=/become-seller");
+        // Encode the callback URL so sign-in knows where to send them back
+        redirect(`/sign-in?callbackUrl=${encodeURIComponent("/become-seller")}`);
     }
 
     const isSeller = (session.user as any).isSeller || false;
 
     if (isSeller) {
-        redirect("/admin");
+        redirect("/seller");
     }
 
     return (

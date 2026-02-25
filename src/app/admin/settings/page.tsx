@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { getSession } from "@/lib/get-session";
 import { redirect } from "next/navigation";
 import { ShieldCheck, Server, AlertTriangle } from "lucide-react";

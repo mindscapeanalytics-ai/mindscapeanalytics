@@ -16,6 +16,10 @@ const productSchema = z.object({
     images: z.array(z.string().url("Invalid image URL")).min(1, "At least one image is required"),
     features: z.array(z.string()).optional(),
     techStack: z.array(z.string()).optional(),
+    productFiles: z.array(z.object({
+        filename: z.string().min(1, "Filename is required"),
+        url: z.string().url("Invalid asset URL"),
+    })).optional(),
 });
 
 export async function createProduct(prevState: any, formData: FormData) {
@@ -31,6 +35,10 @@ export async function createProduct(prevState: any, formData: FormData) {
         images: formData.getAll("imageUrl") as string[],
         features: formData.getAll("features") as string[],
         techStack: formData.getAll("techStack") as string[],
+        productFiles: formData.getAll("fileUrl").map((url, i) => ({
+            url: url as string,
+            filename: formData.getAll("fileName")[i] as string || `Asset_${i + 1}`
+        })).filter(f => f.url.trim() !== ""),
     };
 
     const validated = productSchema.safeParse(rawData);
@@ -39,7 +47,7 @@ export async function createProduct(prevState: any, formData: FormData) {
         return { error: validated.error.issues[0].message };
     }
 
-    const { name, price, category, description, demoUrl, images, features, techStack } = validated.data;
+    const { name, price, category, description, demoUrl, images, features, techStack, productFiles } = validated.data;
 
     try {
         await prisma.product.create({
@@ -55,6 +63,9 @@ export async function createProduct(prevState: any, formData: FormData) {
                 sellerId: session.user.id,
                 images: {
                     create: images.map(url => ({ url }))
+                },
+                productFiles: {
+                    create: productFiles || []
                 }
             },
         });
@@ -64,8 +75,14 @@ export async function createProduct(prevState: any, formData: FormData) {
     }
 
     revalidatePath("/admin/products");
+    revalidatePath("/seller");
     revalidatePath("/shop");
-    redirect("/admin/products");
+
+    if (session.user.role === "admin") {
+        redirect("/admin/products");
+    } else {
+        redirect("/seller");
+    }
 }
 
 export async function updateProduct(prevState: any, formData: FormData) {
@@ -90,7 +107,7 @@ export async function updateProduct(prevState: any, formData: FormData) {
         return { error: validated.error.issues[0].message };
     }
 
-    const { id, name, price, category, description, demoUrl, images, features, techStack } = validated.data;
+    const { id, name, price, category, description, demoUrl, images, features, techStack, productFiles } = validated.data;
 
     if (!id) return { error: "Product ID is required for updates." };
 
@@ -117,13 +134,27 @@ export async function updateProduct(prevState: any, formData: FormData) {
             });
         }
 
+        // Update product files
+        if (productFiles) {
+            await prisma.productFile.deleteMany({ where: { productId: id } });
+            await prisma.productFile.createMany({
+                data: productFiles.map(f => ({ ...f, productId: id }))
+            });
+        }
+
     } catch (error) {
         console.error("Failed to update product:", error);
         return { error: "Database error. Please verify your connection." };
     }
 
     revalidatePath("/admin/products");
+    revalidatePath("/seller");
     revalidatePath(`/shop/${id}`);
     revalidatePath("/shop");
-    redirect("/admin/products");
+
+    if (session.user.role === "admin") {
+        redirect("/admin/products");
+    } else {
+        redirect("/seller");
+    }
 }

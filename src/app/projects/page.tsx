@@ -317,7 +317,7 @@ export default function ProjectsPage() {
 
             {/* --- Hero Section --- */}
             <section className="relative pt-44 pb-16 overflow-hidden">
-                <div className="container mx-auto px-6 relative z-10 text-center space-y-12">
+                <div className="container-standard relative z-10 text-center space-y-12">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -341,8 +341,8 @@ export default function ProjectsPage() {
             </section>
 
             {/* --- Projects Slider --- */}
-            <section className="py-12 bg-transparent relative border-t border-white/5">
-                <div className="max-w-7xl mx-auto px-6 mb-8 flex justify-between items-end">
+            <section className="py-24 bg-transparent relative border-t border-white/5">
+                <div className="container-standard mb-8 flex justify-between items-end">
                     <div className="max-w-3xl">
                         <p className="text-xl md:text-2xl text-white/60 font-medium tracking-tight leading-snug uppercase">
                             REAL ENTERPRISE SYSTEMS. <br />
@@ -460,8 +460,8 @@ export default function ProjectsPage() {
             </section>
 
             {/* --- 5-Phase Methodology Section --- */}
-            <section className="py-32 border-t border-white/5 bg-zinc-950">
-                <div className="container mx-auto px-6">
+            <section className="section-spacing border-t border-white/5 bg-zinc-950">
+                <div className="container-standard">
                     <div className="max-w-7xl mx-auto space-y-16">
                         <div className="text-center space-y-6">
                             <h2 className="text-4xl md:text-5xl font-black font-syncopate uppercase tracking-[-0.02em]">5-PHASE DELIVERY FRAMEWORK</h2>
@@ -484,8 +484,8 @@ export default function ProjectsPage() {
             </section>
 
             {/* --- Managed Infrastructure Callout --- */}
-            <section className="py-24 border-t border-white/5 bg-white text-black text-center">
-                <div className="container mx-auto px-6">
+            <section className="section-spacing border-t border-white/5 bg-white text-black text-center">
+                <div className="container-standard">
                     <div className="max-w-4xl mx-auto space-y-8">
                         <span className="text-black/40 text-[11px] font-mono font-black uppercase tracking-[0.5em]">The Infrastructure Advantage</span>
                         <h2 className="text-5xl font-black font-syncopate uppercase tracking-[-0.05em] leading-[0.85]">

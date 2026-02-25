@@ -62,7 +62,7 @@ export default function Navbar() {
         >
             <div
                 className={cn(
-                    "max-w-max mx-auto flex items-center justify-between px-6 py-2 rounded-full transition-all duration-500 border relative",
+                    "w-[calc(100%-3rem)] max-w-7xl mx-auto flex items-center justify-between px-6 py-2 rounded-full transition-all duration-500 border relative",
                     isScrolled
                         ? "bg-transparent/80 backdrop-blur-2xl border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
                         : "bg-transparent/40 backdrop-blur-md border-white/5"
@@ -150,16 +150,37 @@ export default function Navbar() {
                         </Link>
                     ) : (
                         <div className="flex items-center gap-3">
-                            <Web3WalletConnect />
+                            {session && <Web3WalletConnect />}
 
                             {session ? (
-                                <Link
-                                    href="/admin"
-                                    className="px-8 py-3 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500 flex items-center gap-2 group"
-                                >
-                                    <LayoutDashboard size={14} className="group-hover:rotate-12 transition-transform opacity-40 group-hover:opacity-100" />
-                                    Terminal
-                                </Link>
+                                <div className="flex items-center gap-2">
+                                    {session?.user?.role === "admin" && (
+                                        <Link
+                                            href="/admin"
+                                            className="px-6 py-3 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500 flex items-center gap-2 group hidden xl:flex"
+                                        >
+                                            <LayoutDashboard size={14} className="group-hover:rotate-12 transition-transform opacity-40 group-hover:opacity-100" />
+                                            Terminal
+                                        </Link>
+                                    )}
+                                    {isSeller && session?.user?.role !== "admin" && (
+                                        <Link
+                                            href="/seller"
+                                            className="px-6 py-3 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500 flex items-center gap-2 group hidden xl:flex"
+                                        >
+                                            <Store size={14} className="group-hover:rotate-12 transition-transform opacity-40 group-hover:opacity-100" />
+                                            Seller Hub
+                                        </Link>
+                                    )}
+                                    <button
+                                        onClick={async () => {
+                                            await authClient.signOut({ fetchOptions: { onSuccess: () => { window.location.href = "/"; } } });
+                                        }}
+                                        className="px-6 py-3 bg-white/5 text-white/80 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-red-500/20 hover:text-red-400 hover:border-red-500/30 transition-all duration-500"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
                             ) : (
                                 <Link
                                     href="/sign-in"
@@ -178,7 +199,8 @@ export default function Navbar() {
                     <button
                         className="text-white p-3 hover:bg-white/10 rounded-full transition-colors active:scale-90"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        aria-label="Toggle Menu"
+                        aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={mobileMenuOpen}
                     >
                         {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
@@ -232,14 +254,38 @@ export default function Navbar() {
                         <div className="flex flex-col gap-3 pt-8 border-t border-white/5">
                             <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 mb-2">Matrix Access</p>
                             {session ? (
-                                <Link
-                                    href="/admin"
-                                    className="flex items-center justify-between px-6 py-5 bg-white/5 rounded-2xl border border-white/10 group"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    <span className="font-black text-lg uppercase tracking-widest text-white">Open Terminal</span>
-                                    <LayoutDashboard size={20} className="text-white group-hover:rotate-12 transition-transform" />
-                                </Link>
+                                <>
+                                    {session?.user?.role === "admin" && (
+                                        <Link
+                                            href="/admin"
+                                            className="flex items-center justify-between px-6 py-5 bg-white/5 rounded-2xl border border-white/10 group"
+                                            onClick={() => setMobileMenuOpen(false)}
+                                        >
+                                            <span className="font-black text-lg uppercase tracking-widest text-white">Open Terminal</span>
+                                            <LayoutDashboard size={20} className="text-white group-hover:rotate-12 transition-transform" />
+                                        </Link>
+                                    )}
+                                    {isSeller && session?.user?.role !== "admin" && (
+                                        <Link
+                                            href="/seller"
+                                            className="flex items-center justify-between px-6 py-5 bg-white/5 rounded-2xl border border-white/10 group"
+                                            onClick={() => setMobileMenuOpen(false)}
+                                        >
+                                            <span className="font-black text-lg uppercase tracking-widest text-white">Seller Hub</span>
+                                            <Store size={20} className="text-white group-hover:rotate-12 transition-transform" />
+                                        </Link>
+                                    )}
+                                    <button
+                                        onClick={async () => {
+                                            await authClient.signOut({ fetchOptions: { onSuccess: () => { window.location.href = "/"; } } });
+                                            setMobileMenuOpen(false);
+                                        }}
+                                        className="flex items-center justify-between px-6 py-5 bg-red-500/10 rounded-2xl border border-red-500/20 group"
+                                    >
+                                        <span className="font-black text-lg uppercase tracking-widest text-red-500 group-hover:text-red-400 transition-colors">Terminate Session</span>
+                                        <X size={20} className="text-red-500 group-hover:scale-110 transition-transform" />
+                                    </button>
+                                </>
                             ) : (
                                 <Link
                                     href="/sign-in"
@@ -260,8 +306,8 @@ export default function Navbar() {
                                     <Store size={20} className="text-white/20 group-hover:text-white transition-all" />
                                 </Link>
                             )}
-                            {isShopPath && (
-                                <div className="pt-4 mt-2 border-t border-white/5 mx-auto">
+                            {isShopPath && session && (
+                                <div className="pt-4 mt-2 border-t border-white/5 mx-auto w-full">
                                     <Web3WalletConnect />
                                 </div>
                             )}

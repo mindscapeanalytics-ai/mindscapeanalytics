@@ -175,7 +175,7 @@ function ContactFormContent() {
 
             {/* Hero Section */}
             <section className="relative pt-44 pb-32 overflow-hidden">
-                <div className="container mx-auto px-6 relative z-10">
+                <div className="container-standard relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -196,8 +196,8 @@ function ContactFormContent() {
             </section>
 
             {/* Contact Info Cards */}
-            <section className="py-12 bg-transparent">
-                <div className="container mx-auto px-6">
+            <section className="section-spacing bg-transparent">
+                <div className="container-standard">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                         {contactInfo.map((info, index) => (
                             <motion.div
@@ -228,8 +228,8 @@ function ContactFormContent() {
             </section>
 
             {/* WhatsApp QR & Connection Matrix */}
-            <section className="py-20 bg-transparent">
-                <div className="container mx-auto px-6">
+            <section className="section-spacing bg-transparent">
+                <div className="container-standard">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -275,8 +275,8 @@ function ContactFormContent() {
             </section>
 
             {/* Contact Form Section */}
-            <section className="py-20 bg-transparent border-t border-white/5">
-                <div className="container mx-auto px-6">
+            <section className="section-spacing bg-transparent border-t border-white/5">
+                <div className="container-standard">
                     <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}

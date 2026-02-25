@@ -15,8 +15,6 @@ const initialState = {
 };
 
 export default function EditProductClient({ product }: EditProductClientProps) {
-    const [state, formAction, isPending] = useActionState(updateProduct, initialState);
-
     return (
         <div className="max-w-3xl mx-auto">
             <div className="mb-12">
@@ -32,16 +30,11 @@ export default function EditProductClient({ product }: EditProductClientProps) {
                 </h1>
             </div>
 
-            <form action={formAction}>
-                <input type="hidden" name="id" value={product.id} />
-                <ProductForm
-                    action={() => { }} // Not used because we wrap in higher-level form with hidden id
-                    isPending={isPending}
-                    state={state}
-                    submitLabel="Sync Changes"
-                    initialData={product}
-                />
-            </form>
+            <ProductForm
+                action={updateProduct}
+                submitLabel="Sync Changes"
+                initialData={product}
+            />
         </div>
     );
 }

@@ -5,6 +5,8 @@ import { ShoppingCart, Check, ShieldCheck, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { createCheckoutSession } from "@/app/_actions/stripe";
 import { motion } from "framer-motion";
+import { authClient } from "@/lib/auth-client";
+import { useRouter, usePathname } from "next/navigation";
 
 interface ProductDetailsClientProps {
     product: {
@@ -24,6 +26,9 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
     const { addToCart } = useCart();
     const [isAdding, setIsAdding] = useState(false);
     const [isBuying, setIsBuying] = useState(false);
+    const { data: session } = authClient.useSession();
+    const router = useRouter();
+    const pathname = usePathname();
 
     const handleAddToCart = () => {
         setIsAdding(true);
@@ -37,6 +42,11 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
     };
 
     const handleBuyNow = async () => {
+        if (!session) {
+            router.push(`/sign-in?callbackUrl=${pathname}`);
+            return;
+        }
+
         setIsBuying(true);
         try {
             const result = await createCheckoutSession(product.id);

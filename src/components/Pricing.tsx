@@ -55,7 +55,7 @@ export default function Pricing() {
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-50px" }}
                             className="flex items-center gap-3 mb-6"
                         >
                             <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
@@ -64,7 +64,7 @@ export default function Pricing() {
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-50px" }}
                             className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter font-syncopate leading-[0.8] uppercase"
                         >
                             SCALABLE <br />
@@ -85,7 +85,7 @@ export default function Pricing() {
                             key={tier.name}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-50px" }}
                             transition={{ delay: index * 0.1 }}
                             className={`relative p-10 rounded-xl bg-transparent flex flex-col h-full border transition-all duration-500 hover:bg-transparent hover:scale-[1.02] shadow-2xl group ${tier.popular ? "border-white/20 shadow-white/5" : "border-white/10"
                                 }`}

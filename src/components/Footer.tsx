@@ -33,7 +33,7 @@ export default function Footer() {
             {/* Shimmering Ambient Background */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.05),transparent_50%)] pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto px-6 relative z-20 pb-40 lg:pb-64">
+            <div className="container-standard relative z-20 pb-40 lg:pb-64">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-20">
                     {/* Brand Column */}
                     <motion.div
@@ -208,17 +208,18 @@ export default function Footer() {
             </div>
 
             {/* Massive Metallic Shimmer Background Text */}
-            <div className="absolute inset-x-0 bottom-[84px] pointer-events-none select-none flex items-end justify-center z-0 overflow-hidden opacity-100">
+            <div className="absolute inset-x-0 bottom-0 pointer-events-none select-none flex items-end justify-center z-0 overflow-hidden opacity-100 h-[60%] lg:h-[80%]">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ duration: 1.5, ease: "easeOut" }}
-                    className="w-full"
+                    className="w-full flex justify-center"
                 >
                     <h2
-                        className="w-full text-center font-black font-syncopate tracking-[-0.05em] leading-[0.75] text-transparent bg-clip-text flex flex-col"
+                        className="w-full text-center font-black font-syncopate tracking-[-0.05em] leading-[0.75] text-transparent bg-clip-text flex flex-col pointer-events-none whitespace-nowrap"
                         style={{
-                            fontSize: "clamp(3rem, 11vw, 20rem)",
+                            fontSize: "clamp(3rem, 15vw, 25rem)",
                             backgroundImage: "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.01) 100%)",
                         }}
                     >
@@ -230,7 +231,7 @@ export default function Footer() {
 
             {/* Final Bottom Bar */}
             <div className="absolute bottom-0 inset-x-0 z-30 w-full border-t border-white/5 bg-black/40 backdrop-blur-xl">
-                <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col-reverse md:flex-row justify-between items-center gap-4">
+                <div className="container-standard py-4 flex flex-col-reverse md:flex-row justify-between items-center gap-4">
                     <p className="text-white/40 text-[9px] font-mono font-black tracking-[0.3em] uppercase text-center md:text-left">
                         © 2025 // MINDSCAPE ANALYTICS LLC. <span className="hidden md:inline">FOUNDED 2025. ALL RIGHTS RESERVED.</span>
                     </p>

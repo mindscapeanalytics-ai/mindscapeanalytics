@@ -122,9 +122,9 @@ export default function AboutPage() {
             <Navbar />
 
             {/* --- Industrial Hero Section --- */}
-            <section className="relative pt-48 pb-32 overflow-hidden">
+            <section className="relative pt-32 md:pt-48 pb-16 md:pb-32 overflow-hidden">
                 <div className="container mx-auto px-6 relative z-10">
-                    <div className="flex flex-col items-center text-center space-y-12">
+                    <div className="flex flex-col items-center text-center space-y-8 md:space-y-12">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -148,12 +148,12 @@ export default function AboutPage() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="max-w-4xl border-t border-white/10 pt-12"
+                            className="max-w-4xl border-t border-white/10 pt-6 md:pt-12"
                         >
                             <p className="text-2xl md:text-4xl text-white/60 font-medium tracking-tight leading-snug uppercase">
                                 WE HELP BUSINESSES SCALE USING <span className="text-white font-black italic">INTELLIGENT SYSTEMS</span> — NOT MANUAL EFFORT.
                             </p>
-                            <div className="flex items-center justify-center gap-6 mt-12 opacity-30">
+                            <div className="flex items-center justify-center gap-6 mt-8 md:mt-12 opacity-30">
                                 <div className="h-px w-24 bg-white" />
                                 <span className="text-[8px] font-mono font-black tracking-[0.5em] uppercase">Scale_Protocol_Active</span>
                                 <div className="h-px w-24 bg-white" />

@@ -1,38 +1,36 @@
-import { PrismaClient } from '@prisma/client'
+import "dotenv/config";
+import { Pool } from "pg";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaClient } from "../generated/prisma/client";
 
-const globalForPrisma = global as unknown as {
-    prisma: PrismaClient
+const connectionString = `${process.env.DATABASE_URL}`;
+
+// Singleton pool to prevent connection exhaustion during dev hot reloads
+const globalForPrisma = globalThis as unknown as {
+    __pgPool?: Pool;
+    __prismaClient?: PrismaClient;
+};
+
+if (!globalForPrisma.__pgPool) {
+    globalForPrisma.__pgPool = new Pool({
+        connectionString,
+        max: 10,
+        connectionTimeoutMillis: 15_000, // 15s timeout (optimized for Neon cold start recovery)
+        idleTimeoutMillis: 30_000,
+        ssl: { rejectUnauthorized: true }, // Fixes pg SSL deprecation warning
+    });
+
+    // Observability for connection pool issues
+    globalForPrisma.__pgPool.on('error', (err) => {
+        console.error('[PRISMA_POOL_ERROR] Unexpected protocol rejection:', err.message);
+    });
 }
 
-// Optimized for pooler/direct connection stability
-// In development, Next.js HMR keeps idle connections which PgBouncer (6543) aggressively drops, causing P1001.
-// We use the direct connection (5432) locally, and the pooler (6543) in production (serverless).
-const dbUrl = process.env.NODE_ENV === 'development'
-    ? (process.env.DIRECT_URL || process.env.DATABASE_URL || "")
-    : (process.env.DATABASE_URL || process.env.DIRECT_URL || "");
-
-const censoredUrl = dbUrl.replace(/:([^:@]+)@/, ':****@');
-
-if (process.env.NODE_ENV === 'development') {
-    console.log(`[Prisma] Initializing with: ${censoredUrl}`);
+if (!globalForPrisma.__prismaClient) {
+    const adapter = new PrismaPg(globalForPrisma.__pgPool);
+    globalForPrisma.__prismaClient = new PrismaClient({ adapter });
 }
 
-export const prisma = globalForPrisma.prisma || new PrismaClient({
-    datasources: {
-        db: {
-            url: dbUrl
-        }
-    },
-    // Add connection pool timeout configurations
-    log: process.env.NODE_ENV === 'development' ? ['error', 'warn'] : ['error'],
-})
+const prisma = globalForPrisma.__prismaClient;
 
-// Connection check in dev only, with timeout to avoid hanging
-if (process.env.NODE_ENV === 'development') {
-    // checkConnection logic disabled to prevent pool exhaustion during hot reloads
-}
-
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
-
-export default prisma
+export { prisma };

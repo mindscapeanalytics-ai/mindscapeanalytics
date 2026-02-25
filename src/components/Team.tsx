@@ -1,3 +1,5 @@
+"use client";
+
 import { FadeIn, StaggerContainer, StaggerItem } from "@/lib/scroll-animations";
 import Image from "next/image";
 
@@ -128,6 +130,7 @@ function TeamCard({ member, index }: { member: typeof team[0]; index: number }) 
                         className="absolute bottom-6 left-6 right-6 z-20"
                         initial={{ y: 20, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
+                        viewport={{ once: true, margin: "-50px" }}
                         transition={{ delay: index * 0.15 + 0.2 }}
                     >
                         <h3 className="text-2xl font-black text-white tracking-tighter uppercase font-syncopate transition-colors leading-none">{member.name}</h3>
