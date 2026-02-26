@@ -95,8 +95,8 @@ export default function Hero() {
                         transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
                         className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md"
                     >
-                        <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                        <span className="text-[9px] font-mono text-white/40 uppercase tracking-[0.5em] font-black">Architecture // MINDSCAPE_GLOBAL_v4_2026</span>
+                        <Sparkles size={10} className="text-white/40" />
+                        <span className="text-[9px] font-mono text-white/40 uppercase tracking-[0.4em] font-black">Industry Standard AI</span>
                     </motion.div>
 
                     <div className="space-y-3 flex flex-col items-center">
@@ -105,10 +105,15 @@ export default function Hero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.2, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
                             className="text-[12vw] xs:text-6xl md:text-8xl lg:text-[11vw] font-black leading-[0.8] tracking-[-0.05em] origin-center font-syncopate uppercase w-full text-center flex flex-col items-center justify-center"
-                            style={{ fontSize: "clamp(3.5rem, 15vw, 15rem)" }}
+                            style={{ fontSize: "clamp(3.5rem, 12vw, 15rem)" }}
                         >
-                            <span className="text-white text-center w-full break-words" style={{ overflowWrap: "break-word", hyphens: "auto" }}>MINDSCAPE</span>
-                            <span className="text-white/20 italic font-black text-center w-full break-words mt-2 md:mt-4" style={{ overflowWrap: "break-word", hyphens: "auto" }}>ANALYTICS.</span>
+                            <span className="text-white text-center w-full break-words" style={{ overflowWrap: "break-word", hyphens: "auto" }}>ARCHITECTING</span>
+                            <span
+                                className="bg-gradient-to-r from-white via-white/90 to-white/10 bg-clip-text text-transparent text-center w-full break-words mt-2 md:mt-4"
+                                style={{ overflowWrap: "break-word", hyphens: "auto" }}
+                            >
+                                THE FUTURE
+                            </span>
                         </motion.h1>
 
                         <motion.div

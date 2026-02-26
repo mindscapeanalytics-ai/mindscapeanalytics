@@ -11,7 +11,7 @@ const GrowthHub = () => {
             {/* Ambient Background */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 blur-[120px] rounded-full pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto relative z-10">
+            <div className="container-standard relative z-10">
                 <div className="grid md:grid-cols-2 gap-1 px-1 bg-white/5 rounded-[40px] border border-white/10 overflow-hidden shadow-2xl">
 
                     {/* Sell Side */}

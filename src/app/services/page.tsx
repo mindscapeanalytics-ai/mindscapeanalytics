@@ -220,7 +220,7 @@ export default function ServicesPage() {
             <section className="py-20 bg-transparent relative">
                 <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay pointer-events-none" />
                 <div className="container mx-auto px-6 relative z-10">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-2xl mx-auto">
                         {services.map((service, index) => (
                             <PremiumCard
                                 key={service.title}
@@ -253,7 +253,7 @@ export default function ServicesPage() {
                         <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.6em] font-black italic">The engineering workflow</span>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-screen-2xl mx-auto">
                         {process.map((item, index) => (
                             <motion.div
                                 key={item.step}
@@ -282,7 +282,7 @@ export default function ServicesPage() {
             {/* --- Managed Subscription Section --- */}
             <section className="py-24 border-t border-white/5 bg-white text-black">
                 <div className="container mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-20 items-center max-w-7xl mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-20 items-center max-w-screen-2xl mx-auto">
                         <div className="space-y-12">
                             <span className="text-[9px] font-mono font-black tracking-[0.5em] uppercase opacity-40">Business_Model // Managed</span>
                             <h2

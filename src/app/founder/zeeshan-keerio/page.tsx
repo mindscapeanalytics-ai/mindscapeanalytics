@@ -166,6 +166,7 @@ const experience = [
 ];
 
 export default function FounderPortfolio() {
+    const [showAllProjects, setShowAllProjects] = React.useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: containerRef });
 
@@ -232,14 +233,14 @@ export default function FounderPortfolio() {
             {/* --- MISSION DIRECTIVE --- */}
             <section className="py-32 border-y border-white/5 relative bg-white/5 backdrop-blur-3xl overflow-hidden">
                 <div className="absolute inset-0 opacity-5 bg-[url('/grid.svg')] bg-[length:40px_40px]" />
-                <div className="container mx-auto px-6 relative z-10">
+                <div className="container-standard relative z-10">
                     <div className="grid lg:grid-cols-2 gap-24 items-center max-w-7xl mx-auto">
                         <div className="space-y-12">
                             <div className="flex items-center gap-3">
-                                <div className="p-2 bg-blue-500/10 rounded-lg border border-blue-500/20 text-blue-400">
+                                <div className="p-2 bg-white/5 rounded-lg border border-white/10 text-white/40">
                                     <Terminal size={18} />
                                 </div>
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400 font-mono">01_Mission_Directive</span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 font-mono">01_Mission_Directive</span>
                             </div>
                             <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter font-syncopate leading-[0.9]">
                                 REPLACING MANUAL <br /> <span className="text-white/20 italic">WORK WITH CODE.</span>
@@ -271,14 +272,14 @@ export default function FounderPortfolio() {
 
             {/* --- PROJECT LEDGER (The 14 Projects) --- */}
             <section className="py-32 relative">
-                <div className="container mx-auto px-6">
+                <div className="container-standard">
                     <div className="text-center mb-24">
                         <h2 className="text-5xl md:text-8xl font-black font-syncopate uppercase tracking-[-0.05em] mb-4">PROJECT LEDGER.</h2>
                         <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.8em] font-black">All Assets Designed & Developed by Zeeshan Keerio</span>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-8xl mx-auto">
-                        {projects.map((project, i) => (
+                        {(showAllProjects ? projects : projects.slice(0, 6)).map((project, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, y: 20 }}
@@ -323,12 +324,24 @@ export default function FounderPortfolio() {
                             </motion.div>
                         ))}
                     </div>
+
+                    {!showAllProjects && projects.length > 6 && (
+                        <div className="mt-20 text-center">
+                            <button
+                                onClick={() => setShowAllProjects(true)}
+                                className="inline-flex items-center gap-6 px-12 py-6 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.4em] text-white/40 hover:bg-white hover:text-black hover:border-white transition-all group scale-90 md:scale-100"
+                            >
+                                <span className="group-hover:mr-2 transition-all">ACCESS_FULL_PROJECT_LEDGER</span>
+                                <ChevronDown size={14} className="animate-bounce" />
+                            </button>
+                        </div>
+                    )}
                 </div>
             </section>
 
             {/* --- CHRONICLE (EXPERIENCE) --- */}
             <section className="py-32 border-t border-white/5 bg-black/40">
-                <div className="container mx-auto px-6">
+                <div className="container-standard">
                     <div className="grid lg:grid-cols-[1fr_2fr] gap-24 items-start max-w-7xl mx-auto">
                         <div className="sticky top-32 space-y-8">
                             <div className="flex items-center gap-3">
@@ -366,7 +379,7 @@ export default function FounderPortfolio() {
                                 >
                                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                                         <div>
-                                            <h3 className="text-2xl font-black text-white uppercase tracking-tighter group-hover:text-blue-400 transition-colors">{exp.role}</h3>
+                                            <h3 className="text-2xl font-black text-white uppercase tracking-tighter group-hover:text-white transition-colors">{exp.role}</h3>
                                             <div className="text-[10px] font-bold text-white/30 uppercase tracking-[0.3em] font-mono">{exp.company}</div>
                                         </div>
                                         <div className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[9px] font-black uppercase tracking-widest text-white/50">
@@ -386,7 +399,7 @@ export default function FounderPortfolio() {
             {/* --- EDUCATION & CERTIFICATIONS --- */}
             <section className="py-32 relative overflow-hidden bg-white text-black">
                 <div className="absolute inset-0 opacity-5 bg-[url('/grid.svg')] bg-[length:50px_50px]" />
-                <div className="container mx-auto px-6 relative z-10">
+                <div className="container-standard relative z-10">
                     <div className="max-w-7xl mx-auto">
                         <div className="grid lg:grid-cols-2 gap-24">
                             {/* Academic Hub */}
@@ -452,7 +465,7 @@ export default function FounderPortfolio() {
 
             {/* --- CALL TO ACTION --- */}
             <section className="py-24 bg-transparent">
-                <div className="container mx-auto px-6 text-center">
+                <div className="container-standard text-center">
                     <motion.div
                         whileHover={{ scale: 1.02 }}
                         className="bg-white text-black p-12 md:p-24 rounded-[3.5rem] relative overflow-hidden group cursor-pointer"

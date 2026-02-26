@@ -24,7 +24,7 @@ const caseStudies = [
         icon: Brain,
         metrics: "99.9% Uptime",
         description: "Next-generation Restraint Management POS system engineered for high-volume environments. Features advanced seat-map automation and real-time inventory sync.",
-        image: "/images/projects/restraint-pos.webp"
+        image: "/images/projects/restraint-pos_opt.webp"
     },
     {
         title: "Enterprise ERP",
@@ -32,7 +32,7 @@ const caseStudies = [
         icon: BarChart3,
         metrics: "ROI +450%",
         description: "Comprehensive 2026 ERP suite for large-scale operations. Automated resource planning with integrated AI forecasting and global supply chain visibility.",
-        image: "/images/projects/enterprise-erp.webp"
+        image: "/images/projects/enterprise-erp_opt.webp"
     },
     {
         title: "DBLynx Bank Intelligence",
@@ -40,7 +40,7 @@ const caseStudies = [
         icon: Landmark,
         metrics: "95% Faster Analytics",
         description: "AI-powered database intelligence system for a regional bank, enabling real-time fraud detection on a $36.8M portfolio.",
-        image: "/images/projects/dblynx-database-intelligence-mindscapeanalytics.webp",
+        image: "/images/projects/dblynx-database-intelligence-mindscapeanalytics_opt.webp",
         link: "/projects/dblynx-regional-bank"
     },
     {
@@ -49,7 +49,7 @@ const caseStudies = [
         icon: Factory,
         metrics: "Elite Security",
         description: "Mission-critical Fuel Station management system with automated pump synchronization, hazardous material tracking, and enterprise-grade accounting.",
-        image: "/images/projects/fuel-station-erp.webp",
+        image: "/images/projects/fuel-station-erp_opt.webp",
         link: "/projects/fuel-station-erp"
     }
 ]

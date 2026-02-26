@@ -27,7 +27,7 @@ const PROJECTS: ProjectData[] = [
         category: "Hospitality Tech",
         metrics: "99.9% Uptime • Real-time Sync",
         description: "Next-generation Restraint Management POS system with integrated biometric auth and seat-map automation.",
-        image: "/images/projects/restraint-pos.webp",
+        image: "/images/projects/restraint-pos_opt.webp",
         details: ["Biometric Auth", "Autonomous Sync", "Seat-map Engine"]
     },
     {
@@ -35,7 +35,7 @@ const PROJECTS: ProjectData[] = [
         category: "Industrial Management",
         metrics: "ROI +450% • AI Forecast",
         description: "Comprehensive 2026 ERP suite for large-scale operations with global supply chain visibility.",
-        image: "/images/projects/enterprise-erp.webp",
+        image: "/images/projects/enterprise-erp_opt.webp",
         details: ["AI Forecasting", "Supply Chain Viz", "Resource Planning"]
     },
     {
@@ -43,7 +43,7 @@ const PROJECTS: ProjectData[] = [
         category: "Retail Tech",
         metrics: "Zero Leakage • 100K SKUs",
         description: "Unified Retail intelligence platform combining POS precision with backend ERP automation.",
-        image: "/images/projects/supermarket-pos.webp",
+        image: "/images/projects/supermarket-pos_opt.webp",
         details: ["Stock Tracking", "Predictive Procurement", "SKU Synchronization"]
     },
     {
@@ -51,7 +51,7 @@ const PROJECTS: ProjectData[] = [
         category: "Energy Tech",
         metrics: "Elite Security • Live Tracking",
         description: "Mission-critical Fuel Station management system with automated pump synchronization.",
-        image: "/images/projects/fuel-station-erp.webp",
+        image: "/images/projects/fuel-station-erp_opt.webp",
         details: ["Pump Sync", "Hazardous Tracking", "Auto-Accounting"]
     },
     {
@@ -59,7 +59,7 @@ const PROJECTS: ProjectData[] = [
         category: "FinTech",
         metrics: "Auto-Execution • Risk Bot",
         description: "High-frequency algorithmic trading platform with deep liquidity integration.",
-        image: "/images/projects/cryptotrader2.webp",
+        image: "/images/projects/cryptotrader2_opt.webp",
         details: ["Algorithmic Trading", "Liquidity Integration", "AI Signal Auditing"]
     },
     {
@@ -67,7 +67,7 @@ const PROJECTS: ProjectData[] = [
         category: "AgriTech",
         metrics: "Smart Yield • IoT Tracking",
         description: "Precision agriculture ecosystem utilizing blockchain for immutable transparency.",
-        image: "/images/projects/AgriChian.webp",
+        image: "/images/projects/AgriChian_opt.webp",
         details: ["Supply Chain Transparency", "Blockchain Ledger", "Precision Farming"]
     },
     {
@@ -75,7 +75,7 @@ const PROJECTS: ProjectData[] = [
         category: "Computer Vision",
         metrics: "Auto-Label • QA Mode",
         description: "Multi-modal model training platform with advanced auto-labeling and integrity checks.",
-        image: "/images/projects/image_annotation_tool.webp",
+        image: "/images/projects/image_annotation_tool_opt.webp",
         details: ["Dataset Preparation", "Integrated QA", "Auto-Labeling Engine"]
     },
     {
@@ -83,7 +83,7 @@ const PROJECTS: ProjectData[] = [
         category: "E-commerce",
         metrics: "Restock AI • Profit Map",
         description: "Demand forecasting and inventory optimization suite for global logistics.",
-        image: "/images/projects/amazon_invontry_management_system.webp",
+        image: "/images/projects/amazon_invontry_management_system_opt.webp",
         details: ["Inventory Optimization", "Logistics Scaling", "Demand Forecasting"]
     },
     {
@@ -91,7 +91,7 @@ const PROJECTS: ProjectData[] = [
         category: "Automotive",
         metrics: "Euro-Pricing • Fleet AI",
         description: "Market intelligence platform for European vehicle distribution with trend detection.",
-        image: "/images/projects/vehicle_analysis_dashboard.webp",
+        image: "/images/projects/vehicle_analysis_dashboard_opt.webp",
         details: ["Fleet Management", "Trend Detection", "Market Intelligence"]
     },
     {
@@ -99,7 +99,7 @@ const PROJECTS: ProjectData[] = [
         category: "Blockchain",
         metrics: "Cold Staking • Audit Log",
         description: "Decentralized liquidity aggregator and token management for institutions.",
-        image: "/images/projects/jfbz_token.webp",
+        image: "/images/projects/jfbz_token_opt.webp",
         details: ["Institutional Assets", "Liquidity Aggregator", "Security Auditing"]
     }
 ];

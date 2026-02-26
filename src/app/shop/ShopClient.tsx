@@ -89,13 +89,14 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
         <div className="min-h-screen bg-transparent text-white relative">
             <Navbar />
 
-            <main className="relative z-10 pt-2 pb-32 px-6 max-w-[1500px] mx-auto">
-                {/* Background Effects specifically for Hero */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200%] h-[600px] bg-[url('/grid.svg')] bg-[length:50px_50px] opacity-[0.03] [mask-image:radial-gradient(ellipse_at_top,white,transparent_70%)] pointer-events-none" />
+            <main className="relative z-10 pt-2 pb-32 px-6 lg:px-12 max-w-[1800px] mx-auto">
+                {/* Background Effects specifically for Hero - Enhanced Depth */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[150%] h-[700px] bg-[url('/grid.svg')] bg-[length:60px_60px] opacity-[0.04] [mask-image:radial-gradient(ellipse_at_top,white,transparent_60%)] pointer-events-none" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
                 {/* Professional Store Hero - Centered and Cinematic */}
-                <header className="py-24 mb-16 relative overflow-hidden text-center rounded-[3rem] border border-white/[0.05] bg-white/[0.01] backdrop-blur-sm">
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+                <header className="py-24 mb-16 relative overflow-hidden text-center rounded-[4rem] border border-white/[0.04] bg-white/[0.01] backdrop-blur-[2px]">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent pointer-events-none" />
 
                     <div className="relative z-10 max-w-4xl mx-auto px-6">
                         <motion.div
@@ -108,13 +109,13 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
                         </motion.div>
 
                         <motion.h1
-                            initial={{ opacity: 0, scale: 0.95 }}
+                            initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="text-6xl md:text-9xl font-black tracking-tightest leading-[0.85] mb-10 uppercase italic text-center mx-auto"
-                            style={{ fontSize: "clamp(2.5rem, 15vw, 15rem)" }}
+                            className="flex flex-col items-center justify-center font-black tracking-tighter leading-[0.8] mb-12 uppercase italic text-center w-full"
+                            style={{ fontSize: "clamp(3rem, 18vw, 16rem)" }}
                         >
-                            SYSTEM <br className="md:hidden" />
-                            <span className="block text-center text-white/20 not-italic">ARCHIVES.</span>
+                            <span className="block translate-x-[-0.05em]">SYSTEM</span>
+                            <span className="block text-white/10 not-italic mt-[-0.1em] tracking-tight">ARCHIVES.</span>
                         </motion.h1>
 
                         <motion.div
@@ -149,15 +150,15 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
                             className="mt-16 flex flex-wrap justify-center gap-6"
                         >
                             <Link href="/become-seller">
-                                <button className="px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-2xl hover:bg-white/90 transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] active:scale-95 flex items-center gap-3">
+                                <button className="px-12 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.4em] rounded-full hover:bg-white/90 transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] active:scale-95 flex items-center gap-3 group/btn">
                                     Get Your Shop
-                                    <ArrowRight size={14} />
+                                    <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                                 </button>
                             </Link>
                             <Link href="/shop?category=ai_agents">
-                                <button className="px-10 py-5 bg-white/5 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-2xl hover:bg-white/10 transition-all flex items-center gap-3">
+                                <button className="px-12 py-5 bg-white/5 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.4em] rounded-full hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-3 group/btn-alt">
                                     Explore Archives
-                                    <Box size={14} className="opacity-40" />
+                                    <Box size={14} className="opacity-40 group-hover/btn-alt:rotate-12 transition-transform" />
                                 </button>
                             </Link>
                         </motion.div>
