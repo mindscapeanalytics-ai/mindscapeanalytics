@@ -4,14 +4,23 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { LayoutDashboard, ArrowLeft, Settings, Menu, X } from "lucide-react";
+import { LayoutDashboard, ArrowLeft, Settings, Menu, X, Package, ShoppingCart, Users, DollarSign } from "lucide-react";
 import LogoutButton from "@/components/auth/LogoutButton";
 
 interface NavItem {
     label: string;
     href: string;
-    icon: any;
+    icon: string;
 }
+
+const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+    LayoutDashboard,
+    Package,
+    ShoppingCart,
+    Users,
+    DollarSign,
+    Settings
+};
 
 interface AdminSidebarProps {
     navItems: NavItem[];
@@ -68,17 +77,20 @@ export function AdminSidebar({ navItems }: AdminSidebarProps) {
                 </div>
 
                 <nav className="space-y-2 flex-1">
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 px-4 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/5 transition-all group"
-                        >
-                            <item.icon size={20} className="group-hover:text-blue-400 transition-colors" />
-                            <span className="font-bold text-sm tracking-wide uppercase">{item.label}</span>
-                        </Link>
-                    ))}
+                    {navItems.map((item) => {
+                        const Icon = ICON_MAP[item.icon] || LayoutDashboard;
+                        return (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center gap-3 px-4 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/5 transition-all group"
+                            >
+                                <Icon size={20} className="group-hover:text-blue-400 transition-colors" />
+                                <span className="font-bold text-sm tracking-wide uppercase">{item.label}</span>
+                            </Link>
+                        );
+                    })}
                 </nav>
 
                 <div className="pt-8 border-t border-white/10 space-y-2 mt-auto">

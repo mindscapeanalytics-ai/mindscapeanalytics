@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -15,6 +15,7 @@ const CaseStudies = dynamic(() => import("@/components/CaseStudies"), { ssr: tru
 const BusinessImpact = dynamic(() => import("@/components/BusinessImpact"), { ssr: true });
 const Products = dynamic(() => import("@/components/Products"), { ssr: true });
 const Process = dynamic(() => import("@/components/Process"), { ssr: true });
+const GrowthHub = dynamic(() => import("@/components/GrowthHub"), { ssr: true });
 const CTA = dynamic(() => import("@/components/CTA"), { ssr: true });
 
 import { cn } from "@/lib/utils";
@@ -88,6 +89,10 @@ export default function HomeClient() {
                 </ScrollSection>
 
                 <ScrollSection delay={0.2}>
+                    <GrowthHub />
+                </ScrollSection>
+
+                <ScrollSection delay={0.25}>
                     <Products />
                 </ScrollSection>
 

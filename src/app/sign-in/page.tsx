@@ -24,10 +24,12 @@ function SignInContent() {
         setLoading(true);
         setError("");
 
+        const normalizedEmail = email.trim().toLowerCase();
+
         try {
-            console.log("[AUTH_SIGNIN_ATTEMPT]", { email });
+            console.log("[AUTH_SIGNIN_ATTEMPT]", { email: normalizedEmail });
             const { data, error: authError } = await authClient.signIn.email({
-                email,
+                email: normalizedEmail,
                 password,
             });
 
@@ -135,7 +137,7 @@ function SignInContent() {
                                         type="email"
                                         required
                                         value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
+                                        onChange={(e) => setEmail(e.target.value.trim())}
                                         className="w-full bg-transparent/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/10 focus:outline-none focus:border-white/30 focus:bg-white/[0.07] transition-all"
                                         placeholder="user@mindscape.com"
                                     />

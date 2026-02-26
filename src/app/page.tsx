@@ -2,11 +2,11 @@ import { Metadata } from "next";
 import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
-  title: "Mindscape Analytics | Next-Generation AI & Cloud Solutions",
-  description: "Enterprise-grade intelligent ecosystems, cloud infrastructure, and mission-critical software architecture for global organizations.",
+  title: "Mindscape Analytics | Enterprise AI, Asset Marketplace & Elite Talent Hub",
+  description: "Mission-critical AI software architecture, premium digital asset marketplace, and high-performance engineering talent for global organizations.",
   openGraph: {
-    title: "Mindscape Analytics | Next-Generation AI & Cloud Solutions",
-    description: "Enterprise-grade intelligent ecosystems, cloud infrastructure, and mission-critical software architecture for global organizations.",
+    title: "Mindscape Analytics | Enterprise AI, Asset Marketplace & Elite Talent Hub",
+    description: "Mission-critical AI software architecture, premium digital asset marketplace, and high-performance engineering talent for global organizations.",
     url: "https://mindscapeanalytics.com",
     siteName: "Mindscape Analytics",
     images: [
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mindscape Analytics | Next-Generation AI & Cloud Solutions",
-    description: "Enterprise-grade intelligent ecosystems, cloud infrastructure, and mission-critical software architecture.",
+    title: "Mindscape Analytics | Enterprise AI, Asset Marketplace & Elite Talent Hub",
+    description: "Mission-critical AI software architecture, premium digital asset marketplace, and high-performance engineering talent for global organizations.",
     images: ["/og-bg.webp"],
   },
 };

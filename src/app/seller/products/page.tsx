@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Plus, Package, CheckCircle, XCircle, Edit, Trash2 } from "lucide-react";
 import { redirect } from "next/navigation";
 import { deleteProduct } from "@/app/_actions/delete-product";
+import DeleteAssetButton from "./DeleteAssetButton";
 
 export default async function SellerProductsPage() {
     const session = await getSession();
@@ -56,6 +57,13 @@ export default async function SellerProductsPage() {
                                 Initialize New Asset
                             </button>
                         </Link>
+                    </div>
+
+                    <div className="flex items-center gap-3 px-6 py-4 bg-white/[0.02] border border-white/5 rounded-2xl mb-12">
+                        <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-white/30 italic">
+                            Settlement Protocol: Distributions reflect the aggregate value following a 10-day verification threshold and a 10% enterprise commission deduction.
+                        </p>
                     </div>
 
                     {products.length === 0 ? (
@@ -126,26 +134,16 @@ export default async function SellerProductsPage() {
                                                         <Edit size={16} />
                                                     </button>
                                                 </Link>
-                                                <form action={async (formData: FormData) => {
-                                                    'use server';
-                                                    const { deleteProduct } = await import("@/app/_actions/delete-product");
-                                                    await deleteProduct(formData);
-                                                    const { revalidatePath } = await import("next/cache");
-                                                    revalidatePath("/seller/products");
-                                                }}>
-                                                    <input type="hidden" name="id" value={product.id} />
-                                                    <button
-                                                        type="submit"
-                                                        className="w-12 h-12 flex items-center justify-center bg-red-500/5 border border-red-500/10 rounded-2xl text-red-400/40 hover:text-red-400 hover:bg-red-500/10 transition-all active:scale-90"
-                                                        onClick={(e) => {
-                                                            if (!confirm('Are you sure you want to delete this product? This cannot be undone.')) {
-                                                                e.preventDefault();
-                                                            }
-                                                        }}
-                                                    >
-                                                        <Trash2 size={16} />
-                                                    </button>
-                                                </form>
+                                                <DeleteAssetButton
+                                                    productId={product.id}
+                                                    action={async (formData: FormData) => {
+                                                        'use server';
+                                                        const { deleteProduct } = await import("@/app/_actions/delete-product");
+                                                        await deleteProduct(formData);
+                                                        const { revalidatePath } = await import("next/cache");
+                                                        revalidatePath("/seller/products");
+                                                    }}
+                                                />
                                             </div>
                                         </div>
                                     </div>

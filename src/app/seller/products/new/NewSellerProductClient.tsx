@@ -34,6 +34,13 @@ export default function NewSellerProductClient() {
                         <p className="text-white/40 text-[11px] font-black uppercase tracking-[0.5em] italic">Authorized Listing Generation Terminal</p>
                     </div>
 
+                    <div className="flex items-center gap-3 px-6 py-4 bg-white/[0.02] border border-white/5 rounded-2xl mb-12">
+                        <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-white/30 italic leading-loose">
+                            Institutional Policy: Released assets are subject to a 10-day settlement threshold and a standard 10% platform fee upon capital distribution.
+                        </p>
+                    </div>
+
                     <ProductForm
                         action={createProduct}
                     />

@@ -37,16 +37,18 @@ export default function PayoutForm({ initialMethod, initialDetails }: PayoutForm
                 <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/20 ml-1">Liquidity Network</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {[
-                        { id: "crypto_eth", label: "Ethereum (ETH/ERC20)", description: "0x Addresses" },
-                        { id: "crypto_sol", label: "Solana (SOL)", description: "Base58 Addresses" },
-                        { id: "bank", label: "Bank Transfer", description: "Direct IBAN/SWIFT" },
-                        { id: "paypal", label: "PayPal", description: "Digital Wallet" },
+                        { id: "crypto_eth", label: "Ethereum Network", description: "MetaMask / ERC20 Addresses" },
+                        { id: "crypto_sol", label: "Solana Network", description: "Phantom / Base58 Addresses" },
+                        { id: "crypto_btc", label: "Bitcoin Network", description: "Native SegWit / Taproot" },
+                        { id: "stripe", label: "Stripe Connect", description: "Direct Card Settlements" },
+                        { id: "paypal", label: "PayPal Wallet", description: "Digital Disbursement" },
+                        { id: "bank", label: "Global Bank", description: "IBAN / SWIFT / Wire" },
                     ].map((method) => (
                         <label
                             key={method.id}
                             className={`p-5 rounded-2xl border transition-all cursor-pointer group relative ${selectedMethod === method.id
-                                    ? "bg-white/10 border-white/20 ring-1 ring-white/20"
-                                    : "bg-white/[0.02] border-white/5 hover:border-white/10"
+                                ? "bg-white/10 border-white/20 ring-1 ring-white/20"
+                                : "bg-white/[0.02] border-white/5 hover:border-white/10"
                                 }`}
                         >
                             <input

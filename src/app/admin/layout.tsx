@@ -34,11 +34,11 @@ export default async function AdminLayout({
     const isSeller = session?.user?.role === "seller";
 
     const navItems = [
-        { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
-        { label: "Products", href: "/admin/products", icon: Package },
-        { label: "Orders", href: "/admin/orders", icon: ShoppingCart },
-        { label: "Payments", href: "/admin/payments", icon: DollarSign },
-        ...(!isSeller ? [{ label: "Users", href: "/admin/users", icon: Users }] : []),
+        { label: "Dashboard", href: "/admin", icon: "LayoutDashboard" },
+        { label: "Products", href: "/admin/products", icon: "Package" },
+        { label: "Orders", href: "/admin/orders", icon: "ShoppingCart" },
+        { label: "Payments", href: "/admin/payments", icon: "DollarSign" },
+        ...(!isSeller ? [{ label: "Users", href: "/admin/users", icon: "Users" }] : []),
     ];
 
     return (

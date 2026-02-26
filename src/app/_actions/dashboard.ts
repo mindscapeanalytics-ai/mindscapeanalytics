@@ -58,3 +58,83 @@ export async function getSellerStats() {
         };
     }
 }
+
+export async function getRecentActivity() {
+    const session = await getSession();
+
+    if (!session?.user) {
+        throw new Error("Authentication required.");
+    }
+
+    const sellerId = session.user.id;
+
+    try {
+        // Fetch recent products
+        const recentProducts = await prisma.product.findMany({
+            where: { sellerId },
+            orderBy: { createdAt: "desc" },
+            take: 3,
+            select: {
+                id: true,
+                name: true,
+                createdAt: true,
+            }
+        });
+
+        // Fetch recent sales (OrderItems)
+        const recentSales = await prisma.orderItem.findMany({
+            where: {
+                product: { sellerId },
+                order: { status: "completed", isPaid: true },
+            },
+            include: {
+                product: {
+                    select: {
+                        name: true
+                    }
+                },
+                order: {
+                    select: {
+                        createdAt: true,
+                        user: {
+                            select: {
+                                name: true,
+                                email: true
+                            }
+                        }
+                    }
+                }
+            },
+            orderBy: {
+                order: {
+                    createdAt: "desc"
+                }
+            },
+            take: 5
+        });
+
+        // Combine into activity feed
+        const activity = [
+            ...recentProducts.map(p => ({
+                id: `prod-${p.id}`,
+                type: "product_created" as const,
+                title: "New Asset Released",
+                description: `Architectural asset "${p.name}" has been localized in the registry.`,
+                timestamp: p.createdAt,
+            })),
+            ...recentSales.map(s => ({
+                id: `sale-${s.id}`,
+                type: "sale_completed" as const,
+                title: "Asset Deployed",
+                description: `Unit "${s.product.name}" acquired by institutional entity ${s.order.user?.name || s.order.user?.email || "Unknown"}.`,
+                timestamp: s.order.createdAt,
+            }))
+        ].sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime()).slice(0, 10);
+
+        return activity;
+    } catch (error) {
+        console.error("[GET_RECENT_ACTIVITY_ERROR]", error);
+        return [];
+    }
+}
+

@@ -38,24 +38,10 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
     const [state, formAction, isPending] = React.useActionState(action, { error: null });
     const [techStack, setTechStack] = React.useState<string[]>(initialData?.techStack || []);
     const [features, setFeatures] = React.useState<string[]>(initialData?.features || []);
-    const [imageUrls, setImageUrls] = React.useState<string[]>(initialData?.images?.map((img: any) => img.url) || [""]);
+    const [imageUrl, setImageUrl] = React.useState<string>(initialData?.images?.[0]?.url || "");
     const [productFiles, setProductFiles] = React.useState<Array<{ filename: string; url: string }>>(
         initialData?.productFiles || [{ filename: "", url: "" }]
     );
-
-    const addImage = () => setImageUrls([...imageUrls, ""]);
-    const removeImage = (index: number) => {
-        if (imageUrls.length > 1) {
-            setImageUrls(imageUrls.filter((_, i) => i !== index));
-        } else {
-            setImageUrls([""]);
-        }
-    };
-    const updateImage = (index: number, value: string) => {
-        const newImages = [...imageUrls];
-        newImages[index] = value;
-        setImageUrls(newImages);
-    };
 
     const addFile = () => setProductFiles([...productFiles, { filename: "", url: "" }]);
     const removeFile = (index: number) => {
@@ -96,7 +82,11 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
     const handleSubmit = (formData: FormData) => {
         techStack.forEach(t => formData.append('techStack', t));
         features.forEach(f => formData.append('features', f));
-        imageUrls.filter(url => url.trim() !== "").forEach(url => formData.append('imageUrl', url));
+
+        if (imageUrl.trim() !== "") {
+            formData.append('imageUrl', imageUrl);
+        }
+
         productFiles.filter(f => f.url.trim() !== "").forEach(f => {
             formData.append('fileUrl', f.url);
             formData.append('fileName', f.filename || "Digital_Asset");
@@ -248,39 +238,21 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
                 <div className="flex items-center justify-between mb-8">
                     <div className="flex items-center gap-4">
                         <ImageIcon size={16} className="text-white/20" />
-                        <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Visual Artifacts</h3>
+                        <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Primary Visual Artifact</h3>
                     </div>
-                    <button
-                        type="button"
-                        onClick={addImage}
-                        className="p-2 bg-white/5 hover:bg-white/10 rounded-lg text-[10px] font-black uppercase tracking-widest flex items-center gap-2 transition-all"
-                    >
-                        <Plus size={12} />
-                        Add Node
-                    </button>
                 </div>
                 <div className="space-y-4">
-                    {imageUrls.map((url, index) => (
-                        <div key={index} className="flex gap-3">
-                            <div className="flex-1 relative group">
-                                <input
-                                    type="url"
-                                    value={url}
-                                    onChange={(e) => updateImage(index, e.target.value)}
-                                    placeholder="IMAGE_URL (DIRECT LINK)"
-                                    className="w-full px-6 py-4 bg-white/[0.02] border border-white/5 rounded-2xl text-[10px] font-mono text-white/40 focus:text-white transition-all uppercase"
-                                />
-                            </div>
-                            <button
-                                type="button"
-                                onClick={() => removeImage(index)}
-                                className="p-4 bg-red-500/5 hover:bg-red-500/10 text-red-400 rounded-2xl border border-red-500/10 transition-all"
-                            >
-                                <X size={16} />
-                            </button>
-                        </div>
-                    ))}
-                    <p className="text-[8px] text-white/10 uppercase tracking-widest ml-2 italic">Recommendation: 1200x800 industrial aspect ratio. First image is the primary thumbnail.</p>
+                    <div className="relative group">
+                        <input
+                            type="url"
+                            value={imageUrl}
+                            onChange={(e) => setImageUrl(e.target.value)}
+                            required
+                            placeholder="IMAGE_URL (DIRECT LINK)"
+                            className="w-full px-6 py-4 bg-white/[0.02] border border-white/5 rounded-2xl text-[10px] font-mono text-white/40 focus:text-white transition-all uppercase"
+                        />
+                    </div>
+                    <p className="text-[8px] text-white/10 uppercase tracking-widest ml-2 italic">Requirement: One high-fidelity preview image at 1200x800 industrial aspect ratio.</p>
                 </div>
             </div>
 

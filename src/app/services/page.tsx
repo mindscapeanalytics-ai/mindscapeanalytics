@@ -10,7 +10,8 @@ import {
     Shield,
     TrendingUp,
     Users,
-    ArrowRight
+    ArrowRight,
+    BarChart3
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -102,6 +103,34 @@ const services = [
             "Conversion Optimization"
         ],
         link: "#",
+        gradient: "from-white/10 to-transparent"
+    },
+    {
+        icon: BarChart3,
+        title: "Dynamic Dashboard Creation",
+        description: "Enterprise-grade visualization systems that provide real-time visibility into high-velocity operations.",
+        features: [
+            "Real-time HUD Design",
+            "Cross-platform Sync",
+            "Custom Metric Tracking",
+            "Interactive Data Nodes",
+            "Executive Reports"
+        ],
+        link: "/solutions/enterprise-software",
+        gradient: "from-white/10 to-transparent"
+    },
+    {
+        icon: Database,
+        title: "Data Engineering & Analytics",
+        description: "Architecting the pipelines that power modern intelligence. Scalable, secure, and performant.",
+        features: [
+            "ETL Pipeline Mastery",
+            "Warehouse Architecture",
+            "Stream Processing",
+            "Data Quality Audits",
+            "Predictive Analytics"
+        ],
+        link: "/solutions/cloud-infrastructure",
         gradient: "from-white/10 to-transparent"
     },
     {

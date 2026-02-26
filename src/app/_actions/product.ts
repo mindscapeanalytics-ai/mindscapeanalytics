@@ -112,6 +112,20 @@ export async function updateProduct(prevState: any, formData: FormData) {
     if (!id) return { error: "Product ID is required for updates." };
 
     try {
+        // Fetch product to check ownership
+        const product = await prisma.product.findUnique({
+            where: { id },
+            select: { sellerId: true }
+        });
+
+        if (!product) {
+            return { error: "Product not found." };
+        }
+
+        if (session.user.role !== "admin" && product.sellerId !== session.user.id) {
+            return { error: "Unauthorized. You can only update your own products." };
+        }
+
         // Update product metadata
         await prisma.product.update({
             where: { id },

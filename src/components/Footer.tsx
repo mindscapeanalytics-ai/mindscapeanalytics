@@ -208,7 +208,7 @@ export default function Footer() {
             </div>
 
             {/* Massive Metallic Shimmer Background Text */}
-            <div className="absolute inset-x-0 bottom-0 pointer-events-none select-none flex items-end justify-center z-0 overflow-hidden opacity-100 h-[60%] lg:h-[80%]">
+            <div className="absolute inset-x-0 bottom-16 pointer-events-none select-none flex items-end justify-center z-0 overflow-hidden opacity-70 h-[60%] lg:h-[80%]">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -220,7 +220,7 @@ export default function Footer() {
                         className="w-full text-center font-black font-syncopate tracking-[-0.05em] leading-[0.75] text-transparent bg-clip-text flex flex-col pointer-events-none whitespace-nowrap"
                         style={{
                             fontSize: "clamp(3rem, 15vw, 25rem)",
-                            backgroundImage: "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.01) 100%)",
+                            backgroundImage: "linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%)",
                         }}
                     >
                         <span>MINDSCAPE</span>

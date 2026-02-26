@@ -24,10 +24,12 @@ interface Product {
 
 export default function ProductCard({
     product,
-    onQuickView
+    onQuickView,
+    priority = false
 }: {
     product: Product;
     onQuickView?: (product: Product) => void;
+    priority?: boolean;
 }) {
     const [isLiked, setIsLiked] = useState(false);
     const { addToCart } = useCart();
@@ -63,6 +65,7 @@ export default function ProductCard({
                         src={imageUrl}
                         alt={product.name}
                         fill
+                        priority={priority}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-110 transition-transform duration-700 ease-out"
                     />

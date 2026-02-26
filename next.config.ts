@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   // Output changed to default for local development and standard node start
   trailingSlash: false,
   images: {
+    unoptimized: process.env.NODE_ENV === "development", // Bypass upstream timeouts in dev
     remotePatterns: [
       {
         protocol: 'https',

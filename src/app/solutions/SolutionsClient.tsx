@@ -29,29 +29,31 @@ const solutions = [
     },
     {
         icon: Database,
-        title: "Industrial Cloud Foundations",
-        description: "High-performance infrastructure defined by sub-10ms latency and unlimited horizontal scale.",
+        title: "Data Analysis & Engineering",
+        description: "Architecting high-velocity data pipelines and warehousing solutions for real-time industrial intelligence.",
         features: [
-            "Advanced Cloud Migration",
-            "DevOps / CI/CD Hardening",
-            "Kubernetes Cluster Orchestration",
-            "Real-time Cost Performance"
+            "ETL Pipeline Engineering",
+            "Big Data Orchestration",
+            "Warehouse Modernization",
+            "Predictive Modeling Nodes"
         ],
         link: "/solutions/cloud-infrastructure",
-        gradient: "from-white/10 to-transparent"
+        gradient: "from-white/10 to-transparent",
+        id: "data-engineering"
     },
     {
         icon: Globe,
-        title: "Enterprise Core Systems",
-        description: "Mission-critical full-stack architectures built for high-growth global organizations.",
+        title: "Dynamic Dashboard Creation",
+        description: "High-fidelity, real-time visualization systems that translate raw data into actionable enterprise foresight.",
         features: [
-            "Next.js 15+ Core Deployment",
-            "Microservices Sync Logic",
-            "Global Edge Distribution",
-            "Legacy Architecture Modernization"
+            "Real-time Stream Sync",
+            "Custom Component HUDs",
+            "Interactive Trend Analysis",
+            "Multi-source Aggregation"
         ],
         link: "/solutions/enterprise-software",
-        gradient: "from-white/10 to-transparent"
+        gradient: "from-white/10 to-transparent",
+        id: "dashboards"
     },
     {
         icon: Shield,

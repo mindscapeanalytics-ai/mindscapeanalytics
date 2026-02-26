@@ -92,7 +92,7 @@ export default function BecomeSellerForm() {
                     name="storeDescription"
                     required
                     rows={5}
-                    placeholder="Identify the core primitives, architectures, and value propositions of your intended listings..."
+                    placeholder="Briefly describe your specialization. Our streamlined system now supports rapid one-image project listings for maximum efficiency..."
                     className="w-full px-6 py-6 bg-white/[0.03] border border-white/5 rounded-3xl text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 focus:bg-white/[0.05] transition-all backdrop-blur-xl italic text-sm leading-relaxed"
                 />
             </div>

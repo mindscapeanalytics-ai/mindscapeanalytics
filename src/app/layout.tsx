@@ -4,6 +4,7 @@ import "./globals.css";
 import { CartProvider } from "@/contexts/CartContext";
 import CinematicBackground from "@/components/CinematicBackground";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import ChatWidget from "@/components/ChatWidget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -116,6 +117,7 @@ export default function RootLayout({
         <CartProvider>
           <CinematicBackground />
           {children}
+          <ChatWidget />
           {process.env.VERCEL && <SpeedInsights />}
         </CartProvider>
       </body>

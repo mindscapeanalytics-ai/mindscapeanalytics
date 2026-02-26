@@ -2,10 +2,12 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import {
     Linkedin,
     Mail
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AIAuditLeadMagnet from "@/components/AIAuditLeadMagnet";
@@ -14,10 +16,11 @@ const team = [
     {
         name: "Zeeshan Keerio",
         role: "Founder & CEO",
-        bio: "AI Engineer and Big Data Architect. Visionary specialist with 10+ years in developing cutting-edge artificial intelligence solutions. Architecting future-proof systems for the global elite.",
+        bio: "AI-focused technology leader and AI Engineer specialized in GenAI and Agentic AI. Sole designer and developer of the Mindscape Analytics (MSA) platform, architecting its core autonomous intelligence and multi-tenant infrastructure.",
         image: "/images/team/founder.webp",
         linkedin: "https://linkedin.com/in/zeeshan-keerio",
-        email: "mailto:zeeshan.keerio@mindscapeanalytics.com"
+        email: "mailto:zeeshan.keerio@mindscapeanalytics.com",
+        href: "/founder/zeeshan-keerio"
     },
     {
         name: "Muhammad Atif",
@@ -148,15 +151,15 @@ export default function AboutPage() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="max-w-4xl border-t border-white/10 pt-6 md:pt-12"
+                            className="max-w-4xl border-t border-white/10 pt-10 md:pt-12 w-full mx-auto px-4"
                         >
-                            <p className="text-2xl md:text-4xl text-white/60 font-medium tracking-tight leading-snug uppercase">
-                                WE HELP BUSINESSES SCALE USING <span className="text-white font-black italic">INTELLIGENT SYSTEMS</span> — NOT MANUAL EFFORT.
+                            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/60 font-medium tracking-tight leading-snug uppercase text-center max-w-3xl mx-auto italic">
+                                WE HELP BUSINESSES SCALE USING <span className="text-white font-black not-italic drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]">INTELLIGENT SYSTEMS</span> - NOT MANUAL EFFORT.
                             </p>
-                            <div className="flex items-center justify-center gap-6 mt-8 md:mt-12 opacity-30">
-                                <div className="h-px w-24 bg-white" />
-                                <span className="text-[8px] font-mono font-black tracking-[0.5em] uppercase">Scale_Protocol_Active</span>
-                                <div className="h-px w-24 bg-white" />
+                            <div className="flex items-center justify-center gap-6 mt-10 md:mt-12 opacity-20">
+                                <div className="h-[1px] w-12 md:w-24 bg-gradient-to-r from-transparent to-white" />
+                                <span className="text-[8px] font-mono font-black tracking-[0.5em] uppercase whitespace-nowrap">Scale_Protocol_Active</span>
+                                <div className="h-[1px] w-12 md:w-24 bg-gradient-to-l from-transparent to-white" />
                             </div>
                         </motion.div>
                     </div>
@@ -180,9 +183,17 @@ export default function AboutPage() {
                             <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter font-syncopate leading-[0.9]">
                                 NEXT-GENERATION <br /> <span className="text-white/20 italic">AI & DATA ENGINEERING.</span>
                             </h2>
-                            <p className="text-lg text-white/40 leading-relaxed font-medium max-w-xl">
-                                Mindscape Analytics specializes in intelligent automation, AI agents, full-stack systems, and scalable cloud infrastructure. Founded with a vision to transform manual operational blocks into autonomous engines.
-                            </p>
+                            <div className="space-y-6">
+                                <p className="text-lg text-white/60 leading-relaxed font-medium max-w-xl">
+                                    Mindscape Analytics is a next-generation AI and Data Engineering company specializing in intelligent automation, AI agents, full-stack systems, and scalable cloud infrastructure.
+                                </p>
+                                <p className="text-lg text-white/60 leading-relaxed font-medium max-w-xl">
+                                    Founded by Zeeshan Keerio, Technology Leader & AI Engineer, Mindscape Analytics was built with one mission:
+                                </p>
+                                <p className="text-lg text-white font-black leading-relaxed max-w-xl italic border-l-2 border-white/20 pl-6 py-2">
+                                    To help businesses scale using intelligent systems, not manual effort.
+                                </p>
+                            </div>
                         </motion.div>
 
                         <motion.div
@@ -287,19 +298,23 @@ export default function AboutPage() {
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                             >
                                 <div className="p-8 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-all duration-700 group relative overflow-hidden backdrop-blur-md">
-                                    <div className="aspect-[4/5] relative rounded-xl overflow-hidden mb-8 border border-white/5 shadow-2xl">
-                                        <Image
-                                            src={member.image}
-                                            alt={member.name}
-                                            fill
-                                            className="object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
-                                    </div>
+                                    <Link href={(member as any).href || "#"} className={cn("block", !(member as any).href && "cursor-default")}>
+                                        <div className="aspect-[4/5] relative rounded-xl overflow-hidden mb-8 border border-white/5 shadow-2xl">
+                                            <Image
+                                                src={member.image}
+                                                alt={member.name}
+                                                fill
+                                                className="object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                                        </div>
+                                    </Link>
                                     <div className="space-y-4">
                                         <div className="flex justify-between items-end">
                                             <div>
-                                                <h3 className="text-xl font-black uppercase font-syncopate tracking-tighter text-white/80 group-hover:text-white transition-colors">{member.name}</h3>
+                                                <Link href={(member as any).href || "#"} className={cn(!(member as any).href && "cursor-default")}>
+                                                    <h3 className="text-xl font-black uppercase font-syncopate tracking-tighter text-white/80 group-hover:text-white transition-colors">{member.name}</h3>
+                                                </Link>
                                                 <p className="text-[10px] font-black text-white/20 group-hover:text-white/40 uppercase tracking-[0.3em] mt-2 transition-colors">{member.role}</p>
                                             </div>
                                             <div className="flex gap-2 opacity-20 group-hover:opacity-100 transition-opacity">

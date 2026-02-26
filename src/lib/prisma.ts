@@ -15,9 +15,12 @@ if (!globalForPrisma.__pgPool) {
     globalForPrisma.__pgPool = new Pool({
         connectionString,
         max: 10,
-        connectionTimeoutMillis: 15_000, // 15s timeout (optimized for Neon cold start recovery)
+        connectionTimeoutMillis: 15_000, // 15s timeout
         idleTimeoutMillis: 30_000,
-        ssl: { rejectUnauthorized: true }, // Fixes pg SSL deprecation warning
+        // Ensure connection pooling on Neon works without SSL handshake timeouts
+        ssl: connectionString.includes("localhost") || connectionString.includes("127.0.0.1")
+            ? false
+            : { rejectUnauthorized: false },
     });
 
     // Observability for connection pool issues

@@ -5,8 +5,23 @@ import { redirect } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { Plus, Package, DollarSign, TrendingUp, AlertTriangle } from "lucide-react";
-import { getSellerStats } from "@/app/_actions/dashboard";
+import { Plus, Package, DollarSign, TrendingUp, AlertTriangle, CreditCard } from "lucide-react";
+import { getSellerStats, getRecentActivity } from "@/app/_actions/dashboard";
+
+function timeAgo(date: Date) {
+    const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+    let interval = seconds / 31536000;
+    if (interval > 1) return Math.floor(interval) + " years ago";
+    interval = seconds / 2592000;
+    if (interval > 1) return Math.floor(interval) + " months ago";
+    interval = seconds / 86400;
+    if (interval > 1) return Math.floor(interval) + " days ago";
+    interval = seconds / 3600;
+    if (interval > 1) return Math.floor(interval) + " hours ago";
+    interval = seconds / 60;
+    if (interval > 1) return Math.floor(interval) + " minutes ago";
+    return Math.floor(seconds) + " seconds ago";
+}
 
 export default async function SellerDashboard() {
     const session = await getSession();
@@ -17,7 +32,6 @@ export default async function SellerDashboard() {
 
     // Check if user is a seller
     const isSeller = session.user.role === "seller" || (session.user as any).isSeller;
-    const isVerified = (session.user as any).sellerVerified;
 
     if (!isSeller) {
         return (
@@ -57,6 +71,7 @@ export default async function SellerDashboard() {
     });
 
     const stats = await getSellerStats();
+    const activities = await getRecentActivity();
 
     return (
         <div className="min-h-screen bg-monochrome-cinematic text-white relative">
@@ -83,44 +98,28 @@ export default async function SellerDashboard() {
                             </h1>
                             <p className="text-white/40 text-[11px] font-black uppercase tracking-[0.5em] italic">Ecosystem Management & Strategic Allocation</p>
                         </div>
-                        <Link href="/seller/products/new">
-                            <button className="flex items-center gap-4 px-10 py-5 bg-white text-black rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white/90 shadow-2xl transition-all active:scale-95 group">
-                                <Plus size={16} />
-                                Release New Asset
-                            </button>
-                        </Link>
-                    </div>
-
-                    {!isVerified && (
-                        <div className="mb-12 p-6 bg-amber-500/10 border border-amber-500/20 rounded-[2rem] flex flex-col md:flex-row items-center justify-between gap-6">
-                            <div className="flex items-center gap-6">
-                                <div className="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center text-amber-500">
-                                    <AlertTriangle size={24} />
-                                </div>
-                                <div>
-                                    <h3 className="text-sm font-black uppercase tracking-widest text-white">Stripe Onboarding Incomplete</h3>
-                                    <p className="text-[10px] text-white/40 uppercase tracking-tight italic">You must complete Stripe Connect setup to enable settlements and list products.</p>
-                                </div>
-                            </div>
-                            <form action={async () => {
-                                'use server';
-                                const { createStripeAccountLink } = await import("@/app/_actions/stripe");
-                                const { url } = await createStripeAccountLink();
-                                redirect(url);
-                            }}>
-                                <button type="submit" className="px-8 py-3 bg-white text-black rounded-xl font-black text-[9px] uppercase tracking-[0.3em] hover:bg-white/90 transition-all">
+                        <div className="flex items-center gap-4">
+                            <Link href="/seller/payments">
+                                <button className="flex items-center gap-4 px-10 py-5 bg-white/5 border border-white/10 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white/10 transition-all active:scale-95 group">
+                                    <CreditCard size={16} className="text-white/40 group-hover:text-white transition-colors" />
                                     Configure Payouts
                                 </button>
-                            </form>
+                            </Link>
+                            <Link href="/seller/products/new">
+                                <button className="flex items-center gap-4 px-10 py-5 bg-white text-black rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white/90 shadow-2xl transition-all active:scale-95 group">
+                                    <Plus size={16} />
+                                    Release New Asset
+                                </button>
+                            </Link>
                         </div>
-                    )}
+                    </div>
 
                     {/* Stats Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                         {[
                             { label: "ACTIVE ASSETS", value: stats.totalProducts, icon: <Package size={20} /> },
-                            { label: "TOTAL SETTLEMENTS", value: stats.totalSales, icon: <TrendingUp size={20} /> },
-                            { label: "INSTITUTIONAL CAPITAL", value: `$${stats.totalRevenue}`, icon: <DollarSign size={20} /> }
+                            { label: "UNITS DEPLOYED", value: stats.totalSales, icon: <TrendingUp size={20} /> },
+                            { label: "INSTITUTIONAL VALUE", value: `$${stats.totalRevenue}`, icon: <DollarSign size={20} /> }
                         ].map((stat, i) => (
                             <div key={i} className="bg-white/[0.02] border border-white/5 rounded-[2.5rem] p-10 relative overflow-hidden group hover:border-white/10 transition-all">
                                 <div className="absolute top-0 right-0 p-8 text-white/[0.02] group-hover:text-white/[0.05] transition-colors pointer-events-none">
@@ -138,64 +137,111 @@ export default async function SellerDashboard() {
                         ))}
                     </div>
 
-                    {/* Products Section */}
-                    <div className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-12 md:p-16 relative overflow-hidden shadow-2xl">
-                        <div className="flex items-center justify-between mb-12">
-                            <h2 className="text-2xl font-black uppercase tracking-tighter italic flex items-center gap-4">
-                                <span className="w-px h-6 bg-white/20" />
-                                Asset <span className="text-white/20 not-italic">Inventory</span>
-                            </h2>
-                            <Link href="/seller/products" className="text-[9px] font-black uppercase tracking-[0.4em] text-white/20 hover:text-white transition-colors">
-                                View Full Registry //
-                            </Link>
+                    <div className="flex items-center gap-3 px-6 py-4 bg-white/[0.02] border border-white/5 rounded-2xl mb-20">
+                        <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-white/30 italic">
+                            Settlement Protocol: All deployed value is aggregated institutional capital, distributed following a 10-day verification threshold, inclusive of a 10% standard platform commission.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                        {/* Products Section */}
+                        <div className="lg:col-span-2 bg-white/[0.02] border border-white/5 rounded-[3rem] p-12 relative overflow-hidden shadow-2xl h-fit">
+                            <div className="flex items-center justify-between mb-12">
+                                <h2 className="text-2xl font-black uppercase tracking-tighter italic flex items-center gap-4">
+                                    <span className="w-px h-6 bg-white/20" />
+                                    Asset <span className="text-white/20 not-italic">Inventory</span>
+                                </h2>
+                                <Link href="/seller/products" className="text-[9px] font-black uppercase tracking-[0.4em] text-white/20 hover:text-white transition-colors">
+                                    View Full Registry //
+                                </Link>
+                            </div>
+
+                            {products.length === 0 ? (
+                                <div className="text-center py-24 border border-dashed border-white/5 rounded-[2.5rem]">
+                                    <Package size={64} strokeWidth={0.5} className="mx-auto mb-10 text-white/5" />
+                                    <p className="text-white/20 text-[10px] font-black uppercase tracking-[0.5em] mb-12 italic">No architectural assets localized in registry.</p>
+                                    <Link href="/seller/products/new">
+                                        <button className="px-12 py-5 bg-white/5 border border-white/10 text-white/40 hover:text-white hover:bg-white/10 rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] transition-all">
+                                            Initialize Protocol
+                                        </button>
+                                    </Link>
+                                </div>
+                            ) : (
+                                <div className="grid grid-cols-1 gap-4">
+                                    {products.map((product) => (
+                                        <div key={product.id} className="flex items-center justify-between p-6 bg-white/[0.03] border border-white/5 rounded-3xl hover:border-white/10 transition-all group">
+                                            <div className="flex items-center gap-6">
+                                                <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/5 overflow-hidden flex-shrink-0">
+                                                    {product.images?.[0] ? (
+                                                        <img src={product.images[0].url} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                                    ) : (
+                                                        <div className="w-full h-full flex items-center justify-center text-white/10">
+                                                            <Package size={24} />
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-xl font-bold uppercase tracking-tight">{product.name}</h3>
+                                                    <p className="text-white/30 text-[10px] font-black uppercase tracking-widest">{product.category}</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-8">
+                                                <div className="text-right">
+                                                    <div className="text-sm font-bold">${product.price}</div>
+                                                    <div className={`text-[8px] font-black uppercase tracking-[0.3em] ${product.approvedForSale ? 'text-green-500/50' : 'text-amber-500/50'}`}>
+                                                        {product.approvedForSale ? 'ACTIVE' : 'PENDING_REVIEW'}
+                                                    </div>
+                                                </div>
+                                                <Link href={`/seller/products/${product.id}/edit`}>
+                                                    <button className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[9px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">
+                                                        Edit
+                                                    </button>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
 
-                        {products.length === 0 ? (
-                            <div className="text-center py-24 border border-dashed border-white/5 rounded-[2.5rem]">
-                                <Package size={64} strokeWidth={0.5} className="mx-auto mb-10 text-white/5" />
-                                <p className="text-white/20 text-[10px] font-black uppercase tracking-[0.5em] mb-12 italic">No architectural assets localized in registry.</p>
-                                <Link href="/seller/products/new">
-                                    <button className="px-12 py-5 bg-white/5 border border-white/10 text-white/40 hover:text-white hover:bg-white/10 rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] transition-all">
-                                        Initialize Protocol
+                        {/* Recent Activity Section */}
+                        <div className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-12 relative overflow-hidden shadow-2xl h-fit">
+                            <h2 className="text-2xl font-black uppercase tracking-tighter italic flex items-center gap-4 mb-12">
+                                <span className="w-px h-6 bg-white/20" />
+                                Activity <span className="text-white/20 not-italic">Stream</span>
+                            </h2>
+
+                            {activities.length === 0 ? (
+                                <div className="text-center py-20">
+                                    <p className="text-white/20 text-[9px] font-black uppercase tracking-[0.4em] italic">No localized activity detected.</p>
+                                </div>
+                            ) : (
+                                <div className="space-y-10">
+                                    {activities.map((act) => (
+                                        <div key={act.id} className="relative pl-8">
+                                            <div className="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-white/20" />
+                                            <div className="absolute left-1 top-4 w-px h-full bg-white/5" />
+
+                                            <div className="text-[8px] font-black uppercase tracking-[0.3em] text-white/20 mb-2">
+                                                {timeAgo(act.timestamp)}
+                                            </div>
+                                            <h4 className="text-[11px] font-black uppercase tracking-widest mb-2">{act.title}</h4>
+                                            <p className="text-[10px] text-white/40 italic leading-relaxed">{act.description}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
+                            <div className="mt-12 pt-12 border-t border-white/5">
+                                <Link href="/seller/analytics">
+                                    <button className="w-full py-4 bg-white/5 border border-white/10 rounded-2xl text-[9px] font-black uppercase tracking-[0.3em] hover:bg-white/10 transition-all flex items-center justify-center gap-3 group">
+                                        Analyze Full Data Spectrum
+                                        <TrendingUp size={12} className="group-hover:translate-x-1 transition-transform" />
                                     </button>
                                 </Link>
                             </div>
-                        ) : (
-                            <div className="grid grid-cols-1 gap-4">
-                                {products.map((product) => (
-                                    <div key={product.id} className="flex items-center justify-between p-6 bg-white/[0.03] border border-white/5 rounded-3xl hover:border-white/10 transition-all group">
-                                        <div className="flex items-center gap-6">
-                                            <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/5 overflow-hidden flex-shrink-0">
-                                                {product.images?.[0] ? (
-                                                    <img src={product.images[0].url} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                                                ) : (
-                                                    <div className="w-full h-full flex items-center justify-center text-white/10">
-                                                        <Package size={24} />
-                                                    </div>
-                                                )}
-                                            </div>
-                                            <div>
-                                                <h3 className="text-xl font-bold uppercase tracking-tight">{product.name}</h3>
-                                                <p className="text-white/30 text-[10px] font-black uppercase tracking-widest">{product.category}</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-8">
-                                            <div className="text-right">
-                                                <div className="text-sm font-bold">${product.price}</div>
-                                                <div className={`text-[8px] font-black uppercase tracking-[0.3em] ${product.approvedForSale ? 'text-green-500/50' : 'text-amber-500/50'}`}>
-                                                    {product.approvedForSale ? 'ACTIVE' : 'PENDING_REVIEW'}
-                                                </div>
-                                            </div>
-                                            <Link href={`/seller/products/${product.id}/edit`}>
-                                                <button className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-[9px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">
-                                                    Edit
-                                                </button>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
+                        </div>
                     </div>
                 </div>
             </main>

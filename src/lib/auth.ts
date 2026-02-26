@@ -54,30 +54,27 @@ export const auth = betterAuth({
         lastLoginMethod(),
         nextCookies()
     ],
-    hooks: {
-        after: async (ctx: any) => {
-            try {
-                if (!ctx) return;
-                const path = ctx.path || "";
-
-                // Only execute elevation logic on successful signup
-                if (path.includes("sign-up/email") && ctx.user?.id && ctx.user?.email) {
-                    const email = ctx.user.email.toLowerCase();
-                    if (allowedAdmins.length > 0 && allowedAdmins.includes(email)) {
-                        console.log(`[AUTH_SUCCESS] Initializing admin handshake for ${email}`);
-                        await prisma.user.update({
-                            where: { id: ctx.user.id },
-                            data: { role: "admin" }
-                        }).catch(err => {
-                            console.error("[AUTH_ELEVATION_DB_ERROR] Registry rejection:", err.message);
-                        });
+    databaseHooks: {
+        user: {
+            create: {
+                after: async (user) => {
+                    try {
+                        const email = user.email.toLowerCase();
+                        if (allowedAdmins.length > 0 && allowedAdmins.includes(email)) {
+                            console.log(`[AUTH_SUCCESS] Initializing admin handshake for ${email}`);
+                            await prisma.user.update({
+                                where: { id: user.id },
+                                data: { role: "admin" }
+                            }).catch(err => {
+                                console.error("[AUTH_ELEVATION_DB_ERROR] Registry rejection:", err.message);
+                            });
+                        }
+                    } catch (e: unknown) {
+                        const err = e as Error;
+                        console.error("[AUTH_HOOK_ERROR] Stream integrity protected:", err.message);
                     }
                 }
-            } catch (e: unknown) {
-                const err = e as Error;
-                console.error("[AUTH_HOOK_ERROR] Stream integrity protected:", err.message);
             }
-            return ctx;
         }
-    },
+    }
 });

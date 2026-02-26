@@ -20,12 +20,14 @@ function SignUpContent() {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [successMsg, setSuccessMsg] = useState("");
     const router = useRouter();
 
     const handleSignUp = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
         setError("");
+        setSuccessMsg("");
 
         const trimmedEmail = email.trim().toLowerCase();
         const trimmedName = name.trim();
@@ -95,7 +97,7 @@ function SignUpContent() {
 
                     // Email already registered — user needs to sign in instead
                     if (status === 422 || code === "USER_ALREADY_EXISTS") {
-                        return { success: false, shouldRetry: false, errorMsg: "Identity localized in existing registry. Access Console instead." };
+                        return { success: false, shouldRetry: false, errorMsg: "Email already registered. Please sign in." };
                     }
 
                     // Unknown auth error
@@ -139,7 +141,10 @@ function SignUpContent() {
 
         if (result.success) {
             console.log("[AUTH_SIGNUP_SUCCESS] Redirecting to terminal...");
-            window.location.href = callbackUrl || "/shop";
+            setSuccessMsg("Signup successful. Redirecting...");
+            setTimeout(() => {
+                window.location.href = callbackUrl || "/shop";
+            }, 1000);
             return;
         }
 
@@ -201,6 +206,15 @@ function SignUpContent() {
                                         Go to Sign In →
                                     </Link>
                                 )}
+                            </motion.div>
+                        )}
+                        {successMsg && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl text-emerald-400 text-xs font-bold uppercase tracking-wider text-center space-y-3"
+                            >
+                                <p>{successMsg}</p>
                             </motion.div>
                         )}
 

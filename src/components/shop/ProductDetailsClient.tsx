@@ -7,6 +7,7 @@ import { createCheckoutSession } from "@/app/_actions/stripe";
 import { motion } from "framer-motion";
 import { authClient } from "@/lib/auth-client";
 import { useRouter, usePathname } from "next/navigation";
+import { RequestDemoModal } from "./RequestDemoModal";
 
 interface ProductDetailsClientProps {
     product: {
@@ -26,6 +27,7 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
     const { addToCart } = useCart();
     const [isAdding, setIsAdding] = useState(false);
     const [isBuying, setIsBuying] = useState(false);
+    const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
     const { data: session } = authClient.useSession();
     const router = useRouter();
     const pathname = usePathname();
@@ -98,6 +100,15 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
                         </>
                     )}
                 </motion.button>
+
+                <motion.button
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                    onClick={() => setIsDemoModalOpen(true)}
+                    className="w-full py-5 bg-transparent border border-white/10 text-white font-black text-[10px] uppercase tracking-[0.3em] rounded-2xl hover:bg-white/5 transition-all flex items-center justify-center gap-3 mt-4"
+                >
+                    Request Demo
+                </motion.button>
             </div>
 
             <div className="pt-6 border-t border-white/5 space-y-3">
@@ -106,6 +117,12 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
                     <span className="text-[10px] font-black uppercase tracking-widest">Stripe Security Protocol Active</span>
                 </div>
             </div>
+
+            <RequestDemoModal
+                isOpen={isDemoModalOpen}
+                onClose={() => setIsDemoModalOpen(false)}
+                productName={product.name}
+            />
         </div>
     );
 }
