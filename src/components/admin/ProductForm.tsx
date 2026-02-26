@@ -12,8 +12,10 @@ import {
     Plus,
     X,
     Cpu,
-    Check
+    Check,
+    Loader2
 } from "lucide-react";
+import ImageUpload from "@/components/shop/ImageUpload";
 
 interface ProductFormProps {
     action: (prevState: any, formData: FormData) => Promise<any>;
@@ -238,21 +240,20 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
                 <div className="flex items-center justify-between mb-8">
                     <div className="flex items-center gap-4">
                         <ImageIcon size={16} className="text-white/20" />
-                        <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Primary Visual Artifact</h3>
+                        <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Visual Artifact Distribution</h3>
                     </div>
                 </div>
-                <div className="space-y-4">
-                    <div className="relative group">
-                        <input
-                            type="url"
-                            value={imageUrl}
-                            onChange={(e) => setImageUrl(e.target.value)}
-                            required
-                            placeholder="IMAGE_URL (DIRECT LINK)"
-                            className="w-full px-6 py-4 bg-white/[0.02] border border-white/5 rounded-2xl text-[10px] font-mono text-white/40 focus:text-white transition-all uppercase"
-                        />
+                <div className="space-y-6">
+                    <ImageUpload
+                        onUploadAction={setImageUrl}
+                        initialUrl={imageUrl}
+                    />
+                    <div className="flex items-center gap-4 p-6 bg-white/[0.02] border border-white/5 rounded-3xl">
+                        <Check size={16} className="text-white/20" />
+                        <p className="text-[8px] font-black uppercase tracking-[0.2em] text-white/20 italic leading-loose">
+                            Requirement: One high-fidelity preview image at 1200x800 industrial aspect ratio. 100KB WebP optimization is automatic.
+                        </p>
                     </div>
-                    <p className="text-[8px] text-white/10 uppercase tracking-widest ml-2 italic">Requirement: One high-fidelity preview image at 1200x800 industrial aspect ratio.</p>
                 </div>
             </div>
 
@@ -325,6 +326,6 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
                     <Plus size={14} />
                 </button>
             </div>
-        </form>
+        </form >
     );
 }

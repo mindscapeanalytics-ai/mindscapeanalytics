@@ -76,12 +76,12 @@ export default function BecomeSellerForm() {
             )}
 
             <div className="space-y-4">
-                <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/40 ml-1">Store Nomenclature *</label>
+                <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/40 ml-1">Creator / Shop Name *</label>
                 <input
                     type="text"
                     name="storeName"
                     required
-                    placeholder="ALPHANUMERIC_ID"
+                    placeholder="E.G. NEURAL_STUDIOS"
                     className="w-full px-6 py-4 bg-white/[0.03] border border-white/5 rounded-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 focus:bg-white/[0.05] transition-all backdrop-blur-xl uppercase font-bold tracking-widest text-sm"
                 />
             </div>
@@ -106,9 +106,9 @@ export default function BecomeSellerForm() {
                     disabled={isActionPending}
                     className="w-full py-6 bg-white text-black rounded-2xl font-black text-xs uppercase tracking-[0.3em] hover:bg-white/90 transition-all shadow-[0_0_50px_rgba(255,255,255,0.1)] active:scale-95 group flex items-center justify-center gap-4 disabled:opacity-50"
                 >
-                    {isActionPending ? "SYNCHRONIZING..." : (
+                    {isActionPending ? "INITIALIZING..." : (
                         <>
-                            INITIALIZE VENDOR TERMINAL
+                            Launch Your Shop
                             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                         </>
                     )}

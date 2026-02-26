@@ -100,26 +100,26 @@ export default function Navbar() {
     return (
         <nav
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4 flex justify-center",
-                isScrolled ? "py-3" : "py-6"
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 flex flex-col items-center",
+                isScrolled ? "pt-4" : "pt-8"
             )}
         >
             <div
                 className={cn(
-                    "w-fit min-w-[320px] max-w-[95vw] flex items-center justify-between gap-8 px-6 py-2 rounded-full transition-all duration-[800ms] border relative",
+                    "w-fit min-w-[320px] max-w-[95vw] flex items-center justify-between px-4 py-2 rounded-full transition-all duration-[800ms] border relative",
                     isScrolled
-                        ? "bg-zinc-950/80 backdrop-blur-3xl border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
-                        : "bg-transparent/40 backdrop-blur-md border-white/5"
+                        ? "bg-zinc-950/80 backdrop-blur-3xl backdrop-saturate-[1.8] border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+                        : "bg-transparent/40 backdrop-blur-md backdrop-saturate-[1.2] border-white/5"
                 )}
             >
-                <Link href="/" className="relative flex items-center group pl-2 pr-4 border-r border-white/5">
-                    <div className="relative flex items-center gap-2 h-9 px-1">
+                <Link href="/" className="relative flex items-center group pl-2 pr-6 border-r border-white/5 h-10">
+                    <div className="relative flex items-center gap-2 h-full">
                         <Image
                             src="/images/logo/mindscape-analytics.png"
                             alt="Mindscape Analytics"
-                            width={120}
-                            height={28}
-                            className="h-7 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 transition-all duration-500 group-hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                            width={110}
+                            height={24}
+                            className="h-6 w-auto object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]"
                         />
                     </div>
                 </Link>
@@ -135,11 +135,11 @@ export default function Navbar() {
                         >
                             <Link
                                 href={link.href}
-                                className="text-white/40 hover:text-white text-[10px] font-black uppercase tracking-[0.15em] transition-all relative py-3 flex items-center gap-1 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"
+                                className="text-white/40 hover:text-white text-[10px] font-black uppercase tracking-[0.2em] transition-all relative py-3 flex items-center gap-1.5 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"
                             >
                                 {link.name}
                                 {link.submenu && <ChevronDown size={10} className="opacity-20 group-hover:opacity-100 transition-opacity" />}
-                                <span className="absolute bottom-1.5 left-0 w-0 h-[1px] bg-white transition-all duration-500 group-hover:w-full" />
+                                <span className="absolute bottom-1.5 left-0 w-0 h-[1px] bg-white/40 transition-all duration-500 group-hover:w-full" />
                             </Link>
 
                             {/* Dropdown Menu - Professional HUD Style */}
@@ -177,12 +177,12 @@ export default function Navbar() {
                         <div className="relative group/profile"
                             onMouseEnter={() => setActiveDropdown("profile")}
                             onMouseLeave={() => setActiveDropdown(null)}>
-                            <button className="flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-zinc-900 transition-all">
-                                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-[9px] font-black text-white uppercase italic">
+                            <button className="flex items-center gap-3 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/20 transition-all">
+                                <div className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-500/80 to-indigo-600/80 flex items-center justify-center text-[8px] font-black text-white uppercase italic shadow-lg">
                                     {session.user.name?.charAt(0) || "U"}
                                 </div>
-                                <span className="text-[9px] font-black text-white/50 uppercase tracking-[0.15em]">{session.user.name?.split(" ")[0]}</span>
-                                {isAdmin && <ShieldCheck className="w-3 h-3 text-blue-400" />}
+                                <span className="text-[9px] font-black text-white/40 group-hover/profile:text-white/70 uppercase tracking-[0.2em] transition-colors">{session.user.name?.split(" ")[0]}</span>
+                                {isAdmin && <ShieldCheck className="w-3 h-3 text-blue-400/60" />}
                             </button>
 
                             <AnimatePresence>
@@ -228,8 +228,8 @@ export default function Navbar() {
                             </AnimatePresence>
                         </div>
                     ) : (
-                        <Link href="/sign-in" className="group/btn">
-                            <button className="bg-white text-black px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/90 transition-all flex items-center gap-2">
+                        <Link href="/sign-in" className="group/btn h-full flex items-center">
+                            <button className="bg-white text-black px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.25em] hover:bg-white/90 transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)] active:scale-95">
                                 Register
                                 <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
                             </button>
@@ -237,41 +237,49 @@ export default function Navbar() {
                     )}
                 </div>
 
-                {/* Mobile Toggle */}
-                <button
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="lg:hidden p-2 text-white/50 hover:text-white transition-colors"
-                >
-                    {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                {/* Mobile Toggle & Status */}
+                <div className="lg:hidden flex items-center gap-3 pr-2">
+                    <CartIcon />
+                    <button
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        className="p-2.5 bg-white/5 border border-white/10 rounded-xl text-white/50 hover:text-white transition-all active:scale-90"
+                    >
+                        {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                    </button>
+                </div>
             </div>
 
-            {/* Mobile Navigation */}
+            {/* Mobile Navigation HUD Extension */}
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="lg:hidden mt-4 bg-zinc-950/95 backdrop-blur-3xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl"
+                        initial={{ opacity: 0, height: 0, y: -20 }}
+                        animate={{ opacity: 1, height: "auto", y: 0 }}
+                        exit={{ opacity: 0, height: 0, y: -20 }}
+                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                        className="lg:hidden w-fit min-w-[320px] max-w-[95vw] mt-3 bg-zinc-950/90 backdrop-blur-3xl backdrop-saturate-[1.8] border border-white/10 rounded-[2.5rem] overflow-hidden shadow-[0_32px_64px_rgba(0,0,0,0.8)] relative z-40"
                     >
-                        <div className="p-8 space-y-6">
+                        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-[length:24px_24px] opacity-[0.03] pointer-events-none" />
+
+                        <div className="p-8 space-y-10 relative z-10">
                             {navLinks.map((link) => (
-                                <div key={link.name}>
+                                <div key={link.name} className="space-y-4">
                                     <Link
                                         href={link.href}
-                                        className="block text-white/60 hover:text-white font-black py-2 uppercase tracking-[0.2em] text-[11px]"
+                                        className="inline-flex items-center gap-3 text-white/40 hover:text-white font-black py-1 uppercase tracking-[0.3em] text-[10px] transition-all"
                                         onClick={() => !link.submenu && setMobileMenuOpen(false)}
                                     >
+                                        <span className="w-1.5 h-1.5 rounded-full bg-white/10" />
                                         {link.name}
                                     </Link>
+
                                     {link.submenu && (
-                                        <div className="ml-4 mt-2 space-y-3 border-l border-white/5 pl-6">
+                                        <div className="ml-5 grid grid-cols-1 gap-4 border-l border-white/5 pl-8">
                                             {link.submenu.map((item) => (
                                                 <Link
                                                     key={item.name}
                                                     href={item.href}
-                                                    className="block text-white/30 hover:text-white text-[10px] font-black uppercase tracking-widest"
+                                                    className="block text-white/20 hover:text-white text-[9px] font-black uppercase tracking-[0.2em] transition-all"
                                                     onClick={() => setMobileMenuOpen(false)}
                                                 >
                                                     {item.name}
@@ -282,47 +290,47 @@ export default function Navbar() {
                                 </div>
                             ))}
 
-                            <div className="pt-8 border-t border-white/5 flex flex-col gap-6">
-                                <CartIcon />
-
+                            <div className="pt-10 border-t border-white/5">
                                 {session ? (
-                                    <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-                                        <div className="mb-6">
-                                            <p className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em] mb-1">Identity Decentralized</p>
-                                            <p className="text-[11px] font-bold text-white/70">{session.user.email}</p>
+                                    <div className="space-y-6">
+                                        <div className="flex items-center gap-4 px-6 py-4 bg-white/5 border border-white/5 rounded-2xl">
+                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-[10px] font-black text-white italic shadow-lg">
+                                                {session.user.name?.charAt(0) || "U"}
+                                            </div>
+                                            <div className="flex-1 overflow-hidden">
+                                                <p className="text-[11px] font-bold text-white/80 truncate leading-none mb-1">{session.user.name}</p>
+                                                <p className="text-[8px] font-black text-white/20 uppercase tracking-widest truncate">{session.user.email}</p>
+                                            </div>
                                         </div>
-                                        <div className="flex flex-col gap-3">
+
+                                        <div className="grid grid-cols-1 gap-3">
                                             {isAdmin && (
-                                                <Link href="/admin" onClick={() => setMobileMenuOpen(false)} className="px-6 py-4 bg-blue-500 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] text-center shadow-lg shadow-blue-500/20 mb-2">
+                                                <Link href="/admin" onClick={() => setMobileMenuOpen(false)} className="group flex items-center justify-between px-8 py-5 bg-blue-600 text-white rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/20 active:scale-95 transition-all">
                                                     Master Command
+                                                    <ShieldCheck size={14} className="opacity-40" />
                                                 </Link>
                                             )}
                                             {isSeller && (
-                                                <div className="flex flex-col gap-2 mb-2">
-                                                    <Link href="/seller" onClick={() => setMobileMenuOpen(false)} className="px-6 py-4 bg-white/10 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] text-center border border-white/10">
-                                                        Asset Terminal
-                                                    </Link>
-                                                    <Link href="/seller/products/new" onClick={() => setMobileMenuOpen(false)} className="px-6 py-4 bg-white/5 text-white/60 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] text-center border border-white/5">
-                                                        Deploy New Asset
-                                                    </Link>
-                                                </div>
-                                            )}
-                                            {!isSeller && session && (
-                                                <Link href="/become-seller" onClick={() => setMobileMenuOpen(false)} className="px-6 py-4 bg-white/10 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] text-center border border-white/10 mb-2">
-                                                    Become Seller
+                                                <Link href="/seller" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between px-8 py-5 bg-white/5 border border-white/10 text-white rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.3em] hover:bg-white/10 active:scale-95 transition-all">
+                                                    Asset Terminal
+                                                    <LayoutDashboard size={14} className="opacity-20" />
                                                 </Link>
                                             )}
                                             <button
                                                 onClick={handleSignOut}
-                                                className="px-6 py-4 bg-white/5 border border-white/10 text-white/40 hover:text-red-400 hover:border-red-500/20 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] transition-all"
+                                                className="w-full flex items-center justify-center gap-3 py-5 text-red-400/50 hover:text-red-400 text-[10px] font-black uppercase tracking-[0.3em] transition-all"
                                             >
-                                                Sign Out
+                                                <LogOut size={14} />
+                                                Terminate Session
                                             </button>
                                         </div>
                                     </div>
                                 ) : (
                                     <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
-                                        <button className="w-full bg-white text-black py-4 rounded-xl text-[10px] font-black uppercase tracking-[0.3em]">Initialize Access</button>
+                                        <button className="w-full bg-white text-black py-6 rounded-[2rem] text-[11px] font-black uppercase tracking-[0.4em] shadow-2xl active:scale-95 transition-all flex items-center justify-center gap-3">
+                                            Initialize Access
+                                            <ArrowRight size={14} />
+                                        </button>
                                     </Link>
                                 )}
                             </div>

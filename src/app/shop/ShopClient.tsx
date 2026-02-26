@@ -110,10 +110,11 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
                         <motion.h1
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="text-7xl md:text-9xl font-black tracking-tightest leading-[0.85] mb-10 uppercase italic"
-                            style={{ fontSize: "clamp(3.5rem, 15vw, 15rem)" }}
+                            className="text-6xl md:text-9xl font-black tracking-tightest leading-[0.85] mb-10 uppercase italic text-center mx-auto"
+                            style={{ fontSize: "clamp(2.5rem, 15vw, 15rem)" }}
                         >
-                            ELITE <br className="md:hidden" /><span className="text-white/20 not-italic">ASSETS.</span>
+                            SYSTEM <br className="md:hidden" />
+                            <span className="block text-center text-white/20 not-italic">ARCHIVES.</span>
                         </motion.h1>
 
                         <motion.div
@@ -129,8 +130,8 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
                                 </span>
                             </div>
                             <div className="w-px h-12 bg-white/5 hidden md:block" />
-                            <p className="max-w-xs text-[11px] text-white/40 font-black uppercase tracking-widest leading-relaxed italic text-center md:text-left">
-                                Premium digital assets, projects, and ideas built by elite creators.
+                            <p className="max-w-md text-[11px] text-white/40 font-black uppercase tracking-widest leading-relaxed italic text-center">
+                                Monetize your code. Get your shop up and running in minutes. Join our elite architect network.
                             </p>
                             <div className="w-px h-12 bg-white/5 hidden md:block" />
                             <div className="flex flex-col items-center">
@@ -139,6 +140,26 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
                                     {new Set((initialProducts as any[]).map(p => p.sellerId).filter(Boolean)).size || "—"}
                                 </span>
                             </div>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="mt-16 flex flex-wrap justify-center gap-6"
+                        >
+                            <Link href="/become-seller">
+                                <button className="px-10 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] rounded-2xl hover:bg-white/90 transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] active:scale-95 flex items-center gap-3">
+                                    Get Your Shop
+                                    <ArrowRight size={14} />
+                                </button>
+                            </Link>
+                            <Link href="/shop?category=ai_agents">
+                                <button className="px-10 py-5 bg-white/5 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-2xl hover:bg-white/10 transition-all flex items-center gap-3">
+                                    Explore Archives
+                                    <Box size={14} className="opacity-40" />
+                                </button>
+                            </Link>
                         </motion.div>
                     </div>
                 </header>

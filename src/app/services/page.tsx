@@ -19,6 +19,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { PremiumCard } from "@/components/ui/PremiumCard";
+import TechStackShowcase from "@/components/services/TechStackShowcase";
+import TestimonialCarousel from "@/components/services/TestimonialCarousel";
 
 const services = [
     {
@@ -230,6 +232,9 @@ export default function ServicesPage() {
                 </div>
             </section>
 
+            {/* --- Technical Infrastructure Section --- */}
+            <TechStackShowcase />
+
             {/* --- Process Section --- */}
             <section className="py-32 bg-transparent border-t border-white/5">
                 <div className="container mx-auto px-6">
@@ -247,7 +252,7 @@ export default function ServicesPage() {
                         </h2>
                         <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.6em] font-black italic">The engineering workflow</span>
                     </motion.div>
-                    +
+
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
                         {process.map((item, index) => (
                             <motion.div
@@ -270,6 +275,9 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
+
+            {/* --- Global Validation Section --- */}
+            <TestimonialCarousel />
 
             {/* --- Managed Subscription Section --- */}
             <section className="py-24 border-t border-white/5 bg-white text-black">
