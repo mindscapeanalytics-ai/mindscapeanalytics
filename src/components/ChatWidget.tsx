@@ -145,8 +145,8 @@ export default function ChatWidget() {
                         {/* Header */}
                         <div className="w-full flex items-center justify-between p-4 border-b border-white/5 bg-gradient-to-r from-white/[0.05] to-transparent">
                             <div className="flex items-center gap-3">
-                                <div className="p-2 bg-indigo-500/20 rounded-xl border border-indigo-500/30">
-                                    <Bot size={18} className="text-indigo-400" />
+                                <div className="p-2 bg-white/10 rounded-xl border border-white/20">
+                                    <Bot size={18} className="text-white/80" />
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="text-xs font-black uppercase tracking-[0.2em] text-white">Mindscape AI</span>
@@ -180,8 +180,8 @@ export default function ChatWidget() {
                                                     <User size={12} className="text-white/60" />
                                                 </div>
                                             ) : (
-                                                <div className="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30">
-                                                    <Cpu size={12} className="text-indigo-400" />
+                                                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+                                                    <Cpu size={12} className="text-white/60" />
                                                 </div>
                                             )}
                                         </div>
@@ -202,7 +202,7 @@ export default function ChatWidget() {
                                                         const bulletContent = line.trim().substring(1).trim();
                                                         return (
                                                             <div key={i} className="flex gap-2 items-start my-1">
-                                                                <span className="text-blue-500 mt-1">•</span>
+                                                                <span className="text-white/40 mt-1">•</span>
                                                                 <span dangerouslySetInnerHTML={{ __html: formattedLine.replace(/^[•-]\s*/, '') }} />
                                                             </div>
                                                         );
@@ -223,8 +223,8 @@ export default function ChatWidget() {
                                     className="flex w-full justify-start mt-2"
                                 >
                                     <div className="flex gap-3">
-                                        <div className="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30 animate-pulse">
-                                            <Bot size={12} className="text-indigo-400" />
+                                        <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center border border-white/20 animate-pulse">
+                                            <Bot size={12} className="text-white/60" />
                                         </div>
                                         <div className="bg-white/[0.03] border border-white/5 p-3 rounded-2xl rounded-tl-sm flex gap-1 items-center">
                                             <span className="w-1 h-1 bg-white/40 rounded-full animate-bounce [animation-delay:-0.3s]" />

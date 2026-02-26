@@ -105,7 +105,8 @@ export default function CaseStudies() {
                                         fill
                                         priority={index === 0}
                                         className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
-                                        sizes="(max-width: 1024px) 100vw, 50vw"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                                        loading={index < 2 ? "eager" : "lazy"}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
 

@@ -179,7 +179,7 @@ export default function FounderPortfolio() {
             <Navbar />
 
             {/* --- INDUSTRIAL HERO SECTION --- */}
-            <section className="relative h-screen flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-screen md:h-screen flex items-center justify-center overflow-hidden py-20 md:py-0">
                 <motion.div
                     style={{ opacity: opacityHero, scale: scaleHero }}
                     className="container mx-auto px-6 z-10 flex flex-col items-center text-center"
@@ -188,16 +188,18 @@ export default function FounderPortfolio() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="relative w-48 h-48 md:w-64 md:h-64 mb-12"
+                        className="relative w-48 h-48 md:w-64 md:h-64 mb-12 aspect-square"
                     >
                         <div className="absolute inset-0 rounded-full border-2 border-white/10 animate-[spin_10s_linear_infinite]" />
                         <div className="absolute inset-[-10px] rounded-full border border-white/5 animate-[spin_15s_linear_infinite_reverse]" />
-                        <div className="w-full h-full rounded-full overflow-hidden border-4 border-white grayscale contrast-125 shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+                        <div className="w-full h-full rounded-full overflow-hidden border-4 border-white grayscale contrast-125 shadow-[0_0_50px_rgba(255,255,255,0.1)] relative">
                             <Image
                                 src="/images/team/founder.webp"
                                 alt="Zeeshan Keerio"
                                 fill
                                 className="object-cover"
+                                priority
+                                sizes="(max-width: 768px) 192px, 256px"
                             />
                         </div>
                     </motion.div>
@@ -258,7 +260,7 @@ export default function FounderPortfolio() {
                                 { icon: ShieldCheck, label: "Cybersecurity", val: "Hardened" }
                             ].map((stat, i) => (
                                 <div key={i} className="p-8 rounded-[2rem] bg-white/[0.03] border border-white/10 flex flex-col items-center text-center gap-4 group hover:bg-white hover:text-black transition-all duration-500">
-                                    <stat.icon size={24} className="text-white group-hover:text-black transition-colors" />
+                                    <stat.icon size={24} className="text-white/40 group-hover:text-black transition-colors" />
                                     <div className="space-y-1">
                                         <div className="text-[9px] font-black uppercase tracking-widest opacity-40">{stat.label}</div>
                                         <div className="text-xl font-black font-syncopate">{stat.val}</div>
@@ -293,7 +295,9 @@ export default function FounderPortfolio() {
                                             src={project.image}
                                             alt={project.title}
                                             fill
-                                            className="object-cover grayscale saturate-50 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                                            className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 group-hover:contrast-125"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                            loading={i < 3 ? "eager" : "lazy"}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
                                         <div className="absolute top-6 left-6 flex flex-wrap gap-2">

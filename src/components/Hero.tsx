@@ -45,23 +45,23 @@ export default function Hero() {
         <section className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden bg-transparent pt-20 pb-10">
             {/* The global CinematicBackground handles the unified grid. Local grid removed to prevent Moire conflicts. */}
 
-            {/* Hero Layer 2: Kinetic Atmospheric Glows - Kept lightweight */}
-            <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
+            {/* Hero Layer 2: Kinetic Atmospheric Glows - Calibrated for monochromatic institutional design */}
+            <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
                 <motion.div
                     animate={{
                         scale: [1, 1.15, 1],
-                        opacity: [0.3, 0.5, 0.3],
+                        opacity: [0.2, 0.4, 0.2],
                     }}
                     transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12)_0%,transparent_70%)] rounded-full will-change-transform"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08)_0%,transparent_70%)] rounded-full will-change-transform"
                 />
                 <motion.div
                     animate={{
                         scale: [1.15, 1, 1.15],
-                        opacity: [0.2, 0.4, 0.2],
+                        opacity: [0.15, 0.3, 0.15],
                     }}
                     transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_70%)] rounded-full will-change-transform"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)] rounded-full will-change-transform"
                 />
             </div>
 

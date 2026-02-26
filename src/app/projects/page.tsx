@@ -413,7 +413,7 @@ export default function ProjectsPage() {
                                             <ul className="space-y-3">
                                                 {project.results.map(res => (
                                                     <li key={res} className="flex items-start gap-3">
-                                                        <Shield className="w-4 h-4 text-emerald-500/80 shrink-0 mt-0.5" />
+                                                        <Shield className="w-4 h-4 text-white/40 shrink-0 mt-0.5" />
                                                         <span className="text-sm font-bold uppercase tracking-wide text-white/90">{res}</span>
                                                     </li>
                                                 ))}

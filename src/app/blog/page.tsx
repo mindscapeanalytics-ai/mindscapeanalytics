@@ -26,8 +26,7 @@ const BLOG_POSTS = [
         author: "Dr. Aris Thorne",
         category: "Artificial Intelligence",
         readTime: "8 min",
-        icon: Brain,
-        accent: "text-blue-400"
+        icon: Brain
     },
     {
         title: "Quantum Data Engineering: Architecting for the Next Computational Leap",
@@ -36,8 +35,7 @@ const BLOG_POSTS = [
         author: "Sarah Jenkins",
         category: "Data Engineering",
         readTime: "12 min",
-        icon: Database,
-        accent: "text-purple-400"
+        icon: Database
     },
     {
         title: "Neural UI: The End of Traditional Navigation as We Know It",
@@ -46,8 +44,7 @@ const BLOG_POSTS = [
         author: "Marcus Vane",
         category: "User Experience",
         readTime: "6 min",
-        icon: Cpu,
-        accent: "text-green-400"
+        icon: Cpu
     },
     {
         title: "Global Liquidity Protocols: Web3 Payouts and the Future of Work",
@@ -56,8 +53,7 @@ const BLOG_POSTS = [
         author: "Elena Rossi",
         category: "Web3 / Finance",
         readTime: "10 min",
-        icon: Zap,
-        accent: "text-orange-400"
+        icon: Zap
     }
 ];
 
@@ -77,7 +73,7 @@ export default function BlogPage() {
                                 animate={{ opacity: 1, y: 0 }}
                                 className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full mb-8"
                             >
-                                <Zap size={12} className="text-yellow-400" />
+                                <Zap size={12} className="text-white/40" />
                                 <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/40">Intelligence_Stream // v2026</span>
                             </motion.div>
                             <motion.h1
@@ -112,7 +108,7 @@ export default function BlogPage() {
                             >
                                 <div className="p-10 md:p-14">
                                     <div className="flex items-center justify-between mb-10">
-                                        <div className={`p-4 bg-white/5 rounded-2xl ${post.accent} group-hover:bg-white group-hover:text-black transition-all duration-500`}>
+                                        <div className="p-4 bg-white/5 rounded-2xl text-white/40 group-hover:bg-white group-hover:text-black transition-all duration-500">
                                             <post.icon size={24} />
                                         </div>
                                         <div className="flex items-center gap-6 text-[9px] font-black uppercase tracking-widest text-white/20">
@@ -122,7 +118,7 @@ export default function BlogPage() {
                                     </div>
 
                                     <div className="mb-4">
-                                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400/80">{post.category}</span>
+                                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 group-hover:text-white/80 transition-colors">{post.category}</span>
                                     </div>
 
                                     <h2 className="text-3xl font-black mb-6 uppercase tracking-tighter leading-tight italic group-hover:translate-x-2 transition-transform duration-500">

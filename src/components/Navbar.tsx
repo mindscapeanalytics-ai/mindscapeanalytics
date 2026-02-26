@@ -14,6 +14,7 @@ export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+    const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
     const { data: session, isPending } = authClient.useSession();
     // Use explicit casting to ensure custom enterprise fields are recognized
     const userRole = (session?.user as any)?.role;
@@ -56,12 +57,6 @@ export default function Navbar() {
         {
             name: "Marketplace",
             href: "/shop",
-            submenu: [
-                { name: "All Digital Assets", href: "/shop" },
-                { name: "SaaS Templates", href: "/shop?category=saas" },
-                { name: "UX/UI Design Kits", href: "/shop?category=ui_ux" },
-                { name: "Neural Automations", href: "/shop?category=automations" },
-            ]
         },
         ...(isSeller ? [{
             name: "Architect Console",
@@ -106,7 +101,7 @@ export default function Navbar() {
         >
             <div
                 className={cn(
-                    "w-fit min-w-[320px] max-w-[95vw] flex items-center justify-between px-4 py-2 rounded-full transition-all duration-[800ms] border relative",
+                    "w-fit min-w-[300px] xs:min-w-[320px] max-w-[calc(100vw-3rem)] flex items-center justify-between px-4 py-2 rounded-full transition-all duration-[800ms] border relative mx-auto",
                     isScrolled
                         ? "bg-zinc-950/80 backdrop-blur-3xl backdrop-saturate-[1.8] border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
                         : "bg-transparent/40 backdrop-blur-md backdrop-saturate-[1.2] border-white/5"
@@ -178,11 +173,11 @@ export default function Navbar() {
                             onMouseEnter={() => setActiveDropdown("profile")}
                             onMouseLeave={() => setActiveDropdown(null)}>
                             <button className="flex items-center gap-3 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/20 transition-all">
-                                <div className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-500/80 to-indigo-600/80 flex items-center justify-center text-[8px] font-black text-white uppercase italic shadow-lg">
+                                <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-[8px] font-black text-white/70 uppercase italic border border-white/20">
                                     {session.user.name?.charAt(0) || "U"}
                                 </div>
                                 <span className="text-[9px] font-black text-white/40 group-hover/profile:text-white/70 uppercase tracking-[0.2em] transition-colors">{session.user.name?.split(" ")[0]}</span>
-                                {isAdmin && <ShieldCheck className="w-3 h-3 text-blue-400/60" />}
+                                {isAdmin && <ShieldCheck className="w-3 h-3 text-white/20" />}
                             </button>
 
                             <AnimatePresence>
@@ -198,7 +193,7 @@ export default function Navbar() {
                                             <p className="text-[11px] font-bold text-white/80 truncate leading-none">{session.user.email}</p>
                                         </div>
                                         {isAdmin && (
-                                            <Link href="/admin" className="flex items-center gap-3 px-6 py-3 text-blue-400 hover:bg-blue-500/10 transition-all text-[10px] font-black uppercase tracking-[0.2em]">
+                                            <Link href="/admin" className="flex items-center gap-3 px-6 py-3 text-white/80 hover:bg-white/5 transition-all text-[10px] font-black uppercase tracking-[0.2em]">
                                                 <LayoutDashboard size={14} /> Admin Terminal
                                             </Link>
                                         )}
@@ -253,40 +248,62 @@ export default function Navbar() {
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0, y: -20 }}
-                        animate={{ opacity: 1, height: "auto", y: 0 }}
-                        exit={{ opacity: 0, height: 0, y: -20 }}
+                        initial={{ opacity: 0, height: 0, y: -20, scale: 0.95 }}
+                        animate={{ opacity: 1, height: "auto", y: 0, scale: 1 }}
+                        exit={{ opacity: 0, height: 0, y: -20, scale: 0.95 }}
                         transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                        className="lg:hidden w-fit min-w-[320px] max-w-[95vw] mt-3 bg-zinc-950/90 backdrop-blur-3xl backdrop-saturate-[1.8] border border-white/10 rounded-[2.5rem] overflow-hidden shadow-[0_32px_64px_rgba(0,0,0,0.8)] relative z-40"
+                        className="lg:hidden w-fit min-w-[300px] xs:min-w-[320px] max-w-[calc(100vw-3rem)] mt-3 bg-zinc-950/95 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] overflow-hidden shadow-[0_32px_64px_rgba(0,0,0,0.8)] relative z-40 mx-auto"
                     >
                         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-[length:24px_24px] opacity-[0.03] pointer-events-none" />
 
-                        <div className="p-8 space-y-10 relative z-10">
+                        <div className="p-6 xs:p-8 space-y-8 relative z-10">
                             {navLinks.map((link) => (
                                 <div key={link.name} className="space-y-4">
-                                    <Link
-                                        href={link.href}
-                                        className="inline-flex items-center gap-3 text-white/40 hover:text-white font-black py-1 uppercase tracking-[0.3em] text-[10px] transition-all"
-                                        onClick={() => !link.submenu && setMobileMenuOpen(false)}
-                                    >
-                                        <span className="w-1.5 h-1.5 rounded-full bg-white/10" />
-                                        {link.name}
-                                    </Link>
-
-                                    {link.submenu && (
-                                        <div className="ml-5 grid grid-cols-1 gap-4 border-l border-white/5 pl-8">
-                                            {link.submenu.map((item) => (
-                                                <Link
-                                                    key={item.name}
-                                                    href={item.href}
-                                                    className="block text-white/20 hover:text-white text-[9px] font-black uppercase tracking-[0.2em] transition-all"
-                                                    onClick={() => setMobileMenuOpen(false)}
-                                                >
-                                                    {item.name}
-                                                </Link>
-                                            ))}
-                                        </div>
+                                    {link.submenu ? (
+                                        <button
+                                            onClick={() => setActiveMobileDropdown(activeMobileDropdown === link.name ? null : link.name)}
+                                            className="w-full flex items-center justify-between text-white/40 hover:text-white font-black py-1 uppercase tracking-[0.3em] text-[10px] transition-all"
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-white/10" />
+                                                {link.name}
+                                            </div>
+                                            <ChevronDown size={12} className={cn("transition-transform duration-300", activeMobileDropdown === link.name ? "rotate-180" : "rotate-0")} />
+                                        </button>
+                                    ) : (
+                                        <Link
+                                            href={link.href}
+                                            className="inline-flex items-center gap-3 text-white/40 hover:text-white font-black py-1 uppercase tracking-[0.3em] text-[10px] transition-all"
+                                            onClick={() => setMobileMenuOpen(false)}
+                                        >
+                                            <span className="w-1.5 h-1.5 rounded-full bg-white/10" />
+                                            {link.name}
+                                        </Link>
                                     )}
+
+                                    <AnimatePresence>
+                                        {link.submenu && activeMobileDropdown === link.name && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: "auto", opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                className="overflow-hidden ml-5 grid grid-cols-1 gap-4 border-l border-white/5 pl-8"
+                                            >
+                                                <div className="py-2 space-y-4">
+                                                    {link.submenu.map((item) => (
+                                                        <Link
+                                                            key={item.name}
+                                                            href={item.href}
+                                                            className="block text-white/20 hover:text-white text-[9px] font-black uppercase tracking-[0.2em] transition-all"
+                                                            onClick={() => setMobileMenuOpen(false)}
+                                                        >
+                                                            {item.name}
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </div>
                             ))}
 
@@ -294,7 +311,7 @@ export default function Navbar() {
                                 {session ? (
                                     <div className="space-y-6">
                                         <div className="flex items-center gap-4 px-6 py-4 bg-white/5 border border-white/5 rounded-2xl">
-                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-[10px] font-black text-white italic shadow-lg">
+                                            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-black text-white/70 italic border border-white/20">
                                                 {session.user.name?.charAt(0) || "U"}
                                             </div>
                                             <div className="flex-1 overflow-hidden">
@@ -305,7 +322,7 @@ export default function Navbar() {
 
                                         <div className="grid grid-cols-1 gap-3">
                                             {isAdmin && (
-                                                <Link href="/admin" onClick={() => setMobileMenuOpen(false)} className="group flex items-center justify-between px-8 py-5 bg-blue-600 text-white rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-blue-600/20 active:scale-95 transition-all">
+                                                <Link href="/admin" onClick={() => setMobileMenuOpen(false)} className="group flex items-center justify-between px-8 py-5 bg-white text-black rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-white/10 active:scale-95 transition-all">
                                                     Master Command
                                                     <ShieldCheck size={14} className="opacity-40" />
                                                 </Link>

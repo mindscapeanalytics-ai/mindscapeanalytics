@@ -141,22 +141,15 @@ export default function ProjectVision() {
         >
             {/* --- Cinematic Background --- */}
             <div className="absolute inset-0 pointer-events-none z-0">
-                {/* Unified grid handles this globally */}
+                {/* Unified grid handle globally by CinematicBackground component */}
 
-                {/* Atmospheric Glows */}
-                <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-white/[0.02] blur-[150px] rounded-full" />
-                <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-white/[0.01] blur-[150px] rounded-full" />
-
-                {/* Horizontal Scanline Overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] opacity-20" />
-
-                {/* Localized Glow Spots (Reactive) - Consolidated and Optimized */}
+                {/* Localized Glow Spot (Reactive) - Consolidated and Optimized for GPU */}
                 <motion.div
                     style={{
                         x: useTransform(smoothMouseX, (v: number) => v * 1.5),
                         y: useTransform(smoothMouseY, (v: number) => v * 1.5)
                     }}
-                    className="absolute z-0 w-[400px] h-[400px] bg-white/[0.02] blur-[100px] rounded-full pointer-events-none transform-gpu-fix"
+                    className="absolute z-0 w-[400px] h-[400px] bg-white/[0.02] blur-[120px] rounded-full pointer-events-none transform-gpu"
                 />
             </div>
 
@@ -260,14 +253,15 @@ export default function ProjectVision() {
                                 className="relative w-full h-full flex flex-col items-center justify-center"
                             >
                                 {/* Main Image Container */}
-                                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] group-hover:border-white/20 transition-all duration-700">
+                                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] group-hover:border-white/20 transition-all duration-700 transform-gpu">
                                     <Image
                                         src={activeProject.image}
                                         alt={activeProject.title}
                                         fill
                                         className="object-cover transition-all duration-1000 group-hover:scale-110"
-                                        priority
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 50vw"
+                                        priority={activeIndex < 3}
+                                        loading={activeIndex < 3 ? "eager" : "lazy"}
+                                        sizes="(max-width: 768px) 90vw, (max-width: 1200px) 60vw, 50vw"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
 
@@ -294,12 +288,12 @@ export default function ProjectVision() {
                                     </div>
                                 </div>
 
-                                {/* Floating Detail Label - Hidden on mobile if it overlaps, or positioned better */}
+                                {/* Floating Detail Label - Positioned strategically for mobile accessibility */}
                                 <motion.div
                                     initial={{ y: 20, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{ delay: 0.3 }}
-                                    className="absolute bottom-4 left-4 right-4 lg:bottom-[-20px] lg:left-10 lg:right-auto p-4 lg:p-6 bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-2xl max-w-sm z-30 shadow-2xl"
+                                    className="relative lg:absolute mt-6 lg:mt-0 lg:bottom-[-20px] lg:left-10 lg:right-auto p-4 lg:p-6 bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-2xl max-w-full lg:max-w-sm z-30 shadow-2xl"
                                 >
                                     <h4 className="text-white text-lg lg:text-xl font-black uppercase tracking-tighter mb-1 lg:mb-2">{activeProject.title}</h4>
                                     <p className="text-white/40 text-[9px] lg:text-[10px] leading-relaxed font-mono uppercase tracking-tight">{activeProject.description}</p>

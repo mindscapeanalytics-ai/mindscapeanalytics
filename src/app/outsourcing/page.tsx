@@ -84,7 +84,7 @@ export default function OutsourcingPage() {
                             animate={{ opacity: 1, y: 0 }}
                             className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full mb-8"
                         >
-                            <Globe size={14} className="text-blue-400" />
+                            <Globe size={14} className="text-white/40" />
                             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">Global Talent Network</span>
                         </motion.div>
 
@@ -173,9 +173,9 @@ export default function OutsourcingPage() {
                                 {ENGAGEMENT_MODELS.map((model, l) => {
                                     const ModelIcon = model.icon;
                                     return (
-                                        <div key={l} className="p-8 bg-zinc-950/50 backdrop-blur-xl border border-white/5 rounded-3xl hover:border-blue-500/30 transition-all group">
+                                        <div key={l} className="p-8 bg-zinc-950/50 backdrop-blur-xl border border-white/5 rounded-3xl hover:border-white/20 transition-all group">
                                             <div className="flex items-center gap-6">
-                                                <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-white/40 group-hover:text-blue-400 transition-colors">
+                                                <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-white/40 group-hover:text-white transition-colors">
                                                     <ModelIcon size={20} />
                                                 </div>
                                                 <div>
@@ -200,10 +200,10 @@ export default function OutsourcingPage() {
                             <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
                         </button>
                     </div>
-                </div>
-            </main>
+                </div >
+            </main >
 
             <Footer />
-        </div>
+        </div >
     );
 }

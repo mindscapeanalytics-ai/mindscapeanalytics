@@ -175,6 +175,9 @@ function ContactFormContent() {
 
             {/* Hero Section */}
             <section className="relative pt-44 pb-32 overflow-hidden">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-white/[0.02] blur-[150px] rounded-full pointer-events-none" />
+
                 <div className="container-standard relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -264,7 +267,7 @@ function ContactFormContent() {
                                         <a href="https://wa.me/13072106155" target="_blank">OPEN PROTOCOL</a>
                                     </Button>
                                     <div className="flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5">
-                                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                        <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
                                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">SYSTEM STATUS: READY</span>
                                     </div>
                                 </div>

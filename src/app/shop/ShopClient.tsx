@@ -111,33 +111,33 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
                         <motion.h1
                             initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="flex flex-col items-center justify-center font-black tracking-tighter leading-[0.8] mb-12 uppercase italic text-center w-full"
-                            style={{ fontSize: "clamp(3rem, 18vw, 16rem)" }}
+                            className="flex flex-col items-center justify-center font-black tracking-tighter leading-[0.8] mb-8 md:mb-12 uppercase italic text-center w-full"
+                            style={{ fontSize: "clamp(2.5rem, 15vw, 15rem)" }}
                         >
                             <span className="block translate-x-[-0.05em]">SYSTEM</span>
-                            <span className="block text-white/10 not-italic mt-[-0.1em] tracking-tight">ARCHIVES.</span>
+                            <span className="block text-white/5 not-italic mt-[-0.1em] tracking-tight">ARCHIVES.</span>
                         </motion.h1>
 
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.2 }}
-                            className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 border-t border-white/5 pt-10"
+                            className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 border-t border-white/5 pt-8 md:pt-10"
                         >
                             <div className="flex flex-col items-center">
-                                <span className="text-[9px] font-black text-white/30 uppercase tracking-[0.4em] mb-2">Total Assets</span>
-                                <span className="text-4xl font-black tracking-tighter text-white/90">
+                                <span className="text-[8px] md:text-[9px] font-black text-white/20 uppercase tracking-[0.4em] mb-1">Total Assets</span>
+                                <span className="text-3xl md:text-4xl font-black tracking-tighter text-white/80">
                                     {initialProducts.length.toLocaleString()}
                                 </span>
                             </div>
-                            <div className="w-px h-12 bg-white/5 hidden md:block" />
-                            <p className="max-w-md text-[11px] text-white/40 font-black uppercase tracking-widest leading-relaxed italic text-center">
+                            <div className="w-12 h-px md:w-px md:h-12 bg-white/5" />
+                            <p className="max-w-xs md:max-w-md text-[9px] md:text-[11px] text-white/30 font-black uppercase tracking-widest leading-relaxed italic text-center px-4">
                                 Monetize your code. Get your shop up and running in minutes. Join our elite architect network.
                             </p>
-                            <div className="w-px h-12 bg-white/5 hidden md:block" />
+                            <div className="w-12 h-px md:w-px md:h-12 bg-white/5" />
                             <div className="flex flex-col items-center">
-                                <span className="text-[9px] font-black text-white/30 uppercase tracking-[0.4em] mb-2">Elite Creators</span>
-                                <span className="text-4xl font-black tracking-tighter text-white/90">
+                                <span className="text-[8px] md:text-[9px] font-black text-white/20 uppercase tracking-[0.4em] mb-1">Elite Creators</span>
+                                <span className="text-3xl md:text-4xl font-black tracking-tighter text-white/80">
                                     {new Set((initialProducts as any[]).map(p => p.sellerId).filter(Boolean)).size || "—"}
                                 </span>
                             </div>
@@ -166,48 +166,52 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
                 </header>
 
                 {/* Unified Control Hub (Sticky) */}
-                <div className="sticky top-24 z-[100] mb-12">
+                <div className="sticky top-20 md:top-24 z-[100] mb-8 md:mb-12 px-2">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="bg-white/[0.03] backdrop-blur-3xl border border-white/10 rounded-[2rem] p-3 flex flex-col lg:flex-row gap-3 items-center shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] overflow-visible"
+                        className="bg-zinc-950/80 backdrop-blur-3xl border border-white/10 rounded-[2rem] md:rounded-full p-2 flex flex-col md:flex-row gap-2 items-center shadow-[0_32px_64px_rgba(0,0,0,0.6)]"
                     >
                         {/* Integrated Search */}
                         <div className="flex-1 w-full relative group">
-                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-white/40 group-focus-within:text-white transition-colors" size={20} />
+                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-white transition-colors" size={18} />
                             <input
                                 type="text"
                                 name="search"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                placeholder="Enter system query: templates, auth, components..."
-                                className="w-full pl-16 pr-4 py-5 bg-white/[0.02] border-none rounded-2xl text-white placeholder:text-white/20 focus:outline-none focus:bg-white/[0.05] transition-all font-medium"
+                                placeholder="Query Assets..."
+                                className="w-full pl-14 pr-4 py-4 md:py-5 bg-transparent border-none rounded-full text-white placeholder:text-white/20 focus:outline-none transition-all text-xs font-bold uppercase tracking-widest"
                             />
                             {searchQuery && (
                                 <button
                                     onClick={() => setSearchQuery("")}
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/40 hover:text-white transition-all bg-white/5 rounded-full"
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1.5 text-white/20 hover:text-white transition-all bg-white/5 rounded-full"
                                 >
-                                    <X size={14} />
+                                    <X size={12} />
                                 </button>
                             )}
                         </div>
 
-                        {/* Category Fast Switcher - Horizontal Scroll on Mobile */}
-                        <div className="flex items-center gap-2 p-1 bg-transparent/40 rounded-2xl w-full lg:w-auto overflow-x-auto no-scrollbar">
+                        {/* Category Fast Switcher - Integrated & Professional */}
+                        <div className="flex items-center gap-1.5 p-1 bg-white/[0.03] rounded-full w-full md:w-auto overflow-x-auto no-scrollbar scroll-smooth">
                             {PRIMARY_CATEGORIES.map((cat) => (
                                 <Link
                                     key={cat.id}
                                     href={cat.slug ? `/shop?category=${cat.slug}${searchQuery ? `&search=${searchQuery}` : ""}` : `/shop${searchQuery ? `?search=${searchQuery}` : ""}`}
-                                    className={`px-6 py-3.5 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 whitespace-nowrap ${activeCategoryId === (cat.id === "all" ? "all" : cat.slug)
-                                        ? "bg-white text-black"
-                                        : "text-white/40 hover:text-white hover:bg-white/5"
+                                    className={`px-5 py-3 rounded-full text-[9px] font-black uppercase tracking-[0.2em] transition-all duration-300 whitespace-nowrap ${activeCategoryId === (cat.id === "all" ? "all" : cat.slug)
+                                        ? "bg-white text-black shadow-lg"
+                                        : "text-white/30 hover:text-white hover:bg-white/5"
                                         }`}
                                 >
                                     {cat.name}
                                 </Link>
                             ))}
-
+                            <div className="w-px h-6 bg-white/5 mx-2 hidden md:block" />
+                            <button className="hidden md:flex items-center gap-2 px-6 py-3 text-[9px] font-black text-white/20 hover:text-white transition-colors uppercase tracking-[0.2em]">
+                                <SlidersHorizontal size={14} />
+                                FILTERS
+                            </button>
                         </div>
 
                     </motion.div>

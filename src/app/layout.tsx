@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: 'Mindscape Analytics LLC',
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: '/images/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Mindscape Analytics Architecture',
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     title: "Mindscape Analytics LLC | AI Infrastructure",
     description: "Architecting the future of automated enterprise systems.",
     creator: '@mindscapeai',
-    images: ['/images/og-image.jpg'],
+    images: ['/images/og-image.png'],
   },
   robots: {
     index: true,

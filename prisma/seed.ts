@@ -58,7 +58,7 @@ async function main() {
             demoUrl: 'https://lms.mindscapeanalytics.com/en',
             techStack: ['Next.js 15', 'PostgreSQL', 'Tailwind CSS', 'Stripe Integration', 'Vercel Deployment'],
             features: ['Drag-and-Drop Course Builder', 'Student Progress Tracking', 'Automated Certificate Generation', 'White-label Customization available'],
-            imageUrl: '/images/projects/LMS.webp',
+            imageUrl: '/images/projects/LMS_opt.webp',
         },
         {
             name: 'BreachData Intelligence Platform',
@@ -69,7 +69,7 @@ async function main() {
             demoUrl: 'https://breachdata.mindscapeanalytics.com/',
             techStack: ['React Enterprise', 'ElasticSearch Vectors', 'Redis Caching', 'Dark Web Telemetry'],
             features: ['Live Breach Search Engine', 'Compromised Credential Alerts', 'Domain & Identity Parsing', 'Extensive custom scraping available'],
-            imageUrl: '/images/projects/breachdata.webp',
+            imageUrl: '/images/projects/breachdata_opt.webp',
         },
         {
             name: 'Global Formations LLC Portal',
@@ -80,7 +80,7 @@ async function main() {
             demoUrl: 'https://llc.mindscapeanalytics.com/',
             techStack: ['System Automation', 'PDF Auto-Generation', 'Stripe Billing', 'DocuSign Integration'],
             features: ['One-Click LLC Incorporation', 'Registered Agent Dashboard', 'Compliance Reminders & Filings', 'State API automation ready'],
-            imageUrl: '/images/projects/global_formations.webp',
+            imageUrl: '/images/projects/global_formations_opt.webp',
         },
         // Premium Standard Products
         {
@@ -113,7 +113,7 @@ async function main() {
             price: 149.99,
             category: 'management_systems',
             approvedForSale: true,
-            imageUrl: '/images/projects/amazon_invontry_management_system.webp',
+            imageUrl: '/images/projects/amazon_invontry_management_system_opt.webp',
         },
         {
             name: 'AgriChain Logistics Platform',
@@ -121,7 +121,7 @@ async function main() {
             price: 599.00,
             category: 'management_systems',
             approvedForSale: true,
-            imageUrl: '/images/projects/AgriChian.webp',
+            imageUrl: '/images/projects/AgriChian_opt.webp',
         }
     ];
 
