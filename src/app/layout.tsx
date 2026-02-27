@@ -17,10 +17,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mindscape Analytics | Enterprise AI Asset Registry & Expert Execution",
-  description: "Mindscape Analytics builds high-performance AI systems, secure data asset registries, and scalable enterprise architecture. Deploying 2026-standard expert systems since 2025.",
+  title: "Mindscape Analytics | Enterprise AI Asset Shop & Expert Execution",
+  description: "Mindscape Analytics builds high-performance AI systems, secure AI asset shops, and scalable enterprise architecture. Deploying 2026-standard expert systems since 2025.",
   keywords: [
-    "AI Systems Engineering", "Custom Software Development", "Data Asset Registry",
+    "AI Systems Engineering", "Custom Software Development", "AI Asset Shop",
     "AI Automation Agency", "Mindscape Analytics", "Enterprise AI Solutions",
     "Automated Sales Agents", "Scalable Cloud Infrastructure", "Expert Execution Services"
   ],
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Mindscape Analytics | Enterprise AI Systems & Asset Registry",
+    title: "Mindscape Analytics | Enterprise AI Systems & Asset Shop",
     description: "Custom software architecture and AI automation systems engineered for scale. Founded 2025.",
     type: "website",
     url: 'https://mindscapeanalytics.com',
