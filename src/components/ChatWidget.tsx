@@ -74,6 +74,12 @@ export default function ChatWidget() {
         scrollToBottom();
     }, [messages]);
 
+    const getLocalResponse = (input: string) => {
+        const lowerInput = input.toLowerCase();
+        const match = RESPONSES.find(r => r.keywords.some(k => lowerInput.includes(k)));
+        return match ? match.response : "Query acknowledged. For advanced architectural technicalities, a direct engineering uplink is recommended. How else can I assist with your Mindscape inquiry?";
+    };
+
     const handleSend = async (e?: React.FormEvent, overrideText?: string) => {
         e?.preventDefault();
 
@@ -101,6 +107,8 @@ export default function ChatWidget() {
                 })
             });
 
+            if (!response.ok) throw new Error("Uplink timeout");
+
             const data = await response.json();
 
             if (data.content) {
@@ -109,11 +117,12 @@ export default function ChatWidget() {
                 throw new Error("No content received");
             }
         } catch (error) {
-            console.error("Chat error:", error);
+            console.warn("AI Uplink failed, switching to local tactical response:", error);
+            const fallbackContent = getLocalResponse(userMsg);
             setMessages(prev => [...prev, {
                 id: (Date.now() + 1).toString(),
                 type: "bot",
-                content: "Uplink interrupted. Please utilize the WhatsApp or Contact Form for direct architectural support."
+                content: `[Tactical Fallback] ${fallbackContent}`
             }]);
         } finally {
             setIsLoading(false);
@@ -123,14 +132,14 @@ export default function ChatWidget() {
     const QuickAction = ({ label, onClick }: { label: string, onClick: () => void }) => (
         <button
             onClick={onClick}
-            className="text-[9px] font-black uppercase tracking-widest text-white/50 border border-white/10 rounded-full px-3 py-1.5 hover:bg-white/10 hover:text-white transition-colors text-left whitespace-nowrap"
+            className="text-[9px] font-black uppercase tracking-widest text-white/40 border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:text-white transition-all text-left whitespace-nowrap active:scale-95"
         >
             {label}
         </button>
     );
 
     return (
-        <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end pointer-events-none">
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[100] flex flex-col items-end pointer-events-none">
 
             <AnimatePresence>
                 {isOpen && (
@@ -138,76 +147,80 @@ export default function ChatWidget() {
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        transition={{ duration: 0.2 }}
-                        className="mb-4 w-[calc(100vw-48px)] sm:w-[380px] bg-[#0a0a0b]/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col pointer-events-auto"
-                        style={{ height: "min(600px, calc(100vh - 120px))" }}
+                        transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                        className="mb-4 w-[calc(100vw-32px)] sm:w-[420px] bg-[#0a0a0b]/98 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col pointer-events-auto relative group"
+                        style={{ height: "min(700px, calc(100vh - 100px))" }}
                     >
+                        {/* Subtle inner glow */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
+
                         {/* Header */}
-                        <div className="w-full flex items-center justify-between p-4 border-b border-white/5 bg-gradient-to-r from-white/[0.05] to-transparent">
-                            <div className="flex items-center gap-3">
-                                <div className="p-2 bg-white/10 rounded-xl border border-white/20">
-                                    <Bot size={18} className="text-white/80" />
+                        <div className="w-full flex items-center justify-between p-6 border-b border-white/5 bg-white/[0.02]">
+                            <div className="flex items-center gap-4">
+                                <div className="relative">
+                                    <div className="p-2.5 bg-white/10 rounded-2xl border border-white/10">
+                                        <Bot size={20} className="text-white/80" />
+                                    </div>
+                                    <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-[#0a0a0b] animate-pulse" />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-xs font-black uppercase tracking-[0.2em] text-white">Mindscape AI</span>
-                                    <span className="text-[9px] font-bold uppercase tracking-widest text-green-400 flex items-center gap-1.5">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                                        System Online
+                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Mindscape_Intelligence</span>
+                                    <span className="text-[8px] font-black uppercase tracking-widest text-white/30 flex items-center gap-2 mt-0.5">
+                                        v2.4 // SECURE_UPLINK
                                     </span>
                                 </div>
                             </div>
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="p-2 text-white/40 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+                                className="p-3 text-white/20 hover:text-white hover:bg-white/5 rounded-2xl transition-all"
                             >
-                                <X size={16} />
+                                <X size={20} />
                             </button>
                         </div>
 
                         {/* Messages Area */}
-                        <div className="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
+                        <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar pb-32">
                             {messages.map((msg) => (
                                 <motion.div
                                     key={msg.id}
-                                    initial={{ opacity: 0, y: 10 }}
+                                    initial={{ opacity: 0, y: 15 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     className={`flex w-full ${msg.type === "user" ? "justify-end" : "justify-start"}`}
                                 >
-                                    <div className={`flex gap-3 max-w-[85%] ${msg.type === "user" ? "flex-row-reverse" : "flex-row"}`}>
+                                    <div className={`flex gap-4 max-w-[90%] ${msg.type === "user" ? "flex-row-reverse" : "flex-row"}`}>
                                         <div className="flex-shrink-0 mt-1">
-                                            {msg.type === "user" ? (
-                                                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
-                                                    <User size={12} className="text-white/60" />
-                                                </div>
-                                            ) : (
-                                                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
-                                                    <Cpu size={12} className="text-white/60" />
-                                                </div>
-                                            )}
+                                            <div className={cn(
+                                                "w-8 h-8 rounded-xl flex items-center justify-center border transition-colors",
+                                                msg.type === "user" ? "bg-white/5 border-white/10" : "bg-white border-white"
+                                            )}>
+                                                {msg.type === "user" ? (
+                                                    <User size={14} className="text-white/60" />
+                                                ) : (
+                                                    <Cpu size={14} className="text-black" />
+                                                )}
+                                            </div>
                                         </div>
                                         <div
                                             className={cn(
-                                                "p-3 rounded-2xl text-[11px] leading-relaxed font-medium whitespace-pre-wrap",
+                                                "p-4 rounded-2xl text-[12px] leading-relaxed font-medium whitespace-pre-wrap shadow-xl",
                                                 msg.type === "user"
-                                                    ? "bg-white text-black rounded-tr-sm uppercase tracking-tighter"
-                                                    : "bg-white/[0.03] border border-white/5 text-white/80 rounded-tl-sm tracking-tight"
+                                                    ? "bg-white/5 border border-white/10 text-white rounded-tr-none uppercase tracking-tight"
+                                                    : "bg-white text-black rounded-tl-none tracking-tight font-semibold"
                                             )}
                                         >
                                             {typeof msg.content === 'string' ? (
                                                 msg.content.split('\n').map((line, i) => {
-                                                    // Simple bolding: **text** -> <strong>text</strong>
-                                                    const formattedLine = line.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-                                                    // Simple bullet points: • or - -> Custom Bullet
+                                                    const formattedLine = line.replace(/\*\*(.*?)\*\*/g, '<b class="font-black">$1</b>');
                                                     if (line.trim().startsWith('•') || line.trim().startsWith('-')) {
                                                         const bulletContent = line.trim().substring(1).trim();
                                                         return (
-                                                            <div key={i} className="flex gap-2 items-start my-1">
-                                                                <span className="text-white/40 mt-1">•</span>
+                                                            <div key={i} className="flex gap-3 items-start my-1.5 pl-1">
+                                                                <span className={cn("mt-1.5 w-1 h-1 rounded-full", msg.type === "user" ? "bg-white/40" : "bg-black/30")} />
                                                                 <span dangerouslySetInnerHTML={{ __html: formattedLine.replace(/^[•-]\s*/, '') }} />
                                                             </div>
                                                         );
                                                     }
-                                                    return <div key={i} dangerouslySetInnerHTML={{ __html: formattedLine }} />;
+                                                    return <div key={i} className="mb-1 last:mb-0" dangerouslySetInnerHTML={{ __html: formattedLine }} />;
                                                 })
                                             ) : (
                                                 msg.content
@@ -220,16 +233,16 @@ export default function ChatWidget() {
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="flex w-full justify-start mt-2"
+                                    className="flex w-full justify-start mt-4"
                                 >
-                                    <div className="flex gap-3">
-                                        <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center border border-white/20 animate-pulse">
-                                            <Bot size={12} className="text-white/60" />
+                                    <div className="flex gap-4">
+                                        <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center border border-white animate-pulse">
+                                            <Bot size={14} className="text-black" />
                                         </div>
-                                        <div className="bg-white/[0.03] border border-white/5 p-3 rounded-2xl rounded-tl-sm flex gap-1 items-center">
-                                            <span className="w-1 h-1 bg-white/40 rounded-full animate-bounce [animation-delay:-0.3s]" />
-                                            <span className="w-1 h-1 bg-white/40 rounded-full animate-bounce [animation-delay:-0.15s]" />
-                                            <span className="w-1 h-1 bg-white/40 rounded-full animate-bounce" />
+                                        <div className="bg-white/5 border border-white/5 px-4 py-3 rounded-2xl rounded-tl-none flex gap-1.5 items-center">
+                                            <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.3s]" />
+                                            <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.15s]" />
+                                            <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" />
                                         </div>
                                     </div>
                                 </motion.div>
@@ -237,75 +250,98 @@ export default function ChatWidget() {
                             <div ref={messagesEndRef} />
                         </div>
 
-                        {/* Quick Actions & Links Area */}
-                        <div className="p-3 border-t border-white/5 flex flex-col gap-3 shrink-0 bg-white/[0.01]">
-                            {/* Suggestion Pills */}
-                            <div className="flex overflow-x-auto gap-2 pb-1 no-scrollbar mask-edges">
-                                <QuickAction label="Our Services" onClick={() => handleSend(undefined, "Tell me about your services")} />
-                                <QuickAction label="Shop Assets" onClick={() => handleSend(undefined, "What products do you have?")} />
-                                <QuickAction label="Pricing" onClick={() => handleSend(undefined, "How much does it cost?")} />
+                        {/* Floating Action Bar (Sticky-bottom behavior) */}
+                        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b] to-transparent pt-12">
+                            {/* Suggestions */}
+                            <div className="flex overflow-x-auto gap-2 mb-4 no-scrollbar pb-2 mask-edges-faint">
+                                <QuickAction label="Our Services" onClick={() => handleSend(undefined, "Our Services")} />
+                                <QuickAction label="Shop Assets" onClick={() => handleSend(undefined, "Shop Assets")} />
+                                <QuickAction label="Pricing" onClick={() => handleSend(undefined, "Pricing Models")} />
                             </div>
 
-                            {/* Direct Contact Buttons */}
-                            <div className="grid grid-cols-2 gap-2">
-                                <a
-                                    href="https://wa.me/13072106155"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="flex items-center justify-center gap-2 p-2.5 rounded-xl bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/20 transition-colors text-[9px] font-black uppercase tracking-widest text-[#25D366]"
-                                >
-                                    <MessageCircle size={12} />
-                                    WhatsApp
-                                </a>
-                                <Link
-                                    href="/contact"
-                                    onClick={() => setIsOpen(false)}
-                                    className="flex items-center justify-center gap-2 p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-[9px] font-black uppercase tracking-widest text-white/70 hover:text-white"
-                                >
-                                    Contact Form
-                                    <ArrowRight size={10} />
-                                </Link>
+                            {/* Interaction Area */}
+                            <div className="flex flex-col gap-4">
+                                <form onSubmit={handleSend} className="flex gap-3">
+                                    <input
+                                        type="text"
+                                        value={inputValue}
+                                        onChange={(e) => setInputValue(e.target.value)}
+                                        disabled={isLoading}
+                                        placeholder={isLoading ? "ARCHITECTING..." : "TRANSMIT QUERY..."}
+                                        className="flex-1 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-[11px] text-white placeholder:text-white/20 font-black tracking-widest focus:outline-none focus:border-white/30 transition-all uppercase disabled:opacity-50"
+                                    />
+                                    <button
+                                        type="submit"
+                                        disabled={!inputValue.trim() || isLoading}
+                                        className="px-6 bg-white text-black rounded-2xl hover:bg-white/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0 flex items-center justify-center active:scale-95"
+                                    >
+                                        <Send size={18} />
+                                    </button>
+                                </form>
+
+                                {/* System Shortcuts */}
+                                <div className="grid grid-cols-2 gap-3">
+                                    <a
+                                        href="https://wa.me/13072106155"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="flex items-center justify-center gap-2.5 py-3.5 rounded-2xl bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/20 transition-all text-[10px] font-black uppercase tracking-[0.2em] text-[#25D366]"
+                                    >
+                                        <MessageCircle size={14} />
+                                        WhatsApp
+                                    </a>
+                                    <Link
+                                        href="/contact"
+                                        onClick={() => setIsOpen(false)}
+                                        className="flex items-center justify-center gap-2.5 py-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-[10px] font-black uppercase tracking-[0.2em] text-white/70 hover:text-white"
+                                    >
+                                        Contact
+                                        <ArrowRight size={14} />
+                                    </Link>
+                                </div>
                             </div>
                         </div>
-
-                        {/* Input Area */}
-                        <form onSubmit={handleSend} className="p-3 border-t border-white/5 flex gap-2 shrink-0 bg-black/50">
-                            <input
-                                type="text"
-                                value={inputValue}
-                                onChange={(e) => setInputValue(e.target.value)}
-                                disabled={isLoading}
-                                placeholder={isLoading ? "THINKING..." : "TRANSMIT QUERY..."}
-                                className="flex-1 bg-white/[0.03] border border-white/10 rounded-xl px-4 py-2.5 text-[10px] text-white placeholder:text-white/20 font-black tracking-widest focus:outline-none focus:border-white/30 transition-all uppercase disabled:opacity-50"
-                            />
-                            <button
-                                type="submit"
-                                disabled={!inputValue.trim() || isLoading}
-                                className="p-2.5 bg-white text-black rounded-xl hover:bg-white/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
-                            >
-                                <Send size={14} />
-                            </button>
-                        </form>
                     </motion.div>
                 )}
             </AnimatePresence>
 
-            {/* Floating Bubble */}
+            {/* Main Trigger Button */}
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, rotate: 2 }}
                 whileTap={{ scale: 0.95 }}
                 className={cn(
-                    "w-14 h-14 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(0,0,0,0.5)] transition-all pointer-events-auto border border-white/10 group relative",
+                    "w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.6)] transition-all pointer-events-auto border border-white/10 group relative overflow-hidden",
                     isOpen ? "bg-white/10 text-white" : "bg-white text-black"
                 )}
             >
-                {/* Ping animation when closed */}
+                {/* Background pulse effect */}
                 {!isOpen && (
-                    <span className="absolute inset-0 rounded-full bg-white opacity-20 animate-ping" />
+                    <span className="absolute inset-0 bg-white opacity-20 animate-ping [animation-duration:3s]" />
                 )}
 
-                {isOpen ? <X size={24} /> : <MessageSquare size={24} className="group-hover:scale-110 transition-transform" />}
+                <AnimatePresence mode="wait">
+                    {isOpen ? (
+                        <motion.div
+                            key="close"
+                            initial={{ opacity: 0, rotate: -90 }}
+                            animate={{ opacity: 1, rotate: 0 }}
+                            exit={{ opacity: 0, rotate: 90 }}
+                        >
+                            <X size={28} />
+                        </motion.div>
+                    ) : (
+                        <motion.div
+                            key="open"
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 1.5 }}
+                            className="flex items-center justify-center"
+                        >
+                            <MessageSquare size={32} className="group-hover:scale-110 transition-transform" />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </motion.button>
         </div>
     );
