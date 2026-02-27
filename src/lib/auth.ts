@@ -10,10 +10,17 @@ const allowedAdmins = (process.env.ALLOWED_ADMINS || "")
     .filter(Boolean);
 
 // Core Auth Configuration - Hardened for MSA high-performance registry
+const baseURL = (process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000").replace(/\/$/, "");
+
 export const auth = betterAuth({
-    baseURL: (process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000").replace(/\/$/, ""),
+    baseURL,
     secret: process.env.BETTER_AUTH_SECRET,
     trustHost: true,
+    trustedOrigins: [
+        "https://www.mindscapeanalytics.com",
+        "https://mindscapeanalytics.com",
+        "https://mindscapeanalytics-main.vercel.app"
+    ],
     database: prismaAdapter(prisma, {
         provider: "postgresql",
     }),

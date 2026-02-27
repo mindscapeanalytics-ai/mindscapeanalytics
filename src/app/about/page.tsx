@@ -185,11 +185,9 @@ export default function AboutPage() {
                             </h2>
                             <div className="space-y-6">
                                 <p className="text-lg text-white/60 leading-relaxed font-medium max-w-xl">
-                                    Mindscape Analytics is a next-generation AI and Data Engineering company specializing in intelligent automation, AI agents, full-stack systems, and scalable cloud infrastructure.
+                                    Mindscape Analytics is a next-generation AI and Software Development company specializing in intelligent automation, AI agents, full-stack systems, and scalable cloud infrastructure.
                                 </p>
-                                <p className="text-lg text-white/60 leading-relaxed font-medium max-w-xl">
-                                    Founded by Zeeshan Keerio, Technology Leader & AI Engineer, Mindscape Analytics was built with one mission:
-                                </p>
+
                                 <p className="text-lg text-white font-black leading-relaxed max-w-xl italic border-l-2 border-white/20 pl-6 py-2">
                                     To help businesses scale using intelligent systems, not manual effort.
                                 </p>

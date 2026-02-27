@@ -57,6 +57,7 @@ export default function Navbar() {
         {
             name: "Marketplace",
             href: "/shop",
+            prefetch: true
         },
         ...(isSeller ? [{
             name: "Architect Console",
@@ -232,14 +233,19 @@ export default function Navbar() {
                         </div>
                     ) : (
                         <div className="flex items-center gap-2 h-full">
-                            <Link href="/contact" className="group/btn-book h-full flex items-center hidden sm:flex">
+                            <Link href="/become-seller" className="group/btn-book h-full flex items-center hidden sm:flex">
                                 <button className="px-5 py-2.5 rounded-full text-white/40 hover:text-white border border-white/5 hover:border-white/10 hover:bg-white/5 text-[9px] font-black uppercase tracking-[0.25em] transition-all flex items-center gap-2">
-                                    Book Terminal
+                                    Sell Here / Become Seller
                                 </button>
                             </Link>
                             <Link href="/sign-in" className="group/btn h-full flex items-center">
+                                <button className="text-white/40 hover:text-white px-4 py-2.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] transition-all active:scale-95">
+                                    Login
+                                </button>
+                            </Link>
+                            <Link href="/sign-up" className="group/btn h-full flex items-center">
                                 <button className="bg-white text-black px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.25em] hover:bg-white/90 transition-all flex items-center gap-2 shadow-[0_4px_24px_rgba(255,255,255,0.15)] active:scale-95">
-                                    Initialize
+                                    Join Network
                                     <ArrowRight size={10} className="group-hover/btn:translate-x-1 transition-transform" />
                                 </button>
                             </Link>
@@ -275,16 +281,22 @@ export default function Navbar() {
                             {navLinks.map((link) => (
                                 <div key={link.name} className="space-y-4">
                                     {link.submenu ? (
-                                        <button
-                                            onClick={() => setActiveMobileDropdown(activeMobileDropdown === link.name ? null : link.name)}
-                                            className="w-full flex items-center justify-between text-white/40 hover:text-white font-black py-1 uppercase tracking-[0.3em] text-[10px] transition-all"
-                                        >
-                                            <div className="flex items-center gap-3">
+                                        <div className="flex items-center justify-between w-full">
+                                            <Link
+                                                href={link.href}
+                                                className="flex items-center gap-3 text-white/40 hover:text-white font-black py-1 uppercase tracking-[0.3em] text-[10px] transition-all"
+                                                onClick={() => setMobileMenuOpen(false)}
+                                            >
                                                 <span className="w-1.5 h-1.5 rounded-full bg-white/10" />
                                                 {link.name}
-                                            </div>
-                                            <ChevronDown size={12} className={cn("transition-transform duration-300", activeMobileDropdown === link.name ? "rotate-180" : "rotate-0")} />
-                                        </button>
+                                            </Link>
+                                            <button
+                                                onClick={() => setActiveMobileDropdown(activeMobileDropdown === link.name ? null : link.name)}
+                                                className="p-2 text-white/20 hover:text-white transition-all"
+                                            >
+                                                <ChevronDown size={14} className={cn("transition-transform duration-300", activeMobileDropdown === link.name ? "rotate-180" : "rotate-0")} />
+                                            </button>
+                                        </div>
                                     ) : (
                                         <Link
                                             href={link.href}
@@ -359,17 +371,24 @@ export default function Navbar() {
                                     </div>
                                 ) : (
                                     <div className="flex flex-col gap-3">
-                                        <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                                            <button className="w-full bg-white/5 border border-white/10 text-white/80 py-4 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.3em] active:scale-95 transition-all flex items-center justify-center">
-                                                Book Strategy Call
+                                        <Link href="/become-seller" onClick={() => setMobileMenuOpen(false)}>
+                                            <button className="w-full bg-white/5 border border-white/5 text-white/60 py-4 rounded-[2rem] text-[9px] font-black uppercase tracking-[0.3em] active:scale-95 transition-all flex items-center justify-center">
+                                                Sell Here / Become Seller
                                             </button>
                                         </Link>
-                                        <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
-                                            <button className="w-full bg-white text-black py-5 rounded-[2rem] text-[11px] font-black uppercase tracking-[0.4em] shadow-2xl active:scale-95 transition-all flex items-center justify-center gap-3">
-                                                Initialize Access
-                                                <ArrowRight size={14} />
-                                            </button>
-                                        </Link>
+                                        <div className="grid grid-cols-2 gap-3">
+                                            <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
+                                                <button className="w-full bg-white/5 border border-white/10 text-white/40 py-4 rounded-[2rem] text-[9px] font-black uppercase tracking-[0.3em] active:scale-95 transition-all flex items-center justify-center">
+                                                    Login
+                                                </button>
+                                            </Link>
+                                            <Link href="/sign-up" onClick={() => setMobileMenuOpen(false)}>
+                                                <button className="w-full bg-white text-black py-4 rounded-[2rem] text-[9px] font-black uppercase tracking-[0.3em] shadow-xl active:scale-95 transition-all flex items-center justify-center gap-2">
+                                                    Register
+                                                    <ArrowRight size={10} />
+                                                </button>
+                                            </Link>
+                                        </div>
                                     </div>
                                 )}
                             </div>

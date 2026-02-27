@@ -14,9 +14,10 @@ const globalForPrisma = globalThis as unknown as {
 if (!globalForPrisma.__pgPool) {
     globalForPrisma.__pgPool = new Pool({
         connectionString,
-        max: 10,
-        connectionTimeoutMillis: 15_000, // 15s timeout
-        idleTimeoutMillis: 30_000,
+        max: 20, // Increase pool size for better concurrency
+        connectionTimeoutMillis: 30_000, // 30s timeout to handle cold starts
+        idleTimeoutMillis: 60_000, // 60s idle timeout
+        maxUses: 7500, // Prevents memory leaks by cycling connections
         // Ensure connection pooling on Neon works without SSL handshake timeouts
         ssl: connectionString.includes("localhost") || connectionString.includes("127.0.0.1")
             ? false

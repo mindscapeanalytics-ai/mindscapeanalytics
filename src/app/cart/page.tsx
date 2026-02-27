@@ -30,10 +30,7 @@ export default function CartPage() {
     const handleCheckout = async () => {
         if (items.length === 0) return;
 
-        if (!session) {
-            router.push("/sign-in?callbackUrl=/cart");
-            return;
-        }
+
 
         setIsProcessing(true);
         try {
@@ -193,7 +190,7 @@ export default function CartPage() {
                                                     "PROCESSING..."
                                                 ) : (
                                                     <>
-                                                        Initialize Acquisition
+                                                        Initialize Secure Acquisition
                                                         <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                                                     </>
                                                 )}

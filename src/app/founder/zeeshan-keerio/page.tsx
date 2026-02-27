@@ -345,20 +345,20 @@ export default function FounderPortfolio() {
 
             {/* --- CHRONICLE (EXPERIENCE) --- */}
             <section className="py-32 border-t border-white/5 bg-black/40">
-                <div className="container-standard">
-                    <div className="grid lg:grid-cols-[1fr_2fr] gap-24 items-start max-w-7xl mx-auto">
-                        <div className="sticky top-32 space-y-8">
+                <div className="container-standard px-4 md:px-6">
+                    <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-24 items-start max-w-7xl mx-auto">
+                        <div className="lg:sticky lg:top-32 space-y-8 mb-12 lg:mb-0">
                             <div className="flex items-center gap-3">
                                 <div className="p-2 bg-white/5 rounded-lg border border-white/10 text-white/40">
                                     <Briefcase size={18} />
                                 </div>
                                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 font-mono">02_Chronicle</span>
                             </div>
-                            <h2 className="text-5xl font-black uppercase font-syncopate leading-[0.8] tracking-tight">PROFESSIONAL <br /> <span className="text-white/20 italic">EVOLUTION.</span></h2>
+                            <h2 className="text-4xl md:text-5xl font-black uppercase font-syncopate leading-[0.8] tracking-tight">PROFESSIONAL <br /> <span className="text-white/20 italic">EVOLUTION.</span></h2>
                             <p className="text-white/40 text-sm font-medium leading-relaxed max-w-xs uppercase italic">
                                 A high-fidelity journey through the core layers of financial data and AI engineering.
                             </p>
-                            <div className="pt-8 flex gap-4">
+                            <div className="pt-8 flex flex-wrap gap-4">
                                 <Link href="https://linkedin.com/in/zeeshan-keerio" target="_blank">
                                     <button className="p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white hover:text-black transition-all">
                                         <Linkedin size={20} />
@@ -372,25 +372,26 @@ export default function FounderPortfolio() {
                             </div>
                         </div>
 
-                        <div className="space-y-4">
+                        <div className="space-y-6 lg:space-y-4">
                             {experience.map((exp, i) => (
                                 <motion.div
                                     key={i}
                                     initial={{ opacity: 0, x: 20 }}
                                     whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
                                     transition={{ duration: 0.5, delay: i * 0.1 }}
-                                    className="p-12 rounded-[2.5rem] bg-white/[0.02] border border-white/5 group hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500"
+                                    className="p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-white/[0.02] border border-white/5 group hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500"
                                 >
-                                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
                                         <div>
-                                            <h3 className="text-2xl font-black text-white uppercase tracking-tighter group-hover:text-white transition-colors">{exp.role}</h3>
+                                            <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter group-hover:text-white transition-colors">{exp.role}</h3>
                                             <div className="text-[10px] font-bold text-white/30 uppercase tracking-[0.3em] font-mono">{exp.company}</div>
                                         </div>
                                         <div className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[9px] font-black uppercase tracking-widest text-white/50">
                                             {exp.period}
                                         </div>
                                     </div>
-                                    <p className="text-white/40 font-medium leading-relaxed uppercase italic tracking-tight">
+                                    <p className="text-xs md:text-sm text-white/40 font-medium leading-relaxed uppercase italic tracking-tight">
                                         {exp.description}
                                     </p>
                                 </motion.div>
