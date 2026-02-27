@@ -36,10 +36,10 @@ export default function Navbar() {
             href: "/solutions",
             submenu: [
                 { name: "AI & GenAI", href: "/solutions/ai-genai" },
-                { name: "Blockchain", href: "/solutions/blockchain" },
+                { name: "Blockchain & Ledger", href: "/solutions/blockchain" },
                 { name: "Cloud Infrastructure", href: "/solutions/cloud-infrastructure" },
-                { name: "Enterprise Software", href: "/solutions/enterprise-software" },
-                { name: "Dynamic Dashboards", href: "/solutions#dashboards" },
+                { name: "Enterprise Systems", href: "/solutions/enterprise-software" },
+                { name: "Dynamic Analytics", href: "/solutions#dashboards" },
                 { name: "Data Engineering", href: "/solutions#data-engineering" },
             ]
         },
@@ -47,11 +47,11 @@ export default function Navbar() {
             name: "Services",
             href: "/services",
             submenu: [
-                { name: "Professional Outsourcing", href: "/outsourcing" },
+                { name: "Executive Outsourcing", href: "/outsourcing" },
                 { name: "Strategic Analytics", href: "/services#analytics" },
                 { name: "Data Engineering", href: "/services#engineering" },
-                { name: "Dynamic Dashboards", href: "/services#dashboards" },
                 { name: "Custom Development", href: "/services#development" },
+                { name: "System Audits", href: "/services#audits" },
             ]
         },
         {
@@ -62,14 +62,14 @@ export default function Navbar() {
             name: "Architect Console",
             href: "/seller",
             submenu: [
-                { name: "Vendor Dashboard", href: "/seller" },
-                { name: "Management Ops", href: "/seller/products" },
+                { name: "Asset Terminal", href: "/seller" },
+                { name: "Operations Hub", href: "/seller/products" },
                 { name: "Initialize Asset", href: "/seller/products/new" },
-                { name: "Settlement Hub", href: "/seller/payments" },
+                { name: "Settlement Vault", href: "/seller/payments" },
             ]
         }] : []),
         { name: "Intelligence Hub", href: "/blog" },
-        { name: "About", href: "/about" },
+        { name: "Institutional", href: "/about" },
         { name: "Contact", href: "/contact" },
     ];
 
@@ -101,12 +101,20 @@ export default function Navbar() {
         >
             <div
                 className={cn(
-                    "w-fit min-w-[300px] xs:min-w-[320px] max-w-[calc(100vw-3rem)] flex items-center justify-between px-4 py-2 rounded-full transition-all duration-[800ms] border relative mx-auto",
+                    "w-fit min-w-[300px] xs:min-w-[320px] max-w-[calc(100vw-3rem)] flex items-center justify-between px-4 py-2 rounded-full transition-all duration-[800ms] border relative mx-auto overflow-hidden",
                     isScrolled
                         ? "bg-zinc-950/80 backdrop-blur-3xl backdrop-saturate-[1.8] border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
                         : "bg-transparent/40 backdrop-blur-md backdrop-saturate-[1.2] border-white/5"
                 )}
             >
+                {/* HUD Scanning Line Effect */}
+                <div className="absolute inset-0 pointer-events-none">
+                    <motion.div
+                        animate={{ x: ["-100%", "200%"] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        className="absolute top-0 bottom-0 w-1/3 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-[25deg]"
+                    />
+                </div>
                 <Link href="/" className="relative flex items-center group pl-2 pr-6 border-r border-white/5 h-10">
                     <div className="relative flex items-center gap-2 h-full">
                         <Image
@@ -223,12 +231,19 @@ export default function Navbar() {
                             </AnimatePresence>
                         </div>
                     ) : (
-                        <Link href="/sign-in" className="group/btn h-full flex items-center">
-                            <button className="bg-white text-black px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.25em] hover:bg-white/90 transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)] active:scale-95">
-                                Register
-                                <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
-                            </button>
-                        </Link>
+                        <div className="flex items-center gap-2 h-full">
+                            <Link href="/contact" className="group/btn-book h-full flex items-center hidden sm:flex">
+                                <button className="px-5 py-2.5 rounded-full text-white/40 hover:text-white border border-white/5 hover:border-white/10 hover:bg-white/5 text-[9px] font-black uppercase tracking-[0.25em] transition-all flex items-center gap-2">
+                                    Book Terminal
+                                </button>
+                            </Link>
+                            <Link href="/sign-in" className="group/btn h-full flex items-center">
+                                <button className="bg-white text-black px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.25em] hover:bg-white/90 transition-all flex items-center gap-2 shadow-[0_4px_24px_rgba(255,255,255,0.15)] active:scale-95">
+                                    Initialize
+                                    <ArrowRight size={10} className="group-hover/btn:translate-x-1 transition-transform" />
+                                </button>
+                            </Link>
+                        </div>
                     )}
                 </div>
 
@@ -343,12 +358,19 @@ export default function Navbar() {
                                         </div>
                                     </div>
                                 ) : (
-                                    <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
-                                        <button className="w-full bg-white text-black py-6 rounded-[2rem] text-[11px] font-black uppercase tracking-[0.4em] shadow-2xl active:scale-95 transition-all flex items-center justify-center gap-3">
-                                            Initialize Access
-                                            <ArrowRight size={14} />
-                                        </button>
-                                    </Link>
+                                    <div className="flex flex-col gap-3">
+                                        <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
+                                            <button className="w-full bg-white/5 border border-white/10 text-white/80 py-4 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.3em] active:scale-95 transition-all flex items-center justify-center">
+                                                Book Strategy Call
+                                            </button>
+                                        </Link>
+                                        <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
+                                            <button className="w-full bg-white text-black py-5 rounded-[2rem] text-[11px] font-black uppercase tracking-[0.4em] shadow-2xl active:scale-95 transition-all flex items-center justify-center gap-3">
+                                                Initialize Access
+                                                <ArrowRight size={14} />
+                                            </button>
+                                        </Link>
+                                    </div>
                                 )}
                             </div>
                         </div>

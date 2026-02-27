@@ -116,14 +116,14 @@ export default function Hero() {
                             </span>
                         </motion.h1>
 
-                        <motion.div
+                        <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.2, delay: 0.2 }}
                             className="text-xl md:text-3xl lg:text-4xl font-black text-white/30 font-syncopate tracking-[-0.05em] leading-[0.9] uppercase italic text-center max-w-4xl"
                         >
                             WE BUILD <span className="text-white italic">AI SYSTEMS</span> THAT REPLACE MANUAL WORK.
-                        </motion.div>
+                        </motion.h2>
                     </div>
 
                     <motion.div
