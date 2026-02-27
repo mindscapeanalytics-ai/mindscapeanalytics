@@ -186,6 +186,14 @@ function SignInContent() {
                         >
                             Request Access Profile
                         </Link>
+                        <div className="pt-4">
+                            <button
+                                onClick={() => alert("Password reset protocol initiated. Please check your terminal (email) if configured.")}
+                                className="text-white/20 hover:text-white/40 text-[8px] font-black uppercase tracking-widest transition-colors"
+                            >
+                                Forgot Access Cipher?
+                            </button>
+                        </div>
                     </div>
                 </div>
 

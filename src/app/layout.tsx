@@ -17,26 +17,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mindscape Analytics LLC | Custom AI Automation & Enterprise Software",
-  description: "Mindscape Analytics LLC builds custom AI software, automated sales pipelines, and scalable enterprise architecture. Transform your business with expert systems engineering founded in 2025.",
+  title: "Mindscape Analytics | Enterprise AI Asset Registry & Expert Execution",
+  description: "Mindscape Analytics builds high-performance AI systems, secure data asset registries, and scalable enterprise architecture. Deploying 2026-standard expert systems since 2025.",
   keywords: [
-    "AI Systems Engineering", "Custom Software Development", "SaaS Architecture",
-    "AI Automation Agency", "Mindscape Analytics LLC", "Enterprise AI Solutions",
-    "Automated Sales Agents", "Scalable Cloud Infrastructure", "n8n Workflow Automation"
+    "AI Systems Engineering", "Custom Software Development", "Data Asset Registry",
+    "AI Automation Agency", "Mindscape Analytics", "Enterprise AI Solutions",
+    "Automated Sales Agents", "Scalable Cloud Infrastructure", "Expert Execution Services"
   ],
-  authors: [{ name: "Mindscape Analytics LLC", url: "https://mindscapeanalytics.com" }],
-  creator: "Mindscape Analytics LLC",
-  publisher: "Mindscape Analytics LLC",
-  metadataBase: new URL('https://mindscapeanalytics.com'),
+  authors: [{ name: "Mindscape Analytics", url: "https://mindscapeanalytics.com" }],
+  creator: "Mindscape Analytics",
+  publisher: "Mindscape Analytics",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://mindscapeanalytics.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: "Mindscape Analytics LLC | Enterprise AI Systems",
+    title: "Mindscape Analytics | Enterprise AI Systems & Asset Registry",
     description: "Custom software architecture and AI automation systems engineered for scale. Founded 2025.",
     type: "website",
     url: 'https://mindscapeanalytics.com',
-    siteName: 'Mindscape Analytics LLC',
+    siteName: 'Mindscape Analytics',
     images: [
       {
         url: 'https://mindscapeanalytics.com/images/og-image.png',
@@ -49,14 +49,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Mindscape Analytics LLC | AI Infrastructure",
+    title: "Mindscape Analytics | AI Infrastructure",
     description: "Architecting the future of automated enterprise systems.",
     creator: '@mindscapeai',
     images: ['https://mindscapeanalytics.com/images/og-image.png'],
   },
   icons: {
     icon: '/favicon.ico',
-    apple: '/apple-icon.png',
+    apple: '/apple-touch-icon.png',
   },
   robots: {
     index: true,
@@ -74,8 +74,8 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Mindscape Analytics LLC",
-  "legalName": "Mindscape Analytics LLC",
+  "name": "Mindscape Analytics",
+  "legalName": "Mindscape Analytics",
   "foundingDate": "2025",
   "url": "https://mindscapeanalytics.com",
   "logo": "https://mindscapeanalytics.com/images/logo/mindscape-analytics.png",

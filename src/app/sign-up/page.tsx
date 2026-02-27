@@ -140,11 +140,11 @@ function SignUpContent() {
         }
 
         if (result.success) {
-            console.log("[AUTH_SIGNUP_SUCCESS] Redirecting to terminal...");
-            setSuccessMsg("Signup successful. Redirecting...");
+            console.log("[AUTH_SIGNUP_SUCCESS] Identity registry handshake complete. Redirecting...");
+            setSuccessMsg("System Access Granted. Synchronizing profile...");
             setTimeout(() => {
                 window.location.href = callbackUrl || "/shop";
-            }, 1000);
+            }, 1500);
             return;
         }
 
