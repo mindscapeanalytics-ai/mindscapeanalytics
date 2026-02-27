@@ -55,9 +55,9 @@ export const metadata: Metadata = {
     images: ['https://mindscapeanalytics.com/images/og-image.png'],
   },
   icons: {
-    icon: '/images/logo/mindscape-analytics.png',
-    apple: '/images/logo/mindscape-analytics.png',
-    shortcut: '/images/logo/mindscape-analytics.png',
+    icon: '/icon',
+    apple: '/icon',
+    shortcut: '/icon',
   },
   robots: {
     index: true,
