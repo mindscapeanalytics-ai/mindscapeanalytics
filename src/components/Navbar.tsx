@@ -277,7 +277,7 @@ export default function Navbar() {
                                                     <ShieldCheck size={12} /> Controller HUD
                                                 </p>
                                                 <Link href="/admin" className="flex items-center gap-3 px-8 py-3 text-white/70 hover:text-white hover:bg-emerald-400/5 transition-all text-[10px] font-black uppercase tracking-[0.2em]">
-                                                    Master Console
+                                                    Master Dashboard
                                                 </Link>
                                             </div>
                                         )}
@@ -320,7 +320,7 @@ export default function Navbar() {
                                             className="w-full flex items-center gap-4 px-8 py-4 mt-2 border-t border-white/10 text-red-400 hover:text-red-500 hover:bg-red-400/5 transition-all text-[10px] font-black uppercase tracking-[0.25em] group/logout"
                                         >
                                             <LogOut size={14} className="group-hover/logout:-translate-x-1 transition-transform" />
-                                            Terminate Access
+                                            Logout / Terminate Access
                                         </button>
                                     </motion.div>
                                 )}
@@ -424,7 +424,7 @@ export default function Navbar() {
                                         <div className="grid grid-cols-1 gap-3.5">
                                             {isAdmin && (
                                                 <Link href="/admin" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between px-8 py-5 bg-white text-black rounded-3xl text-[11px] font-black uppercase tracking-[0.3em] shadow-xl shadow-white/5 transition-all active:scale-95">
-                                                    Master Console
+                                                    Master Dashboard
                                                     <ShieldCheck size={16} />
                                                 </Link>
                                             )}
@@ -445,7 +445,7 @@ export default function Navbar() {
                                             className="w-full flex items-center justify-center gap-4 py-6 border-t border-white/10 text-red-400/60 hover:text-red-400 text-[11px] font-black uppercase tracking-[0.3em] transition-all"
                                         >
                                             <LogOut size={16} />
-                                            Terminate Session
+                                            Logout / Terminate Session
                                         </button>
                                     </div>
                                 ) : (
