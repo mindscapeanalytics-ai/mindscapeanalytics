@@ -2,10 +2,17 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { prisma } from "@/lib/prisma";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+export const dynamic = "force-dynamic";
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "");
+const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || "";
 
 export async function POST(req: NextRequest) {
+    if (!process.env.STRIPE_SECRET_KEY) {
+        console.error("[WEBHOOK_CONFIG_ERROR] STRIPE_SECRET_KEY is not configured.");
+        return NextResponse.json({ error: "Service unavailable" }, { status: 503 });
+    }
+
     const body = await req.text();
     const signature = req.headers.get("stripe-signature");
 

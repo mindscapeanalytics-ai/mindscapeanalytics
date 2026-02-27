@@ -10,7 +10,10 @@ const allowedAdmins = (process.env.ALLOWED_ADMINS || "")
     .filter(Boolean);
 
 // Core Auth Configuration - Hardened for MSA high-performance registry
-const baseURL = (process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000").replace(/\/$/, "");
+const baseURL = (process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL || "").replace(/\/$/, "");
+if (!baseURL && process.env.NODE_ENV === "production") {
+    console.warn("[AUTH_CONFIG_WARNING] No baseURL defined for production. BetterAuth might fail to resolve redirects.");
+}
 
 export const auth = betterAuth({
     baseURL,

@@ -23,7 +23,7 @@ export async function createCheckoutSession(productId: string): Promise<{ url: s
         throw new Error("This asset is pending review and cannot be purchased at this time.");
     }
 
-    const origin = (await headers()).get("origin") || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+    const origin = (await headers()).get("origin") || process.env.NEXT_PUBLIC_APP_URL || "";
 
     // Create Stripe Checkout Session
     const stripeSession = await stripe.checkout.sessions.create({
@@ -65,7 +65,7 @@ export async function createMultiItemCheckout(
         throw new Error("No items in cart.");
     }
 
-    const origin = (await headers()).get("origin") || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+    const origin = (await headers()).get("origin") || process.env.NEXT_PUBLIC_APP_URL || "";
 
     // Fetch and validate all products from DB
     const productIds = items.map((item) => item.id);

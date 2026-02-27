@@ -216,11 +216,6 @@ export default function Navbar() {
                                                 </Link>
                                             </>
                                         )}
-                                        {!isSeller && session && (
-                                            <Link href="/become-seller" className="flex items-center gap-3 px-6 py-2 text-white/60 hover:text-white hover:bg-white/5 transition-all text-[9px] font-black uppercase tracking-[0.2em]">
-                                                <Plus size={12} /> Become Seller
-                                            </Link>
-                                        )}
                                         <button
                                             onClick={handleSignOut}
                                             className="w-full flex items-center gap-3 px-6 py-3 mt-1 border-t border-white/5 text-red-400/70 hover:text-red-400 hover:bg-red-500/5 transition-all text-[9px] font-black uppercase tracking-[0.2em]"
@@ -233,11 +228,6 @@ export default function Navbar() {
                         </div>
                     ) : (
                         <div className="flex items-center gap-2 h-full">
-                            <Link href="/become-seller" className="group/btn-book h-full flex items-center hidden sm:flex">
-                                <button className="px-5 py-2.5 rounded-full text-white/40 hover:text-white border border-white/5 hover:border-white/10 hover:bg-white/5 text-[9px] font-black uppercase tracking-[0.25em] transition-all flex items-center gap-2">
-                                    Sell Here / Become Seller
-                                </button>
-                            </Link>
                             <Link href="/sign-in" className="group/btn h-full flex items-center">
                                 <button className="text-white/40 hover:text-white px-4 py-2.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] transition-all active:scale-95">
                                     Login
@@ -371,11 +361,6 @@ export default function Navbar() {
                                     </div>
                                 ) : (
                                     <div className="flex flex-col gap-3">
-                                        <Link href="/become-seller" onClick={() => setMobileMenuOpen(false)}>
-                                            <button className="w-full bg-white/5 border border-white/5 text-white/60 py-4 rounded-[2rem] text-[9px] font-black uppercase tracking-[0.3em] active:scale-95 transition-all flex items-center justify-center">
-                                                Sell Here / Become Seller
-                                            </button>
-                                        </Link>
                                         <div className="grid grid-cols-2 gap-3">
                                             <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
                                                 <button className="w-full bg-white/5 border border-white/10 text-white/40 py-4 rounded-[2rem] text-[9px] font-black uppercase tracking-[0.3em] active:scale-95 transition-all flex items-center justify-center">
