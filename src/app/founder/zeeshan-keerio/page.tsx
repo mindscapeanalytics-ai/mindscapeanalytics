@@ -28,8 +28,8 @@ const projects = [
         title: "Mindscape Analytics Platform",
         category: "Enterprise AI & Ecosystem",
         image: "/images/projects/mindscapeanalytics-01_opt.webp",
-        description: "A scalable, multi-tenant AI-driven inventory management system serving 50+ businesses. Features AI pipelines for demand forecasting, stock optimization, and anomaly detection to reduce waste and manual operations.",
-        tags: ["Next.js 15", "Agentic AI", "Multi-Tenancy", "Founder Project"]
+        description: "Mindscape Analytics is an AI-driven enterprise technology platform focused on building autonomous systems, intelligent automation workflows, and scalable SaaS infrastructures. The company specializes in AI agents, data engineering, cloud architecture, and full-stack development to help businesses streamline operations, reduce manual effort, and scale efficiently. With a strong emphasis on performance, reliability, and measurable business impact, Mindscape Analytics delivers end-to-end digital transformation solutions for modern enterprises.",
+        tags: ["Marketplace", "Agentic AI", "Multi-Tenancy", "Founder Project"]
     },
     {
         title: "CyberTraderX",
