@@ -46,6 +46,15 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: '/founder/zeeshan-keerio',
+        destination: '/zeeshan-keerio',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

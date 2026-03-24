@@ -17,12 +17,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mindscape Analytics | Enterprise AI Asset Shop & Expert Execution",
-  description: "Mindscape Analytics builds high-performance AI systems, secure AI asset shops, and scalable enterprise architecture. Deploying 2026-standard expert systems since 2025.",
+  title: "Mindscape Analytics | First Agentic AI, Gen AI, Automation, SaaS & Web App Solutions",
+  description: "Mindscape Analytics is the world's first Agentic AI and Gen AI solutions company. We specialize in high-performance automation, enterprise SaaS, and mission-critical web applications. Founded and lead by Zeeshan Keerio.",
   keywords: [
+    "First Agentic AI Company", "Gen AI Solutions", "Agentic AI Automation",
+    "RSIQ Pro", "DBlynx", "DisposIQ", "Tenvo",
     "AI Systems Engineering", "Custom Software Development", "AI Asset Shop",
-    "AI Automation Agency", "Mindscape Analytics", "Enterprise AI Solutions",
-    "Automated Sales Agents", "Scalable Cloud Infrastructure", "Expert Execution Services"
+    "Mindscape Analytics", "Enterprise AI Solutions",
+    "Automated Sales Agents", "Scalable Cloud Infrastructure", "Expert Execution Services",
+    "Zeeshan Keerio", "AI Engineer Portfolio"
   ],
   authors: [{ name: "Mindscape Analytics", url: "https://mindscapeanalytics.com" }],
   creator: "Mindscape Analytics",
@@ -32,8 +35,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Mindscape Analytics | Enterprise AI Systems & Asset Shop",
-    description: "Custom software architecture and AI automation systems engineered for scale. Founded 2025.",
+    title: "Mindscape Analytics | First Agentic AI, Gen AI & Automation Solutions",
+    description: "The world's first Agentic AI and Gen AI solutions company. We architect high-performance automation, enterprise SaaS, and mission-critical web applications. Founded and lead by Zeeshan Keerio.",
     type: "website",
     url: 'https://mindscapeanalytics.com',
     siteName: 'Mindscape Analytics',
@@ -49,8 +52,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Mindscape Analytics | AI Infrastructure",
-    description: "Architecting the future of automated enterprise systems.",
+    title: "Mindscape Analytics | First Agentic AI & Gen AI Infrastructure",
+    description: "Architecting the future of automated enterprise systems. Founded by Zeeshan Keerio.",
     creator: '@mindscapeai',
     images: ['https://mindscapeanalytics.com/images/og-image.png'],
   },
@@ -73,33 +76,77 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Mindscape Analytics",
-  "legalName": "Mindscape Analytics",
-  "foundingDate": "2025",
-  "url": "https://mindscapeanalytics.com",
-  "logo": "https://mindscapeanalytics.com/images/logo/mindscape-analytics.png",
-  "description": "Premium engineering firm specializing in AI systems, automation architecture, and Custom SaaS solutions.",
-  "founder": {
-    "@type": "Person",
-    "name": "Zeeshan Keerio"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Sheridan",
-    "addressRegion": "WY",
-    "addressCountry": "US"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+1-307-210-6155",
-    "contactType": "customer service",
-    "email": "info@mindscapeanalytics.com"
-  },
-  "sameAs": [
-    "https://linkedin.com/company/mindscapeanalytics",
-    "https://twitter.com/mindscapeai",
-    "https://github.com/mindscapeai"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mindscapeanalytics.com/#organization",
+      "name": "Mindscape Analytics",
+      "legalName": "Mindscape Analytics",
+      "foundingDate": "2025",
+      "url": "https://mindscapeanalytics.com",
+      "logo": "https://mindscapeanalytics.com/images/logo/mindscape-analytics.png",
+      "description": "The world's first Agentic AI and Gen AI solutions company, specializing in automation architecture, enterprise SaaS, and high-performance web applications.",
+      "founder": {
+        "@id": "https://mindscapeanalytics.com/#founder"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sheridan",
+        "addressRegion": "WY",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-307-210-6155",
+        "contactType": "customer service",
+        "email": "info@mindscapeanalytics.com"
+      },
+      "sameAs": [
+        "https://linkedin.com/company/mindscapeanalytics",
+        "https://twitter.com/mindscapeai",
+        "https://github.com/mindscapeai"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mindscapeanalytics.com/#founder",
+      "name": "Zeeshan Keerio",
+      "jobTitle": "Founder, CEO & Lead AI Engineer",
+      "description": "Founder, CEO, and Lead AI Engineer/Developer of all Mindscape Analytics products including RSIQ Pro, DBlynx, DisposIQ, and Tenvo. Expert in Agentic AI, Gen AI, and Enterprise Automation.",
+      "url": "https://mindscapeanalytics.com/zeeshan-keerio",
+      "sameAs": [
+        "https://linkedin.com/in/zeeshan-keerio",
+        "https://github.com/zeeshan-keerio"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "RSIQ Pro",
+      "description": "Advanced RSI isolation and intelligent alerting system for institutional-grade market analysis.",
+      "applicationCategory": "FinTech AI",
+      "operatingSystem": "Web-based"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "DBlynx",
+      "description": "Agentic AI platform for autonomous data analysis and Natural Language Querying (NLQ) over structured databases.",
+      "applicationCategory": "AI Data Intelligence",
+      "operatingSystem": "Web-based"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "DisposIQ",
+      "description": "AI-driven intelligent disposal and asset lifecycle management system for industrial operations.",
+      "applicationCategory": "Automation / ERP",
+      "operatingSystem": "Web-based"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Tenvo",
+      "description": "Secure, scalable enterprise SaaS and web application framework for high-performance business ecosystems.",
+      "applicationCategory": "Enterprise SaaS",
+      "operatingSystem": "Web-based"
+    }
   ]
 }
 

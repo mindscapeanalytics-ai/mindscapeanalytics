@@ -20,7 +20,7 @@ const team = [
         image: "/images/team/founder.webp",
         linkedin: "https://linkedin.com/in/zeeshan-keerio",
         email: "mailto:zeeshan.keerio@mindscapeanalytics.com",
-        href: "/founder/zeeshan-keerio"
+        href: "/zeeshan-keerio"
     },
     {
         name: "Muhammad Atif",
