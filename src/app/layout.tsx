@@ -122,28 +122,28 @@ const jsonLd = {
     {
       "@type": "SoftwareApplication",
       "name": "RSIQ Pro",
-      "description": "Advanced RSI isolation and intelligent alerting system for institutional-grade market analysis.",
+      "description": "First Agentic AI for institutional-grade market analysis and intelligent alerting.",
       "applicationCategory": "FinTech AI",
       "operatingSystem": "Web-based"
     },
     {
       "@type": "SoftwareApplication",
       "name": "DBlynx",
-      "description": "Agentic AI platform for autonomous data analysis and Natural Language Querying (NLQ) over structured databases.",
+      "description": "Agentic AI platform for autonomous data analysis and Natural Language Querying (NLQ).",
       "applicationCategory": "AI Data Intelligence",
       "operatingSystem": "Web-based"
     },
     {
       "@type": "SoftwareApplication",
       "name": "DisposIQ",
-      "description": "AI-driven intelligent disposal and asset lifecycle management system for industrial operations.",
+      "description": "Agentic AI for intelligent industrial asset disposal and lifecycle management.",
       "applicationCategory": "Automation / ERP",
       "operatingSystem": "Web-based"
     },
     {
       "@type": "SoftwareApplication",
       "name": "Tenvo",
-      "description": "Secure, scalable enterprise SaaS and web application framework for high-performance business ecosystems.",
+      "description": "Enterprise-grade Agentic AI framework for scalable SaaS and high-performance applications.",
       "applicationCategory": "Enterprise SaaS",
       "operatingSystem": "Web-based"
     }
