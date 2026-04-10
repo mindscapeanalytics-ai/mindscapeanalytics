@@ -294,9 +294,11 @@ export default function Navbar() {
 
                 {/* Right Utilities & Actions */}
                 <div className="flex items-center gap-4">
-                    <div className="hidden sm:flex items-center h-full">
-                        <CartIcon />
-                    </div>
+                    {navContext === "shop" && (
+                        <div className="hidden sm:flex items-center h-full">
+                            <CartIcon />
+                        </div>
+                    )}
 
                     {session ? (
                         <div className="relative group/profile"
@@ -383,7 +385,7 @@ export default function Navbar() {
                                 )}
                             </AnimatePresence>
                         </div>
-                    ) : (
+                    ) : navContext === "shop" ? (
                         <div className="flex items-center gap-3">
                             <Link href="/sign-in" className="hidden sm:inline-block">
                                 <button className="text-white/40 hover:text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:bg-white/5">
@@ -397,7 +399,7 @@ export default function Navbar() {
                                 </button>
                             </Link>
                         </div>
-                    )}
+                    ) : null}
 
                     {/* Mobile Menu Toggle */}
                     <button
