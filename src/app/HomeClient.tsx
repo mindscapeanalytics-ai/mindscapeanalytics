@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 
 const ProjectVision = dynamic(() => import("@/components/ProjectVision"), { ssr: true });
 const ProblemAgitation = dynamic(() => import("@/components/ProblemAgitation"), { ssr: true });
+const ProductsShowcase = dynamic(() => import("@/components/ProductsShowcase"), { ssr: true });
 const Solutions = dynamic(() => import("@/components/Solutions"), { ssr: true });
 const InfrastructureAdvantage = dynamic(() => import("@/components/InfrastructureAdvantage"), { ssr: true });
 const CaseStudies = dynamic(() => import("@/components/CaseStudies"), { ssr: true });
@@ -66,6 +67,10 @@ export default function HomeClient() {
             <div className="relative z-10">
                 <ScrollSection delay={0.05}>
                     <ProblemAgitation />
+                </ScrollSection>
+
+                <ScrollSection delay={0.05}>
+                    <ProductsShowcase />
                 </ScrollSection>
 
                 <ScrollSection delay={0.05}>

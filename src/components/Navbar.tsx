@@ -57,6 +57,21 @@ export default function Navbar() {
     const navLinks: NavLink[] = useMemo(() => {
         const siteLinks: NavLink[] = [
             {
+                name: "Our Products",
+                label: "Flagship Products & Solutions",
+                href: "#products-showcase",
+                submenu: [
+                    { name: "DisposIQ - Industrial Intelligence", href: "https://disposiq.mindscapeanalytics.com/" },
+                    { name: "Smart DairyFarm - Farm Management", href: "https://cattle.mindscapeanalytics.com/" },
+                    { name: "RSIQ Pro - Trading Signals", href: "https://rsiq.mindscapeanalytics.com/" },
+                    { name: "CyberTrader-X - Autonomous Trading", href: "https://traderx.mindscapeanalytics.com/" },
+                    { name: "TENVO - Enterprise Hub (Coming Soon)", href: "https://tenvo.mindscapeanalytics.com/" },
+                    { name: "DBlynx - Database Intelligence (Coming Soon)", href: "#" },
+                    { name: "Mindscape LMS - Learning Platform (Coming Soon)", href: "#" },
+                    { name: "Marketing Intelligence (Coming Soon)", href: "#" },
+                ]
+            },
+            {
                 name: "Solutions",
                 label: "AI & Data Solutions",
                 href: "/solutions",
@@ -195,12 +210,22 @@ export default function Navbar() {
                             <Link
                                 href={link.href}
                                 aria-label={link.label}
-                                className="text-white/40 hover:text-white text-[11px] font-black uppercase tracking-[0.25em] transition-all relative py-4 flex items-center gap-2 group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                                className={cn(
+                                    "text-[11px] font-black uppercase tracking-[0.25em] transition-all relative py-4 flex items-center gap-2",
+                                    link.name === "Our Products"
+                                        ? "text-yellow-400/80 hover:text-yellow-300 group-hover:drop-shadow-[0_0_15px_rgba(250,223,3,0.3)]"
+                                        : "text-white/40 hover:text-white group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                                )}
                             >
                                 {link.icon && <span className="opacity-40 group-hover:opacity-100 transition-opacity">{link.icon}</span>}
                                 {link.name}
                                 {link.submenu && <ChevronDown size={10} className="opacity-20 group-hover:opacity-100 transition-opacity" />}
-                                <span className="absolute bottom-3 left-0 w-0 h-[1.5px] bg-white/40 transition-all duration-[400ms] group-hover:w-full" />
+                                <span className={cn(
+                                    "absolute bottom-3 left-0 w-0 h-[1.5px] transition-all duration-[400ms] group-hover:w-full",
+                                    link.name === "Our Products"
+                                        ? "bg-yellow-400/60"
+                                        : "bg-white/40"
+                                )} />
                             </Link>
 
                             <AnimatePresence>
@@ -209,25 +234,57 @@ export default function Navbar() {
                                         initial={{ opacity: 0, y: 15 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: 15 }}
-                                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-zinc-950/98 backdrop-blur-3xl border border-white/10 rounded-2xl shadow-[0_24px_48px_rgba(0,0,0,0.9)] overflow-hidden py-4 z-[100]"
+                                        className={cn(
+                                            "absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-zinc-950/98 backdrop-blur-3xl rounded-2xl shadow-[0_24px_48px_rgba(0,0,0,0.9)] overflow-hidden py-4 z-[100]",
+                                            link.name === "Our Products"
+                                                ? "w-96 border border-yellow-500/30"
+                                                : "w-72 border border-white/10"
+                                        )}
                                     >
                                         <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
-                                        <div className="relative px-6 py-2 mb-2 border-b border-white/5">
-                                            <p className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">{link.label}</p>
+                                        <div className={cn(
+                                            "relative px-6 py-2 mb-2 border-b",
+                                            link.name === "Our Products"
+                                                ? "border-yellow-500/20"
+                                                : "border-white/5"
+                                        )}>
+                                            <p className={cn(
+                                                "text-[9px] font-black uppercase tracking-[0.3em]",
+                                                link.name === "Our Products"
+                                                    ? "text-yellow-400/70"
+                                                    : "text-white/20"
+                                            )}>{link.label}</p>
                                         </div>
-                                        {link.submenu.map((item: any) => (
-                                            <Link
-                                                key={item.name}
-                                                href={item.href}
-                                                className="block px-8 py-3 text-white/40 hover:text-white hover:bg-white/5 transition-all text-[10px] font-black uppercase tracking-[0.2em] relative group/item"
-                                            >
-                                                <div className="flex items-center gap-4">
-                                                    {item.icon && <span className="opacity-30 group-hover/item:opacity-100 transition-all">{item.icon}</span>}
-                                                    <span>{item.name}</span>
-                                                </div>
-                                                <div className="absolute left-4 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-white scale-0 group-hover/item:scale-100 transition-transform duration-300" />
-                                            </Link>
-                                        ))}
+                                        {link.submenu.map((item: any) => {
+                                            const isComingSoon = item.name.includes("Coming Soon");
+                                            return (
+                                                <Link
+                                                    key={item.name}
+                                                    href={item.href}
+                                                    onClick={(e) => isComingSoon && e.preventDefault()}
+                                                    className={cn(
+                                                        "block px-8 py-3 transition-all text-[10px] font-black uppercase tracking-[0.2em] relative group/item",
+                                                        isComingSoon
+                                                            ? "text-yellow-400/40 hover:text-yellow-400 hover:bg-yellow-500/5 cursor-not-allowed opacity-75"
+                                                            : "text-white/40 hover:text-white hover:bg-white/5"
+                                                    )}
+                                                >
+                                                    <div className="flex items-center gap-4 justify-between">
+                                                        <div className="flex items-center gap-4">
+                                                            {item.icon && <span className="opacity-30 group-hover/item:opacity-100 transition-all">{item.icon}</span>}
+                                                            <span>{item.name}</span>
+                                                        </div>
+                                                        {isComingSoon && (
+                                                            <span className="text-[7px] font-black px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-300 ml-2">SOON</span>
+                                                        )}
+                                                    </div>
+                                                    <div className={cn(
+                                                        "absolute left-4 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full scale-0 group-hover/item:scale-100 transition-transform duration-300",
+                                                        isComingSoon ? "bg-yellow-400" : "bg-white"
+                                                    )} />
+                                                </Link>
+                                            );
+                                        })}
                                     </motion.div>
                                 )}
                             </AnimatePresence>
