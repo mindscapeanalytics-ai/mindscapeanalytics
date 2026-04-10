@@ -23,84 +23,44 @@ const IMG_HEIGHT = 170;
 // --- Projects Data ---
 const PROJECTS: ProjectData[] = [
     {
-        title: "Tenvo",
-        category: "Hospitality Tech",
-        metrics: "99.9% Uptime • Real-time Sync",
-        description: "Next-generation Restraint Management POS system with integrated biometric auth and seat-map automation.",
-        image: "/images/projects/restraint-pos_opt.webp",
-        details: ["Biometric Auth", "Autonomous Sync", "Seat-map Engine"]
+        title: "DisposIQ",
+        category: "Industrial Intelligence",
+        metrics: "99.99% Uptime • 14ms Latency • AES-256",
+        description: "Enterprise-grade production and disposal intelligence platform. Real-time SKU throughput, automated waste classification, ML-powered forecasting, and comprehensive audit trails for global operations.",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/production-and-disposal-mindsacpeanalytics-0KgazmuLyRIeuG0SgU6UilsnTwSRj8.png",
+        details: ["Production Tracking", "Waste Classification", "Predictive Analytics", "Audit Trails", "Multi-tenant Security"]
     },
     {
-        title: "Enterprise ERP",
-        category: "Industrial Management",
-        metrics: "ROI +450% • AI Forecast",
-        description: "Comprehensive 2026 ERP suite for large-scale operations with global supply chain visibility.",
-        image: "/images/projects/enterprise-erp_opt.webp",
-        details: ["AI Forecasting", "Supply Chain Viz", "Resource Planning"]
+        title: "Smart DairyFarm",
+        category: "AgriTech Management",
+        metrics: "Real-time Monitoring • Smart Yield Analytics",
+        description: "Intelligent dairy farm management system. Monitor active animals, milk production metrics, feed costs, health records, and financial performance. Optimize profitability with AI-driven insights and automated task scheduling.",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dairy_farm_mindscapeanalytics-MV3Don0b2Ko36NfHJ88vpk3I2jioO7.png",
+        details: ["Animal Management", "Milk Production", "Health Records", "Financial Analytics", "IoT Integration"]
     },
     {
-        title: "Super Market ERP",
-        category: "Retail Tech",
-        metrics: "Zero Leakage • 100K SKUs",
-        description: "Unified Retail intelligence platform combining POS precision with backend ERP automation.",
-        image: "/images/projects/supermarket-pos_opt.webp",
-        details: ["Stock Tracking", "Predictive Procurement", "SKU Synchronization"]
+        title: "RSIQ Pro",
+        category: "FinTech Trading Signals",
+        metrics: "Real-Time Analysis • 500+ Indicators • Live Alerts",
+        description: "Advanced real-time trading signal solution with 500+ technical indicators and customizable strategies. Sentiment analysis, market bias detection, multi-exchange support (Binance, Bybit), and AI-powered trade guidance for optimal decision-making.",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rsiq-mindscapeanalytics-12xQXu3FV2JRsszTGtDb9kLLih0jbf.png",
+        details: ["Technical Indicators", "Sentiment Analysis", "Multi-Exchange", "Signal Generation", "Strategy Backtesting"]
     },
     {
-        title: "Fuel Station ERP",
-        category: "Energy Tech",
-        metrics: "Elite Security • Live Tracking",
-        description: "Mission-critical Fuel Station management system with automated pump synchronization.",
-        image: "/images/projects/fuel-station-erp_opt.webp",
-        details: ["Pump Sync", "Hazardous Tracking", "Auto-Accounting"]
+        title: "CyberTrader-X",
+        category: "Autonomous Trading",
+        metrics: "Auto-Execution • Risk Management • 24/7 Trading",
+        description: "Autonomous trading system for crypto, forex, and metals. Supports intraday, swing, and scalping strategies with advanced customization. Real-time risk management, automated execution, and AI-powered trade intelligence for daily consistent profits.",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/traderX-mindscapeanalytics-ADXDXT7XN4Pk6u1vkIm4cSUVYwAsoT.png",
+        details: ["Auto-Trading Engine", "Multi-Asset Support", "Risk Bots", "Live Execution", "Trade Analytics"]
     },
     {
-        title: "CryptoTrader Pro",
-        category: "FinTech",
-        metrics: "Auto-Execution • Risk Bot",
-        description: "High-frequency algorithmic trading platform with deep liquidity integration.",
-        image: "/images/projects/cryptotrader2_opt.webp",
-        details: ["Algorithmic Trading", "Liquidity Integration", "AI Signal Auditing"]
-    },
-    {
-        title: "AgriChain",
-        category: "AgriTech",
-        metrics: "Smart Yield • IoT Tracking",
-        description: "Precision agriculture ecosystem utilizing blockchain for immutable transparency.",
-        image: "/images/projects/AgriChian_opt.webp",
-        details: ["Supply Chain Transparency", "Blockchain Ledger", "Precision Farming"]
-    },
-    {
-        title: "VisionScan AI",
-        category: "Computer Vision",
-        metrics: "Auto-Label • QA Mode",
-        description: "Multi-modal model training platform with advanced auto-labeling and integrity checks.",
-        image: "/images/projects/image_annotation_tool_opt.webp",
-        details: ["Dataset Preparation", "Integrated QA", "Auto-Labeling Engine"]
-    },
-    {
-        title: "Seller Intelligence",
-        category: "E-commerce",
-        metrics: "Restock AI • Profit Map",
-        description: "Demand forecasting and inventory optimization suite for global logistics.",
-        image: "/images/projects/amazon_invontry_management_system_opt.webp",
-        details: ["Inventory Optimization", "Logistics Scaling", "Demand Forecasting"]
-    },
-    {
-        title: "EU Auto Portal",
-        category: "Automotive",
-        metrics: "Euro-Pricing • Fleet AI",
-        description: "Market intelligence platform for European vehicle distribution with trend detection.",
-        image: "/images/projects/vehicle_analysis_dashboard_opt.webp",
-        details: ["Fleet Management", "Trend Detection", "Market Intelligence"]
-    },
-    {
-        title: "JFBZ Exchange",
-        category: "Blockchain",
-        metrics: "Cold Staking • Audit Log",
-        description: "Decentralized liquidity aggregator and token management for institutions.",
-        image: "/images/projects/jfbz_token_opt.webp",
-        details: ["Institutional Assets", "Liquidity Aggregator", "Security Auditing"]
+        title: "TENVO",
+        category: "Enterprise Business Hub",
+        metrics: "Real-time POS • Intelligent Operations • Multi-Module",
+        description: "Advanced intelligent business growth solution. Unified POS with real-time inventory sync, sales invoicing, customer management, and financial intelligence. Complete operational control hub with predictive restocking and campaign intelligence.",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tenvo-mindscapeanalytics-i8yPGcLjz8sebUqi8WUA1mq0BDGdmP.png",
+        details: ["POS System", "Inventory Management", "Sales Analytics", "CRM Integration", "Financial Dashboard"]
     }
 ];
 
@@ -158,11 +118,11 @@ export default function ProjectVision() {
                 <div className="flex flex-col md:flex-row items-end justify-between gap-6 border-b border-white/5 pb-10">
                     <div className="space-y-4">
                         <div className="flex items-center gap-3">
-                            <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                            <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.4em]">Subsystem // Archive_Port_01</span>
+                            <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(252,223,3,0.8)]" />
+                            <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.4em]">Production // Flagship_Products_v2026</span>
                         </div>
                         <h2 className="text-5xl md:text-8xl font-black text-white leading-none tracking-tighter font-syncopate uppercase">
-                            PROJECT <span className="text-white/20">VISION</span>
+                            OUR <span className="text-yellow-400/80">PRODUCTS</span>
                         </h2>
                     </div>
                     <div className="hidden lg:block text-right font-mono text-[9px] text-white/20 uppercase tracking-widest leading-relaxed">
