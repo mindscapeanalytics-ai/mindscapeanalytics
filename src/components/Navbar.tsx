@@ -204,8 +204,16 @@ export default function Navbar() {
                         <div
                             key={link.name}
                             className="relative group flex items-center h-full"
-                            onMouseEnter={() => link.submenu && setActiveDropdown(link.name)}
-                            onMouseLeave={() => setActiveDropdown(null)}
+                            onMouseEnter={() => {
+                                if (link.submenu) {
+                                    setActiveDropdown(link.name);
+                                }
+                            }}
+                            onMouseLeave={() => {
+                                if (link.submenu) {
+                                    setActiveDropdown(null);
+                                }
+                            }}
                         >
                             <Link
                                 href={link.href}
@@ -234,8 +242,11 @@ export default function Navbar() {
                                         initial={{ opacity: 0, y: 15 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: 15 }}
+                                        transition={{ duration: 0.2 }}
+                                        onMouseEnter={() => setActiveDropdown(link.name)}
+                                        onMouseLeave={() => setActiveDropdown(null)}
                                         className={cn(
-                                            "absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-zinc-950/98 backdrop-blur-3xl rounded-2xl shadow-[0_24px_48px_rgba(0,0,0,0.9)] overflow-hidden py-4 z-[100]",
+                                            "absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-zinc-950/98 backdrop-blur-3xl rounded-2xl shadow-[0_24px_48px_rgba(0,0,0,0.9)] overflow-hidden py-4 z-[100] pointer-events-auto",
                                             link.name === "Our Products"
                                                 ? "w-96 border border-yellow-500/30"
                                                 : "w-72 border border-white/10"
@@ -449,18 +460,37 @@ export default function Navbar() {
                                                 initial={{ height: 0, opacity: 0 }}
                                                 animate={{ height: "auto", opacity: 1 }}
                                                 exit={{ height: 0, opacity: 0 }}
-                                                className="overflow-hidden ml-6 space-y-5 border-l-2 border-white/10 pl-8 mt-4"
+                                                className={cn(
+                                                    "overflow-hidden ml-6 space-y-3 pl-8 mt-4 border-l-2",
+                                                    link.name === "Our Products"
+                                                        ? "border-yellow-500/30"
+                                                        : "border-white/10"
+                                                )}
                                             >
-                                                {link.submenu.map((item: any) => (
-                                                    <Link
-                                                        key={item.name}
-                                                        href={item.href}
-                                                        className="flex items-center gap-4 text-white/30 hover:text-white text-[10px] font-black uppercase tracking-[0.25em] transition-all"
-                                                        onClick={() => setMobileMenuOpen(false)}
-                                                    >
-                                                        {item.name}
-                                                    </Link>
-                                                ))}
+                                                {link.submenu.map((item: any) => {
+                                                    const isComingSoon = item.name.includes("Coming Soon");
+                                                    return (
+                                                        <Link
+                                                            key={item.name}
+                                                            href={item.href}
+                                                            onClick={(e) => {
+                                                                if (isComingSoon) e.preventDefault();
+                                                                setMobileMenuOpen(false);
+                                                            }}
+                                                            className={cn(
+                                                                "flex items-center justify-between text-[10px] font-black uppercase tracking-[0.25em] transition-all py-2",
+                                                                isComingSoon
+                                                                    ? "text-yellow-400/40 opacity-75 cursor-not-allowed"
+                                                                    : "text-white/30 hover:text-white"
+                                                            )}
+                                                        >
+                                                            <span>{item.name}</span>
+                                                            {isComingSoon && (
+                                                                <span className="text-[7px] font-black px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-300 ml-2">SOON</span>
+                                                            )}
+                                                        </Link>
+                                                    );
+                                                })}
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
