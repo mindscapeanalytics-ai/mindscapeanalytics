@@ -46,10 +46,10 @@ export default function Products() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true, margin: "-50px" }}
-                        className="flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 mb-10 backdrop-blur-md"
+                        className="flex items-center gap-3 px-6 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/30 mb-10 backdrop-blur-md"
                     >
-                        <Sparkles className="w-4 h-4 text-white/60" />
-                        <span className="text-white/40 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Elite Product Suite // CATALOG_v4</span>
+                        <Sparkles className="w-4 h-4 text-yellow-400/60" />
+                        <span className="text-yellow-300/70 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Elite Product Suite // CATALOG_v2026</span>
                     </motion.div>
 
                     <h2 className="text-5xl md:text-[7rem] lg:text-[9rem] font-black tracking-[-0.05em] mb-12 leading-[0.85] font-syncopate uppercase">
@@ -59,7 +59,7 @@ export default function Products() {
                 </div>
 
                 {/* Product Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 rounded-[3rem] overflow-hidden border border-white/10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-gradient-to-br from-white/[0.08] to-yellow-400/[0.04] rounded-[3rem] overflow-hidden border border-yellow-400/20">
                     {products.map((product, index) => (
                         <Link key={product.title} href="/shop" className="flex h-full">
                             <motion.div
@@ -68,7 +68,7 @@ export default function Products() {
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ delay: index * 0.1 }}
                                 className={cn(
-                                    "relative p-10 lg:p-14 bg-white/5 backdrop-blur-md group overflow-hidden hover:bg-white/[0.08] transition-all duration-500 hover:border-white/10 w-full h-full",
+                                    "relative p-10 lg:p-14 bg-white/5 backdrop-blur-md group overflow-hidden hover:bg-yellow-400/[0.08] transition-all duration-500 hover:border-yellow-400/30 border border-transparent w-full h-full",
                                     index === 0 && "md:rounded-tl-[2.8rem]",
                                     index === 1 && "md:rounded-tr-[2.8rem]",
                                     index === 2 && "md:rounded-bl-[2.8rem]",
@@ -81,8 +81,8 @@ export default function Products() {
                                     style={{ background: 'radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, transparent 70%)' }}
                                 />
                                 {/* --- HUD Elements --- */}
-                                <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-white/10 group-hover:border-white/30 transition-colors" />
-                                <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-white/10 group-hover:border-white/30 transition-colors" />
+                                <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-yellow-400/20 group-hover:border-yellow-400/50 transition-colors" />
+                                <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-yellow-400/20 group-hover:border-yellow-400/50 transition-colors" />
 
                                 <div className="absolute top-1/2 right-4 flex flex-col gap-1 items-center opacity-10">
                                     <span className="text-meta vertical-text py-2">PRODUCT_ID:0x{index.toString(16).toUpperCase()}</span>
@@ -91,7 +91,7 @@ export default function Products() {
 
                                 <div className="flex flex-col h-full relative z-10">
                                     <div className="flex items-start justify-between mb-16">
-                                        <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 group-hover:bg-white group-hover:text-black group-hover:border-white/20 transition-all duration-500 shadow-2xl">
+                                        <div className="w-16 h-16 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center text-yellow-300/60 group-hover:bg-yellow-400 group-hover:text-black group-hover:border-yellow-400/60 transition-all duration-500 shadow-2xl">
                                             <product.icon className="w-8 h-8" />
                                         </div>
                                         <div className="flex flex-col items-end">
@@ -111,15 +111,15 @@ export default function Products() {
                                             {product.description}
                                         </p>
 
-                                        <div className="mt-16 w-full h-px bg-white/5 rounded-full overflow-hidden relative">
+                                        <div className="mt-16 w-full h-px bg-yellow-400/10 rounded-full overflow-hidden relative">
                                             <motion.div
                                                 initial={{ width: 0 }}
                                                 whileInView={{ width: "100%" }}
                                                 viewport={{ once: true, margin: "-50px" }}
                                                 transition={{ duration: 1.5, delay: index * 0.2 }}
-                                                className="h-full bg-white/20 leading-none shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+                                                className="h-full bg-yellow-400/50 leading-none shadow-[0_0_15px_rgba(252,223,3,0.3)]"
                                             />
-                                            <div className="absolute inset-0 bg-white/5 animate-pulse" />
+                                            <div className="absolute inset-0 bg-yellow-400/5 animate-pulse" />
                                         </div>
                                     </div>
                                 </div>
@@ -129,10 +129,10 @@ export default function Products() {
                 </div>
 
                 <div className="mt-16 flex justify-center">
-                    <Link href="/shop" className="flex items-center gap-4 text-white/40 hover:text-white transition-all font-bold text-sm uppercase tracking-widest group">
-                        <span className="h-px w-12 bg-white/10 group-hover:w-20 group-hover:bg-white transition-all" />
+                    <Link href="/shop" className="flex items-center gap-4 text-white/40 hover:text-yellow-300 transition-all font-bold text-sm uppercase tracking-widest group">
+                        <span className="h-px w-12 bg-white/10 group-hover:w-20 group-hover:bg-yellow-400 transition-all" />
                         Explore Our Shop
-                        <span className="h-px w-12 bg-white/10 group-hover:w-20 group-hover:bg-white transition-all" />
+                        <span className="h-px w-12 bg-white/10 group-hover:w-20 group-hover:bg-yellow-400 transition-all" />
                     </Link>
                 </div>
             </div>

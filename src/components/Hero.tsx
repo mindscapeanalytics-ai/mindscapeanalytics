@@ -1,11 +1,48 @@
 "use client"
 
-import React, { useRef } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { motion, useScroll, useTransform, useSpring } from "framer-motion"
 import { ArrowRight, Play, Sparkles } from "lucide-react"
 import Link from "next/link";
 
+const CAROUSEL_PROJECTS = [
+    {
+        title: "DisposIQ",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/production-and-disposal-mindsacpeanalytics-0KgazmuLyRIeuG0SgU6UilsnTwSRj8.png",
+        color: "from-blue-500/20"
+    },
+    {
+        title: "Smart DairyFarm",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dairy_farm_mindscapeanalytics-MV3Don0b2Ko36NfHJ88vpk3I2jioO7.png",
+        color: "from-green-500/20"
+    },
+    {
+        title: "RSIQ Pro",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rsiq-mindscapeanalytics-12xQXu3FV2JRsszTGtDb9kLLih0jbf.png",
+        color: "from-emerald-500/20"
+    },
+    {
+        title: "CyberTrader-X",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/traderX-mindscapeanalytics-ADXDXT7XN4Pk6u1vkIm4cSUVYwAsoT.png",
+        color: "from-cyan-500/20"
+    },
+    {
+        title: "TENVO",
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tenvo-mindscapeanalytics-i8yPGcLjz8sebUqi8WUA1mq0BDGdmP.png",
+        color: "from-purple-500/20"
+    }
+];
+
 export default function Hero() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % CAROUSEL_PROJECTS.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
+
     // Use global scroll for the Hero to ensure maximum smoothness at the top of the page
     const { scrollY } = useScroll()
 
@@ -29,56 +66,46 @@ export default function Hero() {
     // Cinematic title effects - vertical movement only, removed scale scaling
     const titleY = useTransform(scrollProgress, [0, 1], [0, -30])
 
-    // Pre-calculated static dust positions to completely eliminate JS main thread calculations
-    const staticDust = [
-        { top: "15%", left: "20%", size: "1.2px", delay: "0s" },
-        { top: "60%", left: "10%", size: "0.8px", delay: "2s" },
-        { top: "85%", left: "80%", size: "1.5px", delay: "1s" },
-        { top: "25%", left: "70%", size: "1.0px", delay: "3s" },
-        { top: "45%", left: "90%", size: "0.9px", delay: "1.5s" },
-        { top: "75%", left: "30%", size: "1.3px", delay: "0.5s" },
-        { top: "10%", left: "50%", size: "1.1px", delay: "2.5s" },
-        { top: "90%", left: "60%", size: "0.7px", delay: "4s" },
-    ];
-
     return (
         <section className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden bg-transparent pt-20 pb-10">
             {/* The global CinematicBackground handles the unified grid. Local grid removed to prevent Moire conflicts. */}
 
-            {/* Hero Layer 2: Kinetic Atmospheric Glows - Calibrated for monochromatic institutional design */}
-            <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
-                <motion.div
-                    animate={{
-                        scale: [1, 1.15, 1],
-                        opacity: [0.2, 0.4, 0.2],
-                    }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08)_0%,transparent_70%)] rounded-full will-change-transform"
-                />
-                <motion.div
-                    animate={{
-                        scale: [1.15, 1, 1.15],
-                        opacity: [0.15, 0.3, 0.15],
-                    }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)] rounded-full will-change-transform"
-                />
+            {/* Hero Background: Auto-Sliding Project Carousel */}
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                {CAROUSEL_PROJECTS.map((project, index) => (
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: currentIndex === index ? 0.12 : 0 }}
+                        transition={{ duration: 1.2, ease: "easeInOut" }}
+                        className="absolute inset-0"
+                    >
+                        <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover scale-110 blur-2xl"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80" />
+                        <div className={`absolute inset-0 bg-gradient-to-r ${project.color} to-transparent`} />
+                    </motion.div>
+                ))}
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
             </div>
 
-            {/* Layer 3: Static CSS Data Dust Particles bypasses JS entirely */}
-            <div className="absolute inset-0 z-10 pointer-events-none">
-                {staticDust.map((dust, i) => (
-                    <div
-                        key={i}
-                        className="absolute bg-white rounded-full animate-pulse opacity-40 will-change-[opacity]"
-                        style={{
-                            top: dust.top,
-                            left: dust.left,
-                            width: dust.size,
-                            height: dust.size,
-                            animationDelay: dust.delay,
-                            animationDuration: "4s"
+            {/* Project Indicators */}
+            <div className="absolute top-20 right-8 z-20 flex gap-1.5">
+                {CAROUSEL_PROJECTS.map((_, index) => (
+                    <motion.button
+                        key={index}
+                        onClick={() => setCurrentIndex(index)}
+                        animate={{
+                            width: currentIndex === index ? 24 : 8,
+                            backgroundColor: currentIndex === index ? "#fcdf03" : "rgba(255,255,255,0.2)"
                         }}
+                        transition={{ duration: 0.3 }}
+                        className="h-1.5 rounded-full"
+                        aria-label={`Go to project ${index + 1}`}
                     />
                 ))}
             </div>
@@ -89,15 +116,15 @@ export default function Hero() {
                 className="container-standard relative z-10 py-12 pointer-events-none flex flex-col items-center justify-center min-h-[60vh] md:min-h-[70vh]"
             >
                 <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
-                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md"
-                    >
-                        <Sparkles size={10} className="text-white/40" />
-                        <span className="text-[9px] font-mono text-white/40 uppercase tracking-[0.4em] font-black">Industry Standard AI</span>
-                    </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
+                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/30 mb-8 backdrop-blur-md"
+                        >
+                            <Sparkles size={10} className="text-yellow-400/60" />
+                            <span className="text-[9px] font-mono text-yellow-300/70 uppercase tracking-[0.4em] font-black">Enterprise AI Solutions</span>
+                        </motion.div>
 
                     <div className="space-y-3 flex flex-col items-center">
                         <motion.h1
@@ -159,7 +186,7 @@ export default function Hero() {
                     >
                         <div className="flex flex-col sm:flex-row gap-6">
                             <Link href="/contact">
-                                <button className="group relative px-10 py-5 bg-white text-black font-black uppercase text-xs tracking-[0.3em] rounded-xl overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.1)] transition-all hover:bg-white/90 hover:scale-105 active:scale-95">
+                                <button className="group relative px-10 py-5 bg-gradient-to-r from-yellow-400 to-yellow-300 text-black font-black uppercase text-xs tracking-[0.3em] rounded-xl overflow-hidden shadow-[0_0_50px_rgba(252,223,3,0.25)] transition-all hover:from-yellow-300 hover:to-yellow-200 hover:shadow-[0_0_60px_rgba(252,223,3,0.35)] hover:scale-105 active:scale-95">
                                     <span className="relative z-10 flex items-center gap-4">
                                         BOOK A STRATEGY CALL
                                         <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
@@ -167,12 +194,12 @@ export default function Hero() {
                                 </button>
                             </Link>
 
-                            <Link href="/projects">
-                                <button className="group px-10 py-5 bg-transparent/40 border border-white/10 text-white font-black uppercase text-xs tracking-[0.3em] rounded-xl backdrop-blur-xl transition-all hover:bg-white/5 hover:border-white/30 active:scale-95 flex items-center gap-4">
-                                    <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all">
-                                        <Play className="w-3 h-3 fill-white text-white ml-1" />
+                            <Link href="#products-showcase">
+                                <button className="group px-10 py-5 bg-transparent/40 border border-yellow-400/30 text-white font-black uppercase text-xs tracking-[0.3em] rounded-xl backdrop-blur-xl transition-all hover:bg-yellow-400/10 hover:border-yellow-400/50 active:scale-95 flex items-center gap-4">
+                                    <div className="w-8 h-8 rounded-lg bg-yellow-400/10 border border-yellow-400/30 flex items-center justify-center group-hover:bg-yellow-400/20 group-hover:border-yellow-400/50 transition-all">
+                                        <Play className="w-3 h-3 fill-yellow-300 text-yellow-300 ml-1" />
                                     </div>
-                                    VIEW CASE STUDIES
+                                    VIEW OUR PRODUCTS
                                 </button>
                             </Link>
                         </div>
@@ -199,12 +226,12 @@ export default function Hero() {
                 transition={{ delay: 2, duration: 1 }}
                 className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 pointer-events-none z-20"
             >
-                <span className="text-[9px] font-mono font-bold tracking-[0.5em] text-white/20 uppercase">Initiate_Scroll</span>
-                <div className="w-px h-12 bg-gradient-to-b from-white/20 to-transparent relative">
+                <span className="text-[9px] font-mono font-bold tracking-[0.5em] text-white/30 uppercase">Scroll_Explore</span>
+                <div className="w-px h-12 bg-gradient-to-b from-yellow-400/40 to-transparent relative">
                     <motion.div
                         animate={{ y: [0, 30, 0], opacity: [0, 1, 0] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-0 left-[-1.5px] w-[4px] h-[4px] bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,1)]"
+                        className="absolute top-0 left-[-1.5px] w-[4px] h-[4px] bg-yellow-400 rounded-full shadow-[0_0_8px_rgba(252,223,3,0.8)]"
                     />
                 </div>
             </motion.div>
