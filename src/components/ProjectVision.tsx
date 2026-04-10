@@ -125,17 +125,21 @@ export default function ProjectVision() {
                             OUR <span className="text-yellow-400/80">PRODUCTS</span>
                         </h2>
                     </div>
-                    <div className="hidden lg:block text-right font-mono text-[9px] text-white/20 uppercase tracking-widest leading-relaxed">
-                        Data flow: nominal <br />
+                    <div className="hidden lg:block text-right font-mono text-[9px] text-white/30 uppercase tracking-widest leading-relaxed">
+                        <div className="flex items-center justify-end gap-2 mb-2">
+                            <span className="text-yellow-400/60 font-bold">●</span>
+                            <span className="text-yellow-400/60">LIVE</span>
+                        </div>
+                        Data flow: optimal <br />
                         Latency: 0.04ms <br />
-                        Protocol: mindscape-v4-industrial
+                        Protocol: mindscape-enterprise-v2026
                     </div>
                 </div>
 
                 {/* --- Main Dashboard Container --- */}
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr_1fr] gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/5 backdrop-blur-xl">
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr_1fr] gap-px bg-gradient-to-br from-white/[0.08] to-white/[0.02] rounded-3xl overflow-hidden border border-yellow-400/20 backdrop-blur-3xl shadow-[0_8px_32px_rgba(252,223,3,0.08)]">
                     {/* 1. Left Rail: Project Selector (Adaptive) */}
-                    <div className="flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible border-b lg:border-b-0 lg:border-r border-white/5 p-4 bg-transparent/40 no-scrollbar">
+                    <div className="flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible border-b lg:border-b-0 lg:border-r border-yellow-400/15 p-4 bg-gradient-to-b from-white/[0.04] to-transparent no-scrollbar">
                         <div className="hidden lg:block text-[8px] font-mono text-white/20 uppercase tracking-widest mb-6 px-4 shrink-0">Registry Select</div>
                         <div className="flex flex-row lg:flex-col gap-1 shrink-0">
                             {PROJECTS.map((project, i) => (
@@ -145,8 +149,10 @@ export default function ProjectVision() {
                                     onMouseLeave={() => setIsHovering(null)}
                                     onClick={() => setActiveIndex(i)}
                                     className={cn(
-                                        "group relative w-full text-left px-5 py-3 transition-all duration-300 rounded-lg flex items-center justify-between",
-                                        activeIndex === i ? "bg-white/5 border border-white/10" : "hover:bg-white/[0.02]"
+                                        "group relative w-full text-left px-5 py-3 transition-all duration-300 rounded-xl flex items-center justify-between",
+                                        activeIndex === i 
+                                            ? "bg-gradient-to-r from-yellow-400/15 to-yellow-400/5 border border-yellow-400/30 shadow-[0_0_16px_rgba(252,223,3,0.1)]" 
+                                            : "hover:bg-white/[0.04] border border-transparent hover:border-yellow-400/10"
                                     )}
                                 >
                                     <div className="flex items-center gap-4">
@@ -176,7 +182,7 @@ export default function ProjectVision() {
                                     {activeIndex === i && (
                                         <motion.div
                                             layoutId="active-indicator"
-                                            className="absolute left-0 w-1 h-1/2 bg-white rounded-r-full shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+                                            className="absolute left-0 w-1.5 h-1/2 bg-gradient-to-b from-yellow-400 to-yellow-400/40 rounded-r-full shadow-[0_0_12px_rgba(252,223,3,0.8)]"
                                         />
                                     )}
                                 </button>
@@ -185,21 +191,21 @@ export default function ProjectVision() {
                     </div>
 
                     {/* 2. Center: Active Project Monitor */}
-                    <div className="relative min-h-[350px] xs:min-h-[450px] lg:min-h-[700px] bg-transparent p-6 lg:p-12 flex items-center justify-center group overflow-hidden lg:border-r border-white/5 border-b lg:border-b-0">
+                    <div className="relative min-h-[350px] xs:min-h-[450px] lg:min-h-[700px] bg-gradient-to-br from-white/[0.02] via-transparent to-yellow-400/[0.02] p-6 lg:p-12 flex items-center justify-center group overflow-hidden lg:border-r border-yellow-400/15 border-b lg:border-b-0">
                         {/* Monitor Border Elements */}
-                        <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-white/20" />
-                        <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-white/20" />
-                        <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-white/20" />
-                        <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-white/20" />
+                        <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-yellow-400/40" />
+                        <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-yellow-400/40" />
+                        <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-yellow-400/40" />
+                        <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-yellow-400/40" />
 
                         {/* Top Metadata */}
                         <div className="absolute top-6 left-10 right-10 flex justify-between items-center z-20">
                             <div className="flex items-center gap-3">
-                                <div className="px-2 py-0.5 bg-white/5 border border-white/10 text-white/60 text-[8px] font-mono rounded uppercase">Live_Feed</div>
-                                <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.4em] leading-none pt-0.5">Source: Archive_Node_0x{activeIndex.toString(16)}</span>
+                                <div className="px-3 py-1 bg-gradient-to-r from-yellow-400/20 to-yellow-400/10 border border-yellow-400/40 text-yellow-300 text-[8px] font-mono font-bold rounded-lg uppercase">Live_Feed</div>
+                                <span className="text-[8px] font-mono text-white/40 uppercase tracking-[0.4em] leading-none pt-0.5">Source: Enterprise_Node_0x{activeIndex.toString(16)}</span>
                             </div>
                             <div className="flex gap-1">
-                                {[1, 2, 3].map(i => <div key={i} className="w-1 h-3 bg-white/10" />)}
+                                {[1, 2, 3].map(i => <div key={i} className={cn("w-1 h-3", i < 2 ? "bg-yellow-400/60" : "bg-white/20")} />)}
                             </div>
                         </div>
 
@@ -213,7 +219,7 @@ export default function ProjectVision() {
                                 className="relative w-full h-full flex flex-col items-center justify-center"
                             >
                                 {/* Main Image Container */}
-                                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] group-hover:border-white/20 transition-all duration-700 transform-gpu">
+                                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-yellow-400/30 shadow-[0_0_60px_rgba(252,223,3,0.15)] group-hover:border-yellow-400/50 group-hover:shadow-[0_0_80px_rgba(252,223,3,0.25)] transition-all duration-700 transform-gpu">
                                     <Image
                                         src={activeProject.image}
                                         alt={activeProject.title}
@@ -223,11 +229,11 @@ export default function ProjectVision() {
                                         loading={activeIndex < 3 ? "eager" : "lazy"}
                                         sizes="(max-width: 768px) 90vw, (max-width: 1200px) 60vw, 50vw"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-yellow-400/10 opacity-70" />
 
                                     <div className="absolute top-6 left-6 z-20 flex flex-col gap-1">
-                                        <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.3em] font-black">Terminal_A // READY</span>
-                                        <div className="w-12 h-[1px] bg-white/10" />
+                                        <span className="text-[8px] font-mono text-yellow-300/80 uppercase tracking-[0.3em] font-black">Terminal_Enterprise // ACTIVE</span>
+                                        <div className="w-12 h-[1px] bg-gradient-to-r from-yellow-400/60 to-yellow-400/10" />
                                     </div>
 
                                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] pointer-events-none opacity-20">
@@ -253,7 +259,7 @@ export default function ProjectVision() {
                                     initial={{ y: 20, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{ delay: 0.3 }}
-                                    className="relative lg:absolute mt-6 lg:mt-0 lg:bottom-[-20px] lg:left-10 lg:right-auto p-4 lg:p-6 bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-2xl max-w-full lg:max-w-sm z-30 shadow-2xl"
+                                    className="relative lg:absolute mt-6 lg:mt-0 lg:bottom-[-20px] lg:left-10 lg:right-auto p-4 lg:p-6 bg-gradient-to-br from-white/[0.12] to-white/[0.04] backdrop-blur-3xl border border-yellow-400/30 rounded-2xl max-w-full lg:max-w-sm z-30 shadow-[0_8px_32px_rgba(252,223,3,0.12)]"
                                 >
                                     <h4 className="text-white text-lg lg:text-xl font-black uppercase tracking-tighter mb-1 lg:mb-2">{activeProject.title}</h4>
                                     <p className="text-white/40 text-[9px] lg:text-[10px] leading-relaxed font-mono uppercase tracking-tight">{activeProject.description}</p>
@@ -263,28 +269,28 @@ export default function ProjectVision() {
                     </div>
 
                     {/* 3. Right Panel: Technical Readout */}
-                    <div className="flex flex-col p-8 bg-transparent/40 gap-10">
+                    <div className="flex flex-col p-8 bg-gradient-to-b from-white/[0.04] to-yellow-400/[0.03] gap-10">
                         {/* Metrics Section */}
                         <div className="space-y-6">
-                            <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                                <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">Key Metrics</span>
+                            <div className="flex items-center justify-between border-b border-yellow-400/20 pb-4">
+                                <span className="text-[10px] font-mono text-yellow-300/70 uppercase tracking-widest font-bold">Key Metrics</span>
                                 <div className="flex gap-0.5">
-                                    {[1, 2, 3, 4, 5].map(i => <div key={i} className={cn("w-1 h-2", i < 4 ? "bg-white/60" : "bg-white/10")} />)}
+                                    {[1, 2, 3, 4, 5].map(i => <div key={i} className={cn("w-1 h-2", i < 4 ? "bg-yellow-400/70" : "bg-white/10")} />)}
                                 </div>
                             </div>
 
                             <div className="space-y-2">
                                 <div className="text-[9px] font-mono text-white/30 uppercase mb-1">Performance_Data</div>
-                                <div className="p-4 rounded-xl bg-white/5 border border-white/10 font-mono">
-                                    <div className="text-white/80 text-xs font-bold mb-1">{activeProject.metrics}</div>
-                                    <div className="text-white/20 text-[7px] uppercase tracking-widest">Confidence Interval: 99.4%</div>
+                                <div className="p-4 rounded-xl bg-gradient-to-br from-yellow-400/15 to-yellow-400/5 border border-yellow-400/25 font-mono">
+                                    <div className="text-white/90 text-xs font-bold mb-1">{activeProject.metrics}</div>
+                                    <div className="text-yellow-300/60 text-[7px] uppercase tracking-widest">Confidence Interval: 99.8%</div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Sub-Systems Section */}
                         <div className="space-y-6">
-                            <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest block border-b border-white/10 pb-4">Internal Systems</span>
+                            <span className="text-[10px] font-mono text-yellow-300/70 uppercase tracking-widest block border-b border-yellow-400/20 pb-4 font-bold">Internal Systems</span>
                             <div className="space-y-3">
                                 {activeProject.details.map((detail: string, idx: number) => (
                                     <motion.div
@@ -295,16 +301,16 @@ export default function ProjectVision() {
                                         className="flex items-center justify-between group/sys"
                                     >
                                         <div className="flex items-center gap-3">
-                                            <div className="w-1.5 h-1.5 rounded-full border border-white/20 flex items-center justify-center">
-                                                <div className="w-0.5 h-0.5 bg-white/60 rounded-full" />
+                                            <div className="w-1.5 h-1.5 rounded-full border border-yellow-400/40 flex items-center justify-center">
+                                                <div className="w-0.5 h-0.5 bg-yellow-400/70 rounded-full" />
                                             </div>
-                                            <span className="text-[10px] font-bold text-white/60 group-hover/sys:text-white transition-colors">{detail}</span>
+                                            <span className="text-[10px] font-bold text-white/70 group-hover/sys:text-yellow-300 transition-colors">{detail}</span>
                                         </div>
                                         <div className="h-1 w-8 bg-white/5 rounded-full overflow-hidden">
                                             <motion.div
                                                 initial={{ width: 0 }}
                                                 animate={{ width: "70%" }}
-                                                className="h-full bg-white/30"
+                                                className="h-full bg-gradient-to-r from-yellow-400/60 to-yellow-400/20"
                                             />
                                         </div>
                                     </motion.div>
@@ -313,16 +319,16 @@ export default function ProjectVision() {
                         </div>
 
                         {/* Action Section */}
-                        <div className="mt-auto space-y-4 pt-10 border-t border-white/10">
-                            <button className="w-full flex items-center justify-between p-4 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white/90 transition-colors group/view shadow-[0_4px_20px_rgba(255,255,255,0.1)]">
-                                VIEW CORE CODE
+                        <div className="mt-auto space-y-4 pt-10 border-t border-yellow-400/20">
+                            <button className="w-full flex items-center justify-between p-4 bg-gradient-to-r from-yellow-400 to-yellow-300 text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:from-yellow-300 hover:to-yellow-200 transition-all group/view shadow-[0_4px_24px_rgba(252,223,3,0.25)] hover:shadow-[0_6px_32px_rgba(252,223,3,0.35)]">
+                                EXPLORE PRODUCT
                                 <ExternalLink className="w-4 h-4" />
                             </button>
                             <div className="flex items-center justify-between px-2">
-                                <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest">Protocol: 02.AF.91</span>
+                                <span className="text-[8px] font-mono text-white/40 uppercase tracking-widest">Protocol: Enterprise_2026</span>
                                 <div className="flex gap-2">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                                    <div className="w-1.5 h-1.5 rounded-full bg-white/60 animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-400/40" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse shadow-[0_0_8px_rgba(252,223,3,0.6)]" />
                                 </div>
                             </div>
                         </div>
@@ -331,18 +337,18 @@ export default function ProjectVision() {
                 </div>
 
                 {/* --- Bottom Footer Info --- */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-8 border-t border-white/5 opacity-40">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-8 border-t border-yellow-400/15">
                     <div className="flex items-center gap-6">
-                        <div className="text-[9px] font-mono text-white pb-1 border-b border-white/40 uppercase tracking-widest">SECURE_LINK: MINDSCAPE_ACCESS_GRANTED</div>
-                        <div className="text-[9px] font-mono text-white/60 uppercase tracking-widest hidden md:block">USER_ID: 0x882_ADM</div>
+                        <div className="text-[9px] font-mono text-yellow-300/80 pb-1 border-b border-yellow-400/40 uppercase tracking-widest font-bold">Enterprise_Access_Verified</div>
+                        <div className="text-[9px] font-mono text-white/50 uppercase tracking-widest hidden md:block">Org_ID: MSA_Enterprise_2026</div>
                     </div>
                     <div className="flex items-center gap-4">
-                        <div className="flex -space-x-1 grayscale opacity-50">
+                        <div className="flex -space-x-1 opacity-70">
                             {[1, 2, 3, 4].map(i => (
-                                <div key={i} className="w-4 h-4 rounded-full border border-black bg-zinc-800" />
+                                <div key={i} className="w-4 h-4 rounded-full border border-yellow-400/40 bg-gradient-to-br from-yellow-400/30 to-yellow-400/10" />
                             ))}
                         </div>
-                        <span className="text-[9px] font-mono text-white/40 uppercase">ACTIVE_USERS: 12.4K</span>
+                        <span className="text-[9px] font-mono text-white/50 uppercase">Deployment_Status: Live</span>
                     </div>
                 </div>
             </div>
