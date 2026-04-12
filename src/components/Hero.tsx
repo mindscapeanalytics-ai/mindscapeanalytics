@@ -53,18 +53,6 @@ export default function Hero() {
                 />
             </div>
 
-            {/* Mobile HUD Ornaments - Institutional Detail */}
-            <div className="lg:hidden absolute inset-0 z-10 pointer-events-none px-6 py-20 flex flex-col justify-between overflow-hidden opacity-30">
-                <div className="flex justify-between items-start">
-                    <div className="flex flex-col gap-1">
-                        <span className="text-[7px] font-mono text-white/40 tracking-[0.2em] font-black uppercase">Lat: 44.8113° N</span>
-                        <span className="text-[7px] font-mono text-white/40 tracking-[0.2em] font-black uppercase">Lon: 106.9561° W</span>
-                    </div>
-                    <div className="text-right">
-                        <span className="text-[7px] font-mono text-white/40 tracking-[0.2em] font-black uppercase">System_Active: 99.9%</span>
-                    </div>
-                </div>
-            </div>
             {/* Content Overlay with focus on smoothness */}
             <motion.div
                 style={{ scale, opacity, y: titleY }}
