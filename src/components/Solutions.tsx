@@ -105,8 +105,8 @@ export default function Solutions() {
 
             <div className="container-standard relative z-10">
                 {/* Section Header */}
-                <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-32 border-b border-white/5 pb-12">
-                    <div className="max-w-4xl space-y-6">
+                <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8 mb-16 lg:mb-32 border-b border-white/5 pb-12 text-center lg:text-left">
+                    <div className="flex flex-col items-center lg:items-start max-w-4xl space-y-6">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -122,7 +122,7 @@ export default function Solutions() {
                             viewport={{ once: true, margin: "-50px" }}
                             className="fluid-h2"
                         >
-                            SYSTEM <br /> <span className="text-white/40 font-black">ARCHITECTURES.</span>
+                            SYSTEM <br className="hidden md:block" /> <span className="text-white/40 font-black">ARCHITECTURES.</span>
                         </motion.h2>
                     </div>
 

@@ -150,7 +150,7 @@ export default function ProjectVision() {
         <section
             id="project-vision"
             ref={containerRef}
-            className="relative w-full min-h-screen bg-transparent py-24 px-6 overflow-hidden flex flex-col items-center justify-center"
+            className="relative w-full min-h-screen bg-transparent py-12 lg:py-24 px-4 lg:px-6 overflow-hidden flex flex-col items-center justify-center"
         >
             {/* --- Cinematic Background --- */}
             <div className="absolute inset-0 pointer-events-none z-0">
@@ -162,19 +162,19 @@ export default function ProjectVision() {
                         x: useTransform(smoothMouseX, (v: number) => v * 1.5),
                         y: useTransform(smoothMouseY, (v: number) => v * 1.5)
                     }}
-                    className="absolute z-0 w-[400px] h-[400px] bg-white/[0.02] blur-[120px] rounded-full pointer-events-none transform-gpu"
+                    className="absolute z-0 w-[300px] lg:w-[400px] h-[300px] lg:h-[400px] bg-white/[0.02] blur-[100px] lg:blur-[120px] rounded-full pointer-events-none transform-gpu"
                 />
             </div>
 
-            <div className="container-wide flex flex-col gap-12">
+            <div className="container-wide flex flex-col gap-8 lg:gap-12">
                 {/* --- Section Header --- */}
-                <div className="flex flex-col md:flex-row items-end justify-between gap-6 border-b border-white/5 pb-10">
-                    <div className="space-y-4">
+                <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 border-b border-white/5 pb-6 lg:pb-10 text-center lg:text-left">
+                    <div className="flex flex-col items-center lg:items-start space-y-3 lg:space-y-4">
                         <div className="flex items-center gap-3">
                             <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
-                            <span className="text-meta">Subsystem // Archive_Port_01</span>
+                            <span className="text-[8px] lg:text-meta uppercase font-mono tracking-widest text-white/40">Subsystem // Archive_Port_01</span>
                         </div>
-                        <h2 className="fluid-h2">
+                        <h2 className="text-3xl xs:text-4xl lg:text-8xl font-black tracking-[-0.05em] leading-[0.8] uppercase font-sans">
                             PROJECT <span className="text-white/40">VISION</span>
                         </h2>
                     </div>
@@ -188,9 +188,10 @@ export default function ProjectVision() {
                 {/* --- Main Dashboard Container --- */}
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr_1fr] gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/5 backdrop-blur-xl">
                     {/* 1. Left Rail: Project Selector (Adaptive) */}
-                    <div className="flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible border-b lg:border-b-0 lg:border-r border-white/5 p-4 bg-transparent/40 no-scrollbar">
-                        <div className="hidden lg:block text-[8px] font-mono text-white/20 uppercase tracking-widest mb-6 px-4 shrink-0">Registry Select</div>
-                        <div className="flex flex-row lg:flex-col gap-1 shrink-0">
+                    <div className="relative flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible border-b lg:border-b-0 lg:border-r border-white/5 p-2 lg:p-4 bg-transparent/40 no-scrollbar snap-x snap-mandatory lg:snap-none [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)] lg:[mask-image:none]">
+                        <div className="text-[7px] lg:text-[8px] font-mono text-white/20 uppercase tracking-widest mb-4 lg:mb-6 px-4 shrink-0">Registry Select</div>
+                        
+                        <div className="flex flex-row lg:flex-col gap-1 shrink-0 px-[30vw] lg:px-0">
                             {PROJECTS.map((project, i) => (
                                 <button
                                     key={i}
@@ -198,38 +199,38 @@ export default function ProjectVision() {
                                     onMouseLeave={() => setIsHovering(null)}
                                     onClick={() => setActiveIndex(i)}
                                     className={cn(
-                                        "group relative w-full text-left px-5 py-3 transition-all duration-300 rounded-lg flex items-center justify-between",
+                                        "group relative min-w-[140px] lg:min-w-0 text-left px-4 lg:px-5 py-2.5 lg:py-3 transition-all duration-300 rounded-lg flex items-center justify-between snap-center",
                                         activeIndex === i ? "bg-white/5 border border-white/10" : "hover:bg-white/[0.02]"
                                     )}
                                 >
-                                    <div className="flex items-center gap-4">
+                                    <div className="flex items-center gap-3 lg:gap-4">
                                         <span className={cn(
-                                            "font-mono text-[10px] transition-colors",
+                                            "font-mono text-[9px] lg:text-[10px] transition-colors",
                                             activeIndex === i ? "text-white" : "text-white/20"
                                         )}>
                                             0{i + 1}
                                         </span>
                                         <div className="flex flex-col">
                                             <span className={cn(
-                                                "text-[10px] xs:text-xs font-bold uppercase tracking-wide transition-colors whitespace-nowrap lg:whitespace-normal",
+                                                "text-[9px] lg:text-xs font-bold uppercase tracking-wide transition-colors whitespace-nowrap lg:whitespace-normal",
                                                 activeIndex === i ? "text-white" : "text-white/40 group-hover:text-white/60"
                                             )}>
                                                 {project.title}
                                             </span>
-                                            <span className="text-[8px] font-mono text-white/20 group-hover:text-white/30 transition-colors uppercase pt-0.5">
+                                            <span className="text-[7px] lg:text-[8px] font-mono text-white/10 lg:text-white/20 group-hover:text-white/30 transition-colors uppercase pt-0.5">
                                                 {project.category}
                                             </span>
                                         </div>
                                     </div>
                                     <ArrowRight className={cn(
-                                        "w-3 h-3 transition-all duration-300",
+                                        "hidden lg:block w-3 h-3 transition-all duration-300",
                                         activeIndex === i ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
                                     )} />
 
                                     {activeIndex === i && (
                                         <motion.div
                                             layoutId="active-indicator"
-                                            className="absolute left-0 w-1 h-1/2 bg-white rounded-r-full shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+                                            className="absolute bottom-0 lg:bottom-auto lg:left-0 w-full lg:w-1 h-0.5 lg:h-1/2 bg-white lg:rounded-r-full shadow-[0_0_8px_rgba(255,255,255,0.8)]"
                                         />
                                     )}
                                 </button>
@@ -238,21 +239,21 @@ export default function ProjectVision() {
                     </div>
 
                     {/* 2. Center: Active Project Monitor */}
-                    <div className="relative min-h-[350px] xs:min-h-[450px] lg:min-h-[700px] bg-transparent p-6 lg:p-12 flex items-center justify-center group overflow-hidden lg:border-r border-white/5 border-b lg:border-b-0">
+                    <div className="relative min-h-[300px] xs:min-h-[400px] lg:min-h-[700px] bg-transparent p-4 lg:p-12 flex items-center justify-center group overflow-hidden lg:border-r border-white/5 border-b lg:border-b-0">
                         {/* Monitor Border Elements */}
-                        <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-white/20" />
-                        <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-white/20" />
-                        <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-white/20" />
-                        <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-white/20" />
+                        <div className="absolute top-4 left-4 w-3 h-3 lg:w-4 lg:h-4 border-t border-l border-white/20" />
+                        <div className="absolute top-4 right-4 w-3 h-3 lg:w-4 lg:h-4 border-t border-r border-white/20" />
+                        <div className="absolute bottom-4 left-4 w-3 h-3 lg:w-4 lg:h-4 border-b border-l border-white/20" />
+                        <div className="absolute bottom-4 right-4 w-3 h-3 lg:w-4 lg:h-4 border-b border-r border-white/20" />
 
                         {/* Top Metadata */}
-                        <div className="absolute top-6 left-10 right-10 flex justify-between items-center z-20">
-                            <div className="flex items-center gap-3">
-                                <div className="px-2 py-0.5 bg-white/5 border border-white/10 text-white/60 text-[8px] font-mono rounded uppercase">Live_Feed</div>
-                                <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.4em] leading-none pt-0.5">Source: Archive_Node_0x{activeIndex.toString(16)}</span>
+                        <div className="absolute top-4 lg:top-6 left-8 lg:left-10 right-8 lg:right-10 flex justify-between items-center z-20">
+                            <div className="flex items-center gap-2 lg:gap-3">
+                                <div className="px-1.5 py-0.5 bg-white/5 border border-white/10 text-white/60 text-[7px] lg:text-[8px] font-mono rounded uppercase">Live_Feed</div>
+                                <span className="text-[7px] lg:text-[8px] font-mono text-white/20 uppercase tracking-[0.4em] leading-none pt-0.5">0x{activeIndex.toString(16)}</span>
                             </div>
-                            <div className="flex gap-1">
-                                {[1, 2, 3].map(i => <div key={i} className="w-1 h-3 bg-white/10" />)}
+                            <div className="flex gap-0.5 lg:gap-1">
+                                {[1, 2, 3].map(i => <div key={i} className="w-0.5 lg:w-1 h-2 lg:h-3 bg-white/10" />)}
                             </div>
                         </div>
 
@@ -263,10 +264,20 @@ export default function ProjectVision() {
                                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                                 exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
                                 transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-                                className="relative w-full h-full flex flex-col items-center justify-center"
+                                drag="x"
+                                dragConstraints={{ left: 0, right: 0 }}
+                                onDragEnd={(e, { offset, velocity }) => {
+                                    const swipe = offset.x;
+                                    if (swipe < -50 && activeIndex < PROJECTS.length - 1) {
+                                        setActiveIndex(activeIndex + 1);
+                                    } else if (swipe > 50 && activeIndex > 0) {
+                                        setActiveIndex(activeIndex - 1);
+                                    }
+                                }}
+                                className="relative w-full h-full flex flex-col items-center justify-center cursor-grab active:cursor-grabbing transform-gpu"
                             >
                                 {/* Main Image Container */}
-                                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] group-hover:border-white/20 transition-all duration-700 transform-gpu">
+                                <div className="relative w-full aspect-video rounded-xl lg:rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] lg:shadow-[0_0_50px_rgba(0,0,0,0.5)] group-hover:border-white/20 transition-all duration-700">
                                     <Image
                                         src={activeProject.image}
                                         alt={activeProject.title}
@@ -277,51 +288,43 @@ export default function ProjectVision() {
                                         )}
                                         priority={activeIndex < 3}
                                         loading={activeIndex < 3 ? "eager" : "lazy"}
-                                        sizes="(max-width: 768px) 90vw, (max-width: 1200px) 60vw, 50vw"
+                                        sizes="(max-width: 768px) 95vw, (max-width: 1200px) 60vw, 50vw"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
 
                                     {activeProject.status === "coming-soon" && (
                                         <div className="absolute inset-0 flex items-center justify-center z-30">
-                                            <div className="px-6 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-[0.4em] shadow-2xl">
+                                            <div className="px-4 py-1.5 lg:px-6 lg:py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-[8px] lg:text-[10px] font-black uppercase tracking-[0.4em] shadow-2xl">
                                                 Coming Soon
                                             </div>
                                         </div>
                                     )}
 
-                                    <div className="absolute top-6 left-6 z-20 flex flex-col gap-1">
-                                        <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.3em] font-black">
-                                            {activeProject.status === "coming-soon" ? "Terminal_A // STAGED" : "Terminal_A // READY"}
-                                        </span>
-                                        <div className="w-12 h-[1px] bg-white/10" />
+                                    {/* Mobile Swipe Hint */}
+                                    <div className="lg:hidden absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 opacity-30 animate-pulse z-20">
+                                        <div className="w-8 h-[1px] bg-white/40" />
+                                        <span className="text-[6px] font-mono text-white uppercase tracking-widest whitespace-nowrap">Swipe to Navigate</span>
+                                        <div className="w-8 h-[1px] bg-white/40" />
                                     </div>
 
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] pointer-events-none opacity-20">
-                                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_70%)]" />
-                                    </div>
-                                    {/* HUD Elements */}
-                                    <div className="absolute inset-0 pointer-events-none">
-                                        {/* Crosshair */}
-                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 flex items-center justify-center opacity-20">
-                                            <div className="w-full h-px bg-white" />
-                                            <div className="h-full w-px bg-white absolute" />
-                                            <div className="w-8 h-8 border border-white rounded-full" />
-                                        </div>
-
-                                        {/* Corner Brackets */}
-                                        <div className="absolute top-6 left-6 w-12 h-12 border-t-2 border-l-2 border-white opacity-40" />
-                                        <div className="absolute bottom-6 right-6 w-12 h-12 border-b-2 border-r-2 border-white opacity-40" />
+                                    {/* Corner Brackets */}
+                                    <div className="absolute inset-0 pointer-events-none p-4 lg:p-6">
+                                        <div className="absolute top-4 lg:top-6 left-4 lg:left-6 w-8 h-8 lg:w-12 lg:h-12 border-t-2 border-l-2 border-white opacity-20 lg:opacity-40" />
+                                        <div className="absolute bottom-4 lg:bottom-6 right-4 lg:right-6 w-8 h-8 lg:w-12 lg:h-12 border-b-2 border-r-2 border-white opacity-20 lg:opacity-40" />
                                     </div>
                                 </div>
 
-                                {/* Floating Detail Label - Positioned strategically for mobile accessibility */}
+                                {/* Detail Label - Enhanced for Mobile HUD feel */}
                                 <motion.div
-                                    initial={{ y: 20, opacity: 0 }}
+                                    initial={{ y: 10, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{ delay: 0.3 }}
-                                    className="relative lg:absolute mt-6 lg:mt-0 lg:bottom-[-20px] lg:left-10 lg:right-auto p-4 lg:p-6 bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-2xl max-w-full lg:max-w-sm z-30 shadow-2xl"
+                                    className="relative lg:absolute mt-4 lg:mt-0 lg:-bottom-5 lg:left-10 p-4 lg:p-6 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-xl lg:rounded-2xl w-full lg:max-w-sm z-30 shadow-2xl"
                                 >
-                                    <h4 className="text-white text-lg lg:text-xl font-black uppercase tracking-tighter mb-1 lg:mb-2">{activeProject.title}</h4>
+                                    <div className="flex items-center gap-2 mb-1 lg:mb-2">
+                                        <div className="w-1 h-1 bg-white rounded-full animate-pulse" />
+                                        <h4 className="text-white text-base lg:text-xl font-black uppercase tracking-tighter leading-none">{activeProject.title}</h4>
+                                    </div>
                                     <p className="text-white/40 text-[9px] lg:text-[10px] leading-relaxed font-mono uppercase tracking-tight">{activeProject.description}</p>
                                 </motion.div>
                             </motion.div>
@@ -329,81 +332,84 @@ export default function ProjectVision() {
                     </div>
 
                     {/* 3. Right Panel: Technical Readout */}
-                    <div className="flex flex-col p-8 bg-transparent/40 gap-10">
-                        {/* Metrics Section */}
-                        <div className="space-y-6">
-                            <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                                <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">Key Metrics</span>
-                                <div className="flex gap-0.5">
-                                    {[1, 2, 3, 4, 5].map(i => <div key={i} className={cn("w-1 h-2", i < 4 ? "bg-white/60" : "bg-white/10")} />)}
+                    <div className="flex flex-col p-6 lg:p-8 bg-transparent/40 gap-8 lg:gap-10">
+                        {/* Mobile Grid Layout for Metrics */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 lg:gap-10">
+                            {/* Metrics Section */}
+                            <div className="space-y-4 lg:space-y-6">
+                                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                                    <span className="text-[8px] lg:text-[10px] font-mono text-white/40 uppercase tracking-widest">Key Metrics</span>
+                                    <div className="hidden lg:flex gap-0.5">
+                                        {[1, 2, 3, 4, 5].map(i => <div key={i} className={cn("w-1 h-2", i < 4 ? "bg-white/60" : "bg-white/10")} />)}
+                                    </div>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <div className="text-[7px] lg:text-[9px] font-mono text-white/20 uppercase mb-1 tracking-widest">Performance_Data</div>
+                                    <div className="p-3 lg:p-4 rounded-xl bg-white/5 border border-white/10 font-mono">
+                                        <div className="text-white/80 text-[10px] lg:text-xs font-bold mb-1">{activeProject.metrics}</div>
+                                        <div className="text-white/10 text-[6px] lg:text-[7px] uppercase tracking-widest">Confidence Interval: 99.4%</div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="space-y-2">
-                                <div className="text-[9px] font-mono text-white/30 uppercase mb-1">Performance_Data</div>
-                                <div className="p-4 rounded-xl bg-white/5 border border-white/10 font-mono">
-                                    <div className="text-white/80 text-xs font-bold mb-1">{activeProject.metrics}</div>
-                                    <div className="text-white/20 text-[7px] uppercase tracking-widest">Confidence Interval: 99.4%</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Sub-Systems Section */}
-                        <div className="space-y-6">
-                            <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest block border-b border-white/10 pb-4">Internal Systems</span>
-                            <div className="space-y-3">
-                                {activeProject.details.map((detail: string, idx: number) => (
-                                    <motion.div
-                                        key={idx}
-                                        initial={{ x: 10, opacity: 0 }}
-                                        animate={{ x: 0, opacity: 1 }}
-                                        transition={{ delay: 0.4 + (idx * 0.1) }}
-                                        className="flex items-center justify-between group/sys"
-                                    >
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-1.5 h-1.5 rounded-full border border-white/20 flex items-center justify-center">
-                                                <div className="w-0.5 h-0.5 bg-white/60 rounded-full" />
+                            {/* Sub-Systems Section */}
+                            <div className="space-y-4 lg:space-y-6">
+                                <span className="text-[8px] lg:text-[10px] font-mono text-white/40 uppercase tracking-widest block border-b border-white/10 pb-3">Internal Systems</span>
+                                <div className="space-y-2.5 lg:space-y-3">
+                                    {activeProject.details.map((detail: string, idx: number) => (
+                                        <motion.div
+                                            key={idx}
+                                            initial={{ x: 5, opacity: 0 }}
+                                            animate={{ x: 0, opacity: 1 }}
+                                            transition={{ delay: 0.4 + (idx * 0.1) }}
+                                            className="flex items-center justify-between group/sys"
+                                        >
+                                            <div className="flex items-center gap-2 lg:gap-3">
+                                                <div className="w-1 h-1 lg:w-1.5 lg:h-1.5 rounded-full border border-white/20 flex items-center justify-center">
+                                                    <div className="w-0.5 h-0.5 bg-white/40 rounded-full" />
+                                                </div>
+                                                <span className="text-[9px] lg:text-[10px] font-bold text-white/50 group-hover/sys:text-white transition-colors">{detail}</span>
                                             </div>
-                                            <span className="text-[10px] font-bold text-white/60 group-hover/sys:text-white transition-colors">{detail}</span>
-                                        </div>
-                                        <div className="h-1 w-8 bg-white/5 rounded-full overflow-hidden">
-                                            <motion.div
-                                                initial={{ width: 0 }}
-                                                animate={{ width: "70%" }}
-                                                className="h-full bg-white/30"
-                                            />
-                                        </div>
-                                    </motion.div>
-                                ))}
+                                            <div className="h-0.5 lg:h-1 w-6 lg:w-8 bg-white/5 rounded-full overflow-hidden">
+                                                <motion.div
+                                                    initial={{ width: 0 }}
+                                                    animate={{ width: "70%" }}
+                                                    className="h-full bg-white/20"
+                                                />
+                                            </div>
+                                        </motion.div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
                         {/* Action Section */}
-                        <div className="mt-auto space-y-4 pt-10 border-t border-white/10">
+                        <div className="mt-8 lg:mt-auto space-y-4 pt-6 lg:pt-10 border-t border-white/10">
                             {activeProject.link ? (
                                 <Link
                                     href={activeProject.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={cn(
-                                        "w-full flex items-center justify-between p-4 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white/90 transition-all group/view shadow-[0_4px_20px_rgba(255,255,255,0.1)]",
+                                        "w-full flex items-center justify-between p-3 lg:p-4 bg-white text-black text-[9px] lg:text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white/90 transition-all group/view shadow-[0_4px_20px_rgba(255,255,255,0.1)]",
                                         activeProject.status === "coming-soon" && "opacity-50 pointer-events-none"
                                     )}
                                 >
                                     {activeProject.status === "coming-soon" ? "ACCESS STAGED" : "VISIT PLATFORM"}
-                                    <ExternalLink className="w-4 h-4" />
+                                    <ExternalLink className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
                                 </Link>
                             ) : (
-                                <button className="w-full flex items-center justify-between p-4 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white/90 transition-colors group/view shadow-[0_4px_20px_rgba(255,255,255,0.1)]">
+                                <button className="w-full flex items-center justify-between p-3 lg:p-4 bg-white text-black text-[9px] lg:text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white/90 transition-colors group/view shadow-[0_4px_20px_rgba(255,255,255,0.1)]">
                                     VIEW CORE CODE
-                                    <ExternalLink className="w-4 h-4" />
+                                    <ExternalLink className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
                                 </button>
                             )}
                             <div className="flex items-center justify-between px-2">
-                                <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest">Protocol: 02.AF.91</span>
-                                <div className="flex gap-2">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                                    <div className="w-1.5 h-1.5 rounded-full bg-white/60 animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
+                                <span className="text-[7px] lg:text-[8px] font-mono text-white/20 uppercase tracking-widest">Protocol: 02.AF.91</span>
+                                <div className="flex gap-1.5 lg:gap-2">
+                                    <div className="w-1 lg:w-1.5 h-1 lg:h-1.5 rounded-full bg-white/10" />
+                                    <div className="w-1 lg:w-1.5 h-1 lg:h-1.5 rounded-full bg-white/40 animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
                                 </div>
                             </div>
                         </div>
@@ -412,18 +418,18 @@ export default function ProjectVision() {
                 </div>
 
                 {/* --- Bottom Footer Info --- */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-8 border-t border-white/5 opacity-40">
-                    <div className="flex items-center gap-6">
-                        <div className="text-[9px] font-mono text-white pb-1 border-b border-white/40 uppercase tracking-widest">SECURE_LINK: MINDSCAPE_ACCESS_GRANTED</div>
-                        <div className="text-[9px] font-mono text-white/60 uppercase tracking-widest hidden md:block">USER_ID: 0x882_ADM</div>
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-4 lg:py-8 border-t border-white/5 opacity-40">
+                    <div className="flex flex-col sm:flex-row items-center gap-4 lg:gap-6">
+                        <div className="text-[7px] lg:text-[9px] font-mono text-white pb-1 border-b border-white/20 lg:border-white/40 uppercase tracking-widest text-center lg:text-left">SECURE_LINK: MINDSCAPE_ACCESS_GRANTED</div>
+                        <div className="text-[7px] lg:text-[9px] font-mono text-white/40 uppercase tracking-widest hidden md:block">USER_ID: 0x882_ADM</div>
                     </div>
                     <div className="flex items-center gap-4">
-                        <div className="flex -space-x-1 grayscale opacity-50">
+                        <div className="flex -space-x-1 grayscale opacity-30">
                             {[1, 2, 3, 4].map(i => (
-                                <div key={i} className="w-4 h-4 rounded-full border border-black bg-zinc-800" />
+                                <div key={i} className="w-3 h-3 lg:w-4 lg:h-4 rounded-full border border-black bg-zinc-800" />
                             ))}
                         </div>
-                        <span className="text-[9px] font-mono text-white/40 uppercase">ACTIVE_USERS: 12.4K</span>
+                        <span className="text-[7px] lg:text-[9px] font-mono text-white/20 uppercase tracking-widest">ACTIVE_USERS: 12.4K</span>
                     </div>
                 </div>
             </div>

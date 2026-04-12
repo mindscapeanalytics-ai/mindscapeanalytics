@@ -19,7 +19,7 @@ export default function ProblemAgitation() {
         <section className="relative section-spacing overflow-hidden bg-transparent">
             <div className="container-standard">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                    <div className="space-y-12">
+                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 lg:space-y-12">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -27,23 +27,23 @@ export default function ProblemAgitation() {
                             className="flex items-center gap-3"
                         >
                             <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                            <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.5em] font-black">System_Audit // DIAGNOSTIC_MODE</span>
+                            <span className="text-meta">System_Audit // DIAGNOSTIC_MODE</span>
                         </motion.div>
 
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-[-0.05em] font-sans uppercase"
+                            className="fluid-h2"
                         >
-                            MOST BUSINESSES DON'T HAVE A <span className="text-white/40 font-black">SOFTWARE PROBLEM.</span>
+                            MOST BUSINESSES DON'T HAVE A <br className="hidden md:block" /> <span className="text-white/40 font-black">SOFTWARE PROBLEM.</span>
                         </motion.h2>
 
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            className="text-white/40 text-2xl font-medium tracking-[-0.02em] max-w-xl"
+                            className="text-white/40 text-xl md:text-2xl font-medium tracking-tight max-w-xl"
                         >
                             THEY HAVE A <span className="text-white font-black">SYSTEMS PROBLEM.</span>
                         </motion.p>

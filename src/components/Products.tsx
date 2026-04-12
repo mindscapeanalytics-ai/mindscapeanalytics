@@ -49,11 +49,11 @@ export default function Products() {
                         className="flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 mb-10 backdrop-blur-md"
                     >
                         <Sparkles className="w-4 h-4 text-white/60" />
-                        <span className="text-white/40 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Elite Product Suite // CATALOG_v4</span>
+                        <span className="text-meta">Elite Product Suite // CATALOG_v4</span>
                     </motion.div>
 
-                    <h2 className="text-5xl md:text-[7rem] lg:text-[9rem] font-black tracking-[-0.05em] mb-12 leading-[0.85] font-sans uppercase text-center">
-                        BATTLE-TESTED <br />
+                    <h2 className="fluid-h2">
+                        BATTLE-TESTED <br className="hidden md:block" />
                         <span className="text-white/40 font-black">SOFTWARE.</span>
                     </h2>
                 </div>

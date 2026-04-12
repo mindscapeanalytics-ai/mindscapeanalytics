@@ -40,7 +40,7 @@ export default function Footer() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="flex flex-col gap-8"
+                        className="flex flex-col items-center lg:items-start text-center lg:text-left gap-8"
                     >
                         <Link href="/" className="inline-block group relative w-fit">
                             {/* HUD Bracket */}
@@ -65,7 +65,7 @@ export default function Footer() {
                                 Architecting state-of-the-art AI automation and software solutions for the next generation of global enterprises.
                             </p>
 
-                            <div className="space-y-4 pt-6 border-t border-white/10">
+                            <div className="flex flex-col items-center lg:items-start space-y-4 pt-6 border-t border-white/10 text-center lg:text-left">
                                 <div className="flex items-center gap-3 text-white/60 hover:text-white transition-colors group">
                                     <MapPin size={18} className="opacity-60 group-hover:opacity-100 transition-opacity" />
                                     <span className="text-xs font-mono tracking-widest uppercase flex items-center gap-2 font-bold">

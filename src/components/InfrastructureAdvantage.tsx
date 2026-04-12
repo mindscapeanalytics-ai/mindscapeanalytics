@@ -26,17 +26,17 @@ export default function InfrastructureAdvantage() {
         <section className="relative section-spacing overflow-hidden bg-transparent">
             <div className="container-standard">
                 {/* Header Band */}
-                <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-24 border-b border-white/5 pb-10">
-                    <div className="max-w-3xl space-y-6">
+                <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8 mb-16 lg:mb-24 border-b border-white/5 pb-10 text-center lg:text-left">
+                    <div className="flex flex-col items-center lg:items-start max-w-3xl space-y-6">
                         <div className="flex items-center gap-3">
                             <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
                             <span className="text-meta">Infrastructure // ELITE_MANAGED</span>
                         </div>
                         <h2 className="fluid-h2">
-                            THE INFRASTRUCTURE <span className="text-white/40">ADVANTAGE.</span>
+                            THE INFRASTRUCTURE <br className="hidden md:block" /> <span className="text-white/40">ADVANTAGE.</span>
                         </h2>
                     </div>
-                    <div className="text-right font-mono text-[9px] text-white/40 uppercase tracking-[0.4em] leading-relaxed font-black">
+                    <div className="hidden md:block text-right font-mono text-[9px] text-white/40 uppercase tracking-[0.4em] leading-relaxed font-black">
                         Uptime: 99.99% <br />
                         Response: &lt;10ms <br />
                         Protocol: msa-infra-v1

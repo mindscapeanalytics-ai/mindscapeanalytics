@@ -16,7 +16,7 @@ export default function BusinessImpact() {
     return (
         <section className="relative section-spacing overflow-hidden bg-transparent">
             <div className="container-standard">
-                <div className="text-center mb-24 space-y-6">
+                <div className="flex flex-col items-center text-center mb-16 lg:mb-24 space-y-6">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -24,10 +24,10 @@ export default function BusinessImpact() {
                         className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
                     >
                         <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
-                        <span className="text-white/60 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Value Metrics // DATA_VERIFIED</span>
+                        <span className="text-meta">Value Metrics // DATA_VERIFIED</span>
                     </motion.div>
-                    <h2 className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-[-0.05em] font-sans leading-[0.8] uppercase">
-                        BUSINESS <br /> <span className="text-white/40">IMPACT.</span>
+                    <h2 className="fluid-h2">
+                        BUSINESS <br className="hidden md:block" /> <span className="text-white/40">IMPACT.</span>
                     </h2>
                 </div>
 

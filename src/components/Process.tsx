@@ -35,24 +35,23 @@ export default function Process() {
     return (
         <section id="process" className="relative section-spacing overflow-hidden bg-transparent text-white">
             <div className="container-standard">
-                <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-20 border-b border-white/5 pb-10">
-                    <div className="max-w-4xl">
+                <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8 mb-16 lg:mb-20 border-b border-white/5 pb-10 text-center lg:text-left">
+                    <div className="flex flex-col items-center lg:items-start max-w-4xl">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.6 }}
-                            className="flex items-center gap-3 mb-8"
+                            className="flex items-center gap-3 mb-6 md:mb-8"
                         >
                             <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
-                            <span className="text-[9px] font-mono text-white/40 uppercase tracking-[0.5em] font-black">Sequence // OPS_FLOW_v4.1</span>
+                            <span className="text-meta">Sequence // OPS_FLOW_v4.1</span>
                         </motion.div>
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            className="text-[10vw] xs:text-6xl md:text-8xl lg:text-[9rem] font-black tracking-[-0.05em] font-sans leading-[0.8] uppercase text-white"
-                            style={{ fontSize: "clamp(2.4rem, 10vw, 9rem)" }}
+                            className="fluid-h2"
                         >
                             OUR <span className="text-white/40 font-black">METHODOLOGY.</span>
                         </motion.h2>

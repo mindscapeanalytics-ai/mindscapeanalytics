@@ -97,12 +97,12 @@ const GrowthHub = () => {
                 </div>
 
                 {/* Bot Info Meta-Section */}
-                <div className="mt-12 flex flex-wrap justify-center gap-12 border-t border-white/5 pt-12">
+                <div className="mt-12 flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12 border-t border-white/5 pt-12 text-center">
                     <div className="flex flex-col items-center">
                         <span className="text-2xl font-black text-white/80 tracking-tighter">98.2%</span>
                         <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">Deployment Success</span>
                     </div>
-                    <div className="flex flex-col items-center border-x border-white/5 px-12">
+                    <div className="flex flex-col items-center md:border-x border-white/5 md:px-12">
                         <span className="text-2xl font-black text-white/80 tracking-tighter">4.2ms</span>
                         <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">Internal Latency</span>
                     </div>

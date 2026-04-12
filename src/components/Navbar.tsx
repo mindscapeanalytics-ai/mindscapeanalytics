@@ -204,7 +204,7 @@ export default function Navbar() {
                         />
                     </Link>
                     {contextTheme && (
-                        <div className={cn("hidden xs:flex px-2 py-0.5 rounded-md text-[8px] font-black uppercase tracking-[0.2em] border self-center", contextTheme.color, contextTheme.bg, contextTheme.border)}>
+                        <div className={cn("hidden sm:flex px-2 py-0.5 rounded-md text-[8px] font-black uppercase tracking-[0.2em] border self-center", contextTheme.color, contextTheme.bg, contextTheme.border)}>
                             {contextTheme.label}
                         </div>
                     )}
