@@ -26,8 +26,8 @@ export default function BusinessImpact() {
                         <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
                         <span className="text-white/60 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Value Metrics // DATA_VERIFIED</span>
                     </motion.div>
-                    <h2 className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-[-0.05em] font-syncopate leading-[0.8] uppercase">
-                        BUSINESS <br /> <span className="text-white/20 italic">IMPACT.</span>
+                    <h2 className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-[-0.05em] font-sans leading-[0.8] uppercase">
+                        BUSINESS <br /> <span className="text-white/40">IMPACT.</span>
                     </h2>
                 </div>
 
@@ -48,7 +48,7 @@ export default function BusinessImpact() {
                             <div className="absolute top-6 right-6 text-[8px] font-mono text-white/5 tracking-[0.1em] uppercase">SYSTEM_NOMINAL</div>
 
                             <motion.div
-                                className="text-5xl md:text-6xl lg:text-[min(5.5vw,5.5rem)] font-black text-white mb-4 tracking-[-0.05em] font-syncopate uppercase leading-[0.85] group-hover:scale-105 transition-transform duration-1000"
+                                className="text-5xl md:text-6xl lg:text-[min(5.5vw,5.5rem)] font-black text-white mb-4 tracking-[-0.05em] font-sans uppercase leading-[0.85] group-hover:scale-105 transition-transform duration-1000"
                             >
                                 {impact.value}
                             </motion.div>
@@ -64,7 +64,7 @@ export default function BusinessImpact() {
                 <div className="mt-24 flex flex-col items-center gap-6 text-center">
                     <div className="text-white/20 text-[11px] font-mono font-bold tracking-[0.5em] uppercase">Market_Position // AUTHORITY</div>
                     <p className="text-white/40 text-2xl font-medium tracking-tight">Automation isn't an expense.</p>
-                    <p className="text-white text-5xl md:text-7xl font-black uppercase tracking-[-0.05em] font-syncopate italic leading-none">IT'S A REVENUE <br /> MULTIPLIER.</p>
+                    <p className="text-white text-5xl md:text-7xl font-black uppercase tracking-[-0.05em] font-sans leading-none">IT'S A REVENUE <br /> MULTIPLIER.</p>
                 </div>
             </div>
         </section>

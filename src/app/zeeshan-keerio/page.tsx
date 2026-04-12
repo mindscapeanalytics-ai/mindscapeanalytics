@@ -211,10 +211,10 @@ export default function FounderPortfolio() {
                         className="space-y-4"
                     >
                         <span className="text-[10px] font-mono font-black text-white/30 uppercase tracking-[0.8em] mb-4 block">Founding_Architect // ARCH_ZEESHAN</span>
-                        <h1 className="text-6xl md:text-9xl font-black font-syncopate leading-none tracking-tighter uppercase mb-2">
-                            ZEESHAN <br /> <span className="text-white/20 italic">KEERIO.</span>
+                        <h1 className="text-6xl md:text-9xl font-black font-sans leading-none tracking-tighter uppercase mb-2">
+                            ZEESHAN <br /> <span className="text-white/40">KEERIO.</span>
                         </h1>
-                        <p className="max-w-3xl mx-auto text-lg md:text-xl text-white/60 font-medium tracking-tight leading-relaxed uppercase italic">
+                        <p className="max-w-3xl mx-auto text-lg md:text-xl text-white/60 font-medium tracking-tight leading-relaxed uppercase">
                             AI-focused technology leader & AI Engineer specialized in GenAI, Agentic AI, and RAG Pipelines. <br />
                             <span className="text-white font-black not-italic drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">Architecting Production-Grade Autonomous Intelligence.</span>
                         </p>
@@ -244,10 +244,10 @@ export default function FounderPortfolio() {
                                 </div>
                                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 font-mono">01_Mission_Directive</span>
                             </div>
-                            <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter font-syncopate leading-[0.9]">
-                                REPLACING MANUAL <br /> <span className="text-white/20 italic">WORK WITH CODE.</span>
+                            <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter font-sans leading-[0.9]">
+                                REPLACING MANUAL <br /> <span className="text-white/40">WORK WITH CODE.</span>
                             </h2>
-                            <p className="text-xl text-white/40 leading-relaxed font-medium italic">
+                            <p className="text-xl text-white/40 leading-relaxed font-medium">
                                 "Technology is only as valuable as the manual effort it eliminates. As the sole architect of the Mindscape Analytics platform, my focus is on engineering high-fidelity, autonomous ecosystems that allow founders and enterprises to operate at post-quantum speeds with zero technical friction."
                             </p>
                         </div>
@@ -263,7 +263,7 @@ export default function FounderPortfolio() {
                                     <stat.icon size={24} className="text-white/40 group-hover:text-black transition-colors" />
                                     <div className="space-y-1">
                                         <div className="text-[9px] font-black uppercase tracking-widest opacity-40">{stat.label}</div>
-                                        <div className="text-xl font-black font-syncopate">{stat.val}</div>
+                                        <div className="text-xl font-black font-sans">{stat.val}</div>
                                     </div>
                                 </div>
                             ))}
@@ -276,7 +276,7 @@ export default function FounderPortfolio() {
             <section className="py-32 relative">
                 <div className="container-standard">
                     <div className="text-center mb-24">
-                        <h2 className="text-5xl md:text-8xl font-black font-syncopate uppercase tracking-[-0.05em] mb-4">PROJECT LEDGER.</h2>
+                        <h2 className="text-5xl md:text-8xl font-black font-sans uppercase tracking-[-0.05em] mb-4">PROJECT LEDGER.</h2>
                         <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.8em] font-black">All Assets Designed & Developed by Zeeshan Keerio</span>
                     </div>
 
@@ -311,7 +311,7 @@ export default function FounderPortfolio() {
 
                                     <div className="px-8 pb-10">
                                         <span className="text-[9px] font-black text-white/40 uppercase tracking-[0.3em] mb-2 block">{project.category}</span>
-                                        <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4 group-hover:italic transition-all">
+                                        <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4 transition-all">
                                             {project.title}
                                         </h3>
                                         <p className="text-sm text-white/40 font-medium leading-relaxed mb-8 h-20 line-clamp-3 overflow-hidden">
@@ -354,8 +354,8 @@ export default function FounderPortfolio() {
                                 </div>
                                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 font-mono">02_Chronicle</span>
                             </div>
-                            <h2 className="text-4xl md:text-5xl font-black uppercase font-syncopate leading-[0.8] tracking-tight">PROFESSIONAL <br /> <span className="text-white/20 italic">EVOLUTION.</span></h2>
-                            <p className="text-white/40 text-sm font-medium leading-relaxed max-w-xs uppercase italic">
+                            <h2 className="text-4xl md:text-5xl font-black uppercase font-sans leading-[0.8] tracking-tight">PROFESSIONAL <br /> <span className="text-white/40">EVOLUTION.</span></h2>
+                            <p className="text-white/40 text-sm font-medium leading-relaxed max-w-xs uppercase">
                                 A high-fidelity journey through the core layers of financial data and AI engineering.
                             </p>
                             <div className="pt-8 flex flex-wrap gap-4">
@@ -384,14 +384,14 @@ export default function FounderPortfolio() {
                                 >
                                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
                                         <div>
-                                            <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter group-hover:text-white transition-colors">{exp.role}</h3>
+                                            <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter group-hover:text-white transition-colors font-sans">{exp.role}</h3>
                                             <div className="text-[10px] font-bold text-white/30 uppercase tracking-[0.3em] font-mono">{exp.company}</div>
                                         </div>
                                         <div className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[9px] font-black uppercase tracking-widest text-white/50">
                                             {exp.period}
                                         </div>
                                     </div>
-                                    <p className="text-xs md:text-sm text-white/40 font-medium leading-relaxed uppercase italic tracking-tight">
+                                    <p className="text-xs md:text-sm text-white/40 font-medium leading-relaxed uppercase tracking-tight">
                                         {exp.description}
                                     </p>
                                 </motion.div>
@@ -414,12 +414,12 @@ export default function FounderPortfolio() {
                                         <GraduationCap size={24} className="opacity-40" />
                                         <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-40">Academic_Foundation</span>
                                     </div>
-                                    <h2 className="text-4xl md:text-6xl font-black font-syncopate leading-tight uppercase">THE IQRA <span className="opacity-20">ALMA MATER.</span></h2>
+                                    <h2 className="text-4xl md:text-6xl font-black font-sans leading-tight uppercase">THE IQRA <span className="opacity-20">ALMA MATER.</span></h2>
                                     <div className="space-y-2">
                                         <div className="text-2xl font-black uppercase">BS | Computer Science</div>
                                         <div className="text-xs font-bold uppercase tracking-[0.2em] opacity-60">Iqra University • Karachi • 2016-2021</div>
                                     </div>
-                                    <p className="text-sm font-medium leading-relaxed opacity-60 uppercase italic">
+                                    <p className="text-sm font-medium leading-relaxed opacity-60 uppercase">
                                         Specialization in Artificial Intelligence, Data Engineering, and Machine Learning. Final Year Project: Student Distraction Detection using Computer Vision & Deep Learning (Project Lead & Backend Developer).
                                     </p>
                                 </div>
@@ -477,10 +477,10 @@ export default function FounderPortfolio() {
                     >
                         <div className="absolute inset-0 z-0 opacity-5 bg-[url('/grid.svg')] bg-[length:50px_50px]" />
                         <div className="relative z-10 space-y-12">
-                            <h2 className="text-5xl md:text-8xl font-black font-syncopate leading-[0.8] uppercase tracking-[-0.05em]">
-                                READY TO <br /> <span className="opacity-20 italic">AUTOMATE?</span>
+                            <h2 className="text-5xl md:text-8xl font-black font-sans leading-[0.8] uppercase tracking-[-0.05em]">
+                                READY TO <br /> <span className="opacity-40">AUTOMATE?</span>
                             </h2>
-                            <p className="text-lg font-medium max-w-2xl mx-auto opacity-60 uppercase italic tracking-tight">
+                            <p className="text-lg font-medium max-w-2xl mx-auto opacity-60 uppercase tracking-tight">
                                 Harness the power of AI-first engineering. Let's build your industrial-grade intelligence ecosystem together.
                             </p>
                             <Link href="https://wa.me/13072106155" target="_blank">

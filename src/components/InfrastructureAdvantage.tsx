@@ -29,14 +29,14 @@ export default function InfrastructureAdvantage() {
                 <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-24 border-b border-white/5 pb-10">
                     <div className="max-w-3xl space-y-6">
                         <div className="flex items-center gap-3">
-                            <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
-                            <span className="text-[9px] font-mono text-white/40 uppercase tracking-[0.4em] font-black">Infrastructure // ELITE_MANAGED</span>
+                            <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+                            <span className="text-meta">Infrastructure // ELITE_MANAGED</span>
                         </div>
-                        <h2 className="text-5xl md:text-8xl font-black tracking-[-0.05em] font-syncopate leading-[0.85] uppercase">
-                            THE INFRASTRUCTURE <span className="text-white/20 italic">ADVANTAGE.</span>
+                        <h2 className="fluid-h2">
+                            THE INFRASTRUCTURE <span className="text-white/40">ADVANTAGE.</span>
                         </h2>
                     </div>
-                    <div className="text-right font-mono text-[9px] text-white/20 uppercase tracking-[0.4em] leading-relaxed font-black">
+                    <div className="text-right font-mono text-[9px] text-white/40 uppercase tracking-[0.4em] leading-relaxed font-black">
                         Uptime: 99.99% <br />
                         Response: &lt;10ms <br />
                         Protocol: msa-infra-v1
@@ -95,7 +95,7 @@ export default function InfrastructureAdvantage() {
                         </div>
 
                         <div className="mt-16 space-y-8 relative z-10">
-                            <p className="text-white/40 text-[13px] leading-relaxed font-medium uppercase tracking-widest text-center italic">
+                            <p className="text-white/40 text-[13px] leading-relaxed font-medium uppercase tracking-widest text-center">
                                 hosting without expertise leads to vulnerabilities, high latency, and mission-critical failure.
                             </p>
                             <motion.div

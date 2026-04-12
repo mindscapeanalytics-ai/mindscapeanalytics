@@ -58,21 +58,21 @@ export default function Pricing() {
                             viewport={{ once: true, margin: "-50px" }}
                             className="flex items-center gap-3 mb-6"
                         >
-                            <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
-                            <span className="text-meta text-white/40">Matrix // Strategic Asset Allocation</span>
+                            <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+                            <span className="text-meta">Matrix // Strategic Asset Allocation</span>
                         </motion.div>
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter font-syncopate leading-[0.8] uppercase"
+                            className="fluid-h2"
                         >
                             SCALABLE <br />
-                            <span className="text-white/20">INVESTMENT.</span>
+                            <span className="text-white/40">INVESTMENT.</span>
                         </motion.h2>
                     </div>
 
-                    <div className="hidden lg:block text-right font-mono text-[9px] text-white/20 uppercase tracking-widest leading-relaxed">
+                    <div className="hidden lg:block text-right font-mono text-[9px] text-white/40 uppercase tracking-widest leading-relaxed">
                         Allocation: optimized <br />
                         ROI: projected_v4 <br />
                         Contract: node-locked
@@ -97,18 +97,17 @@ export default function Pricing() {
                             <div className="absolute bottom-4 right-4 w-3 h-3 border-b border-r border-white/10 group-hover:border-white/30 transition-colors" />
 
                             {tier.popular && (
-                                <div className="absolute top-6 right-8 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white text-black text-meta shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-                                    <Sparkles className="w-3 h-3 fill-black" />
+                                <div className="absolute top-6 right-8 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white text-black text-meta shadow-xl">
                                     MOST ELITE
                                 </div>
                             )}
 
                             <div className="mb-8">
-                                <h3 className="text-meta text-white/40 mb-5 flex items-center gap-3 group-hover:text-white/60 transition-colors">
-                                    <div className="w-1.5 h-1.5 bg-white/40 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.4)] group-hover:bg-white transition-all" />
+                                <h3 className="text-meta mb-5 flex items-center gap-3 group-hover:text-white transition-colors">
+                                    <div className="w-1 h-1 bg-white/20 rounded-full group-hover:bg-white transition-all" />
                                     {tier.name}
                                 </h3>
-                                <div className="text-3xl lg:text-4xl font-black text-white mb-6 uppercase tracking-tight font-syncopate leading-none group-hover:scale-[1.01] transition-transform origin-left">
+                                <div className="text-3xl lg:text-4xl font-black text-white mb-6 uppercase tracking-tight font-sans leading-none group-hover:scale-[1.01] transition-transform origin-left">
                                     {tier.price}
                                 </div>
                                 <p className="text-white/50 text-sm leading-relaxed font-medium tracking-tight group-hover:text-white/70 transition-colors">{tier.description}</p>

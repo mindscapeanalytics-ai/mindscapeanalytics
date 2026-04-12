@@ -108,10 +108,10 @@ export default function PricingPage() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-6xl md:text-[10rem] lg:text-[12rem] font-black leading-[0.75] font-syncopate tracking-[-0.05em] uppercase"
+                        className="text-6xl md:text-[10rem] lg:text-[12rem] font-black leading-[0.75] font-sans tracking-[-0.05em] uppercase"
                         style={{ fontSize: "clamp(3.5rem, 12vw, 15rem)" }}
                     >
-                        SYSTEM <br /> <span className="text-white/20 italic font-black">INVESTMENT.</span>
+                        SYSTEM <br /> <span className="text-white/40 font-black">INVESTMENT.</span>
                     </motion.h1>
 
                     <motion.div
@@ -121,7 +121,7 @@ export default function PricingPage() {
                         className="max-w-4xl border-t border-white/10 pt-12 mx-auto"
                     >
                         <p className="text-2xl md:text-3xl text-white/60 font-medium tracking-tight leading-snug uppercase">
-                            PRECISION-ENGINEERED PRICING MODELS BUILT FOR <span className="text-white font-black italic text-4xl">OUTCOMES + INFRASTRUCTURE.</span>
+                            PRECISION-ENGINEERED PRICING MODELS BUILT FOR <span className="text-white font-black text-4xl">OUTCOMES + INFRASTRUCTURE.</span>
                         </p>
                     </motion.div>
                 </div>
@@ -153,7 +153,7 @@ export default function PricingPage() {
                                 </div>
 
                                 <div className="mb-8">
-                                    <h3 className={`text-3xl font-black uppercase font-syncopate tracking-tight leading-none mb-2 ${plan.highlight ? "text-black" : "text-white"}`}>
+                                    <h3 className={`text-3xl font-black uppercase font-sans tracking-tight leading-none mb-2 ${plan.highlight ? "text-black" : "text-white"}`}>
                                         {plan.name}
                                     </h3>
                                     <p className={`text-[10px] font-mono font-black uppercase tracking-[0.2em] ${plan.highlight ? "text-black/40" : "text-white/20"}`}>
@@ -163,7 +163,7 @@ export default function PricingPage() {
 
                                 <div className="mb-10">
                                     <div className="flex items-baseline gap-2">
-                                        <span className="text-4xl font-black font-syncopate">{plan.price}</span>
+                                        <span className="text-4xl font-black font-sans">{plan.price}</span>
                                     </div>
                                     <div className={`text-[10px] font-mono font-bold uppercase tracking-widest mt-1 ${plan.highlight ? "text-black/60" : "text-white/40"}`}>
                                         {plan.setupFee}
@@ -218,10 +218,10 @@ export default function PricingPage() {
                             <div className="space-y-6">
                                 <span className="text-white/20 text-[11px] font-mono font-black uppercase tracking-[0.5em]">Authority // FAQ</span>
                                 <h2
-                                    className="text-6xl font-black font-syncopate uppercase tracking-[-0.05em]"
+                                    className="text-6xl font-black font-sans uppercase tracking-[-0.05em]"
                                     style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
                                 >
-                                    SYSTEM <br /> <span className="text-white/20 italic">INTEGRITY.</span>
+                                    SYSTEM <br /> <span className="text-white/40">INTEGRITY.</span>
                                 </h2>
                                 <p className="text-xl text-white/40 max-w-xl font-medium uppercase tracking-tight leading-relaxed">
                                     We don't sell software licenses. We sell engineered performance and long-term technical stability.
@@ -274,10 +274,10 @@ export default function PricingPage() {
                     <div className="max-w-4xl mx-auto space-y-8">
                         <span className="text-black/40 text-[11px] font-mono font-black uppercase tracking-[0.5em]">System Reliability Standard</span>
                         <h2
-                            className="text-5xl md:text-7xl font-black font-syncopate uppercase tracking-[-0.05em] leading-[0.85]"
+                            className="text-5xl md:text-7xl font-black font-sans uppercase tracking-[-0.05em] leading-[0.85]"
                             style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
                         >
-                            MANAGED <br /> <span className="opacity-20 italic">OR IT'S BROKEN.</span>
+                            MANAGED <br /> <span className="opacity-40">OR IT'S BROKEN.</span>
                         </h2>
                         <p className="text-lg font-medium opacity-60 uppercase tracking-tighter max-w-2xl mx-auto">
                             To ensure system reliability and performance, all deployments are supported by our Managed Infrastructure Plan. This protects your revenue and eliminates technical debt.

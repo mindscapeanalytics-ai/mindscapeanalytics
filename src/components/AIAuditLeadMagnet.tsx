@@ -20,8 +20,8 @@ export default function AIAuditLeadMagnet() {
                     </div>
 
                     <div className="space-y-6 max-w-3xl">
-                        <h2 className="text-4xl md:text-6xl font-black font-syncopate uppercase tracking-[-0.03em] leading-[0.9]">
-                            AI AUTOMATION <br /> <span className="text-white/20 italic">READINESS AUDIT.</span>
+                        <h2 className="text-4xl md:text-6xl font-black font-sans uppercase tracking-[-0.03em] leading-[0.9]">
+                            AI AUTOMATION <br /> <span className="text-white/40">READINESS AUDIT.</span>
                         </h2>
                         <p className="text-lg md:text-xl text-white/40 font-medium leading-relaxed uppercase tracking-tight">
                             Stop guessing. Let our engineers analyze your current operational bottlenecks and map out the exact AI system architecture required to scale your revenue.

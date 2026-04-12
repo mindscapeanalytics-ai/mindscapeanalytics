@@ -171,14 +171,14 @@ export default function ProjectVision() {
                 <div className="flex flex-col md:flex-row items-end justify-between gap-6 border-b border-white/5 pb-10">
                     <div className="space-y-4">
                         <div className="flex items-center gap-3">
-                            <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                            <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.4em]">Subsystem // Archive_Port_01</span>
+                            <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+                            <span className="text-meta">Subsystem // Archive_Port_01</span>
                         </div>
-                        <h2 className="text-5xl md:text-8xl font-black text-white leading-none tracking-tighter font-syncopate uppercase">
-                            PROJECT <span className="text-white/20">VISION</span>
+                        <h2 className="fluid-h2">
+                            PROJECT <span className="text-white/40">VISION</span>
                         </h2>
                     </div>
-                    <div className="hidden lg:block text-right font-mono text-[9px] text-white/20 uppercase tracking-widest leading-relaxed">
+                    <div className="hidden lg:block text-right font-mono text-[9px] text-white/40 uppercase tracking-widest leading-relaxed">
                         Data flow: nominal <br />
                         Latency: 0.04ms <br />
                         Protocol: mindscape-v4-industrial

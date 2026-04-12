@@ -133,7 +133,7 @@ function TeamCard({ member, index }: { member: typeof team[0]; index: number }) 
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ delay: index * 0.15 + 0.2 }}
                     >
-                        <h3 className="text-2xl font-black text-white tracking-tighter uppercase font-syncopate transition-colors leading-none">{member.name}</h3>
+                        <h3 className="text-2xl font-black text-white tracking-tighter uppercase font-sans transition-colors leading-none">{member.name}</h3>
                         <div className="flex items-center gap-3 mt-3">
                             <div className="w-1 h-1 bg-white/40 rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
                             <p className="text-meta text-white/20">{member.role}</p>
@@ -224,7 +224,7 @@ export default function Team() {
             <div className="relative z-10 w-full">
                 <div className="mb-16 px-6 md:px-12">
                     <FadeIn direction="left">
-                        <h2 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white font-syncopate leading-[0.85]">
+                        <h2 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white font-sans leading-[0.85]">
                             THE{" "}
                             <span className="text-white/30">
                                 ARCHITECTS.

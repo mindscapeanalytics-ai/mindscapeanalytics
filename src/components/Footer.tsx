@@ -58,8 +58,8 @@ export default function Footer() {
 
                         <div className="space-y-6">
                             <div className="flex items-center gap-3">
-                                <div className="w-2.5 h-2.5 bg-white rounded-full shadow-[0_0_12px_rgba(255,255,255,0.6)] animate-pulse" />
-                                <span className="text-xs font-black text-white uppercase tracking-[0.5em] italic opacity-90">Core // NODE_v4.02</span>
+                                <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+                                <span className="text-meta opacity-90">Core // NODE_v4.02</span>
                             </div>
                             <p className="text-white/80 text-sm leading-relaxed max-w-sm font-medium tracking-tight">
                                 Architecting state-of-the-art AI automation and software solutions for the next generation of global enterprises.
@@ -217,7 +217,7 @@ export default function Footer() {
                     className="w-full flex justify-center"
                 >
                     <h2
-                        className="w-full text-center font-black font-syncopate tracking-[-0.05em] leading-[0.75] text-transparent bg-clip-text flex flex-col pointer-events-none whitespace-nowrap"
+                        className="w-full text-center font-black font-sans tracking-[-0.05em] leading-[0.75] text-transparent bg-clip-text flex flex-col pointer-events-none whitespace-nowrap"
                         style={{
                             fontSize: "clamp(3rem, 15vw, 25rem)",
                             backgroundImage: "linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%)",

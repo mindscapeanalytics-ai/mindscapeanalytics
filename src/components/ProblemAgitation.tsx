@@ -34,9 +34,9 @@ export default function ProblemAgitation() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-[-0.05em] font-syncopate uppercase"
+                            className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-[-0.05em] font-sans uppercase"
                         >
-                            MOST BUSINESSES DON'T HAVE A <span className="text-white/20 italic">SOFTWARE PROBLEM.</span>
+                            MOST BUSINESSES DON'T HAVE A <span className="text-white/40 font-black">SOFTWARE PROBLEM.</span>
                         </motion.h2>
 
                         <motion.p
@@ -84,8 +84,8 @@ export default function ProblemAgitation() {
                             >
                                 <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0)_50%,rgba(0,0,0,0.05)_50%)] bg-[length:100%_4px] opacity-10" />
                                 <p className="text-xl font-black uppercase tracking-[-0.05em]">YOU DON'T NEED ANOTHER APP.</p>
-                                <p className="text-4xl md:text-5xl font-black uppercase tracking-[-0.05em] font-syncopate leading-none">YOU NEED AN <br /> INTELLIGENT SYSTEM.</p>
-                                <div className="pt-4 text-[9px] font-mono font-black tracking-[0.5em] uppercase opacity-40 italic">That's where we come in.</div>
+                                <p className="text-4xl md:text-5xl font-black uppercase tracking-[-0.05em] font-sans leading-none">YOU NEED AN <br /> INTELLIGENT SYSTEM.</p>
+                                <div className="pt-4 text-[9px] font-mono font-black tracking-[0.5em] uppercase opacity-40">That's where we come in.</div>
                             </motion.div>
                         </div>
                     </div>

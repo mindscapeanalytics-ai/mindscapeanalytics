@@ -278,7 +278,7 @@ export default function Navbar() {
                                     onMouseEnter={() => handleMouseEnter("profile")}
                                     onMouseLeave={handleMouseLeave}>
                                     <button className="flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/20 transition-all active:scale-95 shadow-lg">
-                                        <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-zinc-800 to-zinc-600 flex items-center justify-center text-[10px] font-black text-white/90 uppercase italic border border-white/20">
+                                        <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-zinc-800 to-zinc-600 flex items-center justify-center text-[10px] font-black text-white/90 uppercase border border-white/20">
                                             {session.user.name?.charAt(0) || "U"}
                                         </div>
                                         <span className="hidden sm:inline text-[10px] font-black text-white/50 group-hover/profile:text-white uppercase tracking-[0.2em] transition-colors">
@@ -450,7 +450,7 @@ export default function Navbar() {
                                     {session ? (
                                         <div className="space-y-8">
                                             <div className="flex items-center gap-5 px-6 py-5 bg-white/5 border border-white/5 rounded-3xl">
-                                                <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-[12px] font-black text-white italic border border-white/10">
+                                                <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-[12px] font-black text-white border border-white/10">
                                                     {session.user.name?.charAt(0) || "U"}
                                                 </div>
                                                 <div className="flex-1 min-w-0">

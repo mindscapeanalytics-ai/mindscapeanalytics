@@ -141,10 +141,10 @@ export default function AboutPage() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="text-6xl md:text-[10rem] lg:text-[13rem] font-black leading-[0.75] font-syncopate tracking-[-0.05em] uppercase"
+                            className="text-6xl md:text-[10rem] lg:text-[13rem] font-black leading-[0.75] font-sans tracking-[-0.05em] uppercase"
                             style={{ fontSize: "clamp(3.5rem, 15vw, 15rem)" }}
                         >
-                            ABOUT <br /> <span className="text-white/20 italic font-black">MINDSCAPE.</span>
+                            ABOUT <br /> <span className="text-white/40 font-black">MINDSCAPE.</span>
                         </motion.h1>
 
                         <motion.div
@@ -153,7 +153,7 @@ export default function AboutPage() {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="max-w-4xl border-t border-white/10 pt-10 md:pt-12 w-full mx-auto px-4"
                         >
-                            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/60 font-medium tracking-tight leading-snug uppercase text-center max-w-3xl mx-auto italic">
+                            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/60 font-medium tracking-tight leading-snug uppercase text-center max-w-3xl mx-auto">
                                 WE HELP BUSINESSES SCALE USING <span className="text-white font-black not-italic drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]">INTELLIGENT SYSTEMS</span> - NOT MANUAL EFFORT.
                             </p>
                             <div className="flex items-center justify-center gap-6 mt-10 md:mt-12 opacity-20">
@@ -180,15 +180,15 @@ export default function AboutPage() {
                                 <div className="w-1.5 h-1.5 bg-white/60 rounded-full" />
                                 <span className="text-[9px] font-mono text-white/40 uppercase tracking-[0.5em] font-black">Origins // ARCH_ZEESHAN</span>
                             </div>
-                            <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter font-syncopate leading-[0.9]">
-                                NEXT-GENERATION <br /> <span className="text-white/20 italic">AI & DATA ENGINEERING.</span>
+                            <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter font-sans leading-[0.9]">
+                                NEXT-GENERATION <br /> <span className="text-white/40">AI & DATA ENGINEERING.</span>
                             </h2>
                             <div className="space-y-6">
                                 <p className="text-lg text-white/60 leading-relaxed font-medium max-w-xl">
                                     Mindscape Analytics is a next-generation AI and Software Development company specializing in intelligent automation, AI agents, full-stack systems, and scalable cloud infrastructure.
                                 </p>
 
-                                <p className="text-lg text-white font-black leading-relaxed max-w-xl italic border-l-2 border-white/20 pl-6 py-2">
+                                <p className="text-lg text-white font-black leading-relaxed max-w-xl border-l-2 border-white/20 pl-6 py-2">
                                     To help businesses scale using intelligent systems, not manual effort.
                                 </p>
                             </div>
@@ -201,7 +201,7 @@ export default function AboutPage() {
                             className="p-12 rounded-[3.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl relative overflow-hidden"
                         >
                             <div className="absolute top-6 right-8 opacity-10 font-mono text-[10px] uppercase font-black tracking-widest">DIAG_v88</div>
-                            <h3 className="text-xl font-black uppercase text-white mb-8 tracking-tight font-syncopate">What Makes Us Different?</h3>
+                            <h3 className="text-xl font-black uppercase text-white mb-8 tracking-tight font-sans">What Makes Us Different?</h3>
                             <div className="space-y-4">
                                 {differences.map((diff, i) => (
                                     <div key={i} className="flex items-center gap-4 group">
@@ -211,7 +211,7 @@ export default function AboutPage() {
                                 ))}
                             </div>
                             <div className="mt-12 pt-8 border-t border-white/5">
-                                <p className="text-[10px] font-mono font-black text-white/20 uppercase tracking-[0.2em] italic">
+                                <p className="text-[10px] font-mono font-black text-white/20 uppercase tracking-[0.2em]">
                                     We focus on long-term partnership — not one-time delivery.
                                 </p>
                             </div>
@@ -230,7 +230,7 @@ export default function AboutPage() {
                         className="text-center mb-24"
                     >
                         <h2
-                            className="text-5xl md:text-[7rem] font-black mb-4 font-syncopate uppercase tracking-[-0.05em]"
+                            className="text-5xl md:text-[7rem] font-black mb-4 font-sans uppercase tracking-[-0.05em]"
                             style={{ fontSize: "clamp(3.5rem, 10vw, 10rem)" }}
                         >
                             EXPERTISE.
@@ -264,7 +264,7 @@ export default function AboutPage() {
                     <div className="max-w-4xl mx-auto text-center space-y-8">
                         <span className="text-[9px] font-mono font-black tracking-[0.6em] uppercase opacity-40">The_Long_Term_Directive</span>
                         <h2 className="text-5xl md:text-8xl font-black font-syncopate leading-[0.85] uppercase tracking-[-0.05em]">
-                            OUR <span className="opacity-20 italic">VISION.</span>
+                            OUR <span className="opacity-40">VISION.</span>
                         </h2>
                         <p className="text-xl md:text-2xl font-black uppercase tracking-tight leading-relaxed max-w-3xl mx-auto">
                             To become a global AI-first technology partner helping businesses transition from manual operations to <span className="underline underline-offset-8 decoration-4">autonomous AI-driven systems.</span>
@@ -282,8 +282,8 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="text-center mb-32"
                     >
-                        <h2 className="text-6xl md:text-9xl font-black mb-4 font-syncopate uppercase tracking-[-0.05em]">ARCHITECTS.</h2>
-                        <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.6em] font-black italic">The core logic unit</span>
+                        <h2 className="text-6xl md:text-9xl font-black mb-4 font-sans uppercase tracking-[-0.05em]">ARCHITECTS.</h2>
+                        <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.6em] font-black">The core logic unit</span>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -328,7 +328,7 @@ export default function AboutPage() {
                                                 )}
                                             </div>
                                         </div>
-                                        <p className="text-white/40 text-[11px] font-medium leading-relaxed group-hover:text-white/60 transition-colors uppercase italic tracking-tight">
+                                        <p className="text-white/40 text-[11px] font-medium leading-relaxed group-hover:text-white/60 transition-colors uppercase tracking-tight">
                                             {member.bio}
                                         </p>
                                     </div>
@@ -349,7 +349,7 @@ export default function AboutPage() {
                         className="text-center mb-32"
                     >
                         <h2 className="text-5xl md:text-9xl font-black mb-4 font-syncopate uppercase tracking-[-0.05em]">JOURNEY.</h2>
-                        <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.6em] font-black italic">The evolution of intelligence</span>
+                        <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.6em] font-black">The evolution of intelligence</span>
                     </motion.div>
 
                     <div className="max-w-4xl mx-auto space-y-20 relative">
@@ -403,9 +403,9 @@ export default function AboutPage() {
                         <div className="p-12 lg:p-24 rounded-[3.5rem] bg-white text-black flex flex-col justify-between overflow-hidden relative group">
                             <div className="absolute inset-0 z-0 opacity-5 bg-[url('/grid.svg')] bg-[length:50px_50px]" />
                             <div className="relative z-10 space-y-12">
-                                <span className="text-[9px] font-mono font-black tracking-[0.5em] uppercase opacity-40 italic">Managed_Subscription_Logic</span>
+                                <span className="text-[9px] font-mono font-black tracking-[0.5em] uppercase opacity-40">Managed_Subscription_Logic</span>
                                 <h2 className="text-5xl md:text-7xl font-black font-syncopate leading-[0.85] uppercase tracking-[-0.05em]">
-                                    WE DON'T JUST DELIVER. <br /> <span className="opacity-30 italic">WE OPTIMIZE.</span>
+                                    WE DON'T JUST DELIVER. <br /> <span className="opacity-50">WE OPTIMIZE.</span>
                                 </h2>
                                 <p className="text-lg font-medium max-w-xl opacity-60">
                                     Our clients subscribe to long-term reliability. We manage hosting, databases, AI maintenance, and security so you can focus on growth.

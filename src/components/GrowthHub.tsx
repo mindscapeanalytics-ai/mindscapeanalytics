@@ -30,7 +30,7 @@ const GrowthHub = () => {
                             <h2 className="text-2xl font-black text-white uppercase tracking-tight leading-none mb-4">
                                 Sell With <span className="text-white/40 group-hover:text-white transition-colors duration-500">Mindscape</span>
                             </h2>
-                            <p className="text-sm text-white/40 font-medium leading-relaxed max-w-sm mb-8 italic">
+                            <p className="text-sm text-white/50 font-medium leading-relaxed max-w-sm mb-8">
                                 Monetize your architectural intelligence. Deploy premium digital assets, SaaS boilerplates, and autonomous workflows to our global network of institutional clients.
                             </p>
 
@@ -70,7 +70,7 @@ const GrowthHub = () => {
                             <h2 className="text-2xl font-black text-white uppercase tracking-tight leading-none mb-4">
                                 Hire Top <span className="text-white/40 group-hover:text-white transition-colors duration-500">Intelligence</span>
                             </h2>
-                            <p className="text-sm text-white/40 font-medium leading-relaxed max-w-sm mb-8 italic">
+                            <p className="text-sm text-white/50 font-medium leading-relaxed max-w-sm mb-8">
                                 Access elite engineering pods at optimized costs. From AI Researchers to Full-Stack Architects, MSA talent is rigorously vetted for mission-critical deployments.
                             </p>
 

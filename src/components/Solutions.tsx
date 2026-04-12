@@ -113,29 +113,26 @@ export default function Solutions() {
                             viewport={{ once: true, margin: "-50px" }}
                             className="flex items-center gap-3"
                         >
-                            <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                            <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.5em] font-black">Architecture // SOLUTIONS_v4.2</span>
+                            <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+                            <span className="text-meta">Architecture // SOLUTIONS_v4.2</span>
                         </motion.div>
                         <motion.h2
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            className="text-[9vw] xs:text-5xl md:text-8xl font-black tracking-[-0.05em] font-syncopate leading-[0.8] uppercase"
-                            style={{ fontSize: "clamp(2.4rem, 10vw, 10rem)" }}
+                            className="fluid-h2"
                         >
-                            SYSTEM <br /> <span className="text-white/20 italic font-black">ARCHITECTURES.</span>
+                            SYSTEM <br /> <span className="text-white/40 font-black">ARCHITECTURES.</span>
                         </motion.h2>
                     </div>
 
-                    <div className="hidden lg:block text-right font-mono text-[9px] text-white/20 uppercase tracking-[0.4em] leading-relaxed font-black">
+                    <div className="hidden lg:block text-right font-mono text-[9px] text-white/40 uppercase tracking-[0.4em] leading-relaxed font-black">
                         Status: Operational <br />
                         Load: Optimized <br />
                         Protocol: v4_A_SLN
                     </div>
                 </div>
 
-                {/* Scanning Line */}
-                <div className="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent -mt-12 animate-scan-line" />
 
                 {/* Premium Solutions Grid - 6 cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">

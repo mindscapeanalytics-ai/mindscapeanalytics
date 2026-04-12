@@ -196,10 +196,10 @@ export default function ServicesPage() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="text-6xl md:text-[10rem] lg:text-[12rem] font-black leading-[0.75] font-syncopate tracking-[-0.05em] uppercase"
+                            className="text-6xl md:text-[10rem] lg:text-[12rem] font-black leading-[0.75] font-sans tracking-[-0.05em] uppercase"
                             style={{ fontSize: "clamp(3.5rem, 12vw, 15rem)" }}
                         >
-                            ENGINEERED <br /> <span className="text-white/20 italic font-black">SERVICES.</span>
+                            ENGINEERED <br /> <span className="text-white/40 font-black">SERVICES.</span>
                         </motion.h1>
 
                         <motion.div
@@ -209,7 +209,7 @@ export default function ServicesPage() {
                             className="max-w-4xl border-t border-white/10 pt-12"
                         >
                             <p className="text-2xl md:text-3xl text-white/60 font-medium tracking-tight leading-snug uppercase">
-                                ARCHITECTING THE NEXT GENERATION OF <span className="text-white font-black italic">ENTERPRISE INTELLIGENCE</span> THROUGH PRECISION ENGINEERING.
+                                ARCHITECTING THE NEXT GENERATION OF <span className="text-white font-black">ENTERPRISE INTELLIGENCE</span> THROUGH PRECISION ENGINEERING.
                             </p>
                         </motion.div>
                     </div>
@@ -245,12 +245,12 @@ export default function ServicesPage() {
                         className="text-center mb-32"
                     >
                         <h2
-                            className="text-6xl md:text-9xl font-black mb-4 font-syncopate uppercase tracking-[-0.05em]"
+                            className="text-6xl md:text-9xl font-black mb-4 font-sans uppercase tracking-[-0.05em]"
                             style={{ fontSize: "clamp(3.5rem, 10vw, 10rem)" }}
                         >
                             PROCESS.
                         </h2>
-                        <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.6em] font-black italic">The engineering workflow</span>
+                        <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.6em] font-black">The engineering workflow</span>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-screen-2xl mx-auto">
@@ -264,7 +264,7 @@ export default function ServicesPage() {
                                 className="group"
                             >
                                 <div className="space-y-6">
-                                    <span className="text-5xl font-black text-white/10 font-syncopate group-hover:text-white/40 transition-colors leading-none">{item.step}</span>
+                                    <span className="text-5xl font-black text-white/10 font-sans group-hover:text-white/40 transition-colors leading-none">{item.step}</span>
                                     <h3 className="text-xl font-black uppercase tracking-tight text-white">{item.title}</h3>
                                     <p className="text-white/40 text-sm font-medium leading-relaxed uppercase tracking-tight">
                                         {item.description}
@@ -286,10 +286,10 @@ export default function ServicesPage() {
                         <div className="space-y-12">
                             <span className="text-[9px] font-mono font-black tracking-[0.5em] uppercase opacity-40">Business_Model // Managed</span>
                             <h2
-                                className="text-5xl md:text-8xl font-black font-syncopate leading-[0.85] uppercase tracking-[-0.05em]"
+                                className="text-5xl md:text-8xl font-black font-sans leading-[0.85] uppercase tracking-[-0.05em]"
                                 style={{ fontSize: "clamp(3rem, 8vw, 8rem)" }}
                             >
-                                WE DON'T JUST <br /> <span className="opacity-30 italic">DELIVER.</span>
+                                WE DON'T JUST <br /> <span className="opacity-40">DELIVER.</span>
                             </h2>
                             <p className="text-xl font-bold uppercase tracking-tight max-w-xl">
                                 Our clients subscribe to long-term reliability. We manage hosting, databases, AI maintenance, and security so you can focus on growth.
@@ -305,7 +305,7 @@ export default function ServicesPage() {
                         <div className="p-12 rounded-[3.5rem] bg-black text-white space-y-8 relative overflow-hidden group">
                             <div className="absolute inset-0 z-0 opacity-10 bg-[url('/grid.svg')] bg-[length:40px_40px]" />
                             <div className="relative z-10 space-y-8">
-                                <h3 className="text-2xl font-black uppercase font-syncopate tracking-tight">THE ELITE SUBSCRIPTION</h3>
+                                <h3 className="text-2xl font-black uppercase font-sans tracking-tight">THE ELITE SUBSCRIPTION</h3>
                                 <div className="space-y-4">
                                     {[
                                         "Monthly AI Maintenance & Optimization",
@@ -340,10 +340,10 @@ export default function ServicesPage() {
                         className="max-w-4xl mx-auto space-y-12"
                     >
                         <h2
-                            className="text-5xl md:text-7xl font-black uppercase font-syncopate tracking-tighter"
+                            className="text-5xl md:text-7xl font-black uppercase font-sans tracking-tighter"
                             style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
                         >
-                            BECOME THE <br /> <span className="text-white/20 italic">STANDARD.</span>
+                            BECOME THE <br /> <span className="text-white/40">STANDARD.</span>
                         </h2>
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
                             <Link href="/contact" className="px-10 py-5 bg-white text-black font-black uppercase text-[10px] tracking-[0.4em] rounded-xl hover:scale-105 transition-transform">

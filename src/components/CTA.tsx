@@ -54,7 +54,7 @@ export default function CTA() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.7, delay: 0.1 }}
-                            className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-8 font-syncopate"
+                            className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-8 font-sans"
                         >
                             READY TO REPLACE <br />
                             <span className="opacity-30">MANUAL WORK?</span>

@@ -29,18 +29,6 @@ export default function Hero() {
     // Cinematic title effects - vertical movement only, removed scale scaling
     const titleY = useTransform(scrollProgress, [0, 1], [0, -30])
 
-    // Pre-calculated static dust positions to completely eliminate JS main thread calculations
-    const staticDust = [
-        { top: "15%", left: "20%", size: "1.2px", delay: "0s" },
-        { top: "60%", left: "10%", size: "0.8px", delay: "2s" },
-        { top: "85%", left: "80%", size: "1.5px", delay: "1s" },
-        { top: "25%", left: "70%", size: "1.0px", delay: "3s" },
-        { top: "45%", left: "90%", size: "0.9px", delay: "1.5s" },
-        { top: "75%", left: "30%", size: "1.3px", delay: "0.5s" },
-        { top: "10%", left: "50%", size: "1.1px", delay: "2.5s" },
-        { top: "90%", left: "60%", size: "0.7px", delay: "4s" },
-    ];
-
     return (
         <section className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden bg-transparent pt-20 pb-10">
             {/* The global CinematicBackground handles the unified grid. Local grid removed to prevent Moire conflicts. */}
@@ -64,25 +52,6 @@ export default function Hero() {
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vw] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)] rounded-full will-change-transform"
                 />
             </div>
-
-            {/* Layer 3: Static CSS Data Dust Particles bypasses JS entirely */}
-            <div className="absolute inset-0 z-10 pointer-events-none">
-                {staticDust.map((dust, i) => (
-                    <div
-                        key={i}
-                        className="absolute bg-white rounded-full animate-pulse opacity-40 will-change-[opacity]"
-                        style={{
-                            top: dust.top,
-                            left: dust.left,
-                            width: dust.size,
-                            height: dust.size,
-                            animationDelay: dust.delay,
-                            animationDuration: "4s"
-                        }}
-                    />
-                ))}
-            </div>
-
             {/* Content Overlay with focus on smoothness */}
             <motion.div
                 style={{ scale, opacity, y: titleY }}
@@ -90,13 +59,13 @@ export default function Hero() {
             >
                 <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
-                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md"
+                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/[0.03] border border-white/5 mb-8 backdrop-blur-md"
                     >
-                        <Sparkles size={10} className="text-white/40" />
-                        <span className="text-[9px] font-mono text-white/40 uppercase tracking-[0.4em] font-black">Industry Standard AI</span>
+                        <div className="w-1 h-1 bg-white/40 rounded-full" />
+                        <span className="text-[9px] font-mono text-white/40 uppercase tracking-[0.4em] font-black">Registry // ELITE_SYSTEM_V4</span>
                     </motion.div>
 
                     <div className="space-y-3 flex flex-col items-center">
@@ -104,7 +73,7 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.2, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
-                            className="text-[12vw] xs:text-6xl md:text-8xl lg:text-[10vw] font-black leading-[0.85] tracking-[-0.05em] origin-center font-syncopate uppercase w-full text-center flex flex-col items-center justify-center"
+                            className="text-[12vw] xs:text-6xl md:text-8xl lg:text-[10vw] font-black leading-[0.85] tracking-[-0.05em] origin-center font-sans uppercase w-full text-center flex flex-col items-center justify-center"
                             style={{ fontSize: "clamp(3rem, 10vw, 12rem)" }}
                         >
                             <span className="text-white text-center w-full whitespace-nowrap px-4">ARCHITECTING</span>
@@ -119,35 +88,32 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.2, delay: 0.2 }}
-                            className="text-xl md:text-3xl lg:text-4xl font-black text-white/30 font-syncopate tracking-[-0.05em] leading-[0.9] uppercase italic text-center max-w-4xl"
+                            className="text-xl md:text-3xl lg:text-4xl font-black text-white/40 font-sans tracking-tight leading-[0.9] uppercase text-center max-w-4xl"
                         >
-                            WE BUILD <span className="text-white italic">AI SYSTEMS</span> THAT REPLACE MANUAL WORK.
+                            WE BUILD <span className="text-white">AI SYSTEMS</span> THAT REPLACE MANUAL WORK.
                         </motion.h2>
                     </div>
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+                        transition={{ duration: 1.2, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
                         className="flex flex-col items-center space-y-2 mt-6 mb-4 pointer-events-auto"
                     >
-                        <p className="text-white/60 text-xs md:text-sm lg:text-base font-medium tracking-[0.2em] uppercase text-center">
-                            AI Sales Agents. Voice Automation. SaaS Platforms.
-                        </p>
-                        <p className="text-white/40 text-[10px] md:text-xs lg:text-sm font-medium tracking-[0.1em] uppercase text-center">
-                            Managed Cloud & Database Infrastructure.
+                        <p className="text-white/40 text-[11px] font-medium tracking-[0.3em] uppercase text-center">
+                            AI Sales Agents <span className="text-white/10 mx-2">/</span> Voice Automation <span className="text-white/10 mx-2">/</span> SaaS Platforms
                         </p>
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.4 }}
-                        className="text-[9px] font-mono font-bold uppercase tracking-[0.5em] text-white/20 mb-6 flex flex-wrap justify-center gap-x-12 gap-y-2"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1.5, delay: 0.4 }}
+                        className="text-[9px] font-mono font-bold uppercase tracking-[0.5em] text-white/40 mb-6 flex flex-wrap justify-center gap-x-12 gap-y-2"
                     >
-                        <span>Scale_Ready</span>
-                        <span>Performance_Grid</span>
-                        <span>Managed_v2</span>
+                        <span className="hover:text-white transition-colors">Scale_Ready</span>
+                        <span className="hover:text-white transition-colors">Performance_Grid</span>
+                        <span className="hover:text-white transition-colors">Managed_v2</span>
                     </motion.div>
 
                     <motion.div

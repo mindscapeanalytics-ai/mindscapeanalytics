@@ -75,10 +75,10 @@ export default function CaseStudies() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-[-0.05em] font-syncopate leading-[0.8] uppercase"
+                            className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-[-0.05em] font-sans leading-[0.8] uppercase"
                             style={{ fontSize: "clamp(3.5rem, 12vw, 12rem)" }}
                         >
-                            PROVEN <br /> <span className="text-white/20 italic font-black">SUCCESS.</span>
+                            PROVEN <br /> <span className="text-white/40 font-black">SUCCESS.</span>
                         </motion.h2>
                     </div>
                 </div>
@@ -141,7 +141,7 @@ export default function CaseStudies() {
                                         <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" />
                                         <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.5em] font-black">{study.category} // CASE_ID_0{index + 1}</span>
                                     </div>
-                                    <h3 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-[-0.05em] uppercase font-syncopate group-hover:text-white transition-colors italic">
+                                    <h3 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-[-0.05em] uppercase font-sans group-hover:text-white transition-colors">
                                         {study.title}
                                     </h3>
                                 </div>

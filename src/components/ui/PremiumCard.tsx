@@ -35,14 +35,9 @@ export function PremiumCard({ title, icon: Icon, description, features, gradient
             <div className="relative h-full bg-white/[0.03] backdrop-blur-md rounded-xl p-8 flex flex-col transition-all duration-500 group-hover:bg-white/[0.06] border border-white/5 shadow-2xl overflow-hidden transform-gpu will-change-transform group-hover:border-white/20">
 
                 {/* --- Industrial HUD Elements --- */}
-                {/* Scanlines */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] opacity-10 pointer-events-none" />
-
-                {/* Corner Brackets */}
-                <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-white/20" />
-                <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-white/20" />
-                <div className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-white/20" />
-                <div className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-white/20" />
+                {/* Corner Brackets - Subtle Accent */}
+                <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-white/5 group-hover:border-white/20 transition-colors" />
+                <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-white/5 group-hover:border-white/20 transition-colors" />
 
                 <div className="absolute top-12 left-2 flex flex-col gap-1 items-center opacity-10">
                     {[1, 2, 3].map(i => <div key={i} className="w-[1px] h-4 bg-white" />)}
@@ -69,11 +64,11 @@ export function PremiumCard({ title, icon: Icon, description, features, gradient
                         </div>
                     </div>
 
-                    <h3 className="text-2xl font-black text-white mb-6 leading-tight tracking-[-0.05em] uppercase transition-all group-hover:translate-x-2 font-syncopate italic">
+                    <h3 className="text-2xl font-black text-white mb-6 leading-tight tracking-[-0.05em] uppercase transition-all group-hover:translate-x-2 font-sans">
                         {title}
                     </h3>
 
-                    <p className="text-white/30 text-[11px] mb-10 line-clamp-3 leading-relaxed font-medium group-hover:text-white/50 transition-colors uppercase tracking-tight">
+                    <p className="text-white/40 text-[11px] mb-10 line-clamp-3 leading-relaxed font-medium group-hover:text-white/50 transition-colors uppercase tracking-tight">
                         {description}
                     </p>
 
@@ -99,8 +94,6 @@ export function PremiumCard({ title, icon: Icon, description, features, gradient
                     </Link>
                 </div>
 
-                {/* Bottom Metadata Band */}
-                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
 
             <style jsx>{`

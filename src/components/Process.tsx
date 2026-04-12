@@ -51,10 +51,10 @@ export default function Process() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            className="text-[10vw] xs:text-6xl md:text-8xl lg:text-[9rem] font-black tracking-[-0.05em] font-syncopate leading-[0.8] uppercase text-white"
+                            className="text-[10vw] xs:text-6xl md:text-8xl lg:text-[9rem] font-black tracking-[-0.05em] font-sans leading-[0.8] uppercase text-white"
                             style={{ fontSize: "clamp(2.4rem, 10vw, 9rem)" }}
                         >
-                            OUR <span className="text-white/20 italic font-black">METHODOLOGY.</span>
+                            OUR <span className="text-white/40 font-black">METHODOLOGY.</span>
                         </motion.h2>
                     </div>
 
@@ -80,7 +80,7 @@ export default function Process() {
                             <div className="absolute bottom-4 right-4 w-3 h-3 border-b border-r border-white/10 group-hover:border-white/40 transition-colors" />
 
                             <div className="flex items-center justify-between mb-12">
-                                <span className="text-5xl font-black text-white/5 group-hover:text-white/20 transition-all duration-500 font-syncopate leading-none tracking-[-0.05em]">
+                                <span className="text-5xl font-black text-white/5 group-hover:text-white/20 transition-all duration-500 font-sans leading-none tracking-[-0.05em]">
                                     {step.number}
                                 </span>
                                 <div className="flex flex-col items-end">
@@ -89,7 +89,7 @@ export default function Process() {
                                 </div>
                             </div>
 
-                            <h3 className="text-xl md:text-[min(1.3vw,1.35rem)] font-black text-white/80 mb-6 uppercase tracking-[-0.05em] group-hover:text-white transition-colors font-syncopate leading-tight break-words">
+                            <h3 className="text-xl md:text-[min(1.3vw,1.35rem)] font-black text-white/80 mb-6 uppercase tracking-[-0.05em] group-hover:text-white transition-colors font-sans leading-tight break-words">
                                 {step.title}
                             </h3>
                             <p className="text-white/30 leading-relaxed text-[10px] font-medium tracking-tight group-hover:text-white/60 transition-colors uppercase">

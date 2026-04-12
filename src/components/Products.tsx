@@ -52,9 +52,9 @@ export default function Products() {
                         <span className="text-white/40 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Elite Product Suite // CATALOG_v4</span>
                     </motion.div>
 
-                    <h2 className="text-5xl md:text-[7rem] lg:text-[9rem] font-black tracking-[-0.05em] mb-12 leading-[0.85] font-syncopate uppercase">
+                    <h2 className="text-5xl md:text-[7rem] lg:text-[9rem] font-black tracking-[-0.05em] mb-12 leading-[0.85] font-sans uppercase text-center">
                         BATTLE-TESTED <br />
-                        <span className="text-white/20 italic font-black">SOFTWARE.</span>
+                        <span className="text-white/40 font-black">SOFTWARE.</span>
                     </h2>
                 </div>
 
@@ -104,10 +104,10 @@ export default function Products() {
                                         <span className="text-[8px] font-mono text-white/10 mb-5 block tracking-[0.3em] uppercase group-hover:text-white/30 transition-colors">
                                             {product.category} // ARCHIVE_v0{index + 1}
                                         </span>
-                                        <h3 className="text-4xl lg:text-6xl font-black tracking-[-0.05em] mb-8 uppercase transition-all font-syncopate leading-[0.9] italic group-hover:translate-x-4 duration-500">
+                                        <h3 className="text-4xl lg:text-6xl font-black tracking-[-0.05em] mb-8 uppercase transition-all font-sans leading-[0.9] group-hover:translate-x-4 duration-500">
                                             {product.title}
                                         </h3>
-                                        <p className="text-white/20 text-[10px] leading-relaxed max-w-sm group-hover:text-white/50 transition-colors duration-500 font-black uppercase tracking-[0.1em] italic opacity-60">
+                                        <p className="text-white/40 text-[10px] leading-relaxed max-w-sm group-hover:text-white/50 transition-colors duration-500 font-black uppercase tracking-[0.1em] opacity-60">
                                             {product.description}
                                         </p>
 
