@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { motion, useTransform, useSpring, useMotionValue, useScroll, AnimatePresence } from "framer-motion";
 import { Sparkles, ArrowRight, ExternalLink } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +15,8 @@ interface ProjectData {
     metrics: string;
     image: string;
     details: string[];
+    status?: "live" | "coming-soon";
+    link?: string;
 }
 
 // --- Animation Helpers ---
@@ -23,12 +26,54 @@ const IMG_HEIGHT = 170;
 // --- Projects Data ---
 const PROJECTS: ProjectData[] = [
     {
+        title: "DisposIQ",
+        category: "Enterprise Intelligence",
+        metrics: "Zero Data Loss • Real-time Sync",
+        description: "Next-gen production and disposal management ecosystem for enterprise-scale industrial operations.",
+        image: "/images/projects/disposiq.webp",
+        details: ["Smart Reconciliation", "Autonomous Logging", "Multi-site Sync"],
+        status: "live",
+        link: "https://disposiq.mindscapeanalytics.com/"
+    },
+    {
+        title: "Smart DairyFarm",
+        category: "Agri-Tech Platform",
+        metrics: "ROI +35% • Live Monitoring",
+        description: "Comprehensive OS for modern dairy farms, managing everything from herd health to milk production lifecycles.",
+        image: "/images/projects/smart-dairy.webp",
+        details: ["Herd Intelligence", "Milk Cycle Automation", "Feed Inventory AI"],
+        status: "live",
+        link: "https://cattle.mindscapeanalytics.com/"
+    },
+    {
+        title: "RSIQ Pro",
+        category: "FinTech Intelligence",
+        metrics: "High-Confluence • Real-time Alert",
+        description: "Advanced scanning and signal generation platform for institutional-grade market analysis.",
+        image: "/images/projects/rsiq-pro.webp",
+        details: ["Multi-indicator Confluence", "Sentiment AI", "Custom Alert Engine"],
+        status: "live",
+        link: "https://rsiq.mindscapeanalytics.com/"
+    },
+    {
         title: "Tenvo",
-        category: "Hospitality Tech",
-        metrics: "99.9% Uptime • Real-time Sync",
-        description: "Next-generation Restraint Management POS system with integrated biometric auth and seat-map automation.",
-        image: "/images/projects/restraint-pos_opt.webp",
-        details: ["Biometric Auth", "Autonomous Sync", "Seat-map Engine"]
+        category: "Business Hub",
+        metrics: "Coming Soon • Scaling Ops",
+        description: "Advanced intelligent solution designed to automate and accelerate business growth trajectories.",
+        image: "/images/projects/tenvo.webp",
+        details: ["Growth Automation", "Predictive Analytics", "CRM Intelligence"],
+        status: "coming-soon",
+        link: "https://tenvo.mindscapeanalytics.com/"
+    },
+    {
+        title: "CyberTrader-X",
+        category: "Autonomous Trading",
+        metrics: "Coming Soon • Daily Alpha",
+        description: "Cutting-edge autonomous system for high-frequency trading across Forex, Crypto, and Metals.",
+        image: "/images/projects/cybertrader-x.webp",
+        details: ["Intraday Intelligence", "Swing Scaling", "Metals Precision"],
+        status: "coming-soon",
+        link: "https://traderx.mindscapeanalytics.com/"
     },
     {
         title: "Enterprise ERP",
@@ -63,44 +108,12 @@ const PROJECTS: ProjectData[] = [
         details: ["Algorithmic Trading", "Liquidity Integration", "AI Signal Auditing"]
     },
     {
-        title: "AgriChain",
-        category: "AgriTech",
-        metrics: "Smart Yield • IoT Tracking",
-        description: "Precision agriculture ecosystem utilizing blockchain for immutable transparency.",
-        image: "/images/projects/AgriChian_opt.webp",
-        details: ["Supply Chain Transparency", "Blockchain Ledger", "Precision Farming"]
-    },
-    {
         title: "VisionScan AI",
         category: "Computer Vision",
         metrics: "Auto-Label • QA Mode",
         description: "Multi-modal model training platform with advanced auto-labeling and integrity checks.",
         image: "/images/projects/image_annotation_tool_opt.webp",
         details: ["Dataset Preparation", "Integrated QA", "Auto-Labeling Engine"]
-    },
-    {
-        title: "Seller Intelligence",
-        category: "E-commerce",
-        metrics: "Restock AI • Profit Map",
-        description: "Demand forecasting and inventory optimization suite for global logistics.",
-        image: "/images/projects/amazon_invontry_management_system_opt.webp",
-        details: ["Inventory Optimization", "Logistics Scaling", "Demand Forecasting"]
-    },
-    {
-        title: "EU Auto Portal",
-        category: "Automotive",
-        metrics: "Euro-Pricing • Fleet AI",
-        description: "Market intelligence platform for European vehicle distribution with trend detection.",
-        image: "/images/projects/vehicle_analysis_dashboard_opt.webp",
-        details: ["Fleet Management", "Trend Detection", "Market Intelligence"]
-    },
-    {
-        title: "JFBZ Exchange",
-        category: "Blockchain",
-        metrics: "Cold Staking • Audit Log",
-        description: "Decentralized liquidity aggregator and token management for institutions.",
-        image: "/images/projects/jfbz_token_opt.webp",
-        details: ["Institutional Assets", "Liquidity Aggregator", "Security Auditing"]
     }
 ];
 
@@ -258,15 +271,28 @@ export default function ProjectVision() {
                                         src={activeProject.image}
                                         alt={activeProject.title}
                                         fill
-                                        className="object-cover transition-all duration-1000 group-hover:scale-110"
+                                        className={cn(
+                                            "object-cover transition-all duration-1000 group-hover:scale-110",
+                                            activeProject.status === "coming-soon" && "opacity-50 grayscale"
+                                        )}
                                         priority={activeIndex < 3}
                                         loading={activeIndex < 3 ? "eager" : "lazy"}
                                         sizes="(max-width: 768px) 90vw, (max-width: 1200px) 60vw, 50vw"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
 
+                                    {activeProject.status === "coming-soon" && (
+                                        <div className="absolute inset-0 flex items-center justify-center z-30">
+                                            <div className="px-6 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-[0.4em] shadow-2xl">
+                                                Coming Soon
+                                            </div>
+                                        </div>
+                                    )}
+
                                     <div className="absolute top-6 left-6 z-20 flex flex-col gap-1">
-                                        <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.3em] font-black">Terminal_A // READY</span>
+                                        <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.3em] font-black">
+                                            {activeProject.status === "coming-soon" ? "Terminal_A // STAGED" : "Terminal_A // READY"}
+                                        </span>
                                         <div className="w-12 h-[1px] bg-white/10" />
                                     </div>
 
@@ -354,10 +380,25 @@ export default function ProjectVision() {
 
                         {/* Action Section */}
                         <div className="mt-auto space-y-4 pt-10 border-t border-white/10">
-                            <button className="w-full flex items-center justify-between p-4 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white/90 transition-colors group/view shadow-[0_4px_20px_rgba(255,255,255,0.1)]">
-                                VIEW CORE CODE
-                                <ExternalLink className="w-4 h-4" />
-                            </button>
+                            {activeProject.link ? (
+                                <Link
+                                    href={activeProject.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={cn(
+                                        "w-full flex items-center justify-between p-4 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white/90 transition-all group/view shadow-[0_4px_20px_rgba(255,255,255,0.1)]",
+                                        activeProject.status === "coming-soon" && "opacity-50 pointer-events-none"
+                                    )}
+                                >
+                                    {activeProject.status === "coming-soon" ? "ACCESS STAGED" : "VISIT PLATFORM"}
+                                    <ExternalLink className="w-4 h-4" />
+                                </Link>
+                            ) : (
+                                <button className="w-full flex items-center justify-between p-4 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white/90 transition-colors group/view shadow-[0_4px_20px_rgba(255,255,255,0.1)]">
+                                    VIEW CORE CODE
+                                    <ExternalLink className="w-4 h-4" />
+                                </button>
+                            )}
                             <div className="flex items-center justify-between px-2">
                                 <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest">Protocol: 02.AF.91</span>
                                 <div className="flex gap-2">

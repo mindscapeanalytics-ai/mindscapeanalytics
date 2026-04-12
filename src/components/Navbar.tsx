@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -35,6 +35,7 @@ export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
     const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
+    const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const { data: session, isPending } = authClient.useSession();
 
     const userRole = (session?.user as any)?.role;
@@ -65,6 +66,18 @@ export default function Navbar() {
                     { name: "Blockchain & Ledger", href: "/solutions/blockchain" },
                     { name: "Cloud Infrastructure", href: "/solutions/cloud-infrastructure" },
                     { name: "Enterprise Systems", href: "/solutions/enterprise-software" },
+                ]
+            },
+            {
+                name: "Our Products",
+                label: "Flagship Platforms",
+                href: "/projects",
+                submenu: [
+                    { name: "DisposIQ", href: "https://disposiq.mindscapeanalytics.com/" },
+                    { name: "Smart DairyFarm", href: "https://cattle.mindscapeanalytics.com/" },
+                    { name: "RSIQ Pro", href: "https://rsiq.mindscapeanalytics.com/" },
+                    { name: "Tenvo", href: "https://tenvo.mindscapeanalytics.com/" },
+                    { name: "CyberTrader-X", href: "https://traderx.mindscapeanalytics.com/" },
                 ]
             },
             {
@@ -149,6 +162,20 @@ export default function Navbar() {
         });
     };
 
+    const handleMouseEnter = (name: string) => {
+        if (closeTimeoutRef.current) {
+            clearTimeout(closeTimeoutRef.current);
+            closeTimeoutRef.current = null;
+        }
+        setActiveDropdown(name);
+    };
+
+    const handleMouseLeave = () => {
+        closeTimeoutRef.current = setTimeout(() => {
+            setActiveDropdown(null);
+        }, 150); // Forgiving luxury delay
+    };
+
     return (
         <nav
             aria-label="Primary Navigation"
@@ -159,7 +186,7 @@ export default function Navbar() {
         >
             <div
                 className={cn(
-                    "w-full max-w-7xl flex items-center justify-between px-6 py-2.5 rounded-full transition-all duration-[600ms] border relative overflow-hidden",
+                    "w-full max-w-7xl flex items-center justify-between px-6 py-2.5 rounded-full transition-all duration-[600ms] border relative",
                     isScrolled
                         ? "bg-zinc-950/80 backdrop-blur-3xl border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
                         : "bg-transparent border-transparent"
@@ -189,8 +216,8 @@ export default function Navbar() {
                         <div
                             key={link.name}
                             className="relative group flex items-center h-full"
-                            onMouseEnter={() => link.submenu && setActiveDropdown(link.name)}
-                            onMouseLeave={() => setActiveDropdown(null)}
+                            onMouseEnter={() => link.submenu && handleMouseEnter(link.name)}
+                            onMouseLeave={handleMouseLeave}
                         >
                             <Link
                                 href={link.href}
@@ -211,6 +238,9 @@ export default function Navbar() {
                                         exit={{ opacity: 0, y: 15 }}
                                         className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-zinc-950/98 backdrop-blur-3xl border border-white/10 rounded-2xl shadow-[0_24px_48px_rgba(0,0,0,0.9)] overflow-hidden py-4 z-[100]"
                                     >
+                                        {/* Invisible Bridge to prevent accidental closes during mouse journey */}
+                                        <div className="absolute -top-4 left-0 right-0 h-4 bg-transparent" />
+                                        
                                         <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
                                         <div className="relative px-6 py-2 mb-2 border-b border-white/5">
                                             <p className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">{link.label}</p>
@@ -237,109 +267,116 @@ export default function Navbar() {
 
                 {/* Right Utilities & Actions */}
                 <div className="flex items-center gap-4">
-                    <div className="hidden sm:flex items-center h-full">
-                        <CartIcon />
-                    </div>
+                    {navContext === "shop" && (
+                        <>
+                            <div className="hidden sm:flex items-center h-full">
+                                <CartIcon />
+                            </div>
 
-                    {session ? (
-                        <div className="relative group/profile"
-                            onMouseEnter={() => setActiveDropdown("profile")}
-                            onMouseLeave={() => setActiveDropdown(null)}>
-                            <button className="flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/20 transition-all active:scale-95 shadow-lg">
-                                <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-zinc-800 to-zinc-600 flex items-center justify-center text-[10px] font-black text-white/90 uppercase italic border border-white/20">
-                                    {session.user.name?.charAt(0) || "U"}
+                            {session ? (
+                                <div className="relative group/profile"
+                                    onMouseEnter={() => handleMouseEnter("profile")}
+                                    onMouseLeave={handleMouseLeave}>
+                                    <button className="flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/20 transition-all active:scale-95 shadow-lg">
+                                        <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-zinc-800 to-zinc-600 flex items-center justify-center text-[10px] font-black text-white/90 uppercase italic border border-white/20">
+                                            {session.user.name?.charAt(0) || "U"}
+                                        </div>
+                                        <span className="hidden sm:inline text-[10px] font-black text-white/50 group-hover/profile:text-white uppercase tracking-[0.2em] transition-colors">
+                                            {session.user.name?.split(" ")[0]}
+                                        </span>
+                                        {isAdmin ? <ShieldCheck className="w-3.5 h-3.5 text-emerald-400/60" /> : isRegisteredSeller ? <Zap className="w-3.5 h-3.5 text-amber-400/60" /> : <ChevronDown className="w-3 h-3 opacity-20" />}
+                                    </button>
+
+                                    <AnimatePresence>
+                                        {activeDropdown === "profile" && (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                exit={{ opacity: 0, y: 15, scale: 0.95 }}
+                                                className="absolute top-full right-0 mt-3 w-72 bg-zinc-950/98 backdrop-blur-3xl border border-white/10 rounded-2xl shadow-[0_32px_64px_rgba(0,0,0,1)] overflow-hidden py-3 z-[100]"
+                                            >
+                                                {/* Invisible Bridge */}
+                                                <div className="absolute -top-4 left-0 right-0 h-4 bg-transparent" />
+                                                
+                                                <div className="px-6 py-4 border-b border-white/5 mb-3">
+                                                    <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em] mb-1.5 flex items-center gap-2">
+                                                        <User size={10} /> Authenticated Access
+                                                    </p>
+                                                    <p className="text-[12px] font-bold text-white/90 truncate">{session.user.name}</p>
+                                                    <p className="text-[9px] font-medium text-white/30 truncate mt-1">{session.user.email}</p>
+                                                </div>
+
+                                                {isAdmin && (
+                                                    <div className="pb-2">
+                                                        <p className="px-6 py-2 text-[9px] font-black text-emerald-400/50 uppercase tracking-[0.25em] flex items-center gap-3">
+                                                            <ShieldCheck size={12} /> Controller HUD
+                                                        </p>
+                                                        <Link href="/admin" className="flex items-center gap-3 px-8 py-3 text-white/70 hover:text-white hover:bg-emerald-400/5 transition-all text-[10px] font-black uppercase tracking-[0.2em]">
+                                                            Master Dashboard
+                                                        </Link>
+                                                    </div>
+                                                )}
+
+                                                {isRegisteredSeller ? (
+                                                    <div className="pb-2 border-t border-white/5 pt-2">
+                                                        <p className="px-6 py-2 text-[9px] font-black text-amber-400/50 uppercase tracking-[0.25em] flex items-center gap-3">
+                                                            <BarChart3 size={12} /> Builder Operations
+                                                        </p>
+                                                        <Link href="/seller" className="flex items-center gap-3 px-8 py-3 text-white/70 hover:text-white hover:bg-amber-400/5 transition-all text-[10px] font-black uppercase tracking-[0.2em]">
+                                                            Seller Dashboard
+                                                        </Link>
+                                                        <Link href="/seller/products" className="flex items-center gap-3 px-8 py-3 text-white/70 hover:text-white hover:bg-amber-400/5 transition-all text-[10px] font-black uppercase tracking-[0.2em]">
+                                                            Inventory Control
+                                                        </Link>
+                                                    </div>
+                                                ) : (
+                                                    <div className="pb-2 border-t border-white/5 pt-2">
+                                                        <p className="px-6 py-2 text-[9px] font-black text-white/20 uppercase tracking-[0.3em] flex items-center gap-3">
+                                                            <Rocket size={12} /> Network Expansion
+                                                        </p>
+                                                        <Link href="/become-seller" className="mx-4 mt-1 flex items-center justify-center gap-3 px-6 py-3.5 bg-gradient-to-r from-zinc-800 to-zinc-900 border border-white/10 rounded-xl text-white hover:from-white hover:to-white hover:text-black transition-all duration-500 text-[10px] font-black uppercase tracking-[0.2em] shadow-xl">
+                                                            <Zap size={14} className="text-amber-400 group-hover:text-black" /> Join as Seller
+                                                        </Link>
+                                                    </div>
+                                                )}
+
+                                                <div className="py-2 border-t border-white/5">
+                                                    <p className="px-6 py-2 text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">Personal Access</p>
+                                                    <Link href="/admin/settings" className="flex items-center gap-4 px-8 py-3 text-white/60 hover:text-white hover:bg-white/5 transition-all text-[10px] font-black uppercase tracking-[0.2em]">
+                                                        <Settings size={12} /> Account Config
+                                                    </Link>
+                                                    <Link href={isAdmin ? "/admin/orders" : "/shop"} className="flex items-center gap-4 px-8 py-3 text-white/60 hover:text-white hover:bg-white/5 transition-all text-[10px] font-black uppercase tracking-[0.2em]">
+                                                        <Package size={12} /> Acquisitions
+                                                    </Link>
+                                                </div>
+
+                                                <button
+                                                    onClick={handleSignOut}
+                                                    className="w-full flex items-center gap-4 px-8 py-4 mt-2 border-t border-white/10 text-red-400 hover:text-red-500 hover:bg-red-400/5 transition-all text-[10px] font-black uppercase tracking-[0.25em] group/logout"
+                                                >
+                                                    <LogOut size={14} className="group-hover/logout:-translate-x-1 transition-transform" />
+                                                    Logout / Terminate Access
+                                                </button>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </div>
-                                <span className="hidden sm:inline text-[10px] font-black text-white/50 group-hover/profile:text-white uppercase tracking-[0.2em] transition-colors">
-                                    {session.user.name?.split(" ")[0]}
-                                </span>
-                                {isAdmin ? <ShieldCheck className="w-3.5 h-3.5 text-emerald-400/60" /> : isRegisteredSeller ? <Zap className="w-3.5 h-3.5 text-amber-400/60" /> : <ChevronDown className="w-3 h-3 opacity-20" />}
-                            </button>
-
-                            <AnimatePresence>
-                                {activeDropdown === "profile" && (
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 15, scale: 0.95 }}
-                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: 15, scale: 0.95 }}
-                                        className="absolute top-full right-0 mt-3 w-72 bg-zinc-950/98 backdrop-blur-3xl border border-white/10 rounded-2xl shadow-[0_32px_64px_rgba(0,0,0,1)] overflow-hidden py-3"
-                                    >
-                                        <div className="px-6 py-4 border-b border-white/5 mb-3">
-                                            <p className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em] mb-1.5 flex items-center gap-2">
-                                                <User size={10} /> Authenticated Access
-                                            </p>
-                                            <p className="text-[12px] font-bold text-white/90 truncate">{session.user.name}</p>
-                                            <p className="text-[9px] font-medium text-white/30 truncate mt-1">{session.user.email}</p>
-                                        </div>
-
-                                        {isAdmin && (
-                                            <div className="pb-2">
-                                                <p className="px-6 py-2 text-[9px] font-black text-emerald-400/50 uppercase tracking-[0.25em] flex items-center gap-3">
-                                                    <ShieldCheck size={12} /> Controller HUD
-                                                </p>
-                                                <Link href="/admin" className="flex items-center gap-3 px-8 py-3 text-white/70 hover:text-white hover:bg-emerald-400/5 transition-all text-[10px] font-black uppercase tracking-[0.2em]">
-                                                    Master Dashboard
-                                                </Link>
-                                            </div>
-                                        )}
-
-                                        {isRegisteredSeller ? (
-                                            <div className="pb-2 border-t border-white/5 pt-2">
-                                                <p className="px-6 py-2 text-[9px] font-black text-amber-400/50 uppercase tracking-[0.25em] flex items-center gap-3">
-                                                    <BarChart3 size={12} /> Builder Operations
-                                                </p>
-                                                <Link href="/seller" className="flex items-center gap-3 px-8 py-3 text-white/70 hover:text-white hover:bg-amber-400/5 transition-all text-[10px] font-black uppercase tracking-[0.2em]">
-                                                    Seller Dashboard
-                                                </Link>
-                                                <Link href="/seller/products" className="flex items-center gap-3 px-8 py-3 text-white/70 hover:text-white hover:bg-amber-400/5 transition-all text-[10px] font-black uppercase tracking-[0.2em]">
-                                                    Inventory Control
-                                                </Link>
-                                            </div>
-                                        ) : (
-                                            <div className="pb-2 border-t border-white/5 pt-2">
-                                                <p className="px-6 py-2 text-[9px] font-black text-white/20 uppercase tracking-[0.3em] flex items-center gap-3">
-                                                    <Rocket size={12} /> Network Expansion
-                                                </p>
-                                                <Link href="/become-seller" className="mx-4 mt-1 flex items-center justify-center gap-3 px-6 py-3.5 bg-gradient-to-r from-zinc-800 to-zinc-900 border border-white/10 rounded-xl text-white hover:from-white hover:to-white hover:text-black transition-all duration-500 text-[10px] font-black uppercase tracking-[0.2em] shadow-xl">
-                                                    <Zap size={14} className="text-amber-400 group-hover:text-black" /> Join as Seller
-                                                </Link>
-                                            </div>
-                                        )}
-
-                                        <div className="py-2 border-t border-white/5">
-                                            <p className="px-6 py-2 text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">Personal Access</p>
-                                            <Link href="/admin/settings" className="flex items-center gap-4 px-8 py-3 text-white/60 hover:text-white hover:bg-white/5 transition-all text-[10px] font-black uppercase tracking-[0.2em]">
-                                                <Settings size={12} /> Account Config
-                                            </Link>
-                                            <Link href={isAdmin ? "/admin/orders" : "/shop"} className="flex items-center gap-4 px-8 py-3 text-white/60 hover:text-white hover:bg-white/5 transition-all text-[10px] font-black uppercase tracking-[0.2em]">
-                                                <Package size={12} /> Acquisitions
-                                            </Link>
-                                        </div>
-
-                                        <button
-                                            onClick={handleSignOut}
-                                            className="w-full flex items-center gap-4 px-8 py-4 mt-2 border-t border-white/10 text-red-400 hover:text-red-500 hover:bg-red-400/5 transition-all text-[10px] font-black uppercase tracking-[0.25em] group/logout"
-                                        >
-                                            <LogOut size={14} className="group-hover/logout:-translate-x-1 transition-transform" />
-                                            Logout / Terminate Access
+                            ) : (
+                                <div className="flex items-center gap-3">
+                                    <Link href="/sign-in" className="hidden sm:inline-block">
+                                        <button className="text-white/40 hover:text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:bg-white/5">
+                                            Login
                                         </button>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </div>
-                    ) : (
-                        <div className="flex items-center gap-3">
-                            <Link href="/sign-in" className="hidden sm:inline-block">
-                                <button className="text-white/40 hover:text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:bg-white/5">
-                                    Login
-                                </button>
-                            </Link>
-                            <Link href="/sign-up">
-                                <button className="bg-white text-black px-7 py-2.5 rounded-full text-[11px] font-black uppercase tracking-[0.25em] hover:bg-white/90 transition-all flex items-center gap-3 shadow-[0_4px_32px_rgba(255,255,255,0.2)] active:scale-95 group/init">
-                                    Initialize
-                                    <ArrowRight size={12} className="group-hover/init:translate-x-1.5 transition-transform" />
-                                </button>
-                            </Link>
-                        </div>
+                                    </Link>
+                                    <Link href="/sign-up">
+                                        <button className="bg-white text-black px-7 py-2.5 rounded-full text-[11px] font-black uppercase tracking-[0.25em] hover:bg-white/90 transition-all flex items-center gap-3 shadow-[0_4px_32px_rgba(255,255,255,0.2)] active:scale-95 group/init">
+                                            Initialize
+                                            <ArrowRight size={12} className="group-hover/init:translate-x-1.5 transition-transform" />
+                                        </button>
+                                    </Link>
+                                </div>
+                            )}
+                        </>
                     )}
 
                     {/* Mobile Menu Toggle */}
@@ -408,62 +445,64 @@ export default function Navbar() {
                                 </div>
                             ))}
 
-                            <div className="pt-12 border-t border-white/10">
-                                {session ? (
-                                    <div className="space-y-8">
-                                        <div className="flex items-center gap-5 px-6 py-5 bg-white/5 border border-white/5 rounded-3xl">
-                                            <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-[12px] font-black text-white italic border border-white/10">
-                                                {session.user.name?.charAt(0) || "U"}
+                            {navContext === "shop" && (
+                                <div className="pt-12 border-t border-white/10">
+                                    {session ? (
+                                        <div className="space-y-8">
+                                            <div className="flex items-center gap-5 px-6 py-5 bg-white/5 border border-white/5 rounded-3xl">
+                                                <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-[12px] font-black text-white italic border border-white/10">
+                                                    {session.user.name?.charAt(0) || "U"}
+                                                </div>
+                                                <div className="flex-1 min-w-0">
+                                                    <p className="text-[12px] font-bold text-white/90 truncate leading-none mb-1.5 uppercase tracking-tight">{session.user.name}</p>
+                                                    <p className="text-[9px] font-black text-white/20 uppercase tracking-[0.1em] truncate">{session.user.email}</p>
+                                                </div>
                                             </div>
-                                            <div className="flex-1 min-w-0">
-                                                <p className="text-[12px] font-bold text-white/90 truncate leading-none mb-1.5 uppercase tracking-tight">{session.user.name}</p>
-                                                <p className="text-[9px] font-black text-white/20 uppercase tracking-[0.1em] truncate">{session.user.email}</p>
-                                            </div>
-                                        </div>
 
-                                        <div className="grid grid-cols-1 gap-3.5">
-                                            {isAdmin && (
-                                                <Link href="/admin" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between px-8 py-5 bg-white text-black rounded-3xl text-[11px] font-black uppercase tracking-[0.3em] shadow-xl shadow-white/5 transition-all active:scale-95">
-                                                    Master Dashboard
-                                                    <ShieldCheck size={16} />
-                                                </Link>
-                                            )}
-                                            {isRegisteredSeller ? (
-                                                <Link href="/seller" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between px-8 py-5 bg-white/5 border border-white/10 text-white rounded-3xl text-[11px] font-black uppercase tracking-[0.3em] transition-all active:scale-95">
-                                                    Seller Dashboard
-                                                    <BarChart3 size={16} className="text-amber-500" />
-                                                </Link>
-                                            ) : (
-                                                <Link href="/become-seller" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between px-8 py-5 bg-white text-black rounded-3xl text-[11px] font-black uppercase tracking-[0.3em] shadow-xl transition-all active:scale-95">
-                                                    Join Global Network
-                                                    <Rocket size={16} className="text-amber-500" />
-                                                </Link>
-                                            )}
+                                            <div className="grid grid-cols-1 gap-3.5">
+                                                {isAdmin && (
+                                                    <Link href="/admin" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between px-8 py-5 bg-white text-black rounded-3xl text-[11px] font-black uppercase tracking-[0.3em] shadow-xl shadow-white/5 transition-all active:scale-95">
+                                                        Master Dashboard
+                                                        <ShieldCheck size={16} />
+                                                    </Link>
+                                                )}
+                                                {isRegisteredSeller ? (
+                                                    <Link href="/seller" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between px-8 py-5 bg-white/5 border border-white/10 text-white rounded-3xl text-[11px] font-black uppercase tracking-[0.3em] transition-all active:scale-95">
+                                                        Seller Dashboard
+                                                        <BarChart3 size={16} className="text-amber-500" />
+                                                    </Link>
+                                                ) : (
+                                                    <Link href="/become-seller" onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-between px-8 py-5 bg-white text-black rounded-3xl text-[11px] font-black uppercase tracking-[0.3em] shadow-xl transition-all active:scale-95">
+                                                        Join Global Network
+                                                        <Rocket size={16} className="text-amber-500" />
+                                                    </Link>
+                                                )}
+                                            </div>
+                                            <button
+                                                onClick={handleSignOut}
+                                                className="w-full flex items-center justify-center gap-4 py-6 border-t border-white/10 text-red-400/60 hover:text-red-400 text-[11px] font-black uppercase tracking-[0.3em] transition-all"
+                                            >
+                                                <LogOut size={16} />
+                                                Logout / Terminate Session
+                                            </button>
                                         </div>
-                                        <button
-                                            onClick={handleSignOut}
-                                            className="w-full flex items-center justify-center gap-4 py-6 border-t border-white/10 text-red-400/60 hover:text-red-400 text-[11px] font-black uppercase tracking-[0.3em] transition-all"
-                                        >
-                                            <LogOut size={16} />
-                                            Logout / Terminate Session
-                                        </button>
-                                    </div>
-                                ) : (
-                                    <div className="grid grid-cols-1 gap-4">
-                                        <Link href="/sign-up" onClick={() => setMobileMenuOpen(false)}>
-                                            <button className="w-full bg-white text-black py-5 rounded-[2rem] text-[11px] font-black uppercase tracking-[0.3em] shadow-2xl transition-all flex items-center justify-center gap-3">
-                                                Initialize Site Access
-                                                <ArrowRight size={14} />
-                                            </button>
-                                        </Link>
-                                        <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
-                                            <button className="w-full bg-white/5 border border-white/10 text-white/40 py-5 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.3em] transition-all hover:bg-white/10">
-                                                Access Hub
-                                            </button>
-                                        </Link>
-                                    </div>
-                                )}
-                            </div>
+                                    ) : (
+                                        <div className="grid grid-cols-1 gap-4">
+                                            <Link href="/sign-up" onClick={() => setMobileMenuOpen(false)}>
+                                                <button className="w-full bg-white text-black py-5 rounded-[2rem] text-[11px] font-black uppercase tracking-[0.3em] shadow-2xl transition-all flex items-center justify-center gap-3">
+                                                    Initialize Site Access
+                                                    <ArrowRight size={14} />
+                                                </button>
+                                            </Link>
+                                            <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
+                                                <button className="w-full bg-white/5 border border-white/10 text-white/40 py-5 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.3em] transition-all hover:bg-white/10">
+                                                    Access Hub
+                                                </button>
+                                            </Link>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     </motion.div>
                 )}

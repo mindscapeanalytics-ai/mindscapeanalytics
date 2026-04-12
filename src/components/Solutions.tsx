@@ -16,7 +16,7 @@ import { PremiumCard } from "@/components/ui/PremiumCard";
 
 const solutions = [
     {
-        title: "Agentic AI Orchestration",
+        title: "AI Agents & Automation",
         icon: BrainCircuit,
         description: "Autonomous AI agents that replace manual operations with intelligent, self-operating system logic.",
         features: ["Agentic Workflows", "Operation-First Design", "Autonomous capture & qualification"],
@@ -24,7 +24,7 @@ const solutions = [
         link: "/solutions/ai-genai"
     },
     {
-        title: "Gen AI Voice Systems",
+        title: "AI Voice Call Agents",
         icon: Mic2,
         description: "Human-like AI voice systems (Vapi/Retell) for inbound & outbound appointment booking at scale.",
         features: ["Ultra-low Latency Sync", "Contextual Booking Logic", "Bilingual Support"],

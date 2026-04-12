@@ -88,7 +88,7 @@ export default function Hero() {
                 style={{ scale, opacity, y: titleY }}
                 className="container-standard relative z-10 py-12 pointer-events-none flex flex-col items-center justify-center min-h-[60vh] md:min-h-[70vh]"
             >
-                <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
+                <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -104,13 +104,12 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.2, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
-                            className="text-[12vw] xs:text-6xl md:text-8xl lg:text-[11vw] font-black leading-[0.8] tracking-[-0.05em] origin-center font-syncopate uppercase w-full text-center flex flex-col items-center justify-center"
-                            style={{ fontSize: "clamp(3.5rem, 12vw, 15rem)" }}
+                            className="text-[12vw] xs:text-6xl md:text-8xl lg:text-[10vw] font-black leading-[0.85] tracking-[-0.05em] origin-center font-syncopate uppercase w-full text-center flex flex-col items-center justify-center"
+                            style={{ fontSize: "clamp(3rem, 10vw, 12rem)" }}
                         >
-                            <span className="text-white text-center w-full break-words" style={{ overflowWrap: "break-word", hyphens: "auto" }}>ARCHITECTING</span>
+                            <span className="text-white text-center w-full whitespace-nowrap px-4">ARCHITECTING</span>
                             <span
-                                className="bg-gradient-to-r from-white via-white/90 to-white/10 bg-clip-text text-transparent text-center w-full break-words mt-2 md:mt-4"
-                                style={{ overflowWrap: "break-word", hyphens: "auto" }}
+                                className="bg-gradient-to-r from-white via-white/90 to-white/10 bg-clip-text text-transparent text-center w-full whitespace-nowrap mt-2 md:mt-4 px-4"
                             >
                                 THE FUTURE
                             </span>
