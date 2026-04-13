@@ -69,27 +69,25 @@ export default function BlogPage() {
                     <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-white/5 pb-20">
                         <div className="max-w-3xl">
                             <motion.div
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
                                 className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full mb-8"
                             >
                                 <Zap size={12} className="text-white/40" />
-                                <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/40">Intelligence_Stream // v2026</span>
+                                <span className="text-meta">Intelligence_Stream // v2026</span>
                             </motion.div>
                             <motion.h1
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.1 }}
-                                className="text-6xl md:text-8xl font-black uppercase tracking-tighter italic"
+                                className="fluid-h1"
                             >
-                                INTEL <span className="text-white/20 not-italic">HUB.</span>
+                                INTEL <span className="text-white/20">HUB.</span>
                             </motion.h1>
                         </div>
                         <motion.p
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 0.2 }}
-                            className="text-white/40 text-[10px] font-black uppercase tracking-[0.5em] italic max-w-sm leading-loose"
+                            className="text-meta max-w-sm leading-loose"
                         >
                             Proprietary insights and technical forecasts for the 2026 industrial digital landscape.
                         </motion.p>
@@ -111,7 +109,7 @@ export default function BlogPage() {
                                         <div className="p-4 bg-white/5 rounded-2xl text-white/40 group-hover:bg-white group-hover:text-black transition-all duration-500">
                                             <post.icon size={24} />
                                         </div>
-                                        <div className="flex items-center gap-6 text-[9px] font-black uppercase tracking-widest text-white/20">
+                                        <div className="flex items-center gap-6 text-meta">
                                             <span className="flex items-center gap-2"><Calendar size={12} /> {post.date}</span>
                                             <span className="flex items-center gap-2"><Clock size={12} /> {post.readTime}</span>
                                         </div>
@@ -131,13 +129,13 @@ export default function BlogPage() {
 
                                     <div className="flex items-center justify-between pt-10 border-t border-white/5">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-black italic border border-white/10 text-white/40">
+                                            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-black border border-white/10 text-white/40">
                                                 {post.author.charAt(0)}
                                             </div>
-                                            <span className="text-[10px] font-black uppercase tracking-widest text-white/40 italic">{post.author}</span>
+                                            <span className="text-meta">{post.author}</span>
                                         </div>
-                                        <Link href="#" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-white hover:gap-4 transition-all">
-                                            Execute Read <ChevronRight size={14} />
+                                        <Link href="#" className="flex items-center gap-2 text-meta text-white hover:gap-4 transition-all group/read">
+                                            Execute Read <ChevronRight size={14} className="group-hover/read:translate-x-1 transition-transform" />
                                         </Link>
                                     </div>
                                 </div>
@@ -149,16 +147,16 @@ export default function BlogPage() {
                     {/* Newsletter / CTA */}
                     <div className="bg-white/5 border border-white/10 rounded-[4rem] p-12 md:p-20 text-center relative overflow-hidden">
                         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5 pointer-events-none" />
-                        <h2 className="text-4xl md:text-5xl font-black mb-8 uppercase tracking-tighter italic">Stay Ahead of the <span className="text-white/20 not-italic">Incline.</span></h2>
-                        <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em] mb-12 italic">Join 50,000+ architects receiving weekly industrial intelligence.</p>
+                        <h2 className="fluid-h2 mb-8">Stay Ahead of the <span className="text-white/20">Incline.</span></h2>
+                        <p className="text-meta mb-12">Join 50,000+ architects receiving weekly industrial intelligence.</p>
 
                         <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-4">
                             <input
                                 type="email"
                                 placeholder="IDENT_EMAIL@SECURE.HOST"
-                                className="flex-1 bg-black/50 border border-white/10 rounded-2xl px-8 py-5 text-[10px] font-black uppercase tracking-widest focus:outline-none focus:border-white/30 transition-all"
+                                className="flex-1 bg-black/50 border border-white/10 rounded-2xl px-8 py-5 text-meta focus:outline-none focus:border-white/30 transition-all"
                             />
-                            <button className="px-10 py-5 bg-white text-black rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-zinc-200 transition-all active:scale-95 flex items-center justify-center gap-3 group">
+                            <button className="btn-institutional">
                                 Subscribe
                                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                             </button>

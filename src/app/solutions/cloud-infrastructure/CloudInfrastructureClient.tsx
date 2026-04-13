@@ -59,7 +59,7 @@ export default function CloudInfrastructureClient() {
                 <section>
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="space-y-6">
-                            <h2 className="text-4xl font-black">Resilience by Design</h2>
+                            <h2 className="fluid-h2">RESILIENCE BY DESIGN.</h2>
                             <p className="text-body text-lg">
                                 Infrastructure shouldn't be a bottleneck. We build cloud-native environments
                                 that are elastic, self-healing, and fully automated. Our DevOps experts
@@ -95,7 +95,7 @@ export default function CloudInfrastructureClient() {
                 <section>
                     <div className="mb-12">
                         <span className="text-subheading mb-4">Operations</span>
-                        <h2 className="text-4xl font-black">Cloud-Native Excellence</h2>
+                        <h2 className="fluid-h2">CLOUD-NATIVE EXCELLENCE.</h2>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6">
                         {features.map((feature, index) => (
@@ -126,14 +126,16 @@ export default function CloudInfrastructureClient() {
                         <Database className="w-20 h-20 text-white opacity-[0.03]" />
                     </div>
                     <div className="relative z-10 max-w-2xl">
-                        <h2 className="text-3xl font-black mb-6 leading-tight">Scale your foundation today.</h2>
+                        <h2 className="fluid-h2 text-white">SCALE YOUR <br /> FOUNDATION TODAY.</h2>
                         <p className="text-white/40 mb-8 font-medium">
                             Optimize your cloud costs and improve system reliability with an infrastructure audit.
                         </p>
                         <Link href="/contact">
-                            <button className="btn-primary">
-                                Infrastructure Strategy
-                                <ArrowRight className="ml-2 w-4 h-4" />
+                            <button className="btn-institutional group">
+                                <span className="relative z-10 flex items-center justify-center gap-4">
+                                    Infrastructure Strategy
+                                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                                </span>
                             </button>
                         </Link>
                     </div>

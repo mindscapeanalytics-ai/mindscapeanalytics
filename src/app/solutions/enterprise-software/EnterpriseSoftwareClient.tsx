@@ -61,7 +61,7 @@ export default function EnterpriseSoftwareClient() {
                 <section>
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="space-y-6">
-                            <h2 className="text-4xl font-black">Engineering for Scale</h2>
+                            <h2 className="fluid-h2">ENGINEERING FOR SCALE.</h2>
                             <p className="text-body text-lg">
                                 We design software that grows with you. Our enterprise solutions are built on the
                                 latest technical standards, ensuring they remain performant under load and
@@ -98,7 +98,7 @@ export default function EnterpriseSoftwareClient() {
                 <section>
                     <div className="mb-12">
                         <span className="text-subheading mb-4">Core Competencies</span>
-                        <h2 className="text-4xl font-black">Full-Stack Excellence</h2>
+                        <h2 className="fluid-h2">FULL-STACK EXCELLENCE.</h2>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6">
                         {features.map((feature, index) => (
@@ -129,14 +129,16 @@ export default function EnterpriseSoftwareClient() {
                         <Layers className="w-20 h-20 text-white opacity-[0.03]" />
                     </div>
                     <div className="relative z-10 max-w-2xl">
-                        <h2 className="text-3xl font-black mb-6 leading-tight">Ready to modernize your tech stack?</h2>
+                        <h2 className="fluid-h2 text-white">READY TO MODERNIZE <br /> YOUR TECH STACK?</h2>
                         <p className="text-white/40 mb-8 font-medium">
                             Schedule a deep-dive technical workshop with our lead architects to plan your next major release.
                         </p>
                         <Link href="/contact">
-                            <button className="btn-primary">
-                                Talk to an Architect
-                                <ArrowRight className="ml-2 w-4 h-4" />
+                            <button className="btn-institutional group">
+                                <span className="relative z-10 flex items-center justify-center gap-4">
+                                    Talk to an Architect
+                                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                                </span>
                             </button>
                         </Link>
                     </div>

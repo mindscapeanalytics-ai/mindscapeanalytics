@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import Image from "next/image"
@@ -63,20 +63,19 @@ export default function CaseStudies() {
                 <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-32 border-b border-white/5 pb-12">
                     <div className="max-w-4xl space-y-6">
                         <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
                             className="flex items-center gap-3"
                         >
                             <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
                             <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.5em] font-black">Archive // MISSION_LOGS_v2</span>
                         </motion.div>
                         <motion.h2
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-[-0.05em] font-sans leading-[0.8] uppercase"
-                            style={{ fontSize: "clamp(3.5rem, 12vw, 12rem)" }}
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: 0.1 }}
+                            className="fluid-h2"
                         >
                             PROVEN <br /> <span className="text-white/40 font-black">SUCCESS.</span>
                         </motion.h2>
@@ -87,9 +86,9 @@ export default function CaseStudies() {
                     {caseStudies.map((study, index) => (
                         <motion.div
                             key={study.title}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
                             className={cn(
                                 "flex flex-col lg:flex-row items-center gap-12 lg:gap-20",
                                 index % 2 === 1 && "lg:flex-row-reverse"
@@ -141,7 +140,7 @@ export default function CaseStudies() {
                                         <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" />
                                         <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.5em] font-black">{study.category} // CASE_ID_0{index + 1}</span>
                                     </div>
-                                    <h3 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-[-0.05em] uppercase font-sans group-hover:text-white transition-colors">
+                                    <h3 className="text-4xl md:text-6xl font-black text-white leading-[0.9] tracking-[-0.05em] uppercase font-sans group-hover:text-white transition-colors">
                                         {study.title}
                                     </h3>
                                 </div>

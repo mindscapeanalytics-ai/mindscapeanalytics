@@ -59,13 +59,9 @@ export default function InfrastructureAdvantage() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-2xl overflow-hidden">
-                            {advantages.map((adv, i) => (
-                                <motion.div
+                             {advantages.map((adv) => (
+                                <div
                                     key={adv}
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.05 }}
                                     className="flex items-center gap-4 p-6 bg-white/[0.02] backdrop-blur-sm group hover:bg-white/[0.05] transition-all relative"
                                 >
                                     <div className="absolute top-2 left-2 w-1.5 h-1.5 border-t border-l border-white/10 group-hover:border-white/30 transition-colors" />
@@ -73,7 +69,7 @@ export default function InfrastructureAdvantage() {
                                         <Check className="w-4 h-4" />
                                     </div>
                                     <span className="text-[11px] font-black text-white/40 group-hover:text-white transition-colors uppercase tracking-[0.1em]">{adv}</span>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
                     </div>

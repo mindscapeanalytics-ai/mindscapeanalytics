@@ -174,7 +174,7 @@ export default function ProjectVision() {
                             <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
                             <span className="text-[8px] lg:text-meta uppercase font-mono tracking-widest text-white/40">Subsystem // Archive_Port_01</span>
                         </div>
-                        <h2 className="text-3xl xs:text-4xl lg:text-8xl font-black tracking-[-0.05em] leading-[0.8] uppercase font-sans">
+                        <h2 className="fluid-h2">
                             PROJECT <span className="text-white/40">VISION</span>
                         </h2>
                     </div>

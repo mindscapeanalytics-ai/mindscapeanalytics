@@ -94,24 +94,22 @@ export default function PricingPage() {
 
             {/* --- Hero Section --- */}
             <section className="relative pt-44 pb-32 overflow-hidden">
-                <div className="container mx-auto px-6 relative z-10 text-center space-y-12">
+                <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center space-y-12">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mx-auto"
+                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
                     >
                         <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
-                        <span className="text-white/60 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Investment_Protocol // v4.2</span>
+                        <span className="text-meta">Investment_Protocol // v4.2</span>
                     </motion.div>
 
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="text-6xl md:text-[10rem] lg:text-[12rem] font-black leading-[0.75] font-sans tracking-[-0.05em] uppercase"
-                        style={{ fontSize: "clamp(3.5rem, 12vw, 15rem)" }}
+                        className="fluid-h1"
                     >
-                        SYSTEM <br /> <span className="text-white/40 font-black">INVESTMENT.</span>
+                        SYSTEM <br /> <span className="text-white/40">INVESTMENT.</span>
                     </motion.h1>
 
                     <motion.div
@@ -120,8 +118,8 @@ export default function PricingPage() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="max-w-4xl border-t border-white/10 pt-12 mx-auto"
                     >
-                        <p className="text-2xl md:text-3xl text-white/60 font-medium tracking-tight leading-snug uppercase">
-                            PRECISION-ENGINEERED PRICING MODELS BUILT FOR <span className="text-white font-black text-4xl">OUTCOMES + INFRASTRUCTURE.</span>
+                        <p className="text-xl md:text-2xl lg:text-3xl font-black text-white/40 font-sans tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl">
+                            PRECISION-ENGINEERED PRICING MODELS BUILT FOR <span className="text-white">OUTCOMES + INFRASTRUCTURE.</span>
                         </p>
                     </motion.div>
                 </div>
@@ -144,28 +142,28 @@ export default function PricingPage() {
                                     }`}
                             >
                                 <div className="mb-10 flex items-start justify-between">
-                                    <div className={`p-4 rounded-2xl ${plan.highlight ? "bg-black text-white" : "bg-white/5 border border-white/10"}`}>
-                                        <plan.icon className="w-8 h-8" />
+                                    <div className={`p-4 rounded-xl ${plan.highlight ? "bg-black text-white" : "bg-white/5 border border-white/10"}`}>
+                                        <plan.icon className="w-7 h-7" />
                                     </div>
-                                    <div className={`text-[10px] font-mono font-black uppercase tracking-widest ${plan.highlight ? "text-black/40" : "text-white/20"}`}>
+                                    <div className={`text-meta ${plan.highlight ? "text-black/40" : "text-white/20"}`}>
                                         Tier_0{index + 1}
                                     </div>
                                 </div>
 
                                 <div className="mb-8">
-                                    <h3 className={`text-3xl font-black uppercase font-sans tracking-tight leading-none mb-2 ${plan.highlight ? "text-black" : "text-white"}`}>
+                                    <h3 className={`text-3xl font-black uppercase tracking-tight leading-none mb-2 ${plan.highlight ? "text-black" : "text-white"}`}>
                                         {plan.name}
                                     </h3>
-                                    <p className={`text-[10px] font-mono font-black uppercase tracking-[0.2em] ${plan.highlight ? "text-black/40" : "text-white/20"}`}>
+                                    <p className={`text-meta ${plan.highlight ? "text-black/40" : "text-white/20"}`}>
                                         {plan.subtitle}
                                     </p>
                                 </div>
 
                                 <div className="mb-10">
                                     <div className="flex items-baseline gap-2">
-                                        <span className="text-4xl font-black font-sans">{plan.price}</span>
+                                        <span className="text-4xl font-black">{plan.price}</span>
                                     </div>
-                                    <div className={`text-[10px] font-mono font-bold uppercase tracking-widest mt-1 ${plan.highlight ? "text-black/60" : "text-white/40"}`}>
+                                    <div className={`text-meta mt-1 ${plan.highlight ? "text-black/60" : "text-white/40"}`}>
                                         {plan.setupFee}
                                     </div>
                                 </div>
@@ -185,19 +183,18 @@ export default function PricingPage() {
                                     <div className="flex items-center gap-3">
                                         <Database className="w-4 h-4 opacity-40" />
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-black uppercase tracking-widest">{plan.managedFee}</span>
+                                            <span className="text-meta">{plan.managedFee}</span>
                                             <span className={`text-[8px] font-medium uppercase opacity-60`}>Managed Infrastructure Plan</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <Link href="/contact" className="w-full">
-                                    <button className={`w-full py-6 rounded-2xl font-black uppercase text-[11px] tracking-[0.4em] transition-all flex items-center justify-center gap-2 group/btn ${plan.highlight
-                                        ? "bg-black text-white hover:scale-[1.02]"
-                                        : "bg-white text-black hover:scale-[1.02]"
-                                        }`}>
-                                        {plan.cta}
-                                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                    <button className={plan.highlight ? "btn-institutional group w-full" : "btn-outline-institutional group w-full"}>
+                                        <span className="relative z-10 flex items-center justify-center gap-4">
+                                            {plan.cta}
+                                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                                        </span>
                                     </button>
                                 </Link>
 
@@ -216,11 +213,8 @@ export default function PricingPage() {
                     <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
                         <div className="space-y-12">
                             <div className="space-y-6">
-                                <span className="text-white/20 text-[11px] font-mono font-black uppercase tracking-[0.5em]">Authority // FAQ</span>
-                                <h2
-                                    className="text-6xl font-black font-sans uppercase tracking-[-0.05em]"
-                                    style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
-                                >
+                                <span className="text-meta opacity-40">Authority // FAQ</span>
+                                <h2 className="fluid-h2">
                                     SYSTEM <br /> <span className="text-white/40">INTEGRITY.</span>
                                 </h2>
                                 <p className="text-xl text-white/40 max-w-xl font-medium uppercase tracking-tight leading-relaxed">
@@ -273,10 +267,7 @@ export default function PricingPage() {
                 <div className="container mx-auto px-6">
                     <div className="max-w-4xl mx-auto space-y-8">
                         <span className="text-black/40 text-[11px] font-mono font-black uppercase tracking-[0.5em]">System Reliability Standard</span>
-                        <h2
-                            className="text-5xl md:text-7xl font-black font-sans uppercase tracking-[-0.05em] leading-[0.85]"
-                            style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
-                        >
+                        <h2 className="fluid-h2">
                             MANAGED <br /> <span className="opacity-40">OR IT'S BROKEN.</span>
                         </h2>
                         <p className="text-lg font-medium opacity-60 uppercase tracking-tighter max-w-2xl mx-auto">

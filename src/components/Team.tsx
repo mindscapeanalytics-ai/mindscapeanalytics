@@ -1,11 +1,11 @@
 "use client";
 
-import { FadeIn, StaggerContainer, StaggerItem } from "@/lib/scroll-animations";
 import Image from "next/image";
+import React, { useRef, useEffect, useState, useCallback } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { Linkedin, Mail, ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Linkedin, Mail, Github } from "lucide-react";
 const team = [
     {
         name: "Zeeshan Keerio",
@@ -83,17 +83,7 @@ function TeamCard({ member, index }: { member: typeof team[0]; index: number }) 
     };
 
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{
-                duration: 0.6,
-                delay: index * 0.15,
-                ease: [0.21, 0.47, 0.32, 0.98]
-            }}
-            className="group relative"
-        >
+        <div className="group relative">
             <div
                 ref={cardRef}
                 onMouseMove={handleMouseMove}
@@ -105,16 +95,12 @@ function TeamCard({ member, index }: { member: typeof team[0]; index: number }) 
                 <div className="absolute top-4 left-4 w-3 h-3 border-t border-l border-white/10 z-20 group-hover:border-white/30 transition-colors" />
                 <div className="absolute top-4 right-4 w-3 h-3 border-t border-r border-white/10 z-20 group-hover:border-white/30 transition-colors" />
 
-                <div className="absolute top-1/2 left-2 flex flex-col gap-1 items-center opacity-5 z-20">
-                    <span className="text-meta vertical-text py-2">MEMBER_ID:00{index + 1}</span>
+                <div className="absolute top-1/2 left-2 flex flex-col gap-1 items-center opacity-5 z-20 font-mono">
+                    <span className="text-[8px] vertical-text py-2">MEMBER_ID:00{index + 1}</span>
                     <div className="w-[1px] h-8 bg-white" />
                 </div>
                 <div className="aspect-[3/4] relative overflow-hidden">
-                    <motion.div
-                        className="w-full h-full"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.7 }}
-                    >
+                    <div className="w-full h-full transition-transform duration-700 group-hover:scale-105">
                         <Image
                             src={member.image}
                             alt={member.name}
@@ -123,22 +109,16 @@ function TeamCard({ member, index }: { member: typeof team[0]; index: number }) 
                             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                             priority={index < 3}
                         />
-                    </motion.div>
+                    </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
 
-                    <motion.div
-                        className="absolute bottom-6 left-6 right-6 z-20"
-                        initial={{ y: 20, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ delay: index * 0.15 + 0.2 }}
-                    >
+                    <div className="absolute bottom-6 left-6 right-6 z-20">
                         <h3 className="text-2xl font-black text-white tracking-tighter uppercase font-sans transition-colors leading-none">{member.name}</h3>
                         <div className="flex items-center gap-3 mt-3">
                             <div className="w-1 h-1 bg-white/40 rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
-                            <p className="text-meta text-white/20">{member.role}</p>
+                            <p className="text-[10px] font-mono uppercase text-white/20">{member.role}</p>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
 
                 <div className="p-6">
@@ -146,31 +126,30 @@ function TeamCard({ member, index }: { member: typeof team[0]; index: number }) 
                         {member.bio}
                     </p>
                     <div className="flex gap-4">
-                        <motion.a
+                        <a
                             href={member.linkedin}
-                            whileHover={{ scale: 1.1, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
                             className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/20 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
                         >
                             <Linkedin className="w-4 h-4" />
-                        </motion.a>
-                        <motion.a
+                        </a>
+                        <a
                             href={member.email}
-                            whileHover={{ scale: 1.1, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
                             className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/20 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
                         >
                             <Mail className="w-4 h-4" />
-                        </motion.a>
+                        </a>
                     </div>
                 </div>
             </div>
-        </motion.div>
+            <style jsx>{`
+                .vertical-text {
+                    writing-mode: vertical-rl;
+                    text-orientation: mixed;
+                }
+            `}</style>
+        </div>
     );
 }
-
-import { useAnimation, useInView } from "framer-motion";
-import { useEffect, useState, useCallback } from "react";
 
 export default function Team() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -206,31 +185,19 @@ export default function Team() {
         }
     }, [isInView, isPaused, startAnimation, controls]);
 
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start end", "end start"]
-    });
-
-    const y = useTransform(scrollYProgress, [0, 1], [30, -30]);
-
     return (
         <section ref={sectionRef} id="team" className="relative pt-0 pb-32 overflow-hidden bg-transparent">
-            {/* Parallax background accent */}
-            <motion.div
-                style={{ y }}
-                className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-white/[0.03] blur-[120px] rounded-full pointer-events-none"
-            />
+            {/* Parallax background accent removed for performance */}
+            <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-white/[0.03] blur-[120px] rounded-full pointer-events-none" />
 
             <div className="relative z-10 w-full">
                 <div className="mb-16 px-6 md:px-12">
-                    <FadeIn direction="left">
-                        <h2 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white font-sans leading-[0.85]">
-                            THE{" "}
-                            <span className="text-white/30">
-                                ARCHITECTS.
-                            </span>
-                        </h2>
-                    </FadeIn>
+                    <h2 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white font-sans leading-[0.85]">
+                        THE{" "}
+                        <span className="text-white/30">
+                            ARCHITECTS.
+                        </span>
+                    </h2>
                 </div>
 
                 <div

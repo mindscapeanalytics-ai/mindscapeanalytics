@@ -24,7 +24,7 @@ const team = [
     },
     {
         name: "Muhammad Atif",
-        role: "Full Stack Developer",
+        role: "Full-Stack Developer",
         bio: "Versatile developer specializing in creating scalable, user-friendly applications with modern technologies and robust architectures.",
         image: "/images/team/muhammad-atif-new.webp",
         linkedin: "#",
@@ -93,30 +93,30 @@ const timeline = [
 ];
 
 const expertise = [
-    { title: "AI Agents & Automation Systems", id: "01" },
-    { title: "AI Voice Call Agents (Vapi/Retell)", id: "02" },
-    { title: "AI Chatbots (Sales & Support)", id: "03" },
+    { title: "AI Agents & Automation", id: "01" },
+    { title: "AI Voice Call Agents", id: "02" },
+    { title: "AI Sales & Chatbots", id: "03" },
     { title: "Big Data & Cloud Engineering", id: "04" },
-    { title: "Full Stack Web Applications", id: "05" },
+    { title: "Full-Stack SaaS Platforms", id: "05" },
     { title: "Lead Generation AI Systems", id: "06" },
     { title: "Custom Database & Infrastructure", id: "07" }
 ];
 
 const differences = [
-    "AI automation workflows",
-    "Optimized cloud infrastructure",
-    "Enterprise database architecture",
-    "Performance monitoring",
-    "Ongoing technical support"
+    "AI Automation Workflows",
+    "Optimized Cloud Infrastructure",
+    "Enterprise Database Architecture",
+    "Performance Monitoring Systems",
+    "Ongoing Technical Support"
 ];
 
 const trustFactors = [
-    { title: "Enterprise-grade database architecture", detail: "Optimized for scale and precision." },
-    { title: "Cloud-native scalable deployments", detail: "Built on AWS/GCP/Azure standards." },
-    { title: "Security-first development", detail: "Proactive threat detection integrated." },
-    { title: "Monthly maintenance & monitoring", detail: "Zero downtime operations." },
-    { title: "Performance-optimized systems", detail: "Sub-10ms latency protocols." },
-    { title: "Transparent Pricing", detail: "Clear ROI-driven cost structures." }
+    { title: "Enterprise-Grade Database Architecture", detail: "Optimized for scale and precision." },
+    { title: "Cloud-Native Scalable Deployments", detail: "Built on AWS/GCP/Azure standards." },
+    { title: "Security-First Development", detail: "Proactive threat detection integrated." },
+    { title: "Monthly Maintenance & Monitoring", detail: "Zero-downtime operations." },
+    { title: "Performance-Optimized Systems", detail: "Sub-10ms latency protocols." },
+    { title: "Transparent ROI Structures", detail: "Calculated business impact metrics." }
 ];
 
 export default function AboutPage() {
@@ -134,17 +134,15 @@ export default function AboutPage() {
                             className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
                         >
                             <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
-                            <span className="text-white/60 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Corporate_Profile // v4.2</span>
+                            <span className="text-meta">Registry // ELITE_SYSTEM_V4</span>
                         </motion.div>
 
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="text-6xl md:text-[10rem] lg:text-[13rem] font-black leading-[0.75] font-sans tracking-[-0.05em] uppercase"
-                            style={{ fontSize: "clamp(3.5rem, 15vw, 15rem)" }}
+                            className="fluid-h1"
                         >
-                            ABOUT <br /> <span className="text-white/40 font-black">MINDSCAPE.</span>
+                            ABOUT <br /> <span className="text-white/40">MINDSCAPE.</span>
                         </motion.h1>
 
                         <motion.div
@@ -158,7 +156,7 @@ export default function AboutPage() {
                             </p>
                             <div className="flex items-center justify-center gap-6 mt-10 md:mt-12 opacity-20">
                                 <div className="h-[1px] w-12 md:w-24 bg-gradient-to-r from-transparent to-white" />
-                                <span className="text-[8px] font-mono font-black tracking-[0.5em] uppercase whitespace-nowrap">Scale_Protocol_Active</span>
+                                <span className="text-meta whitespace-nowrap">Scale_Protocol_Active</span>
                                 <div className="h-[1px] w-12 md:w-24 bg-gradient-to-l from-transparent to-white" />
                             </div>
                         </motion.div>
@@ -178,9 +176,9 @@ export default function AboutPage() {
                         >
                             <div className="flex items-center gap-3">
                                 <div className="w-1.5 h-1.5 bg-white/60 rounded-full" />
-                                <span className="text-[9px] font-mono text-white/40 uppercase tracking-[0.5em] font-black">Origins // ARCH_ZEESHAN</span>
+                                <span className="text-meta opacity-40">Section // INSTITUTIONAL_OVERVIEW</span>
                             </div>
-                            <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter font-sans leading-[0.9]">
+                            <h2 className="fluid-h2">
                                 NEXT-GENERATION <br /> <span className="text-white/40">AI & DATA ENGINEERING.</span>
                             </h2>
                             <div className="space-y-6">
@@ -229,13 +227,10 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="text-center mb-24"
                     >
-                        <h2
-                            className="text-5xl md:text-[7rem] font-black mb-4 font-sans uppercase tracking-[-0.05em]"
-                            style={{ fontSize: "clamp(3.5rem, 10vw, 10rem)" }}
-                        >
+                        <h2 className="fluid-h2 mb-4">
                             EXPERTISE.
                         </h2>
-                        <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.6em] font-black">SYSTEM_CAPABILITIES // READOUT</span>
+                        <span className="text-meta">SYSTEM_CAPABILITIES // READOUT</span>
                     </motion.div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/5 rounded-2xl overflow-hidden shadow-2xl">
@@ -248,7 +243,7 @@ export default function AboutPage() {
                                 transition={{ delay: index * 0.1 }}
                                 className="group p-10 bg-black/40 backdrop-blur-md hover:bg-white/[0.04] transition-all relative min-h-[220px] flex flex-col justify-center gap-6"
                             >
-                                <div className="absolute top-4 left-6 text-[8px] font-mono text-white/10 group-hover:text-white/40 tracking-[0.4em] font-black uppercase">NODE_0{exp.id}</div>
+                                <div className="absolute top-4 left-6 text-[8px] font-mono text-white/10 group-hover:text-white/40 tracking-[0.4em] font-black uppercase">NODE_0x{parseInt(exp.id).toString(16).toUpperCase()}</div>
                                 <h3 className="text-lg font-black text-white/60 group-hover:text-white transition-colors uppercase tracking-tight font-syncopate leading-tight">{exp.title}</h3>
                                 <div className="w-8 h-px bg-white/5 group-hover:w-24 transition-all" />
                             </motion.div>
@@ -262,9 +257,9 @@ export default function AboutPage() {
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-black/10" />
                 <div className="container mx-auto px-6">
                     <div className="max-w-4xl mx-auto text-center space-y-8">
-                        <span className="text-[9px] font-mono font-black tracking-[0.6em] uppercase opacity-40">The_Long_Term_Directive</span>
-                        <h2 className="text-5xl md:text-8xl font-black font-syncopate leading-[0.85] uppercase tracking-[-0.05em]">
-                            OUR <span className="opacity-40">VISION.</span>
+                        <span className="text-meta opacity-40">Section // MISSION_DIRECTIVE</span>
+                        <h2 className="fluid-h2">
+                            OUR <span className="text-black/40">VISION.</span>
                         </h2>
                         <p className="text-xl md:text-2xl font-black uppercase tracking-tight leading-relaxed max-w-3xl mx-auto">
                             To become a global AI-first technology partner helping businesses transition from manual operations to <span className="underline underline-offset-8 decoration-4">autonomous AI-driven systems.</span>
@@ -282,8 +277,8 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="text-center mb-32"
                     >
-                        <h2 className="text-6xl md:text-9xl font-black mb-4 font-sans uppercase tracking-[-0.05em]">ARCHITECTS.</h2>
-                        <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.6em] font-black">The core logic unit</span>
+                        <h2 className="fluid-h2 mb-4">ARCHITECTS.</h2>
+                        <span className="text-meta opacity-20">Institutional Core Logic Unit</span>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -348,8 +343,8 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="text-center mb-32"
                     >
-                        <h2 className="text-5xl md:text-9xl font-black mb-4 font-syncopate uppercase tracking-[-0.05em]">JOURNEY.</h2>
-                        <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.6em] font-black">The evolution of intelligence</span>
+                        <h2 className="fluid-h2 mb-4">JOURNEY.</h2>
+                        <span className="text-meta opacity-20">Chronological System Evolution</span>
                     </motion.div>
 
                     <div className="max-w-4xl mx-auto space-y-20 relative">
@@ -388,7 +383,7 @@ export default function AboutPage() {
                     <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 max-w-7xl mx-auto">
                         {/* Why Trust Us */}
                         <div className="space-y-12 bg-white/[0.03] p-12 rounded-[3.5rem] border border-white/10 backdrop-blur-xl">
-                            <h2 className="text-4xl font-black uppercase font-syncopate tracking-tighter">WHY TRUST US?</h2>
+                            <h2 className="fluid-h2">WHY TRUST US?</h2>
                             <div className="space-y-6">
                                 {trustFactors.map((factor, i) => (
                                     <div key={i} className="group flex flex-col gap-1 border-b border-white/5 pb-6 last:border-0">
@@ -403,9 +398,9 @@ export default function AboutPage() {
                         <div className="p-12 lg:p-24 rounded-[3.5rem] bg-white text-black flex flex-col justify-between overflow-hidden relative group">
                             <div className="absolute inset-0 z-0 opacity-5 bg-[url('/grid.svg')] bg-[length:50px_50px]" />
                             <div className="relative z-10 space-y-12">
-                                <span className="text-[9px] font-mono font-black tracking-[0.5em] uppercase opacity-40">Managed_Subscription_Logic</span>
-                                <h2 className="text-5xl md:text-7xl font-black font-syncopate leading-[0.85] uppercase tracking-[-0.05em]">
-                                    WE DON'T JUST DELIVER. <br /> <span className="opacity-50">WE OPTIMIZE.</span>
+                                <span className="text-meta opacity-40">Managed_Subscription_Logic</span>
+                                <h2 className="fluid-h2">
+                                    WE DON'T JUST DELIVER. <br /> WE <span className="opacity-50">OPTIMIZE.</span>
                                 </h2>
                                 <p className="text-lg font-medium max-w-xl opacity-60">
                                     Our clients subscribe to long-term reliability. We manage hosting, databases, AI maintenance, and security so you can focus on growth.
@@ -423,7 +418,7 @@ export default function AboutPage() {
             </section>
 
             {/* Stats Section - Refined */}
-            <section className="py-24 bg-transparent border-t border-white/5">
+            <section className="section-spacing bg-transparent border-t border-white/5">
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
                         {[

@@ -44,8 +44,7 @@ export default function Products() {
                 <div className="flex flex-col items-center text-center mb-12">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true, margin: "-50px" }}
+                        animate={{ opacity: 1, scale: 1 }}
                         className="flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 mb-10 backdrop-blur-md"
                     >
                         <Sparkles className="w-4 h-4 text-white/60" />
@@ -64,8 +63,7 @@ export default function Products() {
                         <Link key={product.title} href="/shop" className="flex h-full">
                             <motion.div
                                 initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true, margin: "-50px" }}
+                                animate={{ opacity: 1 }}
                                 transition={{ delay: index * 0.1 }}
                                 className={cn(
                                     "relative p-10 lg:p-14 bg-white/5 backdrop-blur-md group overflow-hidden hover:bg-white/[0.08] transition-all duration-500 hover:border-white/10 w-full h-full",
@@ -104,7 +102,7 @@ export default function Products() {
                                         <span className="text-[8px] font-mono text-white/10 mb-5 block tracking-[0.3em] uppercase group-hover:text-white/30 transition-colors">
                                             {product.category} // ARCHIVE_v0{index + 1}
                                         </span>
-                                        <h3 className="text-4xl lg:text-6xl font-black tracking-[-0.05em] mb-8 uppercase transition-all font-sans leading-[0.9] group-hover:translate-x-4 duration-500">
+                                        <h3 className="text-3xl lg:text-5xl font-black tracking-[-0.05em] mb-8 uppercase transition-all font-sans leading-[0.9] group-hover:translate-x-4 duration-500">
                                             {product.title}
                                         </h3>
                                         <p className="text-white/40 text-[10px] leading-relaxed max-w-sm group-hover:text-white/50 transition-colors duration-500 font-black uppercase tracking-[0.1em] opacity-60">
@@ -114,8 +112,7 @@ export default function Products() {
                                         <div className="mt-16 w-full h-px bg-white/5 rounded-full overflow-hidden relative">
                                             <motion.div
                                                 initial={{ width: 0 }}
-                                                whileInView={{ width: "100%" }}
-                                                viewport={{ once: true, margin: "-50px" }}
+                                                animate={{ width: "100%" }}
                                                 transition={{ duration: 1.5, delay: index * 0.2 }}
                                                 className="h-full bg-white/20 leading-none shadow-[0_0_15px_rgba(255,255,255,0.2)]"
                                             />

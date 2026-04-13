@@ -189,17 +189,15 @@ export default function ServicesPage() {
                             className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
                         >
                             <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
-                            <span className="text-white/60 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Service_Catalog // v4.2</span>
+                            <span className="text-meta">Service_Catalog // v4.2</span>
                         </motion.div>
 
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="text-6xl md:text-[10rem] lg:text-[12rem] font-black leading-[0.75] font-sans tracking-[-0.05em] uppercase"
-                            style={{ fontSize: "clamp(3.5rem, 12vw, 15rem)" }}
+                            className="fluid-h1"
                         >
-                            ENGINEERED <br /> <span className="text-white/40 font-black">SERVICES.</span>
+                            ENGINEERED <br /> <span className="text-white/40">SERVICES.</span>
                         </motion.h1>
 
                         <motion.div
@@ -208,8 +206,8 @@ export default function ServicesPage() {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="max-w-4xl border-t border-white/10 pt-12"
                         >
-                            <p className="text-2xl md:text-3xl text-white/60 font-medium tracking-tight leading-snug uppercase">
-                                ARCHITECTING THE NEXT GENERATION OF <span className="text-white font-black">ENTERPRISE INTELLIGENCE</span> THROUGH PRECISION ENGINEERING.
+                            <p className="text-xl md:text-2xl lg:text-3xl font-black text-white/40 font-sans tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl">
+                                ARCHITECTING THE NEXT GENERATION OF <span className="text-white">ENTERPRISE INTELLIGENCE</span> THROUGH PRECISION ENGINEERING.
                             </p>
                         </motion.div>
                     </div>
@@ -217,7 +215,7 @@ export default function ServicesPage() {
             </section>
 
             {/* Services Grid */}
-            <section className="py-20 bg-transparent relative">
+            <section className="section-spacing bg-transparent relative">
                 <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay pointer-events-none" />
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-2xl mx-auto">
@@ -244,13 +242,10 @@ export default function ServicesPage() {
                         viewport={{ once: true }}
                         className="text-center mb-32"
                     >
-                        <h2
-                            className="text-6xl md:text-9xl font-black mb-4 font-sans uppercase tracking-[-0.05em]"
-                            style={{ fontSize: "clamp(3.5rem, 10vw, 10rem)" }}
-                        >
+                        <h2 className="fluid-h2 mb-4">
                             PROCESS.
                         </h2>
-                        <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.6em] font-black">The engineering workflow</span>
+                        <span className="text-meta">The engineering workflow</span>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-screen-2xl mx-auto">
@@ -284,17 +279,14 @@ export default function ServicesPage() {
                 <div className="container mx-auto px-6">
                     <div className="grid lg:grid-cols-2 gap-20 items-center max-w-screen-2xl mx-auto">
                         <div className="space-y-12">
-                            <span className="text-[9px] font-mono font-black tracking-[0.5em] uppercase opacity-40">Business_Model // Managed</span>
-                            <h2
-                                className="text-5xl md:text-8xl font-black font-sans leading-[0.85] uppercase tracking-[-0.05em]"
-                                style={{ fontSize: "clamp(3rem, 8vw, 8rem)" }}
-                            >
-                                WE DON'T JUST <br /> <span className="opacity-40">DELIVER.</span>
+                            <span className="text-meta opacity-40">Business_Model // Managed</span>
+                            <h2 className="fluid-h2">
+                                WE DON'T JUST DELIVER. <br /> WE <span className="opacity-40">OPTIMIZE.</span>
                             </h2>
-                            <p className="text-xl font-bold uppercase tracking-tight max-w-xl">
+                            <p className="text-lg md:text-xl font-black uppercase tracking-tight max-w-xl text-white/40">
                                 Our clients subscribe to long-term reliability. We manage hosting, databases, AI maintenance, and security so you can focus on growth.
                             </p>
-                            <div className="grid grid-cols-2 gap-6 text-[10px] font-mono font-black uppercase tracking-[0.2em] opacity-60">
+                            <div className="grid grid-cols-2 gap-6 text-meta opacity-60">
                                 <div>✔ NO TECHNICAL HEADACHES</div>
                                 <div>✔ NO DOWNTIME RISKS</div>
                                 <div>✔ NO UNMANAGED BILLS</div>
@@ -305,7 +297,7 @@ export default function ServicesPage() {
                         <div className="p-12 rounded-[3.5rem] bg-black text-white space-y-8 relative overflow-hidden group">
                             <div className="absolute inset-0 z-0 opacity-10 bg-[url('/grid.svg')] bg-[length:40px_40px]" />
                             <div className="relative z-10 space-y-8">
-                                <h3 className="text-2xl font-black uppercase font-sans tracking-tight">THE ELITE SUBSCRIPTION</h3>
+                                <h3 className="text-xl lg:text-3xl font-black uppercase font-sans tracking-tight">THE ELITE SUBSCRIPTION</h3>
                                 <div className="space-y-4">
                                     {[
                                         "Monthly AI Maintenance & Optimization",
@@ -320,8 +312,11 @@ export default function ServicesPage() {
                                     ))}
                                 </div>
                                 <Link href="/contact">
-                                    <button className="w-full py-5 bg-white text-black font-black uppercase text-[10px] tracking-[0.4em] rounded-xl hover:scale-105 transition-transform">
-                                        INITIATE_ONBOARDING
+                                    <button className="btn-institutional group w-full">
+                                        <span className="relative z-10 flex items-center justify-center gap-4">
+                                            INITIATE_ONBOARDING
+                                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                                        </span>
                                     </button>
                                 </Link>
                             </div>
@@ -339,18 +334,25 @@ export default function ServicesPage() {
                         viewport={{ once: true }}
                         className="max-w-4xl mx-auto space-y-12"
                     >
-                        <h2
-                            className="text-5xl md:text-7xl font-black uppercase font-sans tracking-tighter"
-                            style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
-                        >
+                        <h2 className="fluid-h2 mb-12">
                             BECOME THE <br /> <span className="text-white/40">STANDARD.</span>
                         </h2>
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                            <Link href="/contact" className="px-10 py-5 bg-white text-black font-black uppercase text-[10px] tracking-[0.4em] rounded-xl hover:scale-105 transition-transform">
-                                START_PROJECT
+                            <Link href="/contact">
+                                <button className="btn-institutional group">
+                                    <span className="relative z-10 flex items-center justify-center gap-4">
+                                        START_PROJECT
+                                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                                    </span>
+                                </button>
                             </Link>
-                            <Link href="/shop" className="px-10 py-5 bg-white/5 border border-white/10 text-white font-black uppercase text-[10px] tracking-[0.4em] rounded-xl hover:bg-white/10 transition-all">
-                                BROWSE_ARCHITECTURES
+                            <Link href="/shop">
+                                <button className="btn-outline-institutional group">
+                                    <span className="relative z-10 flex items-center justify-center gap-4">
+                                        BROWSE_ARCHITECTURES
+                                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                                    </span>
+                                </button>
                             </Link>
                         </div>
                     </motion.div>

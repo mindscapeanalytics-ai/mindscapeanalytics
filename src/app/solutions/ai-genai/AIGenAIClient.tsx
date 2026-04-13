@@ -60,7 +60,7 @@ export default function AIGenAIClient() {
                 <section>
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="space-y-6">
-                            <h2 className="text-4xl font-black" style={{ fontSize: "clamp(2rem, 5vw, 3rem)" }}>Intelligence as Infrastructure</h2>
+                            <h2 className="fluid-h2">INTELLIGENCE AS INFRASTRUCTURE.</h2>
                             <p className="text-body text-lg">
                                 We believe AI shouldn't just be a chatbot in the corner. It should be the foundation
                                 of your business logic. Our team builds deeply integrated AI systems that
@@ -97,7 +97,7 @@ export default function AIGenAIClient() {
                 <section>
                     <div className="mb-12">
                         <span className="text-subheading mb-4">Capabilities</span>
-                        <h2 className="text-4xl font-black" style={{ fontSize: "clamp(2rem, 5vw, 3rem)" }}>Core AI Engineering</h2>
+                        <h2 className="fluid-h2">CORE AI ENGINEERING.</h2>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6">
                         {features.map((feature, index) => (
@@ -128,15 +128,17 @@ export default function AIGenAIClient() {
                         <Sparkles className="w-20 h-20 text-white opacity-[0.03]" />
                     </div>
                     <div className="relative z-10 max-w-2xl">
-                        <h2 className="text-3xl font-black mb-6 leading-tight">Ready to integrate intelligence?</h2>
+                        <h2 className="fluid-h2 text-white">READY TO INTEGRATE <br /> INTELLIGENCE?</h2>
                         <p className="text-white/40 mb-8 font-medium">
                             Our team conducts deep technical audits to identify the high-impact AI opportunities
                             within your existing tech stack.
                         </p>
                         <Link href="/contact">
-                            <button className="btn-primary">
-                                Speak to an AI Architect
-                                <Zap className="ml-2 w-4 h-4" />
+                            <button className="btn-institutional group">
+                                <span className="relative z-10 flex items-center justify-center gap-4">
+                                    Speak to an AI Architect
+                                    <Zap className="w-4 h-4 transition-transform group-hover:scale-125" />
+                                </span>
                             </button>
                         </Link>
                     </div>

@@ -1,33 +1,12 @@
 "use client"
 
 import React, { useRef } from "react"
-import { motion, useScroll, useTransform, useSpring } from "framer-motion"
+import { motion } from "framer-motion"
 import { ArrowRight, Play, Sparkles } from "lucide-react"
 import Link from "next/link";
 
 export default function Hero() {
-    // Use global scroll for the Hero to ensure maximum smoothness at the top of the page
-    const { scrollY } = useScroll()
-
-    // Optimized spring physics for maximum fluid performance - 60fps target
-    const smoothScroll = useSpring(scrollY, {
-        stiffness: 60,
-        damping: 40,
-        restDelta: 0.005
-    })
-
-    // Calculate progression based on a 700px scroll range
-    const scrollProgress = useTransform(smoothScroll, [0, 700], [0, 1])
-
-    // Scale down from 1 to 0.95 as we scroll - very subtle
-    const scale = useTransform(scrollProgress, [0, 1], [1, 0.95])
-    const opacity = useTransform(scrollProgress, [0, 0.8], [1, 0])
-
-    // Depth parallax for Spline - subtle movement
-    const splineY = useTransform(scrollProgress, [0, 1], [0, 40])
-
-    // Cinematic title effects - vertical movement only, removed scale scaling
-    const titleY = useTransform(scrollProgress, [0, 1], [0, -30])
+    // All viewport/scroll linked animations removed for maximum mobile smoothness
 
     return (
         <section className="relative w-full min-h-[90vh] lg:min-h-screen flex items-center justify-center overflow-hidden bg-transparent pt-24 pb-12 lg:pt-32 lg:pb-20 px-4 md:px-0">
@@ -55,7 +34,9 @@ export default function Hero() {
 
             {/* Content Overlay with focus on smoothness */}
             <motion.div
-                style={{ scale, opacity, y: titleY }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
                 className="container-standard relative z-10 py-8 md:py-12 pointer-events-none flex flex-col items-center justify-center min-h-[60vh] md:min-h-[70vh]"
             >
                 <div className="max-w-6xl mx-auto flex flex-col items-center text-center">

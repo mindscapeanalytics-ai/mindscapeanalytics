@@ -84,17 +84,11 @@ export default function SolutionLayout({
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <span className="text-subheading mb-4 block">Solution Architecture</span>
-                        <h1
-                            className="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-tight"
-                            style={{ fontSize: "clamp(3rem, 10vw, 8rem)" }}
-                        >
+                        <span className="text-meta mb-4 block">Solutions Architecture</span>
+                        <h1 className="fluid-h1 mb-8">
                             {title}
                         </h1>
-                        <p
-                            className="text-body text-xl md:text-2xl max-w-3xl mx-auto"
-                            style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)" }}
-                        >
+                        <p className="fluid-body max-w-3xl mx-auto opacity-60">
                             {subtitle}
                         </p>
                     </motion.div>
@@ -126,7 +120,7 @@ export default function SolutionLayout({
                                             >
                                                 <div className="flex items-center gap-3">
                                                     <solution.icon className={cn("w-5 h-5", isActive ? "text-black" : "group-hover:text-white transition-colors")} />
-                                                    <span>{solution.name}</span>
+                                                    <span className="text-[10px] font-black uppercase tracking-widest">{solution.name}</span>
                                                 </div>
                                                 <ChevronRight className={cn("w-4 h-4 opacity-0 transition-all", isActive ? "opacity-100" : "group-hover:opacity-100 group-hover:translate-x-1")} />
                                             </Link>

@@ -3,6 +3,7 @@
 import React from "react"
 import { motion } from "framer-motion"
 import SolutionLayout from "@/components/layouts/SolutionLayout"
+import Link from "next/link"
 import {
     Shield,
     Zap,
@@ -61,7 +62,7 @@ export default function BlockchainClient() {
                 <section>
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="space-y-6">
-                            <h2 className="text-4xl font-black">The Trust Layer</h2>
+                            <h2 className="fluid-h2">THE TRUST LAYER.</h2>
                             <p className="text-body text-lg">
                                 Blockchain isn't about the hype. It's about building systems where trust is
                                 mathematical, not institutional. We help enterprises leverage decentralized
@@ -88,7 +89,7 @@ export default function BlockchainClient() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                             <div className="absolute bottom-8 left-8 p-6 bg-transparent/60 backdrop-blur-xl border border-white/10 rounded-2xl">
                                 <span className="text-white font-black text-2xl block tracking-tighter">PHASE 0</span>
-                                <span className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em]">Compromised Contracts</span>
+                                <span className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em]">Optimized Contracts</span>
                             </div>
                         </div>
                     </div>
@@ -98,7 +99,7 @@ export default function BlockchainClient() {
                 <section>
                     <div className="mb-12">
                         <span className="text-subheading mb-4">Ecosystem</span>
-                        <h2 className="text-4xl font-black">Web3 Engineering</h2>
+                        <h2 className="fluid-h2">WEB3 ENGINEERING.</h2>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6">
                         {features.map((feature, index) => (
@@ -129,14 +130,18 @@ export default function BlockchainClient() {
                         <Lock className="w-20 h-20 text-white opacity-[0.03]" />
                     </div>
                     <div className="relative z-10 max-w-2xl">
-                        <h2 className="text-3xl font-black mb-6 leading-tight">Secure your digital future.</h2>
+                        <h2 className="fluid-h2 text-white">SECURE YOUR <br /> DIGITAL FUTURE.</h2>
                         <p className="text-white/40 mb-8 font-medium">
                             From smart contract audits to full protocol design, our Web3 engineers deliver secure decentralization.
                         </p>
-                        <button className="btn-primary">
-                            Protocol Strategy
-                            <ArrowRight className="ml-2 w-4 h-4" />
-                        </button>
+                        <Link href="/contact">
+                            <button className="btn-institutional group">
+                                <span className="relative z-10 flex items-center justify-center gap-4">
+                                    Protocol Strategy
+                                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                                </span>
+                            </button>
+                        </Link>
                     </div>
                 </section>
             </div>

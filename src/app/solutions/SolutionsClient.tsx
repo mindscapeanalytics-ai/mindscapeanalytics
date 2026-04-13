@@ -88,20 +88,13 @@ export default function SolutionsClient() {
                         className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mx-auto"
                     >
                         <div className="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
-                        <span className="text-foreground/60 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Solution_Architectures // v4.2</span>
+                        <span className="text-meta">Solutions Architecture // v4.2</span>
                     </motion.div>
 
                     <div className="relative">
-                        <motion.h1
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="text-6xl sm:text-7xl md:text-[10rem] lg:text-[12rem] font-black leading-[0.8] font-syncopate tracking-tight uppercase"
-                            style={{ fontSize: "clamp(3rem, 15vw, 15rem)" }}
-                        >
-                            <span className="block text-foreground">SYSTEM</span>
-                            <span className="block text-white/20 italic font-black">SOLUTIONS.</span>
-                        </motion.h1>
+                        <h1 className="fluid-h1">
+                            SYSTEM <span className="text-white/20 italic">SOLUTIONS.</span>
+                        </h1>
                     </div>
 
                     <motion.div
@@ -110,7 +103,7 @@ export default function SolutionsClient() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="max-w-4xl border-t border-border pt-12 mx-auto"
                     >
-                        <p className="text-lg sm:text-2xl md:text-3xl text-muted-foreground font-medium tracking-tight leading-[1.4] uppercase px-4">
+                        <p className="fluid-body max-w-4xl mx-auto opacity-60">
                             PRECISION-ENGINEERED FOUNDATIONS FOR THE NEXT GENERATION OF <span className="text-foreground font-black italic">ENTERPRISE INTELLIGENCE.</span>
                         </p>
                     </motion.div>
@@ -150,7 +143,7 @@ export default function SolutionsClient() {
                         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 text-center lg:text-left">
                             <div className="space-y-6 max-w-2xl">
                                 <span className="inline-block text-[10px] font-black text-muted-foreground uppercase tracking-[0.4em] mb-4">Operational Status: Nominal</span>
-                                <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black font-syncopate uppercase tracking-[-0.04em] leading-[0.9] italic">
+                                <h2 className="fluid-h2 italic">
                                     INITIATE_FULL<br />
                                     <span className="text-foreground/20 not-italic">DEPLOYMENT.</span>
                                 </h2>
@@ -160,10 +153,10 @@ export default function SolutionsClient() {
                             </div>
 
                             <Link href="/services" className="group/btn relative">
-                                <button className="px-12 py-8 bg-primary text-primary-foreground font-black uppercase text-[11px] tracking-[0.4em] rounded-2xl hover:scale-105 transition-all duration-500 shadow-[0_0_40px_rgba(255,255,255,0.05)] active:scale-95 flex items-center gap-4">
+                                <button className="btn-institutional group px-12 py-8 bg-primary text-primary-foreground font-black uppercase text-[11px] tracking-[0.4em] rounded-2xl flex items-center gap-4">
                                     <Zap size={14} className="fill-current" />
                                     EXPLORE_MANAGED_MODELS
-                                    <ArrowRight size={14} className="group-hover/btn:translate-x-2 transition-transform" />
+                                    <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
                                 </button>
                                 <div className="absolute -inset-4 bg-white/5 blur-2xl rounded-full opacity-0 group-hover/btn:opacity-100 transition-opacity" />
                             </Link>

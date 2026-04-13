@@ -163,7 +163,7 @@ function SignInContent() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.2em] text-xs rounded-2xl hover:bg-white/90 active:scale-[0.98] transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)] flex items-center justify-center gap-3"
+                            className="btn-institutional w-full"
                         >
                             {loading ? (
                                 <Loader2 className="animate-spin" size={18} />
@@ -177,8 +177,9 @@ function SignInContent() {
                     </form>
 
                     <div className="mt-10 pt-8 border-t border-white/5 text-center space-y-4">
-                        <p className="text-white/40 text-[10px] font-black uppercase tracking-widest">
-                            New Personnel?
+                        <p className="text-[10px] font-black uppercase tracking-widest text-white/40 leading-relaxed italic">
+                            READY TO TRANSFORM YOUR BUSINESS WITH <br />
+                            <span className="text-white">INDUSTRIAL INTELLIGENCE</span>?
                         </p>
                         <Link
                             href={callbackUrl ? `/sign-up?callbackUrl=${encodeURIComponent(callbackUrl)}` : "/sign-up"}

@@ -8,20 +8,14 @@ import Link from "next/link";
 export default function CTA() {
     const sectionRef = useRef<HTMLElement>(null);
 
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start end", "end start"]
-    });
-
-    // Optimized transforms using scale3d for GPU efficiency
-    const rawScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.85, 1, 0.98]);
-    const scale = useSpring(rawScale, { stiffness: 60, damping: 40, restDelta: 0.005 });
-    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.9]);
+    // Scroll-linked transformations removed for mobile performance optimization
 
     return (
         <section ref={sectionRef} className="relative section-spacing overflow-hidden bg-transparent">
             <motion.div
-                style={{ scale, opacity }}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8 }}
                 className="container-standard transform-gpu-fix"
             >
                 <div className="relative p-12 lg:p-24 rounded-[4rem] bg-white text-black overflow-hidden group border border-white/10 shadow-[0_0_50px_rgba(255,255,255,0.05)]">
@@ -32,10 +26,9 @@ export default function CTA() {
 
                     <div className="relative z-10 flex flex-col items-center text-center">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.6 }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-transparent/[0.03] border border-black/10 mb-8 backdrop-blur-md"
                         >
                             <motion.div
@@ -50,10 +43,9 @@ export default function CTA() {
                         </motion.div>
 
                         <motion.h2
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.7, delay: 0.1 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: 0.2 }}
                             className="fluid-h2 mb-8"
                         >
                             READY TO REPLACE <br className="hidden md:block" />
@@ -61,20 +53,18 @@ export default function CTA() {
                         </motion.h2>
 
                         <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
                             className="text-black/60 text-lg max-w-xl mb-12 font-medium"
                         >
                             Let's architect your AI-driven infrastructure and build the intelligent systems your business deserves.
                         </motion.p>
 
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.6, delay: 0.3 }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
                             className="flex flex-col sm:flex-row gap-6"
                         >
                             <a href="https://wa.me/13072106155" target="_blank" rel="noopener noreferrer">

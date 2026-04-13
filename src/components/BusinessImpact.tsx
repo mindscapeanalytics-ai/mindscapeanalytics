@@ -18,9 +18,9 @@ export default function BusinessImpact() {
             <div className="container-standard">
                 <div className="flex flex-col items-center text-center mb-16 lg:mb-24 space-y-6">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true, margin: "-50px" }}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
                         className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
                     >
                         <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
@@ -35,10 +35,9 @@ export default function BusinessImpact() {
                     {impacts.map((impact, i) => (
                         <motion.div
                             key={impact.label}
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ delay: i * 0.1 }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: i * 0.1 }}
                             className="group p-8 lg:p-12 bg-white/[0.03] backdrop-blur-md flex flex-col items-center justify-center text-center transition-all hover:bg-white/[0.06] overflow-hidden relative min-h-[280px]"
                         >
                             <div className="absolute top-6 left-6 flex items-center gap-2">
@@ -64,7 +63,7 @@ export default function BusinessImpact() {
                 <div className="mt-24 flex flex-col items-center gap-6 text-center">
                     <div className="text-white/20 text-[11px] font-mono font-bold tracking-[0.5em] uppercase">Market_Position // AUTHORITY</div>
                     <p className="text-white/40 text-2xl font-medium tracking-tight">Automation isn't an expense.</p>
-                    <p className="text-white text-5xl md:text-7xl font-black uppercase tracking-[-0.05em] font-sans leading-none">IT'S A REVENUE <br /> MULTIPLIER.</p>
+                    <h2 className="fluid-h2">IT'S A REVENUE <br /> MULTIPLIER.</h2>
                 </div>
             </div>
         </section>

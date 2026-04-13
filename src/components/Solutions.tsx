@@ -9,7 +9,8 @@ import {
     Mic2,
     Globe,
     Database,
-    ArrowRight
+    ArrowRight,
+    Sparkles
 } from "lucide-react";
 import Link from "next/link";
 import { PremiumCard } from "@/components/ui/PremiumCard";
@@ -48,7 +49,7 @@ const solutions = [
         link: "/solutions/ai-genai"
     },
     {
-        title: "Full Stack SaaS Platforms",
+        title: "Full-Stack SaaS Platforms",
         icon: Globe,
         description: "End-to-end web applications and SaaS architectures built with Next.js 15+ for high performance.",
         features: ["Type-safe Architecture", "Micro-frontend Ready", "Enterprise Grade Security"],
@@ -56,7 +57,7 @@ const solutions = [
         link: "/solutions/enterprise-software"
     },
     {
-        title: "Intelligence Automation",
+        title: "Intelligent Automation",
         icon: Palette,
         description: "Beyond delivery. We build, host, monitor, and optimize your entire system on a subscription model.",
         features: ["Proactive Monitoring", "Zero-downtime Patches", "Cost Optimization"],
@@ -105,37 +106,38 @@ export default function Solutions() {
 
             <div className="container-standard relative z-10">
                 {/* Section Header */}
-                <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8 mb-16 lg:mb-32 border-b border-white/5 pb-12 text-center lg:text-left">
-                    <div className="flex flex-col items-center lg:items-start max-w-4xl space-y-6">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            className="flex items-center gap-3"
-                        >
-                            <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
-                            <span className="text-meta">Architecture // SOLUTIONS_v4.2</span>
-                        </motion.div>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            className="fluid-h2"
-                        >
-                            SYSTEM <br className="hidden md:block" /> <span className="text-white/40 font-black">ARCHITECTURES.</span>
-                        </motion.h2>
-                    </div>
+                <div className="flex flex-col items-center text-center mb-16 lg:mb-32 border-b border-white/5 pb-12">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/[0.03] border border-white/10 mb-8 backdrop-blur-md"
+                    >
+                        <Sparkles className="w-4 h-4 text-white/40" />
+                        <span className="text-meta">
+                            Institutional Solutions // NODE_0x44
+                        </span>
+                    </motion.div>
 
-                    <div className="hidden lg:block text-right font-mono text-[9px] text-white/40 uppercase tracking-[0.4em] leading-relaxed font-black">
-                        Status: Operational <br />
-                        Load: Optimized <br />
-                        Protocol: v4_A_SLN
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="fluid-h2 mb-10"
+                    >
+                        ENGINEERED FOR <span className="text-white/30">SCALE</span>
+                    </motion.h2>
+
+                    <div className="flex items-center gap-8 font-mono text-[9px] text-white/20 uppercase tracking-[0.4em] font-black">
+                        <span>ST: Operational</span>
+                        <div className="w-1 h-1 bg-white/20 rounded-full" />
+                        <span>Load: Optimized</span>
+                        <div className="w-1 h-1 bg-white/20 rounded-full" />
+                        <span>Protocol: v4_A_SLN</span>
                     </div>
                 </div>
 
 
                 {/* Premium Solutions Grid - 6 cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14">
                     {solutions.map((solution, index) => (
                         <PremiumCard
                             key={solution.title}
@@ -147,15 +149,13 @@ export default function Solutions() {
 
                 {/* Bottom CTA */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ delay: 0.4 }}
-                    className="mt-24 text-center border-t border-white/5 pt-16"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-20 lg:mt-32 flex justify-center"
                 >
                     <Link href="/services">
-                        <button className="group relative px-10 py-5 bg-white text-black font-black uppercase text-xs tracking-[0.3em] rounded-xl overflow-hidden shadow-2xl transition-all hover:bg-white/90 hover:scale-105 active:scale-95">
-                            <span className="relative z-10 flex items-center gap-3">
+                        <button className="btn-institutional group">
+                            <span className="flex items-center gap-4">
                                 EXPLORE ALL SERVICES
                                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </span>

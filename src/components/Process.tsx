@@ -38,9 +38,8 @@ export default function Process() {
                 <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8 mb-16 lg:mb-20 border-b border-white/5 pb-10 text-center lg:text-left">
                     <div className="flex flex-col items-center lg:items-start max-w-4xl">
                         <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
                             className="flex items-center gap-3 mb-6 md:mb-8"
                         >
@@ -48,9 +47,9 @@ export default function Process() {
                             <span className="text-meta">Sequence // OPS_FLOW_v4.1</span>
                         </motion.div>
                         <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: 0.1 }}
                             className="fluid-h2"
                         >
                             OUR <span className="text-white/40 font-black">METHODOLOGY.</span>
@@ -68,10 +67,9 @@ export default function Process() {
                     {steps.map((step, index) => (
                         <motion.div
                             key={step.number}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ delay: index * 0.1 }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
                             className="relative p-6 lg:p-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/5 group transition-all duration-500 hover:bg-white/[0.08] hover:border-white/20 shadow-2xl overflow-hidden"
                         >
                             {/* --- Step HUD Node --- */}

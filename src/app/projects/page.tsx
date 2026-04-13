@@ -324,18 +324,15 @@ export default function ProjectsPage() {
                         className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mx-auto"
                     >
                         <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
-                        <span className="text-white/60 text-[9px] font-mono font-black tracking-[0.5em] uppercase leading-none mt-0.5">Deployment_Logs // v5.1</span>
+                        <span className="text-meta">Deployment_Logs // v5.1</span>
                     </motion.div>
 
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="text-6xl md:text-[10rem] lg:text-[12rem] font-black leading-[0.75] font-sans tracking-[-0.05em] uppercase w-full mx-auto flex flex-col items-center justify-center"
-                        style={{ fontSize: "clamp(3.5rem, 12vw, 15rem)" }}
+                        className="fluid-h1"
                     >
-                        <span className="text-center w-full break-words" style={{ overflowWrap: "break-word", hyphens: "auto" }}>SYSTEM</span>
-                        <span className="text-white/40 font-black text-center w-full break-words mt-2 md:mt-6" style={{ overflowWrap: "break-word", hyphens: "auto" }}>DEPLOYS.</span>
+                        SYSTEM <span className="text-white/40">DEPLOYS.</span>
                     </motion.h1>
                 </div>
             </section>
@@ -343,10 +340,10 @@ export default function ProjectsPage() {
             {/* --- Projects Slider --- */}
             <section className="py-24 bg-transparent relative border-t border-white/5">
                 <div className="container-standard mb-8 flex justify-between items-end">
-                    <div className="max-w-3xl">
-                        <p className="text-xl md:text-2xl text-white/60 font-medium tracking-tight leading-snug uppercase">
+                    <div className="max-w-4xl mx-auto text-center">
+                        <p className="text-xl md:text-2xl lg:text-3xl font-black text-white/40 font-sans tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl">
                             REAL ENTERPRISE SYSTEMS. <br />
-                            <span className="text-white font-black">VERIFIED ROI & IMPACT.</span>
+                            <span className="text-white">VERIFIED ROI & IMPACT.</span>
                         </p>
                     </div>
                     {/* Navigation Arrows */}
@@ -395,14 +392,14 @@ export default function ProjectsPage() {
                                     <div className="space-y-8 flex flex-col justify-center">
                                         <div className="space-y-4">
                                             <div className="flex flex-wrap gap-2">
-                                                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-mono font-black uppercase tracking-widest text-white/60">
+                                                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-meta opacity-60">
                                                     {project.category}
                                                 </span>
-                                                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-mono font-black uppercase tracking-widest text-white/40">
+                                                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-meta opacity-40">
                                                     Industry: {project.industry}
                                                 </span>
                                             </div>
-                                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-sans uppercase tracking-[-0.03em] leading-[0.9] text-white break-words">{project.title}</h2>
+                                            <h2 className="fluid-h2 leading-none text-white break-words">{project.title}</h2>
                                             <p className="text-lg md:text-xl text-white/50 font-medium leading-relaxed max-w-2xl">
                                                 {project.description}
                                             </p>
@@ -446,9 +443,11 @@ export default function ProjectsPage() {
                                         </div>
 
                                         <Link href={project.link} className="inline-block mt-4">
-                                            <button className="flex items-center justify-center w-full gap-4 px-8 py-5 bg-white text-black font-black uppercase text-[10px] tracking-[0.4em] rounded-xl hover:scale-[1.02] transition-transform">
-                                                View Case Study
-                                                <ExternalLink className="w-4 h-4" />
+                                            <button className="btn-institutional group w-full">
+                                                <span className="relative z-10 flex items-center justify-center gap-4">
+                                                    View Case Study
+                                                    <ExternalLink className="w-4 h-4 transition-transform group-hover:scale-110" />
+                                                </span>
                                             </button>
                                         </Link>
                                     </div>
@@ -464,7 +463,7 @@ export default function ProjectsPage() {
                 <div className="container-standard">
                     <div className="max-w-7xl mx-auto space-y-16">
                         <div className="text-center space-y-6">
-                            <h2 className="text-4xl md:text-5xl font-black font-sans uppercase tracking-[-0.02em]">5-PHASE DELIVERY FRAMEWORK</h2>
+                            <h2 className="fluid-h2">5-PHASE DELIVERY FRAMEWORK</h2>
                             <p className="text-lg text-white/40 font-medium uppercase tracking-widest max-w-2xl mx-auto">
                                 We don't just deliver code and disappear. Every system we engineer follows a rigorous protocol from inception to perpetual maintenance.
                             </p>
@@ -487,17 +486,19 @@ export default function ProjectsPage() {
             <section className="section-spacing border-t border-white/5 bg-white text-black text-center">
                 <div className="container-standard">
                     <div className="max-w-4xl mx-auto space-y-8">
-                        <span className="text-black/40 text-[11px] font-mono font-black uppercase tracking-[0.5em]">The Infrastructure Advantage</span>
-                        <h2 className="text-5xl font-black font-sans uppercase tracking-[-0.05em] leading-[0.85]">
-                            MOST AGENCIES HAND OVER RAW CODE. <br /> <span className="opacity-40">WE DELIVER MANAGED PERFORMANCE.</span>
+                        <span className="text-meta opacity-40">The Infrastructure Advantage</span>
+                        <h2 className="fluid-h2">
+                            AGENCIES HAND OVER RAW CODE. <br /> <span className="opacity-40">WE DELIVER MANAGED PERFORMANCE.</span>
                         </h2>
                         <p className="text-lg font-medium opacity-60 uppercase tracking-tighter max-w-2xl mx-auto">
                             All our deployed systems are backed by monthly infrastructure management, database optimization, and security monitoring to ensure long-term reliability and scalable growth.
                         </p>
                         <Link href="/pricing" className="inline-block pt-8">
-                            <button className="flex items-center gap-4 px-12 py-6 bg-black text-white font-black uppercase text-[10px] tracking-[0.4em] rounded-xl hover:scale-[1.02] transition-transform mx-auto">
-                                View Pricing & SLAs
-                                <ArrowRight className="w-4 h-4" />
+                            <button className="btn-institutional group mx-auto">
+                                <span className="relative z-10 flex items-center justify-center gap-4">
+                                    View Pricing & SLAs
+                                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                                </span>
                             </button>
                         </Link>
                     </div>

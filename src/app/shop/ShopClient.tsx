@@ -111,11 +111,9 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
                         <motion.h1
                             initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="flex flex-col items-center justify-center font-black tracking-tighter leading-[0.8] mb-8 md:mb-12 uppercase italic text-center w-full"
-                            style={{ fontSize: "clamp(2.5rem, 15vw, 15rem)" }}
+                            className="fluid-h1"
                         >
-                            <span className="block translate-x-[-0.05em]">SYSTEM</span>
-                            <span className="block text-white/5 not-italic mt-[-0.1em] tracking-tight">ARCHIVES.</span>
+                            SYSTEM <br /> <span className="text-white/20">ARCHIVES.</span>
                         </motion.h1>
 
                         <motion.div
@@ -131,8 +129,9 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
                                 </span>
                             </div>
                             <div className="w-12 h-px md:w-px md:h-12 bg-white/5" />
-                            <p className="max-w-xs md:max-w-md text-[9px] md:text-[11px] text-white/30 font-black uppercase tracking-widest leading-relaxed italic text-center px-4">
-                                Monetize your code. Get your shop up and running in minutes. Join our elite architect network.
+                            <p className="text-xl md:text-2xl lg:text-3xl font-black text-white/40 font-sans tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl mx-auto border-t border-white/5 pt-8 md:pt-10">
+                                MONETIZE YOUR CODE. GET YOUR SHOP UP AND RUNNING IN MINUTES. <br />
+                                JOIN OUR <span className="text-white">ELITE ARCHITECT NETWORK.</span>
                             </p>
                             <div className="w-12 h-px md:w-px md:h-12 bg-white/5" />
                             <div className="flex flex-col items-center">
@@ -150,15 +149,19 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
                             className="mt-16 flex flex-wrap justify-center gap-6"
                         >
                             <Link href="/become-seller">
-                                <button className="px-12 py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.4em] rounded-full hover:bg-white/90 transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] active:scale-95 flex items-center gap-3 group/btn">
-                                    Get Your Shop
-                                    <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                                <button className="btn-institutional group">
+                                    <span className="relative z-10 flex items-center justify-center gap-4">
+                                        GET YOUR SHOP
+                                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                                    </span>
                                 </button>
                             </Link>
                             <Link href="/shop?category=ai_agents">
-                                <button className="px-12 py-5 bg-white/5 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.4em] rounded-full hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-3 group/btn-alt">
-                                    Explore Archives
-                                    <Box size={14} className="opacity-40 group-hover/btn-alt:rotate-12 transition-transform" />
+                                <button className="btn-outline-institutional group">
+                                    <span className="relative z-10 flex items-center justify-center gap-4">
+                                        EXPLORE ARCHIVES
+                                        <Box size={14} className="opacity-40 group-hover:rotate-12 transition-transform" />
+                                    </span>
                                 </button>
                             </Link>
                         </motion.div>
@@ -291,13 +294,9 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
 
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-16">
                             <div className="max-w-2xl text-center md:text-left">
-                                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white/20 mb-6 block">Ecosystem Expansion</span>
-                                <h2
-                                    className="text-6xl md:text-8xl font-black tracking-tightest leading-[0.85] mb-8 uppercase italic"
-                                    style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
-                                >
+                                <h2 className="fluid-h2 italic">
                                     MONETIZE <br />
-                                    <span className="text-white/20 not-italic">GENIUS.</span>
+                                    <span className="text-white/20">GENIUS.</span>
                                 </h2>
                                 <p className="text-lg text-white/40 font-medium italic uppercase tracking-tighter leading-relaxed">
                                     Join our elite architect network. Transform high-tier <br className="hidden md:block" /> architectural code into persistent institutional capital.
@@ -306,9 +305,11 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
 
                             <div className="flex flex-col gap-6 w-full md:w-auto">
                                 <Link href="/become-seller">
-                                    <button className="w-full md:w-80 py-7 bg-white text-black text-[11px] font-black uppercase tracking-[0.3em] rounded-[2rem] hover:bg-white/90 shadow-[0_20px_40px_rgba(255,255,255,0.1)] active:scale-95 transition-all group/btn flex items-center justify-center gap-4">
-                                        Initialize Protocol
-                                        <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
+                                    <button className="btn-institutional group">
+                                        <span className="relative z-10 flex items-center justify-center gap-4">
+                                            Initialize Protocol
+                                            <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
+                                        </span>
                                     </button>
                                 </Link>
                                 <p className="text-[9px] text-white/20 font-black uppercase tracking-widest text-center">85% Revenue Retention Guaranteed</p>

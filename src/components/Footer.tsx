@@ -38,8 +38,7 @@ export default function Footer() {
                     {/* Brand Column */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        animate={{ opacity: 1, y: 0 }}
                         className="flex flex-col items-center lg:items-start text-center lg:text-left gap-8"
                     >
                         <Link href="/" className="inline-block group relative w-fit">
@@ -87,8 +86,7 @@ export default function Footer() {
                     {/* Platform Links */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
                         className="space-y-8"
                     >
@@ -111,8 +109,7 @@ export default function Footer() {
                     {/* Company Links */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                         className="space-y-8"
                     >
@@ -144,8 +141,7 @@ export default function Footer() {
                     {/* Newsletter & Social */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
                         className="space-y-8"
                     >
@@ -211,8 +207,7 @@ export default function Footer() {
             <div className="absolute inset-x-0 bottom-16 pointer-events-none select-none flex items-end justify-center z-0 overflow-hidden opacity-70 h-[60%] lg:h-[80%]">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.5, ease: "easeOut" }}
                     className="w-full flex justify-center"
                 >

@@ -19,9 +19,9 @@ export default function AIAuditLeadMagnet() {
                         <span className="text-white/60 text-[9px] font-mono font-black tracking-[0.4em] uppercase">Free Infrastructure Review</span>
                     </div>
 
-                    <div className="space-y-6 max-w-3xl">
-                        <h2 className="text-4xl md:text-6xl font-black font-sans uppercase tracking-[-0.03em] leading-[0.9]">
-                            AI AUTOMATION <br /> <span className="text-white/40">READINESS AUDIT.</span>
+                    <div className="space-y-6 max-w-4xl">
+                        <h2 className="fluid-h2">
+                            AI AUTOMATION <br /> READINESS <br /> <span className="text-white/40">AUDIT.</span>
                         </h2>
                         <p className="text-lg md:text-xl text-white/40 font-medium leading-relaxed uppercase tracking-tight">
                             Stop guessing. Let our engineers analyze your current operational bottlenecks and map out the exact AI system architecture required to scale your revenue.
@@ -46,9 +46,11 @@ export default function AIAuditLeadMagnet() {
                     </div>
 
                     <Link href="/contact" className="inline-block pt-6">
-                        <button className="flex items-center gap-4 px-12 py-6 bg-white text-black font-black uppercase text-[10px] tracking-[0.4em] rounded-xl hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.1)]">
-                            Request Free Audit
-                            <ArrowRight className="w-4 h-4" />
+                        <button className="btn-institutional group">
+                            <span className="relative z-10 flex items-center justify-center gap-4">
+                                Request Free Audit
+                                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                            </span>
                         </button>
                     </Link>
 

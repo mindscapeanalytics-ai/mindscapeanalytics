@@ -185,14 +185,11 @@ function ContactFormContent() {
                         transition={{ duration: 0.8 }}
                         className="max-w-4xl mx-auto text-center"
                     >
-                        <h1
-                            className="text-6xl md:text-8xl lg:text-9xl font-black mb-8 leading-[0.85] font-syncopate tracking-tighter"
-                            style={{ fontSize: "clamp(3rem, 12vw, 10rem)" }}
-                        >
+                        <h1 className="fluid-h1 mb-8">
                             GET IN <span className="text-white/30">TOUCH.</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-white/50 leading-relaxed font-medium uppercase tracking-widest">
-                            Ready to transform your business with <span className="text-white">Industrial Intelligence</span>?
+                        <p className="fluid-body max-w-4xl mx-auto opacity-60">
+                            READY TO TRANSFORM YOUR BUSINESS WITH <span className="text-white font-black">INDUSTRIAL INTELLIGENCE</span>?
                         </p>
                     </motion.div>
                 </div>
@@ -219,7 +216,7 @@ function ContactFormContent() {
                                         <div className="mb-6 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
                                             <info.icon className="h-6 w-6" />
                                         </div>
-                                        <h3 className="text-xs font-black mb-2 uppercase tracking-[0.3em] text-white/40">{info.title}</h3>
+                                        <h3 className="text-meta opacity-40 mb-2">{info.title}</h3>
                                         <p className="text-lg font-bold text-white mb-4 leading-tight">{info.value}</p>
                                         <p className="text-white/40 text-sm leading-relaxed">{info.description}</p>
                                     </div>
@@ -253,22 +250,19 @@ function ContactFormContent() {
                                 </div>
                             </div>
                             <div className="w-full md:w-2/3 space-y-6">
-                                <h3
-                                    className="text-4xl md:text-6xl font-black font-syncopate uppercase tracking-tighter leading-none"
-                                    style={{ fontSize: "clamp(2rem, 8vw, 4rem)" }}
-                                >
+                                <h3 className="fluid-h2">
                                     SCAN TO <span className="text-white/30">SYNC.</span>
                                 </h3>
                                 <p className="text-xl text-white/50 font-medium leading-relaxed">
                                     Instantly bridge the gap with our technical architects via secure WhatsApp protocol. High-priority inquiries receive real-time sync capabilities.
                                 </p>
                                 <div className="flex flex-wrap gap-4 pt-4">
-                                    <Button size="lg" className="bg-white text-black hover:bg-white/90 font-black tracking-widest px-8" asChild>
+                                    <Button size="lg" className="btn-institutional px-8" asChild>
                                         <a href="https://wa.me/13072106155" target="_blank">OPEN PROTOCOL</a>
                                     </Button>
                                     <div className="flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5">
                                         <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">SYSTEM STATUS: READY</span>
+                                        <span className="text-meta opacity-40">SYSTEM STATUS: READY</span>
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +282,7 @@ function ContactFormContent() {
                             className="space-y-12"
                         >
                             <div>
-                                <h2 className="text-5xl md:text-7xl font-black mb-6 font-syncopate uppercase tracking-tighter leading-none">
+                                <h2 className="fluid-h2 mb-6">
                                     SEND <span className="text-white/30">SIGNAL.</span>
                                 </h2>
                                 <p className="text-xl text-white/50 font-medium leading-relaxed max-w-lg">
@@ -341,7 +335,7 @@ function ContactFormContent() {
                                             {/* Form fields with improved styling */}
                                             <div className="grid md:grid-cols-2 gap-8">
                                                 <div className="space-y-4">
-                                                    <label htmlFor="name" className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+                                                    <label htmlFor="name" className="block text-meta opacity-20">
                                                         01 // FULL_NAME
                                                     </label>
                                                     <Input
@@ -356,7 +350,7 @@ function ContactFormContent() {
                                                     />
                                                 </div>
                                                 <div className="space-y-4">
-                                                    <label htmlFor="email" className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+                                                    <label htmlFor="email" className="block text-meta opacity-20">
                                                         02 // EMAIL_PROTOCOL
                                                     </label>
                                                     <Input
@@ -374,7 +368,7 @@ function ContactFormContent() {
 
                                             <div className="grid md:grid-cols-2 gap-8">
                                                 <div className="space-y-4">
-                                                    <label htmlFor="company" className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+                                                    <label htmlFor="company" className="block text-meta opacity-20">
                                                         03 // ORGANIZATION
                                                     </label>
                                                     <Input
@@ -388,7 +382,7 @@ function ContactFormContent() {
                                                     />
                                                 </div>
                                                 <div className="space-y-4">
-                                                    <label htmlFor="phone" className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+                                                    <label htmlFor="phone" className="block text-meta opacity-20">
                                                         04 // COMMS_UID
                                                     </label>
                                                     <Input
@@ -404,7 +398,7 @@ function ContactFormContent() {
                                             </div>
 
                                             <div className="space-y-4">
-                                                <label htmlFor="service" className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+                                                <label htmlFor="service" className="block text-meta opacity-20">
                                                     05 // INTEREST_AREA
                                                 </label>
                                                 <select
@@ -423,7 +417,7 @@ function ContactFormContent() {
                                             </div>
 
                                             <div className="space-y-4">
-                                                <label htmlFor="message" className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+                                                <label htmlFor="message" className="block text-meta opacity-20">
                                                     06 // SIGNAL_PAYLOAD
                                                 </label>
                                                 <textarea
@@ -438,10 +432,10 @@ function ContactFormContent() {
                                                 />
                                             </div>
 
-                                            <button
+                                             <button
                                                 type="submit"
                                                 disabled={isSubmitting}
-                                                className="w-full h-16 rounded-xl bg-white text-black font-black uppercase tracking-[0.4em] hover:bg-white/90 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                                                className="btn-institutional w-full h-16 rounded-xl"
                                             >
                                                 {isSubmitting ? (
                                                     "SYNCING..."
