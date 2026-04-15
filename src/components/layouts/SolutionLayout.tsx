@@ -62,7 +62,7 @@ export default function SolutionLayout({
     const pathname = usePathname()
 
     return (
-        <div className="min-h-screen bg-transparent text-white relative overflow-x-clip">
+        <div className="min-h-screen bg-transparent text-foreground relative overflow-x-clip">
             {/* Cinematic Background Layer - Harmonized with Global */}
             <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
                 <div className="absolute top-10 left-0 w-[60%] h-[60%] -translate-x-1/2 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08)_0%,transparent_70%)] opacity-20" />
@@ -73,7 +73,7 @@ export default function SolutionLayout({
             {/* Premium Solution Hero */}
             <section className="relative pt-40 pb-20 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10" />
+                <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,black,transparent)] opacity-10" />
 
                 {/* Background Glow - Optimized */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)] rounded-full pointer-events-none" />
@@ -101,7 +101,7 @@ export default function SolutionLayout({
                     <aside className="w-full lg:w-80 shrink-0">
                         <div className="sticky top-32 space-y-8">
                             <div>
-                                <h3 className="text-white font-black text-sm uppercase tracking-widest mb-6 border-b border-white/10 pb-4">
+                                <h3 className="text-foreground font-black text-sm uppercase tracking-widest mb-6 border-b border-border pb-4">
                                     Our Solutions
                                 </h3>
                                 <nav className="space-y-2">
@@ -114,12 +114,12 @@ export default function SolutionLayout({
                                                 className={cn(
                                                     "flex items-center justify-between p-4 rounded-xl transition-all group",
                                                     isActive
-                                                        ? "bg-white text-black font-bold border-transparent"
-                                                        : "bg-white/5 border border-white/10 text-white/40 hover:text-white hover:bg-white/10"
+                                                        ? "bg-foreground text-background font-bold border-transparent"
+                                                        : "bg-foreground/5 border border-border text-foreground/40 hover:text-foreground hover:bg-foreground/10"
                                                 )}
                                             >
                                                 <div className="flex items-center gap-3">
-                                                    <solution.icon className={cn("w-5 h-5", isActive ? "text-black" : "group-hover:text-white transition-colors")} />
+                                                    <solution.icon className={cn("w-5 h-5", isActive ? "text-background" : "group-hover:text-foreground transition-colors")} />
                                                     <span className="text-[10px] font-black uppercase tracking-widest">{solution.name}</span>
                                                 </div>
                                                 <ChevronRight className={cn("w-4 h-4 opacity-0 transition-all", isActive ? "opacity-100" : "group-hover:opacity-100 group-hover:translate-x-1")} />
@@ -130,9 +130,9 @@ export default function SolutionLayout({
                             </div>
 
                             {/* Sidebar CTA - Glassmorphism */}
-                            <div className="p-8 rounded-2xl bg-white/[0.02] backdrop-blur-xl border border-white/10">
+                            <div className="p-8 rounded-2xl bg-foreground/[0.02] backdrop-blur-xl border border-border">
                                 <h4 className="text-xl font-bold mb-4">Need a custom solution?</h4>
-                                <p className="text-sm text-white/40 mb-6">
+                                <p className="text-sm text-foreground/40 mb-6">
                                     Our engineers are ready to build the next generation of your enterprise.
                                 </p>
                                 <Link href="/contact" className="flex items-center text-sm font-bold group">

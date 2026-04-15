@@ -69,7 +69,7 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md"
+                        className="fixed inset-0 z-[100] bg-background/60 backdrop-blur-md"
                     />
 
                     {/* Modal */}
@@ -78,10 +78,10 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                            className="bg-[#0a0a0b] w-full max-w-md rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden pointer-events-auto relative"
+                            className="bg-card dark:bg-[#0f0f11] w-full max-w-md rounded-3xl border border-border shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden pointer-events-auto relative"
                         >
                             {/* Decorative Top Line */}
-                            <div className="h-1 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500" />
+                            <div className="h-1 w-full bg-secondary shadow-[0_0_20px_rgba(var(--secondary),0.3)]" />
 
                             <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none rotate-12">
                                 <Cpu size={150} strokeWidth={0.5} />
@@ -89,21 +89,21 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
 
                             <button
                                 onClick={onClose}
-                                className="absolute top-4 right-4 p-2 text-white/40 hover:text-white hover:bg-white/10 rounded-full transition-all z-10"
+                                className="absolute top-4 right-4 p-2 text-foreground/40 hover:text-foreground hover:bg-foreground/10 rounded-full transition-all z-10"
                             >
                                 <X size={20} />
                             </button>
 
                             <div className="p-8 relative z-10">
                                 <div className="mb-6">
-                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 flex items-center gap-2 mb-2">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.5)] animate-pulse" />
+                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40 flex items-center gap-2 mb-2">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_hsl(var(--secondary)/0.5)] animate-pulse" />
                                         Protocol Initialization
                                     </span>
-                                    <h3 className="text-2xl font-black uppercase tracking-tighter text-white">
+                                    <h3 className="text-2xl font-black uppercase tracking-tighter text-foreground">
                                         Request Demo
                                     </h3>
-                                    <p className="text-white/40 text-xs font-medium uppercase tracking-widest mt-1 italic">
+                                    <p className="text-foreground/40 text-xs font-medium uppercase tracking-widest mt-1 italic">
                                         Asset: {productName}
                                     </p>
                                 </div>
@@ -114,12 +114,12 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
                                         animate={{ opacity: 1, scale: 1 }}
                                         className="py-12 flex flex-col items-center justify-center text-center space-y-4"
                                     >
-                                        <div className="w-16 h-16 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-2">
-                                            <CheckCircle2 size={32} className="text-green-400" />
+                                        <div className="w-16 h-16 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center mb-2">
+                                            <CheckCircle2 size={32} className="text-secondary" />
                                         </div>
                                         <div>
-                                            <h4 className="text-lg font-black uppercase tracking-widest text-white mb-2">Transmission complete</h4>
-                                            <p className="text-[11px] text-white/40 font-mono uppercase tracking-widest">Our engineers will contact you shortly regarding the demo environment.</p>
+                                            <h4 className="text-lg font-black uppercase tracking-widest text-foreground mb-2">Transmission complete</h4>
+                                            <p className="text-[11px] text-foreground/40 font-mono uppercase tracking-widest">Our engineers will contact you shortly regarding the demo environment.</p>
                                         </div>
                                     </motion.div>
                                 ) : (
@@ -132,7 +132,7 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
                                                     required
                                                     disabled={isSubmitting}
                                                     placeholder="IDENTIFICATION (NAME)"
-                                                    className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-xs text-white placeholder:text-white/20 font-black tracking-widest focus:outline-none focus:border-white/30 focus:bg-white/[0.05] transition-all uppercase disabled:opacity-50"
+                                                    className="w-full bg-foreground/[0.02] border border-border rounded-xl px-5 py-4 text-xs text-foreground placeholder:text-foreground/20 font-black tracking-widest focus:outline-none focus:border-foreground/30 focus:bg-foreground/[0.05] transition-all uppercase disabled:opacity-50"
                                                 />
                                             </div>
                                             <div>
@@ -142,7 +142,7 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
                                                     required
                                                     disabled={isSubmitting}
                                                     placeholder="COMM LINK (EMAIL)"
-                                                    className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-xs text-white placeholder:text-white/20 font-black tracking-widest focus:outline-none focus:border-white/30 focus:bg-white/[0.05] transition-all uppercase disabled:opacity-50"
+                                                    className="w-full bg-foreground/[0.02] border border-border rounded-xl px-5 py-4 text-xs text-foreground placeholder:text-foreground/20 font-black tracking-widest focus:outline-none focus:border-foreground/30 focus:bg-foreground/[0.05] transition-all uppercase disabled:opacity-50"
                                                 />
                                             </div>
                                             <div>
@@ -151,7 +151,7 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
                                                     disabled={isSubmitting}
                                                     placeholder="ADDITIONAL PARAMETERS (OPTIONAL MESSAGE)"
                                                     rows={3}
-                                                    className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-5 py-4 text-xs text-white placeholder:text-white/20 font-black tracking-widest focus:outline-none focus:border-white/30 focus:bg-white/[0.05] transition-all uppercase resize-none disabled:opacity-50 custom-scrollbar"
+                                                    className="w-full bg-foreground/[0.02] border border-border rounded-xl px-5 py-4 text-xs text-foreground placeholder:text-foreground/20 font-black tracking-widest focus:outline-none focus:border-foreground/30 focus:bg-foreground/[0.05] transition-all uppercase resize-none disabled:opacity-50 custom-scrollbar"
                                                 />
                                             </div>
                                         </div>
@@ -170,11 +170,11 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className="w-full mt-2 bg-white text-black py-4 rounded-xl text-[10px] font-black uppercase tracking-[0.3em] hover:bg-white/90 transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed group"
+                                            className="w-full mt-2 bg-foreground text-background py-4 rounded-xl text-[10px] font-black uppercase tracking-[0.3em] hover:opacity-90 transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed group"
                                         >
                                             {isSubmitting ? (
                                                 <span className="flex items-center gap-2">
-                                                    <div className="w-3 h-3 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+                                                    <div className="w-3 h-3 border-2 border-background/20 border-t-background rounded-full animate-spin" />
                                                     Uplinking...
                                                 </span>
                                             ) : (
@@ -184,7 +184,7 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
                                                 </>
                                             )}
                                         </button>
-                                        <p className="text-center text-[8px] text-white/20 uppercase tracking-[0.2em] mt-3">
+                                        <p className="text-center text-[8px] text-foreground/20 uppercase tracking-[0.2em] mt-3">
                                             By requesting a demo, you agree to our terms of service and communications policy.
                                         </p>
                                     </form>

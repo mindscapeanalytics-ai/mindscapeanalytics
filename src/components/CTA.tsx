@@ -18,7 +18,7 @@ export default function CTA() {
                 transition={{ duration: 0.8 }}
                 className="container-standard transform-gpu-fix"
             >
-                <div className="relative p-12 lg:p-24 rounded-[4rem] bg-white text-black overflow-hidden group border border-white/10 shadow-[0_0_50px_rgba(255,255,255,0.05)]">
+                <div className="relative p-12 lg:p-24 rounded-[4rem] bg-foreground text-background overflow-hidden group border border-border shadow-[0_0_50px_rgba(255,255,255,0.05)]">
                     {/* Static Grid Background */}
                     <div
                         className="absolute inset-0 z-0 opacity-10 group-hover:opacity-20 transition-opacity duration-1000 bg-[url('/grid.svg')] bg-[length:50px_50px]"
@@ -37,7 +37,7 @@ export default function CTA() {
                             >
                                 <Sparkles className="w-4 h-4" />
                             </motion.div>
-                            <span className="text-black/60 text-[10px] font-bold tracking-[0.3em] uppercase">
+                            <span className="text-background/60 text-[10px] font-bold tracking-[0.3em] uppercase">
                                 Start Your Transformation
                             </span>
                         </motion.div>
@@ -56,7 +56,7 @@ export default function CTA() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.3 }}
-                            className="text-black/60 text-lg max-w-xl mb-12 font-medium"
+                            className="text-background/60 text-lg max-w-xl mb-12 font-medium"
                         >
                             Let's architect your AI-driven infrastructure and build the intelligent systems your business deserves.
                         </motion.p>
@@ -68,7 +68,7 @@ export default function CTA() {
                             className="flex flex-col sm:flex-row gap-6"
                         >
                             <a href="https://wa.me/13072106155" target="_blank" rel="noopener noreferrer">
-                                <button className="px-12 py-5 rounded-full bg-black text-white font-bold text-xl hover:scale-105 transition-all flex items-center gap-4">
+                                <button className="px-12 py-5 rounded-full bg-black text-foreground font-bold text-xl hover:scale-105 transition-all flex items-center gap-4">
                                     Book Strategy Call
                                     <motion.div
                                         animate={{ x: [0, 5, 0] }}
@@ -84,7 +84,7 @@ export default function CTA() {
                             </a>
 
                             <Link href="/contact">
-                                <button className="px-12 py-5 rounded-full bg-transparent border-2 border-black/10 text-black font-bold text-xl hover:bg-black/5 transition-all uppercase tracking-tighter">
+                                <button className="px-12 py-5 rounded-full bg-transparent border-2 border-black/10 text-background font-bold text-xl hover:bg-black/5 transition-all uppercase tracking-tighter">
                                     Request Proposal
                                 </button>
                             </Link>

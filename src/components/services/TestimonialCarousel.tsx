@@ -82,14 +82,14 @@ function Avatar({ src, alt }: { src: string; alt: string }) {
 
     if (imgError) {
         return (
-            <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 flex-shrink-0">
-                <span className="text-white/40 font-black text-xs uppercase">{alt.split(' ').map(n => n[0]).join('').slice(0, 2)}</span>
+            <div className="w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center border border-border flex-shrink-0">
+                <span className="text-foreground/40 font-black text-xs uppercase">{alt.split(' ').map(n => n[0]).join('').slice(0, 2)}</span>
             </div>
         );
     }
 
     return (
-        <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10 group-hover:border-white/30 transition-all duration-300 shadow-xl flex-shrink-0">
+        <div className="relative w-12 h-12 rounded-full overflow-hidden border border-border group-hover:border-white/30 transition-all duration-300 shadow-xl flex-shrink-0">
             <Image
                 src={src}
                 alt={alt}
@@ -104,41 +104,41 @@ function Avatar({ src, alt }: { src: string; alt: string }) {
 
 function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
     return (
-        <Card className="relative overflow-hidden rounded-[2.5rem] group transition-all duration-500 w-[320px] h-[400px] bg-white/[0.01] border border-white/[0.05] hover:bg-white/[0.03] hover:border-white/10 shadow-2xl flex flex-col backdrop-blur-xl">
+        <Card className="relative overflow-hidden rounded-[2.5rem] group transition-all duration-500 w-[320px] h-[400px] bg-card dark:bg-[#0f0f11] border border-border/50 hover:bg-foreground/[0.03] hover:border-secondary shadow-2xl flex flex-col backdrop-blur-xl">
             <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
-                <Quote className="h-16 w-16 text-white rotate-180" />
+                <Quote className="h-16 w-16 text-foreground rotate-180" />
             </div>
 
             <CardContent className="p-10 h-full flex flex-col relative z-10 justify-between">
                 <div className="flex-1 space-y-6">
-                    <div className="flex gap-1 items-center">
+                    <div className="flex gap-1 items-center text-secondary">
                         {[...Array(5)].map((_, i) => (
                             <Star
                                 key={i}
-                                className={`w-3 h-3 ${i < Math.floor(testimonial.rating) ? "text-white fill-white" : "text-white/10 fill-white/10"}`}
+                                className={`w-3 h-3 ${i < Math.floor(testimonial.rating) ? "fill-current" : "opacity-10"}`}
                             />
                         ))}
                     </div>
 
-                    <p className="text-white/60 text-sm leading-relaxed font-black uppercase tracking-widest group-hover:text-white/90 transition-colors duration-500 line-clamp-6 italic">
+                    <p className="text-foreground/60 text-sm leading-relaxed font-black uppercase tracking-widest group-hover:text-foreground/90 transition-colors duration-500 line-clamp-6 italic">
                         "{testimonial.quote}"
                     </p>
                 </div>
 
-                <div className="flex items-center gap-4 pt-8 border-t border-white/5">
+                <div className="flex items-center gap-4 pt-8 border-t border-border">
                     <Avatar src={testimonial.image} alt={testimonial.author} />
                     <div className="flex-1 min-w-0">
-                        <h3 className="text-white font-black text-[11px] uppercase tracking-[0.2em] group-hover:text-white transition-colors truncate mb-1">
+                        <h3 className="text-foreground font-black text-[11px] uppercase tracking-[0.2em] group-hover:text-foreground transition-colors truncate mb-1">
                             {testimonial.author}
                         </h3>
                         <div className="space-y-1">
-                            <p className="text-white/30 text-[9px] font-black uppercase tracking-widest truncate">
+                            <p className="text-foreground/30 text-[9px] font-black uppercase tracking-widest truncate">
                                 {testimonial.role} // {testimonial.company}
                             </p>
                             <div className="flex items-center gap-2">
-                                <span className="text-[8px] text-white/20 font-black uppercase tracking-[0.3em]">{testimonial.location}</span>
-                                <div className="w-1 h-1 rounded-full bg-white/10" />
-                                <span className="text-[8px] text-white/20 font-black uppercase tracking-[0.3em]">{testimonial.date}</span>
+                                <span className="text-[8px] text-foreground/20 font-black uppercase tracking-[0.3em]">{testimonial.location}</span>
+                                <div className="w-1 h-1 rounded-full bg-foreground/10" />
+                                <span className="text-[8px] text-foreground/20 font-black uppercase tracking-[0.3em]">{testimonial.date}</span>
                             </div>
                         </div>
                     </div>
@@ -196,23 +196,23 @@ export default function TestimonialCarousel() {
     }, [isInView, isPaused, startAnimation, controls]);
 
     return (
-        <section className="py-32 bg-transparent relative overflow-hidden border-t border-white/5">
+        <section className="py-32 bg-background relative overflow-hidden border-t border-border institutional-grid">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-20 space-y-6">
-                    <Badge variant="outline" className="bg-white/5 border-white/10 text-white/40 px-6 py-2 text-[9px] tracking-[0.5em] uppercase font-black backdrop-blur-xl shadow-2xl">
+                    <Badge variant="outline" className="bg-foreground/5 border-border text-foreground/40 px-6 py-2 text-[9px] tracking-[0.5em] uppercase font-black backdrop-blur-xl shadow-2xl">
                         GLOBAL_VALIDATION
                     </Badge>
-                    <h2 className="text-5xl md:text-8xl font-black text-white tracking-tightest uppercase italic">
-                        ELITE <span className="text-white/20 not-italic">VALIDATION.</span>
+                    <h2 className="text-5xl md:text-8xl font-black text-foreground tracking-tightest uppercase italic">
+                        ELITE <span className="opacity-20 not-italic">VALIDATION.</span>
                     </h2>
-                    <p className="text-[11px] font-black text-white/30 uppercase tracking-[0.4em] max-w-2xl mx-auto leading-relaxed italic">
+                    <p className="text-[11px] font-black text-foreground/30 uppercase tracking-[0.4em] max-w-2xl mx-auto leading-relaxed italic">
                         Architecting high-performance systems for global enterprises since the initialization of operations.
                     </p>
                 </div>
 
                 <div className="relative">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 w-48 z-10 bg-gradient-to-r from-black via-black/50 to-transparent" />
-                    <div className="pointer-events-none absolute inset-y-0 right-0 w-48 z-10 bg-gradient-to-l from-black via-black/50 to-transparent" />
+                    <div className="pointer-events-none absolute inset-y-0 left-0 w-48 z-10 bg-gradient-to-r from-background via-background/50 to-transparent" />
+                    <div className="pointer-events-none absolute inset-y-0 right-0 w-48 z-10 bg-gradient-to-l from-background via-background/50 to-transparent" />
 
                     <div className="overflow-hidden mask-fade-edges">
                         <motion.div
@@ -240,14 +240,14 @@ export default function TestimonialCarousel() {
                 </div>
 
                 <div className="mt-20 flex flex-col items-center gap-6">
-                    <div className="flex flex-wrap justify-center gap-12 text-white/20">
+                    <div className="flex flex-wrap justify-center gap-12 text-foreground/20">
                         {["FIVERR PRO", "ELITE VETTING", "TOP RATED", "GLOBAL OPS"].map((signal) => (
-                            <span key={signal} className="text-[10px] font-black tracking-[0.4em] uppercase hover:text-white/40 transition-colors cursor-default">
+                            <span key={signal} className="text-[10px] font-black tracking-[0.4em] uppercase hover:text-foreground/40 transition-colors cursor-default">
                                 {signal}
                             </span>
                         ))}
                     </div>
-                    <div className="w-24 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                    <div className="w-24 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
                 </div>
             </div>
         </section>

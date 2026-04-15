@@ -29,7 +29,7 @@ const solutions = [
             "Semantic Multi-node Search"
         ],
         link: "/solutions/ai-genai",
-        gradient: "from-white/10 to-transparent"
+        gradient: "from-foreground/10 to-transparent"
     },
     {
         icon: Database,
@@ -42,7 +42,7 @@ const solutions = [
             "Predictive Modeling Nodes"
         ],
         link: "/shop?category=Datasets",
-        gradient: "from-white/10 to-transparent",
+        gradient: "from-foreground/10 to-transparent",
         id: "data-engineering"
     },
     {
@@ -56,7 +56,7 @@ const solutions = [
             "Multi-source Aggregation"
         ],
         link: "/solutions/enterprise-software",
-        gradient: "from-white/10 to-transparent",
+        gradient: "from-foreground/10 to-transparent",
         id: "dashboards"
     },
     {
@@ -70,7 +70,7 @@ const solutions = [
             "Recurring Model Optimization"
         ],
         link: "/services",
-        gradient: "from-white/10 to-transparent"
+        gradient: "from-foreground/10 to-transparent"
     }
 ];
 
@@ -80,20 +80,20 @@ export default function SolutionsClient() {
             <Navbar />
 
             {/* --- Industrial Hero Section --- */}
-            <section className="relative pt-44 pb-24 overflow-hidden">
+            <section className="relative pt-44 pb-24 overflow-hidden institutional-grid">
                 <div className="container-standard relative z-10 text-center space-y-12 px-6">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mx-auto"
+                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-foreground/5 border border-border backdrop-blur-md mx-auto"
                     >
-                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
+                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_8px_hsl(var(--foreground)/0.6)]" />
                         <span className="text-meta">Solutions Architecture // v4.2</span>
                     </motion.div>
 
                     <div className="relative">
                         <h1 className="fluid-h1">
-                            SYSTEM <span className="text-white/20 italic">SOLUTIONS.</span>
+                            SYSTEM <span className="text-foreground/20 italic">SOLUTIONS.</span>
                         </h1>
                     </div>
 
@@ -126,12 +126,12 @@ export default function SolutionsClient() {
             </section>
 
             {/* --- Managed Theme-Aware CTA Section --- */}
-            <section className="relative py-32 overflow-hidden border-t border-border">
-                <div className="absolute inset-0 bg-background" />
+            <section className="relative py-32 overflow-hidden border-t border-border institutional-grid">
+                <div className="absolute inset-0 bg-background/50 backdrop-blur-3xl" />
                 <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
                 <div className="container-standard relative z-10 px-6">
-                    <div className="bg-white/5 border border-white/10 backdrop-blur-2xl rounded-[3rem] p-12 lg:p-20 overflow-hidden relative group">
+                    <div className="bg-foreground/[0.03] border border-border backdrop-blur-2xl rounded-[3rem] p-12 lg:p-20 overflow-hidden relative group surface-frost shadow-2xl">
                         {/* Decorative HUD items */}
                         <div className="absolute top-8 left-8 flex gap-2 opacity-20">
                             {[1, 2, 3].map(i => <div key={i} className="w-1 h-1 bg-foreground rounded-full" />)}
@@ -153,12 +153,12 @@ export default function SolutionsClient() {
                             </div>
 
                             <Link href="/services" className="group/btn relative">
-                                <button className="btn-institutional group px-12 py-8 bg-primary text-primary-foreground font-black uppercase text-[11px] tracking-[0.4em] rounded-2xl flex items-center gap-4">
+                                <button className="btn-institutional group px-12 py-8 bg-primary text-primary-foreground font-black uppercase text-[11px] tracking-[0.4em] rounded-2xl flex items-center gap-4 border border-primary-foreground/10">
                                     <Zap size={14} className="fill-current" />
                                     EXPLORE_MANAGED_MODELS
                                     <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
                                 </button>
-                                <div className="absolute -inset-4 bg-white/5 blur-2xl rounded-full opacity-0 group-hover/btn:opacity-100 transition-opacity" />
+                                <div className="absolute -inset-4 bg-foreground/5 blur-2xl rounded-full opacity-0 group-hover/btn:opacity-100 transition-opacity" />
                             </Link>
                         </div>
                     </div>

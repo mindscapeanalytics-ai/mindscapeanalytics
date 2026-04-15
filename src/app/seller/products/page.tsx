@@ -33,7 +33,7 @@ export default async function SellerProductsPage() {
     const products = user.products || [];
 
     return (
-        <div className="min-h-screen bg-monochrome-cinematic text-white relative">
+        <div className="min-h-screen bg-monochrome-cinematic text-foreground relative">
             <div className="fixed inset-0 z-0 pointer-events-none opacity-20">
                 <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
             </div>
@@ -41,38 +41,38 @@ export default async function SellerProductsPage() {
 
             <main className="relative z-10 pt-44 pb-32 px-6">
                 <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-20 pb-12 border-b border-white/5">
+                    <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-20 pb-12 border-b border-border">
                         <div>
                             <h1
                                 className="text-6xl font-black mb-4 uppercase tracking-tighter italic"
                                 style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
                             >
-                                ASSET <span className="text-white/20 not-italic">REGISTRY.</span>
+                                ASSET <span className="text-foreground/20 not-italic">REGISTRY.</span>
                             </h1>
-                            <p className="text-white/40 text-[11px] font-black uppercase tracking-[0.5em] italic">Localized Proprietary Architectures</p>
+                            <p className="text-foreground/40 text-[11px] font-black uppercase tracking-[0.5em] italic">Localized Proprietary Architectures</p>
                         </div>
                         <Link href="/seller/products/new">
-                            <button className="flex items-center gap-4 px-10 py-5 bg-white text-black rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white/90 shadow-2xl transition-all active:scale-95 group">
+                            <button className="flex items-center gap-4 px-10 py-5 bg-foreground text-background rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-foreground/90 shadow-2xl transition-all active:scale-95 group">
                                 <Plus size={16} />
                                 Initialize New Asset
                             </button>
                         </Link>
                     </div>
 
-                    <div className="flex items-center gap-3 px-6 py-4 bg-white/[0.02] border border-white/5 rounded-2xl mb-12">
+                    <div className="flex items-center gap-3 px-6 py-4 bg-foreground/[0.02] border border-border rounded-2xl mb-12">
                         <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-white/30 italic">
+                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-foreground/30 italic">
                             Settlement Protocol: Distributions reflect the aggregate value following a 10-day verification threshold and a 10% enterprise commission deduction.
                         </p>
                     </div>
 
                     {products.length === 0 ? (
-                        <div className="text-center py-32 border border-dashed border-white/5 rounded-[3rem] bg-white/[0.01]">
-                            <Package size={80} strokeWidth={0.5} className="mx-auto mb-10 text-white/5" />
+                        <div className="text-center py-32 border border-dashed border-border rounded-[3rem] bg-foreground/[0.01]">
+                            <Package size={80} strokeWidth={0.5} className="mx-auto mb-10 text-foreground/5" />
                             <h2 className="text-xl font-black mb-4 uppercase tracking-tighter">Zero Localizations Localized</h2>
-                            <p className="text-white/20 text-[10px] font-black uppercase tracking-[0.4em] mb-12 italic leading-loose">The registry is currently void of architectural primitives.</p>
+                            <p className="text-foreground/20 text-[10px] font-black uppercase tracking-[0.4em] mb-12 italic leading-loose">The registry is currently void of architectural primitives.</p>
                             <Link href="/seller/products/new">
-                                <button className="px-12 py-5 bg-white text-black rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-white/90 transition-all">
+                                <button className="px-12 py-5 bg-foreground text-background rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-foreground/90 transition-all">
                                     Initialize First Protocol
                                 </button>
                             </Link>
@@ -82,9 +82,9 @@ export default async function SellerProductsPage() {
                             {products.map((product) => (
                                 <div
                                     key={product.id}
-                                    className="bg-white/[0.02] border border-white/5 rounded-[2.5rem] overflow-hidden group hover:border-white/20 transition-all shadow-2xl relative"
+                                    className="bg-foreground/[0.02] border border-border rounded-[2.5rem] overflow-hidden group hover:border-foreground/20 transition-all shadow-2xl relative"
                                 >
-                                    <div className="aspect-[16/10] bg-zinc-900 relative overflow-hidden">
+                                    <div className="aspect-[16/10] bg-foreground/5 relative overflow-hidden">
                                         {product.images[0]?.url ? (
                                             <img
                                                 src={product.images[0].url}
@@ -105,8 +105,8 @@ export default async function SellerProductsPage() {
                                                     SYNCHRONIZED
                                                 </div>
                                             ) : (
-                                                <div className="px-3 py-1 bg-white/5 border border-white/10 text-white/40 text-[8px] font-black uppercase tracking-[0.3em] rounded-full flex items-center gap-2 backdrop-blur-md">
-                                                    <span className="w-1 h-1 bg-white/20 rounded-full" />
+                                                <div className="px-3 py-1 bg-foreground/5 border border-border text-foreground/40 text-[8px] font-black uppercase tracking-[0.3em] rounded-full flex items-center gap-2 backdrop-blur-md">
+                                                    <span className="w-1 h-1 bg-foreground/20 rounded-full" />
                                                     PENDING_REVIEW
                                                 </div>
                                             )}
@@ -117,20 +117,20 @@ export default async function SellerProductsPage() {
                                     </div>
 
                                     <div className="p-10">
-                                        <div className="text-[8px] font-black uppercase tracking-[0.4em] text-white/20 mb-3">{product.category.replace('_', ' ')} //</div>
+                                        <div className="text-[8px] font-black uppercase tracking-[0.4em] text-foreground/20 mb-3">{product.category.replace('_', ' ')} //</div>
                                         <h3 className="text-xl font-black mb-4 uppercase tracking-tighter italic">{product.name}</h3>
-                                        <p className="text-white/40 text-[10px] font-medium uppercase tracking-tight italic mb-8 line-clamp-2 leading-relaxed">
+                                        <p className="text-foreground/40 text-[10px] font-medium uppercase tracking-tight italic mb-8 line-clamp-2 leading-relaxed">
                                             {product.description}
                                         </p>
 
-                                        <div className="flex items-center justify-between pt-6 border-t border-white/5">
+                                        <div className="flex items-center justify-between pt-6 border-t border-border">
                                             <div className="text-2xl font-black tracking-tightest">
-                                                <span className="text-[10px] text-white/20 mr-1">$</span>
+                                                <span className="text-[10px] text-foreground/20 mr-1">$</span>
                                                 {product.price}
                                             </div>
                                             <div className="flex items-center gap-3">
                                                 <Link href={`/seller/products/${product.id}/edit`}>
-                                                    <button className="w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 rounded-2xl text-white/40 hover:text-white hover:bg-white/10 transition-all active:scale-90">
+                                                    <button className="w-12 h-12 flex items-center justify-center bg-foreground/5 border border-border rounded-2xl text-foreground/40 hover:text-foreground hover:bg-foreground/10 transition-all active:scale-90">
                                                         <Edit size={16} />
                                                     </button>
                                                 </Link>

@@ -175,7 +175,7 @@ export default function FounderPortfolio() {
     const scaleHero = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
     return (
-        <main ref={containerRef} className="bg-transparent text-white min-h-screen relative">
+        <main ref={containerRef} className="bg-transparent text-foreground min-h-screen relative">
             <Navbar />
 
             {/* --- INDUSTRIAL HERO SECTION --- */}
@@ -190,9 +190,9 @@ export default function FounderPortfolio() {
                         transition={{ duration: 0.8 }}
                         className="relative w-48 h-48 md:w-64 md:h-64 mb-12 aspect-square"
                     >
-                        <div className="absolute inset-0 rounded-full border-2 border-white/10 animate-[spin_10s_linear_infinite]" />
-                        <div className="absolute inset-[-10px] rounded-full border border-white/5 animate-[spin_15s_linear_infinite_reverse]" />
-                        <div className="w-full h-full rounded-full overflow-hidden border-4 border-white grayscale contrast-125 shadow-[0_0_50px_rgba(255,255,255,0.1)] relative">
+                        <div className="absolute inset-0 rounded-full border-2 border-border animate-[spin_10s_linear_infinite]" />
+                        <div className="absolute inset-[-10px] rounded-full border border-border animate-[spin_15s_linear_infinite_reverse]" />
+                        <div className="w-full h-full rounded-full overflow-hidden border-4 border-white grayscale contrast-125 shadow-[0_0_50px_hsl(var(--foreground)/0.1)] relative">
                             <Image
                                 src="/images/team/founder.webp"
                                 alt="Zeeshan Keerio"
@@ -210,13 +210,13 @@ export default function FounderPortfolio() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="space-y-4"
                     >
-                        <span className="text-[10px] font-mono font-black text-white/30 uppercase tracking-[0.8em] mb-4 block">Founding_Architect // ARCH_ZEESHAN</span>
+                        <span className="text-[10px] font-mono font-black text-foreground/30 uppercase tracking-[0.8em] mb-4 block">Founding_Architect // ARCH_ZEESHAN</span>
                         <h1 className="text-6xl md:text-9xl font-black font-sans leading-none tracking-tighter uppercase mb-2">
-                            ZEESHAN <br /> <span className="text-white/40">KEERIO.</span>
+                            ZEESHAN <br /> <span className="text-foreground/40">KEERIO.</span>
                         </h1>
-                        <p className="max-w-3xl mx-auto text-lg md:text-xl text-white/60 font-medium tracking-tight leading-relaxed uppercase">
+                        <p className="max-w-3xl mx-auto text-lg md:text-xl text-foreground/60 font-medium tracking-tight leading-relaxed uppercase">
                             AI-focused technology leader & AI Engineer specialized in GenAI, Agentic AI, and RAG Pipelines. <br />
-                            <span className="text-white font-black not-italic drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">Architecting Production-Grade Autonomous Intelligence.</span>
+                            <span className="text-foreground font-black not-italic drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">Architecting Production-Grade Autonomous Intelligence.</span>
                         </p>
                     </motion.div>
 
@@ -226,28 +226,28 @@ export default function FounderPortfolio() {
                         transition={{ delay: 1 }}
                         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
                     >
-                        <span className="text-[9px] font-mono font-black tracking-[0.5em] text-white/20 uppercase">Initialize_Scroll</span>
-                        <ChevronDown className="animate-bounce text-white/20" size={20} />
+                        <span className="text-[9px] font-mono font-black tracking-[0.5em] text-foreground/20 uppercase">Initialize_Scroll</span>
+                        <ChevronDown className="animate-bounce text-foreground/20" size={20} />
                     </motion.div>
                 </motion.div>
             </section>
 
             {/* --- MISSION DIRECTIVE --- */}
-            <section className="py-32 border-y border-white/5 relative bg-white/5 backdrop-blur-3xl overflow-hidden">
+            <section className="py-32 border-y border-border relative bg-foreground/5 backdrop-blur-3xl overflow-hidden">
                 <div className="absolute inset-0 opacity-5 bg-[url('/grid.svg')] bg-[length:40px_40px]" />
                 <div className="container-standard relative z-10">
                     <div className="grid lg:grid-cols-2 gap-24 items-center max-w-7xl mx-auto">
                         <div className="space-y-12">
                             <div className="flex items-center gap-3">
-                                <div className="p-2 bg-white/5 rounded-lg border border-white/10 text-white/40">
+                                <div className="p-2 bg-foreground/5 rounded-lg border border-border text-foreground/40">
                                     <Terminal size={18} />
                                 </div>
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 font-mono">01_Mission_Directive</span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40 font-mono">01_Mission_Directive</span>
                             </div>
-                            <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter font-sans leading-[0.9]">
-                                REPLACING MANUAL <br /> <span className="text-white/40">WORK WITH CODE.</span>
+                            <h2 className="text-4xl md:text-6xl font-black text-foreground uppercase tracking-tighter font-sans leading-[0.9]">
+                                REPLACING MANUAL <br /> <span className="text-foreground/40">WORK WITH CODE.</span>
                             </h2>
-                            <p className="text-xl text-white/40 leading-relaxed font-medium">
+                            <p className="text-xl text-foreground/40 leading-relaxed font-medium">
                                 "Technology is only as valuable as the manual effort it eliminates. As the sole architect of the Mindscape Analytics platform, my focus is on engineering high-fidelity, autonomous ecosystems that allow founders and enterprises to operate at post-quantum speeds with zero technical friction."
                             </p>
                         </div>
@@ -259,8 +259,8 @@ export default function FounderPortfolio() {
                                 { icon: Globe, label: "Cloud Systems", val: "Global Ops" },
                                 { icon: ShieldCheck, label: "Cybersecurity", val: "Hardened" }
                             ].map((stat, i) => (
-                                <div key={i} className="p-8 rounded-[2rem] bg-white/[0.03] border border-white/10 flex flex-col items-center text-center gap-4 group hover:bg-white hover:text-black transition-all duration-500">
-                                    <stat.icon size={24} className="text-white/40 group-hover:text-black transition-colors" />
+                                <div key={i} className="p-8 rounded-[2rem] bg-foreground/[0.03] border border-border flex flex-col items-center text-center gap-4 group hover:bg-foreground hover:text-background transition-all duration-500">
+                                    <stat.icon size={24} className="text-foreground/40 group-hover:text-background transition-colors" />
                                     <div className="space-y-1">
                                         <div className="text-[9px] font-black uppercase tracking-widest opacity-40">{stat.label}</div>
                                         <div className="text-xl font-black font-sans">{stat.val}</div>
@@ -277,7 +277,7 @@ export default function FounderPortfolio() {
                 <div className="container-standard">
                     <div className="text-center mb-24">
                         <h2 className="text-5xl md:text-8xl font-black font-sans uppercase tracking-[-0.05em] mb-4">PROJECT LEDGER.</h2>
-                        <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.8em] font-black">All Assets Designed & Developed by Zeeshan Keerio</span>
+                        <span className="text-[9px] font-mono text-foreground/20 uppercase tracking-[0.8em] font-black">All Assets Designed & Developed by Zeeshan Keerio</span>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-8xl mx-auto">
@@ -289,8 +289,8 @@ export default function FounderPortfolio() {
                                 transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
                                 className="group relative"
                             >
-                                <div className="p-1 bg-white/5 rounded-[2.5rem] border border-white/10 overflow-hidden transition-all duration-700 hover:border-white/30 hover:shadow-[0_0_50px_rgba(255,255,255,0.05)]">
-                                    <div className="aspect-video relative rounded-[2rem] overflow-hidden mb-6 border border-white/5">
+                                <div className="p-1 bg-foreground/5 rounded-[2.5rem] border border-border overflow-hidden transition-all duration-700 hover:border-white/30 hover:shadow-[0_0_50px_rgba(255,255,255,0.05)]">
+                                    <div className="aspect-video relative rounded-[2rem] overflow-hidden mb-6 border border-border">
                                         <Image
                                             src={project.image}
                                             alt={project.title}
@@ -302,7 +302,7 @@ export default function FounderPortfolio() {
                                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
                                         <div className="absolute top-6 left-6 flex flex-wrap gap-2">
                                             {project.tags.map(tag => (
-                                                <span key={tag} className="text-[8px] font-black uppercase tracking-widest px-3 py-1 bg-black/80 backdrop-blur-md border border-white/10 text-white/60">
+                                                <span key={tag} className="text-[8px] font-black uppercase tracking-widest px-3 py-1 bg-black/80 backdrop-blur-md border border-border text-foreground/60">
                                                     {tag}
                                                 </span>
                                             ))}
@@ -310,16 +310,16 @@ export default function FounderPortfolio() {
                                     </div>
 
                                     <div className="px-8 pb-10">
-                                        <span className="text-[9px] font-black text-white/40 uppercase tracking-[0.3em] mb-2 block">{project.category}</span>
-                                        <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4 transition-all">
+                                        <span className="text-[9px] font-black text-foreground/40 uppercase tracking-[0.3em] mb-2 block">{project.category}</span>
+                                        <h3 className="text-2xl font-black text-foreground uppercase tracking-tight mb-4 transition-all">
                                             {project.title}
                                         </h3>
-                                        <p className="text-sm text-white/40 font-medium leading-relaxed mb-8 h-20 line-clamp-3 overflow-hidden">
+                                        <p className="text-sm text-foreground/40 font-medium leading-relaxed mb-8 h-20 line-clamp-3 overflow-hidden">
                                             {project.description}
                                         </p>
-                                        <div className="pt-6 border-t border-white/5 flex justify-between items-center">
-                                            <span className="text-[8px] font-mono font-black text-white/20 uppercase tracking-[0.2em]">Designed & Developed by Founder</span>
-                                            <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white group-hover:text-black transition-all">
+                                        <div className="pt-6 border-t border-border flex justify-between items-center">
+                                            <span className="text-[8px] font-mono font-black text-foreground/20 uppercase tracking-[0.2em]">Designed & Developed by Founder</span>
+                                            <div className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center border border-border group-hover:bg-foreground group-hover:text-background transition-all">
                                                 <ArrowUpRight size={14} />
                                             </div>
                                         </div>
@@ -333,7 +333,7 @@ export default function FounderPortfolio() {
                         <div className="mt-20 text-center">
                             <button
                                 onClick={() => setShowAllProjects(true)}
-                                className="inline-flex items-center gap-6 px-12 py-6 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.4em] text-white/40 hover:bg-white hover:text-black hover:border-white transition-all group scale-90 md:scale-100"
+                                className="inline-flex items-center gap-6 px-12 py-6 bg-foreground/5 border border-border rounded-2xl text-[10px] font-black uppercase tracking-[0.4em] text-foreground/40 hover:bg-foreground hover:text-background hover:border-white transition-all group scale-90 md:scale-100"
                             >
                                 <span className="group-hover:mr-2 transition-all">ACCESS_FULL_PROJECT_LEDGER</span>
                                 <ChevronDown size={14} className="animate-bounce" />
@@ -344,28 +344,28 @@ export default function FounderPortfolio() {
             </section>
 
             {/* --- CHRONICLE (EXPERIENCE) --- */}
-            <section className="py-32 border-t border-white/5 bg-black/40">
+            <section className="py-32 border-t border-border bg-black/40">
                 <div className="container-standard px-4 md:px-6">
                     <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-24 items-start max-w-7xl mx-auto">
                         <div className="lg:sticky lg:top-32 space-y-8 mb-12 lg:mb-0">
                             <div className="flex items-center gap-3">
-                                <div className="p-2 bg-white/5 rounded-lg border border-white/10 text-white/40">
+                                <div className="p-2 bg-foreground/5 rounded-lg border border-border text-foreground/40">
                                     <Briefcase size={18} />
                                 </div>
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 font-mono">02_Chronicle</span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40 font-mono">02_Chronicle</span>
                             </div>
-                            <h2 className="text-4xl md:text-5xl font-black uppercase font-sans leading-[0.8] tracking-tight">PROFESSIONAL <br /> <span className="text-white/40">EVOLUTION.</span></h2>
-                            <p className="text-white/40 text-sm font-medium leading-relaxed max-w-xs uppercase">
+                            <h2 className="text-4xl md:text-5xl font-black uppercase font-sans leading-[0.8] tracking-tight">PROFESSIONAL <br /> <span className="text-foreground/40">EVOLUTION.</span></h2>
+                            <p className="text-foreground/40 text-sm font-medium leading-relaxed max-w-xs uppercase">
                                 A high-fidelity journey through the core layers of financial data and AI engineering.
                             </p>
                             <div className="pt-8 flex flex-wrap gap-4">
                                 <Link href="https://linkedin.com/in/zeeshan-keerio" target="_blank">
-                                    <button className="p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white hover:text-black transition-all">
+                                    <button className="p-4 rounded-xl bg-foreground/5 border border-border hover:bg-foreground hover:text-background transition-all">
                                         <Linkedin size={20} />
                                     </button>
                                 </Link>
                                 <Link href="mailto:zeeshan.keerio@mindscapeanalytics.com">
-                                    <button className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 font-black text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">
+                                    <button className="px-8 py-4 rounded-xl bg-foreground/5 border border-border font-black text-[10px] uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-all">
                                         Request Deck
                                     </button>
                                 </Link>
@@ -380,18 +380,18 @@ export default function FounderPortfolio() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true, margin: "-100px" }}
                                     transition={{ duration: 0.5, delay: i * 0.1 }}
-                                    className="p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-white/[0.02] border border-white/5 group hover:bg-white/[0.05] hover:border-white/20 transition-all duration-500"
+                                    className="p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-foreground/[0.02] border border-border group hover:bg-foreground/[0.05] hover:border-foreground/20 transition-all duration-500"
                                 >
                                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
                                         <div>
-                                            <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter group-hover:text-white transition-colors font-sans">{exp.role}</h3>
-                                            <div className="text-[10px] font-bold text-white/30 uppercase tracking-[0.3em] font-mono">{exp.company}</div>
+                                            <h3 className="text-xl md:text-2xl font-black text-foreground uppercase tracking-tighter group-hover:text-foreground transition-colors font-sans">{exp.role}</h3>
+                                            <div className="text-[10px] font-bold text-foreground/30 uppercase tracking-[0.3em] font-mono">{exp.company}</div>
                                         </div>
-                                        <div className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[9px] font-black uppercase tracking-widest text-white/50">
+                                        <div className="px-4 py-2 rounded-full bg-foreground/5 border border-border text-[9px] font-black uppercase tracking-widest text-foreground/50">
                                             {exp.period}
                                         </div>
                                     </div>
-                                    <p className="text-xs md:text-sm text-white/40 font-medium leading-relaxed uppercase tracking-tight">
+                                    <p className="text-xs md:text-sm text-foreground/40 font-medium leading-relaxed uppercase tracking-tight">
                                         {exp.description}
                                     </p>
                                 </motion.div>
@@ -402,7 +402,7 @@ export default function FounderPortfolio() {
             </section>
 
             {/* --- EDUCATION & CERTIFICATIONS --- */}
-            <section className="py-32 relative overflow-hidden bg-white text-black">
+            <section className="py-32 relative overflow-hidden bg-foreground text-background">
                 <div className="absolute inset-0 opacity-5 bg-[url('/grid.svg')] bg-[length:50px_50px]" />
                 <div className="container-standard relative z-10">
                     <div className="max-w-7xl mx-auto">
@@ -430,7 +430,7 @@ export default function FounderPortfolio() {
                                         {[
                                             "Python", "SQL", "LLMs", "RAG", "Agentic AI", "TensorFlow", "Hadoop", "Cloudera", "Spark", "Kafka", "Hive", "Impala", "StreamSets", "Azure AI", "Snowflake", "Power BI", "SSL/TLS", "Apache Knox", "Next.js"
                                         ].map(tech => (
-                                            <span key={tech} className="px-5 py-2 rounded-full border border-black/10 text-[9px] font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all cursor-default">
+                                            <span key={tech} className="px-5 py-2 rounded-full border border-black/10 text-[9px] font-black uppercase tracking-widest hover:bg-black hover:text-foreground transition-all cursor-default">
                                                 {tech}
                                             </span>
                                         ))}
@@ -473,7 +473,7 @@ export default function FounderPortfolio() {
                 <div className="container-standard text-center">
                     <motion.div
                         whileHover={{ scale: 1.02 }}
-                        className="bg-white text-black p-12 md:p-24 rounded-[3.5rem] relative overflow-hidden group cursor-pointer"
+                        className="bg-foreground text-background p-12 md:p-24 rounded-[3.5rem] relative overflow-hidden group cursor-pointer"
                     >
                         <div className="absolute inset-0 z-0 opacity-5 bg-[url('/grid.svg')] bg-[length:50px_50px]" />
                         <div className="relative z-10 space-y-12">
@@ -484,7 +484,7 @@ export default function FounderPortfolio() {
                                 Harness the power of AI-first engineering. Let's build your industrial-grade intelligence ecosystem together.
                             </p>
                             <Link href="https://wa.me/13072106155" target="_blank">
-                                <button className="px-12 py-6 bg-black text-white font-black text-xs tracking-[0.3em] uppercase rounded-2xl hover:bg-black/90 transition-all flex items-center gap-4 mx-auto">
+                                <button className="px-12 py-6 bg-black text-foreground font-black text-xs tracking-[0.3em] uppercase rounded-2xl hover:bg-black/90 transition-all flex items-center gap-4 mx-auto">
                                     Initiate Direct Uplink (WhatsApp)
                                     <ArrowUpRight size={16} />
                                 </button>

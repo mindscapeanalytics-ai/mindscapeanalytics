@@ -59,21 +59,21 @@ const BLOG_POSTS = [
 
 export default function BlogPage() {
     return (
-        <div className="min-h-screen bg-monochrome-cinematic text-white relative">
+        <div className="min-h-screen bg-monochrome-cinematic text-foreground relative">
             <CinematicBackground />
             <Navbar />
 
             <main className="relative z-10 pt-44 pb-32 px-6">
                 <div className="max-w-7xl mx-auto">
                     {/* Header */}
-                    <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-white/5 pb-20">
+                    <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-border pb-20">
                         <div className="max-w-3xl">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full mb-8"
+                                className="inline-flex items-center gap-2 px-3 py-1 bg-foreground/5 border border-border rounded-full mb-8"
                             >
-                                <Zap size={12} className="text-white/40" />
+                                <Zap size={12} className="text-foreground/40" />
                                 <span className="text-meta">Intelligence_Stream // v2026</span>
                             </motion.div>
                             <motion.h1
@@ -81,7 +81,7 @@ export default function BlogPage() {
                                 animate={{ opacity: 1, y: 0 }}
                                 className="fluid-h1"
                             >
-                                INTEL <span className="text-white/20">HUB.</span>
+                                INTEL <span className="text-foreground/20">HUB.</span>
                             </motion.h1>
                         </div>
                         <motion.p
@@ -102,11 +102,11 @@ export default function BlogPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="group relative bg-white/[0.02] border border-white/5 rounded-[3rem] overflow-hidden hover:border-white/20 transition-all duration-700"
+                                className="group relative bg-foreground/[0.02] border border-border rounded-[3rem] overflow-hidden hover:border-foreground/20 transition-all duration-700"
                             >
                                 <div className="p-10 md:p-14">
                                     <div className="flex items-center justify-between mb-10">
-                                        <div className="p-4 bg-white/5 rounded-2xl text-white/40 group-hover:bg-white group-hover:text-black transition-all duration-500">
+                                        <div className="p-4 bg-foreground/5 rounded-2xl text-foreground/40 group-hover:bg-foreground group-hover:text-background transition-all duration-500">
                                             <post.icon size={24} />
                                         </div>
                                         <div className="flex items-center gap-6 text-meta">
@@ -116,25 +116,25 @@ export default function BlogPage() {
                                     </div>
 
                                     <div className="mb-4">
-                                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 group-hover:text-white/80 transition-colors">{post.category}</span>
+                                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40 group-hover:text-foreground/80 transition-colors">{post.category}</span>
                                     </div>
 
                                     <h2 className="text-3xl font-black mb-6 uppercase tracking-tighter leading-tight italic group-hover:translate-x-2 transition-transform duration-500">
                                         {post.title}
                                     </h2>
 
-                                    <p className="text-white/40 text-sm font-medium leading-loose italic mb-10">
+                                    <p className="text-foreground/40 text-sm font-medium leading-loose italic mb-10">
                                         {post.excerpt}
                                     </p>
 
-                                    <div className="flex items-center justify-between pt-10 border-t border-white/5">
+                                    <div className="flex items-center justify-between pt-10 border-t border-border">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-black border border-white/10 text-white/40">
+                                            <div className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center text-[10px] font-black border border-border text-foreground/40">
                                                 {post.author.charAt(0)}
                                             </div>
                                             <span className="text-meta">{post.author}</span>
                                         </div>
-                                        <Link href="#" className="flex items-center gap-2 text-meta text-white hover:gap-4 transition-all group/read">
+                                        <Link href="#" className="flex items-center gap-2 text-meta text-foreground hover:gap-4 transition-all group/read">
                                             Execute Read <ChevronRight size={14} className="group-hover/read:translate-x-1 transition-transform" />
                                         </Link>
                                     </div>
@@ -145,16 +145,16 @@ export default function BlogPage() {
                     </div>
 
                     {/* Newsletter / CTA */}
-                    <div className="bg-white/5 border border-white/10 rounded-[4rem] p-12 md:p-20 text-center relative overflow-hidden">
+                    <div className="bg-foreground/5 border border-border rounded-[4rem] p-12 md:p-20 text-center relative overflow-hidden">
                         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5 pointer-events-none" />
-                        <h2 className="fluid-h2 mb-8">Stay Ahead of the <span className="text-white/20">Incline.</span></h2>
+                        <h2 className="fluid-h2 mb-8">Stay Ahead of the <span className="text-foreground/20">Incline.</span></h2>
                         <p className="text-meta mb-12">Join 50,000+ architects receiving weekly industrial intelligence.</p>
 
                         <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-4">
                             <input
                                 type="email"
                                 placeholder="IDENT_EMAIL@SECURE.HOST"
-                                className="flex-1 bg-black/50 border border-white/10 rounded-2xl px-8 py-5 text-meta focus:outline-none focus:border-white/30 transition-all"
+                                className="flex-1 bg-black/50 border border-border rounded-2xl px-8 py-5 text-meta focus:outline-none focus:border-white/30 transition-all"
                             />
                             <button className="btn-institutional">
                                 Subscribe

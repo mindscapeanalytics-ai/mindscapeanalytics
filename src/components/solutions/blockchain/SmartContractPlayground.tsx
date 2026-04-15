@@ -167,7 +167,7 @@ export function SmartContractPlayground() {
     };
 
     return (
-        <div className="w-full space-y-4 text-white">
+        <div className="w-full space-y-4 text-foreground">
             <Card className="bg-gray-950/50 border-gray-800">
                 <CardHeader>
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">

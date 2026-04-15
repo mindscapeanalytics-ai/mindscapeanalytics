@@ -90,8 +90,8 @@ const faqs = [
 export default function ContactPage() {
     return (
         <Suspense fallback={
-            <div className="min-h-screen bg-transparent flex items-center justify-center">
-                <div className="text-white/20 font-black tracking-[0.5em] animate-pulse">LOADING ARC...</div>
+            <div className="min-h-screen bg-background flex items-center justify-center">
+                <div className="text-foreground/20 font-black tracking-[0.5em] animate-pulse">LOADING ARC...</div>
             </div>
         }>
             <ContactFormContent />
@@ -170,13 +170,13 @@ function ContactFormContent() {
     };
 
     return (
-        <div className="min-h-screen bg-transparent text-white relative">
+        <div className="min-h-screen bg-background text-foreground relative">
             <Navbar />
 
             {/* Hero Section */}
-            <section className="relative pt-44 pb-32 overflow-hidden">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
-                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-white/[0.02] blur-[150px] rounded-full pointer-events-none" />
+            <section className="relative pt-44 pb-32 overflow-hidden institutional-grid">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-foreground/[0.03] to-transparent pointer-events-none" />
+                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-foreground/[0.02] blur-[150px] rounded-full pointer-events-none" />
 
                 <div className="container-standard relative z-10">
                     <motion.div
@@ -186,10 +186,10 @@ function ContactFormContent() {
                         className="max-w-4xl mx-auto text-center"
                     >
                         <h1 className="fluid-h1 mb-8">
-                            GET IN <span className="text-white/30">TOUCH.</span>
+                            GET IN <span className="opacity-30">TOUCH.</span>
                         </h1>
                         <p className="fluid-body max-w-4xl mx-auto opacity-60">
-                            READY TO TRANSFORM YOUR BUSINESS WITH <span className="text-white font-black">INDUSTRIAL INTELLIGENCE</span>?
+                            READY TO TRANSFORM YOUR BUSINESS WITH <span className="text-foreground font-black">INDUSTRIAL INTELLIGENCE</span>?
                         </p>
                     </motion.div>
                 </div>
@@ -212,13 +212,13 @@ function ContactFormContent() {
                                     target={info.link.startsWith('http') ? '_blank' : undefined}
                                     className="block h-full transition-all duration-300 transform hover:scale-[1.02]"
                                 >
-                                    <div className="h-full p-8 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-all duration-300 group backdrop-blur-sm">
-                                        <div className="mb-6 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
+                                    <div className="h-full p-8 rounded-2xl bg-foreground/[0.02] border border-border/50 hover:border-foreground/10 transition-all duration-300 group backdrop-blur-sm surface-frost">
+                                        <div className="mb-6 w-12 h-12 rounded-xl bg-foreground/5 border border-border flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-300">
                                             <info.icon className="h-6 w-6" />
                                         </div>
-                                        <h3 className="text-meta opacity-40 mb-2">{info.title}</h3>
-                                        <p className="text-lg font-bold text-white mb-4 leading-tight">{info.value}</p>
-                                        <p className="text-white/40 text-sm leading-relaxed">{info.description}</p>
+                                        <h3 className="text-meta mb-2">{info.title}</h3>
+                                        <p className="text-lg font-bold text-foreground mb-4 leading-tight">{info.value}</p>
+                                        <p className="text-foreground/40 text-sm leading-relaxed">{info.description}</p>
                                     </div>
                                 </a>
                             </motion.div>
@@ -234,11 +234,11 @@ function ContactFormContent() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="max-w-7xl mx-auto p-1px bg-white/5 rounded-3xl overflow-hidden backdrop-blur-md"
+                        className="max-w-7xl mx-auto p-1px bg-border/50 rounded-3xl overflow-hidden backdrop-blur-md"
                     >
-                        <div className="p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12 bg-white/[0.02]">
+                        <div className="p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12 bg-foreground/[0.01]">
                             <div className="w-full md:w-1/3 flex justify-center">
-                                <div className="p-4 bg-white rounded-2xl shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+                                <div className="p-4 bg-foreground rounded-2xl shadow-[0_0_50px_rgba(var(--foreground),0.05)] border border-border">
                                     <div className="relative w-48 h-48 md:w-64 md:h-64">
                                         <Image
                                             src="/images/whatsapp-qr.png"
@@ -251,18 +251,18 @@ function ContactFormContent() {
                             </div>
                             <div className="w-full md:w-2/3 space-y-6">
                                 <h3 className="fluid-h2">
-                                    SCAN TO <span className="text-white/30">SYNC.</span>
+                                    SCAN TO <span className="opacity-30">SYNC.</span>
                                 </h3>
-                                <p className="text-xl text-white/50 font-medium leading-relaxed">
+                                <p className="text-xl text-foreground/50 font-medium leading-relaxed">
                                     Instantly bridge the gap with our technical architects via secure WhatsApp protocol. High-priority inquiries receive real-time sync capabilities.
                                 </p>
                                 <div className="flex flex-wrap gap-4 pt-4">
                                     <Button size="lg" className="btn-institutional px-8" asChild>
                                         <a href="https://wa.me/13072106155" target="_blank">OPEN PROTOCOL</a>
                                     </Button>
-                                    <div className="flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5">
-                                        <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                                        <span className="text-meta opacity-40">SYSTEM STATUS: READY</span>
+                                    <div className="flex items-center gap-3 px-6 py-2 rounded-full border border-border bg-foreground/[0.02]">
+                                        <div className="w-2 h-2 rounded-full bg-foreground animate-pulse" />
+                                        <span className="text-meta">SYSTEM STATUS: READY</span>
                                     </div>
                                 </div>
                             </div>
@@ -272,7 +272,7 @@ function ContactFormContent() {
             </section>
 
             {/* Contact Form Section */}
-            <section className="section-spacing bg-transparent border-t border-white/5">
+            <section className="section-spacing bg-transparent border-t border-border">
                 <div className="container-standard">
                     <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
                         <motion.div
@@ -283,23 +283,23 @@ function ContactFormContent() {
                         >
                             <div>
                                 <h2 className="fluid-h2 mb-6">
-                                    SEND <span className="text-white/30">SIGNAL.</span>
+                                    SEND <span className="opacity-30">SIGNAL.</span>
                                 </h2>
-                                <p className="text-xl text-white/50 font-medium leading-relaxed max-w-lg">
+                                <p className="text-xl text-foreground/50 font-medium leading-relaxed max-w-lg">
                                     Initialize connection with our global hub. Our architects respond within one standard operational cycle.
                                 </p>
                             </div>
 
                             {/* FAQ Section Integrated into Sidebar */}
                             <div className="space-y-8 pt-8">
-                                <h3 className="text-xs font-black uppercase tracking-[0.4em] text-white/20">FREQUENTLY ASKED PROTOCOLS</h3>
+                                <h3 className="text-xs font-black uppercase tracking-[0.4em] text-foreground/20">FREQUENTLY ASKED PROTOCOLS</h3>
                                 <Accordion type="single" collapsible className="w-full">
                                     {faqs.map((faq, index) => (
-                                        <AccordionItem key={index} value={`item-${index}`} className="border-white/5">
-                                            <AccordionTrigger className="text-sm font-bold uppercase tracking-widest hover:text-white text-white/60 hover:no-underline py-4">
+                                        <AccordionItem key={index} value={`item-${index}`} className="border-border/50">
+                                            <AccordionTrigger className="text-sm font-bold uppercase tracking-widest hover:text-foreground text-foreground/60 hover:no-underline py-4">
                                                 {faq.question}
                                             </AccordionTrigger>
-                                            <AccordionContent className="text-white/40 text-sm leading-relaxed pb-6">
+                                            <AccordionContent className="text-foreground/40 text-sm leading-relaxed pb-6">
                                                 {faq.answer}
                                             </AccordionContent>
                                         </AccordionItem>
@@ -314,7 +314,7 @@ function ContactFormContent() {
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
                         >
-                            <Card className="bg-white/[0.03] backdrop-blur-3xl border-white/5 rounded-3xl overflow-hidden">
+                            <Card className="bg-foreground/[0.02] backdrop-blur-3xl border-border/50 rounded-3xl overflow-hidden surface-frost">
                                 <CardContent className="p-8 md:p-12">
                                     {isSubmitted ? (
                                         <motion.div
@@ -322,11 +322,11 @@ function ContactFormContent() {
                                             animate={{ opacity: 1, scale: 1 }}
                                             className="text-center py-20"
                                         >
-                                            <div className="w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-8">
-                                                <CheckCircle2 className="h-10 w-10 text-white animate-pulse" />
+                                            <div className="w-20 h-20 rounded-full bg-foreground/5 border border-border flex items-center justify-center mx-auto mb-8">
+                                                <CheckCircle2 className="h-10 w-10 text-foreground animate-pulse" />
                                             </div>
-                                            <h3 className="text-3xl font-black uppercase font-syncopate tracking-tighter mb-4">SIGNAL RECEIVED</h3>
-                                            <p className="text-white/40 font-medium tracking-wide">
+                                            <h3 className="text-3xl font-black uppercase tracking-tighter mb-4">SIGNAL RECEIVED</h3>
+                                            <p className="text-foreground/40 font-medium tracking-wide">
                                                 Transmission successful. Awaiting architect verification.
                                             </p>
                                         </motion.div>
@@ -345,7 +345,7 @@ function ContactFormContent() {
                                                         required
                                                         value={formData.name}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-white/5 border-white/10 focus:border-white/30 text-white placeholder:text-white/10 rounded-xl"
+                                                        className="h-14 bg-background border-border focus:border-secondary text-foreground placeholder:text-foreground/10 rounded-xl"
                                                         placeholder="ENTITY NAME"
                                                     />
                                                 </div>
@@ -360,7 +360,7 @@ function ContactFormContent() {
                                                         required
                                                         value={formData.email}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-white/5 border-white/10 focus:border-white/30 text-white placeholder:text-white/10 rounded-xl"
+                                                        className="h-14 bg-background border-border focus:border-secondary text-foreground placeholder:text-foreground/10 rounded-xl"
                                                         placeholder="SENDER@ACCESS.NODE"
                                                     />
                                                 </div>
@@ -377,7 +377,7 @@ function ContactFormContent() {
                                                         type="text"
                                                         value={formData.company}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-white/5 border-white/10 focus:border-white/30 text-white placeholder:text-white/10 rounded-xl"
+                                                        className="h-14 bg-background border-border focus:border-secondary text-foreground placeholder:text-foreground/10 rounded-xl"
                                                         placeholder="CORPORATE IDENTITY"
                                                     />
                                                 </div>
@@ -391,7 +391,7 @@ function ContactFormContent() {
                                                         type="tel"
                                                         value={formData.phone}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-white/5 border-white/10 focus:border-white/30 text-white placeholder:text-white/10 rounded-xl"
+                                                        className="h-14 bg-background border-border focus:border-secondary text-foreground placeholder:text-foreground/10 rounded-xl"
                                                         placeholder="+[NODE] XXXXX"
                                                     />
                                                 </div>
@@ -406,13 +406,13 @@ function ContactFormContent() {
                                                     name="service"
                                                     value={formData.service}
                                                     onChange={handleChange}
-                                                    className="w-full h-14 rounded-xl border border-white/10 bg-white/5 px-4 text-sm text-white focus:border-white/30 focus:outline-none transition-all appearance-none uppercase font-bold tracking-widest"
+                                                    className="w-full h-14 rounded-xl border border-border bg-background px-4 text-sm text-foreground focus:border-secondary focus:outline-none transition-all appearance-none uppercase font-bold tracking-widest"
                                                 >
-                                                    <option value="" className="bg-zinc-900">SELECT PROTOCOL</option>
-                                                    <option value="strategic-architecture" className="bg-zinc-900">Strategic Architecture Plan</option>
-                                                    <option value="enterprise-intelligence" className="bg-zinc-900">Enterprise Intelligence Plan</option>
-                                                    <option value="infinite-ecosystem" className="bg-zinc-900">Infinite Ecosystem Plan</option>
-                                                    <option value="other" className="bg-zinc-900">Other Inquiries</option>
+                                                    <option value="" className="bg-background">SELECT PROTOCOL</option>
+                                                    <option value="strategic-architecture" className="bg-background">Strategic Architecture Plan</option>
+                                                    <option value="enterprise-intelligence" className="bg-background">Enterprise Intelligence Plan</option>
+                                                    <option value="infinite-ecosystem" className="bg-background">Infinite Ecosystem Plan</option>
+                                                    <option value="other" className="bg-background">Other Inquiries</option>
                                                 </select>
                                             </div>
 
@@ -427,7 +427,7 @@ function ContactFormContent() {
                                                     value={formData.message}
                                                     onChange={handleChange}
                                                     rows={5}
-                                                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-4 text-sm text-white focus:border-white/30 focus:outline-none transition-all resize-none placeholder:text-white/10"
+                                                    className="w-full rounded-xl border border-border bg-background px-4 py-4 text-sm text-foreground focus:border-secondary focus:outline-none transition-all resize-none placeholder:text-foreground/10"
                                                     placeholder="DESCRIBE ARCHITECTURAL REQUIREMENTS..."
                                                 />
                                             </div>
@@ -435,7 +435,7 @@ function ContactFormContent() {
                                              <button
                                                 type="submit"
                                                 disabled={isSubmitting}
-                                                className="btn-institutional w-full h-16 rounded-xl"
+                                                className="btn-institutional w-full h-16 rounded-xl flex items-center justify-center gap-4"
                                             >
                                                 {isSubmitting ? (
                                                     "SYNCING..."

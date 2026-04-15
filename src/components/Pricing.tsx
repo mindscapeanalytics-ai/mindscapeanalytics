@@ -50,7 +50,7 @@ export default function Pricing() {
     return (
         <section id="pricing" className="relative pt-0 pb-32 px-6 overflow-hidden bg-transparent">
             <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-20 border-b border-white/5 pb-10">
+                <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-20 border-b border-border pb-10">
                     <div className="max-w-4xl text-left">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
@@ -58,7 +58,7 @@ export default function Pricing() {
                             viewport={{ once: true, margin: "-50px" }}
                             className="flex items-center gap-3 mb-6"
                         >
-                            <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+                            <div className="w-1.5 h-1.5 bg-foreground/40 rounded-full" />
                             <span className="text-meta">Matrix // Strategic Asset Allocation</span>
                         </motion.div>
                         <motion.h2
@@ -68,11 +68,11 @@ export default function Pricing() {
                             className="fluid-h2"
                         >
                             SCALABLE <br />
-                            <span className="text-white/40">INVESTMENT.</span>
+                            <span className="text-secondary">INVESTMENT.</span>
                         </motion.h2>
                     </div>
 
-                    <div className="hidden lg:block text-right font-mono text-[9px] text-white/40 uppercase tracking-widest leading-relaxed">
+                    <div className="hidden lg:block text-right font-mono text-[9px] text-foreground/40 uppercase tracking-widest leading-relaxed">
                         Allocation: optimized <br />
                         ROI: projected_v4 <br />
                         Contract: node-locked
@@ -87,37 +87,37 @@ export default function Pricing() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ delay: index * 0.1 }}
-                            className={`relative p-10 rounded-xl bg-transparent flex flex-col h-full border transition-all duration-500 hover:bg-transparent hover:scale-[1.02] shadow-2xl group ${tier.popular ? "border-white/20 shadow-white/5" : "border-white/10"
+                            className={`relative p-10 rounded-xl bg-transparent flex flex-col h-full border transition-all duration-500 hover:bg-transparent hover:scale-[1.02] shadow-2xl group ${tier.popular ? "border-foreground/20 shadow-white/5" : "border-border"
                                 }`}
                         >
                             {/* Hover Glow Effect */}
                             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.03),transparent_70%)] pointer-events-none" />
                             {/* --- HUD Elements --- */}
-                            <div className="absolute top-4 left-4 w-3 h-3 border-t border-l border-white/10 group-hover:border-white/30 transition-colors" />
-                            <div className="absolute bottom-4 right-4 w-3 h-3 border-b border-r border-white/10 group-hover:border-white/30 transition-colors" />
+                            <div className="absolute top-4 left-4 w-3 h-3 border-t border-l border-border group-hover:border-white/30 transition-colors" />
+                            <div className="absolute bottom-4 right-4 w-3 h-3 border-b border-r border-border group-hover:border-white/30 transition-colors" />
 
                             {tier.popular && (
-                                <div className="absolute top-6 right-8 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white text-black text-meta shadow-xl">
+                                <div className="absolute top-6 right-8 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-foreground text-background text-meta shadow-xl">
                                     MOST ELITE
                                 </div>
                             )}
 
                             <div className="mb-8">
-                                <h3 className="text-meta mb-5 flex items-center gap-3 group-hover:text-white transition-colors">
-                                    <div className="w-1 h-1 bg-white/20 rounded-full group-hover:bg-white transition-all" />
+                                <h3 className="text-meta mb-5 flex items-center gap-3 group-hover:text-foreground transition-colors">
+                                    <div className="w-1 h-1 bg-foreground/20 rounded-full group-hover:bg-foreground transition-all" />
                                     {tier.name}
                                 </h3>
-                                <div className="text-3xl lg:text-4xl font-black text-white mb-6 uppercase tracking-tight font-sans leading-none group-hover:scale-[1.01] transition-transform origin-left">
+                                <div className="text-3xl lg:text-4xl font-black text-foreground mb-6 uppercase tracking-tight font-sans leading-none group-hover:scale-[1.01] transition-transform origin-left">
                                     {tier.price}
                                 </div>
-                                <p className="text-white/50 text-sm leading-relaxed font-medium tracking-tight group-hover:text-white/70 transition-colors">{tier.description}</p>
+                                <p className="text-foreground/50 text-sm leading-relaxed font-medium tracking-tight group-hover:text-foreground/70 transition-colors">{tier.description}</p>
                             </div>
 
                             <ul className="space-y-4 mb-10 flex-grow">
                                 {tier.features.map(feature => (
-                                    <li key={feature} className="flex items-center gap-4 text-white/20 text-meta">
-                                        <div className="w-4 h-4 rounded-full border border-white/5 flex items-center justify-center">
-                                            <div className="w-1 h-1 bg-white/20 rounded-full" />
+                                    <li key={feature} className="flex items-center gap-4 text-foreground/20 text-meta">
+                                        <div className="w-4 h-4 rounded-full border border-border flex items-center justify-center">
+                                            <div className="w-1 h-1 bg-foreground/20 rounded-full" />
                                         </div>
                                         {feature}
                                     </li>
@@ -128,8 +128,8 @@ export default function Pricing() {
                                 <button className={cn(
                                     "w-full py-5 rounded-xl text-[10px] font-black uppercase tracking-[0.3em] transition-all flex items-center justify-center gap-3",
                                     tier.popular
-                                        ? "bg-white text-black hover:bg-white/90 hover:scale-[1.02] shadow-xl"
-                                        : "bg-white/5 border border-white/10 text-white/40 hover:bg-white/10 hover:text-white hover:border-white/20"
+                                        ? "bg-foreground text-background hover:bg-foreground/90 hover:scale-[1.02] shadow-xl"
+                                        : "bg-foreground/5 border border-border text-foreground/40 hover:bg-foreground/10 hover:text-foreground hover:border-foreground/20"
                                 )}>
                                     Initiate Contract
                                     <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />

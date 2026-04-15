@@ -8,15 +8,15 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const TechIcon = ({ name, iconSlug, fallbackIcon: FallbackIcon }: { name: string; iconSlug?: string; fallbackIcon?: any }) => {
     const [imgError, setImgError] = useState(false);
-    const iconUrl = iconSlug ? `https://cdn.simpleicons.org/${iconSlug}/white` : null;
+    const iconUrl = iconSlug ? `https://cdn.simpleicons.org/${iconSlug}/${imgError ? '71717a' : '39b8f7'}` : null;
 
     if (!iconUrl || imgError) {
         return (
-            <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+            <div className="w-10 h-10 rounded-lg bg-foreground/5 border border-border flex items-center justify-center group-hover:bg-foreground/10 transition-colors">
                 {FallbackIcon ? (
-                    <FallbackIcon className="w-5 h-5 text-white/40 group-hover:text-white/80 transition-colors" />
+                    <FallbackIcon className="w-5 h-5 text-foreground/40 group-hover:text-foreground/80 transition-colors" />
                 ) : (
-                    <span className="font-bold text-xs text-white/40 uppercase">
+                    <span className="font-bold text-xs text-foreground/40 uppercase">
                         {name.slice(0, 2)}
                     </span>
                 )}
@@ -100,30 +100,30 @@ export default function TechStackShowcase() {
     if (!hasMounted) return null;
 
     return (
-        <section className="w-full py-24 bg-transparent border-t border-white/5 relative overflow-hidden">
+        <section className="w-full py-24 bg-background border-t border-border relative overflow-hidden institutional-grid">
             <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row items-end justify-between gap-12 mb-16 pb-12 border-b border-white/5">
+                <div className="flex flex-col md:flex-row items-end justify-between gap-12 mb-16 pb-12 border-b border-border">
                     <div className="text-left space-y-4">
-                        <Badge variant="outline" className="bg-white/5 text-white/40 border-white/10 px-4 py-1.5 text-[9px] tracking-[0.4em] uppercase font-black">
+                        <Badge variant="outline" className="bg-foreground/5 text-foreground/40 border-border px-4 py-1.5 text-[9px] tracking-[0.4em] uppercase font-black">
                             Technical_Infrastructure
                         </Badge>
-                        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tightest uppercase italic">
-                            ELITE <span className="text-white/20 not-italic">TEK STACK.</span>
+                        <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tightest uppercase italic">
+                            ELITE <span className="opacity-20 not-italic">TEK STACK.</span>
                         </h2>
-                        <p className="text-[11px] font-black text-white/30 uppercase tracking-widest leading-relaxed max-w-xl">
+                        <p className="text-[11px] font-black text-foreground/30 uppercase tracking-widest leading-relaxed max-w-xl">
                             We bridge the gap between abstract intelligence and industrial-grade execution using leading technologies.
                         </p>
                     </div>
 
                     <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
-                        <div className="flex bg-white/5 p-1 rounded-xl border border-white/5 overflow-x-auto max-w-full">
+                        <div className="flex bg-foreground/5 p-1 rounded-xl border border-border overflow-x-auto max-w-full">
                             {categories.map((cat) => (
                                 <button
                                     key={cat.id}
                                     onClick={() => setActiveCategory(cat.id)}
                                     className={`px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all whitespace-nowrap ${activeCategory === cat.id
-                                            ? 'bg-white text-black shadow-lg'
-                                            : 'text-white/40 hover:text-white hover:bg-white/5'
+                                            ? 'bg-foreground text-background shadow-lg'
+                                            : 'text-foreground/40 hover:text-foreground hover:bg-foreground/5'
                                         }`}
                                 >
                                     {cat.label}
@@ -132,12 +132,12 @@ export default function TechStackShowcase() {
                         </div>
 
                         <div className="relative w-full sm:w-48 group">
-                            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/20 group-focus-within:text-white transition-colors" />
+                            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-foreground/20 group-focus-within:text-foreground transition-colors" />
                             <Input
                                 placeholder="FIND_NODE..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="pl-10 bg-white/5 border-white/10 w-full focus:ring-0 focus:border-white/30 h-11 rounded-xl text-[10px] uppercase font-black tracking-widest transition-all"
+                                className="pl-10 bg-foreground/5 border-border w-full focus:ring-0 focus:border-secondary h-11 rounded-xl text-[10px] uppercase font-black tracking-widest transition-all text-foreground"
                             />
                         </div>
                     </div>
@@ -152,10 +152,10 @@ export default function TechStackShowcase() {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
-                                className="aspect-square bg-white/[0.02] border border-white/[0.05] rounded-2xl hover:bg-white/5 hover:border-white/10 transition-all duration-300 flex flex-col items-center justify-center gap-3 group cursor-default"
+                                className="aspect-square bg-card dark:bg-[#0f0f11] border border-border rounded-2xl hover:bg-foreground/5 hover:border-secondary/30 transition-all duration-300 flex flex-col items-center justify-center gap-3 group cursor-default"
                             >
                                 <TechIcon name={item.name} iconSlug={item.iconSlug} fallbackIcon={item.fallbackIcon} />
-                                <span className="text-[9px] font-black uppercase text-white/20 group-hover:text-white tracking-[0.2em] transition-all text-center px-2">
+                                <span className="text-[9px] font-black uppercase text-foreground/20 group-hover:text-foreground tracking-[0.2em] transition-all text-center px-2">
                                     {item.name}
                                 </span>
                             </motion.div>
@@ -164,7 +164,7 @@ export default function TechStackShowcase() {
                 </div>
 
                 {filteredTech.length === 0 && (
-                    <div className="text-center py-20 text-white/20 flex flex-col items-center gap-3">
+                    <div className="text-center py-20 text-foreground/20 flex flex-col items-center gap-3">
                         <Database size={24} strokeWidth={1} />
                         <p className="text-[10px] font-black uppercase tracking-[0.3em]">No matching nodes identified.</p>
                     </div>

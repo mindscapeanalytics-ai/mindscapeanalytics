@@ -5,6 +5,7 @@ import { CartProvider } from "@/contexts/CartContext";
 import CinematicBackground from "@/components/CinematicBackground";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ChatWidget from "@/components/ChatWidget";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -152,6 +153,8 @@ const jsonLd = {
   ]
 }
 
+import PersistentHUD from "@/components/PersistentHUD";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -168,10 +171,18 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <CartProvider>
-          <CinematicBackground />
-          {children}
-          <ChatWidget />
-          {process.env.VERCEL && <SpeedInsights />}
+          <ThemeProvider
+            attribute="class"
+            forcedTheme="dark"
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
+            <CinematicBackground />
+            {children}
+            <ChatWidget />
+            {process.env.VERCEL && <SpeedInsights />}
+          </ThemeProvider>
         </CartProvider>
       </body>
     </html>

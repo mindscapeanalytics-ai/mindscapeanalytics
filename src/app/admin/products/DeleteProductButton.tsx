@@ -30,7 +30,7 @@ export default function DeleteProductButton({ id }: { id: string }) {
         <button
             onClick={handleDelete}
             disabled={isPending}
-            className={`p-2.5 bg-white/5 hover:bg-red-500/10 hover:text-red-400 rounded-xl border border-white/5 transition-all outline-none ${isPending ? "opacity-50 cursor-not-allowed" : ""
+            className={`p-2.5 bg-foreground/5 hover:bg-red-500/10 hover:text-red-400 rounded-xl border border-border transition-all outline-none ${isPending ? "opacity-50 cursor-not-allowed" : ""
                 }`}
             title="Delete product"
         >

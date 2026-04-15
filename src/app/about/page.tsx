@@ -121,19 +121,20 @@ const trustFactors = [
 
 export default function AboutPage() {
     return (
-        <div className="min-h-screen bg-transparent text-white relative">
+        <div className="min-h-screen bg-transparent text-foreground relative">
             <Navbar />
 
             {/* --- Industrial Hero Section --- */}
-            <section className="relative pt-32 md:pt-48 pb-16 md:pb-32 overflow-hidden">
+            <section className="relative pt-32 md:pt-48 pb-16 md:pb-32 overflow-hidden institutional-grid">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="flex flex-col items-center text-center space-y-8 md:space-y-12">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
+                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-foreground/5 border border-border backdrop-blur-md"
                         >
-                            <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
+                            <div className="w-2 h-2 bg-foreground rounded-full animate-pulse shadow-[0_0_8px_hsl(var(--foreground)/0.6)]" />
                             <span className="text-meta">Registry // ELITE_SYSTEM_V4</span>
                         </motion.div>
 
@@ -142,22 +143,22 @@ export default function AboutPage() {
                             animate={{ opacity: 1, y: 0 }}
                             className="fluid-h1"
                         >
-                            ABOUT <br /> <span className="text-white/40">MINDSCAPE.</span>
+                            ABOUT <br /> <span className="text-secondary font-black drop-shadow-[0_0_15px_rgba(var(--secondary),0.3)]">MINDSCAPE.</span>
                         </motion.h1>
 
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="max-w-4xl border-t border-white/10 pt-10 md:pt-12 w-full mx-auto px-4"
+                            className="max-w-4xl border-t border-border pt-10 md:pt-12 w-full mx-auto px-4"
                         >
-                            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/60 font-medium tracking-tight leading-snug uppercase text-center max-w-3xl mx-auto">
-                                WE HELP BUSINESSES SCALE USING <span className="text-white font-black not-italic drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]">INTELLIGENT SYSTEMS</span> - NOT MANUAL EFFORT.
+                            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-foreground/60 font-medium tracking-tight leading-snug uppercase text-center max-w-3xl mx-auto">
+                                WE HELP BUSINESSES SCALE USING <span className="text-foreground font-black not-italic drop-shadow-[0_0_15px_rgba(var(--foreground),0.15)]">INTELLIGENT SYSTEMS</span> - NOT MANUAL EFFORT.
                             </p>
                             <div className="flex items-center justify-center gap-6 mt-10 md:mt-12 opacity-20">
-                                <div className="h-[1px] w-12 md:w-24 bg-gradient-to-r from-transparent to-white" />
+                                <div className="h-[1px] w-12 md:w-24 bg-gradient-to-r from-transparent to-foreground" />
                                 <span className="text-meta whitespace-nowrap">Scale_Protocol_Active</span>
-                                <div className="h-[1px] w-12 md:w-24 bg-gradient-to-l from-transparent to-white" />
+                                <div className="h-[1px] w-12 md:w-24 bg-gradient-to-l from-transparent to-foreground" />
                             </div>
                         </motion.div>
                     </div>
@@ -167,7 +168,7 @@ export default function AboutPage() {
             {/* --- Next-Gen Company Overview --- */}
             <section className="py-24 relative overflow-hidden">
                 <div className="container mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-20 items-start max-w-7xl mx-auto border-y border-white/5 py-32">
+                    <div className="grid lg:grid-cols-2 gap-20 items-start max-w-7xl mx-auto border-y border-border py-32">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -175,18 +176,18 @@ export default function AboutPage() {
                             className="space-y-8"
                         >
                             <div className="flex items-center gap-3">
-                                <div className="w-1.5 h-1.5 bg-white/60 rounded-full" />
+                                <div className="w-1.5 h-1.5 bg-foreground/60 rounded-full" />
                                 <span className="text-meta opacity-40">Section // INSTITUTIONAL_OVERVIEW</span>
                             </div>
                             <h2 className="fluid-h2">
-                                NEXT-GENERATION <br /> <span className="text-white/40">AI & DATA ENGINEERING.</span>
+                                NEXT-GENERATION <br /> <span className="text-secondary">AI & DATA ENGINEERING.</span>
                             </h2>
                             <div className="space-y-6">
-                                <p className="text-lg text-white/60 leading-relaxed font-medium max-w-xl">
+                                <p className="text-lg text-foreground/60 leading-relaxed font-medium max-w-xl">
                                     Mindscape Analytics is a next-generation AI and Software Development company specializing in intelligent automation, AI agents, full-stack systems, and scalable cloud infrastructure.
                                 </p>
 
-                                <p className="text-lg text-white font-black leading-relaxed max-w-xl border-l-2 border-white/20 pl-6 py-2">
+                                <p className="text-lg text-foreground font-black leading-relaxed max-w-xl border-l-2 border-border pl-6 py-2">
                                     To help businesses scale using intelligent systems, not manual effort.
                                 </p>
                             </div>
@@ -196,20 +197,20 @@ export default function AboutPage() {
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="p-12 rounded-[3.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl relative overflow-hidden"
+                            className="p-12 rounded-[3.5rem] bg-foreground/[0.02] border border-border backdrop-blur-xl relative overflow-hidden surface-frost"
                         >
                             <div className="absolute top-6 right-8 opacity-10 font-mono text-[10px] uppercase font-black tracking-widest">DIAG_v88</div>
-                            <h3 className="text-xl font-black uppercase text-white mb-8 tracking-tight font-sans">What Makes Us Different?</h3>
+                            <h3 className="text-xl font-black uppercase text-foreground mb-8 tracking-tight font-sans">What Makes Us Different?</h3>
                             <div className="space-y-4">
                                 {differences.map((diff, i) => (
                                     <div key={i} className="flex items-center gap-4 group">
-                                        <div className="w-1.5 h-1.5 rounded-full border border-white/40 group-hover:bg-white group-hover:scale-125 transition-all" />
-                                        <span className="text-[11px] font-mono font-black text-white/30 uppercase tracking-[0.1em] group-hover:text-white transition-colors">{diff}</span>
+                                        <div className="w-1.5 h-1.5 rounded-full border border-foreground/40 group-hover:bg-foreground group-hover:scale-125 transition-all outline outline-offset-2 outline-transparent group-hover:outline-foreground/20" />
+                                        <span className="text-[11px] font-mono font-black text-foreground/30 uppercase tracking-[0.1em] group-hover:text-foreground transition-colors">{diff}</span>
                                     </div>
                                 ))}
                             </div>
-                            <div className="mt-12 pt-8 border-t border-white/5">
-                                <p className="text-[10px] font-mono font-black text-white/20 uppercase tracking-[0.2em]">
+                            <div className="mt-12 pt-8 border-t border-border">
+                                <p className="text-[10px] font-mono font-black text-foreground/20 uppercase tracking-[0.2em]">
                                     We focus on long-term partnership — not one-time delivery.
                                 </p>
                             </div>
@@ -233,7 +234,7 @@ export default function AboutPage() {
                         <span className="text-meta">SYSTEM_CAPABILITIES // READOUT</span>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/5 rounded-2xl overflow-hidden shadow-2xl">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border rounded-2xl overflow-hidden shadow-2xl surface-frost">
                         {expertise.map((exp, index) => (
                             <motion.div
                                 key={exp.id}
@@ -241,11 +242,11 @@ export default function AboutPage() {
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group p-10 bg-black/40 backdrop-blur-md hover:bg-white/[0.04] transition-all relative min-h-[220px] flex flex-col justify-center gap-6"
+                                className="group p-10 bg-background/40 backdrop-blur-md hover:bg-foreground/[0.04] transition-all relative min-h-[220px] flex flex-col justify-center gap-6"
                             >
-                                <div className="absolute top-4 left-6 text-[8px] font-mono text-white/10 group-hover:text-white/40 tracking-[0.4em] font-black uppercase">NODE_0x{parseInt(exp.id).toString(16).toUpperCase()}</div>
-                                <h3 className="text-lg font-black text-white/60 group-hover:text-white transition-colors uppercase tracking-tight font-syncopate leading-tight">{exp.title}</h3>
-                                <div className="w-8 h-px bg-white/5 group-hover:w-24 transition-all" />
+                                <div className="absolute top-4 left-6 text-[8px] font-mono text-foreground/10 group-hover:text-foreground/40 tracking-[0.4em] font-black uppercase">NODE_0x{parseInt(exp.id).toString(16).toUpperCase()}</div>
+                                <h3 className="text-lg font-black text-foreground/60 group-hover:text-foreground transition-colors uppercase tracking-tight font-syncopate leading-tight">{exp.title}</h3>
+                                <div className="w-8 h-px bg-foreground/5 group-hover:w-24 transition-all" />
                             </motion.div>
                         ))}
                     </div>
@@ -253,16 +254,16 @@ export default function AboutPage() {
             </section>
 
             {/* --- Vision Section --- */}
-            <section className="py-24 relative overflow-hidden bg-white text-black">
-                <div className="absolute top-0 left-0 w-full h-[1px] bg-black/10" />
+            <section className="py-24 relative overflow-hidden bg-foreground text-background">
+                <div className="absolute top-0 left-0 w-full h-[1px] bg-background/10" />
                 <div className="container mx-auto px-6">
                     <div className="max-w-4xl mx-auto text-center space-y-8">
                         <span className="text-meta opacity-40">Section // MISSION_DIRECTIVE</span>
-                        <h2 className="fluid-h2">
-                            OUR <span className="text-black/40">VISION.</span>
+                        <h2 className="fluid-h2 text-background">
+                            OUR <span className="text-secondary drop-shadow-[0_0_15px_rgba(var(--secondary),0.3)]">VISION.</span>
                         </h2>
                         <p className="text-xl md:text-2xl font-black uppercase tracking-tight leading-relaxed max-w-3xl mx-auto">
-                            To become a global AI-first technology partner helping businesses transition from manual operations to <span className="underline underline-offset-8 decoration-4">autonomous AI-driven systems.</span>
+                            To become a global AI-first technology partner helping businesses transition from manual operations to <span className="underline underline-offset-8 decoration-4 decoration-secondary text-secondary">autonomous AI-driven systems.</span>
                         </p>
                     </div>
                 </div>
@@ -290,40 +291,40 @@ export default function AboutPage() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                             >
-                                <div className="p-8 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-all duration-700 group relative overflow-hidden backdrop-blur-md">
+                                <div className="p-8 rounded-2xl bg-foreground/[0.03] border border-border hover:border-foreground/10 transition-all duration-700 group relative overflow-hidden backdrop-blur-md surface-frost">
                                     <Link href={(member as any).href || "#"} className={cn("block", !(member as any).href && "cursor-default")}>
-                                        <div className="aspect-[4/5] relative rounded-xl overflow-hidden mb-8 border border-white/5 shadow-2xl">
+                                        <div className="aspect-[4/5] relative rounded-xl overflow-hidden mb-8 border border-border shadow-2xl group-hover:shadow-[0_20px_50px_rgba(var(--foreground),0.1)] transition-all">
                                             <Image
                                                 src={member.image}
                                                 alt={member.name}
                                                 fill
-                                                className="object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                                                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
                                             />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
                                         </div>
                                     </Link>
                                     <div className="space-y-4">
                                         <div className="flex justify-between items-end">
                                             <div>
                                                 <Link href={(member as any).href || "#"} className={cn(!(member as any).href && "cursor-default")}>
-                                                    <h3 className="text-xl font-black uppercase font-syncopate tracking-tighter text-white/80 group-hover:text-white transition-colors">{member.name}</h3>
+                                                    <h3 className="text-xl font-black uppercase font-syncopate tracking-tighter text-foreground/80 group-hover:text-foreground transition-colors">{member.name}</h3>
                                                 </Link>
-                                                <p className="text-[10px] font-black text-white/20 group-hover:text-white/40 uppercase tracking-[0.3em] mt-2 transition-colors">{member.role}</p>
+                                                <p className="text-[10px] font-black text-foreground/20 group-hover:text-foreground/40 uppercase tracking-[0.3em] mt-2 transition-colors">{member.role}</p>
                                             </div>
                                             <div className="flex gap-2 opacity-20 group-hover:opacity-100 transition-opacity">
                                                 {member.linkedin && (
-                                                    <a href={member.linkedin} target="_blank" className="p-2 rounded-lg bg-white/5 text-white/60 hover:text-white transition-colors">
+                                                    <a href={member.linkedin} target="_blank" className="p-2 rounded-lg bg-foreground/5 text-foreground/60 hover:text-foreground transition-colors">
                                                         <Linkedin className="h-4 w-4" />
                                                     </a>
                                                 )}
                                                 {member.email && (
-                                                    <a href={member.email} className="p-2 rounded-lg bg-white/5 text-white/60 hover:text-white transition-colors">
+                                                    <a href={member.email} className="p-2 rounded-lg bg-foreground/5 text-foreground/60 hover:text-foreground transition-colors">
                                                         <Mail className="h-4 w-4" />
                                                     </a>
                                                 )}
                                             </div>
                                         </div>
-                                        <p className="text-white/40 text-[11px] font-medium leading-relaxed group-hover:text-white/60 transition-colors uppercase tracking-tight">
+                                        <p className="text-foreground/40 text-[11px] font-medium leading-relaxed group-hover:text-foreground/60 transition-colors uppercase tracking-tight">
                                             {member.bio}
                                         </p>
                                     </div>
@@ -335,7 +336,7 @@ export default function AboutPage() {
             </section>
 
             {/* --- Journey (Timeline) --- */}
-            <section className="py-32 bg-transparent border-t border-white/5">
+            <section className="py-32 bg-transparent border-t border-border">
                 <div className="container mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -349,7 +350,7 @@ export default function AboutPage() {
 
                     <div className="max-w-4xl mx-auto space-y-20 relative">
                         {/* Center Line */}
-                        <div className="absolute top-0 bottom-0 left-[20px] md:left-1/2 w-[1px] bg-white opacity-10" />
+                        <div className="absolute top-0 bottom-0 left-[20px] md:left-1/2 w-[1px] bg-foreground opacity-10" />
 
                         {timeline.map((item, index) => (
                             <motion.div
@@ -360,12 +361,12 @@ export default function AboutPage() {
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 className={`flex flex-col md:flex-row gap-8 items-start relative ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
                             >
-                                <div className="absolute left-[16px] md:left-1/2 -ml-[4px] w-2 h-2 rounded-full bg-white z-20" />
+                                <div className="absolute left-[16px] md:left-1/2 -ml-[4px] w-2 h-2 rounded-full bg-foreground z-20" />
                                 <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-12">
                                     <div className={`space-y-4 ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
-                                        <span className="text-4xl font-black text-white/20 font-syncopate leading-none">{item.year}</span>
-                                        <h4 className="text-xl font-black uppercase tracking-tight text-white">{item.title}</h4>
-                                        <p className="text-white/50 text-sm font-medium leading-relaxed max-w-sm ml-0 mr-auto md:ml-auto md:mr-0">
+                                        <span className="text-4xl font-black text-foreground/20 font-syncopate leading-none">{item.year}</span>
+                                        <h4 className="text-xl font-black uppercase tracking-tight text-foreground">{item.title}</h4>
+                                        <p className="text-foreground/50 text-sm font-medium leading-relaxed max-w-sm ml-0 mr-auto md:ml-auto md:mr-0">
                                             {item.description}
                                         </p>
                                     </div>
@@ -378,28 +379,28 @@ export default function AboutPage() {
             </section>
 
             {/* --- Trust & Business Model --- */}
-            <section className="py-24 border-t border-white/5">
+            <section className="py-24 border-t border-border">
                 <div className="container mx-auto px-6">
                     <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 max-w-7xl mx-auto">
                         {/* Why Trust Us */}
-                        <div className="space-y-12 bg-white/[0.03] p-12 rounded-[3.5rem] border border-white/10 backdrop-blur-xl">
-                            <h2 className="fluid-h2">WHY TRUST US?</h2>
+                        <div className="space-y-12 bg-foreground/[0.02] p-12 rounded-[3.5rem] border border-border backdrop-blur-xl surface-frost">
+                            <h2 className="fluid-h2 text-foreground">WHY TRUST US?</h2>
                             <div className="space-y-6">
                                 {trustFactors.map((factor, i) => (
-                                    <div key={i} className="group flex flex-col gap-1 border-b border-white/5 pb-6 last:border-0">
-                                        <span className="text-[10px] font-mono font-black text-white/20 group-hover:text-white transition-colors uppercase tracking-[0.2em]">{factor.title}</span>
-                                        <p className="text-[11px] text-white/10 group-hover:text-white/40 transition-colors uppercase tracking-widest">{factor.detail}</p>
+                                    <div key={i} className="group flex flex-col gap-1 border-b border-border pb-6 last:border-0">
+                                        <span className="text-[10px] font-mono font-black text-foreground/20 group-hover:text-foreground transition-colors uppercase tracking-[0.2em]">{factor.title}</span>
+                                        <p className="text-[11px] text-foreground/10 group-hover:text-foreground/40 transition-colors uppercase tracking-widest">{factor.detail}</p>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
                         {/* Managed Infographic */}
-                        <div className="p-12 lg:p-24 rounded-[3.5rem] bg-white text-black flex flex-col justify-between overflow-hidden relative group">
-                            <div className="absolute inset-0 z-0 opacity-5 bg-[url('/grid.svg')] bg-[length:50px_50px]" />
+                        <div className="p-12 lg:p-24 rounded-[3.5rem] bg-foreground text-background flex flex-col justify-between overflow-hidden relative group">
+                            <div className="absolute inset-0 z-0 opacity-5 bg-[url('/grid.svg')] bg-[length:50px_50px] invert group-hover:invert-0 transition-all" />
                             <div className="relative z-10 space-y-12">
                                 <span className="text-meta opacity-40">Managed_Subscription_Logic</span>
-                                <h2 className="fluid-h2">
+                                <h2 className="fluid-h2 text-background">
                                     WE DON'T JUST DELIVER. <br /> WE <span className="opacity-50">OPTIMIZE.</span>
                                 </h2>
                                 <p className="text-lg font-medium max-w-xl opacity-60">
@@ -418,7 +419,7 @@ export default function AboutPage() {
             </section>
 
             {/* Stats Section - Refined */}
-            <section className="section-spacing bg-transparent border-t border-white/5">
+            <section className="section-spacing bg-transparent border-t border-border">
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
                         {[
@@ -435,12 +436,12 @@ export default function AboutPage() {
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 className="text-center group"
                             >
-                                <div className="text-5xl md:text-7xl font-black mb-4 text-white font-syncopate leading-none tracking-tighter group-hover:scale-110 transition-transform">
+                                <div className="text-5xl md:text-7xl font-black mb-4 text-foreground font-syncopate leading-none tracking-tighter group-hover:scale-110 transition-transform">
                                     {stat.value}
                                 </div>
-                                <div className="text-white/20 text-[10px] font-black uppercase tracking-[0.4em] group-hover:text-white transition-colors">
+                                <div className="text-foreground/20 text-[10px] font-black uppercase tracking-[0.4em] group-hover:text-foreground transition-colors">
                                     {stat.label}
-                                    <span className="block mt-1 text-white/10 group-hover:text-white/20">{stat.sub}</span>
+                                    <span className="block mt-1 text-foreground/10 group-hover:text-foreground/20">{stat.sub}</span>
                                 </div>
                             </motion.div>
                         ))}

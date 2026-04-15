@@ -88,16 +88,16 @@ function TeamCard({ member, index }: { member: typeof team[0]; index: number }) 
                 ref={cardRef}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className="relative rounded-2xl bg-transparent border border-white/5 overflow-hidden transition-all duration-500 will-change-transform group-hover:border-white/20 shadow-2xl"
+                className="relative rounded-2xl bg-transparent border border-border overflow-hidden transition-all duration-500 will-change-transform group-hover:border-foreground/20 shadow-2xl"
                 style={{ transformStyle: 'preserve-3d' }}
             >
                 {/* --- HUD Elements --- */}
-                <div className="absolute top-4 left-4 w-3 h-3 border-t border-l border-white/10 z-20 group-hover:border-white/30 transition-colors" />
-                <div className="absolute top-4 right-4 w-3 h-3 border-t border-r border-white/10 z-20 group-hover:border-white/30 transition-colors" />
+                <div className="absolute top-4 left-4 w-3 h-3 border-t border-l border-border z-20 group-hover:border-white/30 transition-colors" />
+                <div className="absolute top-4 right-4 w-3 h-3 border-t border-r border-border z-20 group-hover:border-white/30 transition-colors" />
 
                 <div className="absolute top-1/2 left-2 flex flex-col gap-1 items-center opacity-5 z-20 font-mono">
                     <span className="text-[8px] vertical-text py-2">MEMBER_ID:00{index + 1}</span>
-                    <div className="w-[1px] h-8 bg-white" />
+                    <div className="w-[1px] h-8 bg-foreground" />
                 </div>
                 <div className="aspect-[3/4] relative overflow-hidden">
                     <div className="w-full h-full transition-transform duration-700 group-hover:scale-105">
@@ -113,28 +113,28 @@ function TeamCard({ member, index }: { member: typeof team[0]; index: number }) 
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
 
                     <div className="absolute bottom-6 left-6 right-6 z-20">
-                        <h3 className="text-2xl font-black text-white tracking-tighter uppercase font-sans transition-colors leading-none">{member.name}</h3>
+                        <h3 className="text-2xl font-black text-foreground tracking-tighter uppercase font-sans transition-colors leading-none">{member.name}</h3>
                         <div className="flex items-center gap-3 mt-3">
-                            <div className="w-1 h-1 bg-white/40 rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
-                            <p className="text-[10px] font-mono uppercase text-white/20">{member.role}</p>
+                            <div className="w-1 h-1 bg-foreground/40 rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
+                            <p className="text-[10px] font-mono uppercase text-foreground/20">{member.role}</p>
                         </div>
                     </div>
                 </div>
 
                 <div className="p-6">
-                    <p className="text-white/40 text-[13px] leading-relaxed mb-5 group-hover:text-white/60 transition-colors line-clamp-3">
+                    <p className="text-foreground/40 text-[13px] leading-relaxed mb-5 group-hover:text-foreground/60 transition-colors line-clamp-3">
                         {member.bio}
                     </p>
                     <div className="flex gap-4">
                         <a
                             href={member.linkedin}
-                            className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/20 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
+                            className="w-10 h-10 rounded-xl bg-foreground/5 border border-border flex items-center justify-center text-foreground/20 hover:text-foreground hover:bg-foreground/10 hover:border-foreground/20 transition-all"
                         >
                             <Linkedin className="w-4 h-4" />
                         </a>
                         <a
                             href={member.email}
-                            className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/20 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
+                            className="w-10 h-10 rounded-xl bg-foreground/5 border border-border flex items-center justify-center text-foreground/20 hover:text-foreground hover:bg-foreground/10 hover:border-foreground/20 transition-all"
                         >
                             <Mail className="w-4 h-4" />
                         </a>
@@ -188,13 +188,13 @@ export default function Team() {
     return (
         <section ref={sectionRef} id="team" className="relative pt-0 pb-32 overflow-hidden bg-transparent">
             {/* Parallax background accent removed for performance */}
-            <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-white/[0.03] blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-foreground/[0.03] blur-[120px] rounded-full pointer-events-none" />
 
             <div className="relative z-10 w-full">
                 <div className="mb-16 px-6 md:px-12">
-                    <h2 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white font-sans leading-[0.85]">
+                    <h2 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-foreground font-sans leading-[0.85]">
                         THE{" "}
-                        <span className="text-white/30">
+                        <span className="text-foreground/30">
                             ARCHITECTS.
                         </span>
                     </h2>

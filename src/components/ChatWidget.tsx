@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Bot, User, ArrowRight, MessageCircle, Cpu } from "lucide-react";
 import Link from "next/link";
@@ -57,6 +58,15 @@ const RESPONSES = [
     },
 ];
 
+const QuickAction = ({ label, onClick }: { label: string, onClick: () => void }) => (
+    <button
+        onClick={onClick}
+        className="text-[9px] font-black uppercase tracking-widest text-foreground/40 border border-border rounded-full px-4 py-2 hover:bg-foreground/10 hover:text-foreground transition-all text-left whitespace-nowrap active:scale-95"
+    >
+        {label}
+    </button>
+);
+
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<Message[]>([
@@ -108,7 +118,6 @@ export default function ChatWidget() {
             });
 
             if (!response.ok) throw new Error("Uplink timeout");
-
             const data = await response.json();
 
             if (data.content) {
@@ -129,15 +138,6 @@ export default function ChatWidget() {
         }
     };
 
-    const QuickAction = ({ label, onClick }: { label: string, onClick: () => void }) => (
-        <button
-            onClick={onClick}
-            className="text-[9px] font-black uppercase tracking-widest text-white/40 border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:text-white transition-all text-left whitespace-nowrap active:scale-95"
-        >
-            {label}
-        </button>
-    );
-
     return (
         <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[100] flex flex-col items-end pointer-events-none">
 
@@ -148,37 +148,39 @@ export default function ChatWidget() {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-                        className="mb-4 w-[calc(100vw-32px)] sm:w-[420px] bg-[#0a0a0b]/98 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col pointer-events-auto relative group"
+                        className="mb-4 w-[calc(100vw-32px)] sm:w-[420px] bg-background/98 dark:bg-[#0a0a0b]/98 backdrop-blur-2xl border border-border rounded-[2.5rem] shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col pointer-events-auto relative group"
                         style={{ height: "min(700px, calc(100vh - 100px))" }}
                     >
-                        {/* Subtle inner glow */}
                         <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
-                        {/* Header */}
-                        <div className="w-full flex items-center justify-between p-6 border-b border-white/5 bg-white/[0.02]">
+                        <div className="w-full flex items-center justify-between p-6 border-b border-border bg-foreground/[0.02]">
                             <div className="flex items-center gap-4">
                                 <div className="relative">
-                                    <div className="p-2.5 bg-white/10 rounded-2xl border border-white/10">
-                                        <Bot size={20} className="text-white/80" />
+                                    <div className="w-10 h-10 rounded-full border border-border overflow-hidden bg-zinc-950 shadow-inner">
+                                        <Image 
+                                            src="/images/chatbot.png" 
+                                            alt="Mindscape AI" 
+                                            fill 
+                                            className="object-contain p-1" 
+                                        />
                                     </div>
-                                    <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-[#0a0a0b] animate-pulse" />
+                                    <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-[#0a0a0b] animate-pulse" />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Mindscape_Intelligence</span>
-                                    <span className="text-[8px] font-black uppercase tracking-widest text-white/30 flex items-center gap-2 mt-0.5">
+                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground">Mindscape_Intelligence</span>
+                                    <span className="text-[8px] font-black uppercase tracking-widest text-foreground/30 flex items-center gap-2 mt-0.5">
                                         v2.4 // SECURE_UPLINK
                                     </span>
                                 </div>
                             </div>
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="p-3 text-white/20 hover:text-white hover:bg-white/5 rounded-2xl transition-all"
+                                className="p-3 text-foreground/20 hover:text-foreground hover:bg-foreground/5 rounded-2xl transition-all"
                             >
                                 <X size={20} />
                             </button>
                         </div>
 
-                        {/* Messages Area */}
                         <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar pb-32">
                             {messages.map((msg) => (
                                 <motion.div
@@ -190,13 +192,20 @@ export default function ChatWidget() {
                                     <div className={`flex gap-4 max-w-[90%] ${msg.type === "user" ? "flex-row-reverse" : "flex-row"}`}>
                                         <div className="flex-shrink-0 mt-1">
                                             <div className={cn(
-                                                "w-8 h-8 rounded-xl flex items-center justify-center border transition-colors",
-                                                msg.type === "user" ? "bg-white/5 border-white/10" : "bg-white border-white"
+                                                "w-8 h-8 rounded-full flex items-center justify-center border transition-colors overflow-hidden bg-zinc-950",
+                                                msg.type === "user" ? "bg-foreground/5 border-border" : "border-white/10 shadow-lg"
                                             )}>
                                                 {msg.type === "user" ? (
-                                                    <User size={14} className="text-white/60" />
+                                                    <User size={14} className="text-foreground/60" />
                                                 ) : (
-                                                    <Cpu size={14} className="text-black" />
+                                                    <div className="relative w-full h-full">
+                                                        <Image 
+                                                            src="/images/chatbot.png" 
+                                                            alt="Agent" 
+                                                            fill 
+                                                            className="object-contain p-1" 
+                                                        />
+                                                    </div>
                                                 )}
                                             </div>
                                         </div>
@@ -204,18 +213,17 @@ export default function ChatWidget() {
                                             className={cn(
                                                 "p-4 rounded-2xl text-[12px] leading-relaxed font-medium whitespace-pre-wrap shadow-xl",
                                                 msg.type === "user"
-                                                    ? "bg-white/5 border border-white/10 text-white rounded-tr-none uppercase tracking-tight"
-                                                    : "bg-white text-black rounded-tl-none tracking-tight font-semibold"
+                                                    ? "bg-foreground/5 border border-border text-foreground rounded-tr-none uppercase tracking-tight"
+                                                    : "bg-foreground text-background rounded-tl-none tracking-tight font-semibold"
                                             )}
                                         >
                                             {typeof msg.content === 'string' ? (
                                                 msg.content.split('\n').map((line, i) => {
                                                     const formattedLine = line.replace(/\*\*(.*?)\*\*/g, '<b class="font-black">$1</b>');
                                                     if (line.trim().startsWith('•') || line.trim().startsWith('-')) {
-                                                        const bulletContent = line.trim().substring(1).trim();
                                                         return (
                                                             <div key={i} className="flex gap-3 items-start my-1.5 pl-1">
-                                                                <span className={cn("mt-1.5 w-1 h-1 rounded-full", msg.type === "user" ? "bg-white/40" : "bg-black/30")} />
+                                                                <span className={cn("mt-1.5 w-1 h-1 rounded-full", msg.type === "user" ? "bg-foreground/40" : "bg-black/30")} />
                                                                 <span dangerouslySetInnerHTML={{ __html: formattedLine.replace(/^[•-]\s*/, '') }} />
                                                             </div>
                                                         );
@@ -236,13 +244,18 @@ export default function ChatWidget() {
                                     className="flex w-full justify-start mt-4"
                                 >
                                     <div className="flex gap-4">
-                                        <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center border border-white animate-pulse">
-                                            <Bot size={14} className="text-black" />
+                                        <div className="w-8 h-8 rounded-full bg-zinc-950 flex items-center justify-center border border-white/10 animate-pulse overflow-hidden relative shadow-lg">
+                                            <Image 
+                                                src="/images/chatbot.png" 
+                                                alt="Agent" 
+                                                fill 
+                                                className="object-contain p-1 opacity-80" 
+                                            />
                                         </div>
-                                        <div className="bg-white/5 border border-white/5 px-4 py-3 rounded-2xl rounded-tl-none flex gap-1.5 items-center">
-                                            <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.3s]" />
-                                            <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:-0.15s]" />
-                                            <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" />
+                                        <div className="bg-foreground/5 border border-border px-4 py-3 rounded-2xl rounded-tl-none flex gap-1.5 items-center">
+                                            <span className="w-1.5 h-1.5 bg-foreground rounded-full animate-bounce [animation-delay:-0.3s]" />
+                                            <span className="w-1.5 h-1.5 bg-foreground rounded-full animate-bounce [animation-delay:-0.15s]" />
+                                            <span className="w-1.5 h-1.5 bg-foreground rounded-full animate-bounce" />
                                         </div>
                                     </div>
                                 </motion.div>
@@ -250,16 +263,13 @@ export default function ChatWidget() {
                             <div ref={messagesEndRef} />
                         </div>
 
-                        {/* Floating Action Bar (Sticky-bottom behavior) */}
                         <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b] to-transparent pt-12">
-                            {/* Suggestions */}
                             <div className="flex overflow-x-auto gap-2 mb-4 no-scrollbar pb-2 mask-edges-faint">
                                 <QuickAction label="Our Services" onClick={() => handleSend(undefined, "Our Services")} />
                                 <QuickAction label="Shop Assets" onClick={() => handleSend(undefined, "Shop Assets")} />
                                 <QuickAction label="Pricing" onClick={() => handleSend(undefined, "Pricing Models")} />
                             </div>
 
-                            {/* Interaction Area */}
                             <div className="flex flex-col gap-4">
                                 <form onSubmit={handleSend} className="flex gap-3">
                                     <input
@@ -268,18 +278,17 @@ export default function ChatWidget() {
                                         onChange={(e) => setInputValue(e.target.value)}
                                         disabled={isLoading}
                                         placeholder={isLoading ? "ARCHITECTING..." : "TRANSMIT QUERY..."}
-                                        className="flex-1 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-[11px] text-white placeholder:text-white/20 font-black tracking-widest focus:outline-none focus:border-white/30 transition-all uppercase disabled:opacity-50"
+                                        className="flex-1 bg-foreground/5 border border-border rounded-2xl px-6 py-4 text-[11px] text-foreground placeholder:text-foreground/20 font-black tracking-widest focus:outline-none focus:border-white/30 transition-all uppercase disabled:opacity-50"
                                     />
                                     <button
                                         type="submit"
                                         disabled={!inputValue.trim() || isLoading}
-                                        className="px-6 bg-white text-black rounded-2xl hover:bg-white/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0 flex items-center justify-center active:scale-95"
+                                        className="px-6 bg-foreground text-background rounded-2xl hover:bg-foreground/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0 flex items-center justify-center active:scale-95"
                                     >
                                         <Send size={18} />
                                     </button>
                                 </form>
 
-                                {/* System Shortcuts */}
                                 <div className="grid grid-cols-2 gap-3">
                                     <a
                                         href="https://wa.me/13072106155"
@@ -293,7 +302,7 @@ export default function ChatWidget() {
                                     <Link
                                         href="/contact"
                                         onClick={() => setIsOpen(false)}
-                                        className="flex items-center justify-center gap-2.5 py-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-[10px] font-black uppercase tracking-[0.2em] text-white/70 hover:text-white"
+                                        className="flex items-center justify-center gap-2.5 py-3.5 rounded-2xl bg-foreground/5 hover:bg-foreground/10 border border-border transition-all text-[10px] font-black uppercase tracking-[0.2em] text-foreground/70 hover:text-foreground"
                                     >
                                         Contact
                                         <ArrowRight size={14} />
@@ -305,44 +314,82 @@ export default function ChatWidget() {
                 )}
             </AnimatePresence>
 
-            {/* Main Trigger Button */}
-            <motion.button
-                onClick={() => setIsOpen(!isOpen)}
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                whileTap={{ scale: 0.95 }}
-                className={cn(
-                    "w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.6)] transition-all pointer-events-auto border border-white/10 group relative overflow-hidden",
-                    isOpen ? "bg-white/10 text-white" : "bg-white text-black"
-                )}
+            <motion.div 
+                whileHover="hover"
+                className="flex flex-row items-center gap-2 pointer-events-auto mb-4"
             >
-                {/* Background pulse effect */}
-                {!isOpen && (
-                    <span className="absolute inset-0 bg-white opacity-20 animate-ping [animation-duration:3s]" />
-                )}
-
-                <AnimatePresence mode="wait">
-                    {isOpen ? (
+                <AnimatePresence>
+                    {!isOpen && (
                         <motion.div
-                            key="close"
-                            initial={{ opacity: 0, rotate: -90 }}
-                            animate={{ opacity: 1, rotate: 0 }}
-                            exit={{ opacity: 0, rotate: 90 }}
+                            initial={{ opacity: 0, x: 10, scale: 0.9 }}
+                            variants={{
+                                hover: { opacity: 1, x: 0, scale: 1 }
+                            }}
+                            exit={{ opacity: 0, x: 10, scale: 0.9 }}
+                            transition={{ duration: 0.3 }}
+                            className="hidden sm:flex items-center gap-2 bg-background/60 backdrop-blur-md border border-border px-3 py-1.5 rounded-full shadow-xl"
                         >
-                            <X size={28} />
-                        </motion.div>
-                    ) : (
-                        <motion.div
-                            key="open"
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 1.5 }}
-                            className="flex items-center justify-center"
-                        >
-                            <MessageSquare size={32} className="group-hover:scale-110 transition-transform" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+                            <span className="text-[8px] font-black uppercase tracking-[0.2em] text-foreground/80">
+                                Chat Now
+                            </span>
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </motion.button>
+
+                <motion.button
+                    onClick={() => setIsOpen(!isOpen)}
+                    initial={false}
+                    animate={isOpen ? "open" : "closed"}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center outline-none"
+                >
+                    <AnimatePresence mode="wait">
+                        {isOpen ? (
+                            <motion.div
+                                key="close"
+                                initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
+                                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                                exit={{ opacity: 0, scale: 0.5, rotate: 45 }}
+                                className="z-10 flex items-center justify-center bg-foreground rounded-full w-12 h-12 sm:w-14 sm:h-14 shadow-2xl"
+                            >
+                                <X size={24} className="text-secondary" />
+                            </motion.div>
+                        ) : (
+                            <motion.div
+                                key="open"
+                                initial={{ opacity: 0, y: 0 }}
+                                animate={{ 
+                                    opacity: 1, 
+                                    y: [0, -10, 0],
+                                    transition: {
+                                        y: {
+                                            duration: 3,
+                                            repeat: Infinity,
+                                            ease: "easeInOut"
+                                        }
+                                    }
+                                }}
+                                exit={{ opacity: 0, scale: 0.5 }}
+                                className="relative w-full h-full flex items-center justify-center"
+                            >
+                                <div className="absolute inset-0 bg-secondary/20 blur-[30px] rounded-full opacity-40 group-hover:opacity-100 transition-opacity" />
+                                
+                                <div className="relative w-full h-full">
+                                    <Image 
+                                        src="/images/chatbot.png" 
+                                        alt="Mindscape AI Assistant" 
+                                        fill 
+                                        priority
+                                        className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" 
+                                    />
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </motion.button>
+            </motion.div>
         </div>
     );
 }

@@ -71,11 +71,11 @@ function SignInContent() {
     };
 
     return (
-        <div className="min-h-screen bg-transparent text-white selection:bg-white selection:text-black flex items-center justify-center p-6 relative overflow-hidden">
+        <div className="min-h-screen bg-transparent text-foreground selection:bg-foreground selection:text-background flex items-center justify-center p-6 relative overflow-hidden">
             {/* Background Effects */}
             <div className="fixed inset-0 z-0 pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white/5 blur-[120px] rounded-full" />
-                <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-white/[0.03] blur-[100px] rounded-full" />
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-foreground/5 blur-[120px] rounded-full" />
+                <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-foreground/[0.03] blur-[100px] rounded-full" />
                 <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
             </div>
 
@@ -97,18 +97,18 @@ function SignInContent() {
                             />
                         </div>
                         <h1
-                            className="text-[10px] font-black tracking-[0.5em] uppercase text-white/40"
+                            className="text-[10px] font-black tracking-[0.5em] uppercase text-foreground/40"
                         >
-                            SECURE<span className="text-white/20"> // </span>GATEWAY
+                            SECURE<span className="text-foreground/20"> // </span>GATEWAY
                         </h1>
                     </Link>
-                    <p className="text-white/40 text-xs font-black uppercase tracking-[0.3em] mt-4">
+                    <p className="text-foreground/40 text-xs font-black uppercase tracking-[0.3em] mt-4">
                         Secure Authentication Protocol
                     </p>
                 </div>
 
                 {/* Auth Card */}
-                <div className="bg-zinc-900/40 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-10 shadow-2xl">
+                <div className="bg-foreground/5/40 backdrop-blur-3xl border border-border rounded-[2.5rem] p-10 shadow-2xl">
                     <form onSubmit={handleSignIn} className="space-y-6">
                         {error && (
                             <motion.div
@@ -120,7 +120,7 @@ function SignInContent() {
                                 {error.includes("Credentials mismatch") && (
                                     <Link
                                         href={callbackUrl ? `/sign-up?callbackUrl=${encodeURIComponent(callbackUrl)}` : "/sign-up"}
-                                        className="inline-block text-white bg-white/10 border border-white/20 px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/20 transition-all font-bold"
+                                        className="inline-block text-foreground bg-foreground/10 border border-foreground/20 px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-foreground/20 transition-all font-bold"
                                     >
                                         Register New Account →
                                     </Link>
@@ -130,30 +130,30 @@ function SignInContent() {
 
                         <div className="space-y-4">
                             <div className="group relative">
-                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-2 ml-1">Terminal ID (Email)</label>
+                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 mb-2 ml-1">Terminal ID (Email)</label>
                                 <div className="relative">
-                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-white transition-colors" size={18} />
+                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20 group-focus-within:text-foreground transition-colors" size={18} />
                                     <input
                                         type="email"
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value.trim())}
-                                        className="w-full bg-transparent/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/10 focus:outline-none focus:border-white/30 focus:bg-white/[0.07] transition-all"
+                                        className="w-full bg-transparent/50 border border-border rounded-2xl py-4 pl-12 pr-4 text-foreground placeholder:text-foreground/10 focus:outline-none focus:border-white/30 focus:bg-foreground/[0.07] transition-all"
                                         placeholder="user@mindscape.com"
                                     />
                                 </div>
                             </div>
 
                             <div className="group relative">
-                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-2 ml-1">Access Cipher (Password)</label>
+                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 mb-2 ml-1">Access Cipher (Password)</label>
                                 <div className="relative">
-                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-white transition-colors" size={18} />
+                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20 group-focus-within:text-foreground transition-colors" size={18} />
                                     <input
                                         type="password"
                                         required
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="w-full bg-transparent/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/10 focus:outline-none focus:border-white/30 focus:bg-white/[0.07] transition-all"
+                                        className="w-full bg-transparent/50 border border-border rounded-2xl py-4 pl-12 pr-4 text-foreground placeholder:text-foreground/10 focus:outline-none focus:border-white/30 focus:bg-foreground/[0.07] transition-all"
                                         placeholder="••••••••"
                                     />
                                 </div>
@@ -176,21 +176,21 @@ function SignInContent() {
                         </button>
                     </form>
 
-                    <div className="mt-10 pt-8 border-t border-white/5 text-center space-y-4">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-white/40 leading-relaxed italic">
+                    <div className="mt-10 pt-8 border-t border-border text-center space-y-4">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-foreground/40 leading-relaxed italic">
                             READY TO TRANSFORM YOUR BUSINESS WITH <br />
-                            <span className="text-white">INDUSTRIAL INTELLIGENCE</span>?
+                            <span className="text-foreground">INDUSTRIAL INTELLIGENCE</span>?
                         </p>
                         <Link
                             href={callbackUrl ? `/sign-up?callbackUrl=${encodeURIComponent(callbackUrl)}` : "/sign-up"}
-                            className="inline-block text-white font-black uppercase tracking-widest text-[10px] hover:text-white/60 transition-colors underline underline-offset-8 decoration-white/20"
+                            className="inline-block text-foreground font-black uppercase tracking-widest text-[10px] hover:text-foreground/60 transition-colors underline underline-offset-8 decoration-white/20"
                         >
                             Request Access Profile
                         </Link>
                         <div className="pt-4">
                             <button
                                 onClick={() => alert("Password reset protocol initiated. Please check your terminal (email) if configured.")}
-                                className="text-white/20 hover:text-white/40 text-[8px] font-black uppercase tracking-widest transition-colors"
+                                className="text-foreground/20 hover:text-foreground/40 text-[8px] font-black uppercase tracking-widest transition-colors"
                             >
                                 Forgot Access Cipher?
                             </button>
@@ -199,7 +199,7 @@ function SignInContent() {
                 </div>
 
                 {/* Footer Security Note */}
-                <div className="mt-10 flex items-center justify-center gap-2 text-white/20">
+                <div className="mt-10 flex items-center justify-center gap-2 text-foreground/20">
                     <Shield size={12} />
                     <span className="text-[10px] font-black uppercase tracking-[0.2em]">End-to-End Encryption Enabled</span>
                 </div>
@@ -212,7 +212,7 @@ export default function SignInPage() {
     return (
         <Suspense fallback={
             <div className="min-h-screen bg-transparent flex items-center justify-center">
-                <div className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em] animate-pulse">Initializing Security Gateway...</div>
+                <div className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.5em] animate-pulse">Initializing Security Gateway...</div>
             </div>
         }>
             <SignInContent />

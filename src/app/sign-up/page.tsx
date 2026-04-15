@@ -153,7 +153,7 @@ function SignUpContent() {
     };
 
     return (
-        <div className="min-h-screen bg-transparent text-white selection:bg-white selection:text-black flex items-center justify-center p-6 relative overflow-hidden">
+        <div className="min-h-screen bg-transparent text-foreground selection:bg-foreground selection:text-background flex items-center justify-center p-6 relative overflow-hidden">
             {/* Background Effects */}
             <div className="fixed inset-0 z-0 pointer-events-none">
                 {/* Global CinematicBackground handles depth, removed local blurs */}
@@ -178,18 +178,18 @@ function SignUpContent() {
                             />
                         </div>
                         <h1
-                            className="text-[10px] font-black tracking-[0.5em] uppercase text-white/40"
+                            className="text-[10px] font-black tracking-[0.5em] uppercase text-foreground/40"
                         >
-                            ENTITY<span className="text-white/20"> // </span>REGISTRY
+                            ENTITY<span className="text-foreground/20"> // </span>REGISTRY
                         </h1>
                     </Link>
-                    <p className="text-white/40 text-xs font-black uppercase tracking-[0.3em] mt-4">
+                    <p className="text-foreground/40 text-xs font-black uppercase tracking-[0.3em] mt-4">
                         Initialize Access Profile
                     </p>
                 </div>
 
                 {/* Auth Card */}
-                <div className="bg-zinc-900/40 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-10 shadow-2xl">
+                <div className="bg-foreground/5/40 backdrop-blur-3xl border border-border rounded-[2.5rem] p-10 shadow-2xl">
                     <form onSubmit={handleSignUp} className="space-y-6">
                         {error && (
                             <motion.div
@@ -201,7 +201,7 @@ function SignUpContent() {
                                 {error.toLowerCase().includes("sign in") && (
                                     <Link
                                         href={callbackUrl ? `/sign-in?callbackUrl=${encodeURIComponent(callbackUrl)}` : "/sign-in"}
-                                        className="inline-block text-white bg-white/10 border border-white/20 px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white/20 transition-all"
+                                        className="inline-block text-foreground bg-foreground/10 border border-foreground/20 px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-foreground/20 transition-all"
                                     >
                                         Go to Sign In →
                                     </Link>
@@ -220,59 +220,59 @@ function SignUpContent() {
 
                         <div className="space-y-4">
                             <div className="group relative">
-                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-2 ml-1">Identity (Full Name)</label>
+                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 mb-2 ml-1">Identity (Full Name)</label>
                                 <div className="relative">
-                                    <User className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-white transition-colors" size={18} />
+                                    <User className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20 group-focus-within:text-foreground transition-colors" size={18} />
                                     <input
                                         type="text"
                                         required
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        className="w-full bg-transparent/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/10 focus:outline-none focus:border-white/30 focus:bg-white/[0.07] transition-all"
+                                        className="w-full bg-transparent/50 border border-border rounded-2xl py-4 pl-12 pr-4 text-foreground placeholder:text-foreground/10 focus:outline-none focus:border-white/30 focus:bg-foreground/[0.07] transition-all"
                                         placeholder="Full Name"
                                     />
                                 </div>
                             </div>
 
                             <div className="group relative">
-                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-2 ml-1">Nomenclature (Username - Optional)</label>
+                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 mb-2 ml-1">Nomenclature (Username - Optional)</label>
                                 <div className="relative">
-                                    <div className="absolute left-1.5 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center font-mono text-[10px] text-white/20">@</div>
+                                    <div className="absolute left-1.5 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center font-mono text-[10px] text-foreground/20">@</div>
                                     <input
                                         type="text"
                                         value={username}
                                         onChange={(e) => setUsername(e.target.value)}
-                                        className="w-full bg-transparent/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/10 focus:outline-none focus:border-white/30 focus:bg-white/[0.07] transition-all"
+                                        className="w-full bg-transparent/50 border border-border rounded-2xl py-4 pl-12 pr-4 text-foreground placeholder:text-foreground/10 focus:outline-none focus:border-white/30 focus:bg-foreground/[0.07] transition-all"
                                         placeholder="unique_id"
                                     />
                                 </div>
                             </div>
 
                             <div className="group relative">
-                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-2 ml-1">Terminal ID (Email)</label>
+                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 mb-2 ml-1">Terminal ID (Email)</label>
                                 <div className="relative">
-                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-white transition-colors" size={18} />
+                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20 group-focus-within:text-foreground transition-colors" size={18} />
                                     <input
                                         type="email"
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="w-full bg-transparent/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/10 focus:outline-none focus:border-white/30 focus:bg-white/[0.07] transition-all"
+                                        className="w-full bg-transparent/50 border border-border rounded-2xl py-4 pl-12 pr-4 text-foreground placeholder:text-foreground/10 focus:outline-none focus:border-white/30 focus:bg-foreground/[0.07] transition-all"
                                         placeholder="user@mindscape.com"
                                     />
                                 </div>
                             </div>
 
                             <div className="group relative">
-                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-2 ml-1">Establish Cipher (Password)</label>
+                                <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 mb-2 ml-1">Establish Cipher (Password)</label>
                                 <div className="relative">
-                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-white transition-colors" size={18} />
+                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/20 group-focus-within:text-foreground transition-colors" size={18} />
                                     <input
                                         type="password"
                                         required
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="w-full bg-transparent/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/10 focus:outline-none focus:border-white/30 focus:bg-white/[0.07] transition-all"
+                                        className="w-full bg-transparent/50 border border-border rounded-2xl py-4 pl-12 pr-4 text-foreground placeholder:text-foreground/10 focus:outline-none focus:border-white/30 focus:bg-foreground/[0.07] transition-all"
                                         placeholder="••••••••"
                                     />
                                 </div>
@@ -295,13 +295,13 @@ function SignUpContent() {
                         </button>
                     </form>
 
-                    <div className="mt-10 pt-8 border-t border-white/5 text-center space-y-4">
-                        <p className="text-white/40 text-[10px] font-black uppercase tracking-widest">
+                    <div className="mt-10 pt-8 border-t border-border text-center space-y-4">
+                        <p className="text-foreground/40 text-[10px] font-black uppercase tracking-widest">
                             Authorized Personnel?
                         </p>
                         <Link
                             href={callbackUrl ? `/sign-in?callbackUrl=${encodeURIComponent(callbackUrl)}` : "/sign-in"}
-                            className="inline-block text-white font-black uppercase tracking-widest text-[10px] hover:text-white/60 transition-colors underline underline-offset-8 decoration-white/20"
+                            className="inline-block text-foreground font-black uppercase tracking-widest text-[10px] hover:text-foreground/60 transition-colors underline underline-offset-8 decoration-white/20"
                         >
                             Access Console Sign-In
                         </Link>
@@ -309,7 +309,7 @@ function SignUpContent() {
                 </div>
 
                 {/* Footer Security Note */}
-                <div className="mt-10 flex items-center justify-center gap-2 text-white/20">
+                <div className="mt-10 flex items-center justify-center gap-2 text-foreground/20">
                     <Shield size={12} />
                     <span className="text-[10px] font-black uppercase tracking-[0.2em]">Secure Data Protocol Initialized</span>
                 </div>
@@ -322,7 +322,7 @@ export default function SignUpPage() {
     return (
         <Suspense fallback={
             <div className="min-h-screen bg-transparent flex items-center justify-center">
-                <div className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em] animate-pulse">Initializing Identity Registry...</div>
+                <div className="text-[10px] font-black text-foreground/20 uppercase tracking-[0.5em] animate-pulse">Initializing Identity Registry...</div>
             </div>
         }>
             <SignUpContent />

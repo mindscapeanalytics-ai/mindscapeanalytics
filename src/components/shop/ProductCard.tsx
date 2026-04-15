@@ -57,10 +57,10 @@ export default function ProductCard({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ y: -8 }}
-                className="group relative rounded-3xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-white/10 transition-all duration-500 cursor-pointer card-premium"
+                className="group relative rounded-3xl bg-card dark:bg-[#0f0f11] border border-border overflow-hidden hover:border-secondary transition-all duration-500 cursor-pointer card-premium"
             >
                 {/* Image Container */}
-                <div className="relative aspect-[16/10] bg-black overflow-hidden">
+                <div className="relative aspect-[16/10] bg-background overflow-hidden">
                     <Image
                         src={imageUrl}
                         alt={product.name}
@@ -72,11 +72,11 @@ export default function ProductCard({
 
                     {/* Industrial Tint for legibility */}
                     <div className="absolute inset-0 bg-transparent/20 mix-blend-multiply group-hover:opacity-0 transition-opacity" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />
 
                     {/* Category Label */}
                     <div className="absolute bottom-5 left-5">
-                        <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white/50 bg-white/5 px-3 py-1.5 rounded-md backdrop-blur-md border border-white/5 shadow-xl">
+                        <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/50 bg-foreground/5 px-3 py-1.5 rounded-md backdrop-blur-md border border-border shadow-xl">
                             {product.category.replace(/_/g, ' ')}
                         </span>
                     </div>
@@ -89,14 +89,14 @@ export default function ProductCard({
                                 e.stopPropagation();
                                 onQuickView?.(product);
                             }}
-                            className="p-2.5 bg-white text-black rounded-lg opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 hover:scale-110 active:scale-95 shadow-xl duration-300"
+                            className="p-2.5 bg-foreground text-background rounded-lg opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 hover:scale-110 active:scale-95 shadow-xl duration-300"
                             title="Quick View"
                         >
                             <Eye size={16} strokeWidth={3} />
                         </button>
-                        <div className="p-2.5 bg-black/40 backdrop-blur-md rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 duration-300 delay-75">
-                            <span className="text-[9px] font-black uppercase tracking-widest text-white/80 flex items-center gap-1.5">
-                                <Star size={10} className="fill-white/40 text-white/40" />
+                        <div className="p-2.5 bg-background/40 backdrop-blur-md rounded-lg border border-border opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 duration-300 delay-75">
+                            <span className="text-[9px] font-black uppercase tracking-widest text-foreground/80 flex items-center gap-1.5">
+                                <Star size={10} className="fill-secondary text-secondary" />
                                 4.8
                             </span>
                         </div>
@@ -106,12 +106,12 @@ export default function ProductCard({
                 {/* Content Panel */}
                 <div className="p-6">
                     <div className="flex justify-between items-start gap-4 mb-4">
-                        <h3 className="text-xl font-black uppercase tracking-tightest leading-none group-hover:text-white transition-colors flex-1 line-clamp-1">
+                        <h3 className="text-xl font-black uppercase tracking-tightest leading-none group-hover:text-foreground transition-colors flex-1 line-clamp-1 text-foreground/90">
                             {product.name}
                         </h3>
                     </div>
 
-                    <p className="text-[11px] text-white/40 line-clamp-2 mb-6 font-medium italic leading-relaxed uppercase tracking-tighter">
+                    <p className="text-[11px] text-foreground/40 line-clamp-2 mb-6 font-medium italic leading-relaxed uppercase tracking-tighter">
                         {product.description || "Elite architectural primitive engineered for high-tier deployments."}
                     </p>
 
@@ -125,14 +125,14 @@ export default function ProductCard({
                                 e.stopPropagation();
                                 onQuickView?.(product);
                             }}
-                            className="bg-white text-black px-6 py-4 rounded-xl flex-1 flex items-center justify-between group/btn shadow-[0_10px_20px_rgba(255,255,255,0.05)]"
+                            className="bg-foreground text-background px-6 py-4 rounded-xl flex-1 flex items-center justify-between group/btn shadow-[0_10px_20px_rgba(var(--foreground),0.05)]"
                         >
                             <span className="text-[10px] font-black uppercase tracking-[0.2em]">
                                 View & Acquire
                             </span>
                             <div className="flex items-center gap-2">
-                                <div className="w-px h-3 bg-transparent/10" />
-                                <span className="text-sm font-black">${product.price}</span>
+                                <div className="w-px h-3 bg-background/10" />
+                                <span className="text-sm font-black text-secondary">${product.price}</span>
                             </div>
                         </motion.button>
 
@@ -144,7 +144,7 @@ export default function ProductCard({
                             }}
                             className={cn(
                                 "p-4 rounded-xl border transition-all",
-                                isLiked ? "bg-white/10 border-white/20 text-white" : "bg-white/5 border-white/5 text-white/20 hover:text-white"
+                                isLiked ? "bg-secondary/10 border-secondary text-secondary" : "bg-foreground/5 border-border text-foreground/20 hover:text-foreground"
                             )}
                         >
                             <Heart size={16} className={isLiked ? "fill-current" : ""} />

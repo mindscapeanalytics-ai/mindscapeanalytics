@@ -406,7 +406,7 @@ export function BlockchainVisualizer() {
     }, [nodes, transactions, isPlaying, simulationSpeed, zoomLevel, filterStatus]);
 
     return (
-        <div className="space-y-6 text-white w-full">
+        <div className="space-y-6 text-foreground w-full">
             <div className="flex items-center justify-between">
                 <div>
                     <h3 className="text-2xl font-bold">Blockchain Visualizer</h3>
@@ -594,7 +594,7 @@ export function BlockchainVisualizer() {
                                     </div>
                                 </>
                             ) : (
-                                <div className="p-4 space-y-4 overflow-auto h-full text-white">
+                                <div className="p-4 space-y-4 overflow-auto h-full text-foreground">
                                     <div className="flex items-center gap-2 mb-4">
                                         <Input
                                             placeholder="Search by block hash, transaction ID..."

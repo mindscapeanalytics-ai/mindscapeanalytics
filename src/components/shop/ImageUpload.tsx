@@ -102,7 +102,7 @@ export default function ImageUpload({ onUploadAction, initialUrl }: ImageUploadP
     return (
         <div className="space-y-4">
             <div
-                className={`relative aspect-video rounded-[2rem] border-2 border-dashed transition-all overflow-hidden flex items-center justify-center bg-white/[0.02] ${isOptimizing ? "border-white/20" : preview ? "border-transparent" : "border-white/10 hover:border-white/20 cursor-pointer"
+                className={`relative aspect-video rounded-[2rem] border-2 border-dashed transition-all overflow-hidden flex items-center justify-center bg-foreground/[0.02] ${isOptimizing ? "border-foreground/20" : preview ? "border-transparent" : "border-border hover:border-foreground/20 cursor-pointer"
                     }`}
                 onClick={() => !isOptimizing && fileInputRef.current?.click()}
             >
@@ -117,7 +117,7 @@ export default function ImageUpload({ onUploadAction, initialUrl }: ImageUploadP
                         {!isOptimizing && (
                             <button
                                 onClick={(e) => { e.stopPropagation(); setPreview(""); onUploadAction(""); }}
-                                className="absolute top-4 right-4 p-2 bg-black/60 backdrop-blur-xl border border-white/5 rounded-full text-white/40 hover:text-white transition-all shadow-2xl"
+                                className="absolute top-4 right-4 p-2 bg-black/60 backdrop-blur-xl border border-border rounded-full text-foreground/40 hover:text-foreground transition-all shadow-2xl"
                             >
                                 <X size={16} />
                             </button>
@@ -125,20 +125,20 @@ export default function ImageUpload({ onUploadAction, initialUrl }: ImageUploadP
                     </>
                 ) : (
                     <div className="flex flex-col items-center gap-4 py-12">
-                        <div className="w-16 h-16 rounded-[1.5rem] bg-white/5 border border-white/10 flex items-center justify-center text-white/20">
+                        <div className="w-16 h-16 rounded-[1.5rem] bg-foreground/5 border border-border flex items-center justify-center text-foreground/20">
                             <Upload size={24} />
                         </div>
                         <div className="text-center">
-                            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Select Visual Artifact</p>
-                            <p className="text-[8px] text-white/10 uppercase tracking-widest mt-2 italic">Standard: high-fidelity 1200x800 webp</p>
+                            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40">Select Visual Artifact</p>
+                            <p className="text-[8px] text-foreground/10 uppercase tracking-widest mt-2 italic">Standard: high-fidelity 1200x800 webp</p>
                         </div>
                     </div>
                 )}
 
                 {isOptimizing && (
                     <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/40 backdrop-blur-md">
-                        <Loader2 className="text-white/40 animate-spin mb-4" size={32} />
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/60 animate-pulse">Optimizing Asset...</span>
+                        <Loader2 className="text-foreground/40 animate-spin mb-4" size={32} />
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/60 animate-pulse">Optimizing Asset...</span>
                     </div>
                 )}
             </div>
@@ -156,9 +156,9 @@ export default function ImageUpload({ onUploadAction, initialUrl }: ImageUploadP
             />
 
             {!preview && !isOptimizing && (
-                <div className="flex items-center gap-4 px-6 py-4 bg-white/[0.02] border border-white/5 rounded-2xl">
-                    <ImageIcon size={16} className="text-white/20" />
-                    <p className="text-[8px] font-black uppercase tracking-[0.2em] text-white/20 italic leading-loose">
+                <div className="flex items-center gap-4 px-6 py-4 bg-foreground/[0.02] border border-border rounded-2xl">
+                    <ImageIcon size={16} className="text-foreground/20" />
+                    <p className="text-[8px] font-black uppercase tracking-[0.2em] text-foreground/20 italic leading-loose">
                         Platform Policy: Automatic 100KB WebP optimization enforced for maximum system throughput.
                     </p>
                 </div>

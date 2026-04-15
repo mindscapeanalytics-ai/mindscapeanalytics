@@ -71,7 +71,7 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
                     whileTap={{ scale: 0.99 }}
                     onClick={handleBuyNow}
                     disabled={isBuying}
-                    className="w-full py-6 bg-white text-black font-black text-xs uppercase tracking-[0.3em] rounded-2xl hover:bg-white/90 disabled:bg-white/20 disabled:cursor-not-allowed transition-all shadow-[0_0_50px_rgba(255,255,255,0.1)] flex items-center justify-center gap-3 group"
+                    className="w-full py-6 bg-foreground text-background font-black text-xs uppercase tracking-[0.3em] rounded-2xl hover:bg-foreground/90 disabled:bg-foreground/20 disabled:cursor-not-allowed transition-all shadow-[0_0_50px_hsl(var(--foreground)/0.1)] flex items-center justify-center gap-3 group"
                 >
                     {isBuying ? "INITIALIZING SECURE LINK..." : (
                         <>
@@ -86,7 +86,7 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
                     whileTap={{ scale: 0.99 }}
                     onClick={handleAddToCart}
                     disabled={isAdding}
-                    className="w-full py-5 bg-white/5 border border-white/10 text-white font-black text-xs uppercase tracking-[0.3em] rounded-2xl hover:bg-white/10 disabled:bg-white/10 transition-all flex items-center justify-center gap-3"
+                    className="w-full py-5 bg-foreground/5 border border-border text-foreground font-black text-xs uppercase tracking-[0.3em] rounded-2xl hover:bg-foreground/10 disabled:bg-foreground/10 transition-all flex items-center justify-center gap-3"
                 >
                     {isAdding ? (
                         <>
@@ -95,7 +95,7 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
                         </>
                     ) : (
                         <>
-                            <ShoppingCart size={14} className="text-white/40" />
+                            <ShoppingCart size={14} className="text-foreground/40" />
                             Add to Allocation
                         </>
                     )}
@@ -105,15 +105,15 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
                     onClick={() => setIsDemoModalOpen(true)}
-                    className="w-full py-5 bg-transparent border border-white/10 text-white font-black text-[10px] uppercase tracking-[0.3em] rounded-2xl hover:bg-white/5 transition-all flex items-center justify-center gap-3 mt-4"
+                    className="w-full py-5 bg-transparent border border-border text-foreground font-black text-[10px] uppercase tracking-[0.3em] rounded-2xl hover:bg-foreground/5 transition-all flex items-center justify-center gap-3 mt-4"
                 >
                     Request Demo
                 </motion.button>
             </div>
 
-            <div className="pt-6 border-t border-white/5 space-y-3">
-                <div className="flex items-center gap-3 text-white/30 group">
-                    <ShieldCheck size={14} className="group-hover:text-white transition-colors" />
+            <div className="pt-6 border-t border-border space-y-3">
+                <div className="flex items-center gap-3 text-foreground/30 group">
+                    <ShieldCheck size={14} className="group-hover:text-foreground transition-colors" />
                     <span className="text-[10px] font-black uppercase tracking-widest">Stripe Security Protocol Active</span>
                 </div>
             </div>

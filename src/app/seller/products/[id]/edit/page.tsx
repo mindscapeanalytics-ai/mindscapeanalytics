@@ -35,7 +35,7 @@ export default async function SellerEditProductPage({ params }: { params: Promis
     }
 
     return (
-        <div className="min-h-screen bg-monochrome-cinematic text-white relative">
+        <div className="min-h-screen bg-monochrome-cinematic text-foreground relative">
             <div className="fixed inset-0 z-0 pointer-events-none opacity-20">
                 <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
             </div>
@@ -43,7 +43,7 @@ export default async function SellerEditProductPage({ params }: { params: Promis
 
             <main className="relative z-10 pt-44 pb-32 px-6">
                 <div className="max-w-4xl mx-auto">
-                    <Link href="/seller/products" className="inline-flex items-center gap-2 text-white/40 hover:text-white mb-12 transition-all group">
+                    <Link href="/seller/products" className="inline-flex items-center gap-2 text-foreground/40 hover:text-foreground mb-12 transition-all group">
                         <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                         <span className="text-[10px] font-black uppercase tracking-[0.3em]">Return to Registry</span>
                     </Link>
@@ -53,9 +53,9 @@ export default async function SellerEditProductPage({ params }: { params: Promis
                             className="text-5xl font-black mb-4 uppercase tracking-tighter italic"
                             style={{ fontSize: "clamp(2.5rem, 6vw, 3rem)" }}
                         >
-                            RECONFIGURE <span className="text-white/20 not-italic">ASSET.</span>
+                            RECONFIGURE <span className="text-foreground/20 not-italic">ASSET.</span>
                         </h1>
-                        <p className="text-white/40 text-[11px] font-black uppercase tracking-[0.5em] italic">Authorized Optimization Terminal</p>
+                        <p className="text-foreground/40 text-[11px] font-black uppercase tracking-[0.5em] italic">Authorized Optimization Terminal</p>
                     </div>
 
                     <ProductForm

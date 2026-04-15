@@ -52,11 +52,11 @@ export default function CartPage() {
     };
 
     return (
-        <div className="min-h-screen bg-transparent text-white relative overflow-hidden">
+        <div className="min-h-screen bg-transparent text-foreground relative overflow-hidden">
             {/* Background Effects */}
             <div className="fixed inset-0 z-0 pointer-events-none">
                 {/* Global CinematicBackground handles depth, removed local blurs */}
-                <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+                <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5 [mask-image:linear-gradient(180deg,black,transparent)]" />
             </div>
 
             <Navbar />
@@ -65,14 +65,14 @@ export default function CartPage() {
                 <div className="max-w-6xl mx-auto">
                     {/* Header */}
                     <div className="mb-16">
-                        <div className="inline-block px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-6 text-white/40">
+                        <div className="inline-block px-4 py-1.5 bg-foreground/5 border border-border rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-6 text-foreground/40">
                             Asset Allocation
                         </div>
                         <h1
                             className="text-5xl md:text-7xl font-black tracking-tighter"
                             style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
                         >
-                            ACQUISITION <span className="text-white/20 italic">HUB.</span>
+                            ACQUISITION <span className="text-foreground/20 italic">HUB.</span>
                         </h1>
                     </div>
 
@@ -82,13 +82,13 @@ export default function CartPage() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
-                                className="text-center py-32 bg-white/[0.02] border border-dashed border-white/10 rounded-[3rem]"
+                                className="text-center py-32 bg-foreground/[0.02] border border-dashed border-border rounded-[3rem]"
                             >
-                                <ShoppingBag size={48} className="mx-auto mb-6 text-white/10" />
+                                <ShoppingBag size={48} className="mx-auto mb-6 text-foreground/10" />
                                 <h2 className="text-xl font-black uppercase tracking-widest mb-4">Allocation Empty</h2>
-                                <p className="text-white/40 text-xs mb-10 uppercase tracking-widest">No architectural assets selected for acquisition.</p>
+                                <p className="text-foreground/40 text-xs mb-10 uppercase tracking-widest">No architectural assets selected for acquisition.</p>
                                 <Link href="/shop">
-                                    <button className="px-10 py-4 bg-white text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white/90 transition-all">
+                                    <button className="px-10 py-4 bg-foreground text-background text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-foreground/90 transition-all">
                                         Return to Marketplace
                                     </button>
                                 </Link>
@@ -103,9 +103,9 @@ export default function CartPage() {
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: index * 0.1 }}
-                                            className="bg-white/[0.02] border border-white/5 rounded-3xl p-6 flex flex-col sm:flex-row items-center gap-8 group hover:border-white/10 transition-colors"
+                                            className="bg-foreground/[0.02] border border-border rounded-3xl p-6 flex flex-col sm:flex-row items-center gap-8 group hover:border-border transition-colors"
                                         >
-                                            <div className="w-32 h-32 flex-shrink-0 bg-white/5 rounded-2xl border border-white/5 relative overflow-hidden">
+                                            <div className="w-32 h-32 flex-shrink-0 bg-foreground/5 rounded-2xl border border-border relative overflow-hidden">
                                                 {item.image ? (
                                                     <Image
                                                         src={item.image}
@@ -114,32 +114,32 @@ export default function CartPage() {
                                                         className="object-cover group-hover:scale-110 transition-transform duration-700"
                                                     />
                                                 ) : (
-                                                    <div className="w-full h-full flex items-center justify-center text-white/10 text-[10px] font-black uppercase">
+                                                    <div className="w-full h-full flex items-center justify-center text-foreground/10 text-[10px] font-black uppercase">
                                                         No Media
                                                     </div>
                                                 )}
                                             </div>
 
                                             <div className="flex-1 text-center sm:text-left">
-                                                <div className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-1">Asset ID: {item.productId.slice(0, 8)}</div>
+                                                <div className="text-[10px] font-black uppercase tracking-widest text-foreground/30 mb-1">Asset ID: {item.productId.slice(0, 8)}</div>
                                                 <h3 className="text-xl font-black uppercase tracking-tight mb-2">{item.name}</h3>
-                                                <div className="text-2xl font-black text-white">
+                                                <div className="text-2xl font-black text-foreground">
                                                     ${item.price.toFixed(2)}
                                                 </div>
                                             </div>
 
                                             <div className="flex items-center gap-6">
-                                                <div className="flex items-center gap-4 bg-transparent/40 border border-white/5 rounded-2xl p-2 px-4">
+                                                <div className="flex items-center gap-4 bg-transparent/40 border border-border rounded-2xl p-2 px-4">
                                                     <button
                                                         onClick={() => updateQuantity(item.productId, item.quantity - 1)}
-                                                        className="p-1 hover:text-white text-white/40 transition-colors"
+                                                        className="p-1 hover:text-foreground text-foreground/40 transition-colors"
                                                     >
                                                         <Minus size={14} />
                                                     </button>
                                                     <span className="w-8 text-center font-black text-sm">{item.quantity}</span>
                                                     <button
                                                         onClick={() => updateQuantity(item.productId, item.quantity + 1)}
-                                                        className="p-1 hover:text-white text-white/40 transition-colors"
+                                                        className="p-1 hover:text-foreground text-foreground/40 transition-colors"
                                                     >
                                                         <Plus size={14} />
                                                     </button>
@@ -147,7 +147,7 @@ export default function CartPage() {
 
                                                 <button
                                                     onClick={() => removeFromCart(item.productId)}
-                                                    className="p-4 bg-white/5 hover:bg-red-500/10 hover:text-red-500 text-white/20 rounded-2xl transition-all"
+                                                    className="p-4 bg-foreground/5 hover:bg-red-500/10 hover:text-red-500 text-foreground/20 rounded-2xl transition-all"
                                                 >
                                                     <Trash2 size={18} />
                                                 </button>
@@ -161,22 +161,22 @@ export default function CartPage() {
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.95 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        className="bg-white/[0.03] border border-white/10 rounded-[2.5rem] p-10 sticky top-40"
+                                        className="bg-foreground/[0.03] border border-border rounded-[2.5rem] p-10 sticky top-40"
                                     >
-                                        <h2 className="text-xs font-black uppercase tracking-[0.3em] text-white/40 mb-10 pb-6 border-b border-white/5">Transaction Summary</h2>
+                                        <h2 className="text-xs font-black uppercase tracking-[0.3em] text-foreground/40 mb-10 pb-6 border-b border-border">Transaction Summary</h2>
 
                                         <div className="space-y-6 mb-10">
-                                            <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-white/40">
+                                            <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-foreground/40">
                                                 <span>Allocated Units</span>
-                                                <span className="text-white">{itemCount}</span>
+                                                <span className="text-foreground">{itemCount}</span>
                                             </div>
-                                            <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-white/40">
+                                            <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-foreground/40">
                                                 <span>Protocol Fee</span>
-                                                <span className="text-white">CREDIT</span>
+                                                <span className="text-foreground">CREDIT</span>
                                             </div>
-                                            <div className="pt-6 border-t border-white/5 flex justify-between items-end">
-                                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-1">Total Valuation</span>
-                                                <span className="text-4xl font-black text-white">${total.toFixed(2)}</span>
+                                            <div className="pt-6 border-t border-border flex justify-between items-end">
+                                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40 mb-1">Total Valuation</span>
+                                                <span className="text-4xl font-black text-foreground">${total.toFixed(2)}</span>
                                             </div>
                                         </div>
 
@@ -184,7 +184,7 @@ export default function CartPage() {
                                             <button
                                                 onClick={handleCheckout}
                                                 disabled={isProcessing}
-                                                className="w-full py-6 bg-white text-black disabled:bg-white/20 disabled:cursor-not-allowed rounded-2xl font-black text-xs uppercase tracking-[0.3em] transition-all flex items-center justify-center gap-3 shadow-[0_0_50px_rgba(255,255,255,0.1)] active:scale-95 group"
+                                                className="w-full py-6 bg-foreground text-background disabled:bg-foreground/20 disabled:cursor-not-allowed rounded-2xl font-black text-xs uppercase tracking-[0.3em] transition-all flex items-center justify-center gap-3 shadow-[0_0_50px_hsl(var(--foreground)/0.1)] active:scale-95 group"
                                             >
                                                 {isProcessing ? (
                                                     "PROCESSING..."
@@ -203,14 +203,14 @@ export default function CartPage() {
                                         </div>
 
                                         {/* Trust Factors in Summary */}
-                                        <div className="mt-8 pt-8 border-t border-white/5 grid grid-cols-2 gap-4">
+                                        <div className="mt-8 pt-8 border-t border-border grid grid-cols-2 gap-4">
                                             <div className="flex items-center gap-2">
-                                                <ShieldCheck size={12} className="text-white/20" />
-                                                <span className="text-[8px] font-bold uppercase tracking-tighter text-white/30">Verified</span>
+                                                <ShieldCheck size={12} className="text-foreground/20" />
+                                                <span className="text-[8px] font-bold uppercase tracking-tighter text-foreground/30">Verified</span>
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <Zap size={12} className="text-white/20" />
-                                                <span className="text-[8px] font-bold uppercase tracking-tighter text-white/30">Instant</span>
+                                                <Zap size={12} className="text-foreground/20" />
+                                                <span className="text-[8px] font-bold uppercase tracking-tighter text-foreground/30">Instant</span>
                                             </div>
                                         </div>
                                     </motion.div>

@@ -60,7 +60,7 @@ export default function CaseStudies() {
     return (
         <section ref={containerRef} id="case-studies" className="relative section-spacing overflow-hidden bg-transparent">
             <div className="container-standard">
-                <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-32 border-b border-white/5 pb-12">
+                <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-32 border-b border-border pb-12">
                     <div className="max-w-4xl space-y-6">
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
@@ -68,8 +68,8 @@ export default function CaseStudies() {
                             transition={{ duration: 0.6 }}
                             className="flex items-center gap-3"
                         >
-                            <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                            <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.5em] font-black">Archive // MISSION_LOGS_v2</span>
+                            <div className="w-2 h-2 bg-foreground rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                            <span className="text-[10px] font-mono text-foreground/40 uppercase tracking-[0.5em] font-black">Archive // MISSION_LOGS_v2</span>
                         </motion.div>
                         <motion.h2
                             initial={{ opacity: 0, y: 15 }}
@@ -77,7 +77,7 @@ export default function CaseStudies() {
                             transition={{ duration: 0.7, delay: 0.1 }}
                             className="fluid-h2"
                         >
-                            PROVEN <br /> <span className="text-white/40 font-black">SUCCESS.</span>
+                            PROVEN <br /> <span className="text-foreground/40 font-black">SUCCESS.</span>
                         </motion.h2>
                     </div>
                 </div>
@@ -96,8 +96,8 @@ export default function CaseStudies() {
                         >
                             {/* Image Container */}
                             <div className="w-full lg:w-1/2 relative group">
-                                <div className="absolute -inset-4 bg-white/5 blur-[100px] rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-1000" />
-                                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 group-hover:border-white/20 transition-all duration-500 shadow-2xl">
+                                <div className="absolute -inset-4 bg-foreground/5 blur-[100px] rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-1000" />
+                                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-border group-hover:border-foreground/20 transition-all duration-500 shadow-2xl">
                                     <Image
                                         src={study.image}
                                         alt={study.title}
@@ -112,8 +112,8 @@ export default function CaseStudies() {
                                     {/* --- Industrial HUD --- */}
                                     <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 flex items-center justify-center opacity-40">
-                                            <div className="w-full h-px bg-white/40" />
-                                            <div className="h-full w-px bg-white/40 absolute" />
+                                            <div className="w-full h-px bg-foreground/40" />
+                                            <div className="h-full w-px bg-foreground/40 absolute" />
                                             <div className="w-12 h-12 border border-white/40 rounded-full" />
                                         </div>
                                         <div className="absolute top-6 left-6 w-8 h-8 border-t border-l border-white/60" />
@@ -121,13 +121,13 @@ export default function CaseStudies() {
                                     </div>
 
                                     {/* Floating Metric Banner */}
-                                    <div className="absolute bottom-6 left-6 p-6 rounded-xl bg-transparent/95 backdrop-blur-2xl border border-white/5 flex items-center gap-4 z-20 transition-colors shadow-2xl group-hover:border-white/20">
-                                        <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/60">
+                                    <div className="absolute bottom-6 left-6 p-6 rounded-xl bg-transparent/95 backdrop-blur-2xl border border-border flex items-center gap-4 z-20 transition-colors shadow-2xl group-hover:border-foreground/20">
+                                        <div className="w-12 h-12 rounded-lg bg-foreground/5 border border-border flex items-center justify-center text-foreground/60">
                                             <study.icon className="w-6 h-6" />
                                         </div>
                                         <div className="flex flex-col">
-                                            <span className="text-white font-black text-xl leading-none tracking-tighter uppercase">{study.metrics}</span>
-                                            <span className="text-meta text-white/20 mt-2">Status // VERIFIED_DATA</span>
+                                            <span className="text-foreground font-black text-xl leading-none tracking-tighter uppercase">{study.metrics}</span>
+                                            <span className="text-meta text-foreground/20 mt-2">Status // VERIFIED_DATA</span>
                                         </div>
                                     </div>
                                 </div>
@@ -137,15 +137,15 @@ export default function CaseStudies() {
                             <div className="w-full lg:w-1/2 space-y-10">
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" />
-                                        <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.5em] font-black">{study.category} // CASE_ID_0{index + 1}</span>
+                                        <div className="w-1 h-1 bg-foreground/60 rounded-full animate-pulse" />
+                                        <span className="text-[9px] font-mono text-foreground/20 uppercase tracking-[0.5em] font-black">{study.category} // CASE_ID_0{index + 1}</span>
                                     </div>
-                                    <h3 className="text-4xl md:text-6xl font-black text-white leading-[0.9] tracking-[-0.05em] uppercase font-sans group-hover:text-white transition-colors">
+                                    <h3 className="text-4xl md:text-6xl font-black text-foreground leading-[0.9] tracking-[-0.05em] uppercase font-sans group-hover:text-foreground transition-colors">
                                         {study.title}
                                     </h3>
                                 </div>
 
-                                <p className="text-white/40 text-sm md:text-lg leading-relaxed max-w-md font-medium tracking-tight">
+                                <p className="text-foreground/40 text-sm md:text-lg leading-relaxed max-w-md font-medium tracking-tight">
                                     {study.description}
                                 </p>
 
@@ -157,7 +157,7 @@ export default function CaseStudies() {
                                         </button>
                                     </Link>
                                     <Link href="/contact">
-                                        <button className="text-meta text-white/20 hover:text-white transition-all flex items-center gap-3 group/docs">
+                                        <button className="text-meta text-foreground/20 hover:text-foreground transition-all flex items-center gap-3 group/docs">
                                             TECHNICAL SPECIFICATIONS
                                             <ExternalLink className="w-3.5 h-3.5 opacity-20 group-hover/docs:opacity-60" />
                                         </button>

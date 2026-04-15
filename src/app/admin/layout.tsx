@@ -42,7 +42,7 @@ export default async function AdminLayout({
     ];
 
     return (
-        <div className="min-h-screen bg-transparent text-white flex flex-col lg:flex-row">
+        <div className="min-h-screen bg-transparent text-foreground flex flex-col lg:flex-row">
             <AdminSidebar navItems={navItems} />
 
             {/* Main Content */}
@@ -54,22 +54,22 @@ export default async function AdminLayout({
                                 <Settings size={32} className="text-red-400 animate-spin-slow" />
                             </div>
                             <h2 className="text-2xl font-black mb-2 uppercase tracking-tight text-red-400">Database Offline</h2>
-                            <p className="text-white/40 max-w-sm text-sm uppercase tracking-widest font-medium mb-8">
+                            <p className="text-foreground/40 max-w-sm text-sm uppercase tracking-widest font-medium mb-8">
                                 Connection to port 5432 timed out. Please verify your .env credentials.
                             </p>
-                            <div className="bg-white/5 p-4 rounded-xl border border-white/10 text-xs font-mono text-left max-w-md w-full overflow-hidden">
-                                <p className="text-white/20 mb-2">DEBUG_INFO:</p>
+                            <div className="bg-foreground/5 p-4 rounded-xl border border-border text-xs font-mono text-left max-w-md w-full overflow-hidden">
+                                <p className="text-foreground/20 mb-2">DEBUG_INFO:</p>
                                 <p className="text-green-400">HOST: db.ovntdcmlbstbtquolkmb.supabase.co</p>
                                 <p className="text-yellow-400">ERROR: PrismaClientInitializationError (P1001)</p>
                             </div>
                         </div>
                     ) : !session ? (
                         <div className="min-h-[60vh] flex flex-col items-center justify-center text-center">
-                            <div className="w-16 h-16 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 animate-pulse">
-                                <Settings size={32} className="text-white/20" />
+                            <div className="w-16 h-16 rounded-3xl bg-foreground/5 border border-border flex items-center justify-center mb-6 animate-pulse">
+                                <Settings size={32} className="text-foreground/20" />
                             </div>
                             <h2 className="text-2xl font-black mb-2 uppercase tracking-tight">Authenticating</h2>
-                            <p className="text-white/40 max-w-sm text-sm uppercase tracking-widest font-medium">
+                            <p className="text-foreground/40 max-w-sm text-sm uppercase tracking-widest font-medium">
                                 Verifying your administrative credentials...
                             </p>
                         </div>

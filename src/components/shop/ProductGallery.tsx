@@ -15,7 +15,7 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
 
     if (!images || images.length === 0) {
         return (
-            <div className="relative aspect-square rounded-[3rem] overflow-hidden bg-white/[0.02] border border-white/10 flex items-center justify-center text-white/10">
+            <div className="relative aspect-square rounded-[3rem] overflow-hidden bg-foreground/[0.02] border border-border flex items-center justify-center text-foreground/10">
                 <Box size={80} strokeWidth={0.5} />
             </div>
         );
@@ -26,7 +26,7 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
 
     return (
         <div className="space-y-6">
-            <div className="relative aspect-square rounded-[3rem] overflow-hidden bg-white/[0.02] border border-white/10 group">
+            <div className="relative aspect-square rounded-[3rem] overflow-hidden bg-foreground/[0.02] border border-border group">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeIndex}
@@ -53,13 +53,13 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
                     <div className="absolute inset-0 flex items-center justify-between px-6 opacity-0 group-hover:opacity-100 transition-opacity">
                         <button
                             onClick={(e) => { e.preventDefault(); prevImage(); }}
-                            className="p-4 bg-transparent/40 backdrop-blur-xl border border-white/10 rounded-2xl text-white/60 hover:text-white transition-all"
+                            className="p-4 bg-transparent/40 backdrop-blur-xl border border-border rounded-2xl text-foreground/60 hover:text-foreground transition-all"
                         >
                             <ChevronLeft size={20} />
                         </button>
                         <button
                             onClick={(e) => { e.preventDefault(); nextImage(); }}
-                            className="p-4 bg-transparent/40 backdrop-blur-xl border border-white/10 rounded-2xl text-white/60 hover:text-white transition-all"
+                            className="p-4 bg-transparent/40 backdrop-blur-xl border border-border rounded-2xl text-foreground/60 hover:text-foreground transition-all"
                         >
                             <ChevronRight size={20} />
                         </button>
@@ -67,15 +67,15 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
                 )}
 
                 {/* Status Badge */}
-                <div className="absolute top-8 left-8 flex items-center gap-3 px-4 py-2 bg-transparent/60 backdrop-blur-xl border border-white/10 rounded-full">
+                <div className="absolute top-8 left-8 flex items-center gap-3 px-4 py-2 bg-transparent/60 backdrop-blur-xl border border-border rounded-full">
                     <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/60">Verified Node</span>
+                    <span className="text-[9px] font-black uppercase tracking-[0.3em] text-foreground/60">Verified Node</span>
                 </div>
 
                 {/* Image Counter */}
                 {images.length > 1 && (
-                    <div className="absolute bottom-8 right-8 px-4 py-2 bg-transparent/60 backdrop-blur-xl border border-white/10 rounded-full">
-                        <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/40">
+                    <div className="absolute bottom-8 right-8 px-4 py-2 bg-transparent/60 backdrop-blur-xl border border-border rounded-full">
+                        <span className="text-[9px] font-black uppercase tracking-[0.3em] text-foreground/40">
                             {activeIndex + 1} / {images.length}
                         </span>
                     </div>
@@ -91,7 +91,7 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
                             onClick={() => setActiveIndex(i)}
                             className={`relative w-24 h-24 rounded-2xl overflow-hidden border-2 transition-all duration-300 ${i === activeIndex
                                 ? "border-white scale-105"
-                                : "border-transparent opacity-40 hover:opacity-100 hover:border-white/20"
+                                : "border-transparent opacity-40 hover:opacity-100 hover:border-foreground/20"
                                 }`}
                         >
                             <Image

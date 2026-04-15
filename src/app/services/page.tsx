@@ -176,19 +176,19 @@ const process = [
 
 export default function ServicesPage() {
     return (
-        <div className="min-h-screen bg-transparent text-white relative">
+        <div className="min-h-screen bg-background text-foreground relative">
             <Navbar />
 
             {/* --- Industrial Hero Section --- */}
-            <section className="relative pt-44 pb-32 overflow-hidden">
+            <section className="relative pt-44 pb-32 overflow-hidden institutional-grid">
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="flex flex-col items-center text-center space-y-12">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
+                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-foreground/5 border border-border backdrop-blur-md"
                         >
-                            <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
+                            <div className="w-2 h-2 bg-foreground rounded-full animate-pulse shadow-[0_0_8px_rgba(var(--foreground),0.6)]" />
                             <span className="text-meta">Service_Catalog // v4.2</span>
                         </motion.div>
 
@@ -197,17 +197,17 @@ export default function ServicesPage() {
                             animate={{ opacity: 1, y: 0 }}
                             className="fluid-h1"
                         >
-                            ENGINEERED <br /> <span className="text-white/40">SERVICES.</span>
+                            ENGINEERED <br /> <span className="opacity-40">SERVICES.</span>
                         </motion.h1>
 
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="max-w-4xl border-t border-white/10 pt-12"
+                            className="max-w-4xl border-t border-border pt-12"
                         >
-                            <p className="text-xl md:text-2xl lg:text-3xl font-black text-white/40 font-sans tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl">
-                                ARCHITECTING THE NEXT GENERATION OF <span className="text-white">ENTERPRISE INTELLIGENCE</span> THROUGH PRECISION ENGINEERING.
+                            <p className="text-xl md:text-2xl lg:text-3xl font-black text-foreground/40 font-sans tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl">
+                                ARCHITECTING THE NEXT GENERATION OF <span className="text-foreground">ENTERPRISE INTELLIGENCE</span> THROUGH PRECISION ENGINEERING.
                             </p>
                         </motion.div>
                     </div>
@@ -234,7 +234,7 @@ export default function ServicesPage() {
             <TechStackShowcase />
 
             {/* --- Process Section --- */}
-            <section className="py-32 bg-transparent border-t border-white/5">
+            <section className="py-32 bg-background border-t border-border">
                 <div className="container mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -259,9 +259,9 @@ export default function ServicesPage() {
                                 className="group"
                             >
                                 <div className="space-y-6">
-                                    <span className="text-5xl font-black text-white/10 font-sans group-hover:text-white/40 transition-colors leading-none">{item.step}</span>
-                                    <h3 className="text-xl font-black uppercase tracking-tight text-white">{item.title}</h3>
-                                    <p className="text-white/40 text-sm font-medium leading-relaxed uppercase tracking-tight">
+                                    <span className="text-5xl font-black text-foreground/5 group-hover:text-foreground/20 transition-colors leading-none">{item.step}</span>
+                                    <h3 className="text-xl font-black uppercase tracking-tight text-foreground">{item.title}</h3>
+                                    <p className="text-foreground/40 text-sm font-medium leading-relaxed uppercase tracking-tight">
                                         {item.description}
                                     </p>
                                 </div>
@@ -275,29 +275,29 @@ export default function ServicesPage() {
             <TestimonialCarousel />
 
             {/* --- Managed Subscription Section --- */}
-            <section className="py-24 border-t border-white/5 bg-white text-black">
+            <section className="py-24 border-t border-border bg-foreground text-background">
                 <div className="container mx-auto px-6">
                     <div className="grid lg:grid-cols-2 gap-20 items-center max-w-screen-2xl mx-auto">
                         <div className="space-y-12">
                             <span className="text-meta opacity-40">Business_Model // Managed</span>
-                            <h2 className="fluid-h2">
-                                WE DON'T JUST DELIVER. <br /> WE <span className="opacity-40">OPTIMIZE.</span>
+                            <h2 className="fluid-h2 text-background">
+                                WE DON'T JUST DELIVER. <br /> <span className="opacity-40">WE OPTIMIZE.</span>
                             </h2>
-                            <p className="text-lg md:text-xl font-black uppercase tracking-tight max-w-xl text-white/40">
+                            <p className="text-lg md:text-xl font-black uppercase tracking-tight max-w-xl text-background/40">
                                 Our clients subscribe to long-term reliability. We manage hosting, databases, AI maintenance, and security so you can focus on growth.
                             </p>
                             <div className="grid grid-cols-2 gap-6 text-meta opacity-60">
-                                <div>✔ NO TECHNICAL HEADACHES</div>
-                                <div>✔ NO DOWNTIME RISKS</div>
-                                <div>✔ NO UNMANAGED BILLS</div>
-                                <div>✔ NO SYSTEM FAILURES</div>
+                                <div className="text-background">✔ NO TECHNICAL HEADACHES</div>
+                                <div className="text-background">✔ NO DOWNTIME RISKS</div>
+                                <div className="text-background">✔ NO UNMANAGED BILLS</div>
+                                <div className="text-background">✔ NO SYSTEM FAILURES</div>
                             </div>
                         </div>
 
-                        <div className="p-12 rounded-[3.5rem] bg-black text-white space-y-8 relative overflow-hidden group">
+                        <div className="p-12 rounded-[3.5rem] bg-background text-foreground space-y-8 relative overflow-hidden group border border-border">
                             <div className="absolute inset-0 z-0 opacity-10 bg-[url('/grid.svg')] bg-[length:40px_40px]" />
                             <div className="relative z-10 space-y-8">
-                                <h3 className="text-xl lg:text-3xl font-black uppercase font-sans tracking-tight">THE ELITE SUBSCRIPTION</h3>
+                                <h3 className="text-xl lg:text-3xl font-black uppercase tracking-tight text-foreground">THE ELITE SUBSCRIPTION</h3>
                                 <div className="space-y-4">
                                     {[
                                         "Monthly AI Maintenance & Optimization",
@@ -306,8 +306,8 @@ export default function ServicesPage() {
                                         "Recurring Security Audits"
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-4">
-                                            <div className="w-1.5 h-1.5 bg-white rounded-full group-hover:scale-150 transition-transform" />
-                                            <span className="text-xs font-black uppercase tracking-widest">{item}</span>
+                                            <div className="w-1.5 h-1.5 bg-foreground rounded-full group-hover:scale-150 transition-transform" />
+                                            <span className="text-xs font-black uppercase tracking-widest text-foreground">{item}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -335,7 +335,7 @@ export default function ServicesPage() {
                         className="max-w-4xl mx-auto space-y-12"
                     >
                         <h2 className="fluid-h2 mb-12">
-                            BECOME THE <br /> <span className="text-white/40">STANDARD.</span>
+                            BECOME THE <br /> <span className="opacity-40">STANDARD.</span>
                         </h2>
                         <div className="flex flex-col sm:flex-row gap-6 justify-center">
                             <Link href="/contact">

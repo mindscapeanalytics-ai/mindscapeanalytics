@@ -30,28 +30,28 @@ export default async function AdminOrdersPage() {
                 Orders
             </h1>
 
-            <div className="bg-white/[0.02] border border-white/10 rounded-2xl overflow-hidden backdrop-blur-xl">
+            <div className="bg-foreground/[0.02] border border-border rounded-2xl overflow-hidden backdrop-blur-xl">
                 <table className="w-full text-left">
-                    <thead className="bg-white/5 border-b border-white/10">
+                    <thead className="bg-foreground/5 border-b border-border">
                         <tr>
-                            <th className="p-4 text-white/60 font-mono text-sm uppercase">Order ID</th>
-                            <th className="p-4 text-white/60 font-mono text-sm uppercase">Customer</th>
-                            <th className="p-4 text-white/60 font-mono text-sm uppercase">Amount</th>
-                            <th className="p-4 text-white/60 font-mono text-sm uppercase">Status</th>
-                            <th className="p-4 text-white/60 font-mono text-sm uppercase">Date</th>
+                            <th className="p-4 text-foreground/60 font-mono text-sm uppercase">Order ID</th>
+                            <th className="p-4 text-foreground/60 font-mono text-sm uppercase">Customer</th>
+                            <th className="p-4 text-foreground/60 font-mono text-sm uppercase">Amount</th>
+                            <th className="p-4 text-foreground/60 font-mono text-sm uppercase">Status</th>
+                            <th className="p-4 text-foreground/60 font-mono text-sm uppercase">Date</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-white/5">
                         {orders.length === 0 ? (
                             <tr>
-                                <td colSpan={5} className="p-8 text-center text-white/40">
+                                <td colSpan={5} className="p-8 text-center text-foreground/40">
                                     No orders found.
                                 </td>
                             </tr>
                         ) : (
                             orders.map((order) => (
-                                <tr key={order.id} className="hover:bg-white/5 transition">
-                                    <td className="p-4 font-mono text-sm text-white/50">#{order.id.slice(-6)}</td>
+                                <tr key={order.id} className="hover:bg-foreground/5 transition">
+                                    <td className="p-4 font-mono text-sm text-foreground/50">#{order.id.slice(-6)}</td>
                                     <td className="p-4">{order.user?.email || "Unknown"}</td>
                                     <td className="p-4 font-mono">${order.amount}</td>
                                     <td className="p-4">
@@ -60,7 +60,7 @@ export default async function AdminOrdersPage() {
                                             {order.status}
                                         </span>
                                     </td>
-                                    <td className="p-4 text-white/50 text-sm">
+                                    <td className="p-4 text-foreground/50 text-sm">
                                         {new Date(order.createdAt).toLocaleDateString()}
                                     </td>
                                 </tr>

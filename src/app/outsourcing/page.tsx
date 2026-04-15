@@ -71,7 +71,7 @@ const ENGAGEMENT_MODELS = [
 
 export default function OutsourcingPage() {
     return (
-        <div className="min-h-screen bg-monochrome-cinematic text-white relative overflow-hidden">
+        <div className="min-h-screen bg-monochrome-cinematic text-foreground relative overflow-hidden">
             <CinematicBackground />
             <Navbar />
 
@@ -82,10 +82,10 @@ export default function OutsourcingPage() {
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full mb-8"
+                            className="inline-flex items-center gap-2 px-3 py-1 bg-foreground/5 border border-border rounded-full mb-8"
                         >
-                            <Globe size={14} className="text-white/40" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60">Global Talent Network</span>
+                            <Globe size={14} className="text-foreground/40" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/60">Global Talent Network</span>
                         </motion.div>
 
                         <motion.h1
@@ -94,14 +94,14 @@ export default function OutsourcingPage() {
                             transition={{ delay: 0.1 }}
                             className="text-6xl md:text-8xl font-black mb-8 uppercase tracking-tighter italic leading-none"
                         >
-                            Outsourced <span className="text-white/20 not-italic">Intelligence.</span>
+                            Outsourced <span className="text-secondary not-italic">Intelligence.</span>
                         </motion.h1>
 
                         <motion.p
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="max-w-2xl mx-auto text-white/40 text-sm md:text-base font-medium uppercase tracking-[0.2em] leading-relaxed italic"
+                            className="max-w-2xl mx-auto text-foreground/40 text-sm md:text-base font-medium uppercase tracking-[0.2em] leading-relaxed italic"
                         >
                             Scale your enterprise with high-fidelity technical talent curated by Mindscape Analytics.
                         </motion.p>
@@ -118,22 +118,22 @@ export default function OutsourcingPage() {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="group p-10 bg-white/[0.02] border border-white/5 rounded-[3rem] hover:border-white/20 transition-all duration-700 relative overflow-hidden"
+                                    className="group p-10 bg-foreground/[0.02] border border-border rounded-[3rem] hover:border-foreground/20 transition-all duration-700 relative overflow-hidden"
                                 >
-                                    <div className="absolute top-0 right-0 p-10 text-white/[0.02] group-hover:text-white/[0.05] transition-colors">
+                                    <div className="absolute top-0 right-0 p-10 text-foreground/[0.02] group-hover:text-foreground/[0.05] transition-colors">
                                         <Icon size={80} />
                                     </div>
                                     <div className="relative z-10">
-                                        <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white group-hover:text-black transition-all duration-500">
+                                        <div className="w-14 h-14 bg-foreground/5 border border-border rounded-2xl flex items-center justify-center mb-8 group-hover:bg-foreground group-hover:text-background transition-all duration-500">
                                             <Icon size={24} />
                                         </div>
                                         <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter">{pool.title}</h3>
-                                        <p className="text-white/40 text-sm font-medium leading-loose italic mb-8">
+                                        <p className="text-foreground/40 text-sm font-medium leading-loose italic mb-8">
                                             {pool.description}
                                         </p>
                                         <div className="flex flex-wrap gap-2">
                                             {pool.skills.map((skill, j) => (
-                                                <span key={j} className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[9px] font-black uppercase tracking-widest text-white/60">
+                                                <span key={j} className="px-3 py-1 bg-foreground/5 border border-border rounded-lg text-[9px] font-black uppercase tracking-widest text-foreground/60">
                                                     {skill}
                                                 </span>
                                             ))}
@@ -145,14 +145,14 @@ export default function OutsourcingPage() {
                     </div>
 
                     {/* Procedures Section */}
-                    <div className="bg-white/[0.03] border border-white/10 rounded-[4rem] p-12 md:p-24 mb-40 relative overflow-hidden">
+                    <div className="bg-foreground/[0.03] border border-border rounded-[4rem] p-12 md:p-24 mb-40 relative overflow-hidden">
                         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10" />
                         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                             <div>
                                 <h2 className="text-4xl md:text-5xl font-black mb-8 uppercase tracking-tighter italic">
-                                    Our <span className="text-white/20 not-italic">Vetting Process.</span>
+                                    Our <span className="text-secondary not-italic">Vetting Process.</span>
                                 </h2>
-                                <p className="text-white/40 text-sm md:text-base font-medium leading-loose italic mb-12">
+                                <p className="text-foreground/40 text-sm md:text-base font-medium leading-loose italic mb-12">
                                     At MSA, we don't just match resumes. We verify intelligence. Every engineer in our network undergoes rigorous architectural evaluation, code-efficiency audits, and cultural synchronization tests.
                                 </p>
                                 <div className="space-y-6">
@@ -163,7 +163,7 @@ export default function OutsourcingPage() {
                                         "Phase 04: Continuous Alignment Monitoring"
                                     ].map((step, k) => (
                                         <div key={k} className="flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.3em]">
-                                            <div className="w-6 h-px bg-white/20" />
+                                            <div className="w-6 h-px bg-foreground/20" />
                                             {step}
                                         </div>
                                     ))}
@@ -173,14 +173,14 @@ export default function OutsourcingPage() {
                                 {ENGAGEMENT_MODELS.map((model, l) => {
                                     const ModelIcon = model.icon;
                                     return (
-                                        <div key={l} className="p-8 bg-zinc-950/50 backdrop-blur-xl border border-white/5 rounded-3xl hover:border-white/20 transition-all group">
+                                        <div key={l} className="p-8 bg-foreground/[0.02] backdrop-blur-xl border border-border rounded-3xl hover:border-foreground/20 transition-all group">
                                             <div className="flex items-center gap-6">
-                                                <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-white/40 group-hover:text-white transition-colors">
+                                                <div className="w-12 h-12 bg-foreground/5 rounded-2xl flex items-center justify-center text-foreground/40 group-hover:text-foreground transition-colors">
                                                     <ModelIcon size={20} />
                                                 </div>
                                                 <div>
                                                     <h4 className="font-black uppercase tracking-widest text-xs mb-1">{model.title}</h4>
-                                                    <p className="text-[10px] text-white/30 italic">{model.description}</p>
+                                                    <p className="text-[10px] text-foreground/30 italic">{model.description}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -191,11 +191,11 @@ export default function OutsourcingPage() {
                     </div>
 
                     {/* CTA Section */}
-                    <div className="text-center bg-gradient-to-b from-white/[0.05] to-transparent border border-white/5 rounded-[3rem] p-20">
+                    <div className="text-center bg-gradient-to-b from-white/[0.05] to-transparent border border-border rounded-[3rem] p-20">
                         <h2 className="text-3xl md:text-4xl font-black mb-8 uppercase tracking-tighter italic">
-                            Begin Your <span className="text-white/20 not-italic">Team Expansion.</span>
+                            Begin Your <span className="text-secondary not-italic">Team Expansion.</span>
                         </h2>
-                        <button className="px-12 py-5 bg-white text-black rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-zinc-200 transition-all active:scale-95 flex items-center gap-4 mx-auto group">
+                        <button className="px-12 py-5 bg-foreground text-background rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-foreground/90 transition-all active:scale-95 flex items-center gap-4 mx-auto group">
                             Schedule Technical Audit
                             <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
                         </button>

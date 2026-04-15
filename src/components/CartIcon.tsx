@@ -9,10 +9,10 @@ export default function CartIcon() {
 
     return (
         <Link href="/cart" className="relative">
-            <button className="p-2.5 bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 rounded-xl transition-all relative group/cart">
-                <ShoppingCart size={18} className="text-white/40 group-hover/cart:text-white transition-colors" />
+            <button className="p-2.5 bg-foreground/5 hover:bg-foreground/10 border border-border hover:border-border rounded-xl transition-all relative group/cart">
+                <ShoppingCart size={18} className="text-foreground/40 group-hover/cart:text-foreground transition-colors" />
                 {itemCount > 0 && (
-                    <span className="absolute -top-1 -right-1 w-4 h-4 bg-white text-black text-[9px] font-black rounded-full flex items-center justify-center shadow-xl">
+                    <span className="absolute -top-1 -right-1 w-4 h-4 bg-foreground text-background text-[9px] font-black rounded-full flex items-center justify-center shadow-xl">
                         {itemCount}
                     </span>
                 )}

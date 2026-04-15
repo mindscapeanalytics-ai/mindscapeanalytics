@@ -45,9 +45,9 @@ export default function BecomeSellerForm() {
     if (isSessionPending) {
         return (
             <div className="text-center py-12">
-                <div className="inline-block px-4 py-2 border border-white/10 rounded-full mb-4">
-                    <span className="w-2 h-2 rounded-full bg-white animate-pulse inline-block mr-2" />
-                    <span className="text-[10px] font-black uppercase tracking-widest text-white/40">Synchronizing Session...</span>
+                <div className="inline-block px-4 py-2 border border-border rounded-full mb-4">
+                    <span className="w-2 h-2 rounded-full bg-foreground animate-pulse inline-block mr-2" />
+                    <span className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Synchronizing Session...</span>
                 </div>
             </div>
         )
@@ -56,10 +56,10 @@ export default function BecomeSellerForm() {
     if (!session) {
         return (
             <div className="text-center py-12">
-                <p className="text-white/40 text-[10px] font-black uppercase tracking-widest mb-6">Unauthorized Session Detected</p>
+                <p className="text-foreground/40 text-[10px] font-black uppercase tracking-widest mb-6">Unauthorized Session Detected</p>
                 <button
                     onClick={() => router.push("/sign-in?callbackUrl=/become-seller")}
-                    className="px-8 py-4 bg-white text-black rounded-xl font-black text-[10px] uppercase tracking-widest"
+                    className="px-8 py-4 bg-foreground text-background rounded-xl font-black text-[10px] uppercase tracking-widest"
                 >
                     Establish Link to Continue
                 </button>
@@ -76,35 +76,35 @@ export default function BecomeSellerForm() {
             )}
 
             <div className="space-y-4">
-                <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/40 ml-1">Creator / Shop Name *</label>
+                <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40 ml-1">Creator / Shop Name *</label>
                 <input
                     type="text"
                     name="storeName"
                     required
                     placeholder="E.G. NEURAL_STUDIOS"
-                    className="w-full px-6 py-4 bg-white/[0.03] border border-white/5 rounded-2xl text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 focus:bg-white/[0.05] transition-all backdrop-blur-xl uppercase font-bold tracking-widest text-sm"
+                    className="w-full px-6 py-4 bg-foreground/[0.03] border border-border rounded-2xl text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-foreground/20 focus:bg-foreground/[0.05] transition-all backdrop-blur-xl uppercase font-bold tracking-widest text-sm"
                 />
             </div>
 
             <div className="space-y-4">
-                <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/40 ml-1">Asset Suite Description *</label>
+                <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40 ml-1">Asset Suite Description *</label>
                 <textarea
                     name="storeDescription"
                     required
                     rows={5}
                     placeholder="Briefly describe your specialization. Our streamlined system now supports rapid one-image project listings for maximum efficiency..."
-                    className="w-full px-6 py-6 bg-white/[0.03] border border-white/5 rounded-3xl text-white placeholder:text-white/20 focus:outline-none focus:border-white/20 focus:bg-white/[0.05] transition-all backdrop-blur-xl italic text-sm leading-relaxed"
+                    className="w-full px-6 py-6 bg-foreground/[0.03] border border-border rounded-3xl text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-foreground/20 focus:bg-foreground/[0.05] transition-all backdrop-blur-xl italic text-sm leading-relaxed"
                 />
             </div>
 
-            <div className="pt-8 border-t border-white/5">
-                <p className="text-[9px] text-white/20 uppercase tracking-[0.2em] mb-8 italic text-center">
+            <div className="pt-8 border-t border-border">
+                <p className="text-[9px] text-foreground/20 uppercase tracking-[0.2em] mb-8 italic text-center">
                     Note: Settlement protocols and network configurations can be localized within the dashboard after initial terminal enrollment.
                 </p>
                 <button
                     type="submit"
                     disabled={isActionPending}
-                    className="w-full py-6 bg-white text-black rounded-2xl font-black text-xs uppercase tracking-[0.3em] hover:bg-white/90 transition-all shadow-[0_0_50px_rgba(255,255,255,0.1)] active:scale-95 group flex items-center justify-center gap-4 disabled:opacity-50"
+                    className="w-full py-6 bg-foreground text-background rounded-2xl font-black text-xs uppercase tracking-[0.3em] hover:bg-foreground/90 transition-all shadow-[0_0_50px_hsl(var(--foreground)/0.1)] active:scale-95 group flex items-center justify-center gap-4 disabled:opacity-50"
                 >
                     {isActionPending ? "INITIALIZING..." : (
                         <>

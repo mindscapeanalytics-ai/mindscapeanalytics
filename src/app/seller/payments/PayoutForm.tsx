@@ -22,14 +22,14 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                 <button
                     onClick={() => setMethod("stripe")}
                     className={`p-10 rounded-[2.5rem] border transition-all text-left relative overflow-hidden group ${method === "stripe"
-                            ? "bg-white/5 border-white/20"
-                            : "bg-white/[0.01] border-white/5 opacity-40 hover:opacity-100 hover:border-white/10"
+                            ? "bg-foreground/5 border-foreground/20"
+                            : "bg-foreground/[0.01] border-border opacity-40 hover:opacity-100 hover:border-border"
                         }`}
                 >
                     <div className="relative z-10">
-                        <CreditCard size={32} className={`mb-6 ${method === "stripe" ? "text-white" : "text-white/20"}`} />
+                        <CreditCard size={32} className={`mb-6 ${method === "stripe" ? "text-foreground" : "text-foreground/20"}`} />
                         <h3 className="text-xl font-black uppercase tracking-tight mb-2">Stripe Connect</h3>
-                        <p className="text-[10px] text-white/40 uppercase tracking-widest italic font-medium">Standard Fiat Rails</p>
+                        <p className="text-[10px] text-foreground/40 uppercase tracking-widest italic font-medium">Standard Fiat Rails</p>
                     </div>
                     {method === "stripe" && (
                         <div className="absolute top-8 right-8 text-blue-500">
@@ -41,14 +41,14 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                 <button
                     onClick={() => setMethod("crypto")}
                     className={`p-10 rounded-[2.5rem] border transition-all text-left relative overflow-hidden group ${method === "crypto"
-                            ? "bg-white/5 border-white/20"
-                            : "bg-white/[0.01] border-white/5 opacity-40 hover:opacity-100 hover:border-white/10"
+                            ? "bg-foreground/5 border-foreground/20"
+                            : "bg-foreground/[0.01] border-border opacity-40 hover:opacity-100 hover:border-border"
                         }`}
                 >
                     <div className="relative z-10">
-                        <Wallet size={32} className={`mb-6 ${method === "crypto" ? "text-white" : "text-white/20"}`} />
+                        <Wallet size={32} className={`mb-6 ${method === "crypto" ? "text-foreground" : "text-foreground/20"}`} />
                         <h3 className="text-xl font-black uppercase tracking-tight mb-2">Crypto Wallet</h3>
-                        <p className="text-[10px] text-white/40 uppercase tracking-widest italic font-medium">Decentralized Settlement</p>
+                        <p className="text-[10px] text-foreground/40 uppercase tracking-widest italic font-medium">Decentralized Settlement</p>
                     </div>
                     {method === "crypto" && (
                         <div className="absolute top-8 right-8 text-blue-500">
@@ -65,11 +65,11 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-12 relative overflow-hidden"
+                        className="bg-foreground/[0.02] border border-border rounded-[3rem] p-12 relative overflow-hidden"
                     >
                         <div className="max-w-xl">
                             <h2 className="text-2xl font-black uppercase tracking-tighter italic mb-6">Financial Bridge Configuration</h2>
-                            <p className="text-white/40 text-[11px] font-black uppercase tracking-widest leading-relaxed mb-10 italic">
+                            <p className="text-foreground/40 text-[11px] font-black uppercase tracking-widest leading-relaxed mb-10 italic">
                                 Connect your commercial terminal to the Stripe infrastructure to enable fiat currency distributions.
                             </p>
 
@@ -77,16 +77,16 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                                 <div className="flex items-center gap-4 px-6 py-4 bg-green-500/10 border border-green-500/20 rounded-2xl mb-12">
                                     <CheckCircle2 size={20} className="text-green-500" />
                                     <div>
-                                        <div className="text-[10px] font-black uppercase tracking-widest text-white">Registry Active</div>
-                                        <div className="text-[9px] text-white/40 uppercase tracking-tight italic">Commercial rails initialized and verified.</div>
+                                        <div className="text-[10px] font-black uppercase tracking-widest text-foreground">Registry Active</div>
+                                        <div className="text-[9px] text-foreground/40 uppercase tracking-tight italic">Commercial rails initialized and verified.</div>
                                     </div>
                                 </div>
                             ) : (
                                 <div className="flex items-center gap-4 px-6 py-4 bg-amber-500/10 border border-amber-500/20 rounded-2xl mb-12">
                                     <AlertCircle size={20} className="text-amber-500" />
                                     <div>
-                                        <div className="text-[10px] font-black uppercase tracking-widest text-white">Awaiting Handshake</div>
-                                        <div className="text-[9px] text-white/40 uppercase tracking-tight italic">Stripe Connect identity not localized.</div>
+                                        <div className="text-[10px] font-black uppercase tracking-widest text-foreground">Awaiting Handshake</div>
+                                        <div className="text-[9px] text-foreground/40 uppercase tracking-tight italic">Stripe Connect identity not localized.</div>
                                     </div>
                                 </div>
                             )}
@@ -98,7 +98,7 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                             }}>
                                 <button
                                     type="submit"
-                                    className="px-12 py-5 bg-white text-black rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-white/90 transition-all flex items-center gap-4 group"
+                                    className="px-12 py-5 bg-foreground text-background rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-foreground/90 transition-all flex items-center gap-4 group"
                                 >
                                     {stripeConnected ? "Manage Account" : "Initialize Handshake"}
                                     <ExternalLink size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -112,27 +112,27 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-12 relative overflow-hidden"
+                        className="bg-foreground/[0.02] border border-border rounded-[3rem] p-12 relative overflow-hidden"
                     >
                         <form action={action} className="max-w-xl">
                             <input type="hidden" name="payoutMethod" value="crypto" />
                             <h2 className="text-2xl font-black uppercase tracking-tighter italic mb-6">Digital Asset Distribution</h2>
-                            <p className="text-white/40 text-[11px] font-black uppercase tracking-widest leading-relaxed mb-10 italic">
+                            <p className="text-foreground/40 text-[11px] font-black uppercase tracking-widest leading-relaxed mb-10 italic">
                                 Input your destination address for decentralized settlements. Alpha, USDT, and ETH protocols supported.
                             </p>
 
                             <div className="space-y-6 mb-12">
                                 <div>
-                                    <label className="text-[9px] font-black uppercase tracking-[0.4em] text-white/20 mb-4 block">Destination Address</label>
+                                    <label className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/20 mb-4 block">Destination Address</label>
                                     <input
                                         name="payoutDetails"
                                         defaultValue={initialMethod === "crypto" ? initialDetails : ""}
                                         placeholder="0x..."
-                                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-sm font-medium focus:border-white/20 outline-none transition-all placeholder:text-white/10"
+                                        className="w-full bg-foreground/5 border border-border rounded-2xl px-6 py-5 text-sm font-medium focus:border-foreground/20 outline-none transition-all placeholder:text-foreground/10"
                                         required
                                     />
                                 </div>
-                                <p className="text-[9px] text-white/20 uppercase tracking-tight italic">
+                                <p className="text-[9px] text-foreground/20 uppercase tracking-tight italic">
                                     Note: Ensure the address is accurate. Distributions across decentralized protocols are final.
                                 </p>
                             </div>
@@ -154,7 +154,7 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                             <button
                                 type="submit"
                                 disabled={isPending}
-                                className="px-12 py-5 bg-white text-black rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-white/90 transition-all flex items-center gap-4 active:scale-95 disabled:opacity-50 disabled:active:scale-100"
+                                className="px-12 py-5 bg-foreground text-background rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-foreground/90 transition-all flex items-center gap-4 active:scale-95 disabled:opacity-50 disabled:active:scale-100"
                             >
                                 {isPending ? (
                                     <>

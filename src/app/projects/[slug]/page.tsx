@@ -165,7 +165,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     }
 
     return (
-        <div className="min-h-screen bg-transparent text-white relative">
+        <div className="min-h-screen bg-transparent text-foreground relative">
             <Navbar />
 
             {/* --- Case Study Hero --- */}
@@ -173,10 +173,10 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="max-w-5xl mx-auto space-y-8">
                         <div className="flex flex-wrap items-center gap-4">
-                            <span className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-mono font-black uppercase tracking-widest text-white/60">
+                            <span className="px-4 py-1.5 bg-foreground/5 border border-border rounded-full text-[10px] font-mono font-black uppercase tracking-widest text-foreground/60">
                                 Case_Study // {slug.replace(/-/g, '_')}
                             </span>
-                            <span className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-mono font-black uppercase tracking-widest text-white/40">
+                            <span className="px-4 py-1.5 bg-foreground/5 border border-border rounded-full text-[10px] font-mono font-black uppercase tracking-widest text-foreground/40">
                                 {study.industry}
                             </span>
                         </div>
@@ -194,13 +194,13 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             </section>
 
             {/* --- Hero Metrics Grid --- */}
-            <section className="py-12 border-y border-white/5 bg-white/[0.01]">
+            <section className="py-12 border-y border-border bg-foreground/[0.01]">
                 <div className="container mx-auto px-6">
-                    <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/10">
+                    <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-px bg-foreground/5 rounded-2xl overflow-hidden border border-border">
                         {Object.values(study.heroMetrics).map((metric, i) => (
                             <div key={i} className="p-8 bg-black/40 backdrop-blur-md text-center">
-                                <div className="text-5xl font-black font-syncopate text-white mb-2">{metric.value}</div>
-                                <div className="text-[10px] font-mono font-black uppercase tracking-widest text-white/40">{metric.label}</div>
+                                <div className="text-5xl font-black font-syncopate text-foreground mb-2">{metric.value}</div>
+                                <div className="text-[10px] font-mono font-black uppercase tracking-widest text-foreground/40">{metric.label}</div>
                             </div>
                         ))}
                     </div>
@@ -208,7 +208,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             </section>
 
             {/* --- Deep Dive Content --- */}
-            <section className="py-24 bg-transparent border-b border-white/5">
+            <section className="py-24 bg-transparent border-b border-border">
                 <div className="container mx-auto px-6">
                     <div className="max-w-4xl mx-auto space-y-24">
 
@@ -219,9 +219,9 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                                     <TrendingUp className="w-5 h-5 text-red-500/80" />
                                     <h2 className="text-2xl font-black uppercase tracking-tighter">The Inefficiency</h2>
                                 </div>
-                                <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-white/20">Operational_Drag</p>
+                                <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-foreground/20">Operational_Drag</p>
                             </div>
-                            <div className="prose prose-invert prose-lg text-white/60 font-medium leading-relaxed">
+                            <div className="prose prose-invert prose-lg text-foreground/60 font-medium leading-relaxed">
                                 <p>{study.problem}</p>
                             </div>
                         </div>
@@ -233,17 +233,17 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                                     <Network className="w-5 h-5 text-blue-500/80" />
                                     <h2 className="text-2xl font-black uppercase tracking-tighter">The Architecture</h2>
                                 </div>
-                                <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-white/20">System_Design</p>
+                                <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-foreground/20">System_Design</p>
                             </div>
                             <div className="space-y-8">
-                                <p className="text-lg text-white/60 font-medium leading-relaxed">
+                                <p className="text-lg text-foreground/60 font-medium leading-relaxed">
                                     {study.solution}
                                 </p>
-                                <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/10 space-y-6">
-                                    <h3 className="text-[10px] font-mono font-black uppercase tracking-widest text-white/40">Technology Stack</h3>
+                                <div className="p-8 rounded-2xl bg-foreground/[0.02] border border-border space-y-6">
+                                    <h3 className="text-[10px] font-mono font-black uppercase tracking-widest text-foreground/40">Technology Stack</h3>
                                     <div className="flex flex-wrap gap-2">
                                         {study.techStack.map(tech => (
-                                            <span key={tech} className="px-3 py-1 bg-black/50 border border-white/10 rounded-lg text-xs font-bold tracking-wide text-white/80">
+                                            <span key={tech} className="px-3 py-1 bg-black/50 border border-border rounded-lg text-xs font-bold tracking-wide text-foreground/80">
                                                 {tech}
                                             </span>
                                         ))}
@@ -259,19 +259,19 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                                     <Server className="w-5 h-5 text-emerald-500/80" />
                                     <h2 className="text-2xl font-black uppercase tracking-tighter">The Infrastructure</h2>
                                 </div>
-                                <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-white/20">Managed_Environment</p>
+                                <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-foreground/20">Managed_Environment</p>
                             </div>
                             <div className="space-y-6">
-                                <p className="text-lg text-white/60 font-medium leading-relaxed">
+                                <p className="text-lg text-foreground/60 font-medium leading-relaxed">
                                     {study.infrastructure}
                                 </p>
                                 <div className="grid grid-cols-2 gap-4">
-                                    <div className="p-6 rounded-xl bg-white/5 border border-white/10 flex items-center gap-4">
-                                        <Database className="w-6 h-6 text-white/40" />
+                                    <div className="p-6 rounded-xl bg-foreground/5 border border-border flex items-center gap-4">
+                                        <Database className="w-6 h-6 text-foreground/40" />
                                         <span className="text-sm font-bold uppercase tracking-wide">Managed DB</span>
                                     </div>
-                                    <div className="p-6 rounded-xl bg-white/5 border border-white/10 flex items-center gap-4">
-                                        <ShieldCheck className="w-6 h-6 text-white/40" />
+                                    <div className="p-6 rounded-xl bg-foreground/5 border border-border flex items-center gap-4">
+                                        <ShieldCheck className="w-6 h-6 text-foreground/40" />
                                         <span className="text-sm font-bold uppercase tracking-wide">24/7 Security</span>
                                     </div>
                                 </div>
@@ -285,13 +285,13 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                                     <Zap className="w-5 h-5 text-yellow-500/80" />
                                     <h2 className="text-2xl font-black uppercase tracking-tighter">Business Impact</h2>
                                 </div>
-                                <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-white/20">Revenue_Multiplier</p>
+                                <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-foreground/20">Revenue_Multiplier</p>
                             </div>
                             <div className="space-y-6">
                                 {study.results.map((res, i) => (
-                                    <div key={i} className="flex items-start gap-4 p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] transition-colors">
-                                        <span className="text-[10px] font-mono font-black text-white/20 mt-1">0{i + 1}</span>
-                                        <p className="text-white/80 font-medium leading-relaxed">{res}</p>
+                                    <div key={i} className="flex items-start gap-4 p-6 rounded-2xl bg-foreground/[0.03] border border-border hover:bg-foreground/[0.06] transition-colors">
+                                        <span className="text-[10px] font-mono font-black text-foreground/20 mt-1">0{i + 1}</span>
+                                        <p className="text-foreground/80 font-medium leading-relaxed">{res}</p>
                                     </div>
                                 ))}
                             </div>
@@ -302,7 +302,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             </section>
 
             {/* --- Conversion CTA --- */}
-            <section className="py-32 bg-white text-black text-center">
+            <section className="py-32 bg-foreground text-background text-center">
                 <div className="container mx-auto px-6">
                     <div className="max-w-3xl mx-auto space-y-8">
                         <Cpu className="w-12 h-12 mx-auto opacity-20" />
@@ -314,12 +314,12 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                         </p>
                         <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
                             <Link href="/contact">
-                                <button className="px-10 py-5 bg-black text-white font-black uppercase text-[10px] tracking-[0.4em] rounded-xl hover:scale-105 transition-transform flex items-center gap-3 shadow-2xl">
+                                <button className="px-10 py-5 bg-black text-foreground font-black uppercase text-[10px] tracking-[0.4em] rounded-xl hover:scale-105 transition-transform flex items-center gap-3 shadow-2xl">
                                     Initiate Deployment
                                     <ArrowRight className="w-4 h-4" />
                                 </button>
                             </Link>
-                            <Link href="/pricing" className="text-[10px] font-black uppercase tracking-widest text-black/60 hover:text-black border-b border-black/20 pb-1 transition-colors">
+                            <Link href="/pricing" className="text-[10px] font-black uppercase tracking-widest text-background/60 hover:text-background border-b border-black/20 pb-1 transition-colors">
                                 View Managed Plans
                             </Link>
                         </div>

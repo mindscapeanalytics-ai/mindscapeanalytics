@@ -312,18 +312,18 @@ export default function ProjectsPage() {
     };
 
     return (
-        <div className="min-h-screen bg-transparent text-white relative">
+        <div className="min-h-screen bg-transparent text-foreground relative">
             <Navbar />
 
             {/* --- Hero Section --- */}
-            <section className="relative pt-44 pb-16 overflow-hidden">
+            <section className="relative pt-44 pb-16 overflow-hidden institutional-grid">
                 <div className="container-standard relative z-10 text-center space-y-12">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mx-auto"
+                        className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-foreground/5 border border-border backdrop-blur-md mx-auto"
                     >
-                        <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
+                        <div className="w-2 h-2 bg-foreground rounded-full animate-pulse shadow-[0_0_8px_hsl(var(--foreground)/0.6)]" />
                         <span className="text-meta">Deployment_Logs // v5.1</span>
                     </motion.div>
 
@@ -332,31 +332,31 @@ export default function ProjectsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         className="fluid-h1"
                     >
-                        SYSTEM <span className="text-white/40">DEPLOYS.</span>
+                        SYSTEM <span className="text-foreground/40">DEPLOYS.</span>
                     </motion.h1>
                 </div>
             </section>
 
             {/* --- Projects Slider --- */}
-            <section className="py-24 bg-transparent relative border-t border-white/5">
+            <section className="py-24 bg-transparent relative border-t border-border">
                 <div className="container-standard mb-8 flex justify-between items-end">
                     <div className="max-w-4xl mx-auto text-center">
-                        <p className="text-xl md:text-2xl lg:text-3xl font-black text-white/40 font-sans tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl">
+                        <p className="text-xl md:text-2xl lg:text-3xl font-black text-foreground/40 font-sans tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl">
                             REAL ENTERPRISE SYSTEMS. <br />
-                            <span className="text-white">VERIFIED ROI & IMPACT.</span>
+                            <span className="text-foreground">VERIFIED ROI & IMPACT.</span>
                         </p>
                     </div>
                     {/* Navigation Arrows */}
                     <div className="hidden lg:flex items-center gap-4">
                         <button
                             onClick={() => scroll('left')}
-                            className="p-4 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/20 transition-all text-white/60 hover:text-white"
+                            className="p-4 bg-foreground/5 border border-border rounded-full hover:bg-foreground/10 hover:border-foreground/20 transition-all text-foreground/60 hover:text-foreground"
                         >
                             <ChevronLeft className="w-6 h-6" />
                         </button>
                         <button
                             onClick={() => scroll('right')}
-                            className="p-4 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/20 transition-all text-white/60 hover:text-white"
+                            className="p-4 bg-foreground/5 border border-border rounded-full hover:bg-foreground/10 hover:border-foreground/20 transition-all text-foreground/60 hover:text-foreground"
                         >
                             <ChevronRight className="w-6 h-6" />
                         </button>
@@ -365,8 +365,8 @@ export default function ProjectsPage() {
 
                 <div className="relative w-full">
                     {/* Visual fade edges for larger screens */}
-                    <div className="absolute left-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-r from-[#0a0a0b] to-transparent z-10 pointer-events-none" />
-                    <div className="absolute right-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-l from-[#0a0a0b] to-transparent z-10 pointer-events-none" />
+                    <div className="absolute left-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
                     <div
                         ref={scrollContainerRef}
@@ -376,13 +376,13 @@ export default function ProjectsPage() {
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     >
                         {projects.map((project, index) => (
-                            <motion.div
+                             <motion.div
                                 key={project.title}
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true, margin: "-100px" }}
                                 transition={{ delay: 0.1 }}
-                                className="w-[85vw] md:w-[80vw] lg:w-[1100px] max-w-[1200px] shrink-0 snap-center group relative p-8 lg:p-14 rounded-[3rem] bg-white/[0.02] border border-white/5 hover:border-white/20 backdrop-blur-xl transition-all duration-500 overflow-hidden flex flex-col justify-between"
+                                className="w-[85vw] md:w-[80vw] lg:w-[1100px] max-w-[1200px] shrink-0 snap-center group relative p-8 lg:p-14 rounded-[3rem] bg-foreground/[0.02] border border-border hover:border-foreground/20 backdrop-blur-xl transition-all duration-500 overflow-hidden flex flex-col justify-between surface-frost"
                             >
                                 <div className="absolute top-0 right-0 p-16 opacity-[0.03] pointer-events-none group-hover:opacity-[0.08] transition-opacity duration-700 translate-x-1/4 -translate-y-1/4">
                                     <project.icon className="w-96 h-96" />
@@ -391,51 +391,51 @@ export default function ProjectsPage() {
                                 <div className="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20">
                                     <div className="space-y-8 flex flex-col justify-center">
                                         <div className="space-y-4">
-                                            <div className="flex flex-wrap gap-2">
-                                                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-meta opacity-60">
+                                             <div className="flex flex-wrap gap-2">
+                                                <span className="px-3 py-1 bg-foreground/5 border border-border rounded-full text-meta opacity-60">
                                                     {project.category}
                                                 </span>
-                                                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-meta opacity-40">
+                                                <span className="px-3 py-1 bg-foreground/5 border border-border rounded-full text-meta opacity-40">
                                                     Industry: {project.industry}
                                                 </span>
                                             </div>
-                                            <h2 className="fluid-h2 leading-none text-white break-words">{project.title}</h2>
-                                            <p className="text-lg md:text-xl text-white/50 font-medium leading-relaxed max-w-2xl">
+                                            <h2 className="fluid-h2 leading-none text-foreground break-words">{project.title}</h2>
+                                            <p className="text-lg md:text-xl text-foreground/50 font-medium leading-relaxed max-w-2xl">
                                                 {project.description}
                                             </p>
                                         </div>
 
-                                        <div className="bg-black/40 border border-white/10 p-6 rounded-2xl space-y-4 mt-auto">
-                                            <h3 className="text-[10px] font-mono font-black uppercase tracking-widest text-white/40 border-b border-white/10 pb-2">Business Impact & Results</h3>
+                                         <div className="bg-foreground/[0.03] border border-border p-6 rounded-2xl space-y-4 mt-auto surface-frost">
+                                            <h3 className="text-[10px] font-mono font-black uppercase tracking-widest text-foreground/40 border-b border-border pb-2">Business Impact & Results</h3>
                                             <ul className="space-y-3">
                                                 {project.results.map(res => (
                                                     <li key={res} className="flex items-start gap-3">
-                                                        <Shield className="w-4 h-4 text-white/40 shrink-0 mt-0.5" />
-                                                        <span className="text-sm font-bold uppercase tracking-wide text-white/90">{res}</span>
+                                                        <Shield className="w-4 h-4 text-foreground/40 shrink-0 mt-0.5" />
+                                                        <span className="text-sm font-bold uppercase tracking-wide text-foreground/90">{res}</span>
                                                     </li>
                                                 ))}
                                             </ul>
                                         </div>
                                     </div>
 
-                                    <div className="space-y-10 flex flex-col justify-center bg-white/[0.01] p-8 rounded-3xl border border-white/5">
+                                     <div className="space-y-10 flex flex-col justify-center bg-foreground/[0.01] p-8 rounded-3xl border border-border surface-frost">
                                         <div className="space-y-6">
-                                            <h3 className="text-sm font-black uppercase tracking-widest text-white/40 border-b border-white/10 pb-4">System Architecture & Features</h3>
+                                            <h3 className="text-sm font-black uppercase tracking-widest text-foreground/40 border-b border-border pb-4">System Architecture & Features</h3>
                                             <div className="grid sm:grid-cols-2 gap-4">
                                                 {project.features.map(feature => (
                                                     <div key={feature} className="flex items-center gap-3">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                                                        <span className="text-xs font-bold uppercase tracking-wider text-white/60">{feature}</span>
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-foreground/20" />
+                                                        <span className="text-xs font-bold uppercase tracking-wider text-foreground/60">{feature}</span>
                                                     </div>
                                                 ))}
                                             </div>
                                         </div>
 
                                         <div className="space-y-6">
-                                            <h3 className="text-sm font-black uppercase tracking-widest text-white/40 border-b border-white/10 pb-4">Infrastructure & Tech Stack</h3>
+                                            <h3 className="text-sm font-black uppercase tracking-widest text-foreground/40 border-b border-border pb-4">Infrastructure & Tech Stack</h3>
                                             <div className="flex flex-wrap gap-2">
                                                 {project.techStack.map(tech => (
-                                                    <span key={tech} className="px-3 py-1.5 bg-black/60 border border-white/10 rounded-lg text-[10px] font-mono font-black uppercase tracking-widest text-white/40">
+                                                    <span key={tech} className="px-3 py-1.5 bg-foreground/5 border border-border rounded-lg text-[10px] font-mono font-black uppercase tracking-widest text-foreground/40">
                                                         {tech}
                                                     </span>
                                                 ))}
@@ -459,21 +459,21 @@ export default function ProjectsPage() {
             </section>
 
             {/* --- 5-Phase Methodology Section --- */}
-            <section className="section-spacing border-t border-white/5 bg-zinc-950">
+            <section className="section-spacing border-t border-border bg-background/40 backdrop-blur-3xl relative overflow-hidden institutional-grid">
                 <div className="container-standard">
                     <div className="max-w-7xl mx-auto space-y-16">
                         <div className="text-center space-y-6">
                             <h2 className="fluid-h2">5-PHASE DELIVERY FRAMEWORK</h2>
-                            <p className="text-lg text-white/40 font-medium uppercase tracking-widest max-w-2xl mx-auto">
+                            <p className="text-lg text-foreground/40 font-medium uppercase tracking-widest max-w-2xl mx-auto">
                                 We don't just deliver code and disappear. Every system we engineer follows a rigorous protocol from inception to perpetual maintenance.
                             </p>
                         </div>
 
-                        <div className="grid lg:grid-cols-5 gap-4">
+                         <div className="grid lg:grid-cols-5 gap-4">
                             {deliveryPhases.map((phase, i) => (
-                                <div key={phase.title} className="p-8 bg-white/[0.02] border border-white/5 rounded-2xl relative group hover:bg-white/[0.05] transition-colors">
-                                    <div className="text-[10px] font-mono font-black text-white/20 uppercase tracking-[0.3em] mb-6">Phase_0{i + 1}</div>
-                                    <phase.icon className="w-8 h-8 text-white/40 mb-6 group-hover:text-white transition-colors" />
+                                <div key={phase.title} className="p-8 bg-foreground/[0.02] border border-border rounded-2xl relative group hover:bg-foreground/[0.05] transition-colors surface-frost">
+                                    <div className="text-[10px] font-mono font-black text-foreground/20 uppercase tracking-[0.3em] mb-6">Phase_0{i + 1}</div>
+                                    <phase.icon className="w-8 h-8 text-foreground/40 mb-6 group-hover:text-foreground transition-colors" />
                                     <h3 className="text-sm font-black uppercase tracking-wider leading-relaxed">{phase.title}</h3>
                                 </div>
                             ))}
@@ -483,12 +483,13 @@ export default function ProjectsPage() {
             </section>
 
             {/* --- Managed Infrastructure Callout --- */}
-            <section className="section-spacing border-t border-white/5 bg-white text-black text-center">
+            <section className="section-spacing border-t border-border bg-foreground text-background text-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-transparent to-transparent opacity-30" />
                 <div className="container-standard">
                     <div className="max-w-4xl mx-auto space-y-8">
                         <span className="text-meta opacity-40">The Infrastructure Advantage</span>
                         <h2 className="fluid-h2">
-                            AGENCIES HAND OVER RAW CODE. <br /> <span className="opacity-40">WE DELIVER MANAGED PERFORMANCE.</span>
+                            AGENCIES HAND OVER RAW CODE. <br /> <span className="text-secondary">WE DELIVER MANAGED PERFORMANCE.</span>
                         </h2>
                         <p className="text-lg font-medium opacity-60 uppercase tracking-tighter max-w-2xl mx-auto">
                             All our deployed systems are backed by monthly infrastructure management, database optimization, and security monitoring to ensure long-term reliability and scalable growth.

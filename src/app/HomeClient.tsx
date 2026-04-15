@@ -8,8 +8,9 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 
 const ProjectVision = dynamic(() => import("@/components/ProjectVision"), { ssr: true });
+const AiEmployee = dynamic(() => import("@/components/AiEmployee"), { ssr: true });
 const ProblemAgitation = dynamic(() => import("@/components/ProblemAgitation"), { ssr: true });
-const Solutions = dynamic(() => import("@/components/Solutions"), { ssr: true });
+const BankingAiAdoption = dynamic(() => import("@/components/BankingAiAdoption"), { ssr: true });
 const InfrastructureAdvantage = dynamic(() => import("@/components/InfrastructureAdvantage"), { ssr: true });
 const CaseStudies = dynamic(() => import("@/components/CaseStudies"), { ssr: true });
 const BusinessImpact = dynamic(() => import("@/components/BusinessImpact"), { ssr: true });
@@ -59,6 +60,9 @@ export default function HomeClient() {
             {/* Hero section - no wrapper needed as it has its own animations */}
             <Hero />
 
+            {/* AI Employee Section - Interactive Hub */}
+            <AiEmployee />
+
             {/* Project Vision - High Impact Intro Animation */}
             <ProjectVision />
 
@@ -69,7 +73,7 @@ export default function HomeClient() {
                 </ScrollSection>
 
                 <ScrollSection delay={0.05}>
-                    <Solutions />
+                    <BankingAiAdoption />
                 </ScrollSection>
 
                 <ScrollSection delay={0.1}>
