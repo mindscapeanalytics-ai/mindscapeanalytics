@@ -156,13 +156,15 @@ export default function ChatWidget() {
                         <div className="w-full flex items-center justify-between p-6 border-b border-border bg-foreground/[0.02]">
                             <div className="flex items-center gap-4">
                                 <div className="relative">
-                                    <div className="w-10 h-10 rounded-full border border-border overflow-hidden bg-white shadow-lg relative">
-                                        <Image 
-                                            src="/images/zeeshan-keerio-chat-app-acon.png" 
-                                            alt="Mindscape AI" 
-                                            fill 
-                                            className="object-cover" 
-                                        />
+                                    <div className="w-10 h-10 rounded-full border border-border overflow-hidden bg-white shadow-lg relative flex items-center justify-center">
+                                        <div className="relative w-[88%] h-[88%] rounded-full overflow-hidden">
+                                            <Image 
+                                                src="/images/zeeshan-keerio-chat-app-acon.png" 
+                                                alt="Mindscape AI" 
+                                                fill 
+                                                className="object-cover object-top" 
+                                            />
+                                        </div>
                                     </div>
                                     <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-[#0a0a0b] animate-pulse" />
                                 </div>
@@ -198,13 +200,15 @@ export default function ChatWidget() {
                                                 {msg.type === "user" ? (
                                                     <User size={14} className="text-foreground/60" />
                                                 ) : (
-                                                    <div className="relative w-full h-full bg-white">
-                                                        <Image 
-                                                            src="/images/zeeshan-keerio-chat-app-acon.png" 
-                                                            alt="Agent" 
-                                                            fill 
-                                                            className="object-cover" 
-                                                        />
+                                                    <div className="relative w-full h-full bg-white flex items-center justify-center">
+                                                        <div className="relative w-[88%] h-[88%] rounded-full overflow-hidden">
+                                                            <Image 
+                                                                src="/images/zeeshan-keerio-chat-app-acon.png" 
+                                                                alt="Agent" 
+                                                                fill 
+                                                                className="object-cover object-top" 
+                                                            />
+                                                        </div>
                                                     </div>
                                                 )}
                                             </div>
@@ -245,12 +249,14 @@ export default function ChatWidget() {
                                 >
                                     <div className="flex gap-4">
                                         <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-border animate-pulse overflow-hidden relative shadow-lg">
-                                            <Image 
-                                                src="/images/zeeshan-keerio-chat-app-acon.png" 
-                                                alt="Agent" 
-                                                fill 
-                                                className="object-cover opacity-80" 
-                                            />
+                                            <div className="relative w-[88%] h-[88%] rounded-full overflow-hidden">
+                                                <Image 
+                                                    src="/images/zeeshan-keerio-chat-app-acon.png" 
+                                                    alt="Agent" 
+                                                    fill 
+                                                    className="object-cover object-top opacity-80" 
+                                                />
+                                            </div>
                                         </div>
                                         <div className="bg-foreground/5 border border-border px-4 py-3 rounded-2xl rounded-tl-none flex gap-1.5 items-center">
                                             <span className="w-1.5 h-1.5 bg-foreground rounded-full animate-bounce [animation-delay:-0.3s]" />
@@ -374,19 +380,19 @@ export default function ChatWidget() {
                                 exit={{ opacity: 0, scale: 0.5 }}
                                 className="relative w-full h-full flex items-center justify-center"
                             >
-                                <div className="relative w-full h-full group">
+                                <div className="relative w-full h-full group flex items-center justify-center">
                                     {/* Circular Background Badge - Clean White Professional Look */}
                                     <div className="absolute inset-0 bg-white border border-border rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.15)] group-hover:shadow-[0_15px_40px_rgba(0,0,0,0.25)] transition-all" />
                                     
                                     <div className="absolute inset-0 bg-secondary/10 blur-[30px] rounded-full opacity-20 group-hover:opacity-40 transition-opacity" />
                                     
-                                    <div className="relative w-full h-full overflow-hidden rounded-full border border-border/50">
+                                    <div className="relative w-[88%] h-[88%] overflow-hidden rounded-full border border-border/30 bg-background z-10 shadow-inner">
                                         <Image 
                                             src="/images/zeeshan-keerio-chat-app-acon.png" 
                                             alt="Mindscape AI Assistant" 
                                             fill 
                                             priority
-                                            className="object-cover object-center drop-shadow-sm transition-transform group-hover:scale-110" 
+                                            className="object-cover object-top drop-shadow-sm transition-transform group-hover:scale-110" 
                                         />
                                     </div>
                                 </div>

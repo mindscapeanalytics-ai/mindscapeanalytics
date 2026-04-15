@@ -52,8 +52,8 @@ export default function AiEmployee() {
                         </motion.div>
                     </div>
 
-                    {/* 2. MIDDLE: Visual Hub (Mobile Order 2, Desktop Spans) */}
-                    <div className="relative order-2 lg:row-span-2 flex justify-center items-center py-0 lg:py-0 min-h-[300px] md:min-h-[500px] lg:min-h-[950px] scale-[0.6] sm:scale-75 md:scale-95 lg:scale-100 transition-transform duration-1000 -my-20 lg:my-0">
+                    {/* 2. MIDDLE: Visual Hub - Refined Scaling for Mobile */}
+                    <div className="relative order-2 lg:row-span-2 flex justify-center items-center py-0 lg:py-0 min-h-[350px] md:min-h-[550px] lg:min-h-[950px] scale-[0.75] xs:scale-80 sm:scale-85 md:scale-95 lg:scale-100 transition-transform duration-1000 -my-14 lg:my-0">
                         {/* Background Data Matrix */}
                         <div className="absolute inset-0 pointer-events-none z-0">
                             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--secondary),0.06)_0%,transparent_75%)] opacity-40" />
@@ -99,22 +99,18 @@ export default function AiEmployee() {
                                         initial={{ opacity: 0 }} 
                                         whileInView={{ opacity: 1 }} 
                                         transition={{ delay: 1.2 + tag.delay }} 
-                                        className="absolute z-40 transform -translate-x-1/2 -translate-y-1/2"
+                                        className="absolute z-40 transform -translate-x-1/2 -translate-y-1/2 [--tag-offset-scale:1] md:[--tag-offset-scale:0.6] lg:[--tag-offset-scale:1]"
                                         style={{ 
-                                            // Dynamic scaling for mobile responsiveness: use CSS variables or inline calculation
-                                            left: `calc(50% + (var(--tag-offset-scale, 1) * ${tag.x}px))`, 
-                                            top: `calc(50% + (var(--tag-offset-scale, 1) * ${tag.y}px))` 
+                                            left: `calc(50% + (var(--tag-offset-scale) * ${tag.x}px))`, 
+                                            top: `calc(50% + (var(--tag-offset-scale) * ${tag.y}px))` 
                                         }}
                                     >
                                         <style jsx>{`
-                                            @media (max-width: 400px) {
-                                                div { --tag-offset-scale: 0.16; }
+                                            @media (max-width: 480px) {
+                                                div { --tag-offset-scale: 0.22 !important; }
                                             }
-                                            @media (min-width: 401px) and (max-width: 640px) {
-                                                div { --tag-offset-scale: 0.22; }
-                                            }
-                                            @media (min-width: 641px) and (max-width: 1024px) {
-                                                div { --tag-offset-scale: 0.55; }
+                                            @media (min-width: 481px) and (max-width: 768px) {
+                                                div { --tag-offset-scale: 0.35 !important; }
                                             }
                                         `}</style>
                                         <div className={cn("px-4 py-2 lg:px-6 lg:py-2.5 rounded-full border backdrop-blur-3xl flex items-center gap-2 lg:gap-3 shadow-2xl relative group", tag.bg, tag.border)}>
