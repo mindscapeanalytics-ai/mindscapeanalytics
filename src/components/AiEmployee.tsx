@@ -63,7 +63,11 @@ export default function AiEmployee() {
 
                         <div className="relative w-full h-[550px] lg:h-[950px] flex items-center justify-center">
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible">
-                                <motion.div animate={{ rotate: 360 }} transition={{ duration: 50, repeat: Infinity, ease: "linear" }} className="absolute w-[140%] aspect-square rounded-full border border-secondary/5 opacity-[0.05]" />
+                                <motion.div 
+                                    animate={{ rotate: 360 }} 
+                                    transition={{ duration: 50, repeat: Infinity, ease: "linear" }} 
+                                    className="absolute w-[140%] aspect-square rounded-full border border-secondary/5 opacity-[0.05] hidden lg:block" 
+                                />
                             </div>
 
                             <motion.div
@@ -90,7 +94,29 @@ export default function AiEmployee() {
                                 </div>
 
                                 {TAGS.map((tag, i) => (
-                                    <motion.div key={tag.name} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.2 + tag.delay }} style={{ left: `calc(50% + ${tag.x}px)`, top: `calc(50% + ${tag.y}px)` }} className="absolute z-40 transform -translate-x-1/2 -translate-y-1/2">
+                                    <motion.div 
+                                        key={tag.name} 
+                                        initial={{ opacity: 0 }} 
+                                        whileInView={{ opacity: 1 }} 
+                                        transition={{ delay: 1.2 + tag.delay }} 
+                                        className="absolute z-40 transform -translate-x-1/2 -translate-y-1/2"
+                                        style={{ 
+                                            // Dynamic scaling for mobile responsiveness: use CSS variables or inline calculation
+                                            left: `calc(50% + (var(--tag-offset-scale, 1) * ${tag.x}px))`, 
+                                            top: `calc(50% + (var(--tag-offset-scale, 1) * ${tag.y}px))` 
+                                        }}
+                                    >
+                                        <style jsx>{`
+                                            @media (max-width: 400px) {
+                                                div { --tag-offset-scale: 0.22; }
+                                            }
+                                            @media (min-width: 401px) and (max-width: 640px) {
+                                                div { --tag-offset-scale: 0.28; }
+                                            }
+                                            @media (min-width: 641px) and (max-width: 1024px) {
+                                                div { --tag-offset-scale: 0.65; }
+                                            }
+                                        `}</style>
                                         <div className={cn("px-4 py-2 lg:px-6 lg:py-2.5 rounded-full border backdrop-blur-3xl flex items-center gap-2 lg:gap-3 shadow-2xl relative group", tag.bg, tag.border)}>
                                             <div className={cn("w-1 lg:w-1.5 h-1 lg:h-1.5 rounded-full animate-pulse", tag.dot)} />
                                             <span className="text-[7px] lg:text-[9px] font-black uppercase tracking-[0.3em] lg:tracking-[0.4em] whitespace-nowrap text-white/90">

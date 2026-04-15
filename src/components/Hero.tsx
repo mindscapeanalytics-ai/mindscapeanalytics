@@ -10,7 +10,7 @@ export default function Hero() {
     // All viewport/scroll linked animations removed for maximum mobile smoothness
 
     return (
-        <section className="relative w-full min-h-[85vh] lg:min-h-screen flex items-center justify-center overflow-hidden bg-transparent pt-12 pb-12 lg:pt-20 lg:pb-20 px-4 md:px-0">
+        <section className="relative w-full min-h-[85vh] lg:min-h-screen flex items-center justify-center overflow-hidden bg-transparent pt-28 pb-12 lg:pt-20 lg:pb-20 px-4 md:px-0">
             {/* The global CinematicBackground handles the unified grid. Local grid removed to prevent Moire conflicts. */}
 
             {/* Univers.io Spotlight Background Animation */}
@@ -27,10 +27,10 @@ export default function Hero() {
                         <motion.div
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-4 lg:px-6 py-1.5 lg:py-2.5 rounded-full bg-background dark:bg-foreground/[0.03] border border-border/80 backdrop-blur-md mb-6 lg:mb-12 shadow-sm will-change-transform"
+                            className="inline-flex items-center gap-2 px-3 lg:px-6 py-1 lg:py-2.5 rounded-full bg-background dark:bg-foreground/[0.03] border border-border/80 backdrop-blur-md mb-8 lg:mb-12 shadow-sm will-change-transform"
                         >
                             <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-secondary rounded-full shadow-[0_0_10px_rgba(var(--secondary),0.6)]" />
-                            <span className="text-[7px] lg:text-[10px] font-mono text-foreground/80 dark:text-foreground/40 uppercase tracking-[0.3em] lg:tracking-[0.4em] font-black">Registry // ELITE_SYSTEM_V4</span>
+                            <span className="text-[6.5px] lg:text-[10px] font-mono text-foreground/80 dark:text-foreground/40 uppercase tracking-[0.25em] lg:tracking-[0.4em] font-black">Registry // ELITE_SYSTEM_V4</span>
                         </motion.div>
 
                     <div className="relative space-y-2 flex flex-col items-center">
@@ -67,17 +67,17 @@ export default function Hero() {
                             {/* Visibility Backlighting */}
                             <div className="absolute inset-0 bg-secondary/5 blur-[120px] rounded-full opacity-30 pointer-events-none" />
 
-                            <div className="relative group/title inline-flex flex-col items-center">
+                            <div className="relative group/title inline-flex flex-col items-center max-w-[calc(100vw-2rem)]">
                                 {/* Architectural Brackets */}
-                                <div className="absolute -top-4 -left-6 w-4 h-4 border-t-2 border-l-2 border-secondary/40 lg:opacity-100 group-hover/title:scale-110 transition-transform" />
-                                <div className="absolute -bottom-2 -right-6 w-4 h-4 border-b-2 border-r-2 border-secondary/40 lg:opacity-100 group-hover/title:scale-110 transition-transform" />
+                                <div className="absolute -top-4 -left-6 w-4 h-4 border-t-2 border-l-2 border-secondary/40 lg:opacity-100 group-hover/title:scale-110 transition-transform hidden sm:block" />
+                                <div className="absolute -bottom-2 -right-6 w-4 h-4 border-b-2 border-r-2 border-secondary/40 lg:opacity-100 group-hover/title:scale-110 transition-transform hidden sm:block" />
                                 
-                                <span className="text-foreground px-4 drop-shadow-sm flex items-center gap-4">
+                                <span className="text-foreground px-4 drop-shadow-sm flex items-center gap-4 break-words text-center">
                                     <span className="hidden lg:block text-[8px] font-mono text-foreground/20 tracking-[0.5em] -ml-12">0X_4F</span>
                                     ARCHITECTING
                                 </span>
-                                <span className="relative inline-block mt-0.5 md:mt-4 px-4 overflow-hidden">
-                                     <span className="bg-gradient-to-r from-secondary via-white/80 to-secondary bg-[length:200%_auto] bg-clip-text text-transparent shimmer-sweep drop-shadow-[0_0_20px_hsl(var(--secondary)/0.4)]">
+                                <span className="relative inline-block mt-0.5 md:mt-4 px-4 overflow-hidden max-w-full">
+                                     <span className="bg-gradient-to-r from-secondary via-white/80 to-secondary bg-[length:200%_auto] bg-clip-text text-transparent shimmer-sweep drop-shadow-[0_0_20px_hsl(var(--secondary)/0.4)] break-words">
                                         THE FUTURE
                                     </span>
                                 </span>

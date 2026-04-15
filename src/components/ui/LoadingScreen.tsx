@@ -36,19 +36,13 @@ export default function LoadingScreen() {
                 {/* Mechanical Reveal Text */}
                 <div className="overflow-hidden mb-8">
                     <motion.h1
-                        initial={{ y: 100 }}
-                        animate={{ y: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-                        className="text-4xl md:text-6xl font-black text-white tracking-[0.2em] relative"
+                        className="text-3xl md:text-5xl lg:text-7xl font-black text-center flex flex-col items-center tracking-[-0.05em] leading-none uppercase"
                     >
-                        MINDSCAPE
-                        <span className="text-secondary">_</span>
-                        <motion.span
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: [0, 1, 0] }}
-                            transition={{ duration: 1, repeat: Infinity }}
-                            className="absolute -right-8 bottom-2 w-4 h-4 bg-secondary rounded-full"
-                        />
+                        <span className="text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">MINDSCAPE</span>
+                        <span className="text-foreground/20 dark:text-foreground/10 tracking-[0.2em] md:tracking-[0.4em] text-[10px] md:text-xs lg:text-sm mt-3 lg:mt-6 font-mono">ANALYTICS</span>
                     </motion.h1>
                 </div>
 

@@ -74,43 +74,40 @@ export default function HomeClient() {
             {/* Hero section - no wrapper needed as it has its own animations */}
             <Hero />
 
+            {/* AI Employee Core - No wrapper for isolation */}
             <AiEmployee />
 
-            {/* Project Vision - High Impact Intro Animation */}
+            {/* Project Vision - High Impact Intro */}
             <ProjectVision />
 
-            {/* Main content sections with staggered reveal */}
+            {/* Main content sections - Grouped to minimize IntersectionObserver overhead */}
             <div className="relative z-10">
                 <ScrollSection delay={0.05}>
                     <ProblemAgitation />
-                </ScrollSection>
-
-                <ScrollSection delay={0.05}>
-                    <BankingAiAdoption />
+                    <div className="mt-12 lg:mt-24">
+                        <BankingAiAdoption />
+                    </div>
                 </ScrollSection>
 
                 <ScrollSection delay={0.1}>
                     <InfrastructureAdvantage />
-                </ScrollSection>
-
-                <ScrollSection delay={0.1}>
-                    <CaseStudies />
+                    <div className="mt-12 lg:mt-24">
+                        <CaseStudies />
+                    </div>
                 </ScrollSection>
 
                 <ScrollSection delay={0.15}>
                     <BusinessImpact />
-                </ScrollSection>
-
-                <ScrollSection delay={0.15}>
-                    <Process />
+                    <div className="mt-12 lg:mt-24">
+                        <Process />
+                    </div>
                 </ScrollSection>
 
                 <ScrollSection delay={0.2}>
                     <GrowthHub />
-                </ScrollSection>
-
-                <ScrollSection delay={0.25}>
-                    <Products />
+                    <div className="mt-12 lg:mt-24">
+                        <Products />
+                    </div>
                 </ScrollSection>
 
                 <ScrollSection delay={0.25}>

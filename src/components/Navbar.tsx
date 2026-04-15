@@ -189,7 +189,7 @@ export default function Navbar() {
                 className={cn(
                     "w-full max-w-7xl flex items-center justify-between px-6 py-2.5 rounded-full transition-all duration-[600ms] border relative",
                     isScrolled
-                        ? "bg-background/80 backdrop-blur-3xl border-border shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+                        ? "bg-background/90 md:bg-background/80 backdrop-blur-xl md:backdrop-blur-3xl border-border shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
                         : "bg-transparent border-transparent"
                 )}
             >
