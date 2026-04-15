@@ -62,10 +62,10 @@ export default function Hero() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1] }}
-                            className="fluid-h1 relative z-10 w-full text-center flex flex-col items-center justify-center will-change-[transform,opacity]"
+                            className="fluid-h1 relative z-10 w-full text-center flex flex-col items-center justify-center gpu-accelerate"
                         >
                             {/* Visibility Backlighting */}
-                            <div className="absolute inset-0 bg-secondary/5 blur-[120px] rounded-full opacity-30 pointer-events-none" />
+                            <div className="absolute inset-0 bg-secondary/5 blur-[80px] rounded-full opacity-30 pointer-events-none" />
 
                             <div className="relative group/title inline-flex flex-col items-center max-w-[calc(100vw-2rem)]">
                                 {/* Architectural Brackets */}

@@ -133,18 +133,24 @@ export default function ProjectVision() {
     const smoothMouseY = useSpring(mouseY, springConfig);
 
     useEffect(() => {
+        let rafId: number;
         const handleMouseMove = (e: MouseEvent) => {
-            // Throttled for mobile to ensure scroll performance
             if (window.innerWidth < 1024) return;
 
-            const { clientX, clientY } = e;
-            const x = (clientX / window.innerWidth - 0.5) * 40;
-            const y = (clientY / window.innerHeight - 0.5) * 40;
-            mouseX.set(x);
-            mouseY.set(y);
+            cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+                const { clientX, clientY } = e;
+                const x = (clientX / window.innerWidth - 0.5) * 40;
+                const y = (clientY / window.innerHeight - 0.5) * 40;
+                mouseX.set(x);
+                mouseY.set(y);
+            });
         };
         window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
+        return () => {
+            window.removeEventListener("mousemove", handleMouseMove);
+            cancelAnimationFrame(rafId);
+        };
     }, [mouseX, mouseY]);
 
     const activeProject = PROJECTS[activeIndex];

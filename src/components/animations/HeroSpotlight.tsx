@@ -89,9 +89,7 @@ export default function HeroSpotlight() {
           position: relative;
           border-radius: 50%;
           transform: scale(var(--size)) translate3d(0,0,0);
-          box-shadow:
-            0 0 60px 0 var(--color-three),
-            0 25px 100px 0 var(--color-four);
+          filter: drop-shadow(0 0 30px var(--color-three)) drop-shadow(0 25px 60px var(--color-four));
           animation: colorize calc(var(--time-animation) * 4) ease-in-out infinite;
           backface-visibility: hidden;
         }

@@ -135,7 +135,7 @@
     /* Fluid Typography - scaled for enterprise visibility */
     /* Institutional Display Typography */
     .fluid-h1 {
-        font-size: clamp(1.6rem, 8vw, 12rem);
+        font-size: clamp(2.4rem, 8vw, 12rem);
         @apply font-black leading-[0.85] tracking-[-0.05em] uppercase font-sans;
         font-style: normal !important;
         word-break: keep-all;
@@ -145,7 +145,7 @@
     }
 
     .fluid-h2 {
-        font-size: clamp(1.4rem, 6vw, 7rem);
+        font-size: clamp(1.6rem, 6vw, 7rem);
         @apply font-black leading-[0.9] tracking-[-0.04em] uppercase font-sans;
         font-style: normal !important;
         word-break: keep-all;

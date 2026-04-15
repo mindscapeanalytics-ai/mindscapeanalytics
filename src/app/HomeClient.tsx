@@ -44,7 +44,7 @@ function ScrollSection({
                 delay,
                 ease: [0.21, 0.47, 0.32, 0.98]
             }}
-            className={cn("will-change-transform transform-gpu", className)}
+            className={cn("gpu-accelerate", className)}
         >
             {children}
         </motion.div>

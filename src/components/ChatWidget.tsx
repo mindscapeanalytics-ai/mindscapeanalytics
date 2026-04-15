@@ -380,13 +380,13 @@ export default function ChatWidget() {
                                     
                                     <div className="absolute inset-0 bg-secondary/10 blur-[30px] rounded-full opacity-20 group-hover:opacity-40 transition-opacity" />
                                     
-                                    <div className="relative w-full h-full overflow-hidden rounded-full">
+                                    <div className="relative w-full h-full overflow-hidden rounded-full border border-border/50">
                                         <Image 
                                             src="/images/zeeshan-keerio-chat-app-acon.png" 
                                             alt="Mindscape AI Assistant" 
                                             fill 
                                             priority
-                                            className="object-cover drop-shadow-sm transition-transform group-hover:scale-110" 
+                                            className="object-cover object-center drop-shadow-sm transition-transform group-hover:scale-110" 
                                         />
                                     </div>
                                 </div>

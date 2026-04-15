@@ -87,7 +87,7 @@ export default function AiEmployee() {
                                                 <div className="h-[1px] w-6 lg:w-14 bg-secondary" />
                                                 <span className="text-[7px] lg:text-[10px] font-mono text-white tracking-[0.4em] uppercase">Core_System</span>
                                             </div>
-                                            <div className="text-[20px] lg:text-[44px] font-black text-white/10 select-none uppercase tracking-tighter">ZEESHAN KEERIO</div>
+                                            <div className="text-[20px] lg:text-[44px] font-black text-white/25 select-none uppercase tracking-tighter">ZEESHAN KEERIO</div>
                                         </div>
                                     </div>
                                     <motion.div animate={{ y: ["-100%", "300%"] }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} className="absolute inset-x-0 h-[40%] bg-gradient-to-b from-transparent via-secondary/5 to-transparent z-30 opacity-50 border-b border-white/10" />
@@ -108,13 +108,13 @@ export default function AiEmployee() {
                                     >
                                         <style jsx>{`
                                             @media (max-width: 400px) {
-                                                div { --tag-offset-scale: 0.22; }
+                                                div { --tag-offset-scale: 0.16; }
                                             }
                                             @media (min-width: 401px) and (max-width: 640px) {
-                                                div { --tag-offset-scale: 0.28; }
+                                                div { --tag-offset-scale: 0.22; }
                                             }
                                             @media (min-width: 641px) and (max-width: 1024px) {
-                                                div { --tag-offset-scale: 0.65; }
+                                                div { --tag-offset-scale: 0.55; }
                                             }
                                         `}</style>
                                         <div className={cn("px-4 py-2 lg:px-6 lg:py-2.5 rounded-full border backdrop-blur-3xl flex items-center gap-2 lg:gap-3 shadow-2xl relative group", tag.bg, tag.border)}>
