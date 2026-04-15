@@ -50,11 +50,11 @@ const RESPONSES = [
     },
     {
         keywords: ["pricing", "price", "cost", "how much", "fee"],
-        response: "We offer transparent, fixed-tier pricing for standard pipelines starting at $999/mo, with custom enterprise architecture scaling based on node requirements. Asset licenses start at $29."
+        response: "Standard Pipeline Engineering starts at **$999/mo**. Complex Enterprise Architectures are custom-scoped based on node density and architectural depth. Asset licenses start at $29."
     },
     {
         keywords: ["complex", "human", "team", "agent", "support", "contact", "talk", "whatsapp", "call"],
-        response: "For complex architectural inquiries, direct engineer access is required. Please utilize the Secure Contact Form or initiate a direct uplink via WhatsApp using the buttons below."
+        response: "Query parameters exceed current local intelligence. Redirecting to Direct Engineering Uplink. Please utilize the Secure WhatsApp button or the Contact Form for high-priority architectural consultation."
     },
 ];
 
@@ -87,7 +87,7 @@ export default function ChatWidget() {
     const getLocalResponse = (input: string) => {
         const lowerInput = input.toLowerCase();
         const match = RESPONSES.find(r => r.keywords.some(k => lowerInput.includes(k)));
-        return match ? match.response : "Query acknowledged. For advanced architectural technicalities, a direct engineering uplink is recommended. How else can I assist with your Mindscape inquiry?";
+        return match ? match.response : "Query decrypted. For advanced architectural specifications beyond local cache, a Direct Engineering Uplink is recommended. How else can I assist with your Mindscape inquiry?";
     };
 
     const handleSend = async (e?: React.FormEvent, overrideText?: string) => {
@@ -156,12 +156,12 @@ export default function ChatWidget() {
                         <div className="w-full flex items-center justify-between p-6 border-b border-border bg-foreground/[0.02]">
                             <div className="flex items-center gap-4">
                                 <div className="relative">
-                                    <div className="w-10 h-10 rounded-full border border-border overflow-hidden bg-zinc-950 shadow-inner">
+                                    <div className="w-10 h-10 rounded-full border border-border overflow-hidden bg-white shadow-lg relative">
                                         <Image 
-                                            src="/images/chatbot.png" 
+                                            src="/images/zeeshan-keerio-chat-app-acon.png" 
                                             alt="Mindscape AI" 
                                             fill 
-                                            className="object-contain p-1" 
+                                            className="object-cover" 
                                         />
                                     </div>
                                     <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-[#0a0a0b] animate-pulse" />
@@ -198,12 +198,12 @@ export default function ChatWidget() {
                                                 {msg.type === "user" ? (
                                                     <User size={14} className="text-foreground/60" />
                                                 ) : (
-                                                    <div className="relative w-full h-full">
+                                                    <div className="relative w-full h-full bg-white">
                                                         <Image 
-                                                            src="/images/chatbot.png" 
+                                                            src="/images/zeeshan-keerio-chat-app-acon.png" 
                                                             alt="Agent" 
                                                             fill 
-                                                            className="object-contain p-1" 
+                                                            className="object-cover" 
                                                         />
                                                     </div>
                                                 )}
@@ -244,12 +244,12 @@ export default function ChatWidget() {
                                     className="flex w-full justify-start mt-4"
                                 >
                                     <div className="flex gap-4">
-                                        <div className="w-8 h-8 rounded-full bg-zinc-950 flex items-center justify-center border border-white/10 animate-pulse overflow-hidden relative shadow-lg">
+                                        <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-border animate-pulse overflow-hidden relative shadow-lg">
                                             <Image 
-                                                src="/images/chatbot.png" 
+                                                src="/images/zeeshan-keerio-chat-app-acon.png" 
                                                 alt="Agent" 
                                                 fill 
-                                                className="object-contain p-1 opacity-80" 
+                                                className="object-cover opacity-80" 
                                             />
                                         </div>
                                         <div className="bg-foreground/5 border border-border px-4 py-3 rounded-2xl rounded-tl-none flex gap-1.5 items-center">
@@ -343,7 +343,7 @@ export default function ChatWidget() {
                     animate={isOpen ? "open" : "closed"}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center outline-none"
+                    className="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center outline-none"
                 >
                     <AnimatePresence mode="wait">
                         {isOpen ? (
@@ -374,16 +374,21 @@ export default function ChatWidget() {
                                 exit={{ opacity: 0, scale: 0.5 }}
                                 className="relative w-full h-full flex items-center justify-center"
                             >
-                                <div className="absolute inset-0 bg-secondary/20 blur-[30px] rounded-full opacity-40 group-hover:opacity-100 transition-opacity" />
-                                
-                                <div className="relative w-full h-full">
-                                    <Image 
-                                        src="/images/chatbot.png" 
-                                        alt="Mindscape AI Assistant" 
-                                        fill 
-                                        priority
-                                        className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" 
-                                    />
+                                <div className="relative w-full h-full group">
+                                    {/* Circular Background Badge - Clean White Professional Look */}
+                                    <div className="absolute inset-0 bg-white border border-border rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.15)] group-hover:shadow-[0_15px_40px_rgba(0,0,0,0.25)] transition-all" />
+                                    
+                                    <div className="absolute inset-0 bg-secondary/10 blur-[30px] rounded-full opacity-20 group-hover:opacity-40 transition-opacity" />
+                                    
+                                    <div className="relative w-full h-full overflow-hidden rounded-full">
+                                        <Image 
+                                            src="/images/zeeshan-keerio-chat-app-acon.png" 
+                                            alt="Mindscape AI Assistant" 
+                                            fill 
+                                            priority
+                                            className="object-cover drop-shadow-sm transition-transform group-hover:scale-110" 
+                                        />
+                                    </div>
                                 </div>
                             </motion.div>
                         )}

@@ -1,0 +1,94 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+export default function LoadingScreen() {
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setProgress(prev => {
+                if (prev >= 100) {
+                    clearInterval(interval);
+                    return 100;
+                }
+                return prev + 1;
+            });
+        }, 15);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0a0a0b]"
+        >
+            {/* Background elements */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/10 blur-[120px] rounded-full opacity-50" />
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/20 to-transparent" />
+            </div>
+
+            <div className="relative flex flex-col items-center">
+                {/* Mechanical Reveal Text */}
+                <div className="overflow-hidden mb-8">
+                    <motion.h1
+                        initial={{ y: 100 }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+                        className="text-4xl md:text-6xl font-black text-white tracking-[0.2em] relative"
+                    >
+                        MINDSCAPE
+                        <span className="text-secondary">_</span>
+                        <motion.span
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: [0, 1, 0] }}
+                            transition={{ duration: 1, repeat: Infinity }}
+                            className="absolute -right-8 bottom-2 w-4 h-4 bg-secondary rounded-full"
+                        />
+                    </motion.h1>
+                </div>
+
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex flex-col items-center gap-6"
+                >
+                    <span className="text-[10px] font-mono font-black text-white/30 tracking-[0.5em] uppercase">
+                        Architecting Intelligence
+                    </span>
+
+                    {/* Industrial Progress Bar */}
+                    <div className="relative w-64 h-1 bg-white/5 rounded-full overflow-hidden">
+                        <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${progress}%` }}
+                            className="absolute top-0 left-0 h-full bg-secondary"
+                        />
+                    </div>
+
+                    <div className="flex items-center gap-8 text-[8px] font-mono text-white/20 font-black uppercase tracking-widest">
+                        <div className="flex items-center gap-2">
+                            <span className="w-1 h-1 bg-secondary rounded-full animate-pulse" />
+                            System_Boot
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <span className="w-1 h-1 bg-secondary rounded-full animate-pulse" />
+                            Security_Grid: Active
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+
+            {/* Corner Decorative Elements */}
+            <div className="absolute top-10 left-10 w-20 h-20 border-t border-l border-white/10" />
+            <div className="absolute top-10 right-10 w-20 h-20 border-t border-r border-white/10" />
+            <div className="absolute bottom-10 left-10 w-20 h-20 border-b border-l border-white/10" />
+            <div className="absolute bottom-10 right-10 w-20 h-20 border-b border-r border-white/10" />
+        </motion.div>
+    );
+}

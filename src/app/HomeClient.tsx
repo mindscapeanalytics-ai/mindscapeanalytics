@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import LoadingScreen from "@/components/ui/LoadingScreen";
 
 const ProjectVision = dynamic(() => import("@/components/ProjectVision"), { ssr: true });
 const AiEmployee = dynamic(() => import("@/components/AiEmployee"), { ssr: true });
@@ -52,15 +53,27 @@ function ScrollSection({
 
 export default function HomeClient() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        // Simulate tactical system initialization
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1800);
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <main ref={containerRef} className="relative bg-transparent min-h-screen overflow-hidden">
+            <AnimatePresence mode="wait">
+                {isLoading && <LoadingScreen key="loader" />}
+            </AnimatePresence>
+
             <Navbar />
 
             {/* Hero section - no wrapper needed as it has its own animations */}
             <Hero />
 
-            {/* AI Employee Section - Interactive Hub */}
             <AiEmployee />
 
             {/* Project Vision - High Impact Intro Animation */}

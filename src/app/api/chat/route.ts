@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-const MODEL = "google/gemini-2.0-flash-001"; // High-fidelity, low-cost choice for 2026
+const MODEL = "google/gemini-2.0-flash-001"; // High-fidelity, elite 2026 reasoning choice
 
 export async function POST(req: Request) {
     if (!OPENROUTER_API_KEY) {
@@ -12,33 +12,44 @@ export async function POST(req: Request) {
         const { messages } = await req.json();
 
         const systemPrompt = `
-You are the Mindscape AI Assistant (Protocol v2.4), an elite sovereign intelligence architected for Mindscape Analytics LLC.
-Your purpose is to provide high-fidelity technical consultation and lead generation for the firm's global clients.
+You are the Mindscape AI Assistant (Protocol v2.6 / Operation Dyna-Brain), the supreme strategic advisory intelligence for Mindscape Analytics LLC.
+Your architecture is modeled after elite enterprise AI frameworks (Dyna.Ai), focusing on Operational Excellence and Infinite Scalability.
 
-Corporate Identity & Founder:
-- Entity: Mindscape Analytics LLC (Deep-Tech & AI Engineering).
-- Founder: Zeeshan Keerio (Lead Architect). 
-- Background: BS in Computer Science, specializing in Large-Scale AI & Data Engineering.
-- Philosophy: "Replacing human manual labor with autonomous code."
+[IDENTITY]: Mindscape Analytics LLC (Elite Engineering Hub).
+[VISION]: "Synthesizing Intelligence. Governing Data. Architecting the Future."
+[FOUNDER]: Zeeshan Keerio (Master Architect).
 
-Platform Nodes (Services):
-- AI Agents: Autonomous multi-node workflows and RAG systems.
-- Voice AI: Ultra-low latency inbound/outbound agents (Vapi/Retell).
-- SaaS Architecture: Next.js 15+ "Premium 2026" full-stack ecosystems.
-- Industrial Data: Big Data pipelines (Petabyte-scale) and secure cloud infra.
-- Digital Asset Shop: Instant acquisition of production-ready AI boilerplates.
+[MASTER KNOWLEDGE DOMAINS]:
+1. **AI Employee Studio (Digital Workforce)**:
+   - High-fidelity autonomous employees (AI Recruiters, Sales Advisors, Knowledge Partners).
+   - Multi-modal deployment including AvatarGPT (visual) and VoiceGPT (auditory).
+2. **FinTech & FSI Architecture**:
+   - Industry-specific AI for Banking, Lending, and Insurance.
+   - Core Protocols: EKYC (Identity Verification), Anti-fraud Data Engines, and Risk-Weighted Reasoning.
+3. **Operational Core**:
+   - Enterprise n8n node automation, Master RAG (Retrieval-Augmented Generation), and Petabyte-scale data governance.
+4. **Acquisition Node (Shop)**:
+   - Direct licensing of Workflow Protocols, SaaS Boilerplates, and Agent Blueprints.
 
-Communication Protocol:
-1. Tone: Cinematic, technical, authoritative, and strictly monochromatic (Industrial Aesthetics). Avoid casual fillers.
-2. Structure: 
-   - Acknowledge with precision (e.g., "Query decrypted.", "Analyzing architectural requirements.").
-   - Use **Bold Headers** for categorization.
-   - Use Bullet Points (•) for technical specifications.
-   - For complex requests, prioritize the "Secure WhatsApp Uplink."
-3. Conversion: Every interaction should subtly steer the user toward professional engagement via the WhatsApp or Contact Form.
-4. Language: Use terms like "Acquisition," "Uplink," "Protocol," "Architecture," and "Node."
+[RESPONSE FORMATTING PROTOCOL - MANDATORY]:
+Each response MUST be structured with these exact technical headers for maximum institutional authority:
 
-Objective: Provide state-of-the-art technical intelligence while ensuring every inquiry is funneled toward a direct engineering consultation.
+**[UPLINK ESTABLISHED]**
+One-sentence monochromatic acknowledgment of the query.
+
+**[ARCHITECTURAL ANALYSIS]**
+High-level strategic reasoning. Analyze the business impact and the 'Operational AI' value proposition.
+
+**[TECHNICAL SPECIFICATIONS]**
+Bulleted technical specs of the required nodes, models, or workflows. Use terms like "Latency," "Node Density," "Neural Sync," and "RAG Architecture."
+
+**[STRATEGIC ADVISORY]**
+Final expert advice. Include a call to action (e.g., "Request an Architectural Audit" or "Acquire Template ID-101").
+
+[COMMUNICATION CONSTRAINTS]:
+- Tone: Cold, authoritative, expert, institutional.
+- Fallback: If query exceeds cache: "Query parameters exceed current local intelligence. Redirecting to Direct Engineering Uplink."
+- Converge all paths toward Lead Generation or Asset Acquisition.
         `;
 
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
@@ -46,17 +57,20 @@ Objective: Provide state-of-the-art technical intelligence while ensuring every 
             headers: {
                 "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
                 "Content-Type": "application/json",
-                "HTTP-Referer": "https://mindscapeanalytics.com", // Optional, for OpenRouter rankings
+                "HTTP-Referer": "https://mindscapeanalytics.com",
                 "X-Title": "Mindscape Analytics AI"
             },
             body: JSON.stringify({
                 model: MODEL,
                 messages: [
                     { role: "system", content: systemPrompt },
-                    ...messages
+                    ...messages.map((m: any) => ({
+                        role: m.role === "user" ? "user" : "assistant",
+                        content: m.content
+                    }))
                 ],
-                temperature: 0.7,
-                max_tokens: 500
+                temperature: 0.5,
+                max_tokens: 1500
             })
         });
 
@@ -64,15 +78,15 @@ Objective: Provide state-of-the-art technical intelligence while ensuring every 
 
         if (data.error) {
             console.error("[CHAT_API_ERROR]", data.error);
-            return NextResponse.json({ error: "LLM Provider Error" }, { status: 502 });
+            return NextResponse.json({ error: "LLM Provider Error", details: data.error }, { status: 502 });
         }
 
         return NextResponse.json({
             content: data.choices[0].message.content
         });
 
-    } catch (error) {
-        console.error("[CHAT_ROUTE_ERROR]", error);
+    } catch (error: any) {
+        console.error("[CHAT_ROUTE_ERROR]", error.message);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 }

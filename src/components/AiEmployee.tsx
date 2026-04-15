@@ -35,10 +35,10 @@ export default function AiEmployee() {
                         >
                             <div className="inline-flex items-center gap-4 px-4 py-1.5 lg:px-6 lg:py-3 rounded-full bg-foreground/[0.03] border border-border/20 backdrop-blur-3xl">
                                 <Activity className="w-3.5 h-3.5 text-secondary animate-pulse" />
-                                <span className="text-[9px] lg:text-[12px] font-mono text-foreground/40 uppercase tracking-[0.4em] font-black">Neural_Sync // STABLE</span>
+                                <span className="text-[8px] lg:text-meta font-mono text-foreground/40 uppercase tracking-[0.4em] font-black">Neural_Sync // STABLE</span>
                             </div>
 
-                            <h2 className="text-[12vw] sm:text-6xl md:text-7xl lg:text-[7.5vw] xl:text-[8.5rem] text-foreground font-black leading-[0.75] tracking-tighter uppercase relative">
+                            <h2 className="fluid-h2 text-foreground relative">
                                 THE ERA OF AI <br />
                                 <span className="text-secondary drop-shadow-[0_0_40px_rgba(var(--secondary),0.4)] bg-gradient-to-r from-secondary to-secondary/50 bg-clip-text text-transparent">
                                     IS HERE.
