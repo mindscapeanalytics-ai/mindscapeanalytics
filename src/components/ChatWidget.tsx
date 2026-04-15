@@ -18,39 +18,39 @@ const INITIAL_MESSAGE = "Protocol active. I'm the Mindscape AI Assistant. How ca
 const RESPONSES = [
     {
         keywords: ["service", "services", "offer", "do you do", "help with", "capabilities"],
-        response: "**[UPLINK]** Mindscape Analytics specializes in high-tier architectural solutions with industrial focus:\n• **AI Employee Studio**: AI Recruiters, Insurance Advisors, and Knowledge Partners.\n• **FSI Suite**: EKYC, Device Anti-fraud, and Risk Engines for Banking.\n• **Operational Core**: Enterprise n8n automation & Master RAG pipelines.\n• **SaaS Engineering**: Next.js 15+ Full-Stack architectures.\n• **Voice & Visual**: Vapi/Retell Voice Agents and AvatarGPT interfaces."
+        response: "Mindscape Analytics specializes in high-tier architectural solutions with industrial focus:\n• **AI Employee Studio**: AI Recruiters, Insurance Advisors, and Knowledge Partners.\n• **FSI Suite**: EKYC, Device Anti-fraud, and Risk Engines for Banking.\n• **Operational Core**: Enterprise n8n automation & Master RAG pipelines.\n• **SaaS Engineering**: Next.js 15+ Full-Stack architectures.\n• **Voice & Visual**: Vapi/Retell Voice Agents and AvatarGPT interfaces."
     },
     {
         keywords: ["ai employee", "recruiter", "hiring", "avatar", "agent studio", "workforce"],
-        response: "**[UPLINK]** Our AI Employee Studio deploys autonomous digital workers via **AvatarGPT** or **VoiceGPT**. We specialize in **AI Recruiters** and **Sales Advisors** that handle contextual reasoning and CRM integration with 99% accuracy. Acquire the Blueprint in our Shop."
+        response: "Our AI Employee Studio deploys autonomous digital workers via **AvatarGPT** or **VoiceGPT**. We specialize in **AI Recruiters** and **Sales Advisors** that handle contextual reasoning and CRM integration with 99% accuracy. Acquire the Blueprint in our Shop."
     },
     {
         keywords: ["banking", "fintech", "lending", "insurance", "fsi", "ekyc", "fraud"],
-        response: "**[UPLINK]** Our FSI Suite provides specialized protocols for high-security environments. Key nodes include **EKYC** (Frictionless Verification) and **Device Anti-fraud** logic. These are modeled after elite international banking standards (Dyna-Brain Protocol)."
+        response: "Our FSI Suite provides specialized protocols for high-security environments. Key nodes include **EKYC** (Frictionless Verification) and **Device Anti-fraud** logic. These are modeled after elite international banking standards."
     },
     {
         keywords: ["saas", "webapp", "fullstack", "nextjs", "application", "development"],
-        response: "**[UPLINK]** We engineer end-to-end SaaS architectures using **Next.js 15**, TypeScript, and Prisma. Our builds are type-safe, micro-frontend ready, and optimized for infinite scaling."
+        response: "We engineer end-to-end SaaS architectures using **Next.js 15**, TypeScript, and Prisma. Our builds are type-safe, micro-frontend ready, and optimized for infinite scaling."
     },
     {
         keywords: ["voice", "call", "vapi", "retell", "dialer", "voicegpt"],
-        response: "**[UPLINK]** We deploy ultra-low latency **Voice Agents** using Vapi/Retell. These agents handle inbound/outbound appointment booking and contextual strategic reasoning without human intervention."
+        response: "We deploy ultra-low latency **Voice Agents** using Vapi/Retell. These agents handle inbound/outbound appointment booking and contextual strategic reasoning without human intervention."
     },
     {
         keywords: ["automation", "workflow", "n8n", "zapier", "engine"],
-        response: "**[UPLINK]** We build autonomous engines using **n8n** and custom Python nodes. Our systems manage lead flow, data governance, and operational synchronization 24/7."
+        response: "We build autonomous engines using **n8n** and custom Python nodes. Our systems manage lead flow, data governance, and operational synchronization 24/7."
     },
     {
         keywords: ["shop", "buy", "asset", "template", "blueprint", "license"],
-        response: "**[UPLINK]** The **Mindscape Asset Shop** facilitates direct acquisition of production-ready boilerplate architectures: AI Recruiters, SaaS Boilerplates, and custom n8n Workflows. Review our Ecosystem for instant uplink."
+        response: "The **Mindscape Asset Shop** facilitates direct acquisition of production-ready boilerplate architectures: AI Recruiters, SaaS Boilerplates, and custom n8n Workflows. Review our Ecosystem for instant access."
     },
     {
         keywords: ["pricing", "price", "cost", "how much"],
-        response: "**[UPLINK]** Tactical pricing models:\n• **Asset Licensing**: From $29 (One-time)\n• **Standard Pipeline**: From $999/mo\n• **Enterprise Architecture**: Custom scoped via Strategic Audit."
+        response: "Tactical pricing models:\n• **Asset Licensing**: From $29 (One-time)\n• **Standard Pipeline**: From $999/mo\n• **Enterprise Architecture**: Custom scoped via Strategic Audit."
     },
     {
         keywords: ["contact", "talk", "whatsapp", "call", "human", "consult"],
-        response: "**[UPLINK]** Redirecting to Direct Engineering Uplink. For high-priority architectural consultation, utilize the Secure WhatsApp uplink (+1 307 210 6155) or the Contact Form."
+        response: "Redirecting to Direct Engineering Uplink. For high-priority architectural consultation, utilize the Secure WhatsApp uplink (+1 307 210 6155) or the Contact Form."
     },
 ];
 
