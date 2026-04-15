@@ -17,6 +17,12 @@ const TAGS = [
 export default function AiEmployee() {
     return (
         <section id="ai-employee-section" className="relative w-full overflow-hidden bg-transparent pt-0 pb-12 lg:pb-48 -mt-2">
+            <style>{`
+                .tag-container { --tag-offset-scale: 0.38 !important; }
+                @media (min-width: 480px) { .tag-container { --tag-offset-scale: 0.45 !important; } }
+                @media (min-width: 768px) { .tag-container { --tag-offset-scale: 0.7 !important; } }
+                @media (min-width: 1024px) { .tag-container { --tag-offset-scale: 1 !important; } }
+            `}</style>
             {/* Massive Ambient Background Glows */}
             <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[900px] h-[900px] bg-secondary/5 blur-[200px] rounded-full pointer-events-none opacity-40 translate-x-1/3" />
             <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-600/5 blur-[150px] rounded-full pointer-events-none opacity-20 -translate-x-1/2 -translate-y-1/2" />
@@ -81,11 +87,12 @@ export default function AiEmployee() {
                                     <Image src="/images/team/zeeshan-keerio.webp" alt="Zeeshan Keerio" fill className="object-cover object-top brightness-[1.01] contrast-[1.02] grayscale-[0.05] hover:grayscale-0 transition-all duration-[6s]" priority />
                                     <div className="absolute inset-x-0 bottom-0 h-[35%] bg-gradient-to-t from-background via-background/40 to-transparent z-10" />
                                     
-                                    <div className="absolute bottom-8 lg:bottom-16 left-8 lg:left-14 z-20">
-                                        <div className="flex flex-col gap-1.5 lg:gap-3">
+                                    <div className="absolute inset-x-0 bottom-8 lg:bottom-16 z-20 flex flex-col items-center">
+                                        <div className="flex flex-col items-center gap-1.5 lg:gap-3">
                                             <div className="flex items-center gap-3 opacity-30">
                                                 <div className="h-[1px] w-6 lg:w-14 bg-secondary" />
                                                 <span className="text-[7px] lg:text-[10px] font-mono text-white tracking-[0.4em] uppercase">Core_System</span>
+                                                <div className="h-[1px] w-6 lg:w-14 bg-secondary" />
                                             </div>
                                             <div className="text-[20px] lg:text-[44px] font-black text-white/25 select-none uppercase tracking-tighter">ZEESHAN KEERIO</div>
                                         </div>
@@ -99,20 +106,12 @@ export default function AiEmployee() {
                                         initial={{ opacity: 0 }} 
                                         whileInView={{ opacity: 1 }} 
                                         transition={{ delay: 1.2 + tag.delay }} 
-                                        className="absolute z-40 transform -translate-x-1/2 -translate-y-1/2 [--tag-offset-scale:1] md:[--tag-offset-scale:0.6] lg:[--tag-offset-scale:1]"
+                                        className="absolute z-40 transform -translate-x-1/2 -translate-y-1/2 tag-container"
                                         style={{ 
                                             left: `calc(50% + (var(--tag-offset-scale) * ${tag.x}px))`, 
                                             top: `calc(50% + (var(--tag-offset-scale) * ${tag.y}px))` 
                                         }}
                                     >
-                                        <style jsx>{`
-                                            @media (max-width: 480px) {
-                                                div { --tag-offset-scale: 0.22 !important; }
-                                            }
-                                            @media (min-width: 481px) and (max-width: 768px) {
-                                                div { --tag-offset-scale: 0.35 !important; }
-                                            }
-                                        `}</style>
                                         <div className={cn("px-4 py-2 lg:px-6 lg:py-2.5 rounded-full border backdrop-blur-3xl flex items-center gap-2 lg:gap-3 shadow-2xl relative group", tag.bg, tag.border)}>
                                             <div className={cn("w-1 lg:w-1.5 h-1 lg:h-1.5 rounded-full animate-pulse", tag.dot)} />
                                             <span className="text-[7px] lg:text-[9px] font-black uppercase tracking-[0.3em] lg:tracking-[0.4em] whitespace-nowrap text-white/90">

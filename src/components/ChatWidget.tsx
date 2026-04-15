@@ -17,44 +17,40 @@ const INITIAL_MESSAGE = "Protocol active. I'm the Mindscape AI Assistant. How ca
 
 const RESPONSES = [
     {
-        keywords: ["service", "services", "offer", "do you do", "help with"],
-        response: "Mindscape Analytics specializes in high-tier architectural solutions:\n• AI Agents & Autonomous Workflows\n• AI Voice Call Agents (Vapi/Retell)\n• Full-Stack SaaS Platforms (Next.js 15)\n• Custom Big Data & Cloud Engineering\n• Payments & Stripe Integration\n• UX/UI Design for Enterprise\n• Business Consultation & Digital Strategy"
+        keywords: ["service", "services", "offer", "do you do", "help with", "capabilities"],
+        response: "**[UPLINK]** Mindscape Analytics specializes in high-tier architectural solutions with industrial focus:\n• **AI Employee Studio**: AI Recruiters, Insurance Advisors, and Knowledge Partners.\n• **FSI Suite**: EKYC, Device Anti-fraud, and Risk Engines for Banking.\n• **Operational Core**: Enterprise n8n automation & Master RAG pipelines.\n• **SaaS Engineering**: Next.js 15+ Full-Stack architectures.\n• **Voice & Visual**: Vapi/Retell Voice Agents and AvatarGPT interfaces."
+    },
+    {
+        keywords: ["ai employee", "recruiter", "hiring", "avatar", "agent studio", "workforce"],
+        response: "**[UPLINK]** Our AI Employee Studio deploys autonomous digital workers via **AvatarGPT** or **VoiceGPT**. We specialize in **AI Recruiters** and **Sales Advisors** that handle contextual reasoning and CRM integration with 99% accuracy. Acquire the Blueprint in our Shop."
+    },
+    {
+        keywords: ["banking", "fintech", "lending", "insurance", "fsi", "ekyc", "fraud"],
+        response: "**[UPLINK]** Our FSI Suite provides specialized protocols for high-security environments. Key nodes include **EKYC** (Frictionless Verification) and **Device Anti-fraud** logic. These are modeled after elite international banking standards (Dyna-Brain Protocol)."
     },
     {
         keywords: ["saas", "webapp", "fullstack", "nextjs", "application", "development"],
-        response: "We engineer end-to-end SaaS architectures using Next.js 15+, TypeScript, and Prisma. Our builds are type-safe, micro-frontend ready, and optimized for global scale with enterprise-grade security."
+        response: "**[UPLINK]** We engineer end-to-end SaaS architectures using **Next.js 15**, TypeScript, and Prisma. Our builds are type-safe, micro-frontend ready, and optimized for infinite scaling."
     },
     {
-        keywords: ["voice", "call", "phone", "vapi", "retell", "dialer", "appointment"],
-        response: "Our AI Voice Call Agents use ultra-low latency protocols (Vapi/Retell) for human-like inbound and outbound interactions. They handle appointment booking, contextual reasoning, and direct CRM data pipeline sync."
+        keywords: ["voice", "call", "vapi", "retell", "dialer", "voicegpt"],
+        response: "**[UPLINK]** We deploy ultra-low latency **Voice Agents** using Vapi/Retell. These agents handle inbound/outbound appointment booking and contextual strategic reasoning without human intervention."
     },
     {
-        keywords: ["payment", "stripe", "checkout", "integration", "gateway", "transaction"],
-        response: "We specialize in complex Payment Systems Integration, specifically Stripe 'Acquisition' protocols, custom checkout flows, and secure subscription management architectures for high-volume transactions."
+        keywords: ["automation", "workflow", "n8n", "zapier", "engine"],
+        response: "**[UPLINK]** We build autonomous engines using **n8n** and custom Python nodes. Our systems manage lead flow, data governance, and operational synchronization 24/7."
     },
     {
-        keywords: ["design", "ux", "ui", "uxui", "interface", "frontend", "visual"],
-        response: "Our UX/UI Design philosophy is 'Operation-First'. We build high-fidelity, industrial-grade interfaces that prioritize data density, micro-interactions, and premium aesthetics for enterprise users."
+        keywords: ["shop", "buy", "asset", "template", "blueprint", "license"],
+        response: "**[UPLINK]** The **Mindscape Asset Shop** facilitates direct acquisition of production-ready boilerplate architectures: AI Recruiters, SaaS Boilerplates, and custom n8n Workflows. Review our Ecosystem for instant uplink."
     },
     {
-        keywords: ["consult", "strategy", "roadmap", "business", "optimization"],
-        response: "Beyond code, we provide Technical Strategic Consultation. We analyze your current stack, identify automation bottlenecks, and define a roadmap for long-term scalability and system reliability."
+        keywords: ["pricing", "price", "cost", "how much"],
+        response: "**[UPLINK]** Tactical pricing models:\n• **Asset Licensing**: From $29 (One-time)\n• **Standard Pipeline**: From $999/mo\n• **Enterprise Architecture**: Custom scoped via Strategic Audit."
     },
     {
-        keywords: ["automation", "workflow", "n8n", "zapier", "engine", "protocol"],
-        response: "We build autonomous engines that replace manual operations. Using n8n and custom Python protocols, we create self-operating systems that manage data, leads, and customer interactions 24/7."
-    },
-    {
-        keywords: ["product", "products", "shop", "asset", "assets", "buy", "template"],
-        response: "Our Digital Asset Shop features production-ready boilerplate architectures:\n- AI Agents & RAG Systems\n- Next.js SaaS Templates\n- n8n Automation Workflows\n\nCheck the 'Shop / Ecosystem' page for instant acquisition."
-    },
-    {
-        keywords: ["pricing", "price", "cost", "how much", "fee"],
-        response: "Standard Pipeline Engineering starts at **$999/mo**. Complex Enterprise Architectures are custom-scoped based on node density and architectural depth. Asset licenses start at $29."
-    },
-    {
-        keywords: ["complex", "human", "team", "agent", "support", "contact", "talk", "whatsapp", "call"],
-        response: "Query parameters exceed current local intelligence. Redirecting to Direct Engineering Uplink. Please utilize the Secure WhatsApp button or the Contact Form for high-priority architectural consultation."
+        keywords: ["contact", "talk", "whatsapp", "call", "human", "consult"],
+        response: "**[UPLINK]** Redirecting to Direct Engineering Uplink. For high-priority architectural consultation, utilize the Secure WhatsApp uplink (+1 307 210 6155) or the Contact Form."
     },
 ];
 
@@ -157,13 +153,15 @@ export default function ChatWidget() {
                             <div className="flex items-center gap-4">
                                 <div className="relative">
                                     <div className="w-10 h-10 rounded-full border border-border overflow-hidden bg-white shadow-lg relative flex items-center justify-center">
-                                        <div className="relative w-[88%] h-[88%] rounded-full overflow-hidden">
-                                            <Image 
-                                                src="/images/zeeshan-keerio-chat-app-acon.png" 
-                                                alt="Mindscape AI" 
-                                                fill 
-                                                className="object-cover object-top" 
-                                            />
+                                        <div className="relative w-full h-full p-[3px]">
+                                            <div className="relative w-full h-full rounded-full overflow-hidden">
+                                                <Image 
+                                                    src="/images/zeeshan-keerio-chat-app-acon.png" 
+                                                    alt="Mindscape AI" 
+                                                    fill 
+                                                    className="object-cover object-center scale-[0.9]" 
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-[#0a0a0b] animate-pulse" />
@@ -201,13 +199,15 @@ export default function ChatWidget() {
                                                     <User size={14} className="text-foreground/60" />
                                                 ) : (
                                                     <div className="relative w-full h-full bg-white flex items-center justify-center">
-                                                        <div className="relative w-[88%] h-[88%] rounded-full overflow-hidden">
-                                                            <Image 
-                                                                src="/images/zeeshan-keerio-chat-app-acon.png" 
-                                                                alt="Agent" 
-                                                                fill 
-                                                                className="object-cover object-top" 
-                                                            />
+                                                        <div className="relative w-full h-full p-[3px]">
+                                                            <div className="relative w-full h-full rounded-full overflow-hidden">
+                                                                <Image 
+                                                                    src="/images/zeeshan-keerio-chat-app-acon.png" 
+                                                                    alt="Agent" 
+                                                                    fill 
+                                                                    className="object-cover object-center scale-[0.9]" 
+                                                                />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 )}
@@ -249,13 +249,15 @@ export default function ChatWidget() {
                                 >
                                     <div className="flex gap-4">
                                         <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-border animate-pulse overflow-hidden relative shadow-lg">
-                                            <div className="relative w-[88%] h-[88%] rounded-full overflow-hidden">
-                                                <Image 
-                                                    src="/images/zeeshan-keerio-chat-app-acon.png" 
-                                                    alt="Agent" 
-                                                    fill 
-                                                    className="object-cover object-top opacity-80" 
-                                                />
+                                            <div className="relative w-full h-full p-[2px]">
+                                                <div className="relative w-full h-full rounded-full overflow-hidden">
+                                                    <Image 
+                                                        src="/images/zeeshan-keerio-chat-app-acon.png" 
+                                                        alt="Agent" 
+                                                        fill 
+                                                        className="object-cover object-center scale-[0.9] opacity-80" 
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="bg-foreground/5 border border-border px-4 py-3 rounded-2xl rounded-tl-none flex gap-1.5 items-center">
@@ -386,14 +388,16 @@ export default function ChatWidget() {
                                     
                                     <div className="absolute inset-0 bg-secondary/10 blur-[30px] rounded-full opacity-20 group-hover:opacity-40 transition-opacity" />
                                     
-                                    <div className="relative w-[88%] h-[88%] overflow-hidden rounded-full border border-border/30 bg-background z-10 shadow-inner">
-                                        <Image 
-                                            src="/images/zeeshan-keerio-chat-app-acon.png" 
-                                            alt="Mindscape AI Assistant" 
-                                            fill 
-                                            priority
-                                            className="object-cover object-top drop-shadow-sm transition-transform group-hover:scale-110" 
-                                        />
+                                    <div className="relative w-full h-full p-[3px]">
+                                        <div className="relative w-full h-full overflow-hidden rounded-full border border-border/30 bg-background z-10 shadow-inner">
+                                            <Image 
+                                                src="/images/zeeshan-keerio-chat-app-acon.png" 
+                                                alt="Mindscape AI Assistant" 
+                                                fill 
+                                                priority
+                                                className="object-cover object-center scale-[0.9] drop-shadow-sm transition-transform group-hover:scale-100" 
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </motion.div>
