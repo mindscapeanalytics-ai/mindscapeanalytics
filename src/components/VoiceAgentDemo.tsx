@@ -1,0 +1,254 @@
+"use client";
+
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mic, Phone, X, Volume2, Globe, Shield, Zap } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+export default function VoiceAgentDemo() {
+    const [isActive, setIsActive] = useState(false);
+    const [status, setStatus] = useState<"IDLE" | "CONNECTING" | "LISTENING" | "THINKING" | "SPEAKING">("IDLE");
+    const [transcript, setTranscript] = useState("");
+    const [agentResponse, setAgentResponse] = useState("");
+    
+    // Simulated Voice Core
+    const toggleProtocol = () => {
+        if (isActive) {
+            setIsActive(false);
+            setStatus("IDLE");
+            if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                window.speechSynthesis.cancel();
+            }
+        } else {
+            setIsActive(true);
+            setStatus("CONNECTING");
+            setTimeout(() => setStatus("LISTENING"), 1500);
+        }
+    };
+
+    const agentResponses = [
+        "Protocol initialized. This is the Mindscape Voice Intelligence core. I am currently monitoring enterprise data streams for automation gaps. How can I assist your operational scaling today?",
+        "Security audit complete. All autonomous nodes are operating within optimal parameters. I have identified three high-yield automation opportunities in your current sales funnel. Shall we proceed with the briefing?",
+        "Global market intelligence suggests a 40% efficiency gain is available through agentic voice integration. I am ready to deploy a custom training layer for your specific niche. What is your primary objective?"
+    ];
+
+    const simulateInteraction = () => {
+        setStatus("THINKING");
+        setTimeout(() => {
+            const responseText = agentResponses[Math.floor(Math.random() * agentResponses.length)];
+            setStatus("SPEAKING");
+            setAgentResponse(responseText);
+
+            // Web Speech API - TTS
+            if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                // Cancel any ongoing speech
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(responseText);
+                utterance.rate = 0.95; 
+                utterance.pitch = 0.85; 
+                
+                const voices = window.speechSynthesis.getVoices();
+                const premiumVoice = voices.find(v => v.name.includes("Google US English") || v.name.includes("Male"));
+                if (premiumVoice) utterance.voice = premiumVoice;
+
+                window.speechSynthesis.speak(utterance);
+                
+                utterance.onend = () => {
+                    setTimeout(() => setStatus("LISTENING"), 1000);
+                };
+            } else {
+                setTimeout(() => setStatus("LISTENING"), 3000);
+            }
+        }, 1200);
+    };
+
+    useEffect(() => {
+        if (status === "LISTENING" && isActive) {
+            const timer = setTimeout(() => {
+                const queries = [
+                    "Initialize strategic audit for real estate portfolio...",
+                    "Analyze current network latency and agent efficiency...",
+                    "Generate deployment roadmap for autonomous sales agents..."
+                ];
+                setTranscript(queries[Math.floor(Math.random() * queries.length)]);
+                simulateInteraction();
+            }, 2500);
+            return () => clearTimeout(timer);
+        }
+    }, [status, isActive]);
+
+    return (
+        <section className="py-32 bg-black relative overflow-hidden">
+            {/* Background Atmosphere */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--secondary),0.05),transparent_70%)]" />
+            
+            {/* Neural Pulse Animation */}
+            <AnimatePresence>
+                {isActive && (
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute inset-0 pointer-events-none"
+                    >
+                        <motion.div 
+                            animate={{ 
+                                scale: [1, 1.5, 1],
+                                opacity: [0.05, 0.1, 0.05]
+                            }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--secondary),1),transparent_50%)]"
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+            
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    
+                    {/* Visual Interface */}
+                    <div className="relative flex flex-col items-center justify-center">
+                        <div className="relative w-72 h-72 md:w-96 md:h-96">
+                            {/* Orbital Rings */}
+                            <motion.div 
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                className="absolute inset-0 border border-white/5 rounded-full"
+                            />
+                            <motion.div 
+                                animate={{ rotate: -360 }}
+                                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                                className="absolute inset-8 border border-secondary/10 rounded-full border-dashed"
+                            />
+                            
+                            {/* The Core */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <motion.div
+                                    animate={isActive ? {
+                                        scale: [1, 1.05, 1],
+                                        boxShadow: [
+                                            "0 0 20px rgba(var(--secondary), 0.2)",
+                                            "0 0 50px rgba(var(--secondary), 0.4)",
+                                            "0 0 20px rgba(var(--secondary), 0.2)"
+                                        ]
+                                    } : {}}
+                                    transition={{ duration: 2, repeat: Infinity }}
+                                    className={cn(
+                                        "w-48 h-48 rounded-full flex items-center justify-center transition-all duration-1000 relative z-20",
+                                        isActive ? "bg-secondary text-white" : "bg-zinc-900 text-white/20 border border-white/5"
+                                    )}
+                                >
+                                    <AnimatePresence mode="wait">
+                                        {status === "IDLE" && <Mic key="mic" size={48} />}
+                                        {status === "CONNECTING" && <Globe key="globe" size={48} className="animate-spin" />}
+                                        {status === "LISTENING" && <Volume2 key="vol" size={48} className="animate-pulse" />}
+                                        {status === "THINKING" && <Zap key="zap" size={48} className="animate-bounce" />}
+                                        {status === "SPEAKING" && <Phone key="phone" size={48} className="animate-pulse" />}
+                                    </AnimatePresence>
+                                </motion.div>
+                            </div>
+
+                            {/* Waveform Visualization (Simulated) */}
+                            {isActive && (
+                                <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-1 h-12">
+                                    {[...Array(12)].map((_, i) => (
+                                        <motion.div
+                                            key={i}
+                                            animate={{ height: [10, Math.random() * 40 + 10, 10] }}
+                                            transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.05 }}
+                                            className="w-1 bg-secondary/60 rounded-full"
+                                        />
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Content & Control */}
+                    <div className="space-y-10">
+                        <div className="space-y-6 text-center lg:text-left">
+                            <motion.span className="text-[10px] font-mono text-secondary tracking-[0.4em] font-black uppercase block">
+                                Voice_Intelligence_v4 //
+                            </motion.span>
+                            <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter uppercase leading-[0.9]">
+                                Speak to <br />
+                                <span className="text-foreground/40 italic">The Architect.</span>
+                            </h2>
+                            <p className="text-lg text-white/40 font-medium max-w-md">
+                                Experience the future of enterprise communication. Our voice agents handle $10M+ portfolios with human-grade empathy and machine-grade precision.
+                            </p>
+                        </div>
+
+                        {/* Interaction Console */}
+                        <div className="bg-zinc-950/50 border border-white/5 rounded-3xl p-8 backdrop-blur-xl min-h-[250px] flex flex-col justify-between">
+                            <div className="space-y-4">
+                                <AnimatePresence>
+                                    {transcript && (
+                                        <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex gap-3">
+                                            <span className="text-[8px] font-mono text-white/20 uppercase mt-1">USER //</span>
+                                            <p className="text-sm text-white/60 font-mono italic">"{transcript}"</p>
+                                        </motion.div>
+                                    )}
+                                    {agentResponse && (
+                                        <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} className="flex gap-3">
+                                            <span className="text-[8px] font-mono text-secondary uppercase mt-1">CORE //</span>
+                                            <p className="text-sm text-white font-mono">{agentResponse}</p>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+
+                            <button
+                                onClick={toggleProtocol}
+                                className={cn(
+                                    "w-full py-6 rounded-2xl font-black uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-4 group mt-8",
+                                    isActive 
+                                        ? "bg-red-500/10 text-red-500 border border-red-500/20" 
+                                        : "bg-secondary text-white shadow-[0_0_30px_rgba(var(--secondary),0.3)] hover:scale-[1.02]"
+                                )}
+                            >
+                                {isActive ? (
+                                    <>TERMINATE_PROTOCOL <X size={18} /></>
+                                ) : (
+                                    <>INITIALIZE_VOICE_PROTOCOL <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></>
+                                )}
+                            </button>
+                        </div>
+
+                        {/* Capabilities */}
+                        <div className="flex flex-wrap gap-8 justify-center lg:justify-start opacity-40">
+                            <div className="flex items-center gap-2">
+                                <Shield size={14} className="text-secondary" />
+                                <span className="text-[9px] font-mono font-black uppercase tracking-widest text-white">Encrypted_IO</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Zap size={14} className="text-amber-500" />
+                                <span className="text-[9px] font-mono font-black uppercase tracking-widest text-white">Sub_100ms_ASR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function ArrowRight({ size, className }: { size: number, className?: string }) {
+    return (
+        <svg 
+            width={size} 
+            height={size} 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="3" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            className={className}
+        >
+            <path d="M5 12h14m-7-7 7 7-7 7" />
+        </svg>
+    );
+}

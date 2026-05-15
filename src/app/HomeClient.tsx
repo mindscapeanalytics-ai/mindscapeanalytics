@@ -19,6 +19,10 @@ const Products = dynamic(() => import("@/components/Products"), { ssr: true });
 const Process = dynamic(() => import("@/components/Process"), { ssr: true });
 const GrowthHub = dynamic(() => import("@/components/GrowthHub"), { ssr: true });
 const CTA = dynamic(() => import("@/components/CTA"), { ssr: true });
+const AgenticHeroScanner = dynamic(() => import("@/components/AgenticHeroScanner"), { ssr: true });
+const EnterpriseArchitecture = dynamic(() => import("@/components/EnterpriseArchitecture"), { ssr: true });
+const VoiceAgentDemo = dynamic(() => import("@/components/VoiceAgentDemo"), { ssr: true });
+const NeuralNewsroom = dynamic(() => import("@/components/NeuralNewsroom"), { ssr: true });
 
 import { cn } from "@/lib/utils";
 
@@ -74,8 +78,20 @@ export default function HomeClient() {
             {/* Hero section - no wrapper needed as it has its own animations */}
             <Hero />
 
+            {/* LIVE AGENT INTERACTIVE SECTION - 2026 CONVERSION ENGINE */}
+            <AgenticHeroScanner />
+
             {/* AI Employee Core - No wrapper for isolation */}
             <AiEmployee />
+
+            {/* TECHNICAL AUTHORITY SECTION */}
+            <EnterpriseArchitecture />
+
+            {/* VOICE INTELLIGENCE DEMO */}
+            <VoiceAgentDemo />
+
+            {/* NEURAL NEWSROOM // AUTOBOT BLOGS */}
+            <NeuralNewsroom />
 
             {/* Project Vision - High Impact Intro */}
             <ProjectVision />

@@ -228,7 +228,7 @@ export default function Footer() {
             <div className="absolute bottom-0 inset-x-0 z-30 w-full border-t border-border bg-background/40 backdrop-blur-xl">
                 <div className="container-standard py-4 flex flex-col-reverse md:flex-row justify-between items-center gap-4">
                     <p className="text-foreground/40 text-[9px] font-mono font-black tracking-[0.3em] uppercase text-center md:text-left">
-                        © 2025 // MINDSCAPE ANALYTICS LLC. <span className="hidden md:inline">FOUNDED 2025. ALL RIGHTS RESERVED.</span>
+                        © 2026 // MINDSCAPE ANALYTICS LLC. <span className="hidden md:inline">FOUNDED 2025. ALL RIGHTS RESERVED.</span>
                     </p>
                     <div className="flex flex-wrap justify-center md:justify-end items-center gap-4 md:gap-8">
                         <span className="text-foreground/30 text-[7px] md:text-[8px] font-black tracking-[0.4em] uppercase flex items-center gap-2 group hover:text-foreground transition-colors cursor-default">

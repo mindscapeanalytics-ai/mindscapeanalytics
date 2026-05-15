@@ -144,6 +144,33 @@ export default function Hero() {
                         </div>
                     </motion.div>
 
+                    {/* LIVE NETWORK PULSE HUD - 2026 TRUST SIGNAL */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 1, duration: 1 }}
+                        className="hidden xl:flex absolute right-12 top-1/2 -translate-y-1/2 flex-col gap-4 p-6 rounded-2xl border border-white/5 bg-zinc-950/40 backdrop-blur-xl z-20"
+                    >
+                        <div className="flex flex-col gap-1">
+                            <span className="text-[8px] font-mono text-secondary tracking-[0.3em] font-black uppercase">Active_Agents</span>
+                            <span className="text-xl font-bold text-white tracking-tighter">1,402</span>
+                        </div>
+                        <div className="h-px w-full bg-white/5" />
+                        <div className="flex flex-col gap-1">
+                            <span className="text-[8px] font-mono text-white/20 tracking-[0.3em] font-black uppercase">Network_Latency</span>
+                            <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+                                <span className="text-sm font-bold text-white/60">12ms</span>
+                            </div>
+                        </div>
+                        <div className="h-px w-full bg-white/5" />
+                        <div className="flex flex-col gap-1">
+                            <span className="text-[8px] font-mono text-white/20 tracking-[0.3em] font-black uppercase">Inference_Engine</span>
+                            <span className="text-[10px] font-bold text-secondary/60">NVIDIA_NIM // MISTRAL_675B</span>
+                        </div>
+                    </motion.div>
+
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}

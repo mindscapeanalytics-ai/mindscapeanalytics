@@ -53,6 +53,20 @@ export default function PersistentHUD() {
                                     </Link>
                                 </div>
 
+                                <div className="space-y-2 px-1">
+                                    <span className="text-[7px] font-mono uppercase tracking-[0.2em] text-foreground/20">Live_Operations_Feed</span>
+                                    <div className="flex flex-col gap-1.5 opacity-60">
+                                        <div className="flex items-center justify-between text-[8px] font-mono tracking-tight">
+                                            <span className="text-secondary">[AGENT_402]</span>
+                                            <span className="text-foreground/40">AUDITING_SYS_X</span>
+                                        </div>
+                                        <div className="flex items-center justify-between text-[8px] font-mono tracking-tight">
+                                            <span className="text-white/40">[AGENT_109]</span>
+                                            <span className="text-emerald-500/80">REVENUE_DEPLOYED</span>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div className="pt-4 border-t border-border/50 flex items-center justify-between">
                                     <div className="flex items-center gap-2">
                                         <Activity size={10} className="text-secondary" />

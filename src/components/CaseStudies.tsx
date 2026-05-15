@@ -35,11 +35,11 @@ const caseStudies = [
         image: "/images/projects/enterprise-erp_opt.webp"
     },
     {
-        title: "DBLynx Bank Intelligence",
-        category: "Banking AI",
+        title: "DBLynx Autonomous Hub",
+        category: "Banking Intelligence",
         icon: Landmark,
-        metrics: "95% Faster Analytics",
-        description: "AI-powered database intelligence system for a regional bank, enabling real-time fraud detection on a $36.8M portfolio.",
+        metrics: "95% Human Reduction",
+        description: "Autonomous data agents for a regional bank, capable of real-time fraud mitigation and self-healing portfolio analysis on $36.8M in active assets.",
         image: "/images/projects/dblynx-database-intelligence-mindscapeanalytics_opt.webp",
         link: "/projects/dblynx-regional-bank"
     },

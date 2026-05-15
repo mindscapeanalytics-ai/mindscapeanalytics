@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
-  title: "Mindscape Analytics | First Agentic AI, Gen AI & Automation Solutions",
-  description: "The world's first Agentic AI and Gen AI solutions company. We architect high-performance automation, enterprise SaaS, and mission-critical web applications. Lead by Zeeshan Keerio.",
+  title: "Mindscape Analytics | Elite Agentic Workflows & Enterprise AI Architecture",
+  description: "The world's premier provider of Agentic AI and Autonomous Workflows. Powered by NVIDIA NIM and Mistral Large 3. We architect self-evolving digital workforces for global enterprises.",
   openGraph: {
     title: "Mindscape Analytics | First Agentic AI, Gen AI & Automation Solutions",
     description: "The world's first Agentic AI and Gen AI solutions company. We architect high-performance automation, enterprise SaaS, and mission-critical web applications. Lead by Zeeshan Keerio.",

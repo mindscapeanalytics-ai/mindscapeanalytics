@@ -179,6 +179,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <CinematicBackground />
+            <PersistentHUD />
             {children}
             <ChatWidget />
             {process.env.VERCEL && <SpeedInsights />}

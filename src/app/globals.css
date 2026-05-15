@@ -212,13 +212,27 @@
     }
 
     .transform-gpu {
-        transform: translateZ(0);
+        transform: translate3d(0, 0, 0);
         backface-visibility: hidden;
         perspective: 1000px;
+        will-change: transform;
     }
 
     .gpu-accelerate {
         @apply transform-gpu;
         content-visibility: auto;
+    }
+
+    /* 2026 Core Optimization */
+    .content-deferred {
+        content-visibility: auto;
+        contain-intrinsic-size: 1000px;
+        contain: layout paint style;
+    }
+
+    .smooth-scroll-container {
+        /* Prevents scroll jank by locking overscroll */
+        overscroll-behavior-y: none;
+        -webkit-overflow-scrolling: touch;
     }
 }

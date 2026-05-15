@@ -31,6 +31,33 @@ interface NavLink {
     submenu?: NavSubLink[];
 }
 
+function AgentTelemetry() {
+    const [count, setCount] = useState(1420);
+    
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCount(prev => prev + Math.floor(Math.random() * 3));
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="hidden xl:flex items-center gap-3 px-4 py-1.5 bg-zinc-950/50 border border-white/5 rounded-full backdrop-blur-md">
+            <div className="flex -space-x-2">
+                {[1, 2, 3].map(i => (
+                    <div key={i} className="w-4 h-4 rounded-full border border-black bg-zinc-800 flex items-center justify-center overflow-hidden">
+                        <div className="w-full h-full bg-secondary/40 animate-pulse" />
+                    </div>
+                ))}
+            </div>
+            <div className="flex flex-col">
+                <span className="text-[7px] font-mono text-white/20 uppercase leading-none tracking-widest">Live_Inference</span>
+                <span className="text-[10px] font-mono font-black text-secondary leading-none">{count.toLocaleString()} ops/s</span>
+            </div>
+        </div>
+    );
+}
+
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -79,6 +106,7 @@ export default function Navbar() {
                     { name: "RSIQ Pro", href: "https://rsiq.mindscapeanalytics.com/" },
                     { name: "Tenvo", href: "https://tenvo.mindscapeanalytics.com/" },
                     { name: "CyberTrader-X", href: "https://traderx.mindscapeanalytics.com/" },
+                    { name: "Agentic Hub v4", href: "/" },
                 ]
             },
             {
@@ -209,6 +237,7 @@ export default function Navbar() {
                             {contextTheme.label}
                         </div>
                     )}
+                    <AgentTelemetry />
                 </div>
 
                 {/* Desktop Navigation */}
