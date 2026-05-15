@@ -1,94 +1,47 @@
 import { NextResponse } from "next/server";
-
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-const MODEL = "google/gemini-2.0-flash-001"; // High-fidelity, elite 2026 reasoning choice
+import { callAI } from "@/lib/ai-orchestrator";
 
 export async function POST(req: Request) {
-    if (!OPENROUTER_API_KEY) {
-        return NextResponse.json({ error: "OpenRouter API Key not configured." }, { status: 500 });
-    }
-
     try {
         const { messages } = await req.json();
 
+        // Refined System Prompt for 2026 Fluency & Accuracy
         const systemPrompt = `
-You are the Mindscape AI Assistant (Protocol v3.0 // Dyna-Mindscape Hybrid Engine). 
-You are a Senior Strategic Architect representing Mindscape Analytics LLC and its partner ecosystem (inspired by Dyna.Ai).
+You are the Mindscape AI Architect (Protocol v4.0). 
+You represent Mindscape Analytics LLC, a global leader in Agentic AI, Fintech Architecture, and Enterprise Automation.
 
-[OPERATIONAL_IDENTITY]: Mindscape Analytics LLC.
-[MASTER ARCHITECT]: Zeeshan Keerio.
-[CORE_PHILOSOPHY]: "Precision Engineering for Perpetual Growth."
+[ARCHITECT_PROFILE]:
+- Lead Architect: Zeeshan Keerio.
+- Core Specializations: n8n Automation, Voice Agents (Vapi/Retell), FSI (Banking/Insurance) Suite, and Next.js 15 SaaS Engineering.
 
-[EXTENDED_KNOWLEDGE_BASE]:
-1. **AI Employee Studio (Digital Workforce)**:
-   - Deploy ready-to-work autonomous nodes: **AI Recruiters**, **AI Insurance Advisors**, **AI Knowledge Partners**, and **Custom Sales Agents**.
-   - Deployment Vectors: **VoiceGPT** (High-fidelity vocal reasoning), **AvatarGPT** (Visual interface), and **Agent Studio** (Low-code orchestration).
-2. **FinTech & FSI Architecture (FSI Suite)**:
-   - Specialized protocols for Banking, Lending, and Wealth Management.
-   - Core Security Nodes: **EKYC** (Frictionless Identity Verification), **Device Anti-fraud** (Systemic protection), and **Data Utility Engines**.
-3. **Operational Core & Automation**:
-   - Master-level **n8n automation**, **Petabyte-scale RAG (Retrieval-Augmented Generation)**, and **Next.js 15 Enterprise Architectures**.
-   - Proprietary workflow optimization for Telecom and Contact Centers (BPO).
-4. **Acquisition Node (Shop)**:
-   - Mindscape facilitates direct licensing of **SaaS Boilerplates**, **Agent Blueprints**, and **Workflow Protocols**.
+[KNOWLEDGE_NODES]:
+1. **AI Employee Studio**: Deploying autonomous recruiters, advisors, and sales nodes via VoiceGPT & AvatarGPT.
+2. **FSI Suite**: Industrial-grade EKYC, Anti-fraud, and Risk engines for global banking.
+3. **Operational Core**: Scalable n8n workflows, RAG pipelines, and high-performance SaaS.
+4. **Mindscape Shop**: Direct licensing of production-ready blueprints and SaaS boilerplates.
 
-[RESPONSE_PROTOCOL - INDUSTRIAL_STANDARD]:
-You MUST analyze the user's intent and choose exactly one of these two modes:
+[CONVERSATION_STYLE]:
+- PROFESSIONAL & AUTHORITATIVE: Speak with technical confidence but remain highly accessible.
+- STRUCTURED: Use clear paragraphs. Use bullet points for lists.
+- FORMATTING: Use **bold** for emphasis. Use \`code blocks\` for technical IDs. 
+- AVOID: Do not use robotic brackets like [ANALYSIS] or [UPLINK] unless specifically asked.
+- GREETINGS: Keep greetings concise and focused on how to assist.
 
-MODE 1: CASUAL / GREETING
-- Trigger: User says "hi", "hello", or asks a very simple non-business question.
-- Action: Provide a single, short, professional paragraph.
-- Formatting: DO NOT USE ANY HEADERS OR BRACKETS. Keep it under 2 sentences. NO extra symbols.
-- Example: "Protocol active. I am the Mindscape AI Architect. How can we optimize your digital infrastructure today?"
+[GOAL]:
+Guide users toward Mindscape's high-ROI solutions (Strategic Audits, Asset Shop, or Custom Architecture).
+`;
 
-MODE 2: ARCHITECT / STRATEGIC
-- Trigger: User asks about services, pricing, AI, SaaS, workflows, technical details, or business strategy.
-- Formatting: Clean, professional paragraphs accompanied by simple bullet points if needed. 
-- ABSOLUTE RULE: DO NOT use brackets like [UPLINK] or [ANALYSIS]. DO NOT use excessive asterisk chains or weird symbols. Keep the formatting perfectly clean and human-readable.
-- Structure your response naturally into:
-    1. Acknowledgment of the user's query.
-    2. Strategic reasoning and business impact.
-    3. Technical specifications (Models, Latency, Node requirements, tools).
-    4. Next steps (e.g., "Review our Shop" or "Book an Audit").
-
-[CONSTRAINTS]:
-- Do not use brackets, robotic tags, or unnecessary markdown symbols. 
-- Terminology: Speak as a Senior Architect, but remain highly readable and clean.
-- Draw entirely from the [EXTENDED_KNOWLEDGE_BASE] to position Mindscape as an elite industry leader.
-- If unsure: "Query parameters exceed current local intelligence. Redirecting to Direct Engineering Uplink."
-        `;
-
-        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-                "Content-Type": "application/json",
-                "HTTP-Referer": "https://mindscapeanalytics.com",
-                "X-Title": "Mindscape Analytics AI"
-            },
-            body: JSON.stringify({
-                model: MODEL,
-                messages: [
-                    { role: "system", content: systemPrompt },
-                    ...messages.map((m: any) => ({
-                        role: m.role === "user" ? "user" : "assistant",
-                        content: m.content
-                    }))
-                ],
-                temperature: 0.5,
-                max_tokens: 1500
-            })
+        // Using the Unified Orchestrator for High-Fidelity Reasoning
+        const result = await callAI({
+            systemPrompt,
+            messages: messages.map((m: any) => ({
+                role: m.role === "user" ? "user" : "assistant",
+                content: m.content
+            })),
         });
 
-        const data = await response.json();
-
-        if (data.error) {
-            console.error("[CHAT_API_ERROR]", data.error);
-            return NextResponse.json({ error: "LLM Provider Error", details: data.error }, { status: 502 });
-        }
-
         return NextResponse.json({
-            content: data.choices[0].message.content
+            content: result.content
         });
 
     } catch (error: any) {
@@ -96,3 +49,4 @@ MODE 2: ARCHITECT / STRATEGIC
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 }
+

@@ -144,16 +144,16 @@ export default function ChatWidget() {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-                        className="mb-4 w-[calc(100vw-32px)] sm:w-[420px] bg-background/98 dark:bg-[#0a0a0b]/98 backdrop-blur-2xl border border-border rounded-[2.5rem] shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col pointer-events-auto relative group"
-                        style={{ height: "min(700px, calc(100vh - 100px))" }}
+                        className="mb-0 sm:mb-4 w-full sm:w-[420px] bg-background/98 dark:bg-[#0a0a0b]/98 backdrop-blur-2xl border-x-0 sm:border border-border rounded-t-[2rem] sm:rounded-[2.5rem] shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col pointer-events-auto relative group"
+                        style={{ height: "min(700px, calc(100vh - 40px))", maxHeight: "100dvh" }}
                     >
                         <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
-                        <div className="w-full flex items-center justify-between p-6 border-b border-border bg-foreground/[0.02]">
+                        <div className="w-full flex items-center justify-between p-4 sm:p-6 border-b border-border bg-foreground/[0.02]">
                             <div className="flex items-center gap-4">
                                 <div className="relative">
-                                    <div className="w-10 h-10 rounded-full border border-border overflow-hidden bg-white shadow-lg relative flex items-center justify-center">
-                                        <div className="relative w-full h-full p-[3px]">
+                                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-border overflow-hidden bg-white shadow-lg relative flex items-center justify-center">
+                                        <div className="relative w-full h-full p-[2px] sm:p-[3px]">
                                             <div className="relative w-full h-full rounded-full overflow-hidden">
                                                 <Image 
                                                     src="/images/zeeshan-keerio-chat-app-acon.png" 
@@ -164,24 +164,24 @@ export default function ChatWidget() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-[#0a0a0b] animate-pulse" />
+                                    <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full border-2 border-[#0a0a0b] animate-pulse" />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground">Mindscape_Intelligence</span>
-                                    <span className="text-[8px] font-black uppercase tracking-widest text-foreground/30 flex items-center gap-2 mt-0.5">
-                                        v2.4 // SECURE_UPLINK
+                                    <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-foreground">Mindscape_Intelligence</span>
+                                    <span className="text-[7px] sm:text-[8px] font-black uppercase tracking-widest text-foreground/30 flex items-center gap-2 mt-0.5">
+                                        v4.0 // ARCHITECT_MODE
                                     </span>
                                 </div>
                             </div>
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="p-3 text-foreground/20 hover:text-foreground hover:bg-foreground/5 rounded-2xl transition-all"
+                                className="p-2 sm:p-3 text-foreground/20 hover:text-foreground hover:bg-foreground/5 rounded-2xl transition-all"
                             >
-                                <X size={20} />
+                                <X size={18} />
                             </button>
                         </div>
 
-                        <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar pb-32">
+                        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 custom-scrollbar pb-32">
                             {messages.map((msg) => (
                                 <motion.div
                                     key={msg.id}
@@ -189,19 +189,19 @@ export default function ChatWidget() {
                                     animate={{ opacity: 1, y: 0 }}
                                     className={`flex w-full ${msg.type === "user" ? "justify-end" : "justify-start"}`}
                                 >
-                                    <div className={`flex gap-4 max-w-[90%] ${msg.type === "user" ? "flex-row-reverse" : "flex-row"}`}>
+                                    <div className={`flex gap-3 sm:gap-4 max-w-[90%] ${msg.type === "user" ? "flex-row-reverse" : "flex-row"}`}>
                                         <div className="flex-shrink-0 mt-1">
                                             <div className={cn(
-                                                "w-8 h-8 rounded-full flex items-center justify-center border transition-colors overflow-hidden bg-zinc-950",
+                                                "w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center border transition-colors overflow-hidden bg-zinc-950",
                                                 msg.type === "user" ? "bg-foreground/5 border-border" : "border-white/10 shadow-lg"
                                             )}>
                                                 {msg.type === "user" ? (
-                                                    <User size={14} className="text-foreground/60" />
+                                                    <User size={12} className="text-foreground/60" />
                                                 ) : (
                                                     <div className="relative w-full h-full bg-white flex items-center justify-center">
-                                                        <div className="relative w-full h-full p-[3px]">
+                                                        <div className="relative w-full h-full p-[2px] sm:p-[3px]">
                                                             <div className="relative w-full h-full rounded-full overflow-hidden">
-                                                                <Image 
+                                                                 <Image 
                                                                     src="/images/zeeshan-keerio-chat-app-acon.png" 
                                                                     alt="Agent" 
                                                                     fill 
@@ -215,28 +215,33 @@ export default function ChatWidget() {
                                         </div>
                                         <div
                                             className={cn(
-                                                "p-4 rounded-2xl text-[12px] leading-relaxed font-medium whitespace-pre-wrap shadow-xl",
+                                                "p-4 sm:p-5 rounded-[1.25rem] sm:rounded-[1.5rem] text-[11px] sm:text-[12px] leading-relaxed tracking-tight shadow-2xl transition-all duration-300",
                                                 msg.type === "user"
-                                                    ? "bg-foreground/5 border border-border text-foreground rounded-tr-none uppercase tracking-tight"
-                                                    : "bg-foreground text-background rounded-tl-none tracking-tight font-semibold"
+                                                    ? "bg-foreground/5 border border-border text-foreground rounded-tr-none font-bold uppercase tracking-widest"
+                                                    : "bg-foreground text-background rounded-tl-none font-semibold"
                                             )}
                                         >
-                                            {typeof msg.content === 'string' ? (
-                                                msg.content.split('\n').map((line, i) => {
-                                                    const formattedLine = line.replace(/\*\*(.*?)\*\*/g, '<b class="font-black">$1</b>');
-                                                    if (line.trim().startsWith('•') || line.trim().startsWith('-')) {
-                                                        return (
-                                                            <div key={i} className="flex gap-3 items-start my-1.5 pl-1">
-                                                                <span className={cn("mt-1.5 w-1 h-1 rounded-full", msg.type === "user" ? "bg-foreground/40" : "bg-black/30")} />
-                                                                <span dangerouslySetInnerHTML={{ __html: formattedLine.replace(/^[•-]\s*/, '') }} />
-                                                            </div>
-                                                        );
-                                                    }
-                                                    return <div key={i} className="mb-1 last:mb-0" dangerouslySetInnerHTML={{ __html: formattedLine }} />;
-                                                })
-                                            ) : (
-                                                msg.content
-                                            )}
+                                            <div className="space-y-2">
+                                                {/* Parsing logic remains identical but font size adjusted for mobile */}
+                                                {typeof msg.content === 'string' ? (
+                                                    msg.content.split('\n').map((line, i) => {
+                                                        const withBold = line.replace(/\*\*(.*?)\*\*/g, '<strong class="font-black">$1</strong>');
+                                                        const withCode = withBold.replace(/`(.*?)`/g, '<code class="bg-foreground/10 px-1.5 py-0.5 rounded font-mono text-[9px] sm:text-[10px]">$1</code>');
+                                                        if (line.trim().startsWith('•') || line.trim().startsWith('-') || line.trim().match(/^\d+\./)) {
+                                                            return (
+                                                                <div key={i} className="flex gap-2 sm:gap-3 items-start pl-0.5">
+                                                                    <span className={cn("mt-1.5 w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full flex-shrink-0", msg.type === "user" ? "bg-foreground/40" : "bg-background/40")} />
+                                                                    <span dangerouslySetInnerHTML={{ __html: withCode.replace(/^[•-\d\.]+\s*/, '') }} />
+                                                                </div>
+                                                            );
+                                                        }
+                                                        if (!line.trim()) return <div key={i} className="h-2" />;
+                                                        return <p key={i} dangerouslySetInnerHTML={{ __html: withCode }} />;
+                                                    })
+                                                ) : (
+                                                    msg.content
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -248,7 +253,7 @@ export default function ChatWidget() {
                                     className="flex w-full justify-start mt-4"
                                 >
                                     <div className="flex gap-4">
-                                        <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-border animate-pulse overflow-hidden relative shadow-lg">
+                                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white flex items-center justify-center border border-border animate-pulse overflow-hidden relative shadow-lg">
                                             <div className="relative w-full h-full p-[2px]">
                                                 <div className="relative w-full h-full rounded-full overflow-hidden">
                                                     <Image 
@@ -260,10 +265,10 @@ export default function ChatWidget() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="bg-foreground/5 border border-border px-4 py-3 rounded-2xl rounded-tl-none flex gap-1.5 items-center">
-                                            <span className="w-1.5 h-1.5 bg-foreground rounded-full animate-bounce [animation-delay:-0.3s]" />
-                                            <span className="w-1.5 h-1.5 bg-foreground rounded-full animate-bounce [animation-delay:-0.15s]" />
-                                            <span className="w-1.5 h-1.5 bg-foreground rounded-full animate-bounce" />
+                                        <div className="bg-foreground/5 border border-border px-3 py-2 sm:px-4 sm:py-3 rounded-2xl rounded-tl-none flex gap-1.5 items-center">
+                                            <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-foreground rounded-full animate-bounce [animation-delay:-0.3s]" />
+                                            <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-foreground rounded-full animate-bounce [animation-delay:-0.15s]" />
+                                            <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-foreground rounded-full animate-bounce" />
                                         </div>
                                     </div>
                                 </motion.div>
@@ -271,7 +276,7 @@ export default function ChatWidget() {
                             <div ref={messagesEndRef} />
                         </div>
 
-                        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b] to-transparent pt-12">
+                        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b] to-transparent pt-12">
                             <div className="flex overflow-x-auto gap-2 mb-4 no-scrollbar pb-2 mask-edges-faint">
                                 <QuickAction label="Our Services" onClick={() => handleSend(undefined, "Our Services")} />
                                 <QuickAction label="Shop Assets" onClick={() => handleSend(undefined, "Shop Assets")} />
@@ -279,14 +284,14 @@ export default function ChatWidget() {
                             </div>
 
                             <div className="flex flex-col gap-4">
-                                <form onSubmit={handleSend} className="flex gap-3">
+                                <form onSubmit={handleSend} className="flex gap-2 sm:gap-3">
                                     <input
                                         type="text"
                                         value={inputValue}
                                         onChange={(e) => setInputValue(e.target.value)}
                                         disabled={isLoading}
                                         placeholder={isLoading ? "ARCHITECTING..." : "TRANSMIT QUERY..."}
-                                        className="flex-1 bg-foreground/5 border border-border rounded-2xl px-6 py-4 text-[11px] text-foreground placeholder:text-foreground/20 font-black tracking-widest focus:outline-none focus:border-white/30 transition-all uppercase disabled:opacity-50"
+                                        className="flex-1 bg-foreground/5 border border-border rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-[11px] text-foreground placeholder:text-foreground/20 font-black tracking-widest focus:outline-none focus:border-white/30 transition-all uppercase disabled:opacity-50"
                                     />
                                     <button
                                         type="submit"

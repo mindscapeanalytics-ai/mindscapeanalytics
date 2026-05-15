@@ -7,6 +7,11 @@
 
 export type AIProvider = "NVIDIA" | "GOOGLE" | "OPENROUTER";
 
+export interface Message {
+    role: "system" | "user" | "assistant";
+    content: string;
+}
+
 export interface AIResponse {
     content: string;
     provider: AIProvider;
@@ -15,18 +20,28 @@ export interface AIResponse {
 
 export async function callAI({
     prompt,
+    messages = [],
     systemPrompt = "You are the Strategic AI Architect for Mindscape Analytics. Provide industrial-grade, concise, and actionable intelligence.",
     provider = "NVIDIA",
     model,
     temperature = 0.2,
 }: {
-    prompt: string;
+    prompt?: string;
+    messages?: Message[];
     systemPrompt?: string;
     provider?: AIProvider;
     model?: string;
     temperature?: number;
 }): Promise<AIResponse> {
     
+    // Construct messages array for chat-based APIs
+    const conversationHistory: Message[] = messages.length > 0 
+        ? [{ role: "system", content: systemPrompt }, ...messages]
+        : [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: prompt || "" }
+        ];
+
     // 1. NVIDIA NIM (Primary for Logic/Reasoning)
     if (provider === "NVIDIA") {
         const apiKey = process.env.NVIDIA_NIM_API_KEY;
@@ -41,10 +56,7 @@ export async function callAI({
                 },
                 body: JSON.stringify({
                     model: targetModel,
-                    messages: [
-                        { role: "system", content: systemPrompt },
-                        { role: "user", content: prompt }
-                    ],
+                    messages: conversationHistory,
                     temperature,
                     max_tokens: 2048,
                 }),
@@ -69,11 +81,22 @@ export async function callAI({
         const targetModel = model || "gemini-1.5-pro-latest";
         
         try {
+            // Google API uses a different format for history
+            const contents = conversationHistory
+                .filter(m => m.role !== "system")
+                .map(m => ({
+                    role: m.role === "user" ? "user" : "model",
+                    parts: [{ text: m.content }]
+                }));
+
+            const systemInstruction = conversationHistory.find(m => m.role === "system")?.content;
+
             const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${targetModel}:generateContent?key=${apiKey}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    contents: [{ parts: [{ text: `${systemPrompt}\n\n${prompt}` }] }],
+                    system_instruction: systemInstruction ? { parts: [{ text: systemInstruction }] } : undefined,
+                    contents,
                     generationConfig: { temperature }
                 }),
             });
@@ -105,10 +128,7 @@ export async function callAI({
         },
         body: JSON.stringify({
             model: orModel,
-            messages: [
-                { role: "system", content: systemPrompt },
-                { role: "user", content: prompt }
-            ],
+            messages: conversationHistory,
             temperature,
         }),
     });
@@ -120,3 +140,4 @@ export async function callAI({
         model: orModel
     };
 }
+

@@ -345,7 +345,7 @@ function ContactFormContent() {
                                                         required
                                                         value={formData.name}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-background border-border focus:border-secondary text-foreground placeholder:text-foreground/10 rounded-xl"
+                                                        className="h-14 bg-background border-border focus:border-secondary text-base text-foreground placeholder:text-foreground/10 rounded-xl"
                                                         placeholder="ENTITY NAME"
                                                     />
                                                 </div>
@@ -360,7 +360,7 @@ function ContactFormContent() {
                                                         required
                                                         value={formData.email}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-background border-border focus:border-secondary text-foreground placeholder:text-foreground/10 rounded-xl"
+                                                        className="h-14 bg-background border-border focus:border-secondary text-base text-foreground placeholder:text-foreground/10 rounded-xl"
                                                         placeholder="SENDER@ACCESS.NODE"
                                                     />
                                                 </div>
@@ -377,7 +377,7 @@ function ContactFormContent() {
                                                         type="text"
                                                         value={formData.company}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-background border-border focus:border-secondary text-foreground placeholder:text-foreground/10 rounded-xl"
+                                                        className="h-14 bg-background border-border focus:border-secondary text-base text-foreground placeholder:text-foreground/10 rounded-xl"
                                                         placeholder="CORPORATE IDENTITY"
                                                     />
                                                 </div>
@@ -391,7 +391,7 @@ function ContactFormContent() {
                                                         type="tel"
                                                         value={formData.phone}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-background border-border focus:border-secondary text-foreground placeholder:text-foreground/10 rounded-xl"
+                                                        className="h-14 bg-background border-border focus:border-secondary text-base text-foreground placeholder:text-foreground/10 rounded-xl"
                                                         placeholder="+[NODE] XXXXX"
                                                     />
                                                 </div>
@@ -406,7 +406,7 @@ function ContactFormContent() {
                                                     name="service"
                                                     value={formData.service}
                                                     onChange={handleChange}
-                                                    className="w-full h-14 rounded-xl border border-border bg-background px-4 text-sm text-foreground focus:border-secondary focus:outline-none transition-all appearance-none uppercase font-bold tracking-widest"
+                                                    className="w-full h-14 rounded-xl border border-border bg-background px-4 text-base text-foreground focus:border-secondary focus:outline-none transition-all appearance-none uppercase font-bold tracking-widest"
                                                 >
                                                     <option value="" className="bg-background">SELECT PROTOCOL</option>
                                                     <option value="strategic-architecture" className="bg-background">Strategic Architecture Plan</option>
@@ -427,7 +427,7 @@ function ContactFormContent() {
                                                     value={formData.message}
                                                     onChange={handleChange}
                                                     rows={5}
-                                                    className="w-full rounded-xl border border-border bg-background px-4 py-4 text-sm text-foreground focus:border-secondary focus:outline-none transition-all resize-none placeholder:text-foreground/10"
+                                                    className="w-full rounded-xl border border-border bg-background px-4 py-4 text-base text-foreground focus:border-secondary focus:outline-none transition-all resize-none placeholder:text-foreground/10"
                                                     placeholder="DESCRIBE ARCHITECTURAL REQUIREMENTS..."
                                                 />
                                             </div>
