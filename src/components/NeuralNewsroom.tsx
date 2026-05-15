@@ -70,19 +70,30 @@ export default function NeuralNewsroom() {
                             Our agents monitor global market shifts in real-time to generate strategic intelligence for our clients. No writers. No delays. Just raw, autonomous foresight.
                         </p>
                         
-                        <button
-                            onClick={generateArticle}
-                            disabled={isGenerating}
-                            className={cn(
-                                "group relative px-8 py-5 rounded-2xl font-black uppercase text-xs tracking-widest transition-all overflow-hidden",
-                                isGenerating ? "bg-zinc-900 text-white/20 cursor-wait" : "bg-white text-black hover:scale-105 active:scale-95 shadow-[0_20px_40px_rgba(255,255,255,0.1)]"
-                            )}
-                        >
-                            <span className="relative z-10 flex items-center gap-3">
-                                {isGenerating ? "GENERATING_INSIGHT..." : "INITIALIZE_AUTOBOT_BLOG"}
-                                <Sparkles size={16} className={isGenerating ? "animate-spin" : ""} />
-                            </span>
-                        </button>
+                        <div className="relative group">
+                            <button
+                                onClick={generateArticle}
+                                disabled={isGenerating}
+                                className={cn(
+                                    "w-full px-8 py-5 rounded-2xl font-black uppercase text-xs tracking-widest transition-all overflow-hidden relative",
+                                    isGenerating ? "bg-zinc-900 text-white/20 cursor-wait" : "bg-white text-black hover:scale-105 active:scale-95 shadow-[0_20px_40px_rgba(255,255,255,0.1)]"
+                                )}
+                            >
+                                <span className="relative z-10 flex items-center justify-center gap-3">
+                                    {isGenerating ? "GENERATING_INSIGHT..." : "INITIALIZE_AUTOBOT_BLOG"}
+                                    <Sparkles size={16} className={isGenerating ? "animate-spin text-secondary" : ""} />
+                                </span>
+                                
+                                {isGenerating && (
+                                    <motion.div 
+                                        initial={{ x: "-100%" }}
+                                        animate={{ x: "0%" }}
+                                        transition={{ duration: 3, ease: "linear" }}
+                                        className="absolute inset-0 bg-secondary/20 z-0"
+                                    />
+                                )}
+                            </button>
+                        </div>
                     </div>
 
                     {/* Feed Side */}
