@@ -10,54 +10,73 @@ export default function VoiceAgentDemo() {
     const [status, setStatus] = useState<"IDLE" | "CONNECTING" | "LISTENING" | "THINKING" | "SPEAKING">("IDLE");
     const [transcript, setTranscript] = useState("");
     const [agentResponse, setAgentResponse] = useState("");
-    
+    const [currentInteraction, setCurrentInteraction] = useState(0);
+
+    const interactions = [
+        {
+            query: "Initialize strategic audit for real estate portfolio...",
+            response: "Hi, I'm Zeeshan. Strategic audit initiated. I'm analyzing your real estate portfolio against current market data. I've identified three high-yield optimization opportunities. Shall we proceed with the briefing?"
+        },
+        {
+            query: "Analyze current network latency and agent efficiency...",
+            response: "Hi, I'm Zeeshan. Network diagnostic complete. All autonomous nodes are operating at sub-100 millisecond latency. Agent efficiency is currently at 98.5%. How else can I assist your operational scaling today?"
+        },
+        {
+            query: "Generate deployment roadmap for autonomous sales agents...",
+            response: "Hi, I'm Zeeshan. Roadmap generation in progress. Global market intelligence suggests a 40% efficiency gain. I am ready to deploy a custom training layer for your specific sales niche. What is your primary objective?"
+        }
+    ];
+
     // Simulated Voice Core
     const toggleProtocol = () => {
         if (isActive) {
             setIsActive(false);
             setStatus("IDLE");
+            setTranscript("");
+            setAgentResponse("");
             if (typeof window !== "undefined" && "speechSynthesis" in window) {
                 window.speechSynthesis.cancel();
             }
         } else {
             setIsActive(true);
             setStatus("CONNECTING");
+            setCurrentInteraction(Math.floor(Math.random() * interactions.length));
             setTimeout(() => setStatus("LISTENING"), 1500);
         }
     };
 
-    const agentResponses = [
-        "Protocol initialized. This is the Mindscape Voice Intelligence core. I am currently monitoring enterprise data streams for automation gaps. How can I assist your operational scaling today?",
-        "Security audit complete. All autonomous nodes are operating within optimal parameters. I have identified three high-yield automation opportunities in your current sales funnel. Shall we proceed with the briefing?",
-        "Global market intelligence suggests a 40% efficiency gain is available through agentic voice integration. I am ready to deploy a custom training layer for your specific niche. What is your primary objective?"
-    ];
-
-    const simulateInteraction = () => {
+    const simulateInteraction = (interaction: {query: string, response: string}) => {
         setStatus("THINKING");
         setTimeout(() => {
-            const responseText = agentResponses[Math.floor(Math.random() * agentResponses.length)];
             setStatus("SPEAKING");
-            setAgentResponse(responseText);
+            setAgentResponse(interaction.response);
 
             // Web Speech API - TTS
             if (typeof window !== "undefined" && "speechSynthesis" in window) {
                 // Cancel any ongoing speech
                 window.speechSynthesis.cancel();
                 
-                const utterance = new SpeechSynthesisUtterance(responseText);
+                const utterance = new SpeechSynthesisUtterance(interaction.response);
                 utterance.rate = 0.95; 
                 utterance.pitch = 0.85; 
                 
                 const voices = window.speechSynthesis.getVoices();
-                const premiumVoice = voices.find(v => v.name.includes("Google US English") || v.name.includes("Male"));
+                const premiumVoice = voices.find(v => v.name.includes("Google US English") || v.name.includes("Male") || v.lang === "en-US");
                 if (premiumVoice) utterance.voice = premiumVoice;
 
                 window.speechSynthesis.speak(utterance);
                 
                 utterance.onend = () => {
+                    setCurrentInteraction(prev => (prev + 1) % interactions.length);
+                    setTimeout(() => setStatus("LISTENING"), 1000);
+                };
+                
+                utterance.onerror = () => {
+                    setCurrentInteraction(prev => (prev + 1) % interactions.length);
                     setTimeout(() => setStatus("LISTENING"), 1000);
                 };
             } else {
+                setCurrentInteraction(prev => (prev + 1) % interactions.length);
                 setTimeout(() => setStatus("LISTENING"), 3000);
             }
         }, 1200);
@@ -66,17 +85,13 @@ export default function VoiceAgentDemo() {
     useEffect(() => {
         if (status === "LISTENING" && isActive) {
             const timer = setTimeout(() => {
-                const queries = [
-                    "Initialize strategic audit for real estate portfolio...",
-                    "Analyze current network latency and agent efficiency...",
-                    "Generate deployment roadmap for autonomous sales agents..."
-                ];
-                setTranscript(queries[Math.floor(Math.random() * queries.length)]);
-                simulateInteraction();
+                const interaction = interactions[currentInteraction];
+                setTranscript(interaction.query);
+                simulateInteraction(interaction);
             }, 2500);
             return () => clearTimeout(timer);
         }
-    }, [status, isActive]);
+    }, [status, isActive, currentInteraction]);
 
     return (
         <section className="py-32 bg-black relative overflow-hidden">
