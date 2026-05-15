@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Syncopate } from "next/font/google";
-import "./globals.css";
+import "./style.css";
 import { CartProvider } from "@/contexts/CartContext";
 import CinematicBackground from "@/components/CinematicBackground";
 import { SpeedInsights } from "@vercel/speed-insights/next";
