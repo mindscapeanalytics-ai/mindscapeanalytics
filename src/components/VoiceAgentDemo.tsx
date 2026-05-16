@@ -53,16 +53,30 @@ export default function VoiceAgentDemo() {
 
             // Web Speech API - TTS
             if (typeof window !== "undefined" && "speechSynthesis" in window) {
-                // Cancel any ongoing speech
+                // Institutional Reliability: Resume synthesis to bypass browser-native audio locks
+                window.speechSynthesis.resume();
                 window.speechSynthesis.cancel();
                 
                 const utterance = new SpeechSynthesisUtterance(interaction.response);
                 utterance.rate = 0.95; 
                 utterance.pitch = 0.85; 
                 
+                // Enhanced Voice Selection
                 const voices = window.speechSynthesis.getVoices();
-                const premiumVoice = voices.find(v => v.name.includes("Google US English") || v.name.includes("Male") || v.lang === "en-US");
-                if (premiumVoice) utterance.voice = premiumVoice;
+                const preferredVoices = [
+                    "Microsoft Christopher Online (Natural)",
+                    "Google US English Male",
+                    "English (United States)",
+                    "Male"
+                ];
+                
+                let selectedVoice = null;
+                for (const name of preferredVoices) {
+                    selectedVoice = voices.find(v => v.name.includes(name));
+                    if (selectedVoice) break;
+                }
+                
+                if (selectedVoice) utterance.voice = selectedVoice;
 
                 window.speechSynthesis.speak(utterance);
                 
@@ -94,7 +108,7 @@ export default function VoiceAgentDemo() {
     }, [status, isActive, currentInteraction]);
 
     return (
-        <section className="py-32 bg-black relative overflow-hidden">
+        <section id="voice-agent-demo" className="pb-24 pt-8 lg:pt-0 bg-transparent relative overflow-hidden -mt-8 lg:-mt-24 z-20">
             {/* Background Atmosphere */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--secondary),0.05),transparent_70%)]" />
             
@@ -183,63 +197,88 @@ export default function VoiceAgentDemo() {
                     {/* Content & Control */}
                     <div className="space-y-10">
                         <div className="space-y-6 text-center lg:text-left">
-                            <motion.span className="text-[10px] font-mono text-secondary tracking-[0.4em] font-black uppercase block">
-                                Voice_Intelligence_v4 //
-                            </motion.span>
+                            <div className="flex items-center justify-center lg:justify-start gap-3">
+                                <motion.span className="text-[10px] font-mono text-secondary tracking-[0.4em] font-black uppercase block">
+                                    Voice_Intelligence_v4 //
+                                </motion.span>
+                                {isActive && (
+                                    <span className="flex items-center gap-1">
+                                        <span className="w-1 h-1 bg-green-500 rounded-full animate-pulse" />
+                                        <span className="text-[8px] font-mono text-green-500 uppercase font-black">Link_Active</span>
+                                    </span>
+                                )}
+                            </div>
                             <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter uppercase leading-[0.9]">
                                 Speak to <br />
-                                <span className="text-foreground/40 italic">The Architect.</span>
+                                <span className="text-foreground/40">The Architect.</span>
                             </h2>
-                            <p className="text-lg text-white/40 font-medium max-w-md">
+                            <p className="text-lg text-white/40 font-medium max-w-md tracking-tighter">
                                 Experience the future of enterprise communication. Our voice agents handle $10M+ portfolios with human-grade empathy and machine-grade precision.
                             </p>
                         </div>
 
                         {/* Interaction Console */}
-                        <div className="bg-zinc-950/50 border border-white/5 rounded-3xl p-8 backdrop-blur-xl min-h-[250px] flex flex-col justify-between">
-                            <div className="space-y-4">
+                        <div className="bg-zinc-950/50 border border-white/5 rounded-3xl p-8 backdrop-blur-xl min-h-[250px] flex flex-col justify-between relative overflow-hidden group">
+                            {/* Console Scanline */}
+                            <motion.div 
+                                animate={{ y: ["-100%", "1000%"] }} 
+                                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                                className="absolute inset-x-0 h-10 bg-gradient-to-b from-transparent via-secondary/5 to-transparent z-0 opacity-20 pointer-events-none"
+                            />
+
+                            <div className="space-y-4 relative z-10">
                                 <AnimatePresence>
                                     {transcript && (
                                         <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="flex gap-3">
                                             <span className="text-[8px] font-mono text-white/20 uppercase mt-1">USER //</span>
-                                            <p className="text-sm text-white/60 font-mono italic">"{transcript}"</p>
+                                            <p className="text-sm text-white/60 font-mono tracking-tighter">"{transcript}"</p>
                                         </motion.div>
                                     )}
                                     {agentResponse && (
                                         <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} className="flex gap-3">
                                             <span className="text-[8px] font-mono text-secondary uppercase mt-1">CORE //</span>
-                                            <p className="text-sm text-white font-mono">{agentResponse}</p>
+                                            <p className="text-sm text-white font-mono tracking-tighter">{agentResponse}</p>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
                             </div>
 
-                            <button
-                                onClick={toggleProtocol}
-                                className={cn(
-                                    "w-full py-6 rounded-2xl font-black uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-4 group mt-8",
-                                    isActive 
-                                        ? "bg-red-500/10 text-red-500 border border-red-500/20" 
-                                        : "bg-secondary text-white shadow-[0_0_30px_rgba(var(--secondary),0.3)] hover:scale-[1.02]"
+                            <div className="relative z-10">
+                                <button
+                                    onClick={toggleProtocol}
+                                    className={cn(
+                                        "w-full py-6 rounded-2xl font-black uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-4 group mt-8",
+                                        isActive 
+                                            ? "bg-red-500/10 text-red-500 border border-red-500/20" 
+                                            : "bg-secondary text-white shadow-[0_0_30px_rgba(var(--secondary),0.3)] hover:scale-[1.02]"
+                                    )}
+                                >
+                                    {isActive ? (
+                                        <>TERMINATE PROTOCOL <X size={18} /></>
+                                    ) : (
+                                        <>INITIALIZE VOICE PROTOCOL <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></>
+                                    )}
+                                </button>
+                                
+                                {isActive && (
+                                    <div className="mt-4 flex justify-between items-center px-2">
+                                        <span className="text-[7px] font-mono text-white/30 uppercase tracking-widest">LATENCY: 84MS</span>
+                                        <span className="text-[7px] font-mono text-white/30 uppercase tracking-widest">PACKET: 1024KB/S</span>
+                                        <span className="text-[7px] font-mono text-white/30 uppercase tracking-widest">STREAM: OPUS_PRO</span>
+                                    </div>
                                 )}
-                            >
-                                {isActive ? (
-                                    <>TERMINATE_PROTOCOL <X size={18} /></>
-                                ) : (
-                                    <>INITIALIZE_VOICE_PROTOCOL <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></>
-                                )}
-                            </button>
+                            </div>
                         </div>
 
                         {/* Capabilities */}
                         <div className="flex flex-wrap gap-8 justify-center lg:justify-start opacity-40">
                             <div className="flex items-center gap-2">
                                 <Shield size={14} className="text-secondary" />
-                                <span className="text-[9px] font-mono font-black uppercase tracking-widest text-white">Encrypted_IO</span>
+                                <span className="text-[9px] font-mono font-black uppercase tracking-widest text-white tracking-tighter">Encrypted_IO</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <Zap size={14} className="text-amber-500" />
-                                <span className="text-[9px] font-mono font-black uppercase tracking-widest text-white">Sub_100ms_ASR</span>
+                                <span className="text-[9px] font-mono font-black uppercase tracking-widest text-white tracking-tighter">Sub_100ms_ASR</span>
                             </div>
                         </div>
                     </div>

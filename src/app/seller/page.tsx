@@ -49,7 +49,7 @@ export default async function SellerDashboard() {
                     >
                         Access Protocol Required
                     </h1>
-                    <p className="text-foreground/40 mb-10 text-sm font-medium uppercase tracking-widest italic leading-relaxed">
+                    <p className="text-foreground/40 mb-10 text-sm font-medium uppercase tracking-widest leading-relaxed">
                         Your identity has not been localized within the seller registry. Enroll to initialize your vendor terminal.
                     </p>
                     <Link href="/become-seller">
@@ -91,12 +91,12 @@ export default async function SellerDashboard() {
                                 <span className="text-[9px] font-black uppercase tracking-[0.3em] text-foreground/40">Terminal ID: {session.user.id.slice(0, 8)}</span>
                             </div>
                             <h1
-                                className="text-6xl font-black mb-4 uppercase tracking-tighter italic"
+                                className="text-6xl font-black mb-4 uppercase tracking-tighter"
                                 style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
                             >
                                 VENDOR <span className="text-foreground/20 not-italic">COMMAND.</span>
                             </h1>
-                            <p className="text-foreground/40 text-[11px] font-black uppercase tracking-[0.5em] italic">Ecosystem Management & Strategic Allocation</p>
+                            <p className="text-foreground/40 text-[11px] font-black uppercase tracking-[0.5em]">Ecosystem Management & Strategic Allocation</p>
                         </div>
                         <div className="flex items-center gap-4">
                             <Link href="/seller/payments">
@@ -139,7 +139,7 @@ export default async function SellerDashboard() {
 
                     <div className="flex items-center gap-3 px-6 py-4 bg-foreground/[0.02] border border-border rounded-2xl mb-20">
                         <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-foreground/30 italic">
+                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-foreground/30">
                             Settlement Protocol: All deployed value is aggregated institutional capital, distributed following a 10-day verification threshold, inclusive of a 10% standard platform commission.
                         </p>
                     </div>
@@ -148,7 +148,7 @@ export default async function SellerDashboard() {
                         {/* Products Section */}
                         <div className="lg:col-span-2 bg-foreground/[0.02] border border-border rounded-[3rem] p-12 relative overflow-hidden shadow-2xl h-fit">
                             <div className="flex items-center justify-between mb-12">
-                                <h2 className="text-2xl font-black uppercase tracking-tighter italic flex items-center gap-4">
+                                <h2 className="text-2xl font-black uppercase tracking-tighter flex items-center gap-4">
                                     <span className="w-px h-6 bg-foreground/20" />
                                     Asset <span className="text-foreground/20 not-italic">Inventory</span>
                                 </h2>
@@ -160,7 +160,7 @@ export default async function SellerDashboard() {
                             {products.length === 0 ? (
                                 <div className="text-center py-24 border border-dashed border-border rounded-[2.5rem]">
                                     <Package size={64} strokeWidth={0.5} className="mx-auto mb-10 text-foreground/5" />
-                                    <p className="text-foreground/20 text-[10px] font-black uppercase tracking-[0.5em] mb-12 italic">No architectural assets localized in registry.</p>
+                                    <p className="text-foreground/20 text-[10px] font-black uppercase tracking-[0.5em] mb-12">No architectural assets localized in registry.</p>
                                     <Link href="/seller/products/new">
                                         <button className="px-12 py-5 bg-foreground/5 border border-border text-foreground/40 hover:text-foreground hover:bg-foreground/10 rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] transition-all">
                                             Initialize Protocol
@@ -207,14 +207,14 @@ export default async function SellerDashboard() {
 
                         {/* Recent Activity Section */}
                         <div className="bg-foreground/[0.02] border border-border rounded-[3rem] p-12 relative overflow-hidden shadow-2xl h-fit">
-                            <h2 className="text-2xl font-black uppercase tracking-tighter italic flex items-center gap-4 mb-12">
+                            <h2 className="text-2xl font-black uppercase tracking-tighter flex items-center gap-4 mb-12">
                                 <span className="w-px h-6 bg-foreground/20" />
                                 Activity <span className="text-foreground/20 not-italic">Stream</span>
                             </h2>
 
                             {activities.length === 0 ? (
                                 <div className="text-center py-20">
-                                    <p className="text-foreground/20 text-[9px] font-black uppercase tracking-[0.4em] italic">No localized activity detected.</p>
+                                    <p className="text-foreground/20 text-[9px] font-black uppercase tracking-[0.4em]">No localized activity detected.</p>
                                 </div>
                             ) : (
                                 <div className="space-y-10">
@@ -227,7 +227,7 @@ export default async function SellerDashboard() {
                                                 {timeAgo(act.timestamp)}
                                             </div>
                                             <h4 className="text-[11px] font-black uppercase tracking-widest mb-2">{act.title}</h4>
-                                            <p className="text-[10px] text-foreground/40 italic leading-relaxed">{act.description}</p>
+                                            <p className="text-[10px] text-foreground/40 leading-relaxed">{act.description}</p>
                                         </div>
                                     ))}
                                 </div>

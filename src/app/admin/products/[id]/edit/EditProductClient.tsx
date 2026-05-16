@@ -23,10 +23,10 @@ export default function EditProductClient({ product }: EditProductClientProps) {
                     Back to Terminal
                 </Link>
                 <h1
-                    className="text-5xl font-black tracking-tightest uppercase italic"
+                    className="text-5xl font-black tracking-tightest uppercase"
                     style={{ fontSize: "clamp(2.5rem, 6vw, 3rem)" }}
                 >
-                    Modify <span className="text-foreground/20 not-italic">Asset.</span>
+                    Modify Asset.
                 </h1>
             </div>
 

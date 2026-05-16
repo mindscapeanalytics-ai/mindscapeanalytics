@@ -56,7 +56,7 @@ const contactInfo = [
         icon: Calendar,
         title: "Strategic Session",
         value: "Schedule Now",
-        link: "#",
+        link: "https://cal.com/mindscape/strategy",
         description: "Book a deep-dive consultation with our architects."
     },
     {

@@ -179,7 +179,7 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
                             required
                             rows={4}
                             placeholder="Identify the core primitives and intended utility..."
-                            className="w-full pl-16 pr-6 py-6 bg-foreground/[0.02] border border-border rounded-[2rem] text-foreground placeholder:text-foreground/10 focus:outline-none focus:border-foreground/20 transition-all leading-relaxed italic"
+                            className="w-full pl-16 pr-6 py-6 bg-foreground/[0.02] border border-border rounded-[2rem] text-foreground placeholder:text-foreground/10 focus:outline-none focus:border-foreground/20 transition-all leading-relaxed"
                         />
                     </div>
                 </div>
@@ -250,7 +250,7 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
                     />
                     <div className="flex items-center gap-4 p-6 bg-foreground/[0.02] border border-border rounded-3xl">
                         <Check size={16} className="text-foreground/20" />
-                        <p className="text-[8px] font-black uppercase tracking-[0.2em] text-foreground/20 italic leading-loose">
+                        <p className="text-[8px] font-black uppercase tracking-[0.2em] text-foreground/20 leading-loose">
                             Requirement: One high-fidelity preview image at 1200x800 industrial aspect ratio. 100KB WebP optimization is automatic.
                         </p>
                     </div>
@@ -307,7 +307,7 @@ export default function ProductForm({ action, submitLabel = "Execute Deployment"
                             </button>
                         </div>
                     ))}
-                    <p className="text-[8px] text-foreground/10 uppercase tracking-widest ml-2 italic">Secure downloads are only exposed to verified purchasers post-settlement.</p>
+                    <p className="text-[8px] text-foreground/10 uppercase tracking-widest ml-2">Secure downloads are only exposed to verified purchasers post-settlement.</p>
                 </div>
             </div>
 

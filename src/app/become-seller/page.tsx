@@ -44,7 +44,7 @@ export default async function BecomeSellerPage() {
                             MONETIZE <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary/80 to-secondary/40">GENIUS.</span>
                         </h1>
-                        <p className="text-lg text-foreground/40 max-w-2xl mx-auto font-medium tracking-tight border-t border-border pt-8 mt-8 italic">
+                        <p className="text-lg text-foreground/40 max-w-2xl mx-auto font-medium tracking-tight border-t border-border pt-8 mt-8">
                             Transform your high-performance code into a persistent revenue stream. Join our global network of elite software architects.
                         </p>
                     </div>
@@ -73,7 +73,7 @@ export default async function BecomeSellerPage() {
                                     <div className="text-foreground/40 group-hover:text-foreground transition-colors">{benefit.icon}</div>
                                 </div>
                                 <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-4 text-foreground/80">{benefit.title}</h3>
-                                <p className="text-[11px] text-foreground/40 leading-relaxed uppercase tracking-tighter italic">
+                                <p className="text-[11px] text-foreground/40 leading-relaxed uppercase tracking-tighter">
                                     {benefit.desc}
                                 </p>
                             </div>
@@ -104,7 +104,7 @@ export default async function BecomeSellerPage() {
                                             <span className="font-syncopate text-[10px] font-black text-foreground/20 mt-1">{step.s}</span>
                                             <div>
                                                 <h4 className="text-[10px] font-black uppercase tracking-widest text-foreground/80 mb-1">{step.t}</h4>
-                                                <p className="text-[9px] text-foreground/40 uppercase tracking-tighter italic leading-relaxed">{step.d}</p>
+                                                <p className="text-[9px] text-foreground/40 uppercase tracking-tighter leading-relaxed">{step.d}</p>
                                             </div>
                                         </li>
                                     ))}
@@ -119,7 +119,7 @@ export default async function BecomeSellerPage() {
 
                         {/* Form Panel */}
                         <div className="lg:col-span-3 bg-foreground/[0.02] border border-border rounded-[3rem] p-12 md:p-16 relative overflow-hidden shadow-2xl">
-                            <h2 className="text-3xl font-black uppercase tracking-tighter mb-12">EXECUTE <span className="text-secondary italic">ONBOARDING</span></h2>
+                            <h2 className="text-3xl font-black uppercase tracking-tighter mb-12">EXECUTE <span className="text-secondary">ONBOARDING</span></h2>
 
                             <BecomeSellerForm />
                         </div>

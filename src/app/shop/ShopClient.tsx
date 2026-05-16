@@ -250,7 +250,7 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
                     {products.length === 0 ? (
                         <div className="text-center py-48 bg-foreground/[0.01] rounded-[4rem] border border-dashed border-border/50">
                             <Search size={64} strokeWidth={0.5} className="opacity-5 mx-auto mb-10 text-foreground" />
-                            <h3 className="text-4xl font-black uppercase tracking-tighter mb-6 italic text-foreground/40">Zero Matches</h3>
+                            <h3 className="text-4xl font-black uppercase tracking-tighter mb-6 text-foreground/40">Zero Matches</h3>
                             <p className="opacity-10 text-[11px] mb-12 uppercase tracking-[0.4em] font-medium leading-relaxed text-foreground">No architectural assets aligned <br /> with the current system query.</p>
                             <Link href="/shop" className="inline-block bg-foreground text-background text-[10px] font-black uppercase tracking-[0.4em] px-16 py-6 rounded-2xl hover:opacity-90 shadow-2xl transition-all active:scale-95">
                                 Reset Terminal
@@ -294,11 +294,11 @@ function ShopContent({ initialProducts }: { initialProducts: any[] }) {
 
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-16">
                             <div className="max-w-2xl text-center md:text-left">
-                                <h2 className="fluid-h2 italic">
+                                <h2 className="fluid-h2">
                                     MONETIZE <br />
                                     <span className="opacity-20">GENIUS.</span>
                                 </h2>
-                                <p className="text-lg text-foreground/40 font-medium italic uppercase tracking-tighter leading-relaxed">
+                                <p className="max-w-2xl mx-auto text-foreground/40 text-sm md:text-base font-medium uppercase tracking-[0.2em] leading-relaxed">
                                     Join our elite architect network. Transform high-tier <br className="hidden md:block" /> architectural code into persistent institutional capital.
                                 </p>
                             </div>

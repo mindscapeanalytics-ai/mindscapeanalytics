@@ -93,7 +93,7 @@ export default function SolutionsClient() {
 
                     <div className="relative">
                         <h1 className="fluid-h1">
-                            SYSTEM <span className="text-foreground/20 italic">SOLUTIONS.</span>
+                            SYSTEM <span className="text-foreground/20">SOLUTIONS.</span>
                         </h1>
                     </div>
 
@@ -104,7 +104,7 @@ export default function SolutionsClient() {
                         className="max-w-4xl border-t border-border pt-12 mx-auto"
                     >
                         <p className="fluid-body max-w-4xl mx-auto opacity-60">
-                            PRECISION-ENGINEERED FOUNDATIONS FOR THE NEXT GENERATION OF <span className="text-foreground font-black italic">ENTERPRISE INTELLIGENCE.</span>
+                            PRECISION-ENGINEERED FOUNDATIONS FOR THE NEXT GENERATION OF <span className="text-foreground font-black">ENTERPRISE INTELLIGENCE.</span>
                         </p>
                     </motion.div>
                 </div>
@@ -143,9 +143,9 @@ export default function SolutionsClient() {
                         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 text-center lg:text-left">
                             <div className="space-y-6 max-w-2xl">
                                 <span className="inline-block text-[10px] font-black text-muted-foreground uppercase tracking-[0.4em] mb-4">Operational Status: Nominal</span>
-                                <h2 className="fluid-h2 italic">
+                                <h2 className="fluid-h2">
                                     INITIATE_FULL<br />
-                                    <span className="text-foreground/20 not-italic">DEPLOYMENT.</span>
+                                    <span className="text-foreground/20">DEPLOYMENT.</span>
                                 </h2>
                                 <p className="text-sm sm:text-base md:text-lg font-medium text-muted-foreground uppercase tracking-tight max-w-xl mx-auto lg:mx-0">
                                     All architectures are optimized for subscription-based reliability and hyper-scaled infrastructure maintenance.

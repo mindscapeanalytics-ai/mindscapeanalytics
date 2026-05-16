@@ -22,7 +22,7 @@ const companyLinks = [
 
 const socialLinks = [
     { Icon: Linkedin, href: "https://linkedin.com/company/mindscapeanalytics", label: "LinkedIn" },
-    { Icon: MessageSquare, href: "https://wa.me/13072106155", label: "WhatsApp" },
+    { Icon: MessageSquare, href: "https://cal.com/mindscape/strategy", label: "Book Strategy Call" },
     { Icon: Github, href: "https://github.com/mindscapeai", label: "GitHub" },
     { Icon: Mail, href: "mailto:contact@mindscapeanalytics.com", label: "Email" }
 ];
@@ -51,7 +51,7 @@ export default function Footer() {
                                 alt="Mindscape Analytics"
                                 width={240}
                                 height={56}
-                                className="h-14 w-auto object-contain brightness-0 dark:invert opacity-80 group-hover:opacity-100 transition-all duration-500"
+                                className="h-14 w-auto object-contain brightness-0 invert opacity-100 group-hover:opacity-100 transition-all duration-500"
                             />
                         </Link>
 
@@ -152,6 +152,18 @@ export default function Footer() {
                                 const email = (e.target as any).email.value;
                                 if (!email) return;
                                 try {
+                                    // Save to CRM
+                                    fetch('/api/leads', {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({
+                                            email,
+                                            source: 'newsletter',
+                                            service: 'Newsletter',
+                                            message: 'Newsletter subscription from footer',
+                                        })
+                                    });
+                                    // Also send notification email
                                     const res = await fetch('/api/contact', {
                                         method: 'POST',
                                         headers: { 'Content-Type': 'application/json' },

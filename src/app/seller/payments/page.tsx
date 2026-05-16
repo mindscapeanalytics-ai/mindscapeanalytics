@@ -51,12 +51,12 @@ export default async function SellerPaymentsPage() {
                             <span className="text-[9px] font-black uppercase tracking-[0.3em] text-foreground/40">Settlement Protocol v1.0</span>
                         </div>
                         <h1
-                            className="text-6xl font-black mb-6 uppercase tracking-tighter italic"
+                            className="text-6xl font-black mb-6 uppercase tracking-tighter"
                             style={{ fontSize: "clamp(3rem, 8vw, 5rem)" }}
                         >
-                            PAYOUT <span className="text-foreground/20 not-italic">CONFIGURATION.</span>
+                            PAYOUT <span className="text-foreground/20">CONFIGURATION.</span>
                         </h1>
-                        <p className="text-foreground/40 text-[11px] font-black uppercase tracking-[0.5em] italic leading-loose max-w-2xl">
+                        <p className="text-foreground/40 text-[11px] font-black uppercase tracking-[0.5em] leading-loose max-w-2xl">
                             All generated value is aggregated within the institutional vault. Distributions are executed following a mandatory 10-day verification threshold.
                         </p>
                     </div>

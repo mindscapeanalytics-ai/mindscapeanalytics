@@ -1,415 +1,318 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, X, Send, Bot, User, ArrowRight, MessageCircle, Cpu } from "lucide-react";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+import React, { useState, useRef, useEffect, useCallback } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { MessageSquare, Send, X, Bot, User, Sparkles, Loader2, Mail } from "lucide-react";
 
 interface Message {
-    id: string;
-    type: "bot" | "user";
-    content: React.ReactNode;
+    role: "user" | "assistant";
+    content: string;
+    timestamp?: number;
 }
 
-const INITIAL_MESSAGE = "Protocol active. I'm the Mindscape AI Assistant. How can I facilitate your inquiry today?";
+const GREETING = `Welcome to Mindscape Analytics! I'm the AI Architect - your gateway to enterprise automation, voice agents, and full-stack SaaS solutions.\n\nHow can I help transform your business today?`;
 
-const RESPONSES = [
-    {
-        keywords: ["service", "services", "offer", "do you do", "help with", "capabilities"],
-        response: "Mindscape Analytics specializes in high-tier architectural solutions with industrial focus:\n• **AI Employee Studio**: AI Recruiters, Insurance Advisors, and Knowledge Partners.\n• **FSI Suite**: EKYC, Device Anti-fraud, and Risk Engines for Banking.\n• **Operational Core**: Enterprise n8n automation & Master RAG pipelines.\n• **SaaS Engineering**: Next.js 15+ Full-Stack architectures.\n• **Voice & Visual**: Vapi/Retell Voice Agents and AvatarGPT interfaces."
-    },
-    {
-        keywords: ["ai employee", "recruiter", "hiring", "avatar", "agent studio", "workforce"],
-        response: "Our AI Employee Studio deploys autonomous digital workers via **AvatarGPT** or **VoiceGPT**. We specialize in **AI Recruiters** and **Sales Advisors** that handle contextual reasoning and CRM integration with 99% accuracy. Acquire the Blueprint in our Shop."
-    },
-    {
-        keywords: ["banking", "fintech", "lending", "insurance", "fsi", "ekyc", "fraud"],
-        response: "Our FSI Suite provides specialized protocols for high-security environments. Key nodes include **EKYC** (Frictionless Verification) and **Device Anti-fraud** logic. These are modeled after elite international banking standards."
-    },
-    {
-        keywords: ["saas", "webapp", "fullstack", "nextjs", "application", "development"],
-        response: "We engineer end-to-end SaaS architectures using **Next.js 15**, TypeScript, and Prisma. Our builds are type-safe, micro-frontend ready, and optimized for infinite scaling."
-    },
-    {
-        keywords: ["voice", "call", "vapi", "retell", "dialer", "voicegpt"],
-        response: "We deploy ultra-low latency **Voice Agents** using Vapi/Retell. These agents handle inbound/outbound appointment booking and contextual strategic reasoning without human intervention."
-    },
-    {
-        keywords: ["automation", "workflow", "n8n", "zapier", "engine"],
-        response: "We build autonomous engines using **n8n** and custom Python nodes. Our systems manage lead flow, data governance, and operational synchronization 24/7."
-    },
-    {
-        keywords: ["shop", "buy", "asset", "template", "blueprint", "license"],
-        response: "The **Mindscape Asset Shop** facilitates direct acquisition of production-ready boilerplate architectures: AI Recruiters, SaaS Boilerplates, and custom n8n Workflows. Review our Ecosystem for instant access."
-    },
-    {
-        keywords: ["pricing", "price", "cost", "how much"],
-        response: "Tactical pricing models:\n• **Asset Licensing**: From $29 (One-time)\n• **Standard Pipeline**: From $999/mo\n• **Enterprise Architecture**: Custom scoped via Strategic Audit."
-    },
-    {
-        keywords: ["contact", "talk", "whatsapp", "call", "human", "consult"],
-        response: "Redirecting to Direct Engineering Uplink. For high-priority architectural consultation, utilize the Secure WhatsApp uplink (+1 307 210 6155) or the Contact Form."
-    },
-];
+const LEAD_PROMPT_THRESHOLD = 3; // Ask for email after 3 exchanges
 
-const QuickAction = ({ label, onClick }: { label: string, onClick: () => void }) => (
-    <button
-        onClick={onClick}
-        className="text-[9px] font-black uppercase tracking-widest text-foreground/40 border border-border rounded-full px-4 py-2 hover:bg-foreground/10 hover:text-foreground transition-all text-left whitespace-nowrap active:scale-95"
-    >
-        {label}
-    </button>
-);
+const formatMarkdown = (text: string) => {
+    if (!text) return { __html: '' };
+    let html = text
+        .replace(/###\s+(.*?)(?=\n|$)/g, '<h3 class="text-base font-bold mt-4 mb-2 text-foreground">$1</h3>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-foreground">$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em class="text-foreground/80 font-bold">$1</em>')
+        .replace(/-\s+(.*?)(?=\n|$)/g, '<li class="ml-4 list-disc my-1">$1</li>')
+        .replace(/---/g, '<hr class="my-4 border-border opacity-50" />')
+        .replace(/\n/g, '<br />')
+        // Clean breaks around block elements
+        .replace(/(<br \/>)+<h3/g, '<h3')
+        .replace(/<\/h3>(<br \/>)+/g, '</h3>')
+        .replace(/(<br \/>)+<li/g, '<li')
+        .replace(/<\/li>(<br \/>)+/g, '</li>')
+        .replace(/(<br \/>)+<hr/g, '<hr')
+        .replace(/hr(.*?)>(<br \/>)+/g, 'hr$1>');
+    return { __html: html };
+};
 
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<Message[]>([
-        { id: "1", type: "bot", content: INITIAL_MESSAGE }
+        { role: "assistant", content: GREETING, timestamp: Date.now() },
     ]);
-    const [inputValue, setInputValue] = useState("");
+    const [input, setInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const messagesEndRef = useRef<HTMLDivElement>(null);
-
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
+    const [showLeadCapture, setShowLeadCapture] = useState(false);
+    const [leadEmail, setLeadEmail] = useState("");
+    const [leadCaptured, setLeadCaptured] = useState(false);
+    const [exchangeCount, setExchangeCount] = useState(0);
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        scrollToBottom();
-    }, [messages]);
+        const handleOpenChat = () => setIsOpen(true);
+        window.addEventListener('open-chat', handleOpenChat);
+        return () => window.removeEventListener('open-chat', handleOpenChat);
+    }, []);
 
-    const getLocalResponse = (input: string) => {
-        const lowerInput = input.toLowerCase();
-        const match = RESPONSES.find(r => r.keywords.some(k => lowerInput.includes(k)));
-        return match ? match.response : "Query decrypted. For advanced architectural specifications beyond local cache, a Direct Engineering Uplink is recommended. How else can I assist with your Mindscape inquiry?";
-    };
+    useEffect(() => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        }
+    }, [messages, showLeadCapture]);
 
-    const handleSend = async (e?: React.FormEvent, overrideText?: string) => {
-        e?.preventDefault();
+    useEffect(() => {
+        if (isOpen && inputRef.current) {
+            setTimeout(() => inputRef.current?.focus(), 300);
+        }
+    }, [isOpen]);
 
-        const textToProcess = overrideText || inputValue;
-        if (!textToProcess.trim() || isLoading) return;
+    // Show lead capture after threshold exchanges
+    useEffect(() => {
+        if (exchangeCount >= LEAD_PROMPT_THRESHOLD && !leadCaptured && !showLeadCapture) {
+            setShowLeadCapture(true);
+        }
+    }, [exchangeCount, leadCaptured, showLeadCapture]);
 
-        const userMsg = textToProcess.trim();
-        setInputValue("");
-        setIsLoading(true);
-
-        const newUserMsg: Message = { id: Date.now().toString(), type: "user", content: userMsg };
-        setMessages(prev => [...prev, newUserMsg]);
-
+    const captureLead = useCallback(async () => {
+        if (!leadEmail.trim()) return;
         try {
-            const history = messages.map(m => ({
-                role: m.type === "user" ? "user" : "assistant",
-                content: typeof m.content === "string" ? m.content : ""
-            }));
-
-            const response = await fetch("/api/chat", {
+            await fetch("/api/leads", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    messages: [...history, { role: "user", content: userMsg }]
-                })
+                    email: leadEmail,
+                    source: "chat",
+                    message: messages.map(m => `${m.role}: ${m.content}`).join("\n").slice(0, 2000),
+                    metadata: { exchangeCount, capturedAt: new Date().toISOString() },
+                }),
+            });
+            setLeadCaptured(true);
+            setShowLeadCapture(false);
+            setMessages(prev => [...prev, {
+                role: "assistant",
+                content: `Thank you! I've noted your email (${leadEmail}). Our architects will follow up with a personalized proposal within 24 hours. Feel free to continue chatting!`,
+                timestamp: Date.now(),
+            }]);
+        } catch {
+            setShowLeadCapture(false);
+        }
+    }, [leadEmail, messages, exchangeCount]);
+
+    const sendMessage = async () => {
+        const trimmed = input.trim();
+        if (!trimmed || isLoading) return;
+
+        const userMessage: Message = { role: "user", content: trimmed, timestamp: Date.now() };
+        const updatedMessages = [...messages, userMessage];
+        setMessages(updatedMessages);
+        setInput("");
+        setIsLoading(true);
+
+        // Check if user provided email in message
+        const emailMatch = trimmed.match(/[\w.-]+@[\w.-]+\.\w+/);
+        if (emailMatch && !leadCaptured) {
+            try {
+                fetch("/api/leads", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        email: emailMatch[0],
+                        source: "chat",
+                        message: updatedMessages.map(m => `${m.role}: ${m.content}`).join("\n").slice(0, 2000),
+                    }),
+                });
+                setLeadCaptured(true);
+                setShowLeadCapture(false);
+            } catch { }
+        }
+
+        try {
+            const res = await fetch("/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    messages: updatedMessages.map(m => ({ role: m.role, content: m.content })),
+                }),
             });
 
-            if (!response.ok) throw new Error("Uplink timeout");
-            const data = await response.json();
+            if (!res.ok) throw new Error("API error");
+            const data = await res.json();
 
-            if (data.content) {
-                setMessages(prev => [...prev, { id: (Date.now() + 1).toString(), type: "bot", content: data.content }]);
-            } else {
-                throw new Error("No content received");
-            }
-        } catch (error) {
-            console.warn("AI Uplink failed, switching to local tactical response:", error);
-            const fallbackContent = getLocalResponse(userMsg);
             setMessages(prev => [...prev, {
-                id: (Date.now() + 1).toString(),
-                type: "bot",
-                content: `[Tactical Fallback] ${fallbackContent}`
+                role: "assistant",
+                content: data.content || "I'd be happy to help. Could you tell me more about your specific needs?",
+                timestamp: Date.now(),
             }]);
+            setExchangeCount(prev => prev + 1);
+        } catch {
+            // Intelligent local fallback
+            const lower = trimmed.toLowerCase();
+            let fallback = "That's an excellent question. Our team at Mindscape Analytics specializes in exactly this area. Would you like to schedule a strategy call?";
+            if (lower.includes("price") || lower.includes("cost")) {
+                fallback = "Our solutions start at $999/month for standard automation packages. Enterprise tiers include custom AI agents, voice integration, and dedicated support. Want a detailed quote?";
+            } else if (lower.includes("voice") || lower.includes("agent")) {
+                fallback = "We deploy autonomous AI voice agents using Vapi and Retell that handle sales, support, and appointment booking 24/7. They integrate with your CRM and process calls in real-time.";
+            } else if (lower.includes("automation") || lower.includes("n8n")) {
+                fallback = "We architect n8n automation workflows that connect 400+ apps — CRM sync, lead nurturing, invoice processing, and more. Most clients see 60-80% time savings.";
+            }
+            setMessages(prev => [...prev, { role: "assistant", content: fallback, timestamp: Date.now() }]);
+            setExchangeCount(prev => prev + 1);
         } finally {
             setIsLoading(false);
         }
     };
 
     return (
-        <div className="fixed bottom-6 right-6 sm:bottom-6 sm:right-6 z-[100] flex flex-col items-end pointer-events-none">
+        <>
+            {/* Floating Trigger Button */}
+            <AnimatePresence>
+                {!isOpen && (
+                    <motion.button
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0, opacity: 0 }}
+                        onClick={() => setIsOpen(true)}
+                        className="fixed bottom-6 right-6 z-[9999] w-14 h-14 md:w-16 md:h-16 bg-foreground text-background rounded-full flex items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:scale-110 transition-transform group"
+                        aria-label="Open AI Chat"
+                    >
+                        <MessageSquare className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                        <span className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-background animate-pulse" />
+                    </motion.button>
+                )}
+            </AnimatePresence>
 
+            {/* Chat Panel */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-                        className="mb-0 sm:mb-4 w-full sm:w-[420px] bg-background/98 dark:bg-[#0a0a0b]/98 backdrop-blur-2xl border-x-0 sm:border border-border rounded-t-[2rem] sm:rounded-[2.5rem] shadow-[0_40px_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col pointer-events-auto relative group"
-                        style={{ height: "min(700px, calc(100vh - 40px))", maxHeight: "100dvh" }}
+                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        className="fixed bottom-4 right-4 z-[10000] w-[calc(100vw-32px)] sm:w-[420px] h-[min(620px,85vh)] bg-background border border-border rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
-
-                        <div className="w-full flex items-center justify-between p-4 sm:p-6 border-b border-border bg-foreground/[0.02]">
-                            <div className="flex items-center gap-4">
-                                <div className="relative">
-                                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-border overflow-hidden bg-white shadow-lg relative flex items-center justify-center">
-                                        <div className="relative w-full h-full p-[2px] sm:p-[3px]">
-                                            <div className="relative w-full h-full rounded-full overflow-hidden">
-                                                <Image 
-                                                    src="/images/zeeshan-keerio-chat-app-acon.png" 
-                                                    alt="Mindscape AI" 
-                                                    fill 
-                                                    className="object-cover object-center scale-[0.9]" 
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full border-2 border-[#0a0a0b] animate-pulse" />
+                        {/* Header */}
+                        <div className="flex items-center justify-between px-5 py-4 border-b border-border bg-foreground/[0.02]">
+                            <div className="flex items-center gap-3">
+                                <div className="w-9 h-9 rounded-xl bg-foreground/5 border border-border flex items-center justify-center relative">
+                                    <Bot className="w-5 h-5 text-foreground/60" />
+                                    <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-background" />
                                 </div>
-                                <div className="flex flex-col">
-                                    <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-foreground">Mindscape_Intelligence</span>
-                                    <span className="text-[7px] sm:text-[8px] font-black uppercase tracking-widest text-foreground/30 flex items-center gap-2 mt-0.5">
-                                        v4.0 // ARCHITECT_MODE
-                                    </span>
+                                <div>
+                                    <h3 className="text-xs font-black uppercase tracking-[0.2em] text-foreground">AI Architect</h3>
+                                    <p className="text-[9px] font-mono text-foreground/40 tracking-widest uppercase">MSA AGENT • ONLINE</p>
                                 </div>
                             </div>
-                            <button
-                                onClick={() => setIsOpen(false)}
-                                className="p-2 sm:p-3 text-foreground/20 hover:text-foreground hover:bg-foreground/5 rounded-2xl transition-all"
-                            >
-                                <X size={18} />
+                            <button onClick={() => setIsOpen(false)} className="w-8 h-8 rounded-lg hover:bg-foreground/5 flex items-center justify-center transition-colors">
+                                <X className="w-4 h-4 text-foreground/40" />
                             </button>
                         </div>
 
-                        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 custom-scrollbar pb-32">
-                            {messages.map((msg) => (
+                        {/* Messages */}
+                        <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4 scrollbar-thin">
+                            {messages.map((msg, i) => (
                                 <motion.div
-                                    key={msg.id}
-                                    initial={{ opacity: 0, y: 15 }}
+                                    key={i}
+                                    initial={{ opacity: 0, y: 8 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className={`flex w-full ${msg.type === "user" ? "justify-end" : "justify-start"}`}
+                                    className={`flex gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                                 >
-                                    <div className={`flex gap-3 sm:gap-4 max-w-[90%] ${msg.type === "user" ? "flex-row-reverse" : "flex-row"}`}>
-                                        <div className="flex-shrink-0 mt-1">
-                                            <div className={cn(
-                                                "w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center border transition-colors overflow-hidden bg-zinc-950",
-                                                msg.type === "user" ? "bg-foreground/5 border-border" : "border-white/10 shadow-lg"
-                                            )}>
-                                                {msg.type === "user" ? (
-                                                    <User size={12} className="text-foreground/60" />
-                                                ) : (
-                                                    <div className="relative w-full h-full bg-white flex items-center justify-center">
-                                                        <div className="relative w-full h-full p-[2px] sm:p-[3px]">
-                                                            <div className="relative w-full h-full rounded-full overflow-hidden">
-                                                                 <Image 
-                                                                    src="/images/zeeshan-keerio-chat-app-acon.png" 
-                                                                    alt="Agent" 
-                                                                    fill 
-                                                                    className="object-cover object-center scale-[0.9]" 
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                )}
-                                            </div>
+                                    {msg.role === "assistant" && (
+                                        <div className="w-6 h-6 rounded-lg bg-foreground/5 border border-border flex items-center justify-center shrink-0 mt-1">
+                                            <Sparkles className="w-3 h-3 text-secondary" />
                                         </div>
-                                        <div
-                                            className={cn(
-                                                "p-4 sm:p-5 rounded-[1.25rem] sm:rounded-[1.5rem] text-[11px] sm:text-[12px] leading-relaxed tracking-tight shadow-2xl transition-all duration-300",
-                                                msg.type === "user"
-                                                    ? "bg-foreground/5 border border-border text-foreground rounded-tr-none font-bold uppercase tracking-widest"
-                                                    : "bg-foreground text-background rounded-tl-none font-semibold"
-                                            )}
-                                        >
-                                            <div className="space-y-2">
-                                                {/* Parsing logic remains identical but font size adjusted for mobile */}
-                                                {typeof msg.content === 'string' ? (
-                                                    msg.content.split('\n').map((line, i) => {
-                                                        const withBold = line.replace(/\*\*(.*?)\*\*/g, '<strong class="font-black">$1</strong>');
-                                                        const withCode = withBold.replace(/`(.*?)`/g, '<code class="bg-foreground/10 px-1.5 py-0.5 rounded font-mono text-[9px] sm:text-[10px]">$1</code>');
-                                                        if (line.trim().startsWith('•') || line.trim().startsWith('-') || line.trim().match(/^\d+\./)) {
-                                                            return (
-                                                                <div key={i} className="flex gap-2 sm:gap-3 items-start pl-0.5">
-                                                                    <span className={cn("mt-1.5 w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full flex-shrink-0", msg.type === "user" ? "bg-foreground/40" : "bg-background/40")} />
-                                                                    <span dangerouslySetInnerHTML={{ __html: withCode.replace(/^[•-\d\.]+\s*/, '') }} />
-                                                                </div>
-                                                            );
-                                                        }
-                                                        if (!line.trim()) return <div key={i} className="h-2" />;
-                                                        return <p key={i} dangerouslySetInnerHTML={{ __html: withCode }} />;
-                                                    })
-                                                ) : (
-                                                    msg.content
-                                                )}
-                                            </div>
-                                        </div>
+                                    )}
+                                    <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${msg.role === "user"
+                                            ? "bg-foreground text-background rounded-br-md"
+                                            : "bg-foreground/[0.04] border border-border text-foreground/80 rounded-bl-md"
+                                        }`}>
+                                        {msg.role === "assistant" ? (
+                                            <div dangerouslySetInnerHTML={formatMarkdown(msg.content)} className="space-y-1" />
+                                        ) : (
+                                            msg.content.split("\n").map((line, li) => (
+                                                <p key={li} className={li > 0 ? "mt-2" : ""}>{line}</p>
+                                            ))
+                                        )}
                                     </div>
+                                    {msg.role === "user" && (
+                                        <div className="w-6 h-6 rounded-lg bg-foreground flex items-center justify-center shrink-0 mt-1">
+                                            <User className="w-3 h-3 text-background" />
+                                        </div>
+                                    )}
                                 </motion.div>
                             ))}
+
                             {isLoading && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="flex w-full justify-start mt-4"
-                                >
-                                    <div className="flex gap-4">
-                                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white flex items-center justify-center border border-border animate-pulse overflow-hidden relative shadow-lg">
-                                            <div className="relative w-full h-full p-[2px]">
-                                                <div className="relative w-full h-full rounded-full overflow-hidden">
-                                                    <Image 
-                                                        src="/images/zeeshan-keerio-chat-app-acon.png" 
-                                                        alt="Agent" 
-                                                        fill 
-                                                        className="object-cover object-center scale-[0.9] opacity-80" 
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="bg-foreground/5 border border-border px-3 py-2 sm:px-4 sm:py-3 rounded-2xl rounded-tl-none flex gap-1.5 items-center">
-                                            <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-foreground rounded-full animate-bounce [animation-delay:-0.3s]" />
-                                            <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-foreground rounded-full animate-bounce [animation-delay:-0.15s]" />
-                                            <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-foreground rounded-full animate-bounce" />
-                                        </div>
+                                <div className="flex gap-2.5">
+                                    <div className="w-6 h-6 rounded-lg bg-foreground/5 border border-border flex items-center justify-center shrink-0">
+                                        <Sparkles className="w-3 h-3 text-secondary animate-pulse" />
                                     </div>
-                                </motion.div>
+                                    <div className="px-4 py-3 rounded-2xl bg-foreground/[0.04] border border-border rounded-bl-md flex items-center gap-2">
+                                        <Loader2 className="w-3 h-3 animate-spin text-foreground/30" />
+                                        <span className="text-xs text-foreground/30 font-mono">Processing...</span>
+                                    </div>
+                                </div>
                             )}
-                            <div ref={messagesEndRef} />
+
+                            {/* Lead Capture Prompt */}
+                            <AnimatePresence>
+                                {showLeadCapture && !leadCaptured && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.95 }}
+                                        className="bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 rounded-2xl p-4 space-y-3"
+                                    >
+                                        <div className="flex items-center gap-2">
+                                            <Mail className="w-4 h-4 text-secondary" />
+                                            <p className="text-xs font-bold text-foreground uppercase tracking-wider">Get a Personalized Proposal</p>
+                                        </div>
+                                        <p className="text-xs text-foreground/50">Drop your email and our architects will send you a custom strategy within 24 hours.</p>
+                                        <div className="flex gap-2">
+                                            <input
+                                                type="email"
+                                                value={leadEmail}
+                                                onChange={(e) => setLeadEmail(e.target.value)}
+                                                placeholder="your@email.com"
+                                                className="flex-1 h-9 px-3 rounded-xl bg-background border border-border text-sm text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-secondary"
+                                                onKeyDown={(e) => { if (e.key === "Enter") captureLead(); }}
+                                            />
+                                            <button onClick={captureLead} className="h-9 px-4 rounded-xl bg-secondary text-white text-xs font-bold hover:bg-secondary/80 transition-colors uppercase tracking-wider">
+                                                Send
+                                            </button>
+                                        </div>
+                                        <button onClick={() => setShowLeadCapture(false)} className="text-[10px] text-foreground/30 hover:text-foreground/50 transition-colors">
+                                            Maybe later
+                                        </button>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
 
-                        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b] to-transparent pt-12">
-                            <div className="flex overflow-x-auto gap-2 mb-4 no-scrollbar pb-2 mask-edges-faint">
-                                <QuickAction label="Our Services" onClick={() => handleSend(undefined, "Our Services")} />
-                                <QuickAction label="Shop Assets" onClick={() => handleSend(undefined, "Shop Assets")} />
-                                <QuickAction label="Pricing" onClick={() => handleSend(undefined, "Pricing Models")} />
-                            </div>
-
-                            <div className="flex flex-col gap-4">
-                                <form onSubmit={handleSend} className="flex gap-2 sm:gap-3">
-                                    <input
-                                        type="text"
-                                        value={inputValue}
-                                        onChange={(e) => setInputValue(e.target.value)}
-                                        disabled={isLoading}
-                                        placeholder={isLoading ? "ARCHITECTING..." : "TRANSMIT QUERY..."}
-                                        className="flex-1 bg-foreground/5 border border-border rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-[11px] text-foreground placeholder:text-foreground/20 font-black tracking-widest focus:outline-none focus:border-white/30 transition-all uppercase disabled:opacity-50"
-                                    />
-                                    <button
-                                        type="submit"
-                                        disabled={!inputValue.trim() || isLoading}
-                                        className="px-6 bg-foreground text-background rounded-2xl hover:bg-foreground/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shrink-0 flex items-center justify-center active:scale-95"
-                                    >
-                                        <Send size={18} />
-                                    </button>
-                                </form>
-
-                                <div className="grid grid-cols-2 gap-3">
-                                    <a
-                                        href="https://wa.me/13072106155"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="flex items-center justify-center gap-2.5 py-3.5 rounded-2xl bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/20 transition-all text-[10px] font-black uppercase tracking-[0.2em] text-[#25D366]"
-                                    >
-                                        <MessageCircle size={14} />
-                                        WhatsApp
-                                    </a>
-                                    <Link
-                                        href="/contact"
-                                        onClick={() => setIsOpen(false)}
-                                        className="flex items-center justify-center gap-2.5 py-3.5 rounded-2xl bg-foreground/5 hover:bg-foreground/10 border border-border transition-all text-[10px] font-black uppercase tracking-[0.2em] text-foreground/70 hover:text-foreground"
-                                    >
-                                        Contact
-                                        <ArrowRight size={14} />
-                                    </Link>
-                                </div>
+                        {/* Input Bar */}
+                        <div className="px-4 py-3 border-t border-border bg-foreground/[0.01]">
+                            <div className="flex items-center gap-2">
+                                <input
+                                    ref={inputRef}
+                                    type="text"
+                                    value={input}
+                                    onChange={(e) => setInput(e.target.value)}
+                                    onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); } }}
+                                    placeholder="Ask about AI automation, pricing, voice agents..."
+                                    className="flex-1 h-11 px-4 rounded-xl bg-foreground/[0.03] border border-border text-sm text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-secondary/50 transition-colors"
+                                    disabled={isLoading}
+                                />
+                                <button
+                                    onClick={sendMessage}
+                                    disabled={!input.trim() || isLoading}
+                                    className="w-11 h-11 rounded-xl bg-foreground text-background flex items-center justify-center hover:bg-foreground/80 transition-colors disabled:opacity-30 disabled:hover:bg-foreground shrink-0"
+                                >
+                                    <Send className="w-4 h-4" />
+                                </button>
                             </div>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
-
-            <motion.div 
-                whileHover="hover"
-                className="flex flex-row items-center gap-2 pointer-events-auto mb-4"
-            >
-                <AnimatePresence>
-                    {!isOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, x: 10, scale: 0.9 }}
-                            variants={{
-                                hover: { opacity: 1, x: 0, scale: 1 }
-                            }}
-                            exit={{ opacity: 0, x: 10, scale: 0.9 }}
-                            transition={{ duration: 0.3 }}
-                            className="hidden sm:flex items-center gap-2 bg-background/60 backdrop-blur-md border border-border px-3 py-1.5 rounded-full shadow-xl"
-                        >
-                            <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-                            <span className="text-[8px] font-black uppercase tracking-[0.2em] text-foreground/80">
-                                Chat Now
-                            </span>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-
-                <motion.button
-                    onClick={() => setIsOpen(!isOpen)}
-                    initial={false}
-                    animate={isOpen ? "open" : "closed"}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center outline-none"
-                >
-                    <AnimatePresence mode="wait">
-                        {isOpen ? (
-                            <motion.div
-                                key="close"
-                                initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
-                                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                                exit={{ opacity: 0, scale: 0.5, rotate: 45 }}
-                                className="z-10 flex items-center justify-center bg-foreground rounded-full w-12 h-12 sm:w-14 sm:h-14 shadow-2xl"
-                            >
-                                <X size={24} className="text-secondary" />
-                            </motion.div>
-                        ) : (
-                            <motion.div
-                                key="open"
-                                initial={{ opacity: 0, y: 0 }}
-                                animate={{ 
-                                    opacity: 1, 
-                                    y: [0, -10, 0],
-                                    transition: {
-                                        y: {
-                                            duration: 3,
-                                            repeat: Infinity,
-                                            ease: "easeInOut"
-                                        }
-                                    }
-                                }}
-                                exit={{ opacity: 0, scale: 0.5 }}
-                                className="relative w-full h-full flex items-center justify-center"
-                            >
-                                <div className="relative w-full h-full group flex items-center justify-center">
-                                    {/* Circular Background Badge - Clean White Professional Look */}
-                                    <div className="absolute inset-0 bg-white border border-border rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.15)] group-hover:shadow-[0_15px_40px_rgba(0,0,0,0.25)] transition-all" />
-                                    
-                                    <div className="absolute inset-0 bg-secondary/10 blur-[30px] rounded-full opacity-20 group-hover:opacity-40 transition-opacity" />
-                                    
-                                    <div className="relative w-full h-full p-[3px]">
-                                        <div className="relative w-full h-full overflow-hidden rounded-full border border-border/30 bg-background z-10 shadow-inner">
-                                            <Image 
-                                                src="/images/zeeshan-keerio-chat-app-acon.png" 
-                                                alt="Mindscape AI Assistant" 
-                                                fill 
-                                                priority
-                                                className="object-cover object-center scale-[0.9] drop-shadow-sm transition-transform group-hover:scale-100" 
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </motion.button>
-            </motion.div>
-        </div>
+        </>
     );
 }

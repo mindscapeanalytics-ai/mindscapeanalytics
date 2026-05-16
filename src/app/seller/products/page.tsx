@@ -44,12 +44,12 @@ export default async function SellerProductsPage() {
                     <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-20 pb-12 border-b border-border">
                         <div>
                             <h1
-                                className="text-6xl font-black mb-4 uppercase tracking-tighter italic"
+                                className="text-6xl font-black mb-4 uppercase tracking-tighter"
                                 style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
                             >
                                 ASSET <span className="text-foreground/20 not-italic">REGISTRY.</span>
                             </h1>
-                            <p className="text-foreground/40 text-[11px] font-black uppercase tracking-[0.5em] italic">Localized Proprietary Architectures</p>
+                            <p className="text-foreground/40 text-[11px] font-black uppercase tracking-[0.5em]">Localized Proprietary Architectures</p>
                         </div>
                         <Link href="/seller/products/new">
                             <button className="flex items-center gap-4 px-10 py-5 bg-foreground text-background rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-foreground/90 shadow-2xl transition-all active:scale-95 group">
@@ -61,7 +61,7 @@ export default async function SellerProductsPage() {
 
                     <div className="flex items-center gap-3 px-6 py-4 bg-foreground/[0.02] border border-border rounded-2xl mb-12">
                         <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-foreground/30 italic">
+                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-foreground/30">
                             Settlement Protocol: Distributions reflect the aggregate value following a 10-day verification threshold and a 10% enterprise commission deduction.
                         </p>
                     </div>
@@ -70,7 +70,7 @@ export default async function SellerProductsPage() {
                         <div className="text-center py-32 border border-dashed border-border rounded-[3rem] bg-foreground/[0.01]">
                             <Package size={80} strokeWidth={0.5} className="mx-auto mb-10 text-foreground/5" />
                             <h2 className="text-xl font-black mb-4 uppercase tracking-tighter">Zero Localizations Localized</h2>
-                            <p className="text-foreground/20 text-[10px] font-black uppercase tracking-[0.4em] mb-12 italic leading-loose">The registry is currently void of architectural primitives.</p>
+                            <p className="text-foreground/20 text-[10px] font-black uppercase tracking-[0.4em] mb-12 leading-loose">The registry is currently void of architectural primitives.</p>
                             <Link href="/seller/products/new">
                                 <button className="px-12 py-5 bg-foreground text-background rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-foreground/90 transition-all">
                                     Initialize First Protocol
@@ -118,8 +118,8 @@ export default async function SellerProductsPage() {
 
                                     <div className="p-10">
                                         <div className="text-[8px] font-black uppercase tracking-[0.4em] text-foreground/20 mb-3">{product.category.replace('_', ' ')} //</div>
-                                        <h3 className="text-xl font-black mb-4 uppercase tracking-tighter italic">{product.name}</h3>
-                                        <p className="text-foreground/40 text-[10px] font-medium uppercase tracking-tight italic mb-8 line-clamp-2 leading-relaxed">
+                                        <h3 className="text-xl font-black mb-4 uppercase tracking-tighter">{product.name}</h3>
+                                        <p className="text-foreground/40 text-[10px] font-medium uppercase tracking-tight mb-8 line-clamp-2 leading-relaxed">
                                             {product.description}
                                         </p>
 

@@ -16,7 +16,7 @@ export default function PrivacyPage() {
                     className="space-y-12"
                 >
                     <h1 className="text-5xl md:text-7xl font-black font-syncopate uppercase tracking-[-0.05em]" style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}>
-                        PRIVACY <span className="text-foreground/20 italic">PROTOCOL.</span>
+                        PRIVACY PROTOCOL.
                     </h1>
 
                     <div className="space-y-8 text-foreground/60 font-medium uppercase tracking-tight leading-relaxed">

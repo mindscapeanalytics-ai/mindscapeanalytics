@@ -76,19 +76,19 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                         <div className="space-y-12 lg:sticky lg:top-32">
                             <div>
                                 <div className="flex items-center gap-4 mb-6">
-                                    <span className="px-4 py-1.5 bg-foreground/5 border border-border rounded-full text-[9px] font-black uppercase tracking-[0.4em] text-foreground/40 italic">
+                                    <span className="px-4 py-1.5 bg-foreground/5 border border-border rounded-full text-[9px] font-black uppercase tracking-[0.4em] text-foreground/40">
                                         {product.category.replace(/_/g, ' ')}
                                     </span>
                                     <div className="w-px h-4 bg-foreground/10" />
                                     <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/20">Archived ID: #{product.id.slice(-6)}</span>
                                 </div>
                                 <h1
-                                    className="text-6xl md:text-7xl font-black mb-8 tracking-tightest leading-[0.9] uppercase italic"
+                                    className="text-6xl md:text-7xl font-black mb-8 tracking-tightest leading-[0.9] uppercase"
                                     style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
                                 >
                                     {product.name}
                                 </h1>
-                                <p className="text-foreground/40 text-lg md:text-xl font-medium leading-relaxed italic border-l-2 border-border pl-8">
+                                <p className="text-foreground/40 text-lg md:text-xl font-medium leading-relaxed border-l-2 border-border pl-8">
                                     {product.description || "Elite architectural primitive engineered for high-tier deployments."}
                                 </p>
                             </div>
@@ -118,7 +118,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                                     <div>
                                         <span className="text-[10px] font-black uppercase tracking-[0.5em] text-foreground/20 mb-2 block">Institutional Value</span>
                                         <div className="flex items-baseline gap-2">
-                                            <span className="text-5xl font-black italic tracking-tighter">${product.price}</span>
+                                            <span className="text-5xl font-black tracking-tighter">${product.price}</span>
                                             <span className="text-foreground/20 text-xs font-bold uppercase">USD</span>
                                         </div>
                                     </div>

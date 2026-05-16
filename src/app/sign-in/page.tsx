@@ -177,7 +177,7 @@ function SignInContent() {
                     </form>
 
                     <div className="mt-10 pt-8 border-t border-border text-center space-y-4">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-foreground/40 leading-relaxed italic">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-foreground/40 leading-relaxed">
                             READY TO TRANSFORM YOUR BUSINESS WITH <br />
                             <span className="text-foreground">INDUSTRIAL INTELLIGENCE</span>?
                         </p>

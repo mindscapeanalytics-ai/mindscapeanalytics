@@ -26,17 +26,17 @@ export default function NewSellerProductClient() {
 
                     <div className="mb-16">
                         <h1
-                            className="text-5xl font-black mb-4 uppercase tracking-tighter italic"
+                            className="text-5xl font-black mb-4 uppercase tracking-tighter"
                             style={{ fontSize: "clamp(2.5rem, 6vw, 3rem)" }}
                         >
-                            NEW ASSET <span className="text-foreground/20 not-italic">INITIALIZATION.</span>
+                            NEW ASSET <span className="text-foreground/20">INITIALIZATION.</span>
                         </h1>
-                        <p className="text-foreground/40 text-[11px] font-black uppercase tracking-[0.5em] italic">Authorized Listing Generation Terminal</p>
+                        <p className="text-foreground/40 text-[11px] font-black uppercase tracking-[0.5em]">Authorized Listing Generation Terminal</p>
                     </div>
 
                     <div className="flex items-center gap-3 px-6 py-4 bg-foreground/[0.02] border border-border rounded-2xl mb-12">
                         <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-foreground/30 italic leading-loose">
+                        <p className="text-[9px] font-black uppercase tracking-[0.2em] text-foreground/30 leading-loose">
                             Institutional Policy: Released assets are subject to a 10-day settlement threshold and a standard 10% platform fee upon capital distribution.
                         </p>
                     </div>

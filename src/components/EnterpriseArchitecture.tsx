@@ -15,7 +15,7 @@ const stats = [
     {
         label: "Inference Latency",
         value: "<120ms TBT",
-        desc: "NVIDIA NIM optimized fleet",
+        desc: "MSA AGENT optimized fleet",
         icon: Zap,
         color: "text-amber-500"
     },
@@ -59,7 +59,7 @@ export default function EnterpriseArchitecture() {
                         className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-8 uppercase"
                     >
                         Architected for <br />
-                        <span className="text-foreground/40 italic">Industrial Scale.</span>
+                        <span className="text-foreground/40">Industrial Scale.</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -68,7 +68,7 @@ export default function EnterpriseArchitecture() {
                         transition={{ delay: 0.2 }}
                         className="text-lg text-white/40 max-w-2xl mx-auto font-medium"
                     >
-                        We don't just prompt models. We deploy high-performance inference microservices on NVIDIA bare-metal, delivering agentic reasoning at speeds required for global enterprise operations.
+                        We don't just prompt models. We deploy high-performance inference microservices on MSA AGENT bare-metal, delivering agentic reasoning at speeds required for global enterprise operations.
                     </motion.p>
                 </div>
 
@@ -108,7 +108,7 @@ export default function EnterpriseArchitecture() {
                         <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.2em]">Partner_Network //</span>
                         <div className="flex items-center gap-8 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all">
                             {/* Logos would go here, using text for now to maintain aesthetic */}
-                            <span className="text-xs font-black text-white tracking-widest">NVIDIA NIM</span>
+                            <span className="text-xs font-black text-white tracking-widest">MSA AGENT</span>
                             <span className="text-xs font-black text-white tracking-widest">MISTRAL AI</span>
                             <span className="text-xs font-black text-white tracking-widest">ANTHROPIC CLAUDE</span>
                             <span className="text-xs font-black text-white tracking-widest">AWS BEDROCK</span>

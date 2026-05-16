@@ -50,12 +50,12 @@ export default async function SellerEditProductPage({ params }: { params: Promis
 
                     <div className="mb-16">
                         <h1
-                            className="text-5xl font-black mb-4 uppercase tracking-tighter italic"
+                            className="text-6xl font-black mb-4 uppercase tracking-tighter"
                             style={{ fontSize: "clamp(2.5rem, 6vw, 3rem)" }}
                         >
-                            RECONFIGURE <span className="text-foreground/20 not-italic">ASSET.</span>
+                            RECONFIGURE <span className="text-foreground/20">ASSET.</span>
                         </h1>
-                        <p className="text-foreground/40 text-[11px] font-black uppercase tracking-[0.5em] italic">Authorized Optimization Terminal</p>
+                        <p className="text-foreground/40 text-[11px] font-black uppercase tracking-[0.5em]">Authorized Listing Re-Configuration</p>
                     </div>
 
                     <ProductForm

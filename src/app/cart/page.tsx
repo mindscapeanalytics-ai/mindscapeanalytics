@@ -72,7 +72,7 @@ export default function CartPage() {
                             className="text-5xl md:text-7xl font-black tracking-tighter"
                             style={{ fontSize: "clamp(3rem, 8vw, 6rem)" }}
                         >
-                            ACQUISITION <span className="text-foreground/20 italic">HUB.</span>
+                            ACQUISITION <span className="text-foreground/20">HUB.</span>
                         </h1>
                     </div>
 

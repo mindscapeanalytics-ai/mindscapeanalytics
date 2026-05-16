@@ -21,8 +21,8 @@ export default async function AdminSettingsPage() {
     return (
         <div className="space-y-12">
             <div>
-                <h1 className="text-5xl font-black mb-2 tracking-tighter uppercase italic" style={{ fontSize: "clamp(2.5rem, 6vw, 3rem)" }}>
-                    PLATFORM <span className="text-foreground/20 not-italic">CONFIG.</span>
+                <h1 className="text-5xl font-black mb-2 tracking-tighter uppercase" style={{ fontSize: "clamp(2.5rem, 6vw, 3rem)" }}>
+                    PLATFORM CONFIG.
                 </h1>
                 <p className="text-foreground/40 font-medium uppercase tracking-widest text-sm">Restricted administrative override panel.</p>
             </div>

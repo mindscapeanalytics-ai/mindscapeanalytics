@@ -20,9 +20,12 @@ const Process = dynamic(() => import("@/components/Process"), { ssr: true });
 const GrowthHub = dynamic(() => import("@/components/GrowthHub"), { ssr: true });
 const CTA = dynamic(() => import("@/components/CTA"), { ssr: true });
 const AgenticHeroScanner = dynamic(() => import("@/components/AgenticHeroScanner"), { ssr: true });
-const EnterpriseArchitecture = dynamic(() => import("@/components/EnterpriseArchitecture"), { ssr: true });
-const VoiceAgentDemo = dynamic(() => import("@/components/VoiceAgentDemo"), { ssr: true });
 const NeuralNewsroom = dynamic(() => import("@/components/NeuralNewsroom"), { ssr: true });
+
+// 2026 Conversion Engine Components
+const AIAuditLeadMagnet = dynamic(() => import("@/components/AIAuditLeadMagnet"), { ssr: true });
+const LeadCaptureBar = dynamic(() => import("@/components/LeadCaptureBar"), { ssr: false });
+const ChatWidget = dynamic(() => import("@/components/ChatWidget"), { ssr: false });
 
 import { cn } from "@/lib/utils";
 
@@ -81,14 +84,8 @@ export default function HomeClient() {
             {/* LIVE AGENT INTERACTIVE SECTION - 2026 CONVERSION ENGINE */}
             <AgenticHeroScanner />
 
-            {/* AI Employee Core - No wrapper for isolation */}
+            {/* AI Employee Core (Now includes Voice Intelligence + NVIDIA NIM) */}
             <AiEmployee />
-
-            {/* TECHNICAL AUTHORITY SECTION */}
-            <EnterpriseArchitecture />
-
-            {/* VOICE INTELLIGENCE DEMO */}
-            <VoiceAgentDemo />
 
             {/* NEURAL NEWSROOM // AUTOBOT BLOGS */}
             <NeuralNewsroom />
@@ -126,12 +123,21 @@ export default function HomeClient() {
                     </div>
                 </ScrollSection>
 
+                {/* LEAD MAGNET — Free AI Audit */}
+                <ScrollSection delay={0.2}>
+                    <AIAuditLeadMagnet />
+                </ScrollSection>
+
                 <ScrollSection delay={0.25}>
                     <CTA />
                 </ScrollSection>
             </div>
 
             <Footer />
+
+            {/* AUTONOMOUS CONVERSION OVERLAYS */}
+            <LeadCaptureBar />
+            <ChatWidget />
         </main>
     );
 }

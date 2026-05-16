@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, FileText, Download, Share2, Terminal, Cpu } from "lucide-react";
+import { Sparkles, FileText, Download, Share2, Terminal, Cpu, Activity, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const initialArticles = [
@@ -10,144 +10,370 @@ const initialArticles = [
         id: 1,
         title: "Autonomous Real Estate: The 2026 Shift",
         date: "2026-05-14",
-        niche: "Real Estate",
+        niche: "REAL ESTATE",
         readTime: "4 min",
-        status: "PUBLISHED"
+        confidence: 98.4,
+        dataPoints: "12.4k",
+        status: "PUBLISHED",
+        description: "Analyzing the transition from human brokers to autonomous settlement agents."
     },
     {
         id: 2,
-        title: "Scaling Manufacturing with NIM-Edge Workflows",
+        title: "Scaling Manufacturing with MSA-Edge Workflows",
         date: "2026-05-12",
-        niche: "Industrial",
+        niche: "INDUSTRIAL",
         readTime: "7 min",
-        status: "PUBLISHED"
+        confidence: 96.2,
+        dataPoints: "48.1k",
+        status: "PUBLISHED",
+        description: "Deploying local LLMs for real-time quality control in high-frequency production lines."
     },
     {
         id: 3,
-        title: "The Death of Static CRM: Why Agents are the UI",
-        date: "2026-05-10",
-        niche: "Enterprise SaaS",
+        title: "FSI-Core: Re-Architecting Banking Infrastructure",
+        date: "2026-05-11",
+        niche: "FINANCE",
         readTime: "5 min",
-        status: "ARCHIVED"
+        confidence: 99.1,
+        dataPoints: "102.4k",
+        status: "PUBLISHED",
+        description: "Strategic implementation of autonomous reconciliation agents for tier-1 financial institutions."
     }
 ];
 
+const NICHES = ["INDUSTRIAL", "FINANCE", "REAL ESTATE", "SAAS", "LOGISTICS"];
+
 export default function NeuralNewsroom() {
     const [isGenerating, setIsGenerating] = useState(false);
+    const [selectedNiche, setSelectedNiche] = useState(NICHES[0]);
     const [articles, setArticles] = useState(initialArticles);
+    const [logs, setLogs] = useState<string[]>([]);
+    const [marketIndex, setMarketIndex] = useState(2480.12);
+    const [scannedCount, setScannedCount] = useState(128402);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setScannedCount(prev => prev + Math.floor(Math.random() * 5));
+            setMarketIndex(prev => prev + (Math.random() - 0.5) * 2);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
+    const filteredArticles = articles.filter(article => 
+        article.niche.toUpperCase() === selectedNiche.toUpperCase()
+    );
+
+    const [isRefining, setIsRefining] = useState(false);
+
+    const handleNicheChange = (niche: string) => {
+        if (niche === selectedNiche) return;
+        setIsRefining(true);
+        setSelectedNiche(niche);
+        setTimeout(() => setIsRefining(false), 800);
+    };
+
+    const statusSequence = [
+        "INITIALIZING_AUTOBOT_V4...",
+        "SCANNING_GLOBAL_MARKET_SIGNALS...",
+        "FILTERING_NOISE_LEVELS_0.04...",
+        "IDENTIFYING_VALUATION_GAPS...",
+        "SYNTHESIZING_STRATEGIC_LOGIC...",
+        "ENCRYPTING_OUTPUT_BUFFER...",
+        "PUBLISHING_TO_NEURAL_NETWORK..."
+    ];
 
     const generateArticle = () => {
+        if (isGenerating) return;
         setIsGenerating(true);
+        setLogs([]);
+        
+        let step = 0;
+        const interval = setInterval(() => {
+            if (step < statusSequence.length) {
+                setLogs(prev => [...prev, statusSequence[step]]);
+                step++;
+            } else {
+                clearInterval(interval);
+            }
+        }, 600);
+
         setTimeout(() => {
+            const titles: Record<string, string[]> = {
+                "INDUSTRIAL": ["MSA-Edge: Zero-Latency Factory Control", "Predictive Maintenance at Global Scale", "Autonomous Logistics: The End of Idle Time"],
+                "FINANCE": ["FSI-Core: Re-Architecting Banking Infrastructure", "Algorithmic Risk Neutralization in 2026", "DeFi Institutional Bridging Protocols"],
+                "REAL ESTATE": ["Tokenized Liquidity: The New Property Standard", "Autonomous Appraisals: Eliminating Bias", "Smart Contract Escrow: 0.2s Settlements"],
+                "SAAS": ["The Death of CRUD: Autonomous Product Engines", "Self-Evolving UI/UX at 240FPS", "API-First Architecture for Agentic Growth"],
+                "LOGISTICS": ["Last-Mile Autonomy: Beyond Drones", "Supply Chain Self-Correction Nodes", "Maritime Routing: Neural Port Optimization"]
+            };
+
+            const nicheTitles = titles[selectedNiche] || [ `${selectedNiche} Transformation` ];
+            const randomTitle = nicheTitles[Math.floor(Math.random() * nicheTitles.length)];
+
             const newArticle = {
                 id: Date.now(),
-                title: "Neural Synergy: Cross-Domain Agent Coordination",
+                title: randomTitle,
                 date: new Date().toISOString().split('T')[0],
-                niche: "AI Research",
-                readTime: "6 min",
-                status: "PUBLISHED"
+                niche: selectedNiche,
+                readTime: `${Math.floor(Math.random() * 5 + 3)} min`,
+                confidence: Number((97 + Math.random() * 2.9).toFixed(1)),
+                dataPoints: `${(Math.random() * 80 + 20).toFixed(1)}k`,
+                status: "PUBLISHED",
+                description: `Strategic analysis on how Mindscape's ${selectedNiche.toLowerCase()} agents are capturing alpha through persistent workflow integration and autonomous decision-making.`
             };
             setArticles([newArticle, ...articles]);
             setIsGenerating(false);
-        }, 3000);
+        }, statusSequence.length * 600 + 500);
+    };
+
+    const handleShare = (title: string) => {
+        alert(`Sharing: ${title}\nNeural link copied to clipboard.`);
+    };
+
+    const handleDownload = (title: string) => {
+        alert(`Downloading: ${title}.pdf\nEncrypted institutional report prepared.`);
     };
 
     return (
-        <section className="py-32 bg-transparent relative">
-            <div className="container mx-auto px-6">
+        <section className="py-32 bg-transparent relative border-t border-white/5 overflow-hidden">
+            <div className="container-standard relative z-10">
                 <div className="flex flex-col lg:flex-row gap-20 items-start">
                     
                     {/* Header Side */}
-                    <div className="lg:w-1/3 sticky top-32">
-                        <motion.span className="text-[10px] font-mono text-secondary tracking-[0.4em] font-black uppercase mb-4 block">
-                            Autonomous_Content_Engine //
-                        </motion.span>
-                        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9]">
-                            Neural <br />
-                            <span className="text-foreground/40 italic">Newsroom.</span>
-                        </h2>
-                        <p className="text-lg text-white/40 font-medium mb-10">
-                            Our agents monitor global market shifts in real-time to generate strategic intelligence for our clients. No writers. No delays. Just raw, autonomous foresight.
-                        </p>
+                    <div className="lg:w-1/3 sticky top-32 space-y-12">
+                        <div>
+                            <motion.span className="text-[10px] font-mono text-secondary tracking-[0.4em] font-black uppercase mb-4 block not-italic">
+                                Autonomous_Content_Engine //
+                            </motion.span>
+                            <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9] not-italic">
+                                Neural <br />
+                                <span className="text-foreground/40">Newsroom.</span>
+                            </h2>
+                            <p className="text-lg text-white/40 font-medium mb-10 leading-relaxed uppercase tracking-tighter not-italic">
+                                Our agents monitor global market shifts in real-time to generate strategic intelligence. No writers. No delays. Just raw, autonomous foresight for institutional growth.
+                            </p>
+                            
+                            {/* Telemetry Visualizer */}
+                            <div className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/10 mb-10 overflow-hidden relative group">
+                                <div className="flex justify-between items-end mb-4">
+                                    <div className="space-y-1">
+                                        <p className="text-[9px] font-mono text-white/20 uppercase tracking-widest not-italic">Network_Index</p>
+                                        <p className="text-2xl font-black text-white tracking-tighter font-mono not-italic">{marketIndex.toFixed(2)}</p>
+                                    </div>
+                                    <div className="text-right">
+                                        <p className="text-[9px] font-mono text-emerald-400 uppercase tracking-widest font-black not-italic">+1.24%</p>
+                                        <p className="text-[7px] font-mono text-white/20 uppercase not-italic">STABLE</p>
+                                    </div>
+                                </div>
+                                <div className="h-16 flex items-end gap-[2px]">
+                                    {[...Array(24)].map((_, i) => (
+                                        <motion.div 
+                                            key={i}
+                                            initial={{ height: "20%" }}
+                                            animate={{ height: [`${20 + Math.random() * 60}%`, `${30 + Math.random() * 50}%`, `${20 + Math.random() * 60}%`] }}
+                                            transition={{ duration: 1.5 + Math.random(), repeat: Infinity }}
+                                            className="flex-1 bg-secondary/20 rounded-t-sm group-hover:bg-secondary/40 transition-colors"
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-8">
+                                <div className="space-y-1 border-l border-white/10 pl-6">
+                                    <p className="text-[10px] font-mono text-white/20 uppercase tracking-widest flex items-center gap-2">
+                                        <Activity size={10} className="text-secondary" /> Global_Scanned
+                                    </p>
+                                    <p className="text-2xl font-black text-white tracking-tighter font-mono">{scannedCount.toLocaleString()}</p>
+                                </div>
+                                <div className="space-y-1 border-l border-white/10 pl-6">
+                                    <p className="text-[10px] font-mono text-white/20 uppercase tracking-widest flex items-center gap-2">
+                                        <Zap size={10} className="text-secondary" /> Active_Agents
+                                    </p>
+                                    <p className="text-2xl font-black text-secondary tracking-tighter font-mono not-italic">842</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Niche Selector */}
+                        <div className="space-y-4">
+                            <label className="text-[9px] font-mono font-black text-foreground/30 uppercase tracking-[0.3em]">Sector_Refinement_Matrix</label>
+                            <div className="flex flex-wrap gap-2">
+                                {NICHES.map(niche => (
+                                    <button
+                                        key={niche}
+                                        onClick={() => handleNicheChange(niche)}
+                                        className={cn(
+                                            "px-4 py-2 rounded-xl text-[9px] font-black tracking-widest transition-all border uppercase not-italic",
+                                            selectedNiche === niche 
+                                                ? "bg-secondary text-black border-secondary" 
+                                                : "bg-white/5 text-white/40 border-white/10 hover:border-white/30"
+                                        )}
+                                    >
+                                        {niche}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
                         
                         <div className="relative group">
                             <button
                                 onClick={generateArticle}
                                 disabled={isGenerating}
                                 className={cn(
-                                    "w-full px-8 py-5 rounded-2xl font-black uppercase text-xs tracking-widest transition-all overflow-hidden relative",
-                                    isGenerating ? "bg-zinc-900 text-white/20 cursor-wait" : "bg-white text-black hover:scale-105 active:scale-95 shadow-[0_20px_40px_rgba(255,255,255,0.1)]"
+                                    "w-full btn-institutional py-6 group uppercase tracking-[0.2em] font-black relative overflow-hidden",
+                                    isGenerating ? "opacity-50 cursor-wait" : ""
                                 )}
                             >
-                                <span className="relative z-10 flex items-center justify-center gap-3">
-                                    {isGenerating ? "GENERATING_INSIGHT..." : "INITIALIZE_AUTOBOT_BLOG"}
-                                    <Sparkles size={16} className={isGenerating ? "animate-spin text-secondary" : ""} />
+                                <span className="relative z-10 flex items-center justify-center gap-4">
+                                    {isGenerating ? "NEURAL_LINK_ESTABLISHED" : "INITIALIZE_AUTOBOT_GEN"}
+                                    <Sparkles size={16} className={cn("transition-transform", isGenerating ? "animate-spin text-secondary" : "group-hover:rotate-12")} />
                                 </span>
-                                
                                 {isGenerating && (
                                     <motion.div 
                                         initial={{ x: "-100%" }}
-                                        animate={{ x: "0%" }}
-                                        transition={{ duration: 3, ease: "linear" }}
-                                        className="absolute inset-0 bg-secondary/20 z-0"
+                                        animate={{ x: "100%" }}
+                                        transition={{ duration: 1, repeat: Infinity }}
+                                        className="absolute inset-0 bg-white/10 z-0"
                                     />
                                 )}
                             </button>
                         </div>
-                    </div>
 
-                    {/* Feed Side */}
-                    <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <AnimatePresence mode="popLayout">
-                            {articles.map((article, i) => (
+                        {/* Generation Logs */}
+                        <AnimatePresence>
+                            {isGenerating && (
                                 <motion.div
-                                    key={article.id}
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                                    className="p-8 rounded-[2rem] border border-white/5 bg-zinc-950/40 backdrop-blur-xl group hover:border-secondary/20 transition-all flex flex-col justify-between min-h-[300px]"
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: "auto" }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    className="p-6 rounded-2xl bg-black border border-white/10 font-mono text-[9px] space-y-1 overflow-hidden shadow-2xl"
                                 >
-                                    <div className="space-y-6">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-2">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-                                                <span className="text-[8px] font-mono font-black text-secondary tracking-widest uppercase">{article.niche}</span>
-                                            </div>
-                                            <span className="text-[8px] font-mono text-white/20 uppercase">{article.date}</span>
+                                    {logs.map((log, i) => (
+                                        <div key={i} className="flex gap-3 uppercase">
+                                            <span className="text-secondary/40">[{new Date().toLocaleTimeString()}]</span>
+                                            <span className="text-white/60">{log}</span>
                                         </div>
-                                        <h3 className="text-2xl font-bold text-white leading-tight tracking-tight group-hover:text-secondary transition-colors">
-                                            {article.title}
-                                        </h3>
-                                    </div>
-
-                                    <div className="pt-8 flex items-center justify-between border-t border-white/5">
-                                        <div className="flex items-center gap-4 text-white/30">
-                                            <div className="flex items-center gap-1">
-                                                <Terminal size={12} />
-                                                <span className="text-[10px] font-mono uppercase">{article.readTime}</span>
-                                            </div>
-                                            <div className="flex items-center gap-1">
-                                                <Cpu size={12} />
-                                                <span className="text-[10px] font-mono uppercase">Agent_Gen</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex gap-2">
-                                            <button className="p-3 rounded-xl bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all">
-                                                <Share2 size={14} />
-                                            </button>
-                                            <button className="p-3 rounded-xl bg-secondary/10 text-secondary hover:bg-secondary hover:text-white transition-all">
-                                                <Download size={14} />
-                                            </button>
-                                        </div>
-                                    </div>
+                                    ))}
+                                    <motion.div 
+                                        animate={{ opacity: [0, 1, 0] }}
+                                        transition={{ duration: 0.8, repeat: Infinity }}
+                                        className="w-1.5 h-3 bg-secondary inline-block ml-1"
+                                    />
                                 </motion.div>
-                            ))}
+                            )}
                         </AnimatePresence>
                     </div>
 
+                    {/* Feed Side */}
+                    <div className="lg:w-2/3 space-y-12">
+                        {/* Live Feed Ticker */}
+                        <div className="flex items-center gap-6 overflow-hidden bg-white/[0.02] border-y border-white/5 py-4 px-8 rounded-full backdrop-blur-md">
+                            <div className="flex items-center gap-2 shrink-0">
+                                <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+                                <span className="text-[9px] font-mono font-black text-secondary uppercase tracking-[0.3em]">LIVE_NETWORK_FEED</span>
+                            </div>
+                            <div className="flex gap-12 animate-[marquee_30s_linear_infinite] whitespace-nowrap">
+                                {[1,2,3,4,5,6,7].map(n => (
+                                    <span key={n} className="text-[10px] font-mono text-white/20 uppercase tracking-widest not-italic">
+                                        [AGENT_NODE_{n*12}] :: SCANNING_{NICHES[n%NICHES.length]} :: { (Math.random()*100).toFixed(2) }MB_PROCESSED
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <AnimatePresence mode="popLayout">
+                                {isRefining ? (
+                                    <div className="col-span-1 md:col-span-2 py-32 text-center border border-dashed border-secondary/20 rounded-[3rem] bg-secondary/[0.02] animate-pulse">
+                                        <Activity size={48} className="mx-auto text-secondary mb-6 animate-spin" />
+                                        <p className="text-[10px] font-mono text-secondary uppercase tracking-[0.5em] font-black">Refining_Sector_Extraction...</p>
+                                        <p className="text-[8px] font-mono text-secondary/30 uppercase mt-2">MSA_CORE_V5 // CONNECTING_NODES</p>
+                                    </div>
+                                ) : filteredArticles.length > 0 ? (
+                                    filteredArticles.map((article, i) => (
+                                        <motion.div
+                                            key={article.id}
+                                            layout
+                                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                                            exit={{ opacity: 0, scale: 0.9 }}
+                                            transition={{ duration: 0.5, delay: i * 0.1 }}
+                                            className="p-8 rounded-[2rem] border border-white/5 bg-zinc-950/40 backdrop-blur-xl group hover:border-secondary/20 transition-all flex flex-col justify-between min-h-[350px] relative overflow-hidden"
+                                        >
+                                            <div className="absolute top-0 right-0 p-4 opacity-[0.03] pointer-events-none group-hover:opacity-[0.07] transition-opacity">
+                                                <Cpu size={140} />
+                                            </div>
+                                        <div className="space-y-6 relative z-10">
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_rgba(var(--secondary),0.5)]" />
+                                                    <span className="text-[9px] font-mono font-black text-secondary tracking-[0.3em] uppercase not-italic">{article.niche}</span>
+                                                </div>
+                                                <div className="flex items-center gap-6">
+                                                    <div className="flex flex-col items-end">
+                                                        <span className="text-[7px] font-mono text-white/20 uppercase tracking-widest not-italic">Confidence</span>
+                                                        <span className="text-xs font-mono font-black text-emerald-400 not-italic">{article.confidence}%</span>
+                                                    </div>
+                                                    <div className="flex flex-col items-end">
+                                                        <span className="text-[7px] font-mono text-white/20 uppercase tracking-widest not-italic">Entropy</span>
+                                                        <span className="text-xs font-mono font-black text-blue-400 not-italic">{article.dataPoints}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="space-y-4">
+                                                <h3 className="text-2xl font-black text-white leading-tight tracking-tighter uppercase group-hover:text-secondary transition-colors duration-500 not-italic">
+                                                    {article.title}
+                                                </h3>
+                                                <p className="text-[11px] text-white/30 leading-relaxed font-medium uppercase tracking-tight line-clamp-4 not-italic">
+                                                    {article.description}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="pt-8 flex items-center justify-between border-t border-white/5 mt-auto relative z-10">
+                                            <div className="flex items-center gap-6 text-white/20">
+                                                <div className="flex items-center gap-2">
+                                                    <Terminal size={12} className="text-secondary/40" />
+                                                    <span className="text-[9px] font-mono uppercase tracking-widest not-italic">{article.readTime}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <Cpu size={12} className="text-secondary/40" />
+                                                    <span className="text-[9px] font-mono uppercase tracking-widest not-italic">Node_V4</span>
+                                                </div>
+                                            </div>
+                                            <div className="flex gap-2">
+                                                <button 
+                                                    onClick={() => handleShare(article.title)}
+                                                    className="p-3 rounded-xl bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all active:scale-95"
+                                                >
+                                                    <Share2 size={14} />
+                                                </button>
+                                                <button 
+                                                    onClick={() => handleDownload(article.title)}
+                                                    className="p-3 rounded-xl bg-secondary/10 text-secondary hover:bg-secondary hover:text-white transition-all active:scale-95"
+                                                >
+                                                    <Download size={14} />
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                    ))
+                                ) : (
+                                    <div className="col-span-1 md:col-span-2 py-32 text-center border border-dashed border-white/10 rounded-[3rem] bg-white/[0.01]">
+                                        <Cpu size={48} className="mx-auto text-white/10 mb-6 animate-pulse" />
+                                        <p className="text-[10px] font-mono text-white/40 uppercase tracking-[0.5em] font-black not-italic">Awaiting_Sector_Intelligence...</p>
+                                        <p className="text-[8px] font-mono text-white/10 uppercase mt-2 not-italic">Initialize Autobot for {selectedNiche} extraction</p>
+                                    </div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+                    </div>
+
                 </div>
+            </div>
+            
+            {/* Ambient Background Element */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.02] pointer-events-none overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,var(--secondary)_0%,transparent_70%)] blur-[120px]" />
             </div>
         </section>
     );

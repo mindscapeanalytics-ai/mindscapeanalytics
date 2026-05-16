@@ -103,7 +103,7 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
                                     <h3 className="text-2xl font-black uppercase tracking-tighter text-foreground">
                                         Request Demo
                                     </h3>
-                                    <p className="text-foreground/40 text-xs font-medium uppercase tracking-widest mt-1 italic">
+                                    <p className="text-foreground/40 text-xs font-medium uppercase tracking-widest mt-1">
                                         Asset: {productName}
                                     </p>
                                 </div>

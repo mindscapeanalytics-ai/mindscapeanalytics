@@ -130,7 +130,7 @@ export default function ImageUpload({ onUploadAction, initialUrl }: ImageUploadP
                         </div>
                         <div className="text-center">
                             <p className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40">Select Visual Artifact</p>
-                            <p className="text-[8px] text-foreground/10 uppercase tracking-widest mt-2 italic">Standard: high-fidelity 1200x800 webp</p>
+                            <p className="text-[8px] text-foreground/10 uppercase tracking-widest mt-2">Standard: high-fidelity 1200x800 webp</p>
                         </div>
                     </div>
                 )}
@@ -158,7 +158,7 @@ export default function ImageUpload({ onUploadAction, initialUrl }: ImageUploadP
             {!preview && !isOptimizing && (
                 <div className="flex items-center gap-4 px-6 py-4 bg-foreground/[0.02] border border-border rounded-2xl">
                     <ImageIcon size={16} className="text-foreground/20" />
-                    <p className="text-[8px] font-black uppercase tracking-[0.2em] text-foreground/20 italic leading-loose">
+                    <p className="text-[8px] font-black uppercase tracking-[0.2em] text-foreground/20 leading-loose">
                         Platform Policy: Automatic 100KB WebP optimization enforced for maximum system throughput.
                     </p>
                 </div>

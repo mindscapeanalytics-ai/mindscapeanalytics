@@ -107,8 +107,8 @@ export default function TechStackShowcase() {
                         <Badge variant="outline" className="bg-foreground/5 text-foreground/40 border-border px-4 py-1.5 text-[9px] tracking-[0.4em] uppercase font-black">
                             Technical_Infrastructure
                         </Badge>
-                        <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tightest uppercase italic">
-                            ELITE <span className="opacity-20 not-italic">TEK STACK.</span>
+                        <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tightest uppercase">
+                            ELITE <span className="opacity-20">TEK STACK.</span>
                         </h2>
                         <p className="text-[11px] font-black text-foreground/30 uppercase tracking-widest leading-relaxed max-w-xl">
                             We bridge the gap between abstract intelligence and industrial-grade execution using leading technologies.

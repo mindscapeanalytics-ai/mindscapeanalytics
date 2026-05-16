@@ -92,16 +92,16 @@ export default function OutsourcingPage() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-6xl md:text-8xl font-black mb-8 uppercase tracking-tighter italic leading-none"
+                            className="text-6xl md:text-8xl font-black mb-8 uppercase tracking-tighter leading-none"
                         >
-                            Outsourced <span className="text-secondary not-italic">Intelligence.</span>
+                            Outsourced <span className="text-secondary">Intelligence.</span>
                         </motion.h1>
 
                         <motion.p
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="max-w-2xl mx-auto text-foreground/40 text-sm md:text-base font-medium uppercase tracking-[0.2em] leading-relaxed italic"
+                            className="max-w-2xl mx-auto text-foreground/40 text-sm md:text-base font-medium uppercase tracking-[0.2em] leading-relaxed"
                         >
                             Scale your enterprise with high-fidelity technical talent curated by Mindscape Analytics.
                         </motion.p>
@@ -128,7 +128,7 @@ export default function OutsourcingPage() {
                                             <Icon size={24} />
                                         </div>
                                         <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter">{pool.title}</h3>
-                                        <p className="text-foreground/40 text-sm font-medium leading-loose italic mb-8">
+                                        <p className="text-foreground/40 text-sm font-medium leading-loose mb-8">
                                             {pool.description}
                                         </p>
                                         <div className="flex flex-wrap gap-2">
@@ -149,10 +149,10 @@ export default function OutsourcingPage() {
                         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10" />
                         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                             <div>
-                                <h2 className="text-4xl md:text-5xl font-black mb-8 uppercase tracking-tighter italic">
-                                    Our <span className="text-secondary not-italic">Vetting Process.</span>
+                                <h2 className="text-4xl md:text-5xl font-black mb-8 uppercase tracking-tighter">
+                                    Our <span className="text-secondary">Vetting Process.</span>
                                 </h2>
-                                <p className="text-foreground/40 text-sm md:text-base font-medium leading-loose italic mb-12">
+                                <p className="text-foreground/40 text-sm md:text-base font-medium leading-loose mb-12">
                                     At MSA, we don't just match resumes. We verify intelligence. Every engineer in our network undergoes rigorous architectural evaluation, code-efficiency audits, and cultural synchronization tests.
                                 </p>
                                 <div className="space-y-6">
@@ -180,7 +180,7 @@ export default function OutsourcingPage() {
                                                 </div>
                                                 <div>
                                                     <h4 className="font-black uppercase tracking-widest text-xs mb-1">{model.title}</h4>
-                                                    <p className="text-[10px] text-foreground/30 italic">{model.description}</p>
+                                                    <p className="text-[10px] text-foreground/30">{model.description}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -192,8 +192,8 @@ export default function OutsourcingPage() {
 
                     {/* CTA Section */}
                     <div className="text-center bg-gradient-to-b from-white/[0.05] to-transparent border border-border rounded-[3rem] p-20">
-                        <h2 className="text-3xl md:text-4xl font-black mb-8 uppercase tracking-tighter italic">
-                            Begin Your <span className="text-secondary not-italic">Team Expansion.</span>
+                        <h2 className="text-3xl md:text-4xl font-black mb-8 uppercase tracking-tighter">
+                            Begin Your <span className="text-secondary">Team Expansion.</span>
                         </h2>
                         <button className="px-12 py-5 bg-foreground text-background rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] hover:bg-foreground/90 transition-all active:scale-95 flex items-center gap-4 mx-auto group">
                             Schedule Technical Audit

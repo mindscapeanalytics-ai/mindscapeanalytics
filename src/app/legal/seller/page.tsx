@@ -29,7 +29,7 @@ export default function SellerPolicyPage() {
                             transition={{ delay: 0.1 }}
                             className="text-5xl md:text-7xl font-black tracking-tighter uppercase font-syncopate leading-none"
                         >
-                            SELLER <span className="text-foreground/30 italic">POLICY.</span>
+                            SELLER <span className="text-foreground/30">POLICY.</span>
                         </motion.h1>
                     </div>
 
@@ -48,7 +48,7 @@ export default function SellerPolicyPage() {
                                 <div className="p-6 rounded-xl bg-foreground text-background font-black text-center text-3xl tracking-tighter uppercase">
                                     10% PLATFORM FEE
                                 </div>
-                                <p className="text-sm italic text-foreground/40">
+                                <p className="text-sm text-foreground/40">
                                     * This fee is deducted automatically from each transaction. There are no hidden setup costs or recurring monthly listing fees.
                                 </p>
                             </div>

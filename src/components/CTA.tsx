@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Sparkles, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import CalButton from "./CalButton";
 
 export default function CTA() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -67,21 +68,19 @@ export default function CTA() {
                             transition={{ duration: 0.6, delay: 0.4 }}
                             className="flex flex-col sm:flex-row gap-6"
                         >
-                            <a href="https://wa.me/13072106155" target="_blank" rel="noopener noreferrer">
-                                <button className="px-12 py-5 rounded-full bg-black text-foreground font-bold text-xl hover:scale-105 transition-all flex items-center gap-4">
-                                    Book Strategy Call
-                                    <motion.div
-                                        animate={{ x: [0, 5, 0] }}
-                                        transition={{
-                                            repeat: Infinity,
-                                            duration: 1.5,
-                                            ease: "easeInOut"
-                                        }}
-                                    >
-                                        <ArrowRight className="w-5 h-5" />
-                                    </motion.div>
-                                </button>
-                            </a>
+                            <CalButton calLink="mindscape/strategy" className="px-12 py-5 rounded-full bg-black text-foreground font-bold text-xl hover:scale-105 transition-all flex items-center gap-4">
+                                Book Strategy Call
+                                <motion.div
+                                    animate={{ x: [0, 5, 0] }}
+                                    transition={{
+                                        repeat: Infinity,
+                                        duration: 1.5,
+                                        ease: "easeInOut"
+                                    }}
+                                >
+                                    <ArrowRight className="w-5 h-5" />
+                                </motion.div>
+                            </CalButton>
 
                             <Link href="/contact">
                                 <button className="px-12 py-5 rounded-full bg-transparent border-2 border-black/10 text-background font-bold text-xl hover:bg-black/5 transition-all uppercase tracking-tighter">

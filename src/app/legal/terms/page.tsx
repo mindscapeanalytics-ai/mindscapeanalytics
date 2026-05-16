@@ -16,7 +16,7 @@ export default function TermsPage() {
                     className="space-y-12"
                 >
                     <h1 className="text-5xl md:text-7xl font-black font-syncopate uppercase tracking-[-0.05em]" style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}>
-                        TERMS OF <span className="text-foreground/20 italic">SERVICE.</span>
+                        TERMS OF <span className="text-foreground/20">SERVICE.</span>
                     </h1>
 
                     <div className="space-y-8 text-foreground/60 font-medium uppercase tracking-tight leading-relaxed">

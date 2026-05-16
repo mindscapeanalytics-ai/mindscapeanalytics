@@ -29,7 +29,7 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                     <div className="relative z-10">
                         <CreditCard size={32} className={`mb-6 ${method === "stripe" ? "text-foreground" : "text-foreground/20"}`} />
                         <h3 className="text-xl font-black uppercase tracking-tight mb-2">Stripe Connect</h3>
-                        <p className="text-[10px] text-foreground/40 uppercase tracking-widest italic font-medium">Standard Fiat Rails</p>
+                        <p className="text-[10px] text-foreground/40 uppercase tracking-widest font-medium">Standard Fiat Rails</p>
                     </div>
                     {method === "stripe" && (
                         <div className="absolute top-8 right-8 text-blue-500">
@@ -48,7 +48,7 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                     <div className="relative z-10">
                         <Wallet size={32} className={`mb-6 ${method === "crypto" ? "text-foreground" : "text-foreground/20"}`} />
                         <h3 className="text-xl font-black uppercase tracking-tight mb-2">Crypto Wallet</h3>
-                        <p className="text-[10px] text-foreground/40 uppercase tracking-widest italic font-medium">Decentralized Settlement</p>
+                        <p className="text-[10px] text-foreground/40 uppercase tracking-widest font-medium">Decentralized Settlement</p>
                     </div>
                     {method === "crypto" && (
                         <div className="absolute top-8 right-8 text-blue-500">
@@ -68,8 +68,8 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                         className="bg-foreground/[0.02] border border-border rounded-[3rem] p-12 relative overflow-hidden"
                     >
                         <div className="max-w-xl">
-                            <h2 className="text-2xl font-black uppercase tracking-tighter italic mb-6">Financial Bridge Configuration</h2>
-                            <p className="text-foreground/40 text-[11px] font-black uppercase tracking-widest leading-relaxed mb-10 italic">
+                            <h2 className="text-2xl font-black uppercase tracking-tighter mb-6">Financial Bridge Configuration</h2>
+                            <p className="text-foreground/40 text-[11px] font-black uppercase tracking-widest leading-relaxed mb-10">
                                 Connect your commercial terminal to the Stripe infrastructure to enable fiat currency distributions.
                             </p>
 
@@ -78,7 +78,7 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                                     <CheckCircle2 size={20} className="text-green-500" />
                                     <div>
                                         <div className="text-[10px] font-black uppercase tracking-widest text-foreground">Registry Active</div>
-                                        <div className="text-[9px] text-foreground/40 uppercase tracking-tight italic">Commercial rails initialized and verified.</div>
+                                        <div className="text-[9px] text-foreground/40 uppercase tracking-tight">Commercial rails initialized and verified.</div>
                                     </div>
                                 </div>
                             ) : (
@@ -86,7 +86,7 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                                     <AlertCircle size={20} className="text-amber-500" />
                                     <div>
                                         <div className="text-[10px] font-black uppercase tracking-widest text-foreground">Awaiting Handshake</div>
-                                        <div className="text-[9px] text-foreground/40 uppercase tracking-tight italic">Stripe Connect identity not localized.</div>
+                                        <div className="text-[9px] text-foreground/40 uppercase tracking-tight">Stripe Connect identity not localized.</div>
                                     </div>
                                 </div>
                             )}
@@ -116,8 +116,8 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                     >
                         <form action={action} className="max-w-xl">
                             <input type="hidden" name="payoutMethod" value="crypto" />
-                            <h2 className="text-2xl font-black uppercase tracking-tighter italic mb-6">Digital Asset Distribution</h2>
-                            <p className="text-foreground/40 text-[11px] font-black uppercase tracking-widest leading-relaxed mb-10 italic">
+                            <h2 className="text-2xl font-black uppercase tracking-tighter mb-6">Digital Asset Distribution</h2>
+                            <p className="text-foreground/40 text-[11px] font-black uppercase tracking-widest leading-relaxed mb-10">
                                 Input your destination address for decentralized settlements. Alpha, USDT, and ETH protocols supported.
                             </p>
 
@@ -132,7 +132,7 @@ export default function PayoutForm({ initialMethod, initialDetails, stripeConnec
                                         required
                                     />
                                 </div>
-                                <p className="text-[9px] text-foreground/20 uppercase tracking-tight italic">
+                                <p className="text-[9px] text-foreground/20 uppercase tracking-tight">
                                     Note: Ensure the address is accurate. Distributions across decentralized protocols are final.
                                 </p>
                             </div>

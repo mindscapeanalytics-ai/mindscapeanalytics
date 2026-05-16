@@ -83,8 +83,8 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
 
                                 {/* Description Context */}
                                 <div className="pt-8">
-                                    <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/20 mb-4 block italic">Core Abstract</span>
-                                    <p className="text-foreground/40 text-sm font-medium leading-relaxed italic border-l border-border pl-6">
+                                    <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/20 mb-4 block">Core Abstract</span>
+                                    <p className="text-foreground/40 text-sm font-medium leading-relaxed border-l border-border pl-6">
                                         {product.description || "Elite architectural primitive engineered for high-tier deployments."}
                                     </p>
                                 </div>
@@ -100,7 +100,7 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
                                     </span>
                                     <span className="text-[8px] font-black uppercase tracking-[0.4em] text-foreground/10">#{product.id.slice(-6).toUpperCase()}</span>
                                 </div>
-                                <h2 className="text-4xl md:text-5xl font-black tracking-tightest leading-none uppercase italic text-foreground mb-6">
+                                <h2 className="text-4xl md:text-5xl font-black tracking-tightest leading-none uppercase text-foreground mb-6">
                                     {product.name}
                                 </h2>
                             </div>
@@ -127,7 +127,7 @@ export function ProductDetailsModal({ product, isOpen, onClose }: ProductDetails
                                     <div className="flex flex-col">
                                         <span className="text-[9px] font-black uppercase tracking-[0.4em] text-foreground/20 mb-1">Standard Allocation</span>
                                         <div className="flex items-baseline gap-2">
-                                            <span className="text-4xl font-black italic tracking-tighter text-foreground">${product.price}</span>
+                                            <span className="text-4xl font-black tracking-tighter text-foreground">${product.price}</span>
                                             <span className="text-foreground/20 text-[9px] font-bold uppercase">USD</span>
                                         </div>
                                     </div>

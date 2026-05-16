@@ -120,7 +120,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
                         ))}
                     </div>
 
-                    <p className="text-foreground/60 text-sm leading-relaxed font-black uppercase tracking-widest group-hover:text-foreground/90 transition-colors duration-500 line-clamp-6 italic">
+                    <p className="text-foreground/60 text-sm leading-relaxed font-black uppercase tracking-widest group-hover:text-foreground/90 transition-colors duration-500 line-clamp-6">
                         "{testimonial.quote}"
                     </p>
                 </div>
@@ -202,10 +202,10 @@ export default function TestimonialCarousel() {
                     <Badge variant="outline" className="bg-foreground/5 border-border text-foreground/40 px-6 py-2 text-[9px] tracking-[0.5em] uppercase font-black backdrop-blur-xl shadow-2xl">
                         GLOBAL_VALIDATION
                     </Badge>
-                    <h2 className="text-5xl md:text-8xl font-black text-foreground tracking-tightest uppercase italic">
-                        ELITE <span className="opacity-20 not-italic">VALIDATION.</span>
+                    <h2 className="text-5xl md:text-8xl font-black text-foreground tracking-tightest uppercase">
+                        ELITE <span className="opacity-20">VALIDATION.</span>
                     </h2>
-                    <p className="text-[11px] font-black text-foreground/30 uppercase tracking-[0.4em] max-w-2xl mx-auto leading-relaxed italic">
+                    <p className="text-[11px] font-black text-foreground/30 uppercase tracking-[0.4em] max-w-2xl mx-auto leading-relaxed">
                         Architecting high-performance systems for global enterprises since the initialization of operations.
                     </p>
                 </div>

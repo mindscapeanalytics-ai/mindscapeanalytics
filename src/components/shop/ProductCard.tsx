@@ -111,7 +111,7 @@ export default function ProductCard({
                         </h3>
                     </div>
 
-                    <p className="text-[11px] text-foreground/40 line-clamp-2 mb-6 font-medium italic leading-relaxed uppercase tracking-tighter">
+                    <p className="text-[11px] text-foreground/40 line-clamp-2 mb-6 font-medium leading-relaxed uppercase tracking-tighter">
                         {product.description || "Elite architectural primitive engineered for high-tier deployments."}
                     </p>
 

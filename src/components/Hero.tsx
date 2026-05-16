@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { ArrowRight, Play, Sparkles } from "lucide-react"
 import Link from "next/link";
 import HeroSpotlight from "./animations/HeroSpotlight";
+import CalButton from "./CalButton";
 
 export default function Hero() {
     // All viewport/scroll linked animations removed for maximum mobile smoothness
@@ -67,7 +68,7 @@ export default function Hero() {
                             {/* Visibility Backlighting */}
                             <div className="absolute inset-0 bg-secondary/5 blur-[80px] rounded-full opacity-30 pointer-events-none" />
 
-                            <div className="relative group/title inline-flex flex-col items-center max-w-[calc(100vw-2rem)]">
+                            <div className="relative group/title inline-flex flex-col items-center max-w-[calc(100vw-2rem)] not-italic">
                                 {/* Architectural Brackets */}
                                 <div className="absolute -top-4 -left-6 w-4 h-4 border-t-2 border-l-2 border-secondary/40 lg:opacity-100 group-hover/title:scale-110 transition-transform hidden sm:block" />
                                 <div className="absolute -bottom-2 -right-6 w-4 h-4 border-b-2 border-r-2 border-secondary/40 lg:opacity-100 group-hover/title:scale-110 transition-transform hidden sm:block" />
@@ -88,7 +89,7 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.2, delay: 0.2 }}
-                            className="text-base md:text-3xl lg:text-4xl font-black text-foreground/70 dark:text-foreground/40 font-sans tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl px-8 mt-6 will-change-[transform,opacity]"
+                            className="text-base md:text-3xl lg:text-4xl font-black text-foreground/70 dark:text-foreground/40 font-sans tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl px-8 mt-6 will-change-[transform,opacity] not-italic"
                         >
                             <div className="flex flex-col items-center gap-3">
                                 <span className="text-[7px] md:text-[9px] font-mono font-black text-secondary tracking-[0.4em] mb-1 opacity-60">
@@ -167,7 +168,7 @@ export default function Hero() {
                         <div className="h-px w-full bg-white/5" />
                         <div className="flex flex-col gap-1">
                             <span className="text-[8px] font-mono text-white/20 tracking-[0.3em] font-black uppercase">Inference_Engine</span>
-                            <span className="text-[10px] font-bold text-secondary/60">NVIDIA_NIM // MISTRAL_675B</span>
+                            <span className="text-[10px] font-bold text-secondary/60">MSA_CORE // AGENT_ORCHESTRATOR</span>
                         </div>
                     </motion.div>
 
@@ -178,17 +179,17 @@ export default function Hero() {
                         className="flex flex-col items-center gap-6 lg:gap-10 pointer-events-auto w-full px-6"
                     >
                         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 w-full sm:w-auto mt-2">
-                            <Link href="/contact" className="w-full sm:w-auto">
-                                <button className="w-full sm:w-auto group relative px-6 lg:px-10 py-3.5 lg:py-5 bg-secondary text-white font-black uppercase text-[10px] lg:text-xs tracking-[0.2em] rounded-xl shadow-lg transition-all hover:scale-105 active:scale-95">
+                            <CalButton calLink="mindscape/strategy" className="w-full sm:w-auto">
+                                <button className="w-full sm:w-auto group relative px-6 lg:px-10 py-3.5 lg:py-5 bg-secondary text-white font-black uppercase text-[10px] lg:text-xs tracking-[0.2em] rounded-xl shadow-lg transition-all hover:scale-105 active:scale-95 not-italic">
                                     <span className="relative z-10 flex items-center justify-center gap-3">
                                         BOOK A STRATEGY CALL
                                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </span>
                                 </button>
-                            </Link>
+                            </CalButton>
 
                             <Link href="/projects" className="w-full sm:w-auto">
-                                <button className="w-full sm:w-auto group px-8 lg:px-10 py-3.5 lg:py-5 bg-background/80 border border-border text-foreground font-black uppercase text-[10px] lg:text-xs tracking-[0.3em] rounded-xl backdrop-blur-xl transition-all hover:bg-foreground/5 hover:border-foreground/30 active:scale-95 flex items-center justify-center gap-4 shadow-xl">
+                                <button className="w-full sm:w-auto group px-8 lg:px-10 py-3.5 lg:py-5 bg-background/80 border border-border text-foreground font-black uppercase text-[10px] lg:text-xs tracking-[0.3em] rounded-xl backdrop-blur-xl transition-all hover:bg-foreground/5 hover:border-foreground/30 active:scale-95 flex items-center justify-center gap-4 shadow-xl not-italic">
                                     <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-foreground/5 border border-border flex items-center justify-center group-hover:bg-foreground/10 group-hover:border-foreground/30 transition-all">
                                         <Play className="w-3 h-3 fill-foreground text-foreground ml-1" />
                                     </div>

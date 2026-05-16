@@ -138,6 +138,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Persist lead to database for CRM tracking
+    try {
+      const { prisma } = await import("@/lib/prisma");
+      await prisma.lead.create({
+        data: {
+          email,
+          name: name || null,
+          company: company || null,
+          phone: phone || null,
+          source: "contact",
+          service: service || null,
+          message: message || null,
+          score: (name ? 15 : 0) + 10 + (company ? 25 : 0) + (phone ? 20 : 0) + (service ? 15 : 0) + (message && message.length > 50 ? 15 : 0),
+        },
+      });
+    } catch (dbError) {
+      console.error("[CONTACT_DB_SAVE_ERROR]", dbError);
+      // Don't fail the request if DB save fails — email was already sent
+    }
+
     return NextResponse.json({
       success: true,
       message: 'Transmission successful.',

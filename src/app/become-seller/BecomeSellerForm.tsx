@@ -93,12 +93,12 @@ export default function BecomeSellerForm() {
                     required
                     rows={5}
                     placeholder="Briefly describe your specialization. Our streamlined system now supports rapid one-image project listings for maximum efficiency..."
-                    className="w-full px-6 py-6 bg-foreground/[0.03] border border-border rounded-3xl text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-foreground/20 focus:bg-foreground/[0.05] transition-all backdrop-blur-xl italic text-sm leading-relaxed"
+                    className="w-full px-6 py-6 bg-foreground/[0.03] border border-border rounded-3xl text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-foreground/20 focus:bg-foreground/[0.05] transition-all backdrop-blur-xl text-sm leading-relaxed"
                 />
             </div>
 
             <div className="pt-8 border-t border-border">
-                <p className="text-[9px] text-foreground/20 uppercase tracking-[0.2em] mb-8 italic text-center">
+                <p className="text-[9px] text-foreground/20 uppercase tracking-[0.2em] mb-8 text-center">
                     Note: Settlement protocols and network configurations can be localized within the dashboard after initial terminal enrollment.
                 </p>
                 <button

@@ -119,11 +119,11 @@ export default function BlogPage() {
                                         <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40 group-hover:text-foreground/80 transition-colors">{post.category}</span>
                                     </div>
 
-                                    <h2 className="text-3xl font-black mb-6 uppercase tracking-tighter leading-tight italic group-hover:translate-x-2 transition-transform duration-500">
+                                    <h2 className="text-3xl font-black mb-6 uppercase tracking-tighter leading-tight group-hover:translate-x-2 transition-transform duration-500">
                                         {post.title}
                                     </h2>
 
-                                    <p className="text-foreground/40 text-sm font-medium leading-loose italic mb-10">
+                                    <p className="text-foreground/40 text-sm font-medium leading-loose mb-10">
                                         {post.excerpt}
                                     </p>
 

@@ -31,10 +31,10 @@ export default async function PaymentsPage() {
         <div className="space-y-12">
             <div>
                 <h1
-                    className="text-5xl font-black mb-2 tracking-tighter uppercase italic"
+                    className="text-5xl font-black mb-2 tracking-tighter uppercase"
                     style={{ fontSize: "clamp(2.5rem, 6vw, 3rem)" }}
                 >
-                    SETTLEMENT <span className="text-foreground/20 not-italic">PROTOCOLS.</span>
+                    SETTLEMENT PROTOCOLS.
                 </h1>
                 <p className="text-foreground/40 font-medium uppercase tracking-widest text-sm">Configure your financial liquidity and network destinations.</p>
             </div>
@@ -63,12 +63,12 @@ export default async function PaymentsPage() {
                                 <h3 className="text-xs font-black uppercase tracking-[0.3em] text-foreground/40 mb-6">Verification Status</h3>
                                 {user?.sellerVerified ? (
                                     <div className="space-y-4">
-                                        <div className="text-3xl font-black text-green-400 tracking-tighter uppercase italic">Active Protocol</div>
+                                        <div className="text-3xl font-black text-green-400 tracking-tighter uppercase">Active Protocol</div>
                                         <p className="text-[10px] text-foreground/40 uppercase tracking-widest leading-relaxed">Your vendor terminal is fully synchronized for institutional settlements.</p>
                                     </div>
                                 ) : (
                                     <div className="space-y-4">
-                                        <div className="text-3xl font-black text-amber-500 tracking-tighter uppercase italic">Manual Verification</div>
+                                        <div className="text-3xl font-black text-amber-500 tracking-tighter uppercase">Manual Verification</div>
                                         <p className="text-[10px] text-foreground/40 uppercase tracking-widest leading-relaxed">Our architects are auditing your terminal profile. This typically resolves within 24-48 hours.</p>
                                     </div>
                                 )}
