@@ -204,16 +204,30 @@ export default function AIAuditLeadMagnet() {
 
                             {/* Architecture Tag */}
                             <div className="pt-6 text-center border-t border-border/20">
-                                <span className="text-[9px] font-mono text-foreground/20 tracking-[0.4em] font-black uppercase block mb-4">
+                                <span className="text-[9px] font-mono text-foreground/20 tracking-[0.4em] font-black uppercase block mb-4 not-italic">
                                     Infrastructure // MSA CORE
                                 </span>
-                                <div className="flex justify-center gap-6 opacity-30 grayscale hover:grayscale-0 transition-all">
-                                    <span className="text-[9px] font-black tracking-widest uppercase">MSA AGENT</span>
-                                    <span className="text-[9px] font-black tracking-widest uppercase">MISTRAL</span>
-                                    <span className="text-[9px] font-black tracking-widest uppercase">ANTHROPIC</span>
+                                <div className="flex justify-center gap-6 opacity-60 grayscale hover:grayscale-0 transition-all">
+                                    <span className="text-[9px] font-black tracking-widest uppercase text-foreground not-italic">MSA AGENT</span>
+                                    <span className="text-[9px] font-black tracking-widest uppercase text-foreground not-italic">MISTRAL</span>
+                                    <span className="text-[9px] font-black tracking-widest uppercase text-foreground not-italic">ANTHROPIC</span>
                                 </div>
                             </div>
                         </div>
+
+                        {/* Agentic Scanning Overlay */}
+                        <motion.div 
+                            initial={{ top: "-100%" }}
+                            animate={{ top: "200%" }}
+                            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                            className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-secondary/20 to-transparent pointer-events-none z-20"
+                        />
+                        <motion.div 
+                            initial={{ top: "-100%" }}
+                            animate={{ top: "200%" }}
+                            transition={{ duration: 8, repeat: Infinity, ease: "linear", delay: 4 }}
+                            className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-secondary/10 to-transparent pointer-events-none z-20"
+                        />
 
                     </div>
                 </div>

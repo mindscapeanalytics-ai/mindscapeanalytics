@@ -140,7 +140,9 @@ export default function NeuralNewsroom() {
                 confidence: Number((97 + Math.random() * 2.9).toFixed(1)),
                 dataPoints: `${(Math.random() * 80 + 20).toFixed(1)}k`,
                 status: "PUBLISHED",
-                description: `Strategic analysis on how Mindscape's ${selectedNiche.toLowerCase()} agents are capturing alpha through persistent workflow integration and autonomous decision-making.`
+                description: `Strategic analysis on how Mindscape's ${selectedNiche.toLowerCase()} agents are capturing alpha through persistent workflow integration and autonomous decision-making.`,
+                impact: `+${(Math.random() * 12 + 4).toFixed(1)}% Valuation Delta`,
+                alpha: `${(Math.random() * 40 + 15).toFixed(1)}% Captured`
             };
             setArticles([newArticle, ...articles]);
             setIsGenerating(false);
@@ -148,7 +150,14 @@ export default function NeuralNewsroom() {
     };
 
     const handleShare = (title: string) => {
-        alert(`SHARING_INITIATED: ${title}\nEncrypted neural link copied to clipboard.`);
+        const url = typeof window !== "undefined" ? window.location.href : "https://mindscapeanalytics.ai";
+        const shareText = `[MSA_NEURAL_LINK] :: ${title} :: ${url}`;
+        
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(shareText);
+            // We could add a toast here, but the alert is a good feedback for now as per institutional style
+            alert("NEURAL_LINK_COPIED: Encrypted report access link is now in your clipboard.");
+        }
     };
 
     const handleDownload = (title: string) => {
@@ -345,9 +354,19 @@ export default function NeuralNewsroom() {
                                                 <h3 className="text-2xl font-black text-white leading-tight tracking-tighter uppercase group-hover:text-secondary transition-colors duration-500 not-italic">
                                                     {article.title}
                                                 </h3>
-                                                <p className="text-[11px] text-white/30 leading-relaxed font-medium uppercase tracking-tight line-clamp-4 not-italic">
+                                                <p className="text-[11px] text-white/30 leading-relaxed font-medium uppercase tracking-tight line-clamp-3 not-italic">
                                                     {article.description}
                                                 </p>
+                                                {(article as any).impact && (
+                                                    <div className="flex gap-4 pt-2">
+                                                        <div className="px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[8px] font-mono text-emerald-400 uppercase tracking-widest not-italic">
+                                                            {(article as any).impact}
+                                                        </div>
+                                                        <div className="px-3 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-[8px] font-mono text-blue-400 uppercase tracking-widest not-italic">
+                                                            {(article as any).alpha}
+                                                        </div>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
 

@@ -277,33 +277,39 @@ export default function AiEmployee() {
                 try { recognitionRef.current.abort(); } catch {}
             }
         } else {
-            // BROWSER GESTURE KICKSTART
-            if (synthesisRef.current) {
-                const silent = new SpeechSynthesisUtterance("");
-                silent.volume = 0;
-                synthesisRef.current.speak(silent);
-            }
+            // REQUEST MIC PERMISSIONS EXPLICITLY FOR 2026 ROBUSTNESS
+            if (typeof navigator !== "undefined" && navigator.mediaDevices) {
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(() => {
+                        if (synthesisRef.current) {
+                            const silent = new SpeechSynthesisUtterance("");
+                            silent.volume = 0;
+                            synthesisRef.current.speak(silent);
+                        }
 
-            activeRef.current = true;
-            setIsActive(true);
-            setStatus("CONNECTING");
-            
-            // Welcome Greeting - Immediate gratification
-            const welcome = "Establishing secure connection to MSA Agent Core. I am the Architect. How can I assist with your organization's AI transformation today?";
-            setAgentResponse(welcome);
-            setStatus("SPEAKING");
-            
-            // ENSURE RESUME BEFORE SPEAKING
-            if (synthesisRef.current && synthesisRef.current.paused) {
-                synthesisRef.current.resume();
-            }
+                        activeRef.current = true;
+                        setIsActive(true);
+                        setStatus("CONNECTING");
+                        
+                        const welcome = "Establishing secure connection to MSA Agent Core. I am the Architect. How can I assist with your organization's AI transformation today?";
+                        setAgentResponse(welcome);
+                        setStatus("SPEAKING");
+                        
+                        if (synthesisRef.current && synthesisRef.current.paused) {
+                            synthesisRef.current.resume();
+                        }
 
-            setTimeout(() => {
-                if (!activeRef.current) return;
-                speakText(welcome, () => {
-                    startListening();
-                });
-            }, 800);
+                        speakText(welcome, () => {
+                            if (activeRef.current) {
+                                setTimeout(() => startListening(), 500);
+                            }
+                        });
+                    })
+                    .catch((err) => {
+                        console.error("Mic Access Denied:", err);
+                        alert("PROTOCOL_ERROR: Microphone access is required for Voice Intelligence.");
+                    });
+            }
         }
     };
 

@@ -38,7 +38,7 @@ export function AdminSidebar({ navItems }: AdminSidebarProps) {
                     alt="Mindscape Analytics"
                     width={140}
                     height={32}
-                    className="h-8 w-auto object-contain brightness-0 invert"
+                    className="h-8 w-auto object-contain brightness-0 invert contrast-125"
                 />
                 <button
                     onClick={() => setIsOpen(!isOpen)}
@@ -69,7 +69,7 @@ export function AdminSidebar({ navItems }: AdminSidebarProps) {
                         alt="Mindscape Analytics"
                         width={180}
                         height={40}
-                        className="h-10 w-auto object-contain brightness-0 invert opacity-100 transition-all duration-500 hover:opacity-100"
+                        className="h-10 w-auto object-contain brightness-0 invert contrast-125"
                     />
                     <div className="mt-2 text-[8px] font-mono text-foreground/20 uppercase tracking-[0.5em]">
                         Central // Hub

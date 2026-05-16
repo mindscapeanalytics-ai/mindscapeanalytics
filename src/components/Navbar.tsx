@@ -229,7 +229,7 @@ export default function Navbar() {
                             alt="Mindscape Analytics Logo"
                             width={120}
                             height={26}
-                            className="h-6 w-auto object-contain brightness-0 invert opacity-100 group-hover:opacity-100 transition-all duration-500"
+                            className="h-6 w-auto object-contain brightness-0 invert contrast-125 transition-all duration-500"
                         />
                     </Link>
                     {contextTheme && (

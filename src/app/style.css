@@ -32,6 +32,10 @@
     --color-sky-500: #39b8f7;
 }
 
+@utility border-border {
+    border-color: hsl(var(--border));
+}
+
 :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 4%;
