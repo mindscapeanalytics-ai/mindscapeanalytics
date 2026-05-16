@@ -188,7 +188,7 @@ function ContactFormContent() {
                         <h1 className="fluid-h1 mb-8">
                             GET IN <span className="opacity-30">TOUCH.</span>
                         </h1>
-                        <p className="fluid-body max-w-4xl mx-auto opacity-60">
+                        <p className="fluid-body max-w-4xl mx-auto text-foreground/70 font-medium tracking-tight">
                             READY TO TRANSFORM YOUR BUSINESS WITH <span className="text-foreground font-black">INDUSTRIAL INTELLIGENCE</span>?
                         </p>
                     </motion.div>
@@ -319,7 +319,7 @@ function ContactFormContent() {
                                 <motion.div 
                                     animate={{ y: ["-100%", "400%"] }} 
                                     transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                                    className="absolute inset-x-0 h-20 bg-gradient-to-b from-transparent via-secondary/5 to-transparent z-0 opacity-20 pointer-events-none"
+                                    className="absolute inset-x-0 h-40 bg-gradient-to-b from-transparent via-secondary/10 to-transparent z-0 opacity-30 pointer-events-none"
                                 />
                                 <CardContent className="p-8 md:p-12 relative z-10">
                                     {isSubmitted ? (
@@ -351,7 +351,7 @@ function ContactFormContent() {
                                                         required
                                                         value={formData.name}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-background/50 border-border focus:border-secondary focus:ring-1 focus:ring-secondary/20 text-base text-foreground placeholder:text-foreground/30 rounded-xl transition-all duration-300"
+                                                        className="h-14 bg-background/80 border-border focus:border-secondary focus:ring-2 focus:ring-secondary/10 text-base text-foreground placeholder:text-foreground/40 rounded-xl transition-all duration-300"
                                                         placeholder="ENTITY NAME"
                                                     />
                                                 </div>
@@ -366,7 +366,7 @@ function ContactFormContent() {
                                                         required
                                                         value={formData.email}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-background/50 border-border focus:border-secondary focus:ring-1 focus:ring-secondary/20 text-base text-foreground placeholder:text-foreground/30 rounded-xl transition-all duration-300"
+                                                        className="h-14 bg-background/80 border-white/20 focus:border-secondary focus:ring-2 focus:ring-secondary/10 text-base text-foreground placeholder:text-foreground/40 rounded-xl transition-all duration-300"
                                                         placeholder="SENDER@ACCESS.NODE"
                                                     />
                                                 </div>
@@ -436,7 +436,7 @@ function ContactFormContent() {
                                                     value={formData.message}
                                                     onChange={handleChange}
                                                     rows={5}
-                                                    className="w-full rounded-xl border border-border bg-background/50 px-4 py-4 text-base text-foreground focus:border-secondary focus:ring-1 focus:ring-secondary/20 focus:outline-none transition-all resize-none placeholder:text-foreground/30 duration-300"
+                                                    className="w-full rounded-xl border border-white/20 bg-background/80 px-4 py-4 text-base text-foreground focus:border-secondary focus:ring-1 focus:ring-secondary/20 focus:outline-none transition-all resize-none placeholder:text-foreground/30 duration-300"
                                                     placeholder="DESCRIBE ARCHITECTURAL REQUIREMENTS..."
                                                 />
                                             </div>
@@ -444,16 +444,17 @@ function ContactFormContent() {
                                              <button
                                                 type="submit"
                                                 disabled={isSubmitting}
-                                                className="btn-institutional w-full h-16 rounded-xl flex items-center justify-center gap-4"
+                                                className="group relative w-full h-16 rounded-xl bg-white text-black font-black uppercase tracking-[0.2em] overflow-hidden transition-all hover:scale-[1.01] active:scale-[0.98] disabled:opacity-50"
                                             >
-                                                {isSubmitting ? (
-                                                    "SYNCING..."
-                                                ) : (
-                                                    <>
-                                                        EXECUTE TRANSMISSION
-                                                        <Send className="w-5 h-5" />
-                                                    </>
-                                                )}
+                                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-[100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                                                <span className="relative flex items-center justify-center gap-4">
+                                                    {isSubmitting ? "ESTABLISHING LINK..." : (
+                                                        <>
+                                                            EXECUTE TRANSMISSION
+                                                            <Send className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                                        </>
+                                                    )}
+                                                </span>
                                             </button>
                                         </form>
                                     )}

@@ -51,7 +51,7 @@ export default function Footer() {
                             alt="Mindscape Analytics"
                             width={220}
                             height={52}
-                            className="h-12 w-auto object-contain brightness-0 invert contrast-125"
+                            className="h-12 w-auto object-contain brightness-0 invert contrast-125 opacity-80 group-hover:opacity-100 transition-opacity"
                         />
                         </Link>
 
@@ -207,7 +207,7 @@ export default function Footer() {
                                     key={i}
                                     href={href}
                                     whileHover={{ y: -4, scale: 1.1 }}
-                                    className="w-12 h-12 rounded-xl flex items-center justify-center text-foreground hover:text-secondary hover:border-secondary/40 !border-border/80 transition-all border shadow-md bg-card dark:bg-[#0f0f11]"
+                                    className="w-12 h-12 rounded-xl flex items-center justify-center text-foreground hover:text-secondary hover:border-secondary/60 !border-border/100 transition-all border shadow-md bg-card dark:bg-[#0f0f11]"
                                     title={label}
                                 >
                                     <Icon className="w-5 h-5" />

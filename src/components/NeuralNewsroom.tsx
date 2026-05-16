@@ -15,7 +15,22 @@ const initialArticles = [
         confidence: 98.4,
         dataPoints: "12.4k",
         status: "PUBLISHED",
-        description: "Strategic analysis of the transition from human brokers to autonomous settlement agents, reducing transaction friction by 94%."
+        description: "Strategic analysis of the transition from human brokers to autonomous settlement agents, reducing transaction friction by 94%.",
+        impact: "+24.2% Margin Efficiency",
+        alpha: "High Alpha Potential"
+    },
+    {
+        id: 11,
+        title: "Global Supply Chain: Predictive Port Autonomy",
+        date: "2026-05-15",
+        niche: "LOGISTICS",
+        readTime: "5 min",
+        confidence: 97.2,
+        dataPoints: "84.1k",
+        status: "PUBLISHED",
+        description: "Deploying maritime agents for zero-idle docking. Our nodes predict congestion 72 hours before arrival.",
+        impact: "-18% Operational Cost",
+        alpha: "Logistics Optimization V4"
     },
     {
         id: 2,
@@ -26,7 +41,22 @@ const initialArticles = [
         confidence: 96.2,
         dataPoints: "48.1k",
         status: "PUBLISHED",
-        description: "Deploying local LLMs for real-time quality control. Our industrial agents identify micro-fractures in high-frequency production lines."
+        description: "Deploying local LLMs for real-time quality control. Our industrial agents identify micro-fractures in high-frequency production lines.",
+        impact: "+12.4% Yield Increase",
+        alpha: "Nvidia NIM Optimized"
+    },
+    {
+        id: 22,
+        title: "Smart Factories: Neural-Gate Predictive Maintenance",
+        date: "2026-05-13",
+        niche: "INDUSTRIAL",
+        readTime: "6 min",
+        confidence: 99.4,
+        dataPoints: "128k",
+        status: "PUBLISHED",
+        description: "How autonomous sensor nodes are preventing catastrophic failures in heavy industry before they occur.",
+        impact: "Zero Unplanned Downtime",
+        alpha: "Industrial Edge v2"
     },
     {
         id: 3,
@@ -37,7 +67,9 @@ const initialArticles = [
         confidence: 99.1,
         dataPoints: "102.4k",
         status: "PUBLISHED",
-        description: "Implementation protocol for autonomous reconciliation agents. Reclaiming billions in lost operational efficiency for tier-1 institutions."
+        description: "Implementation protocol for autonomous reconciliation agents. Reclaiming billions in lost operational efficiency for tier-1 institutions.",
+        impact: "+42% Reconciliation Speed",
+        alpha: "Financial Core V6"
     },
     {
         id: 4,
@@ -48,7 +80,9 @@ const initialArticles = [
         confidence: 97.8,
         dataPoints: "32.6k",
         status: "PUBLISHED",
-        description: "How agentic frameworks are replacing static CRUD apps with self-correcting, autonomous user experiences."
+        description: "How agentic frameworks are replacing static CRUD apps with self-correcting, autonomous user experiences.",
+        impact: "Infinite UX Scalability",
+        alpha: "Agentic SaaS Layer"
     },
     {
         id: 5,
@@ -59,7 +93,9 @@ const initialArticles = [
         confidence: 95.4,
         dataPoints: "89.2k",
         status: "PUBLISHED",
-        description: "Predictive docking and cargo distribution via neural nodes, slashing port idle times by 28% for global shipping conglomerates."
+        description: "Predictive docking and cargo distribution via neural nodes, slashing port idle times by 28% for global shipping conglomerates.",
+        impact: "-28% Idle Time",
+        alpha: "Maritime Intelligence"
     }
 ];
 
@@ -81,7 +117,7 @@ export default function NeuralNewsroom() {
         return () => clearInterval(interval);
     }, []);
 
-    const filteredArticles = articles.filter(article => 
+    const filteredArticles = articles.filter(article =>
         article.niche.toUpperCase() === selectedNiche.toUpperCase()
     );
 
@@ -108,7 +144,7 @@ export default function NeuralNewsroom() {
         if (isGenerating) return;
         setIsGenerating(true);
         setLogs([]);
-        
+
         let step = 0;
         const interval = setInterval(() => {
             if (step < statusSequence.length) {
@@ -128,7 +164,7 @@ export default function NeuralNewsroom() {
                 "LOGISTICS": ["Last-Mile Autonomy: Beyond Drones", "Supply Chain Self-Correction Nodes", "Maritime Routing: Neural Port Optimization"]
             };
 
-            const nicheTitles = titles[selectedNiche] || [ `${selectedNiche} Transformation` ];
+            const nicheTitles = titles[selectedNiche] || [`${selectedNiche} Transformation`];
             const randomTitle = nicheTitles[Math.floor(Math.random() * nicheTitles.length)];
 
             const newArticle = {
@@ -152,7 +188,7 @@ export default function NeuralNewsroom() {
     const handleShare = (title: string) => {
         const url = typeof window !== "undefined" ? window.location.href : "https://mindscapeanalytics.ai";
         const shareText = `[MSA_NEURAL_LINK] :: ${title} :: ${url}`;
-        
+
         if (navigator.clipboard) {
             navigator.clipboard.writeText(shareText);
             // We could add a toast here, but the alert is a good feedback for now as per institutional style
@@ -164,11 +200,15 @@ export default function NeuralNewsroom() {
         alert(`REPORT_GENERATED: ${title}.pdf\nInstitutional clearance granted. Download starting...`);
     };
 
+    const handleDeploy = () => {
+        window.location.href = "/shop";
+    };
+
     return (
         <section className="py-32 bg-transparent relative border-t border-white/5 overflow-hidden">
             <div className="container-standard relative z-10">
                 <div className="flex flex-col lg:flex-row gap-20 items-start">
-                    
+
                     {/* Header Side */}
                     <div className="lg:w-1/3 sticky top-32 space-y-12">
                         <div>
@@ -182,7 +222,7 @@ export default function NeuralNewsroom() {
                             <p className="text-lg text-white/40 font-medium mb-10 leading-relaxed uppercase tracking-tighter not-italic">
                                 Our agents monitor global market shifts in real-time to generate strategic intelligence. No writers. No delays. Just raw, autonomous foresight for institutional growth.
                             </p>
-                            
+
                             {/* Telemetry Visualizer */}
                             <div className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/10 mb-10 overflow-hidden relative group">
                                 <div className="flex justify-between items-end mb-4">
@@ -197,7 +237,7 @@ export default function NeuralNewsroom() {
                                 </div>
                                 <div className="h-16 flex items-end gap-[2px]">
                                     {[...Array(24)].map((_, i) => (
-                                        <motion.div 
+                                        <motion.div
                                             key={i}
                                             initial={{ height: "20%" }}
                                             animate={{ height: [`${20 + Math.random() * 60}%`, `${30 + Math.random() * 50}%`, `${20 + Math.random() * 60}%`] }}
@@ -234,9 +274,9 @@ export default function NeuralNewsroom() {
                                         onClick={() => handleNicheChange(niche)}
                                         className={cn(
                                             "px-4 py-2 rounded-xl text-[9px] font-black tracking-widest transition-all border uppercase not-italic",
-                                            selectedNiche === niche 
-                                                ? "bg-secondary text-black border-secondary" 
-                                                : "bg-white/5 text-white/40 border-white/10 hover:border-white/30"
+                                            selectedNiche === niche
+                                                ? "bg-secondary text-black border-secondary"
+                                                : "bg-white/5 text-white/60 border-white/20 hover:border-white/40"
                                         )}
                                     >
                                         {niche}
@@ -244,7 +284,7 @@ export default function NeuralNewsroom() {
                                 ))}
                             </div>
                         </div>
-                        
+
                         <div className="relative group">
                             <button
                                 onClick={generateArticle}
@@ -259,7 +299,7 @@ export default function NeuralNewsroom() {
                                     <Sparkles size={16} className={cn("transition-transform", isGenerating ? "animate-spin text-secondary" : "group-hover:rotate-12")} />
                                 </span>
                                 {isGenerating && (
-                                    <motion.div 
+                                    <motion.div
                                         initial={{ x: "-100%" }}
                                         animate={{ x: "100%" }}
                                         transition={{ duration: 1, repeat: Infinity }}
@@ -284,7 +324,7 @@ export default function NeuralNewsroom() {
                                             <span className="text-white/60">{log}</span>
                                         </div>
                                     ))}
-                                    <motion.div 
+                                    <motion.div
                                         animate={{ opacity: [0, 1, 0] }}
                                         transition={{ duration: 0.8, repeat: Infinity }}
                                         className="w-1.5 h-3 bg-secondary inline-block ml-1"
@@ -303,9 +343,9 @@ export default function NeuralNewsroom() {
                                 <span className="text-[9px] font-mono font-black text-secondary uppercase tracking-[0.3em]">LIVE_NETWORK_FEED</span>
                             </div>
                             <div className="flex gap-12 animate-[marquee_30s_linear_infinite] whitespace-nowrap">
-                                {[1,2,3,4,5,6,7].map(n => (
+                                {[1, 2, 3, 4, 5, 6, 7].map(n => (
                                     <span key={n} className="text-[10px] font-mono text-white/20 uppercase tracking-widest not-italic">
-                                        [AGENT_NODE_{n*12}] :: SCANNING_{NICHES[n%NICHES.length]} :: { (Math.random()*100).toFixed(2) }MB_PROCESSED
+                                        [AGENT_NODE_{n * 12}] :: SCANNING_{NICHES[n % NICHES.length]} :: {(Math.random() * 100).toFixed(2)}MB_PROCESSED
                                     </span>
                                 ))}
                             </div>
@@ -333,70 +373,87 @@ export default function NeuralNewsroom() {
                                             <div className="absolute top-0 right-0 p-4 opacity-[0.03] pointer-events-none group-hover:opacity-[0.07] transition-opacity">
                                                 <Cpu size={140} />
                                             </div>
-                                        <div className="space-y-6 relative z-10">
-                                            <div className="flex items-center justify-between">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_rgba(var(--secondary),0.5)]" />
-                                                    <span className="text-[9px] font-mono font-black text-secondary tracking-[0.3em] uppercase not-italic">{article.niche}</span>
-                                                </div>
-                                                <div className="flex items-center gap-6">
-                                                    <div className="flex flex-col items-end">
-                                                        <span className="text-[7px] font-mono text-white/20 uppercase tracking-widest not-italic">Confidence</span>
-                                                        <span className="text-xs font-mono font-black text-emerald-400 not-italic">{article.confidence}%</span>
+                                            {/* Scanning Line Animation */}
+                                            <motion.div 
+                                                initial={{ top: "-10%" }}
+                                                animate={{ top: "110%" }}
+                                                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                                                className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-secondary/20 to-transparent z-0 opacity-0 group-hover:opacity-100"
+                                            />
+                                            <div className="space-y-6 relative z-10">
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_rgba(var(--secondary),0.5)]" />
+                                                        <span className="text-[9px] font-mono font-black text-secondary tracking-[0.3em] uppercase not-italic">{article.niche}</span>
                                                     </div>
-                                                    <div className="flex flex-col items-end">
-                                                        <span className="text-[7px] font-mono text-white/20 uppercase tracking-widest not-italic">Entropy</span>
-                                                        <span className="text-xs font-mono font-black text-blue-400 not-italic">{article.dataPoints}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="space-y-4">
-                                                <h3 className="text-2xl font-black text-white leading-tight tracking-tighter uppercase group-hover:text-secondary transition-colors duration-500 not-italic">
-                                                    {article.title}
-                                                </h3>
-                                                <p className="text-[11px] text-white/30 leading-relaxed font-medium uppercase tracking-tight line-clamp-3 not-italic">
-                                                    {article.description}
-                                                </p>
-                                                {(article as any).impact && (
-                                                    <div className="flex gap-4 pt-2">
-                                                        <div className="px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[8px] font-mono text-emerald-400 uppercase tracking-widest not-italic">
-                                                            {(article as any).impact}
+                                                    <div className="flex items-center gap-6">
+                                                        <div className="flex flex-col items-end">
+                                                            <span className="text-[7px] font-mono text-white/20 uppercase tracking-widest not-italic">Confidence</span>
+                                                            <span className="text-xs font-mono font-black text-emerald-400 not-italic">{article.confidence}%</span>
                                                         </div>
-                                                        <div className="px-3 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-[8px] font-mono text-blue-400 uppercase tracking-widest not-italic">
-                                                            {(article as any).alpha}
+                                                        <div className="flex flex-col items-end">
+                                                            <span className="text-[7px] font-mono text-white/20 uppercase tracking-widest not-italic">Entropy</span>
+                                                            <span className="text-xs font-mono font-black text-blue-400 not-italic">{article.dataPoints}</span>
                                                         </div>
                                                     </div>
-                                                )}
+                                                </div>
+                                                <div className="space-y-4">
+                                                    <h3 className="text-2xl font-black text-white leading-tight tracking-tighter uppercase group-hover:text-secondary transition-colors duration-500 not-italic">
+                                                        {article.title}
+                                                    </h3>
+                                                    <p className="text-[11px] text-white/30 leading-relaxed font-medium uppercase tracking-tight line-clamp-3 not-italic">
+                                                        {article.description}
+                                                    </p>
+                                                    {(article as any).impact && (
+                                                        <div className="flex gap-4 pt-2">
+                                                            <div className="px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[8px] font-mono text-emerald-400 uppercase tracking-widest not-italic">
+                                                                {(article as any).impact}
+                                                            </div>
+                                                            <div className="px-3 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-[8px] font-mono text-blue-400 uppercase tracking-widest not-italic">
+                                                                {(article as any).alpha}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div className="pt-8 flex items-center justify-between border-t border-white/5 mt-auto relative z-10">
-                                            <div className="flex items-center gap-6 text-white/20">
-                                                <div className="flex items-center gap-2">
-                                                    <Terminal size={12} className="text-secondary/40" />
-                                                    <span className="text-[9px] font-mono uppercase tracking-widest not-italic">{article.readTime}</span>
+                                            <div className="pt-8 flex flex-col gap-4 border-t border-white/5 mt-auto relative z-10">
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-6 text-white/20">
+                                                        <div className="flex items-center gap-2">
+                                                            <Terminal size={12} className="text-secondary/40" />
+                                                            <span className="text-[9px] font-mono uppercase tracking-widest not-italic">{article.readTime}</span>
+                                                        </div>
+                                                        <div className="flex items-center gap-2">
+                                                            <Cpu size={12} className="text-secondary/40" />
+                                                            <span className="text-[9px] font-mono uppercase tracking-widest not-italic">Node_V4</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex gap-2">
+                                                        <button 
+                                                            onClick={() => handleShare(article.title)}
+                                                            className="p-3 rounded-xl bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all active:scale-95"
+                                                        >
+                                                            <Share2 size={14} />
+                                                        </button>
+                                                        <button 
+                                                            onClick={() => handleDownload(article.title)}
+                                                            className="p-3 rounded-xl bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all active:scale-95"
+                                                        >
+                                                            <Download size={14} />
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                                <div className="flex items-center gap-2">
-                                                    <Cpu size={12} className="text-secondary/40" />
-                                                    <span className="text-[9px] font-mono uppercase tracking-widest not-italic">Node_V4</span>
-                                                </div>
-                                            </div>
-                                            <div className="flex gap-2">
+                                                
                                                 <button 
-                                                    onClick={() => handleShare(article.title)}
-                                                    className="p-3 rounded-xl bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all active:scale-95"
+                                                    onClick={handleDeploy}
+                                                    className="w-full py-4 rounded-xl bg-secondary text-black font-black text-[10px] uppercase tracking-[0.2em] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3"
                                                 >
-                                                    <Share2 size={14} />
-                                                </button>
-                                                <button 
-                                                    onClick={() => handleDownload(article.title)}
-                                                    className="p-3 rounded-xl bg-secondary/10 text-secondary hover:bg-secondary hover:text-white transition-all active:scale-95"
-                                                >
-                                                    <Download size={14} />
+                                                    DEPLOY THIS AGENT
+                                                    <Zap size={12} />
                                                 </button>
                                             </div>
-                                        </div>
-                                    </motion.div>
+                                        </motion.div>
                                     ))
                                 ) : (
                                     <div className="col-span-1 md:col-span-2 py-32 text-center border border-dashed border-white/10 rounded-[3rem] bg-white/[0.01]">
@@ -411,7 +468,7 @@ export default function NeuralNewsroom() {
 
                 </div>
             </div>
-            
+
             {/* Ambient Background Element */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.02] pointer-events-none overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,var(--secondary)_0%,transparent_70%)] blur-[120px]" />

@@ -229,7 +229,7 @@ export default function Navbar() {
                             alt="Mindscape Analytics Logo"
                             width={120}
                             height={26}
-                            className="h-6 w-auto object-contain brightness-0 invert contrast-125 transition-all duration-500"
+                            className="h-6 w-auto object-contain brightness-0 invert contrast-125 transition-all duration-500 opacity-90 group-hover:opacity-100"
                         />
                     </Link>
                     {contextTheme && (
@@ -473,7 +473,7 @@ export default function Navbar() {
                                         {link.submenu && (
                                             <button
                                                 onClick={() => setActiveMobileDropdown(activeMobileDropdown === link.name ? null : link.name)}
-                                                className="p-3 text-foreground/20 hover:text-foreground transition-all bg-foreground/5 rounded-xl border border-border shadow-sm"
+                                                className="p-3 text-foreground/50 hover:text-foreground transition-all bg-foreground/10 rounded-xl border border-border shadow-sm"
                                             >
                                                 <ChevronDown size={14} className={cn("transition-transform duration-500", activeMobileDropdown === link.name ? "rotate-180" : "rotate-0")} />
                                             </button>
@@ -554,7 +554,7 @@ export default function Navbar() {
                                                 </button>
                                             </Link>
                                             <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
-                                                <button className="w-full bg-foreground/5 border border-border text-foreground/40 py-5 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.3em] transition-all hover:bg-foreground/10">
+                                                <button className="w-full bg-foreground/5 border border-white/20 text-white/60 py-5 rounded-[2rem] text-[10px] font-black uppercase tracking-[0.3em] transition-all hover:bg-foreground/10 hover:text-white">
                                                     Access Hub
                                                 </button>
                                             </Link>

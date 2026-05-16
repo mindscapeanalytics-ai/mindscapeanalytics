@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
+import { notifyAdmin } from "@/lib/notifications";
 
 const leadSchema = z.object({
     email: z.string().email("Invalid email"),
@@ -14,7 +15,7 @@ const leadSchema = z.object({
 });
 
 function scoreLead(data: z.infer<typeof leadSchema>): number {
-    let score = 10; // base score for providing email
+    let score = 10; // base score
     if (data.name) score += 15;
     if (data.company) score += 25;
     if (data.phone) score += 20;
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest) {
 
         const data = validation.data;
 
-        // Deduplicate: don't create if same email+source within 24h
+        // Deduplicate
         const existingLead = await prisma.lead.findFirst({
             where: {
                 email: data.email,
@@ -70,33 +71,18 @@ export async function POST(request: NextRequest) {
             },
         });
 
-        // Send notification email for high-score leads
-        if (score >= 50) {
-            try {
-                const { Resend } = await import("resend");
-                const resend = new Resend(process.env.RESEND_API_KEY);
-                await resend.emails.send({
-                    from: "Mindscape Analytics <noreply@mindscapeanalytics.com>",
-                    to: ["contact@mindscapeanalytics.com"],
-                    subject: `🔥 High-Value Lead [Score: ${score}] — ${data.name || data.email}`,
-                    html: `
-                        <div style="font-family: monospace; padding: 20px; background: #0a0a0a; color: #fff; border-radius: 12px;">
-                            <h2 style="color: #22c55e;">NEW LEAD CAPTURED</h2>
-                            <p><strong>Email:</strong> ${data.email}</p>
-                            <p><strong>Name:</strong> ${data.name || "N/A"}</p>
-                            <p><strong>Company:</strong> ${data.company || "N/A"}</p>
-                            <p><strong>Phone:</strong> ${data.phone || "N/A"}</p>
-                            <p><strong>Source:</strong> ${data.source}</p>
-                            <p><strong>Service:</strong> ${data.service || "N/A"}</p>
-                            <p><strong>Score:</strong> ${score}/100</p>
-                            <p><strong>Message:</strong> ${data.message || "N/A"}</p>
-                        </div>
-                    `,
-                });
-            } catch (emailError) {
-                console.error("[LEAD_EMAIL_ERROR]", emailError);
-            }
-        }
+        // AUTOMATE NOTIFICATIONS (shared utility)
+        await notifyAdmin({
+            title: score >= 50 ? '🔥 HIGH-VALUE LEAD CAPTURED' : '🚀 NEW LEAD CAPTURED',
+            name: data.name || 'Anonymous',
+            email: data.email,
+            company: data.company,
+            phone: data.phone,
+            service: data.service,
+            message: data.message,
+            score,
+            color: score >= 50 ? 0xff4500 : 0x00ff00 // Red-Orange for hot, Green for new
+        });
 
         return NextResponse.json({
             success: true,

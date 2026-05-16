@@ -359,7 +359,7 @@ export default function AiEmployee() {
                                 <div className="inline-flex items-center gap-3">
                                     <span className="text-[10px] font-mono text-secondary/70 uppercase tracking-[0.3em]">VOICE_INTELLIGENCE_V5 // MSA AGENT</span>
                                 </div>
-                                <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white uppercase leading-[0.9] not-italic">
+                                <h3 className="text-base md:text-lg lg:text-xl font-black text-white uppercase leading-tight not-italic">
                                     Speak to <br className="hidden lg:block" />
                                     <span className="text-white/40 not-italic">The Architect.</span>
                                 </h3>
