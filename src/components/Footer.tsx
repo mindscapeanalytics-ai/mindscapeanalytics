@@ -47,15 +47,18 @@ export default function Footer() {
                             <div className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-foreground/40 opacity-0 group-hover:opacity-100 transition-opacity" />
 
                             <Image
-                                src="/images/logo/mindscape-analytics.png"
-                                alt="Mindscape Analytics"
-                                width={240}
-                                height={56}
-                                className="h-14 w-auto object-contain brightness-0 invert opacity-100 group-hover:opacity-100 transition-all duration-500"
-                            />
+                            src="/images/logo/mindscape-analytics.png"
+                            alt="Mindscape Analytics"
+                            width={220}
+                            height={52}
+                            className="h-12 w-auto object-contain brightness-0 invert"
+                        />
                         </Link>
 
-                        <div className="space-y-6">
+                        <div className="space-y-4">
+                            <h3 className="text-sm font-black tracking-[0.3em] uppercase text-foreground not-italic">
+                                Institutional // Intelligence
+                            </h3>
                             <div className="flex items-center gap-3">
                                 <div className="w-1.5 h-1.5 bg-secondary rounded-full shadow-[0_0_10px_rgba(var(--secondary),0.6)]" />
                                 <span className="text-meta opacity-90 text-foreground/80 dark:text-foreground/70">Core // NODE_v4.02</span>
@@ -204,7 +207,7 @@ export default function Footer() {
                                     key={i}
                                     href={href}
                                     whileHover={{ y: -4, scale: 1.1 }}
-                                    className="w-12 h-12 rounded-xl flex items-center justify-center text-foreground/80 dark:text-foreground/40 hover:text-secondary dark:hover:text-foreground hover:border-secondary/40 !border-border/80 transition-all border shadow-md bg-card dark:bg-[#0f0f11]"
+                                    className="w-12 h-12 rounded-xl flex items-center justify-center text-foreground hover:text-secondary hover:border-secondary/40 !border-border/80 transition-all border shadow-md bg-card dark:bg-[#0f0f11]"
                                     title={label}
                                 >
                                     <Icon className="w-5 h-5" />

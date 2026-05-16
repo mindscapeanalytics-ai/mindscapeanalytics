@@ -233,7 +233,7 @@ export default function Navbar() {
                         />
                     </Link>
                     {contextTheme && (
-                        <div className={cn("hidden sm:flex px-2 py-0.5 rounded-md text-[8px] font-black uppercase tracking-[0.2em] border self-center", contextTheme.color, contextTheme.bg, contextTheme.border)}>
+                        <div className={cn("hidden sm:flex px-2 py-0.5 rounded-md text-[8px] font-black uppercase tracking-[0.2em] border self-center not-italic", contextTheme.color, contextTheme.bg, contextTheme.border)}>
                             {contextTheme.label}
                         </div>
                     )}
@@ -425,7 +425,7 @@ export default function Navbar() {
                                         </button>
                                     </Link>
                                     <Link href="/sign-up">
-                                        <button className="bg-foreground text-background dark:bg-foreground dark:text-background px-7 py-2.5 rounded-full text-[11px] font-black uppercase tracking-[0.25em] hover:bg-secondary hover:text-white dark:hover:bg-foreground/90 transition-all flex items-center gap-3 shadow-[0_4px_32px_rgba(0,0,0,0.1)] active:scale-95 group/init">
+                                        <button className="bg-foreground text-background dark:bg-foreground dark:text-background px-7 py-2.5 rounded-full text-[11px] font-black uppercase tracking-[0.25em] hover:bg-secondary hover:text-white dark:hover:bg-foreground/90 transition-all flex items-center gap-3 shadow-[0_4px_32px_rgba(0,0,0,0.1)] active:scale-95 group/init not-italic">
                                             Initialize
                                             <ArrowRight size={12} className="group-hover/init:translate-x-1.5 transition-transform" />
                                         </button>
