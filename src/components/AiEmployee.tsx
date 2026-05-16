@@ -26,6 +26,7 @@ export default function AiEmployee() {
     const [agentResponse, setAgentResponse] = useState("");
     const [conversationHistory, setConversationHistory] = useState<ConversationEntry[]>([]);
     const [turnCount, setTurnCount] = useState(0);
+    const [permissionError, setPermissionError] = useState<string | null>(null);
     const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
     const recognitionRef = useRef<any>(null);
     const activeRef = useRef(false);
@@ -278,6 +279,7 @@ export default function AiEmployee() {
             }
         } else {
             // REQUEST MIC PERMISSIONS EXPLICITLY FOR 2026 ROBUSTNESS
+            setPermissionError(null);
             if (typeof navigator !== "undefined" && navigator.mediaDevices) {
                 navigator.mediaDevices.getUserMedia({ audio: true })
                     .then(() => {
@@ -307,7 +309,11 @@ export default function AiEmployee() {
                     })
                     .catch((err) => {
                         console.error("Mic Access Denied:", err);
-                        alert("PROTOCOL_ERROR: Microphone access is required for Voice Intelligence.");
+                        setPermissionError("Microphone access is required for Voice Intelligence. Please enable permissions in your browser settings.");
+                        setStatus("IDLE");
+                        
+                        // Auto-clear error after 5 seconds
+                        setTimeout(() => setPermissionError(null), 5000);
                     });
             }
         }
@@ -416,7 +422,23 @@ export default function AiEmployee() {
                                     <div className="absolute inset-x-0 bottom-6 lg:bottom-10 z-20 flex flex-col items-center gap-4 px-4">
                                         {/* Voice Terminal Overlay */}
                                         <AnimatePresence>
-                                            {(transcript || agentResponse) && isActive && (
+                                            {permissionError && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, scale: 0.9 }}
+                                                    animate={{ opacity: 1, scale: 1 }}
+                                                    exit={{ opacity: 0, scale: 0.9 }}
+                                                    className="w-[90%] max-w-sm bg-rose-500/10 backdrop-blur-xl border border-rose-500/30 rounded-xl p-4 mb-2 text-center"
+                                                >
+                                                    <div className="flex items-center gap-3 justify-center mb-1">
+                                                        <MicOff className="w-3.5 h-3.5 text-rose-500" />
+                                                        <span className="text-[10px] font-mono text-rose-500 uppercase tracking-widest font-black">PROTOCOL_ERROR</span>
+                                                    </div>
+                                                    <p className="text-[10px] text-white/70 leading-relaxed uppercase tracking-tighter">
+                                                        {permissionError}
+                                                    </p>
+                                                </motion.div>
+                                            )}
+                                            {(transcript || agentResponse) && isActive && !permissionError && (
                                                 <motion.div 
                                                     initial={{ opacity: 0, y: 20 }} 
                                                     animate={{ opacity: 1, y: 0 }} 

@@ -6,6 +6,11 @@ const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 const ADMIN_EMAILS = (process.env.ALLOWED_ADMINS || 'contact@mindscapeanalytics.com,imzeeshan.ai@gmail.com').split(',').map(e => e.trim());
 
 const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
+if (resend) {
+    console.log(`[NOTIFY_INIT] API_KEY_LOADED: true (${RESEND_API_KEY?.substring(0, 6)}...)`);
+} else {
+    console.warn('[NOTIFY_INIT] API_KEY_MISSING in environment variables.');
+}
 
 export async function notifyAdmin(payload: {
     title: string;
@@ -76,6 +81,7 @@ export async function notifyAdmin(payload: {
         `;
 
         try {
+            console.log(`[NOTIFY_EMAIL_ATTEMPT] Using From: ${EMAIL_FROM} | To: ${ADMIN_EMAILS.join(', ')}`);
             const { data, error } = await resend.emails.send({
                 from: EMAIL_FROM,
                 to: ADMIN_EMAILS,
@@ -85,17 +91,32 @@ export async function notifyAdmin(payload: {
             });
 
             if (error) {
-                console.error('[NOTIFY_EMAIL_ERROR]', error);
-                // Fallback to onboarding domain if custom domain fails
-                if (error.name === 'validation_error' && EMAIL_FROM.includes('mindscapeanalytics.com')) {
-                    console.log('[NOTIFY_EMAIL_FALLBACK] Attempting send via onboarding@resend.dev');
-                    await resend.emails.send({
-                        from: 'Mindscape Onboarding <onboarding@resend.dev>',
-                        to: ADMIN_EMAILS,
-                        replyTo: payload.email,
-                        subject: `[FALLBACK_SIGNAL] ${payload.name || payload.email}`,
-                        html: emailHtml,
-                    });
+                console.error('[NOTIFY_EMAIL_PRIMARY_ERROR]', error);
+                
+                // Fallback Phase: Individual delivery with domain bypass
+                console.log('[NOTIFY_EMAIL_RECOVERY] Attempting individual delivery bypass...');
+                for (const email of ADMIN_EMAILS) {
+                    try {
+                        const isDomainError = error.name === 'validation_error' || error.message?.toLowerCase().includes('verified');
+                        const recoveryFrom = isDomainError ? 'Mindscape <onboarding@resend.dev>' : EMAIL_FROM;
+                        
+                        console.log(`[NOTIFY_EMAIL_RECOVERY_SINGLE] Target: ${email} | From: ${recoveryFrom}`);
+                        const recoveryResult = await resend.emails.send({
+                            from: recoveryFrom,
+                            to: [email],
+                            replyTo: payload.email,
+                            subject: `[RECOVERY_SIGNAL] ${payload.name || payload.email}`,
+                            html: emailHtml,
+                        });
+                        
+                        if (recoveryResult.error) {
+                            console.warn(`[NOTIFY_EMAIL_RECOVERY_FAILED] ${email}:`, recoveryResult.error);
+                        } else {
+                            console.log(`[NOTIFY_EMAIL_RECOVERY_SUCCESS] ${email}`);
+                        }
+                    } catch (innerErr) {
+                        console.error(`[NOTIFY_EMAIL_RECOVERY_CRITICAL] ${email}:`, innerErr);
+                    }
                 }
             } else {
                 console.log('[NOTIFY_EMAIL_SUCCESS]', data?.id);
