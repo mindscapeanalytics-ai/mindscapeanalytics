@@ -208,10 +208,10 @@ export default function VoiceAgentDemo() {
                                     </span>
                                 )}
                             </div>
-                            <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter uppercase leading-[0.9]">
+                            <h3 className="text-2xl md:text-4xl lg:text-5xl font-black text-white tracking-tighter uppercase leading-[0.9]">
                                 Speak to <br />
                                 <span className="text-foreground/40">The Architect.</span>
-                            </h2>
+                            </h3>
                             <p className="text-lg text-white/40 font-medium max-w-md tracking-tighter">
                                 Experience the future of enterprise communication. Our voice agents handle $10M+ portfolios with human-grade empathy and machine-grade precision.
                             </p>

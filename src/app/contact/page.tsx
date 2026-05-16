@@ -218,7 +218,7 @@ function ContactFormContent() {
                                         </div>
                                         <h3 className="text-meta mb-2">{info.title}</h3>
                                         <p className="text-lg font-bold text-foreground mb-4 leading-tight">{info.value}</p>
-                                        <p className="text-foreground/40 text-sm leading-relaxed">{info.description}</p>
+                                        <p className="text-foreground/60 text-sm leading-relaxed">{info.description}</p>
                                     </div>
                                 </a>
                             </motion.div>
@@ -314,8 +314,14 @@ function ContactFormContent() {
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
                         >
-                            <Card className="bg-foreground/[0.02] backdrop-blur-3xl border-border/50 rounded-3xl overflow-hidden surface-frost">
-                                <CardContent className="p-8 md:p-12">
+                            <Card className="bg-foreground/[0.02] backdrop-blur-3xl border-border/50 rounded-3xl overflow-hidden surface-frost relative group/form">
+                                {/* Console Scanline */}
+                                <motion.div 
+                                    animate={{ y: ["-100%", "400%"] }} 
+                                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                                    className="absolute inset-x-0 h-20 bg-gradient-to-b from-transparent via-secondary/5 to-transparent z-0 opacity-20 pointer-events-none"
+                                />
+                                <CardContent className="p-8 md:p-12 relative z-10">
                                     {isSubmitted ? (
                                         <motion.div
                                             initial={{ opacity: 0, scale: 0.8 }}
@@ -335,7 +341,7 @@ function ContactFormContent() {
                                             {/* Form fields with improved styling */}
                                             <div className="grid md:grid-cols-2 gap-8">
                                                 <div className="space-y-4">
-                                                    <label htmlFor="name" className="block text-meta opacity-20">
+                                                    <label htmlFor="name" className="block text-meta opacity-50 mb-2">
                                                         01 // FULL_NAME
                                                     </label>
                                                     <Input
@@ -345,12 +351,12 @@ function ContactFormContent() {
                                                         required
                                                         value={formData.name}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-background border-border focus:border-secondary text-base text-foreground placeholder:text-foreground/10 rounded-xl"
+                                                        className="h-14 bg-background/50 border-border focus:border-secondary focus:ring-1 focus:ring-secondary/20 text-base text-foreground placeholder:text-foreground/30 rounded-xl transition-all duration-300"
                                                         placeholder="ENTITY NAME"
                                                     />
                                                 </div>
                                                 <div className="space-y-4">
-                                                    <label htmlFor="email" className="block text-meta opacity-20">
+                                                    <label htmlFor="email" className="block text-meta opacity-50 mb-2">
                                                         02 // EMAIL_PROTOCOL
                                                     </label>
                                                     <Input
@@ -360,7 +366,7 @@ function ContactFormContent() {
                                                         required
                                                         value={formData.email}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-background border-border focus:border-secondary text-base text-foreground placeholder:text-foreground/10 rounded-xl"
+                                                        className="h-14 bg-background/50 border-border focus:border-secondary focus:ring-1 focus:ring-secondary/20 text-base text-foreground placeholder:text-foreground/30 rounded-xl transition-all duration-300"
                                                         placeholder="SENDER@ACCESS.NODE"
                                                     />
                                                 </div>
@@ -368,7 +374,7 @@ function ContactFormContent() {
 
                                             <div className="grid md:grid-cols-2 gap-8">
                                                 <div className="space-y-4">
-                                                    <label htmlFor="company" className="block text-meta opacity-20">
+                                                    <label htmlFor="company" className="block text-meta opacity-50 mb-2">
                                                         03 // ORGANIZATION
                                                     </label>
                                                     <Input
@@ -377,12 +383,12 @@ function ContactFormContent() {
                                                         type="text"
                                                         value={formData.company}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-background border-border focus:border-secondary text-base text-foreground placeholder:text-foreground/10 rounded-xl"
+                                                        className="h-14 bg-background/50 border-border focus:border-secondary focus:ring-1 focus:ring-secondary/20 text-base text-foreground placeholder:text-foreground/30 rounded-xl transition-all duration-300"
                                                         placeholder="CORPORATE IDENTITY"
                                                     />
                                                 </div>
                                                 <div className="space-y-4">
-                                                    <label htmlFor="phone" className="block text-meta opacity-20">
+                                                    <label htmlFor="phone" className="block text-meta opacity-50 mb-2">
                                                         04 // COMMS_UID
                                                     </label>
                                                     <Input
@@ -391,33 +397,36 @@ function ContactFormContent() {
                                                         type="tel"
                                                         value={formData.phone}
                                                         onChange={handleChange}
-                                                        className="h-14 bg-background border-border focus:border-secondary text-base text-foreground placeholder:text-foreground/10 rounded-xl"
+                                                        className="h-14 bg-background/50 border-border focus:border-secondary focus:ring-1 focus:ring-secondary/20 text-base text-foreground placeholder:text-foreground/30 rounded-xl transition-all duration-300"
                                                         placeholder="+[NODE] XXXXX"
                                                     />
                                                 </div>
                                             </div>
 
                                             <div className="space-y-4">
-                                                <label htmlFor="service" className="block text-meta opacity-20">
+                                                <label htmlFor="service" className="block text-meta opacity-50 mb-2">
                                                     05 // INTEREST_AREA
                                                 </label>
-                                                <select
-                                                    id="service"
-                                                    name="service"
-                                                    value={formData.service}
-                                                    onChange={handleChange}
-                                                    className="w-full h-14 rounded-xl border border-border bg-background px-4 text-base text-foreground focus:border-secondary focus:outline-none transition-all appearance-none uppercase font-bold tracking-widest"
-                                                >
-                                                    <option value="" className="bg-background">SELECT PROTOCOL</option>
-                                                    <option value="strategic-architecture" className="bg-background">Strategic Architecture Plan</option>
-                                                    <option value="enterprise-intelligence" className="bg-background">Enterprise Intelligence Plan</option>
-                                                    <option value="infinite-ecosystem" className="bg-background">Infinite Ecosystem Plan</option>
-                                                    <option value="other" className="bg-background">Other Inquiries</option>
-                                                </select>
+                                                <div className="relative group">
+                                                    <select
+                                                        id="service"
+                                                        name="service"
+                                                        value={formData.service}
+                                                        onChange={handleChange}
+                                                        className="w-full h-14 rounded-xl border border-border bg-background/50 px-4 text-base text-foreground focus:border-secondary focus:ring-1 focus:ring-secondary/20 focus:outline-none transition-all appearance-none uppercase font-bold tracking-widest cursor-pointer"
+                                                    >
+                                                        <option value="" className="bg-zinc-950">SELECT PROTOCOL</option>
+                                                        <option value="strategic-architecture" className="bg-zinc-950">Strategic Architecture Plan</option>
+                                                        <option value="enterprise-intelligence" className="bg-zinc-950">Enterprise Intelligence Plan</option>
+                                                        <option value="infinite-ecosystem" className="bg-zinc-950">Infinite Ecosystem Plan</option>
+                                                        <option value="other" className="bg-zinc-950">Other Inquiries</option>
+                                                    </select>
+                                                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/40 pointer-events-none group-focus-within:text-secondary transition-colors" />
+                                                </div>
                                             </div>
 
                                             <div className="space-y-4">
-                                                <label htmlFor="message" className="block text-meta opacity-20">
+                                                <label htmlFor="message" className="block text-meta opacity-50 mb-2">
                                                     06 // SIGNAL_PAYLOAD
                                                 </label>
                                                 <textarea
@@ -427,7 +436,7 @@ function ContactFormContent() {
                                                     value={formData.message}
                                                     onChange={handleChange}
                                                     rows={5}
-                                                    className="w-full rounded-xl border border-border bg-background px-4 py-4 text-base text-foreground focus:border-secondary focus:outline-none transition-all resize-none placeholder:text-foreground/10"
+                                                    className="w-full rounded-xl border border-border bg-background/50 px-4 py-4 text-base text-foreground focus:border-secondary focus:ring-1 focus:ring-secondary/20 focus:outline-none transition-all resize-none placeholder:text-foreground/30 duration-300"
                                                     placeholder="DESCRIBE ARCHITECTURAL REQUIREMENTS..."
                                                 />
                                             </div>
