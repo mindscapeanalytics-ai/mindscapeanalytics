@@ -25,7 +25,6 @@ const NeuralNewsroom = dynamic(() => import("@/components/NeuralNewsroom"), { ss
 // 2026 Conversion Engine Components
 const AIAuditLeadMagnet = dynamic(() => import("@/components/AIAuditLeadMagnet"), { ssr: true });
 const LeadCaptureBar = dynamic(() => import("@/components/LeadCaptureBar"), { ssr: false });
-const ChatWidget = dynamic(() => import("@/components/ChatWidget"), { ssr: false });
 
 import { cn } from "@/lib/utils";
 
@@ -137,7 +136,6 @@ export default function HomeClient() {
 
             {/* AUTONOMOUS CONVERSION OVERLAYS */}
             <LeadCaptureBar />
-            <ChatWidget />
         </main>
     );
 }

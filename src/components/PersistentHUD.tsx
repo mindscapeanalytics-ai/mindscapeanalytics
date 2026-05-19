@@ -10,7 +10,7 @@ export default function PersistentHUD() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="fixed bottom-8 right-8 z-[100] pointer-events-none">
+        <div className="fixed bottom-[88px] md:bottom-[96px] right-6 z-[9995] pointer-events-none">
             <div className="flex flex-col items-end gap-4 pointer-events-auto">
                 <AnimatePresence>
                     {isOpen && (
@@ -84,7 +84,7 @@ export default function PersistentHUD() {
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setIsOpen(!isOpen)}
                     className={cn(
-                        "p-4 rounded-2xl bg-foreground text-background shadow-2xl transition-all flex items-center justify-center group",
+                        "w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-foreground text-background shadow-2xl transition-all flex items-center justify-center group",
                         isOpen ? "bg-background text-foreground border border-border" : ""
                     )}
                 >

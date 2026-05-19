@@ -30,6 +30,11 @@
     --color-zinc-900: #18181b;
     --color-zinc-800: #27272a;
     --color-sky-500: #39b8f7;
+
+    @keyframes marquee {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+    }
 }
 
 @utility border-border {

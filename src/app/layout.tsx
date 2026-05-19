@@ -153,7 +153,6 @@ const jsonLd = {
   ]
 }
 
-import PersistentHUD from "@/components/PersistentHUD";
 
 export default function RootLayout({
   children,
@@ -179,7 +178,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <CinematicBackground />
-            <PersistentHUD />
+
             {children}
             <ChatWidget />
             {process.env.VERCEL && <SpeedInsights />}

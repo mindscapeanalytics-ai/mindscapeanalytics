@@ -28,9 +28,37 @@ export default function AiEmployee() {
     const [turnCount, setTurnCount] = useState(0);
     const [permissionError, setPermissionError] = useState<string | null>(null);
     const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+    
     const recognitionRef = useRef<any>(null);
     const activeRef = useRef(false);
     const synthesisRef = useRef<SpeechSynthesis | null>(null);
+    
+    // Failsafe refs to prevent memory leaks, redundant loops and voice overlaps
+    const recognitionActiveRef = useRef(false);
+    const listeningTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const fallbackTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const restartTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const resumeIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Centralized timeout cleanup to prevent phantom restarts
+    const clearAllTimeouts = useCallback(() => {
+        if (listeningTimeoutRef.current) {
+            clearTimeout(listeningTimeoutRef.current);
+            listeningTimeoutRef.current = null;
+        }
+        if (fallbackTimeoutRef.current) {
+            clearTimeout(fallbackTimeoutRef.current);
+            fallbackTimeoutRef.current = null;
+        }
+        if (restartTimeoutRef.current) {
+            clearTimeout(restartTimeoutRef.current);
+            restartTimeoutRef.current = null;
+        }
+        if (resumeIntervalRef.current) {
+            clearInterval(resumeIntervalRef.current);
+            resumeIntervalRef.current = null;
+        }
+    }, []);
 
     // Initialize Speech and Voices
     useEffect(() => {
@@ -63,14 +91,21 @@ export default function AiEmployee() {
     useEffect(() => {
         return () => {
             activeRef.current = false;
+            clearAllTimeouts();
             if (synthesisRef.current) {
                 synthesisRef.current.cancel();
             }
             if (recognitionRef.current) {
-                try { recognitionRef.current.abort(); } catch {}
+                try {
+                    recognitionRef.current.onstart = null;
+                    recognitionRef.current.onend = null;
+                    recognitionRef.current.onerror = null;
+                    recognitionRef.current.onresult = null;
+                    recognitionRef.current.abort();
+                } catch {}
             }
         };
-    }, []);
+    }, [clearAllTimeouts]);
 
     const speakText = useCallback((text: string, onEnd: () => void) => {
         if (!synthesisRef.current) {
@@ -78,10 +113,17 @@ export default function AiEmployee() {
             return;
         }
 
+        // Preemptively clear any active Chrome 15s keep-alive interval
+        if (resumeIntervalRef.current) {
+            clearInterval(resumeIntervalRef.current);
+            resumeIntervalRef.current = null;
+        }
+
         if (typeof window !== "undefined" && window.speechSynthesis) {
             window.speechSynthesis.resume();
         }
         synthesisRef.current.cancel();
+        
         const utterance = new SpeechSynthesisUtterance(text);
         
         // Voice Selection Logic - 2026 Pro Standard
@@ -93,23 +135,41 @@ export default function AiEmployee() {
             "English (United States)"
         ];
 
+        // Retrieve available voices, fallback to instant getVoices if lazy loaded empty
+        let availableVoices = voices;
+        if (availableVoices.length === 0) {
+            availableVoices = window.speechSynthesis.getVoices();
+        }
+
         let selectedVoice = null;
         for (const name of preferredVoices) {
-            selectedVoice = voices.find(v => v.name.includes(name));
+            selectedVoice = availableVoices.find(v => v.name.includes(name));
             if (selectedVoice) break;
         }
 
         if (!selectedVoice) {
-            selectedVoice = voices.find(v => v.lang.startsWith("en-US") && (v.name.includes("Male") || v.name.includes("Natural")));
+            selectedVoice = availableVoices.find(v => v.lang.startsWith("en-US") && (v.name.includes("Male") || v.name.includes("Natural")));
         }
 
         if (selectedVoice) utterance.voice = selectedVoice;
         
-        utterance.rate = 1.05; // Slightly faster for modern feel
+        utterance.rate = 1.05; // Slightly faster for modern premium feel
         utterance.pitch = 1.0;
         utterance.volume = 1.0;
 
+        // CRITICAL HACK: Chrome 15-second SpeechSynthesis Bug Bypass
+        // Triggers synthesis keep-alive pulse every 10s to bypass browser-native freeze policies.
+        resumeIntervalRef.current = setInterval(() => {
+            if (synthesisRef.current && synthesisRef.current.speaking) {
+                synthesisRef.current.resume();
+            }
+        }, 10000);
+
         utterance.onend = () => {
+            if (resumeIntervalRef.current) {
+                clearInterval(resumeIntervalRef.current);
+                resumeIntervalRef.current = null;
+            }
             if (activeRef.current) {
                 onEnd();
             }
@@ -117,6 +177,10 @@ export default function AiEmployee() {
         
         utterance.onerror = (e) => {
             console.error("TTS Error:", e);
+            if (resumeIntervalRef.current) {
+                clearInterval(resumeIntervalRef.current);
+                resumeIntervalRef.current = null;
+            }
             onEnd();
         };
 
@@ -151,6 +215,21 @@ export default function AiEmployee() {
 
     const startListening = useCallback(() => {
         if (!activeRef.current) return;
+        
+        clearAllTimeouts();
+
+        // Safely abort previous instances to prevent overlap mic locks
+        if (recognitionRef.current) {
+            try {
+                recognitionRef.current.onstart = null;
+                recognitionRef.current.onend = null;
+                recognitionRef.current.onerror = null;
+                recognitionRef.current.onresult = null;
+                recognitionRef.current.abort();
+            } catch {}
+            recognitionRef.current = null;
+        }
+
         setStatus("LISTENING");
 
         if (typeof window === "undefined") return;
@@ -158,7 +237,7 @@ export default function AiEmployee() {
 
         if (!SpeechRecognition) {
             // High-fidelity fallback for browsers without Web Speech API
-            setTimeout(() => {
+            fallbackTimeoutRef.current = setTimeout(() => {
                 if (!activeRef.current) return;
                 const fallbackQueries = [
                     "How do your autonomous agents handle high-volume sales?",
@@ -179,6 +258,10 @@ export default function AiEmployee() {
 
         let finalTranscript = "";
 
+        recognition.onstart = () => {
+            recognitionActiveRef.current = true;
+        };
+
         recognition.onresult = (event: any) => {
             if (!activeRef.current) return;
             
@@ -195,14 +278,16 @@ export default function AiEmployee() {
         };
 
         recognition.onend = () => {
+            recognitionActiveRef.current = false;
             if (!activeRef.current) return;
+            
             if (finalTranscript) {
                 processUserInput(finalTranscript);
             } else {
-                // If no speech detected, restart or ask
+                // Centralized single-restart mechanism inside onend with guard check
                 setStatus("LISTENING");
-                setTimeout(() => {
-                    if (activeRef.current && status === "LISTENING" && !finalTranscript) {
+                restartTimeoutRef.current = setTimeout(() => {
+                    if (activeRef.current && !recognitionActiveRef.current) {
                         startListening();
                     }
                 }, 1000);
@@ -211,8 +296,15 @@ export default function AiEmployee() {
 
         recognition.onerror = (event: any) => {
             console.error("STT Error:", event.error);
-            if (event.error === "no-speech") {
-                setTimeout(() => { if (activeRef.current) startListening(); }, 500);
+            recognitionActiveRef.current = false;
+            
+            // Mic Blocked or Service Blocked: Terminate gracefully to prevent permissions prompts loops
+            if (event.error === "not-allowed" || event.error === "service-not-allowed") {
+                setPermissionError("Microphone access blocked or not supported. Please update browser settings.");
+                activeRef.current = false;
+                setIsActive(false);
+                setStatus("IDLE");
+                clearAllTimeouts();
             }
         };
 
@@ -220,8 +312,9 @@ export default function AiEmployee() {
             recognition.start(); 
         } catch (e) {
             console.error("Recognition start error:", e);
+            recognitionActiveRef.current = false;
         }
-    }, [turnCount, status]);
+    }, [turnCount, clearAllTimeouts]);
 
     const processUserInput = useCallback(async (userText: string) => {
         if (!activeRef.current) return;
@@ -257,7 +350,7 @@ export default function AiEmployee() {
 
         speakText(aiResponse, () => {
             if (activeRef.current) {
-                setTimeout(() => startListening(), 800);
+                listeningTimeoutRef.current = setTimeout(() => startListening(), 800);
             }
         });
     }, [conversationHistory, getAIResponse, speakText, startListening]);
@@ -271,14 +364,24 @@ export default function AiEmployee() {
             setAgentResponse("");
             setConversationHistory([]);
             setTurnCount(0);
+            
+            clearAllTimeouts();
+
             if (synthesisRef.current) {
                 synthesisRef.current.cancel();
             }
             if (recognitionRef.current) {
-                try { recognitionRef.current.abort(); } catch {}
+                try {
+                    recognitionRef.current.onstart = null;
+                    recognitionRef.current.onend = null;
+                    recognitionRef.current.onerror = null;
+                    recognitionRef.current.onresult = null;
+                    recognitionRef.current.abort();
+                } catch {}
+                recognitionRef.current = null;
             }
         } else {
-            // REQUEST MIC PERMISSIONS EXPLICITLY FOR 2026 ROBUSTNESS
+            // REQUEST MIC PERMISSIONS EXPLICITLY FOR ROBUSTNESS
             setPermissionError(null);
             if (typeof navigator !== "undefined" && navigator.mediaDevices) {
                 navigator.mediaDevices.getUserMedia({ audio: true })
@@ -303,7 +406,7 @@ export default function AiEmployee() {
 
                         speakText(welcome, () => {
                             if (activeRef.current) {
-                                setTimeout(() => startListening(), 500);
+                                listeningTimeoutRef.current = setTimeout(() => startListening(), 500);
                             }
                         });
                     })

@@ -25,37 +25,37 @@ export default function Hero() {
                 className="container-standard relative z-10 py-2 md:py-6 pointer-events-none flex flex-col items-center justify-center min-h-[60vh] md:min-h-[70vh] will-change-[opacity,transform]"
             >
                 <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
-                        <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-3 lg:px-6 py-1 lg:py-2.5 rounded-full bg-background dark:bg-foreground/[0.03] border border-border/80 backdrop-blur-md mb-8 lg:mb-12 shadow-sm will-change-transform"
-                        >
-                            <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-secondary rounded-full shadow-[0_0_10px_rgba(var(--secondary),0.6)]" />
-                            <span className="text-[6.5px] lg:text-[10px] font-mono text-foreground/80 dark:text-foreground/40 uppercase tracking-[0.25em] lg:tracking-[0.4em] font-black">Registry // ELITE_SYSTEM_V4</span>
-                        </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="inline-flex items-center gap-2 px-3 lg:px-6 py-1 lg:py-2.5 rounded-full bg-background dark:bg-foreground/[0.03] border border-border/80 backdrop-blur-md mb-8 lg:mb-12 shadow-sm will-change-transform"
+                    >
+                        <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-secondary rounded-full shadow-[0_0_10px_rgba(var(--secondary),0.6)]" />
+                        <span className="text-[6.5px] lg:text-[10px] font-mono text-foreground/80 dark:text-foreground/40 uppercase tracking-[0.25em] lg:tracking-[0.4em] font-black">Registry // ELITE_SYSTEM_V4</span>
+                    </motion.div>
 
                     <div className="relative space-y-2 flex flex-col items-center">
                         {/* Scanning Brackets - Mobile Only */}
                         <div className="lg:hidden absolute -top-4 -left-1 -right-1 -bottom-4 pointer-events-none opacity-40">
-                            <motion.div 
+                            <motion.div
                                 animate={{ opacity: [0.1, 0.3, 0.1] }}
                                 transition={{ duration: 2, repeat: Infinity }}
-                                className="absolute top-0 left-0 w-3 h-3 border-t border-l border-foreground/30 will-change-opacity" 
+                                className="absolute top-0 left-0 w-3 h-3 border-t border-l border-foreground/30 will-change-opacity"
                             />
-                            <motion.div 
+                            <motion.div
                                 animate={{ opacity: [0.1, 0.3, 0.1] }}
                                 transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                                className="absolute top-0 right-0 w-3 h-3 border-t border-r border-foreground/30 will-change-opacity" 
+                                className="absolute top-0 right-0 w-3 h-3 border-t border-r border-foreground/30 will-change-opacity"
                             />
-                            <motion.div 
+                            <motion.div
                                 animate={{ opacity: [0.1, 0.3, 0.1] }}
                                 transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                                className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-foreground/30 will-change-opacity" 
+                                className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-foreground/30 will-change-opacity"
                             />
-                            <motion.div 
+                            <motion.div
                                 animate={{ opacity: [0.1, 0.3, 0.1] }}
                                 transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
-                                className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-foreground/30 will-change-opacity" 
+                                className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-foreground/30 will-change-opacity"
                             />
                         </div>
 
@@ -72,13 +72,13 @@ export default function Hero() {
                                 {/* Architectural Brackets */}
                                 <div className="absolute -top-4 -left-6 w-4 h-4 border-t-2 border-l-2 border-secondary/40 lg:opacity-100 group-hover/title:scale-110 transition-transform hidden sm:block" />
                                 <div className="absolute -bottom-2 -right-6 w-4 h-4 border-b-2 border-r-2 border-secondary/40 lg:opacity-100 group-hover/title:scale-110 transition-transform hidden sm:block" />
-                                
+
                                 <span className="text-foreground px-4 drop-shadow-sm flex items-center gap-4 break-words text-center">
                                     <span className="hidden lg:block text-[8px] font-mono text-foreground/20 tracking-[0.5em] -ml-12">0X_4F</span>
                                     ARCHITECTING
                                 </span>
                                 <span className="relative inline-block mt-0.5 md:mt-4 px-4 overflow-hidden max-w-full">
-                                     <span className="bg-gradient-to-r from-secondary via-white/80 to-secondary bg-[length:200%_auto] bg-clip-text text-transparent shimmer-sweep drop-shadow-[0_0_20px_hsl(var(--secondary)/0.4)] break-words">
+                                    <span className="bg-gradient-to-r from-secondary via-white/80 to-secondary bg-[length:200%_auto] bg-clip-text text-transparent shimmer-sweep drop-shadow-[0_0_20px_hsl(var(--secondary)/0.4)] break-words">
                                         THE FUTURE
                                     </span>
                                 </span>

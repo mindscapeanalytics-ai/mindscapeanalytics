@@ -205,37 +205,37 @@ export default function NeuralNewsroom() {
     };
 
     return (
-        <section className="py-32 bg-transparent relative border-t border-white/5 overflow-hidden">
+        <section className="py-16 sm:py-24 md:py-32 bg-transparent relative border-t border-white/5 overflow-hidden">
             <div className="container-standard relative z-10">
-                <div className="flex flex-col lg:flex-row gap-20 items-start">
+                <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-start">
 
                     {/* Header Side */}
-                    <div className="lg:w-1/3 sticky top-32 space-y-12">
+                    <div className="w-full lg:w-1/3 static lg:sticky lg:top-32 space-y-8 lg:space-y-12 mb-12 lg:mb-0">
                         <div>
-                            <motion.span className="text-[10px] font-mono text-secondary tracking-[0.4em] font-black uppercase mb-4 block not-italic">
+                            <motion.span className="text-[9px] md:text-[10px] font-mono text-secondary tracking-[0.25em] md:tracking-[0.4em] font-black uppercase mb-4 block not-italic">
                                 Autonomous_Content_Engine //
                             </motion.span>
-                            <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase mb-8 leading-[0.9] not-italic">
+                            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tighter uppercase mb-6 sm:mb-8 leading-[0.9] not-italic">
                                 Neural <br />
                                 <span className="text-foreground/40">Newsroom.</span>
                             </h2>
-                            <p className="text-lg text-white/40 font-medium mb-10 leading-relaxed uppercase tracking-tighter not-italic">
+                            <p className="text-sm sm:text-base md:text-lg text-white/40 font-medium mb-6 sm:mb-10 leading-relaxed uppercase tracking-tighter not-italic">
                                 Our agents monitor global market shifts in real-time to generate strategic intelligence. No writers. No delays. Just raw, autonomous foresight for institutional growth.
                             </p>
 
                             {/* Telemetry Visualizer */}
-                            <div className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/10 mb-10 overflow-hidden relative group">
+                            <div className="p-4 sm:p-6 rounded-[1.5rem] sm:rounded-[2rem] bg-white/[0.02] border border-white/10 mb-6 sm:mb-10 overflow-hidden relative group">
                                 <div className="flex justify-between items-end mb-4">
                                     <div className="space-y-1">
                                         <p className="text-[9px] font-mono text-white/20 uppercase tracking-widest not-italic">Network_Index</p>
-                                        <p className="text-2xl font-black text-white tracking-tighter font-mono not-italic">{marketIndex.toFixed(2)}</p>
+                                        <p className="text-xl sm:text-2xl font-black text-white tracking-tighter font-mono not-italic">{marketIndex.toFixed(2)}</p>
                                     </div>
                                     <div className="text-right">
                                         <p className="text-[9px] font-mono text-emerald-400 uppercase tracking-widest font-black not-italic">+1.24%</p>
                                         <p className="text-[7px] font-mono text-white/20 uppercase not-italic">STABLE</p>
                                     </div>
                                 </div>
-                                <div className="h-16 flex items-end gap-[2px]">
+                                <div className="h-16 flex items-end gap-[1px] sm:gap-[2px]">
                                     {[...Array(24)].map((_, i) => (
                                         <motion.div
                                             key={i}
@@ -248,32 +248,32 @@ export default function NeuralNewsroom() {
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-8">
-                                <div className="space-y-1 border-l border-white/10 pl-6">
-                                    <p className="text-[10px] font-mono text-white/20 uppercase tracking-widest flex items-center gap-2">
-                                        <Activity size={10} className="text-secondary" /> Global_Scanned
+                            <div className="grid grid-cols-2 gap-4 sm:gap-8">
+                                <div className="space-y-1 border-l border-white/10 pl-4 sm:pl-6">
+                                    <p className="text-[9px] sm:text-[10px] font-mono text-white/20 uppercase tracking-widest flex items-center gap-2">
+                                        <Activity size={10} className="text-secondary animate-pulse" /> Global_Scanned
                                     </p>
-                                    <p className="text-2xl font-black text-white tracking-tighter font-mono">{scannedCount.toLocaleString()}</p>
+                                    <p className="text-xl sm:text-2xl font-black text-white tracking-tighter font-mono">{scannedCount.toLocaleString()}</p>
                                 </div>
-                                <div className="space-y-1 border-l border-white/10 pl-6">
-                                    <p className="text-[10px] font-mono text-white/20 uppercase tracking-widest flex items-center gap-2">
+                                <div className="space-y-1 border-l border-white/10 pl-4 sm:pl-6">
+                                    <p className="text-[9px] sm:text-[10px] font-mono text-white/20 uppercase tracking-widest flex items-center gap-2">
                                         <Zap size={10} className="text-secondary" /> Active_Agents
                                     </p>
-                                    <p className="text-2xl font-black text-secondary tracking-tighter font-mono not-italic">842</p>
+                                    <p className="text-xl sm:text-2xl font-black text-secondary tracking-tighter font-mono not-italic">842</p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Niche Selector */}
                         <div className="space-y-4">
-                            <label className="text-[9px] font-mono font-black text-foreground/30 uppercase tracking-[0.3em]">Sector_Refinement_Matrix</label>
+                            <label className="text-[8px] sm:text-[9px] font-mono font-black text-foreground/30 uppercase tracking-[0.3em]">Sector_Refinement_Matrix</label>
                             <div className="flex flex-wrap gap-2">
                                 {NICHES.map(niche => (
                                     <button
                                         key={niche}
                                         onClick={() => handleNicheChange(niche)}
                                         className={cn(
-                                            "px-4 py-2 rounded-xl text-[9px] font-black tracking-widest transition-all border uppercase not-italic",
+                                            "px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-[8px] sm:text-[9px] font-black tracking-wider sm:tracking-widest transition-all border uppercase not-italic",
                                             selectedNiche === niche
                                                 ? "bg-secondary text-black border-secondary"
                                                 : "bg-white/5 text-white/60 border-white/20 hover:border-white/40"
@@ -290,13 +290,13 @@ export default function NeuralNewsroom() {
                                 onClick={generateArticle}
                                 disabled={isGenerating}
                                 className={cn(
-                                    "w-full btn-institutional py-6 group uppercase tracking-[0.2em] font-black relative overflow-hidden",
+                                    "w-full btn-institutional py-4 sm:py-5 group uppercase tracking-[0.15em] sm:tracking-[0.2em] font-black text-[9px] sm:text-[10px] relative overflow-hidden",
                                     isGenerating ? "opacity-50 cursor-wait" : ""
                                 )}
                             >
-                                <span className="relative z-10 flex items-center justify-center gap-4">
+                                <span className="relative z-10 flex items-center justify-center gap-3 sm:gap-4">
                                     {isGenerating ? "NEURAL_LINK_ESTABLISHED" : "INITIALIZE_AUTOBOT_GEN"}
-                                    <Sparkles size={16} className={cn("transition-transform", isGenerating ? "animate-spin text-secondary" : "group-hover:rotate-12")} />
+                                    <Sparkles size={14} className={cn("transition-transform", isGenerating ? "animate-spin text-secondary" : "group-hover:rotate-12")} />
                                 </span>
                                 {isGenerating && (
                                     <motion.div
@@ -316,12 +316,12 @@ export default function NeuralNewsroom() {
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: "auto" }}
                                     exit={{ opacity: 0, height: 0 }}
-                                    className="p-6 rounded-2xl bg-black border border-white/10 font-mono text-[9px] space-y-1 overflow-hidden shadow-2xl"
+                                    className="p-5 sm:p-6 rounded-2xl bg-black border border-white/10 font-mono text-[9px] space-y-1 overflow-hidden shadow-2xl"
                                 >
                                     {logs.map((log, i) => (
-                                        <div key={i} className="flex gap-3 uppercase">
+                                        <div key={i} className="flex gap-2.5 sm:gap-3 uppercase">
                                             <span className="text-secondary/40">[{new Date().toLocaleTimeString()}]</span>
-                                            <span className="text-white/60">{log}</span>
+                                            <span className="text-white/60 text-[8px] sm:text-[9px]">{log}</span>
                                         </div>
                                     ))}
                                     <motion.div
@@ -335,28 +335,34 @@ export default function NeuralNewsroom() {
                     </div>
 
                     {/* Feed Side */}
-                    <div className="lg:w-2/3 space-y-12">
+                    <div className="w-full lg:w-2/3 space-y-8 lg:space-y-12">
                         {/* Live Feed Ticker */}
-                        <div className="flex items-center gap-6 overflow-hidden bg-white/[0.02] border-y border-white/5 py-4 px-8 rounded-full backdrop-blur-md">
+                        <div className="flex items-center gap-3 sm:gap-6 overflow-hidden bg-white/[0.02] border-y border-white/5 py-3 sm:py-4 px-4 sm:px-8 rounded-full backdrop-blur-md">
                             <div className="flex items-center gap-2 shrink-0">
-                                <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-                                <span className="text-[9px] font-mono font-black text-secondary uppercase tracking-[0.3em]">LIVE_NETWORK_FEED</span>
+                                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-secondary animate-pulse" />
+                                <span className="text-[8px] sm:text-[9px] font-mono font-black text-secondary uppercase tracking-[0.2em] sm:tracking-[0.3em]">LIVE_NETWORK_FEED</span>
                             </div>
-                            <div className="flex gap-12 animate-[marquee_30s_linear_infinite] whitespace-nowrap">
-                                {[1, 2, 3, 4, 5, 6, 7].map(n => (
-                                    <span key={n} className="text-[10px] font-mono text-white/20 uppercase tracking-widest not-italic">
-                                        [AGENT_NODE_{n * 12}] :: SCANNING_{NICHES[n % NICHES.length]} :: {(Math.random() * 100).toFixed(2)}MB_PROCESSED
-                                    </span>
-                                ))}
+                            <div className="flex-1 min-w-0 overflow-hidden relative">
+                                <div className="flex gap-12 animate-[marquee_30s_linear_infinite] whitespace-nowrap">
+                                    {[...Array(2)].map((_, i) => (
+                                        <React.Fragment key={i}>
+                                            {[1, 2, 3, 4, 5, 6, 7].map(n => (
+                                                <span key={`${i}-${n}`} className="text-[10px] font-mono text-white/20 uppercase tracking-widest not-italic">
+                                                    [AGENT_NODE_{n * 12}] :: SCANNING_{NICHES[n % NICHES.length]} :: {(Math.random() * 100).toFixed(2)}MB_PROCESSED
+                                                </span>
+                                            ))}
+                                        </React.Fragment>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <AnimatePresence mode="popLayout">
                                 {isRefining ? (
-                                    <div className="col-span-1 md:col-span-2 py-32 text-center border border-dashed border-secondary/20 rounded-[3rem] bg-secondary/[0.02] animate-pulse">
-                                        <Activity size={48} className="mx-auto text-secondary mb-6 animate-spin" />
-                                        <p className="text-[10px] font-mono text-secondary uppercase tracking-[0.5em] font-black">Refining_Sector_Extraction...</p>
+                                    <div className="col-span-1 md:col-span-2 py-24 sm:py-32 text-center border border-dashed border-secondary/20 rounded-[2rem] sm:rounded-[3rem] bg-secondary/[0.02] animate-pulse">
+                                        <Activity size={36} className="mx-auto text-secondary mb-4 sm:mb-6 animate-spin" />
+                                        <p className="text-[9px] sm:text-[10px] font-mono text-secondary uppercase tracking-[0.35em] sm:tracking-[0.5em] font-black">Refining_Sector_Extraction...</p>
                                         <p className="text-[8px] font-mono text-secondary/30 uppercase mt-2">MSA_CORE_V5 // CONNECTING_NODES</p>
                                     </div>
                                 ) : filteredArticles.length > 0 ? (
@@ -368,7 +374,7 @@ export default function NeuralNewsroom() {
                                             animate={{ opacity: 1, scale: 1, y: 0 }}
                                             exit={{ opacity: 0, scale: 0.9 }}
                                             transition={{ duration: 0.5, delay: i * 0.1 }}
-                                            className="p-8 rounded-[2rem] border border-white/5 bg-zinc-950/40 backdrop-blur-xl group hover:border-secondary/20 transition-all flex flex-col justify-between min-h-[350px] relative overflow-hidden"
+                                            className="p-5 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] border border-white/5 bg-zinc-950/40 backdrop-blur-xl group hover:border-secondary/20 transition-all flex flex-col justify-between min-h-[320px] sm:min-h-[350px] relative overflow-hidden"
                                         >
                                             <div className="absolute top-0 right-0 p-4 opacity-[0.03] pointer-events-none group-hover:opacity-[0.07] transition-opacity">
                                                 <Cpu size={140} />
@@ -380,36 +386,36 @@ export default function NeuralNewsroom() {
                                                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                                                 className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-secondary/20 to-transparent z-0 opacity-0 group-hover:opacity-100"
                                             />
-                                            <div className="space-y-6 relative z-10">
-                                                <div className="flex items-center justify-between">
-                                                    <div className="flex items-center gap-3">
+                                            <div className="space-y-5 sm:space-y-6 relative z-10 flex-grow flex flex-col justify-start">
+                                                <div className="flex flex-wrap items-center justify-between gap-3">
+                                                    <div className="flex items-center gap-2">
                                                         <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_rgba(var(--secondary),0.5)]" />
-                                                        <span className="text-[9px] font-mono font-black text-secondary tracking-[0.3em] uppercase not-italic">{article.niche}</span>
+                                                        <span className="text-[9px] font-mono font-black text-secondary tracking-[0.2em] sm:tracking-[0.3em] uppercase not-italic">{article.niche}</span>
                                                     </div>
-                                                    <div className="flex items-center gap-6">
+                                                    <div className="flex items-center gap-4 sm:gap-6">
                                                         <div className="flex flex-col items-end">
                                                             <span className="text-[7px] font-mono text-white/20 uppercase tracking-widest not-italic">Confidence</span>
-                                                            <span className="text-xs font-mono font-black text-emerald-400 not-italic">{article.confidence}%</span>
+                                                            <span className="text-[11px] sm:text-xs font-mono font-black text-emerald-400 not-italic">{article.confidence}%</span>
                                                         </div>
                                                         <div className="flex flex-col items-end">
                                                             <span className="text-[7px] font-mono text-white/20 uppercase tracking-widest not-italic">Entropy</span>
-                                                            <span className="text-xs font-mono font-black text-blue-400 not-italic">{article.dataPoints}</span>
+                                                            <span className="text-[11px] sm:text-xs font-mono font-black text-blue-400 not-italic">{article.dataPoints}</span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className="space-y-4">
-                                                    <h3 className="text-2xl font-black text-white leading-tight tracking-tighter uppercase group-hover:text-secondary transition-colors duration-500 not-italic">
+                                                <div className="space-y-3 sm:space-y-4">
+                                                    <h3 className="text-xl sm:text-2xl font-black text-white leading-tight tracking-tighter uppercase group-hover:text-secondary transition-colors duration-500 not-italic">
                                                         {article.title}
                                                     </h3>
-                                                    <p className="text-[11px] text-white/30 leading-relaxed font-medium uppercase tracking-tight line-clamp-3 not-italic">
+                                                    <p className="text-[10px] sm:text-[11px] text-white/30 leading-relaxed font-medium uppercase tracking-tight line-clamp-3 sm:line-clamp-4 not-italic">
                                                         {article.description}
                                                     </p>
                                                     {(article as any).impact && (
-                                                        <div className="flex gap-4 pt-2">
-                                                            <div className="px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[8px] font-mono text-emerald-400 uppercase tracking-widest not-italic">
+                                                        <div className="flex flex-wrap gap-2 pt-2">
+                                                            <div className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[7px] sm:text-[8px] font-mono text-emerald-400 uppercase tracking-wider sm:tracking-widest not-italic">
                                                                 {(article as any).impact}
                                                             </div>
-                                                            <div className="px-3 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-[8px] font-mono text-blue-400 uppercase tracking-widest not-italic">
+                                                            <div className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-[7px] sm:text-[8px] font-mono text-blue-400 uppercase tracking-wider sm:tracking-widest not-italic">
                                                                 {(article as any).alpha}
                                                             </div>
                                                         </div>
@@ -417,9 +423,9 @@ export default function NeuralNewsroom() {
                                                 </div>
                                             </div>
 
-                                            <div className="pt-8 flex flex-col gap-4 border-t border-white/5 mt-auto relative z-10">
-                                                <div className="flex items-center justify-between">
-                                                    <div className="flex items-center gap-6 text-white/20">
+                                            <div className="pt-6 sm:pt-8 flex flex-col gap-4 border-t border-white/5 mt-6 relative z-10">
+                                                <div className="flex flex-wrap items-center justify-between gap-4">
+                                                    <div className="flex items-center gap-4 sm:gap-6 text-white/20">
                                                         <div className="flex items-center gap-2">
                                                             <Terminal size={12} className="text-secondary/40" />
                                                             <span className="text-[9px] font-mono uppercase tracking-widest not-italic">{article.readTime}</span>
@@ -432,33 +438,33 @@ export default function NeuralNewsroom() {
                                                     <div className="flex gap-2">
                                                         <button 
                                                             onClick={() => handleShare(article.title)}
-                                                            className="p-3 rounded-xl bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all active:scale-95"
+                                                            className="p-2.5 sm:p-3 rounded-xl bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all active:scale-95"
                                                         >
-                                                            <Share2 size={14} />
+                                                            <Share2 size={13} />
                                                         </button>
                                                         <button 
                                                             onClick={() => handleDownload(article.title)}
-                                                            className="p-3 rounded-xl bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all active:scale-95"
+                                                            className="p-2.5 sm:p-3 rounded-xl bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all active:scale-95"
                                                         >
-                                                            <Download size={14} />
+                                                            <Download size={13} />
                                                         </button>
                                                     </div>
                                                 </div>
                                                 
                                                 <button 
                                                     onClick={handleDeploy}
-                                                    className="w-full py-4 rounded-xl bg-secondary text-black font-black text-[10px] uppercase tracking-[0.2em] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3"
+                                                    className="w-full py-3.5 rounded-xl bg-secondary text-black font-black text-[9px] sm:text-[10px] uppercase tracking-[0.15em] sm:tracking-[0.2em] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
                                                 >
                                                     DEPLOY THIS AGENT
-                                                    <Zap size={12} />
+                                                    <Zap size={11} />
                                                 </button>
                                             </div>
                                         </motion.div>
                                     ))
                                 ) : (
-                                    <div className="col-span-1 md:col-span-2 py-32 text-center border border-dashed border-white/10 rounded-[3rem] bg-white/[0.01]">
-                                        <Cpu size={48} className="mx-auto text-white/10 mb-6 animate-pulse" />
-                                        <p className="text-[10px] font-mono text-white/40 uppercase tracking-[0.5em] font-black not-italic">Awaiting_Sector_Intelligence...</p>
+                                    <div className="col-span-1 md:col-span-2 py-24 sm:py-32 text-center border border-dashed border-white/10 rounded-[2rem] sm:rounded-[3rem] bg-white/[0.01]">
+                                        <Cpu size={36} className="mx-auto text-white/10 mb-4 sm:mb-6 animate-pulse" />
+                                        <p className="text-[9px] sm:text-[10px] font-mono text-white/40 uppercase tracking-[0.35em] sm:tracking-[0.5em] font-black not-italic">Awaiting_Sector_Intelligence...</p>
                                         <p className="text-[8px] font-mono text-white/10 uppercase mt-2 not-italic">Initialize Autobot for {selectedNiche} extraction</p>
                                     </div>
                                 )}
