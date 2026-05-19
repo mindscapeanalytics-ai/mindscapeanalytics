@@ -33,6 +33,7 @@ export default function VoiceAgentDemo() {
     const thinkingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const endTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const listenTimerRef = useRef<NodeJS.Timeout | null>(null);
+    const resumeIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
     const clearAllDemoTimeouts = useCallback(() => {
         if (connectTimeoutRef.current) {
@@ -50,6 +51,10 @@ export default function VoiceAgentDemo() {
         if (listenTimerRef.current) {
             clearTimeout(listenTimerRef.current);
             listenTimerRef.current = null;
+        }
+        if (resumeIntervalRef.current) {
+            clearInterval(resumeIntervalRef.current);
+            resumeIntervalRef.current = null;
         }
     }, []);
 
@@ -121,15 +126,26 @@ export default function VoiceAgentDemo() {
 
                 let selectedVoice = null;
                 for (const name of preferredVoices) {
-                    selectedVoice = voices.find(v => v.name.includes(name));
+                    selectedVoice = voices.find((v: any) => v.name.includes(name));
                     if (selectedVoice) break;
                 }
 
                 if (selectedVoice) utterance.voice = selectedVoice;
 
+                if (resumeIntervalRef.current) clearInterval(resumeIntervalRef.current);
+                resumeIntervalRef.current = setInterval(() => {
+                    if (typeof window !== "undefined" && window.speechSynthesis && window.speechSynthesis.speaking) {
+                        window.speechSynthesis.resume();
+                    }
+                }, 10000);
+
                 window.speechSynthesis.speak(utterance);
 
                 utterance.onend = () => {
+                    if (resumeIntervalRef.current) {
+                        clearInterval(resumeIntervalRef.current);
+                        resumeIntervalRef.current = null;
+                    }
                     if (!activeRef.current) return;
                     setCurrentInteraction(prev => (prev + 1) % interactions.length);
                     endTimeoutRef.current = setTimeout(() => {
@@ -138,6 +154,10 @@ export default function VoiceAgentDemo() {
                 };
 
                 utterance.onerror = () => {
+                    if (resumeIntervalRef.current) {
+                        clearInterval(resumeIntervalRef.current);
+                        resumeIntervalRef.current = null;
+                    }
                     if (!activeRef.current) return;
                     setCurrentInteraction(prev => (prev + 1) % interactions.length);
                     endTimeoutRef.current = setTimeout(() => {
