@@ -69,14 +69,14 @@ export default function TrustSignals() {
     return (
         <section className="relative py-20 lg:py-32 bg-transparent overflow-hidden">
             {/* Subtle Background */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(var(--secondary),0.03),transparent_60%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(var(--secondary) / 0.03),transparent_60%)] pointer-events-none" />
 
             <div className="container-standard relative z-10 space-y-20 lg:space-y-32">
 
                 {/* 1. Partner/Technology Logos Strip */}
                 <div className="space-y-8">
                     <div className="text-center">
-                        <p className="text-[9px] font-mono font-black uppercase tracking-[0.5em] text-foreground/20">Powered By Industry-Leading Infrastructure</p>
+                        <p className="text-[9px] font-mono font-black uppercase tracking-[0.5em] text-foreground/50">Powered By Industry-Leading Infrastructure</p>
                     </div>
                     <div className="relative overflow-hidden">
                         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
@@ -110,7 +110,7 @@ export default function TrustSignals() {
                             <div className="text-2xl lg:text-4xl font-black text-foreground tracking-tight mb-1">
                                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                             </div>
-                            <p className="text-[9px] lg:text-[10px] font-mono font-black uppercase tracking-[0.3em] text-foreground/30">{stat.label}</p>
+                            <p className="text-[9px] lg:text-[10px] font-mono font-black uppercase tracking-[0.3em] text-foreground/60">{stat.label}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -120,7 +120,7 @@ export default function TrustSignals() {
                     <div className="text-center space-y-4">
                         <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-foreground/[0.03] border border-border/30 mx-auto">
                             <Award className="w-3.5 h-3.5 text-secondary" />
-                            <span className="text-[9px] font-mono font-black uppercase tracking-[0.4em] text-foreground/40">Client Results</span>
+                            <span className="text-[9px] font-mono font-black uppercase tracking-[0.4em] text-foreground/65">Client Results</span>
                         </div>
                         <h2 className="fluid-h2">
                             PROVEN <span className="opacity-30">IMPACT.</span>
@@ -143,7 +143,7 @@ export default function TrustSignals() {
                                 <p className="text-sm lg:text-base text-foreground/60 leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
                                 <div className="pt-3 border-t border-border/30">
                                     <p className="text-sm font-bold text-foreground">{t.name}</p>
-                                    <p className="text-[10px] font-mono text-foreground/30 uppercase tracking-wider">{t.role}</p>
+                                    <p className="text-[10px] font-mono text-foreground/60 uppercase tracking-wider">{t.role}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -159,8 +159,8 @@ export default function TrustSignals() {
                         { icon: Users, text: "24/7 Architect Support" },
                     ].map((badge, i) => (
                         <div key={i} className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-foreground/[0.02] border border-border/30">
-                            <badge.icon className="w-3.5 h-3.5 text-foreground/30" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40">{badge.text}</span>
+                            <badge.icon className="w-3.5 h-3.5 text-foreground/60" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/70">{badge.text}</span>
                         </div>
                     ))}
                 </div>

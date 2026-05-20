@@ -273,7 +273,7 @@ export default function Navbar() {
                                     aria-label={link.label}
                                     className={cn(
                                         "text-[11px] font-black uppercase tracking-[0.25em] transition-all relative py-4 flex items-center gap-2",
-                                        isActive ? "text-foreground" : "text-foreground/70 dark:text-foreground/40 hover:text-foreground group-hover:drop-shadow-[0_0_10px_rgba(var(--foreground),0.1)]"
+                                        isActive ? "text-foreground" : "text-foreground/70 dark:text-foreground/40 hover:text-foreground group-hover:drop-shadow-[0_0_10px_hsl(var(--foreground) / 0.1)]"
                                     )}
                                 >
                                     {link.icon && <span className={cn("transition-opacity", isActive ? "opacity-100" : "opacity-40 group-hover:opacity-100")}>{link.icon}</span>}

@@ -5,7 +5,21 @@ import Image from "next/image";
 import Link from "next/link";
 import {
     Linkedin,
-    Mail
+    Mail,
+    Shield,
+    Zap,
+    Globe,
+    Users,
+    Bot,
+    TrendingUp,
+    Award,
+    ChevronRight,
+    Target,
+    Eye,
+    Database,
+    Code,
+    Cpu,
+    CheckCircle2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
@@ -93,21 +107,21 @@ const timeline = [
 ];
 
 const expertise = [
-    { title: "AI Agents & Automation", id: "01" },
-    { title: "AI Voice Call Agents", id: "02" },
-    { title: "AI Sales & Chatbots", id: "03" },
-    { title: "Big Data & Cloud Engineering", id: "04" },
-    { title: "Full-Stack SaaS Platforms", id: "05" },
-    { title: "Lead Generation AI Systems", id: "06" },
-    { title: "Custom Database & Infrastructure", id: "07" }
+    { title: "AI Agents & Automation", id: "01", icon: Bot, desc: "Autonomous agent networks engineered for operational excellence." },
+    { title: "AI Voice Call Agents", id: "02", icon: Zap, desc: "Ultra-low latency conversational agents integrated with Vapi/Retell." },
+    { title: "AI Sales & Chatbots", id: "03", icon: Users, desc: "Intelligent customer engagement nodes that qualify and convert." },
+    { title: "Big Data & Cloud Engineering", id: "04", icon: Database, desc: "Cloud-native databases, processing millions of complex operations." },
+    { title: "Full-Stack SaaS Platforms", id: "05", icon: Code, desc: "High-density web architectures designed for global scalability." },
+    { title: "Lead Generation AI Systems", id: "06", icon: TrendingUp, desc: "Automated intent discovery pipelines that feed CRM directly." },
+    { title: "Custom Database Architecture", id: "07", icon: Cpu, desc: "High-security relational structures built for enterprise workloads." }
 ];
 
 const differences = [
-    "AI Automation Workflows",
-    "Optimized Cloud Infrastructure",
-    "Enterprise Database Architecture",
-    "Performance Monitoring Systems",
-    "Ongoing Technical Support"
+    { name: "AI Automation Workflows", stat: "99.9% Autonomous" },
+    { name: "Optimized Cloud Infrastructure", stat: "<10ms Latency" },
+    { name: "Enterprise Database Architecture", stat: "SOC-2 Standard" },
+    { name: "Performance Monitoring Systems", stat: "24/7 Real-Time" },
+    { name: "Ongoing Technical Support", stat: "Direct Slack Access" }
 ];
 
 const trustFactors = [
@@ -119,309 +133,384 @@ const trustFactors = [
     { title: "Transparent ROI Structures", detail: "Calculated business impact metrics." }
 ];
 
+// Helper component for reveal animations
+function ScrollReveal({
+    children,
+    delay = 0,
+    className = ""
+}: {
+    children: React.ReactNode;
+    delay?: number;
+    className?: string;
+}) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{
+                duration: 0.8,
+                delay,
+                ease: [0.215, 0.61, 0.355, 1]
+            }}
+            className={className}
+        >
+            {children}
+        </motion.div>
+    );
+}
+
 export default function AboutPage() {
     return (
-        <div className="min-h-screen bg-transparent text-foreground relative">
+        <div className="min-h-screen bg-transparent text-foreground relative selection:bg-white selection:text-black">
             <Navbar />
 
-            {/* --- Industrial Hero Section --- */}
-            <section className="relative pt-32 md:pt-48 pb-16 md:pb-32 overflow-hidden institutional-grid">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
+            {/* Subtle global telemetry grid lines */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
+            {/* --- Premium Cybernetic Hero Section --- */}
+            <section className="relative pt-36 md:pt-52 pb-20 md:pb-36 overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(255,255,255,0.03),transparent_70%)] pointer-events-none" />
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="flex flex-col items-center text-center space-y-8 md:space-y-12">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-foreground/5 border border-border backdrop-blur-md"
+                            transition={{ duration: 0.6 }}
+                            className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white/[0.02] border border-white/10 backdrop-blur-xl"
                         >
-                            <div className="w-2 h-2 bg-foreground rounded-full animate-pulse shadow-[0_0_8px_hsl(var(--foreground)/0.6)]" />
-                            <span className="text-meta">Registry // ELITE_SYSTEM_V4</span>
+                            <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                            <span className="text-[10px] font-mono font-black uppercase tracking-[0.3em] text-foreground/60">Registry // ABOUT_MINDSCAPE_V4</span>
                         </motion.div>
 
                         <motion.h1
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="fluid-h1"
+                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter uppercase font-syncopate leading-[0.9] text-white"
                         >
-                            ABOUT <br /> <span className="text-secondary font-black drop-shadow-[0_0_15px_rgba(var(--secondary),0.3)]">MINDSCAPE.</span>
+                            ABOUT <br />
+                            <span className="text-foreground/70 text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/40">MINDSCAPE.</span>
                         </motion.h1>
 
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="max-w-4xl border-t border-border pt-10 md:pt-12 w-full mx-auto px-4"
+                            className="max-w-4xl border-t border-white/10 pt-10 md:pt-12 w-full mx-auto px-4"
                         >
-                            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-foreground/60 font-medium tracking-tight leading-snug uppercase text-center max-w-3xl mx-auto">
-                                WE HELP BUSINESSES SCALE USING <span className="text-foreground font-black not-italic drop-shadow-[0_0_15px_rgba(var(--foreground),0.15)]">INTELLIGENT SYSTEMS</span> - NOT MANUAL EFFORT.
+                            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground/70 font-medium tracking-tight leading-snug uppercase text-center max-w-3xl mx-auto">
+                                We help businesses scale using <span className="text-white font-black not-italic border-b border-white/20 pb-1">intelligent systems</span> — not manual effort.
                             </p>
-                            <div className="flex items-center justify-center gap-6 mt-10 md:mt-12 opacity-20">
-                                <div className="h-[1px] w-12 md:w-24 bg-gradient-to-r from-transparent to-foreground" />
-                                <span className="text-meta whitespace-nowrap">Scale_Protocol_Active</span>
-                                <div className="h-[1px] w-12 md:w-24 bg-gradient-to-l from-transparent to-foreground" />
+                            <div className="flex items-center justify-center gap-6 mt-12 opacity-40">
+                                <div className="h-[1px] w-12 md:w-24 bg-gradient-to-r from-transparent to-white/60" />
+                                <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-white">Scale_Protocol_Active</span>
+                                <div className="h-[1px] w-12 md:w-24 bg-gradient-to-l from-transparent to-white/60" />
                             </div>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* --- Next-Gen Company Overview --- */}
-            <section className="py-24 relative overflow-hidden">
-                <div className="container mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-20 items-start max-w-7xl mx-auto border-y border-border py-32">
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="space-y-8"
-                        >
+            {/* --- Premium Company Overview Section --- */}
+            <section className="py-24 relative overflow-hidden border-y border-white/5 bg-white/[0.01]">
+                <div className="container mx-auto px-6 max-w-7xl">
+                    <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                        <ScrollReveal className="space-y-8">
                             <div className="flex items-center gap-3">
-                                <div className="w-1.5 h-1.5 bg-foreground/60 rounded-full" />
-                                <span className="text-meta opacity-40">Section // INSTITUTIONAL_OVERVIEW</span>
+                                <div className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
+                                <span className="text-[10px] font-mono uppercase tracking-[0.35em] text-foreground/50">Section_01 // Institutional_Core</span>
                             </div>
-                            <h2 className="fluid-h2">
-                                NEXT-GENERATION <br /> <span className="text-secondary">AI & DATA ENGINEERING.</span>
+                            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tighter uppercase leading-[0.9] font-syncopate">
+                                NEXT-GENERATION <br />
+                                <span className="text-foreground/60">AI & DATA ENGINEERING.</span>
                             </h2>
                             <div className="space-y-6">
-                                <p className="text-lg text-foreground/60 leading-relaxed font-medium max-w-xl">
+                                <p className="text-base sm:text-lg text-foreground/60 leading-relaxed font-medium">
                                     Mindscape Analytics is a next-generation AI and Software Development company specializing in intelligent automation, AI agents, full-stack systems, and scalable cloud infrastructure.
                                 </p>
-
-                                <p className="text-lg text-foreground font-black leading-relaxed max-w-xl border-l-2 border-border pl-6 py-2">
-                                    To help businesses scale using intelligent systems, not manual effort.
-                                </p>
+                                <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 relative overflow-hidden group">
+                                    <div className="absolute top-0 left-0 w-1 h-full bg-white transition-all group-hover:h-[50%] duration-500" />
+                                    <p className="text-base sm:text-lg text-white font-black leading-relaxed pl-4">
+                                        &ldquo;To help businesses scale using intelligent systems, not manual effort.&rdquo;
+                                    </p>
+                                </div>
                             </div>
-                        </motion.div>
+                        </ScrollReveal>
 
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="p-12 rounded-[3.5rem] bg-foreground/[0.02] border border-border backdrop-blur-xl relative overflow-hidden surface-frost"
-                        >
-                            <div className="absolute top-6 right-8 opacity-10 font-mono text-[10px] uppercase font-black tracking-widest">DIAG_v88</div>
-                            <h3 className="text-xl font-black uppercase text-foreground mb-8 tracking-tight font-sans">What Makes Us Different?</h3>
-                            <div className="space-y-4">
+                        <ScrollReveal className="p-8 sm:p-12 rounded-[2rem] sm:rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl relative overflow-hidden group shadow-2xl">
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
+                            <div className="absolute top-6 right-8 opacity-20 font-mono text-[9px] uppercase font-black tracking-widest text-white">DIAG_v88</div>
+                            <h3 className="text-lg sm:text-xl font-black uppercase text-white mb-8 tracking-tight font-syncopate">What Makes Us Different?</h3>
+                            <div className="space-y-6">
                                 {differences.map((diff, i) => (
-                                    <div key={i} className="flex items-center gap-4 group">
-                                        <div className="w-1.5 h-1.5 rounded-full border border-foreground/40 group-hover:bg-foreground group-hover:scale-125 transition-all outline outline-offset-2 outline-transparent group-hover:outline-foreground/20" />
-                                        <span className="text-[11px] font-mono font-black text-foreground/30 uppercase tracking-[0.1em] group-hover:text-foreground transition-colors">{diff}</span>
+                                    <div key={i} className="flex justify-between items-center group/item pb-4 border-b border-white/5 last:border-0 last:pb-0">
+                                        <div className="flex items-center gap-4">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-white/30 group-hover/item:bg-white group-hover/item:scale-125 transition-all duration-300" />
+                                            <span className="text-[11px] font-mono font-black text-foreground/50 uppercase tracking-[0.1em] group-hover/item:text-white transition-colors">{diff.name}</span>
+                                        </div>
+                                        <span className="text-[10px] font-mono text-white/40 group-hover/item:text-white transition-colors">{diff.stat}</span>
                                     </div>
                                 ))}
                             </div>
-                            <div className="mt-12 pt-8 border-t border-border">
-                                <p className="text-[10px] font-mono font-black text-foreground/20 uppercase tracking-[0.2em]">
+                            <div className="mt-8 pt-6 border-t border-white/5">
+                                <p className="text-[10px] font-mono font-black text-foreground/40 uppercase tracking-[0.2em] text-center">
                                     We focus on long-term partnership — not one-time delivery.
                                 </p>
                             </div>
-                        </motion.div>
+                        </ScrollReveal>
                     </div>
                 </div>
             </section>
 
-            {/* --- Core Expertise Grid --- */}
+            {/* --- Premium Core Expertise Bento Grid --- */}
             <section className="py-24 bg-transparent">
-                <div className="container mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-24"
-                    >
-                        <h2 className="fluid-h2 mb-4">
-                            EXPERTISE.
+                <div className="container mx-auto px-6 max-w-7xl">
+                    <ScrollReveal className="text-center mb-20 space-y-4">
+                        <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/[0.02] border border-white/10 mx-auto">
+                            <Cpu className="w-3.5 h-3.5 text-white/60" />
+                            <span className="text-[9px] font-mono font-black uppercase tracking-[0.4em] text-foreground/60">System_Capabilities // Readout</span>
+                        </div>
+                        <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tighter uppercase font-syncopate">
+                            CORE EXPERTISE.
                         </h2>
-                        <span className="text-meta">SYSTEM_CAPABILITIES // READOUT</span>
-                    </motion.div>
+                    </ScrollReveal>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border rounded-2xl overflow-hidden shadow-2xl surface-frost">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {expertise.map((exp, index) => (
                             <motion.div
                                 key={exp.id}
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="group p-10 bg-background/40 backdrop-blur-md hover:bg-foreground/[0.04] transition-all relative min-h-[220px] flex flex-col justify-center gap-6"
+                                transition={{ duration: 0.5, delay: index * 0.08 }}
+                                className="group p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/20 backdrop-blur-xl transition-all relative flex flex-col justify-between min-h-[220px] shadow-lg overflow-hidden"
                             >
-                                <div className="absolute top-4 left-6 text-[8px] font-mono text-foreground/10 group-hover:text-foreground/40 tracking-[0.4em] font-black uppercase">NODE_0x{parseInt(exp.id).toString(16).toUpperCase()}</div>
-                                <h3 className="text-lg font-black text-foreground/60 group-hover:text-foreground transition-colors uppercase tracking-tight font-syncopate leading-tight">{exp.title}</h3>
-                                <div className="w-8 h-px bg-foreground/5 group-hover:w-24 transition-all" />
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/[0.01] rounded-bl-full group-hover:bg-white/[0.02] transition-colors pointer-events-none" />
+                                <div className="space-y-4">
+                                    <div className="flex justify-between items-start">
+                                        <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 group-hover:bg-white group-hover:text-black transition-all">
+                                            <exp.icon className="w-5 h-5 text-white group-hover:text-black transition-colors" />
+                                        </div>
+                                        <span className="text-[8px] font-mono text-foreground/40 tracking-[0.4em] font-black uppercase">NODE_0x{exp.id}</span>
+                                    </div>
+                                    <h3 className="text-lg font-black text-white uppercase tracking-tight font-syncopate">{exp.title}</h3>
+                                    <p className="text-xs text-foreground/50 leading-relaxed font-medium">{exp.desc}</p>
+                                </div>
+                                <div className="w-8 h-px bg-white/20 mt-6 group-hover:w-full transition-all duration-500" />
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* --- Vision Section --- */}
-            <section className="py-24 relative overflow-hidden bg-foreground text-background">
-                <div className="absolute top-0 left-0 w-full h-[1px] bg-background/10" />
-                <div className="container mx-auto px-6">
-                    <div className="max-w-4xl mx-auto text-center space-y-8">
-                        <span className="text-meta opacity-40">Section // MISSION_DIRECTIVE</span>
-                        <h2 className="fluid-h2 text-background">
-                            OUR <span className="text-secondary drop-shadow-[0_0_15px_rgba(var(--secondary),0.3)]">VISION.</span>
+            {/* --- Stunning Glassmorphic Vision Section --- */}
+            <section className="py-32 relative overflow-hidden border-y border-white/5">
+                <div className="absolute inset-0 bg-white/[0.01]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none" />
+                <div className="container mx-auto px-6 max-w-4xl relative z-10">
+                    <ScrollReveal className="text-center space-y-10">
+                        <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/[0.02] border border-white/10 mx-auto">
+                            <Target className="w-3.5 h-3.5 text-white" />
+                            <span className="text-[9px] font-mono font-black uppercase tracking-[0.4em] text-foreground/60">Section_03 // Mission_Directive</span>
+                        </div>
+                        <h2 className="text-5xl sm:text-7xl font-black text-white tracking-tighter uppercase font-syncopate leading-none">
+                            OUR VISION.
                         </h2>
-                        <p className="text-xl md:text-2xl font-black uppercase tracking-tight leading-relaxed max-w-3xl mx-auto">
-                            To become a global AI-first technology partner helping businesses transition from manual operations to <span className="underline underline-offset-8 decoration-4 decoration-secondary text-secondary">autonomous AI-driven systems.</span>
+                        <p className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight leading-relaxed text-white">
+                            To become a global AI-first technology partner helping businesses transition from manual operations to <span className="underline underline-offset-8 decoration-4 decoration-white/40 text-foreground/80">autonomous AI-driven systems.</span>
                         </p>
-                    </div>
+                    </ScrollReveal>
                 </div>
             </section>
 
-            {/* --- Architects (Team) --- */}
+            {/* --- Architects (Team) Section --- */}
             <section className="py-32 bg-transparent">
-                <div className="container mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-32"
-                    >
-                        <h2 className="fluid-h2 mb-4">ARCHITECTS.</h2>
-                        <span className="text-meta opacity-20">Institutional Core Logic Unit</span>
-                    </motion.div>
+                <div className="container mx-auto px-6 max-w-7xl">
+                    <ScrollReveal className="text-center mb-24 space-y-4">
+                        <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/[0.02] border border-white/10 mx-auto">
+                            <Users className="w-3.5 h-3.5 text-white/60" />
+                            <span className="text-[9px] font-mono font-black uppercase tracking-[0.4em] text-foreground/60">Institutional Core Logic Unit</span>
+                        </div>
+                        <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tighter uppercase font-syncopate">ARCHITECTS.</h2>
+                    </ScrollReveal>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {team.map((member, index) => (
                             <motion.div
                                 key={member.name}
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                transition={{ duration: 0.6, delay: index * 0.1 }}
+                                className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all duration-500 group relative overflow-hidden backdrop-blur-md flex flex-col justify-between shadow-2xl"
                             >
-                                <div className="p-8 rounded-2xl bg-foreground/[0.03] border border-border hover:border-foreground/10 transition-all duration-700 group relative overflow-hidden backdrop-blur-md surface-frost">
-                                    <Link href={(member as any).href || "#"} className={cn("block", !(member as any).href && "cursor-default")}>
-                                        <div className="aspect-[4/5] relative rounded-xl overflow-hidden mb-8 border border-border shadow-2xl group-hover:shadow-[0_20px_50px_rgba(var(--foreground),0.1)] transition-all">
-                                            <Image
-                                                src={member.image}
-                                                alt={member.name}
-                                                fill
-                                                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
-                                            />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
-                                        </div>
+                                <div>
+                                    <Link href={member.href || "#"} className={cn("block overflow-hidden rounded-2xl aspect-[4/5] relative border border-white/10 mb-8", !member.href && "cursor-default")}>
+                                        <Image
+                                            src={member.image}
+                                            alt={member.name}
+                                            fill
+                                            sizes="(max-w-768px) 100vw, 33vw"
+                                            priority={index < 3}
+                                            className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60" />
                                     </Link>
+
                                     <div className="space-y-4">
-                                        <div className="flex justify-between items-end">
+                                        <div className="flex justify-between items-start">
                                             <div>
-                                                <Link href={(member as any).href || "#"} className={cn(!(member as any).href && "cursor-default")}>
-                                                    <h3 className="text-xl font-black uppercase font-syncopate tracking-tighter text-foreground/80 group-hover:text-foreground transition-colors">{member.name}</h3>
-                                                </Link>
-                                                <p className="text-[10px] font-black text-foreground/20 group-hover:text-foreground/40 uppercase tracking-[0.3em] mt-2 transition-colors">{member.role}</p>
+                                                <h3 className="text-xl font-black uppercase font-syncopate tracking-tighter text-white">{member.name}</h3>
+                                                <span className="text-[10px] font-mono font-black text-foreground/50 uppercase tracking-[0.25em] block mt-1">{member.role}</span>
                                             </div>
-                                            <div className="flex gap-2 opacity-20 group-hover:opacity-100 transition-opacity">
-                                                {member.linkedin && (
-                                                    <a href={member.linkedin} target="_blank" className="p-2 rounded-lg bg-foreground/5 text-foreground/60 hover:text-foreground transition-colors">
-                                                        <Linkedin className="h-4 w-4" />
+                                            <div className="flex gap-2">
+                                                {member.linkedin && member.linkedin !== "#" && (
+                                                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:bg-white hover:text-black text-white transition-all">
+                                                        <Linkedin className="h-3.5 w-3.5" />
                                                     </a>
                                                 )}
-                                                {member.email && (
-                                                    <a href={member.email} className="p-2 rounded-lg bg-foreground/5 text-foreground/60 hover:text-foreground transition-colors">
-                                                        <Mail className="h-4 w-4" />
+                                                {member.email && member.email !== "#" && (
+                                                    <a href={member.email} className="p-2.5 rounded-xl bg-white/[0.04] border border-white/10 hover:bg-white hover:text-black text-white transition-all">
+                                                        <Mail className="h-3.5 w-3.5" />
                                                     </a>
                                                 )}
                                             </div>
                                         </div>
-                                        <p className="text-foreground/40 text-[11px] font-medium leading-relaxed group-hover:text-foreground/60 transition-colors uppercase tracking-tight">
+                                        <p className="text-foreground/60 text-xs sm:text-sm leading-relaxed font-medium uppercase tracking-tight pt-2 border-t border-white/5">
                                             {member.bio}
                                         </p>
                                     </div>
                                 </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* --- Journey (Timeline) --- */}
-            <section className="py-32 bg-transparent border-t border-border">
-                <div className="container mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-32"
-                    >
-                        <h2 className="fluid-h2 mb-4">JOURNEY.</h2>
-                        <span className="text-meta opacity-20">Chronological System Evolution</span>
-                    </motion.div>
-
-                    <div className="max-w-4xl mx-auto space-y-20 relative">
-                        {/* Center Line */}
-                        <div className="absolute top-0 bottom-0 left-[20px] md:left-1/2 w-[1px] bg-foreground opacity-10" />
-
-                        {timeline.map((item, index) => (
-                            <motion.div
-                                key={item.year}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className={`flex flex-col md:flex-row gap-8 items-start relative ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
-                            >
-                                <div className="absolute left-[16px] md:left-1/2 -ml-[4px] w-2 h-2 rounded-full bg-foreground z-20" />
-                                <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-12">
-                                    <div className={`space-y-4 ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
-                                        <span className="text-4xl font-black text-foreground/20 font-syncopate leading-none">{item.year}</span>
-                                        <h4 className="text-xl font-black uppercase tracking-tight text-foreground">{item.title}</h4>
-                                        <p className="text-foreground/50 text-sm font-medium leading-relaxed max-w-sm ml-0 mr-auto md:ml-auto md:mr-0">
-                                            {item.description}
-                                        </p>
+                                
+                                {member.href && (
+                                    <div className="mt-8 pt-4">
+                                        <Link href={member.href} className="inline-flex items-center gap-2 text-[10px] font-mono font-black uppercase tracking-widest text-white/60 hover:text-white transition-colors group/btn">
+                                            View Architectural Log
+                                            <ChevronRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                                        </Link>
                                     </div>
-                                </div>
-                                <div className="hidden md:block w-1/2" />
+                                )}
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* --- Trust & Business Model --- */}
-            <section className="py-24 border-t border-border">
-                <div className="container mx-auto px-6">
-                    <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 max-w-7xl mx-auto">
-                        {/* Why Trust Us */}
-                        <div className="space-y-12 bg-foreground/[0.02] p-12 rounded-[3.5rem] border border-border backdrop-blur-xl surface-frost">
-                            <h2 className="fluid-h2 text-foreground">WHY TRUST US?</h2>
+            {/* --- Next-Gen Circuit Journey (Timeline) --- */}
+            <section className="py-32 bg-transparent border-t border-white/5">
+                <div className="container mx-auto px-6 max-w-5xl">
+                    <ScrollReveal className="text-center mb-24 space-y-4">
+                        <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/[0.02] border border-white/10 mx-auto">
+                            <Globe className="w-3.5 h-3.5 text-white/60" />
+                            <span className="text-[9px] font-mono font-black uppercase tracking-[0.4em] text-foreground/60">Chronological System Evolution</span>
+                        </div>
+                        <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tighter uppercase font-syncopate">JOURNEY.</h2>
+                    </ScrollReveal>
+
+                    <div className="relative">
+                        {/* Center circuit timeline bar */}
+                        <div className="absolute top-0 bottom-0 left-[20px] md:left-1/2 w-[2px] bg-gradient-to-b from-white/20 via-white/5 to-transparent pointer-events-none" />
+
+                        <div className="space-y-24">
+                            {timeline.map((item, index) => (
+                                <motion.div
+                                    key={item.year}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                                    className={`flex flex-col md:flex-row gap-8 items-start relative ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+                                >
+                                    {/* Pulse node */}
+                                    <div className="absolute left-[16px] md:left-1/2 -ml-[5px] w-3 h-3 rounded-full bg-white border-4 border-black z-20 shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
+                                    
+                                    <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-12">
+                                        <div className={`space-y-4 p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors backdrop-blur-xl relative ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
+                                            <span className="text-4xl sm:text-5xl font-black text-white/10 font-syncopate leading-none absolute top-4 right-6 pointer-events-none">{item.year}</span>
+                                            <span className="text-3xl sm:text-4xl font-black text-white font-syncopate leading-none block">{item.year}</span>
+                                            <h4 className="text-lg font-black uppercase tracking-tight text-white">{item.title}</h4>
+                                            <p className="text-foreground/50 text-sm font-medium leading-relaxed max-w-sm ml-0 mr-auto md:ml-auto md:mr-0 uppercase tracking-tight">
+                                                {item.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="hidden md:block w-1/2" />
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* --- Premium Trust & Business Model Bento Grid --- */}
+            <section className="py-24 border-t border-white/5 bg-white/[0.01]">
+                <div className="container mx-auto px-6 max-w-7xl">
+                    <div className="grid lg:grid-cols-[1.2fr_1.8fr] gap-8">
+                        {/* Why Trust Us card */}
+                        <ScrollReveal className="space-y-10 p-8 sm:p-12 rounded-[2.5rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+                            <div className="space-y-2">
+                                <span className="text-[10px] font-mono text-foreground/40 uppercase tracking-[0.3em] block">Node_06 // Trust_Index</span>
+                                <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tighter uppercase font-syncopate">WHY TRUST US?</h2>
+                            </div>
                             <div className="space-y-6">
                                 {trustFactors.map((factor, i) => (
-                                    <div key={i} className="group flex flex-col gap-1 border-b border-border pb-6 last:border-0">
-                                        <span className="text-[10px] font-mono font-black text-foreground/20 group-hover:text-foreground transition-colors uppercase tracking-[0.2em]">{factor.title}</span>
-                                        <p className="text-[11px] text-foreground/10 group-hover:text-foreground/40 transition-colors uppercase tracking-widest">{factor.detail}</p>
+                                    <div key={i} className="group flex flex-col gap-1.5 border-b border-white/5 pb-5 last:border-0 last:pb-0">
+                                        <span className="text-sm font-black text-white uppercase tracking-tight flex items-center gap-2">
+                                            <CheckCircle2 className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
+                                            {factor.title}
+                                        </span>
+                                        <p className="text-xs text-foreground/50 group-hover:text-foreground/70 transition-colors uppercase tracking-widest pl-6">{factor.detail}</p>
                                     </div>
                                 ))}
                             </div>
-                        </div>
+                        </ScrollReveal>
 
-                        {/* Managed Infographic */}
-                        <div className="p-12 lg:p-24 rounded-[3.5rem] bg-foreground text-background flex flex-col justify-between overflow-hidden relative group">
-                            <div className="absolute inset-0 z-0 opacity-5 bg-[url('/grid.svg')] bg-[length:50px_50px] invert group-hover:invert-0 transition-all" />
-                            <div className="relative z-10 space-y-12">
-                                <span className="text-meta opacity-40">Managed_Subscription_Logic</span>
-                                <h2 className="fluid-h2 text-background">
-                                    WE DON'T JUST DELIVER. <br /> WE <span className="opacity-50">OPTIMIZE.</span>
+                        {/* Managed Infographic carbon card (100% visible on all backgrounds, extremely sleek) */}
+                        <ScrollReveal className="p-8 sm:p-16 rounded-[2.5rem] bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border border-white/10 flex flex-col justify-between overflow-hidden relative group shadow-2xl min-h-[450px]">
+                            <div className="absolute inset-0 z-0 opacity-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:30px_30px]" />
+                            <div className="absolute top-6 right-8 opacity-20 font-mono text-[9px] uppercase font-black tracking-widest text-white">MGD_v7</div>
+                            
+                            <div className="relative z-10 space-y-10">
+                                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[9px] font-mono font-black uppercase tracking-[0.25em] text-white/80">
+                                    Managed_Subscription_Protocol
+                                </div>
+                                <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tighter uppercase font-syncopate leading-[0.9]">
+                                    WE DON'T JUST DELIVER. <br />
+                                    <span className="text-white/40">WE OPTIMIZE.</span>
                                 </h2>
-                                <p className="text-lg font-medium max-w-xl opacity-60">
-                                    Our clients subscribe to long-term reliability. We manage hosting, databases, AI maintenance, and security so you can focus on growth.
+                                <p className="text-base sm:text-lg font-medium text-white/70 max-w-xl leading-relaxed">
+                                    Our clients subscribe to long-term reliability. We manage hosting, databases, AI model maintenance, and security protocols so you can focus entirely on commercial growth.
                                 </p>
-                                <div className="grid grid-cols-2 gap-8 text-[10px] font-mono font-black uppercase tracking-[0.2em]">
-                                    <div className="space-y-2 opacity-40 hover:opacity-100 transition-opacity">✔ NO TECHNICAL HEADACHES</div>
-                                    <div className="space-y-2 opacity-40 hover:opacity-100 transition-opacity">✔ NO DOWNTIME RISKS</div>
-                                    <div className="space-y-2 opacity-40 hover:opacity-100 transition-opacity">✔ NO UNMANAGED BILLS</div>
-                                    <div className="space-y-2 opacity-40 hover:opacity-100 transition-opacity">✔ NO SYSTEM FAILURES</div>
+                            </div>
+
+                            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 text-[10px] font-mono font-black uppercase tracking-[0.18em] pt-8 border-t border-white/10">
+                                <div className="flex items-center gap-3 text-white hover:text-white/80 transition-colors">
+                                    <Shield className="w-4 h-4 text-white/50" />
+                                    <span>✔ NO TECHNICAL HEADACHES</span>
+                                </div>
+                                <div className="flex items-center gap-3 text-white hover:text-white/80 transition-colors">
+                                    <Zap className="w-4 h-4 text-white/50" />
+                                    <span>✔ NO DOWNTIME RISKS</span>
+                                </div>
+                                <div className="flex items-center gap-3 text-white hover:text-white/80 transition-colors">
+                                    <Database className="w-4 h-4 text-white/50" />
+                                    <span>✔ NO UNMANAGED BILLS</span>
+                                </div>
+                                <div className="flex items-center gap-3 text-white hover:text-white/80 transition-colors">
+                                    <Cpu className="w-4 h-4 text-white/50" />
+                                    <span>✔ NO SYSTEM FAILURES</span>
                                 </div>
                             </div>
-                        </div>
+                        </ScrollReveal>
                     </div>
                 </div>
             </section>
 
-            {/* Stats Section - Refined */}
-            <section className="section-spacing bg-transparent border-t border-border">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+            {/* --- Stats Section --- */}
+            <section className="py-28 bg-transparent border-t border-white/5">
+                <div className="container mx-auto px-6 max-w-7xl">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12 sm:gap-16">
                         {[
                             { value: "500+", label: "CORE ARCHITECTURES", sub: "DEPLOYED" },
                             { value: "98%", label: "OPERATIONAL", sub: "EFFICIENCY" },
@@ -433,15 +522,15 @@ export default function AboutPage() {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                transition={{ duration: 0.6, delay: index * 0.08 }}
                                 className="text-center group"
                             >
-                                <div className="text-5xl md:text-7xl font-black mb-4 text-foreground font-syncopate leading-none tracking-tighter group-hover:scale-110 transition-transform">
+                                <div className="text-5xl sm:text-6xl md:text-7xl font-black mb-4 text-white font-syncopate leading-none tracking-tighter group-hover:scale-105 transition-transform duration-500">
                                     {stat.value}
                                 </div>
-                                <div className="text-foreground/20 text-[10px] font-black uppercase tracking-[0.4em] group-hover:text-foreground transition-colors">
+                                <div className="text-foreground/50 text-[10px] font-black uppercase tracking-[0.35em] group-hover:text-white transition-colors duration-300">
                                     {stat.label}
-                                    <span className="block mt-1 text-foreground/10 group-hover:text-foreground/20">{stat.sub}</span>
+                                    <span className="block mt-1 text-foreground/30 group-hover:text-foreground/50">{stat.sub}</span>
                                 </div>
                             </motion.div>
                         ))}

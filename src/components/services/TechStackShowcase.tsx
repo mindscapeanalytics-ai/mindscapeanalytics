@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const TechIcon = ({ name, iconSlug, fallbackIcon: FallbackIcon }: { name: string; iconSlug?: string; fallbackIcon?: any }) => {
     const [imgError, setImgError] = useState(false);
-    const iconUrl = iconSlug ? `https://cdn.simpleicons.org/${iconSlug}/${imgError ? '71717a' : '39b8f7'}` : null;
+    const iconUrl = iconSlug ? `https://cdn.simpleicons.org/${iconSlug}/${imgError ? '71717a' : 'ffffff'}` : null;
 
     if (!iconUrl || imgError) {
         return (

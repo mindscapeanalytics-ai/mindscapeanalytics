@@ -180,11 +180,11 @@ export default function ProjectVision() {
                 <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 border-b border-border pb-6 lg:pb-10 text-center lg:text-left">
                     <div className="flex flex-col items-center lg:items-start space-y-3 lg:space-y-4">
                         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-background dark:bg-foreground/[0.03] border border-border/80 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-sm backdrop-blur-md">
-                            <div className="w-1.5 h-1.5 bg-secondary rounded-full shadow-[0_0_10px_rgba(var(--secondary),0.6)]" />
+                            <div className="w-1.5 h-1.5 bg-secondary rounded-full shadow-[0_0_10px_hsl(var(--secondary) / 0.6)]" />
                             <span className="text-[8px] lg:text-meta uppercase font-mono tracking-widest text-foreground/80 dark:text-foreground/40">Subsystem // Archive_Port_01</span>
                         </div>
                         <h2 className="fluid-h2">
-                            PROJECT <span className="text-secondary drop-shadow-[0_0_15px_rgba(var(--secondary),0.3)]">VISION</span>
+                            PROJECT <span className="text-secondary drop-shadow-[0_0_15px_hsl(var(--secondary) / 0.3)]">VISION</span>
                         </h2>
                     </div>
                     <div className="hidden lg:block text-right font-mono text-[9px] text-foreground/60 dark:text-foreground/40 uppercase tracking-widest leading-relaxed">
@@ -401,7 +401,7 @@ export default function ProjectVision() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={cn(
-                                        "w-full flex items-center justify-between p-3 lg:p-4 bg-foreground text-background text-[9px] lg:text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:opacity-90 transition-all group/view shadow-[0_4px_20px_rgba(var(--foreground),0.1)] not-italic",
+                                        "w-full flex items-center justify-between p-3 lg:p-4 bg-foreground text-background text-[9px] lg:text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:opacity-90 transition-all group/view shadow-[0_4px_20px_hsl(var(--foreground) / 0.1)] not-italic",
                                         activeProject.status === "coming-soon" && "opacity-50 pointer-events-none"
                                     )}
                                 >
@@ -409,7 +409,7 @@ export default function ProjectVision() {
                                     <ExternalLink className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
                                 </Link>
                             ) : (
-                                <button className="w-full flex items-center justify-between p-3 lg:p-4 bg-foreground text-background text-[9px] lg:text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:opacity-90 transition-colors group/view shadow-[0_4px_20px_rgba(var(--foreground),0.1)] not-italic">
+                                <button className="w-full flex items-center justify-between p-3 lg:p-4 bg-foreground text-background text-[9px] lg:text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:opacity-90 transition-colors group/view shadow-[0_4px_20px_hsl(var(--foreground) / 0.1)] not-italic">
                                     VIEW CORE CODE
                                     <ExternalLink className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
                                 </button>

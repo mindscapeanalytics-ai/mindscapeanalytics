@@ -193,7 +193,7 @@ export default function VoiceAgentDemo() {
     return (
         <section id="voice-agent-demo" className="pb-24 pt-8 lg:pt-0 bg-transparent relative overflow-hidden -mt-8 lg:-mt-24 z-20">
             {/* Background Atmosphere */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--secondary),0.05),transparent_70%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--secondary) / 0.05),transparent_70%)]" />
 
             {/* Neural Pulse Animation */}
             <AnimatePresence>
@@ -210,7 +210,7 @@ export default function VoiceAgentDemo() {
                                 opacity: [0.05, 0.1, 0.05]
                             }}
                             transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--secondary),1),transparent_50%)]"
+                            className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--secondary) / 1),transparent_50%)]"
                         />
                     </motion.div>
                 )}
@@ -240,9 +240,9 @@ export default function VoiceAgentDemo() {
                                     animate={isActive ? {
                                         scale: [1, 1.05, 1],
                                         boxShadow: [
-                                            "0 0 20px rgba(var(--secondary), 0.2)",
-                                            "0 0 50px rgba(var(--secondary), 0.4)",
-                                            "0 0 20px rgba(var(--secondary), 0.2)"
+                                            "0 0 20px hsl(var(--secondary) / 0.2)",
+                                            "0 0 50px hsl(var(--secondary) / 0.4)",
+                                            "0 0 20px hsl(var(--secondary) / 0.2)"
                                         ]
                                     } : {}}
                                     transition={{ duration: 2, repeat: Infinity }}
@@ -333,7 +333,7 @@ export default function VoiceAgentDemo() {
                                         "w-full py-6 rounded-2xl font-black uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-4 group mt-8",
                                         isActive
                                             ? "bg-red-500/10 text-red-500 border border-red-500/20"
-                                            : "bg-secondary text-white shadow-[0_0_30px_rgba(var(--secondary),0.3)] hover:scale-[1.02]"
+                                            : "bg-secondary text-white shadow-[0_0_30px_hsl(var(--secondary) / 0.3)] hover:scale-[1.02]"
                                     )}
                                 >
                                     {isActive ? (

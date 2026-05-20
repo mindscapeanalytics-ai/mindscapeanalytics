@@ -140,7 +140,7 @@ export default function AgenticHeroScanner() {
                         </div>
                         <h2 className="text-3xl lg:text-6xl font-black uppercase tracking-tighter text-foreground mb-6 leading-[0.9]">
                             STOP GUESSING. <br />
-                            <span className="text-secondary drop-shadow-[0_0_20px_rgba(var(--secondary),0.2)]">START AUTOMATING.</span>
+                            <span className="text-secondary drop-shadow-[0_0_20px_hsl(var(--secondary) / 0.2)]">START AUTOMATING.</span>
                         </h2>
                         <p className="text-base lg:text-xl font-medium text-foreground/40 max-w-xl leading-relaxed uppercase tracking-tighter mb-8">
                             Tell our architect agent about a manual bottleneck in your business. It will build a technical roadmap using Mindscape Agent logic in seconds.

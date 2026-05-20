@@ -125,7 +125,7 @@ export default function ProductCard({
                                 e.stopPropagation();
                                 onQuickView?.(product);
                             }}
-                            className="bg-foreground text-background px-6 py-4 rounded-xl flex-1 flex items-center justify-between group/btn shadow-[0_10px_20px_rgba(var(--foreground),0.05)]"
+                            className="bg-foreground text-background px-6 py-4 rounded-xl flex-1 flex items-center justify-between group/btn shadow-[0_10px_20px_hsl(var(--foreground) / 0.05)]"
                         >
                             <span className="text-[10px] font-black uppercase tracking-[0.2em]">
                                 View & Acquire

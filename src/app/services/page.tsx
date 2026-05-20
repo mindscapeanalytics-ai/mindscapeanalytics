@@ -188,7 +188,7 @@ export default function ServicesPage() {
                             animate={{ opacity: 1, scale: 1 }}
                             className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-foreground/5 border border-border backdrop-blur-md"
                         >
-                            <div className="w-2 h-2 bg-foreground rounded-full animate-pulse shadow-[0_0_8px_rgba(var(--foreground),0.6)]" />
+                            <div className="w-2 h-2 bg-foreground rounded-full animate-pulse shadow-[0_0_8px_hsl(var(--foreground) / 0.6)]" />
                             <span className="text-meta">Service_Catalog // v4.2</span>
                         </motion.div>
 

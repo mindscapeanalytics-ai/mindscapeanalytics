@@ -60,7 +60,7 @@ export default function Footer() {
                                 Institutional // Intelligence
                             </h3>
                             <div className="flex items-center gap-3">
-                                <div className="w-1.5 h-1.5 bg-secondary rounded-full shadow-[0_0_10px_rgba(var(--secondary),0.6)]" />
+                                <div className="w-1.5 h-1.5 bg-secondary rounded-full shadow-[0_0_10px_hsl(var(--secondary) / 0.6)]" />
                                 <span className="text-meta opacity-90 text-foreground/80 dark:text-foreground/70">Core // NODE_v4.02</span>
                             </div>
                             <p className="text-foreground/80 dark:text-foreground/70 text-sm leading-relaxed max-w-sm font-medium tracking-tight">

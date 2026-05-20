@@ -30,7 +30,7 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         className="inline-flex items-center gap-2 px-3 lg:px-6 py-1 lg:py-2.5 rounded-full bg-background dark:bg-foreground/[0.03] border border-border/80 backdrop-blur-md mb-8 lg:mb-12 shadow-sm will-change-transform"
                     >
-                        <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-secondary rounded-full shadow-[0_0_10px_rgba(var(--secondary),0.6)]" />
+                        <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-secondary rounded-full shadow-[0_0_10px_hsl(var(--secondary) / 0.6)]" />
                         <span className="text-[6.5px] lg:text-[10px] font-mono text-foreground/80 dark:text-foreground/40 uppercase tracking-[0.25em] lg:tracking-[0.4em] font-black">Registry // ELITE_SYSTEM_V4</span>
                     </motion.div>
 
@@ -238,7 +238,7 @@ export default function Hero() {
                     <motion.div
                         animate={{ y: [0, 30, 0], opacity: [0, 1, 0] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-0 left-[-1.5px] w-[4px] h-[4px] bg-foreground rounded-full shadow-[0_0_8px_rgba(var(--foreground),1)]"
+                        className="absolute top-0 left-[-1.5px] w-[4px] h-[4px] bg-foreground rounded-full shadow-[0_0_8px_hsl(var(--foreground) / 1)]"
                     />
                 </div>
             </motion.div>

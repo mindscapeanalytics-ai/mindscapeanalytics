@@ -81,7 +81,7 @@ export function RequestDemoModal({ isOpen, onClose, productName }: RequestDemoMo
                             className="bg-card dark:bg-[#0f0f11] w-full max-w-md rounded-3xl border border-border shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden pointer-events-auto relative"
                         >
                             {/* Decorative Top Line */}
-                            <div className="h-1 w-full bg-secondary shadow-[0_0_20px_rgba(var(--secondary),0.3)]" />
+                            <div className="h-1 w-full bg-secondary shadow-[0_0_20px_hsl(var(--secondary) / 0.3)]" />
 
                             <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none rotate-12">
                                 <Cpu size={150} strokeWidth={0.5} />

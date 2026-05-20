@@ -97,14 +97,14 @@ export default function BankingAiAdoption() {
                         transition={{ duration: 0.6 }}
                         className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-background dark:bg-foreground/[0.03] border border-border shadow-sm backdrop-blur-md mb-6 max-w-full flex-wrap justify-center sm:justify-start"
                     >
-                        <div className="w-1.5 h-1.5 bg-secondary rounded-full shadow-[0_0_10px_rgba(var(--secondary),0.8)] shrink-0" />
+                        <div className="w-1.5 h-1.5 bg-secondary rounded-full shadow-[0_0_10px_hsl(var(--secondary) / 0.8)] shrink-0" />
                         <span className="text-[7px] sm:text-[8px] md:text-[10px] uppercase font-mono tracking-[0.15em] sm:tracking-[0.3em] md:tracking-[0.4em] font-black text-foreground/70 dark:text-foreground/40 text-center">
                             FINANCIAL SECTOR INSIGHTS 2030 // INSTITUTIONAL SCALE
                         </span>
                     </motion.div>
                     
                     <h2 className="fluid-h2 text-foreground drop-shadow-sm mb-6 uppercase tracking-tighter">
-                        THE <span className="text-secondary font-black drop-shadow-[0_0_15px_rgba(var(--secondary),0.4)]">AGENTIC</span> REVOLUTION
+                        THE <span className="text-secondary font-black drop-shadow-[0_0_15px_hsl(var(--secondary) / 0.4)]">AGENTIC</span> REVOLUTION
                     </h2>
                     
                     <p className="text-foreground/70 dark:text-foreground/40 text-base sm:text-lg lg:text-xl max-w-3xl font-medium leading-relaxed mb-4">

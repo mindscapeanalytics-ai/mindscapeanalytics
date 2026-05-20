@@ -217,7 +217,7 @@ export default function NeuralNewsroom() {
                             </motion.span>
                             <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tighter uppercase mb-6 sm:mb-8 leading-[0.9] not-italic">
                                 Neural <br />
-                                <span className="text-foreground/40">Newsroom.</span>
+                                <span className="text-foreground/75">Newsroom.</span>
                             </h2>
                             <p className="text-sm sm:text-base md:text-lg text-white/40 font-medium mb-6 sm:mb-10 leading-relaxed uppercase tracking-tighter not-italic">
                                 Our agents monitor global market shifts in real-time to generate strategic intelligence. No writers. No delays. Just raw, autonomous foresight for institutional growth.
@@ -389,7 +389,7 @@ export default function NeuralNewsroom() {
                                             <div className="space-y-5 sm:space-y-6 relative z-10 flex-grow flex flex-col justify-start">
                                                 <div className="flex flex-wrap items-center justify-between gap-3">
                                                     <div className="flex items-center gap-2">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_rgba(var(--secondary),0.5)]" />
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_hsl(var(--secondary) / 0.5)]" />
                                                         <span className="text-[9px] font-mono font-black text-secondary tracking-[0.2em] sm:tracking-[0.3em] uppercase not-italic">{article.niche}</span>
                                                     </div>
                                                     <div className="flex items-center gap-4 sm:gap-6">

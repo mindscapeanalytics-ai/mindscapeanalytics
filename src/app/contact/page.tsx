@@ -238,7 +238,7 @@ function ContactFormContent() {
                     >
                         <div className="p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12 bg-foreground/[0.01]">
                             <div className="w-full md:w-1/3 flex justify-center">
-                                <div className="p-4 bg-foreground rounded-2xl shadow-[0_0_50px_rgba(var(--foreground),0.05)] border border-border">
+                                <div className="p-4 bg-foreground rounded-2xl shadow-[0_0_50px_hsl(var(--foreground) / 0.05)] border border-border">
                                     <div className="relative w-48 h-48 md:w-64 md:h-64">
                                         <Image
                                             src="/images/whatsapp-qr.png"

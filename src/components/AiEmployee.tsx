@@ -452,7 +452,7 @@ export default function AiEmployee() {
 
                              <h2 className="fluid-h2 text-foreground relative not-italic">
                                 THE ERA OF AI <br />
-                                <span className="text-secondary drop-shadow-[0_0_40px_rgba(var(--secondary),0.4)] bg-gradient-to-r from-secondary to-secondary/50 bg-clip-text text-transparent not-italic">
+                                <span className="text-secondary drop-shadow-[0_0_40px_hsl(var(--secondary) / 0.4)] bg-gradient-to-r from-secondary to-secondary/50 bg-clip-text text-transparent not-italic">
                                     IS HERE.
                                 </span>
                                 <span className="absolute -left-16 top-4 text-[11px] font-mono text-secondary/30 hidden xl:block tracking-[0.8em] font-black rotate-90 origin-left not-italic">PROT_V5.0</span>
@@ -496,7 +496,7 @@ export default function AiEmployee() {
                     {/* 2. MIDDLE: Visual Hub */}
                     <div className="relative order-2 lg:row-span-2 flex justify-center items-center py-0 lg:py-0 min-h-[350px] md:min-h-[550px] lg:min-h-[950px] scale-[0.75] xs:scale-80 sm:scale-85 md:scale-95 lg:scale-100 transition-transform duration-1000 -my-14 lg:my-0">
                         <div className="absolute inset-0 pointer-events-none z-0">
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--secondary),0.06)_0%,transparent_75%)] opacity-40" />
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsl(var(--secondary) / 0.06)_0%,transparent_75%)] opacity-40" />
                             <div className="absolute inset-y-0 left-1/2 w-px bg-gradient-to-b from-transparent via-secondary/10 to-transparent" />
                             <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-secondary/10 to-transparent" />
                         </div>
