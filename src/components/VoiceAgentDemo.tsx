@@ -15,15 +15,15 @@ export default function VoiceAgentDemo() {
     const interactions = [
         {
             query: "Initialize strategic audit for real estate portfolio...",
-            response: "Hi, I'm Zeeshan. Strategic audit initiated. I'm analyzing your real estate portfolio against current market data. I've identified three high-yield optimization opportunities. Shall we proceed with the briefing?"
+            response: "Hi, I'm Zee. Strategic audit initiated. I'm analyzing your real estate portfolio against current market data. I've identified three high-yield optimization opportunities. Shall we proceed with the briefing?"
         },
         {
             query: "Analyze current network latency and agent efficiency...",
-            response: "Hi, I'm Zeeshan. Network diagnostic complete. All autonomous nodes are operating at sub-100 millisecond latency. Agent efficiency is currently at 98.5%. How else can I assist your operational scaling today?"
+            response: "Hi, I'm Zee. Network diagnostic complete. All autonomous nodes are operating at sub-100 millisecond latency. Agent efficiency is currently at 98.5%. How else can I assist your operational scaling today?"
         },
         {
             query: "Generate deployment roadmap for autonomous sales agents...",
-            response: "Hi, I'm Zeeshan. Roadmap generation in progress. Global market intelligence suggests a 40% efficiency gain. I am ready to deploy a custom training layer for your specific sales niche. What is your primary objective?"
+            response: "Hi, I'm Zee. Roadmap generation in progress. Global market intelligence suggests a 40% efficiency gain. I am ready to deploy a custom training layer for your specific sales niche. What is your primary objective?"
         }
     ];
 

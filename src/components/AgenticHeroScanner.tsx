@@ -8,7 +8,54 @@ import { cn } from "@/lib/utils";
 
 const formatMarkdown = (text: string) => {
     if (!text) return { __html: '' };
-    let html = text
+    
+    // Parse tables first
+    let parsedText = text;
+    if (parsedText.includes('|')) {
+        const lines = parsedText.split('\n');
+        let inTable = false;
+        const newLines = [];
+        
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (line.startsWith('|') && line.endsWith('|')) {
+                if (!inTable) {
+                    inTable = true;
+                    newLines.push('<div class="overflow-x-auto my-4 rounded-xl border border-white/10"><table class="w-full text-sm text-left border-collapse">');
+                }
+                // Check if it's a separator line like |---|---|
+                if (line.match(/^\|(?:\s*[-:]+\s*\|)+$/)) {
+                    continue; // Skip separator line
+                }
+                
+                const cells = line.split('|').filter((_, index, array) => index !== 0 && index !== array.length - 1);
+                
+                newLines.push('<tr class="border-b border-white/10 last:border-b-0 hover:bg-white/[0.02] transition-colors">');
+                cells.forEach((cell, index) => {
+                    const content = cell.trim();
+                    // If it's the first row of the table, treat as header
+                    if (newLines.length === 2) { 
+                         newLines.push(`<th class="px-4 py-3 font-bold bg-white/[0.05] border-r border-white/10 last:border-r-0 text-white">${content}</th>`);
+                    } else {
+                         newLines.push(`<td class="px-4 py-3 border-r border-white/10 last:border-r-0 text-white/80">${content}</td>`);
+                    }
+                });
+                newLines.push('</tr>');
+            } else {
+                if (inTable) {
+                    inTable = false;
+                    newLines.push('</table></div>');
+                }
+                newLines.push(lines[i]);
+            }
+        }
+        if (inTable) {
+            newLines.push('</table></div>');
+        }
+        parsedText = newLines.join('\n');
+    }
+
+    let html = parsedText
         .replace(/###\s+(.*?)(?=\n|$)/g, '<h3 class="text-base font-bold mt-4 mb-2 text-white">$1</h3>')
         .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-white">$1</strong>')
         .replace(/\*(.*?)\*/g, '<span class="text-white/80 font-bold">$1</span>')
@@ -21,7 +68,11 @@ const formatMarkdown = (text: string) => {
         .replace(/(<br \/>)+<li/g, '<li')
         .replace(/<\/li>(<br \/>)+/g, '</li>')
         .replace(/(<br \/>)+<hr/g, '<hr')
-        .replace(/hr(.*?)>(<br \/>)+/g, 'hr$1>');
+        .replace(/hr(.*?)>(<br \/>)+/g, 'hr$1>')
+        // Clean breaks around tables
+        .replace(/(<br \/>)+<div class="overflow-x-auto/g, '<div class="overflow-x-auto')
+        .replace(/<\/div>(<br \/>)+/g, '</div>');
+        
     return { __html: html };
 };
 

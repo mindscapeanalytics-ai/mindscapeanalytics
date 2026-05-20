@@ -73,11 +73,11 @@ const CustomTooltipBar = ({ active, payload, label }: any) => {
         return (
             <div className="bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] p-4 rounded-xl shadow-xl">
                 <p className="text-foreground dark:text-zinc-300 font-bold mb-2">{label}</p>
-                <p className="text-muted-foreground dark:text-zinc-500 text-[12px] font-mono">
+                <p className="text-muted-foreground dark:text-zinc-400 text-[12px] font-mono">
                     Traditional Cost: <span className="text-foreground dark:text-zinc-400 font-black">{payload[0].payload.cost}%</span>
                 </p>
-                <p className="text-cyan-600 dark:text-foreground text-[12px] font-mono">
-                    Agentic AI Cost: <span className="text-cyan-600 dark:text-foreground font-black">{payload[0].payload.agentic}%</span>
+                <p className="text-foreground/85 dark:text-foreground text-[12px] font-mono">
+                    Agentic AI Cost: <span className="text-foreground dark:text-foreground font-black">{payload[0].payload.agentic}%</span>
                 </p>
             </div>
         );
@@ -126,10 +126,10 @@ export default function BankingAiAdoption() {
                         >
                             <div className="mb-6 sm:mb-8">
                                 <h3 className="text-lg sm:text-xl font-bold text-foreground dark:text-white tracking-tight flex items-center gap-2">
-                                    <Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-600 dark:text-foreground shrink-0" />
+                                    <Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-foreground shrink-0" />
                                     Profit Unlock Trajectory (Billions)
                                 </h3>
-                                <p className="text-muted-foreground dark:text-zinc-500 text-[10px] sm:text-xs mt-1">
+                                <p className="text-muted-foreground dark:text-zinc-400 text-[10px] sm:text-xs mt-1">
                                     Agentic AI scaling VS Traditional IT frameworks
                                 </p>
                             </div>
@@ -138,15 +138,15 @@ export default function BankingAiAdoption() {
                                     <AreaChart data={revenueData} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
                                         <defs>
                                             <linearGradient id="colorRev" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="5%" stopColor="#39b8f7" stopOpacity={0.8}/>
-                                                <stop offset="95%" stopColor="#39b8f7" stopOpacity={0}/>
+                                                <stop offset="5%" stopColor="#71717a" stopOpacity={0.8}/>
+                                                <stop offset="95%" stopColor="#71717a" stopOpacity={0}/>
                                             </linearGradient>
                                         </defs>
                                         <CartesianGrid strokeDasharray="3 3" stroke="#27272a" vertical={false} />
                                         <XAxis dataKey="year" stroke="#71717a" fontSize={9} tickLine={false} axisLine={false} />
                                         <YAxis stroke="#71717a" fontSize={9} tickLine={false} axisLine={false} tickFormatter={(val) => `$${val}B`} />
                                         <Tooltip content={<CustomTooltip />} />
-                                        <Area type="monotone" dataKey="rev" name="Projected Value" stroke="#39b8f7" strokeWidth={3} fillOpacity={1} fill="url(#colorRev)" />
+                                        <Area type="monotone" dataKey="rev" name="Projected Value" stroke="#71717a" strokeWidth={3} fillOpacity={1} fill="url(#colorRev)" />
                                     </AreaChart>
                                 </ResponsiveContainer>
                             </div>
@@ -161,10 +161,10 @@ export default function BankingAiAdoption() {
                         >
                             <div className="mb-6 sm:mb-8">
                                 <h3 className="text-lg sm:text-xl font-bold text-foreground dark:text-white tracking-tight flex items-center gap-2">
-                                    <ShieldAlert className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-600 dark:text-foreground shrink-0" />
+                                    <ShieldAlert className="w-4 h-4 sm:w-5 sm:h-5 text-foreground shrink-0" />
                                     Operational Cost Reductions (Target)
                                 </h3>
-                                <p className="text-muted-foreground dark:text-zinc-500 text-[10px] sm:text-xs mt-1">
+                                <p className="text-muted-foreground dark:text-zinc-400 text-[10px] sm:text-xs mt-1">
                                     Autonomous disruption of legacy human-in-the-loop dependencies
                                 </p>
                             </div>
@@ -176,7 +176,7 @@ export default function BankingAiAdoption() {
                                         <YAxis stroke="#71717a" fontSize={9} tickLine={false} axisLine={false} tickFormatter={(val) => `${val}%`} />
                                         <Tooltip content={<CustomTooltipBar />} cursor={{ fill: '#27272a', opacity: 0.4 }} />
                                         <Bar dataKey="cost" fill="#3f3f46" radius={[4, 4, 0, 0]} maxBarSize={30} />
-                                        <Bar dataKey="agentic" fill="#39b8f7" radius={[4, 4, 0, 0]} maxBarSize={30} />
+                                        <Bar dataKey="agentic" fill="#a1a1aa" radius={[4, 4, 0, 0]} maxBarSize={30} />
                                     </BarChart>
                                 </ResponsiveContainer>
                             </div>
@@ -196,14 +196,14 @@ export default function BankingAiAdoption() {
                                     className="bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] rounded-[1.5rem] sm:rounded-[2rem] flex flex-col p-5 sm:p-6 lg:p-8 group relative overflow-hidden h-full justify-center min-h-[200px] sm:min-h-[240px]"
                                 >   
                                     {/* Subtle hover gradient */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/5 dark:from-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] dark:from-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                     
                                     <div className="relative z-10 flex flex-col h-full">
-                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center bg-card dark:bg-[#1a1a1c] border border-border/50 dark:border-[#27272a] group-hover:border-cyan-500/40 dark:group-hover:border-foreground/30 transition-colors mb-4 sm:mb-6 shrink-0">
-                                            <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-cyan-600 dark:text-foreground" />
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center bg-card dark:bg-[#1a1a1c] border border-border/50 dark:border-[#27272a] group-hover:border-foreground/30 transition-colors mb-4 sm:mb-6 shrink-0">
+                                            <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-foreground" />
                                         </div>
                                         
-                                        <h3 className="text-lg sm:text-xl font-bold text-foreground dark:text-white mb-2 sm:mb-3 tracking-tight group-hover:text-cyan-600 dark:group-hover:text-foreground transition-colors">
+                                        <h3 className="text-lg sm:text-xl font-bold text-foreground dark:text-white mb-2 sm:mb-3 tracking-tight group-hover:text-foreground/80 transition-colors">
                                             {driver.title}
                                         </h3>
                                         
@@ -212,8 +212,8 @@ export default function BankingAiAdoption() {
                                         </p>
                                         
                                         <div className="mt-auto flex flex-row items-center gap-2.5 pt-4 border-t border-border/50 dark:border-[#27272a]/50 flex-wrap">
-                                            <div className="w-1.5 h-1.5 bg-cyan-600 dark:bg-foreground rounded-full animate-pulse shrink-0" />
-                                            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] text-cyan-700 dark:text-foreground/80 leading-tight">
+                                            <div className="w-1.5 h-1.5 bg-foreground rounded-full animate-pulse shrink-0" />
+                                            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] text-foreground/80 leading-tight">
                                                 {driver.metric}
                                             </span>
                                         </div>
@@ -227,7 +227,7 @@ export default function BankingAiAdoption() {
                 {/* 3. Bottom CTA Integration */}
                 <div className="mt-12 sm:mt-20 flex justify-center lg:justify-start w-full">
                     <Link href="/services" className="w-full sm:w-auto">
-                        <button className="w-full sm:w-auto bg-cyan-600 hover:bg-cyan-500 dark:bg-foreground dark:hover:bg-foreground/90 text-primary-foreground dark:text-background px-6 sm:px-8 py-3.5 sm:py-4 md:px-12 md:py-5 font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[9px] sm:text-[10px] md:text-xs rounded-xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2.5 sm:gap-3 shadow-[0_0_30px_rgba(57,184,247,0.2)]">
+                        <button className="w-full sm:w-auto bg-primary hover:bg-primary/90 dark:bg-foreground dark:hover:bg-foreground/90 text-primary-foreground dark:text-background px-6 sm:px-8 py-3.5 sm:py-4 md:px-12 md:py-5 font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] text-[9px] sm:text-[10px] md:text-xs rounded-xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2.5 sm:gap-3 shadow-md">
                             EXPLORE ENTERPRISE SOLUTIONS
                             <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
                         </button>

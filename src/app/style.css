@@ -50,7 +50,7 @@
     --popover-foreground: 240 10% 4%;
     --primary: 240 5.9% 10%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 199 92% 60%;
+    --secondary: 240 5.9% 30%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
@@ -62,13 +62,13 @@
     --input: 240 5.9% 90%;
     --ring: 240 5.9% 10%;
 
-    --ambient-1: 199 92% 60%;
-    --ambient-2: 199 92% 70%;
-    --ambient-3: 199 92% 80%;
+    --ambient-1: 240 5.9% 10%;
+    --ambient-2: 240 5.9% 30%;
+    --ambient-3: 240 5.9% 50%;
     --grid-opacity: 0.05;
     --subgrid-opacity: 0.02;
     --surface-frost: 210 20% 98%;
-    --accent-glow: 199 92% 60% / 0.15;
+    --accent-glow: 240 5.9% 10% / 0.15;
 }
 
 .dark {
@@ -80,8 +80,8 @@
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
     --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 240 5% 85%;
+    --secondary-foreground: 240 5.9% 10%;
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
     --accent: 240 3.7% 15.9%;
@@ -182,14 +182,14 @@
     }
 
     .glass-card {
-        @apply bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] rounded-[2rem] hover:border-cyan-500/50 dark:hover:border-white/40 transition-all duration-500;
+        @apply bg-card dark:bg-[#0f0f11] border border-border/50 dark:border-[#27272a] rounded-[2rem] hover:border-foreground/20 dark:hover:border-white/40 transition-all duration-500;
         box-shadow: none;
     }
     .glass-card:hover {
-        box-shadow: 0 0 30px rgba(57, 184, 247, 0.1);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.03);
     }
     :is(.dark .glass-card:hover) {
-        box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.03);
     }
 
     .glass-card-premium {
@@ -197,10 +197,10 @@
         box-shadow: none;
     }
     .glass-card-premium:hover {
-        box-shadow: 0 0 30px rgba(57, 184, 247, 0.1);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.03);
     }
     :is(.dark .glass-card-premium:hover) {
-        box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.03);
     }
 
     .surface-frost {

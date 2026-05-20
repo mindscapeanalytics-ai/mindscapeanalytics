@@ -11,15 +11,62 @@ interface Message {
     timestamp?: number;
 }
 
-const GREETING = `Welcome to Mindscape Analytics! I'm the AI Architect - your gateway to enterprise automation, voice agents, and full-stack SaaS solutions.\n\nHow can I help transform your business today?`;
+const GREETING = `Welcome to Mindscape Analytics! I'm Zee - your gateway to enterprise automation, voice agents, and full-stack SaaS solutions.\n\nHow can I help transform your business today?`;
 
 const LEAD_PROMPT_THRESHOLD = 3; // Ask for email after 3 exchanges
 
 const formatMarkdown = (text: string) => {
     if (!text) return { __html: '' };
-    let html = text
+    
+    // Parse tables first
+    let parsedText = text;
+    if (parsedText.includes('|')) {
+        const lines = parsedText.split('\n');
+        let inTable = false;
+        const newLines = [];
+        
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (line.startsWith('|') && line.endsWith('|')) {
+                if (!inTable) {
+                    inTable = true;
+                    newLines.push('<div class="overflow-x-auto my-4 rounded-xl border border-border"><table class="w-full text-sm text-left border-collapse">');
+                }
+                // Check if it's a separator line like |---|---|
+                if (line.match(/^\|(?:\s*[-:]+\s*\|)+$/)) {
+                    continue; // Skip separator line
+                }
+                
+                const cells = line.split('|').filter((_, index, array) => index !== 0 && index !== array.length - 1);
+                
+                newLines.push('<tr class="border-b border-border last:border-b-0 hover:bg-foreground/[0.02] transition-colors">');
+                cells.forEach((cell, index) => {
+                    const content = cell.trim();
+                    // If it's the first row of the table, treat as header
+                    if (newLines.length === 2) { 
+                         newLines.push(`<th class="px-4 py-3 font-bold bg-foreground/[0.05] border-r border-border last:border-r-0 text-foreground">${content}</th>`);
+                    } else {
+                         newLines.push(`<td class="px-4 py-3 border-r border-border last:border-r-0 text-foreground/80">${content}</td>`);
+                    }
+                });
+                newLines.push('</tr>');
+            } else {
+                if (inTable) {
+                    inTable = false;
+                    newLines.push('</table></div>');
+                }
+                newLines.push(lines[i]);
+            }
+        }
+        if (inTable) {
+            newLines.push('</table></div>');
+        }
+        parsedText = newLines.join('\n');
+    }
+
+    let html = parsedText
         .replace(/###\s+(.*?)(?=\n|$)/g, '<h3 class="text-base font-bold mt-4 mb-2 text-foreground">$1</h3>')
-        .replace(/\*\*(.*?)\*\"/g, '<strong class="font-bold text-foreground">$1</strong>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-foreground">$1</strong>')
         .replace(/\*(.*?)\*/g, '<em class="text-foreground/80 font-bold">$1</em>')
         .replace(/-\s+(.*?)(?=\n|$)/g, '<li class="ml-4 list-disc my-1">$1</li>')
         .replace(/---/g, '<hr class="my-4 border-border opacity-50" />')
@@ -30,7 +77,11 @@ const formatMarkdown = (text: string) => {
         .replace(/(<br \/>)+<li/g, '<li')
         .replace(/<\/li>(<br \/>)+/g, '</li>')
         .replace(/(<br \/>)+<hr/g, '<hr')
-        .replace(/hr(.*?)>(<br \/>)+/g, 'hr$1>');
+        .replace(/hr(.*?)>(<br \/>)+/g, 'hr$1>')
+        // Clean breaks around tables
+        .replace(/(<br \/>)+<div class="overflow-x-auto/g, '<div class="overflow-x-auto')
+        .replace(/<\/div>(<br \/>)+/g, '</div>');
+        
     return { __html: html };
 };
 
@@ -542,7 +593,7 @@ export default function ChatWidget() {
                                     <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-background" />
                                 </div>
                                 <div>
-                                    <h3 className="text-xs font-black uppercase tracking-[0.2em] text-foreground">AI Architect</h3>
+                                    <h3 className="text-xs font-black uppercase tracking-[0.2em] text-foreground">Zee</h3>
                                     <p className="text-[9px] font-mono text-foreground/40 tracking-widest uppercase">MSA AGENT • ONLINE</p>
                                 </div>
                             </div>
