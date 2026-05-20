@@ -9,8 +9,8 @@ export default function HeroSpotlight() {
       <motion.div 
         className="spotlight-wrapper will-change-transform"
         animate={{ 
-          x: ['-30vw', '30vw'], 
-          y: ['-25vh', '25vh'] 
+          x: ['-20vw', '20vw'], 
+          y: ['-15vh', '15vh'] 
         }}
         transition={{ 
           x: { duration: 25, repeat: Infinity, repeatType: 'reverse', ease: 'linear' }, 
@@ -19,7 +19,7 @@ export default function HeroSpotlight() {
         transformTemplate={({ x, y }: any) => `translate3d(${x || 0}, ${y || 0}, 0)`}
       >
         <div className="univers-loader will-change-transform">
-          <svg width={160} height={160} viewBox="0 0 160 160" className="relative z-10 scale-[1.2]">
+          <svg width="100%" height="100%" viewBox="0 0 160 160" className="relative z-10">
             <defs>
               <linearGradient id="neural-gradient" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stopColor="var(--color-one)" />
@@ -88,7 +88,8 @@ export default function HeroSpotlight() {
           
           position: relative;
           border-radius: 50%;
-          transform: scale(var(--size)) translate3d(0,0,0);
+          width: calc(160px * var(--size));
+          height: calc(160px * var(--size));
           filter: drop-shadow(0 0 30px var(--color-three)) drop-shadow(0 25px 60px var(--color-four));
           animation: colorize calc(var(--time-animation) * 4) ease-in-out infinite;
           backface-visibility: hidden;
@@ -135,32 +136,29 @@ export default function HeroSpotlight() {
           position: absolute;
           top: 0;
           left: 0;
-          width: 160px;
-          height: 160px;
+          width: 100%;
+          height: 100%;
           border-radius: 50%;
           border: solid 1px var(--color-five);
           background: radial-gradient(circle at center, var(--color-five), transparent 70%);
-          transform: translate3d(0,0,0);
         }
 
         .univers-loader .box {
           position: absolute;
           top: 0;
           left: 0;
-          width: 160px;
-          height: 160px;
+          width: 100%;
+          height: 100%;
           background: transparent;
-          transform: translate3d(0,0,0);
         }
 
         @keyframes colorize {
           0%, 100% {
             opacity: 0.6;
-            transform: scale(var(--size)) translate3d(0,0,0);
           }
           50% {
             opacity: 0.8;
-            transform: scale(calc(var(--size) * 1.02)) translate3d(0,0,0);
+            transform: scale(1.02) translate3d(0,0,0);
           }
         }
       `}} />

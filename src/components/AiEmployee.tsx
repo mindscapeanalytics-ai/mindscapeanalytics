@@ -128,13 +128,20 @@ export default function AiEmployee() {
         
         const utterance = new SpeechSynthesisUtterance(text);
         
-        // Voice Selection Logic - 2026 Pro Standard
+        // Voice Selection Logic - 2026 Pro Standard (Strict Male Preference)
         const preferredVoices = [
-            "Microsoft Andrew Online (Natural)",
-            "Microsoft Christopher Online (Natural)",
-            "Google US English Male",
-            "Apple Daniel",
-            "English (United States)"
+            "Microsoft Andrew Online (Natural)",     // Windows 11 Premium Male
+            "Microsoft Brian Online (Natural)",      // Windows Premium Male
+            "Microsoft Christopher Online (Natural)",// Windows Premium Male
+            "Microsoft Guy Online (Natural)",        // Windows Premium Male
+            "Microsoft Ryan Online (Natural)",       // Windows Premium Male
+            "Google US English Male",                // Chrome Premium Male
+            "Google UK English Male",                // Chrome Premium UK Male
+            "Jamie",                                 // macOS Premium Male
+            "Daniel",                                // macOS/iOS UK Male
+            "Arthur",                                // macOS Premium UK Male
+            "Aaron",                                 // macOS Male
+            "Alex"                                   // macOS Classic Male
         ];
 
         // Retrieve available voices, fallback to instant getVoices if lazy loaded empty
@@ -149,14 +156,21 @@ export default function AiEmployee() {
             if (selectedVoice) break;
         }
 
+        // Deep fallback: Look for ANY voice that explicitly says "Male" or "Boy"
         if (!selectedVoice) {
-            selectedVoice = availableVoices.find(v => v.lang.startsWith("en-US") && (v.name.includes("Male") || v.name.includes("Natural")));
+            selectedVoice = availableVoices.find(v => v.lang.startsWith("en") && (v.name.includes("Male") || v.name.includes("Boy")));
+        }
+        
+        // Final fallback: just get the first English voice if nothing else exists
+        if (!selectedVoice) {
+            selectedVoice = availableVoices.find(v => v.lang.startsWith("en"));
         }
 
         if (selectedVoice) utterance.voice = selectedVoice;
         
-        utterance.rate = 1.05; // Slightly faster for modern premium feel
-        utterance.pitch = 1.0;
+        // 2026 Premium Audio Hacks
+        utterance.rate = 1.05;  // Slightly faster cadence for an intelligent, snappy feel
+        utterance.pitch = 0.95; // Slightly lower pitch for a deeper, more authoritative male presence
         utterance.volume = 1.0;
 
         // CRITICAL HACK: Chrome 15-second SpeechSynthesis Bug Bypass
@@ -302,7 +316,7 @@ export default function AiEmployee() {
             
             // Mic Blocked or Service Blocked: Terminate gracefully to prevent permissions prompts loops
             if (event.error === "not-allowed" || event.error === "service-not-allowed") {
-                setPermissionError("Microphone access blocked or not supported. Please update browser settings.");
+                setPermissionError("MICROPHONE BLOCKED: Please click the lock icon in your browser's URL bar to allow microphone access, or continue in Text Mode.");
                 activeRef.current = false;
                 setIsActive(false);
                 setStatus("IDLE");
@@ -408,47 +422,59 @@ export default function AiEmployee() {
             // REQUEST MIC PERMISSIONS EXPLICITLY FOR ROBUSTNESS
             setPermissionError(null);
             setIsTextMode(false);
+            const SpeechRecognition = typeof window !== "undefined" && ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition);
+
+            if (!SpeechRecognition) {
+                setPermissionError("Voice Intelligence requires Chrome, Edge, or a compatible browser. Please continue in Text Mode.");
+                setStatus("IDLE");
+                setTimeout(() => setPermissionError(null), 15000);
+                return;
+            }
+
+            const initProtocol = () => {
+                if (synthesisRef.current) {
+                    const silent = new SpeechSynthesisUtterance("");
+                    silent.volume = 0;
+                    synthesisRef.current.speak(silent);
+                }
+
+                activeRef.current = true;
+                setIsActive(true);
+                setStatus("CONNECTING");
+                
+                const welcome = "Establishing secure connection to MSA Agent Core. I am the Architect. How can I assist with your organization's AI transformation today?";
+                setAgentResponse(welcome);
+                setStatus("SPEAKING");
+                
+                if (synthesisRef.current && synthesisRef.current.paused) {
+                    synthesisRef.current.resume();
+                }
+
+                speakText(welcome, () => {
+                    if (activeRef.current) {
+                        listeningTimeoutRef.current = setTimeout(() => startListening(), 500);
+                    }
+                });
+            };
+
             if (typeof navigator !== "undefined" && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                // Request explicit permission first to trigger the browser prompt immediately
                 navigator.mediaDevices.getUserMedia({ audio: true })
-                    .then(() => {
-                        if (synthesisRef.current) {
-                            const silent = new SpeechSynthesisUtterance("");
-                            silent.volume = 0;
-                            synthesisRef.current.speak(silent);
-                        }
-
-                        activeRef.current = true;
-                        setIsActive(true);
-                        setStatus("CONNECTING");
-                        
-                        const welcome = "Establishing secure connection to MSA Agent Core. I am the Architect. How can I assist with your organization's AI transformation today?";
-                        setAgentResponse(welcome);
-                        setStatus("SPEAKING");
-                        
-                        if (synthesisRef.current && synthesisRef.current.paused) {
-                            synthesisRef.current.resume();
-                        }
-
-                        speakText(welcome, () => {
-                            if (activeRef.current) {
-                                listeningTimeoutRef.current = setTimeout(() => startListening(), 500);
-                            }
-                        });
+                    .then((stream) => {
+                        // IMMEDIATELY stop the stream tracks to free up the microphone for SpeechRecognition.
+                        // Failing to stop the stream can cause hardware locks leading to Protocol Errors.
+                        stream.getTracks().forEach(track => track.stop());
+                        initProtocol();
                     })
                     .catch((err) => {
                         console.error("Mic Access Denied:", err);
-                        setPermissionError("Microphone access is required for Voice Intelligence. Please enable permissions in your browser settings.");
+                        setPermissionError("MICROPHONE BLOCKED: Please click the lock/mic icon in your browser's URL bar, allow microphone access, and try again.");
                         setStatus("IDLE");
-                        
-                        // Auto-clear error after 15 seconds to give user time to select text mode fallback
                         setTimeout(() => setPermissionError(null), 15000);
                     });
             } else {
-                setPermissionError("Microphone access is not supported by your browser or connection. Please update browser settings.");
-                setStatus("IDLE");
-                
-                // Auto-clear error after 15 seconds
-                setTimeout(() => setPermissionError(null), 15000);
+                // Fallback: If mediaDevices API is missing (e.g. strict environments), rely on SpeechRecognition natively.
+                initProtocol();
             }
         }
     };

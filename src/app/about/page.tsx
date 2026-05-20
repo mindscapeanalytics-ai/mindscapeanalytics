@@ -112,8 +112,7 @@ const expertise = [
     { title: "AI Sales & Chatbots", id: "03", icon: Users, desc: "Intelligent customer engagement nodes that qualify and convert." },
     { title: "Big Data & Cloud Engineering", id: "04", icon: Database, desc: "Cloud-native databases, processing millions of complex operations." },
     { title: "Full-Stack SaaS Platforms", id: "05", icon: Code, desc: "High-density web architectures designed for global scalability." },
-    { title: "Lead Generation AI Systems", id: "06", icon: TrendingUp, desc: "Automated intent discovery pipelines that feed CRM directly." },
-    { title: "Custom Database Architecture", id: "07", icon: Cpu, desc: "High-security relational structures built for enterprise workloads." }
+    { title: "Lead Generation AI Systems", id: "06", icon: TrendingUp, desc: "Automated intent discovery pipelines that feed CRM directly." }
 ];
 
 const differences = [
@@ -197,8 +196,8 @@ export default function AboutPage() {
                                 <div className="absolute -top-4 -left-6 w-4 h-4 border-t-2 border-l-2 border-secondary/40 lg:opacity-100 group-hover/title:scale-110 transition-transform hidden sm:block" />
                                 <div className="absolute -bottom-2 -right-6 w-4 h-4 border-b-2 border-r-2 border-secondary/40 lg:opacity-100 group-hover/title:scale-110 transition-transform hidden sm:block" />
 
-                                <span className="text-foreground px-4 drop-shadow-sm flex items-center gap-4 break-words text-center">
-                                    <span className="hidden lg:block text-[8px] font-mono text-foreground/20 tracking-[0.5em] -ml-12">0X_4F</span>
+                                <span className="text-foreground px-4 drop-shadow-sm flex items-center justify-center break-words text-center relative">
+                                    <span className="absolute right-full mr-4 hidden lg:block text-[8px] font-mono text-foreground/20 tracking-[0.5em]">0X_4F</span>
                                     ABOUT
                                 </span>
                                 <span className="relative inline-block mt-0.5 md:mt-4 px-4 overflow-hidden max-w-full">
@@ -216,7 +215,7 @@ export default function AboutPage() {
                             className="max-w-4xl border-t border-foreground/10 pt-10 md:pt-12 w-full mx-auto px-4"
                         >
                             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground/70 font-medium tracking-tight leading-snug uppercase text-center max-w-3xl mx-auto">
-                                We help businesses scale using <span className="text-foreground font-black not-italic border-b border-foreground/20 pb-1">intelligent systems</span> — not manual effort.
+                                We help businesses scale using <span className="text-foreground font-black not-italic border-b border-foreground/20 pb-1">intelligent systems</span> not manual effort.
                             </p>
                             <div className="flex items-center justify-center gap-6 mt-12 opacity-40">
                                 <div className="h-[1px] w-12 md:w-24 bg-gradient-to-r from-transparent to-foreground/60" />
@@ -271,7 +270,7 @@ export default function AboutPage() {
                             </div>
                             <div className="mt-8 pt-6 border-t border-foreground/5">
                                 <p className="text-meta text-center">
-                                    We focus on long-term partnership — not one-time delivery.
+                                    We focus on long-term partnership, not one-time delivery.
                                 </p>
                             </div>
                         </ScrollReveal>
@@ -321,20 +320,21 @@ export default function AboutPage() {
             </section>
 
             {/* --- Stunning Glassmorphic Vision Section --- */}
-            <section className="py-32 relative overflow-hidden border-y border-foreground/5">
+            <section className="py-24 relative overflow-hidden border-y border-foreground/5">
                 <div className="absolute inset-0 bg-foreground/[0.01]" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-foreground/5 rounded-full blur-[120px] pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-foreground/5 rounded-full blur-[100px] pointer-events-none" />
                 <div className="container mx-auto px-6 max-w-4xl relative z-10">
-                    <ScrollReveal className="text-center space-y-10">
-                        <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-foreground/[0.02] border border-foreground/10 mx-auto">
-                            <Target className="w-3.5 h-3.5 text-foreground" />
-                            <span className="text-meta">Section_03 // Mission_Directive</span>
+                    <ScrollReveal className="text-center space-y-8">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-foreground/[0.02] border border-foreground/10 mx-auto">
+                            <Target className="w-3.5 h-3.5 text-foreground/60" />
+                            <span className="text-meta uppercase tracking-widest text-[10px]">Mission Directive</span>
                         </div>
-                        <h2 className="fluid-h2 text-foreground leading-none">
+                        <h2 className="text-4xl md:text-6xl font-black text-foreground uppercase tracking-tighter">
                             OUR VISION.
                         </h2>
-                        <p className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight leading-relaxed text-foreground">
-                            To become a global AI-first technology partner helping businesses transition from manual operations to <span className="underline underline-offset-8 decoration-4 decoration-white/40 text-foreground/80">autonomous AI-driven systems.</span>
+                        <div className="h-px w-24 bg-gradient-to-r from-transparent via-foreground/20 to-transparent mx-auto" />
+                        <p className="text-lg sm:text-xl md:text-2xl font-medium tracking-tight leading-relaxed text-foreground/70 max-w-3xl mx-auto">
+                            To become a global AI-first technology partner helping businesses transition from manual operations to <span className="text-foreground font-black border-b border-foreground/20 pb-1">autonomous AI-driven systems.</span>
                         </p>
                     </ScrollReveal>
                 </div>
