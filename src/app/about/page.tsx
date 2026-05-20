@@ -187,10 +187,10 @@ export default function AboutPage() {
                             initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter uppercase font-syncopate leading-[0.9] text-white"
+                            className="fluid-h1 text-white"
                         >
                             ABOUT <br />
-                            <span className="text-foreground/70 text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/40">MINDSCAPE.</span>
+                            <span className="bg-gradient-to-r from-white via-white to-white/40 bg-clip-text text-transparent">MINDSCAPE.</span>
                         </motion.h1>
 
                         <motion.div
@@ -221,9 +221,9 @@ export default function AboutPage() {
                                 <div className="w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
                                 <span className="text-[10px] font-mono uppercase tracking-[0.35em] text-foreground/50">Section_01 // Institutional_Core</span>
                             </div>
-                            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tighter uppercase leading-[0.9] font-syncopate">
+                            <h2 className="fluid-h2 text-white">
                                 NEXT-GENERATION <br />
-                                <span className="text-foreground/60">AI & DATA ENGINEERING.</span>
+                                <span className="text-white/45">AI & DATA ENGINEERING.</span>
                             </h2>
                             <div className="space-y-6">
                                 <p className="text-base sm:text-lg text-foreground/60 leading-relaxed font-medium">
@@ -241,7 +241,7 @@ export default function AboutPage() {
                         <ScrollReveal className="p-8 sm:p-12 rounded-[2rem] sm:rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl relative overflow-hidden group shadow-2xl">
                             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
                             <div className="absolute top-6 right-8 opacity-20 font-mono text-[9px] uppercase font-black tracking-widest text-white">DIAG_v88</div>
-                            <h3 className="text-lg sm:text-xl font-black uppercase text-white mb-8 tracking-tight font-syncopate">What Makes Us Different?</h3>
+                            <h3 className="text-lg sm:text-xl font-black uppercase text-white mb-8 tracking-tight font-sans">What Makes Us Different?</h3>
                             <div className="space-y-6">
                                 {differences.map((diff, i) => (
                                     <div key={i} className="flex justify-between items-center group/item pb-4 border-b border-white/5 last:border-0 last:pb-0">
@@ -271,7 +271,7 @@ export default function AboutPage() {
                             <Cpu className="w-3.5 h-3.5 text-white/60" />
                             <span className="text-[9px] font-mono font-black uppercase tracking-[0.4em] text-foreground/60">System_Capabilities // Readout</span>
                         </div>
-                        <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tighter uppercase font-syncopate">
+                        <h2 className="fluid-h2 text-white">
                             CORE EXPERTISE.
                         </h2>
                     </ScrollReveal>
@@ -294,7 +294,7 @@ export default function AboutPage() {
                                         </div>
                                         <span className="text-[8px] font-mono text-foreground/40 tracking-[0.4em] font-black uppercase">NODE_0x{exp.id}</span>
                                     </div>
-                                    <h3 className="text-lg font-black text-white uppercase tracking-tight font-syncopate">{exp.title}</h3>
+                                    <h3 className="text-lg font-black text-white uppercase tracking-tight font-sans">{exp.title}</h3>
                                     <p className="text-xs text-foreground/50 leading-relaxed font-medium">{exp.desc}</p>
                                 </div>
                                 <div className="w-8 h-px bg-white/20 mt-6 group-hover:w-full transition-all duration-500" />
@@ -314,7 +314,7 @@ export default function AboutPage() {
                             <Target className="w-3.5 h-3.5 text-white" />
                             <span className="text-[9px] font-mono font-black uppercase tracking-[0.4em] text-foreground/60">Section_03 // Mission_Directive</span>
                         </div>
-                        <h2 className="text-5xl sm:text-7xl font-black text-white tracking-tighter uppercase font-syncopate leading-none">
+                        <h2 className="fluid-h2 text-white leading-none">
                             OUR VISION.
                         </h2>
                         <p className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight leading-relaxed text-white">
@@ -332,7 +332,7 @@ export default function AboutPage() {
                             <Users className="w-3.5 h-3.5 text-white/60" />
                             <span className="text-[9px] font-mono font-black uppercase tracking-[0.4em] text-foreground/60">Institutional Core Logic Unit</span>
                         </div>
-                        <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tighter uppercase font-syncopate">ARCHITECTS.</h2>
+                        <h2 className="fluid-h2 text-white">ARCHITECTS.</h2>
                     </ScrollReveal>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -361,7 +361,7 @@ export default function AboutPage() {
                                     <div className="space-y-4">
                                         <div className="flex justify-between items-start">
                                             <div>
-                                                <h3 className="text-xl font-black uppercase font-syncopate tracking-tighter text-white">{member.name}</h3>
+                                                <h3 className="text-xl font-black uppercase font-sans tracking-tighter text-white">{member.name}</h3>
                                                 <span className="text-[10px] font-mono font-black text-foreground/50 uppercase tracking-[0.25em] block mt-1">{member.role}</span>
                                             </div>
                                             <div className="flex gap-2">
@@ -405,7 +405,7 @@ export default function AboutPage() {
                             <Globe className="w-3.5 h-3.5 text-white/60" />
                             <span className="text-[9px] font-mono font-black uppercase tracking-[0.4em] text-foreground/60">Chronological System Evolution</span>
                         </div>
-                        <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tighter uppercase font-syncopate">JOURNEY.</h2>
+                        <h2 className="fluid-h2 text-white">JOURNEY.</h2>
                     </ScrollReveal>
 
                     <div className="relative">
@@ -427,8 +427,8 @@ export default function AboutPage() {
                                     
                                     <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-12">
                                         <div className={`space-y-4 p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors backdrop-blur-xl relative ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
-                                            <span className="text-4xl sm:text-5xl font-black text-white/10 font-syncopate leading-none absolute top-4 right-6 pointer-events-none">{item.year}</span>
-                                            <span className="text-3xl sm:text-4xl font-black text-white font-syncopate leading-none block">{item.year}</span>
+                                            <span className="text-4xl sm:text-5xl font-black text-white/10 font-sans leading-none absolute top-4 right-6 pointer-events-none">{item.year}</span>
+                                            <span className="text-3xl sm:text-4xl font-black text-white font-sans leading-none block">{item.year}</span>
                                             <h4 className="text-lg font-black uppercase tracking-tight text-white">{item.title}</h4>
                                             <p className="text-foreground/50 text-sm font-medium leading-relaxed max-w-sm ml-0 mr-auto md:ml-auto md:mr-0 uppercase tracking-tight">
                                                 {item.description}
@@ -451,7 +451,7 @@ export default function AboutPage() {
                         <ScrollReveal className="space-y-10 p-8 sm:p-12 rounded-[2.5rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl shadow-2xl relative overflow-hidden">
                             <div className="space-y-2">
                                 <span className="text-[10px] font-mono text-foreground/40 uppercase tracking-[0.3em] block">Node_06 // Trust_Index</span>
-                                <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tighter uppercase font-syncopate">WHY TRUST US?</h2>
+                                <h2 className="fluid-h2 text-white">WHY TRUST US?</h2>
                             </div>
                             <div className="space-y-6">
                                 {trustFactors.map((factor, i) => (
@@ -475,9 +475,9 @@ export default function AboutPage() {
                                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[9px] font-mono font-black uppercase tracking-[0.25em] text-white/80">
                                     Managed_Subscription_Protocol
                                 </div>
-                                <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tighter uppercase font-syncopate leading-[0.9]">
+                                <h2 className="fluid-h2 text-white">
                                     WE DON'T JUST DELIVER. <br />
-                                    <span className="text-white/40">WE OPTIMIZE.</span>
+                                    <span className="text-white/45">WE OPTIMIZE.</span>
                                 </h2>
                                 <p className="text-base sm:text-lg font-medium text-white/70 max-w-xl leading-relaxed">
                                     Our clients subscribe to long-term reliability. We manage hosting, databases, AI model maintenance, and security protocols so you can focus entirely on commercial growth.
@@ -525,7 +525,7 @@ export default function AboutPage() {
                                 transition={{ duration: 0.6, delay: index * 0.08 }}
                                 className="text-center group"
                             >
-                                <div className="text-5xl sm:text-6xl md:text-7xl font-black mb-4 text-white font-syncopate leading-none tracking-tighter group-hover:scale-105 transition-transform duration-500">
+                                <div className="text-5xl sm:text-6xl md:text-7xl font-black mb-4 text-white font-sans leading-none tracking-tighter group-hover:scale-105 transition-transform duration-500">
                                     {stat.value}
                                 </div>
                                 <div className="text-foreground/50 text-[10px] font-black uppercase tracking-[0.35em] group-hover:text-white transition-colors duration-300">

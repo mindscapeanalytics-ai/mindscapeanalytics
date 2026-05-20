@@ -28,6 +28,8 @@ export default function AiEmployee() {
     const [turnCount, setTurnCount] = useState(0);
     const [permissionError, setPermissionError] = useState<string | null>(null);
     const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+    const [isTextMode, setIsTextMode] = useState(false);
+    const [textInput, setTextInput] = useState("");
     
     const recognitionRef = useRef<any>(null);
     const activeRef = useRef(false);
@@ -314,7 +316,7 @@ export default function AiEmployee() {
             console.error("Recognition start error:", e);
             recognitionActiveRef.current = false;
         }
-    }, [turnCount, clearAllTimeouts]);
+    }, [turnCount, clearAllTimeouts, isTextMode]);
 
     const processUserInput = useCallback(async (userText: string) => {
         if (!activeRef.current) return;
@@ -355,6 +357,27 @@ export default function AiEmployee() {
         });
     }, [conversationHistory, getAIResponse, speakText, startListening]);
 
+    const startTextProtocol = useCallback(() => {
+        setIsTextMode(true);
+        activeRef.current = true;
+        setIsActive(true);
+        setStatus("CONNECTING");
+        
+        const welcome = "Establishing secure connection to MSA Agent Core in Text Mode. I am the Architect. How can I assist with your organization's AI transformation today?";
+        setAgentResponse(welcome);
+        setStatus("SPEAKING");
+        
+        if (synthesisRef.current && synthesisRef.current.paused) {
+            synthesisRef.current.resume();
+        }
+
+        speakText(welcome, () => {
+            if (activeRef.current) {
+                setStatus("LISTENING");
+            }
+        });
+    }, [speakText]);
+
     const toggleProtocol = () => {
         if (isActive) {
             activeRef.current = false;
@@ -364,6 +387,7 @@ export default function AiEmployee() {
             setAgentResponse("");
             setConversationHistory([]);
             setTurnCount(0);
+            setIsTextMode(false);
             
             clearAllTimeouts();
 
@@ -383,7 +407,8 @@ export default function AiEmployee() {
         } else {
             // REQUEST MIC PERMISSIONS EXPLICITLY FOR ROBUSTNESS
             setPermissionError(null);
-            if (typeof navigator !== "undefined" && navigator.mediaDevices) {
+            setIsTextMode(false);
+            if (typeof navigator !== "undefined" && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 navigator.mediaDevices.getUserMedia({ audio: true })
                     .then(() => {
                         if (synthesisRef.current) {
@@ -415,9 +440,15 @@ export default function AiEmployee() {
                         setPermissionError("Microphone access is required for Voice Intelligence. Please enable permissions in your browser settings.");
                         setStatus("IDLE");
                         
-                        // Auto-clear error after 5 seconds
-                        setTimeout(() => setPermissionError(null), 5000);
+                        // Auto-clear error after 15 seconds to give user time to select text mode fallback
+                        setTimeout(() => setPermissionError(null), 15000);
                     });
+            } else {
+                setPermissionError("Microphone access is not supported by your browser or connection. Please update browser settings.");
+                setStatus("IDLE");
+                
+                // Auto-clear error after 15 seconds
+                setTimeout(() => setPermissionError(null), 15000);
             }
         }
     };
@@ -530,26 +561,35 @@ export default function AiEmployee() {
                                                     initial={{ opacity: 0, scale: 0.9 }}
                                                     animate={{ opacity: 1, scale: 1 }}
                                                     exit={{ opacity: 0, scale: 0.9 }}
-                                                    className="w-[90%] max-w-sm bg-rose-500/10 backdrop-blur-xl border border-rose-500/30 rounded-xl p-4 mb-2 text-center"
+                                                    className="w-[90%] max-w-sm bg-rose-500/10 backdrop-blur-xl border border-rose-500/30 rounded-xl p-4 mb-2 text-center pointer-events-auto z-30"
                                                 >
                                                     <div className="flex items-center gap-3 justify-center mb-1">
                                                         <MicOff className="w-3.5 h-3.5 text-rose-500" />
                                                         <span className="text-[10px] font-mono text-rose-500 uppercase tracking-widest font-black">PROTOCOL_ERROR</span>
                                                     </div>
-                                                    <p className="text-[10px] text-white/70 leading-relaxed uppercase tracking-tighter">
+                                                    <p className="text-[10px] text-white/70 leading-relaxed uppercase tracking-tighter mb-3">
                                                         {permissionError}
                                                     </p>
+                                                    <button
+                                                        onClick={() => {
+                                                            setPermissionError(null);
+                                                            startTextProtocol();
+                                                        }}
+                                                        className="w-full py-2 rounded-lg bg-white/10 hover:bg-white/20 active:scale-98 text-[9px] text-white font-mono uppercase tracking-widest transition-all border border-white/10 cursor-pointer"
+                                                    >
+                                                        ⚡ Continue in Interactive Text Mode
+                                                    </button>
                                                 </motion.div>
                                             )}
-                                            {(transcript || agentResponse) && isActive && !permissionError && (
+                                            {(transcript || agentResponse || isTextMode) && isActive && !permissionError && (
                                                 <motion.div 
                                                     initial={{ opacity: 0, y: 20 }} 
                                                     animate={{ opacity: 1, y: 0 }} 
                                                     exit={{ opacity: 0, scale: 0.95 }}
-                                                    className="w-[90%] max-w-sm bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 text-left shadow-2xl relative overflow-hidden"
+                                                    className="w-[90%] max-w-sm bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl p-4 text-left shadow-2xl relative overflow-hidden pointer-events-auto z-30"
                                                 >
                                                     <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
-                                                    <div className="space-y-3 max-h-[150px] overflow-y-auto custom-scrollbar">
+                                                    <div className="space-y-3 max-h-[150px] overflow-y-auto custom-scrollbar mb-2">
                                                         {transcript && (
                                                             <div className="flex gap-2 items-start">
                                                                 <span className="text-[9px] font-mono text-white/30 uppercase mt-1 shrink-0">YOU</span>
@@ -563,6 +603,33 @@ export default function AiEmployee() {
                                                             </div>
                                                         )}
                                                     </div>
+
+                                                    {isTextMode && (status === "LISTENING" || status === "IDLE") && (
+                                                        <form 
+                                                            onSubmit={(e) => {
+                                                                e.preventDefault();
+                                                                if (!textInput.trim()) return;
+                                                                const query = textInput;
+                                                                setTextInput("");
+                                                                processUserInput(query);
+                                                            }}
+                                                            className="flex gap-2 mt-3 pt-3 border-t border-white/10"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                value={textInput}
+                                                                onChange={(e) => setTextInput(e.target.value)}
+                                                                placeholder="Type your query to the Architect..."
+                                                                className="flex-1 h-9 px-3 rounded-lg bg-white/5 border border-white/10 text-white text-xs placeholder:text-white/35 focus:outline-none focus:border-secondary/50 transition-colors"
+                                                            />
+                                                            <button
+                                                                type="submit"
+                                                                className="h-9 px-3 rounded-lg bg-white text-black font-mono text-[10px] font-black uppercase tracking-wider hover:bg-white/90 active:scale-95 transition-all cursor-pointer shrink-0"
+                                                            >
+                                                                SEND
+                                                            </button>
+                                                        </form>
+                                                    )}
                                                 </motion.div>
                                             )}
                                         </AnimatePresence>
