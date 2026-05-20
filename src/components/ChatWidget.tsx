@@ -385,17 +385,18 @@ export default function ChatWidget() {
         }
 
         try {
-            const res = await fetch("/api/chat", {
+            const res = await fetch("/api/voice", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    messages: updatedMessages.map(m => ({ role: m.role, content: m.content })),
+                    transcript: trimmed,
+                    history: messages.map(m => ({ role: m.role, content: m.content })),
                 }),
             });
 
             if (!res.ok) throw new Error("API error");
             const data = await res.json();
-            const reply = data.content || "I'd be happy to help. Could you tell me more about your specific needs?";
+            const reply = data.response || "I'd be happy to help. Could you tell me more about your specific needs?";
 
             setMessages(prev => [...prev, {
                 role: "assistant",

@@ -45,7 +45,7 @@ Wow the user with your intelligence and friendliness. Resolve their queries inst
         // Using the Unified Orchestrator for High-Fidelity Reasoning
         const result = await callAI({
             provider: "GOOGLE",
-            model: "gemini-1.5-flash",
+            model: "gemini-3-flash",
             systemPrompt,
             messages: messages.map((m: any) => ({
                 role: m.role === "user" ? "user" : "assistant",

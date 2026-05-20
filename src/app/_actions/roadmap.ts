@@ -8,7 +8,7 @@ export async function generateAutomationRoadmap(description: string) {
     
     const systemPrompt = `
 You are the "Mindscape Strategic Architect" (MSA-01). 
-You are powered by industrial-grade LLM infrastructure (NVIDIA NIM / Google Gemini).
+You are powered by industrial-grade LLM infrastructure.
 
 [TASK]: 
 ${isUrl ? "Analyze the provided URL and identify specific high-ROI automation opportunities." : "Analyze the user's manual process and design an Agentic Automation Roadmap."}
@@ -31,7 +31,8 @@ ${isUrl ? "Analyze the provided URL and identify specific high-ROI automation op
         const result = await callAI({
             systemPrompt,
             prompt: isUrl ? `Analyze this website: ${description}` : `Analyze this process: ${description}`,
-            provider: "NVIDIA", // Try NVIDIA first
+            provider: "GOOGLE", // Use Google Gemini as primary
+            model: "gemini-3-flash", // Use 2026 low-cost intelligent model
         });
 
         return { success: true, roadmap: result.content };

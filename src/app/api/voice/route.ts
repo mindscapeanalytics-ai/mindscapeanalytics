@@ -47,7 +47,7 @@ export async function POST(req: Request) {
             systemPrompt,
             messages,
             provider: "GOOGLE", // Using the robust Gemini model
-            model: "gemini-1.5-flash", // Fast for voice
+            model: "gemini-3.1-flash-lite", // Ultra-fast May 2026 low-cost model for voice
             temperature: 0.6, // Slightly higher for more personality
         });
 

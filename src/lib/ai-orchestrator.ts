@@ -45,7 +45,7 @@ export async function callAI({
     // 1. GOOGLE GEMINI (Primary Priority for Chatbot)
     if (provider === "GOOGLE") {
         const apiKey = process.env.GOOGLE_AI_STUDIO_API;
-        const targetModel = model || "gemini-1.5-flash"; // 2026 low-cost Gemini model
+        const targetModel = model || "gemini-3-flash"; // May 2026 low-cost Gemini model
         
         try {
             // Google API uses a different format for history
