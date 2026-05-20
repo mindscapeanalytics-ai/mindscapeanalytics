@@ -78,7 +78,7 @@ export default function Hero() {
                                     ARCHITECTING
                                 </span>
                                 <span className="relative inline-block mt-0.5 md:mt-4 px-4 overflow-hidden max-w-full">
-                                    <span className="bg-gradient-to-r from-secondary via-white/80 to-secondary bg-[length:200%_auto] bg-clip-text text-transparent shimmer-sweep drop-shadow-[0_0_20px_hsl(var(--secondary)/0.4)] break-words">
+                                    <span className="bg-gradient-to-r from-secondary via-foreground/80 to-secondary bg-[length:200%_auto] bg-clip-text text-transparent shimmer-sweep break-words">
                                         THE FUTURE
                                     </span>
                                 </span>
