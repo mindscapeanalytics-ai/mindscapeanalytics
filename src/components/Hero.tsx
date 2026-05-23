@@ -22,7 +22,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
-                className="container-standard relative z-10 py-2 md:py-6 pointer-events-none flex flex-col items-center justify-center min-h-[60vh] md:min-h-[70vh] will-change-[opacity,transform]"
+                className="container-standard relative z-10 py-2 md:py-6 flex flex-col items-center justify-center min-h-[60vh] md:min-h-[70vh] will-change-[opacity,transform]"
             >
                 <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
                     <div className="relative space-y-2 flex flex-col items-center">
@@ -80,7 +80,7 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.2, delay: 0.2 }}
-                            className="text-base md:text-3xl lg:text-4xl font-black text-foreground/70 dark:text-foreground/40 font-sans tracking-tight leading-[1.1] md:leading-[1] uppercase text-center max-w-4xl px-8 mt-6 will-change-[transform,opacity] not-italic"
+                            className="text-base md:text-2xl lg:text-3xl font-black text-foreground/80 dark:text-foreground/70 font-sans tracking-tight leading-[1.2] uppercase text-center max-w-4xl px-6 mt-6 will-change-[transform,opacity] not-italic"
                         >
                             <div className="flex flex-col items-center gap-3">
                                 <span className="text-[7px] md:text-[9px] font-mono font-black text-secondary tracking-[0.4em] mb-1 opacity-60">
@@ -97,18 +97,18 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1.2, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
-                        className="w-full mt-8 mb-6 pointer-events-auto"
+                        className="w-full mt-8 mb-6"
                     >
-                        {/* Mobile Service Hub Grid */}
-                        <div className="lg:hidden grid grid-cols-3 gap-2 px-6 max-w-[280px] mx-auto mb-8">
+                        {/* Mobile Service tags */}
+                        <div className="lg:hidden flex flex-wrap justify-center gap-2 px-4 mb-6">
                             {[
-                                { label: "Sales", icon: "01" },
-                                { label: "Voice", icon: "02" },
-                                { label: "SaaS", icon: "03" }
+                                { label: "Sales Agents", dot: "bg-secondary" },
+                                { label: "Voice Automation", dot: "bg-purple-500" },
+                                { label: "SaaS Systems", dot: "bg-emerald-500" }
                             ].map((service, i) => (
-                                <div key={i} className="flex flex-col items-center gap-1.5 p-2 rounded-xl bg-foreground/[0.02] border border-border backdrop-blur-sm">
-                                    <span className="text-[8px] font-mono text-foreground/30 font-black">{service.icon}</span>
-                                    <span className="text-[7px] font-black uppercase tracking-widest text-foreground/70 dark:text-foreground/50">{service.label}</span>
+                                <div key={i} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-foreground/[0.03] border border-border/40 backdrop-blur-sm">
+                                    <div className={`w-1.5 h-1.5 rounded-full ${service.dot} animate-pulse`} />
+                                    <span className="text-[9px] font-bold uppercase tracking-wider text-foreground/80 dark:text-foreground/70">{service.label}</span>
                                 </div>
                             ))}
                         </div>
@@ -140,12 +140,12 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-                        className="flex flex-col items-center gap-6 lg:gap-10 pointer-events-auto w-full px-6"
+                        className="flex flex-col items-center gap-6 lg:gap-10 w-full px-6"
                     >
-                        <div className="flex flex-col sm:flex-row gap-4 md:gap-6 w-full sm:w-auto mt-2">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full max-w-sm sm:max-w-none mx-auto mt-2">
                             <CalButton calLink="mindscape/strategy" className="w-full sm:w-auto">
-                                <button className="w-full sm:w-auto group relative px-6 lg:px-10 py-3.5 lg:py-5 bg-secondary text-secondary-foreground font-black uppercase text-[10px] lg:text-xs tracking-[0.2em] rounded-xl shadow-lg transition-all hover:scale-105 active:scale-95 not-italic">
-                                    <span className="relative z-10 flex items-center justify-center gap-3">
+                                <button className="w-full sm:w-auto group relative px-6 py-4 bg-secondary text-secondary-foreground font-black uppercase text-[10px] lg:text-xs tracking-[0.2em] rounded-xl shadow-lg transition-all hover:scale-105 active:scale-95 not-italic">
+                                    <span className="relative z-10 flex items-center justify-center gap-2">
                                         BOOK A STRATEGY CALL
                                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </span>
@@ -153,10 +153,8 @@ export default function Hero() {
                             </CalButton>
 
                             <Link href="/projects" className="w-full sm:w-auto">
-                                <button className="w-full sm:w-auto group px-8 lg:px-10 py-3.5 lg:py-5 bg-background/80 border border-border text-foreground font-black uppercase text-[10px] lg:text-xs tracking-[0.3em] rounded-xl backdrop-blur-xl transition-all hover:bg-foreground/5 hover:border-foreground/30 active:scale-95 flex items-center justify-center gap-4 shadow-xl not-italic">
-                                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-foreground/5 border border-border flex items-center justify-center group-hover:bg-foreground/10 group-hover:border-foreground/30 transition-all">
-                                        <Play className="w-3 h-3 fill-foreground text-foreground ml-1" />
-                                    </div>
+                                <button className="w-full sm:w-auto group px-6 py-4 bg-background/80 border border-border text-foreground font-black uppercase text-[10px] lg:text-xs tracking-[0.2em] rounded-xl backdrop-blur-xl transition-all hover:bg-foreground/5 hover:border-foreground/30 active:scale-95 flex items-center justify-center gap-2 shadow-xl not-italic">
+                                    <Play className="w-3.5 h-3.5 fill-foreground text-foreground mr-1" />
                                     VIEW CASE STUDIES
                                 </button>
                             </Link>
@@ -164,7 +162,7 @@ export default function Hero() {
 
                         <div className="flex flex-col items-center gap-6 w-full max-w-sm">
                             {/* Mission Tags */}
-                            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[8px] md:text-[9px] font-mono text-foreground/40 tracking-widest uppercase">
+                            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[9px] xs:text-[10px] font-mono text-foreground/40 tracking-widest uppercase">
                                 <span>AI-First Engineering</span>
                                 <div className="hidden xs:block w-1 h-1 bg-foreground/20 rounded-full" />
                                 <span>Managed Infrastructure</span>
@@ -173,13 +171,10 @@ export default function Hero() {
                             </div>
 
                             {/* System Status - Mobile Only Integration */}
-                            <div className="lg:hidden flex items-center justify-between w-full px-4 pt-4 border-t border-border opacity-40">
-                                <div className="flex flex-col items-start gap-1">
-                                    <span className="text-[7px] font-mono font-black uppercase tracking-[0.2em]">Buffer: Optimal</span>
-                                </div>
-                                <div className="flex flex-col items-end gap-1">
-                                    <span className="text-[7px] font-mono font-black uppercase tracking-[0.2em]">Protocol: 0x4f2</span>
-                                </div>
+                            <div className="lg:hidden flex items-center justify-center gap-4 w-full pt-4 border-t border-border/40 opacity-50">
+                                <span className="text-[8px] font-mono font-black uppercase tracking-wider text-foreground/40">Buffer: Optimal</span>
+                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                <span className="text-[8px] font-mono font-black uppercase tracking-wider text-foreground/40">Protocol: 0x4F2</span>
                             </div>
                         </div>
                     </motion.div>
