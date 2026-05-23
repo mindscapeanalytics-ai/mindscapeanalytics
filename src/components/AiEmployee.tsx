@@ -252,17 +252,9 @@ export default function AiEmployee() {
         const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
         if (!SpeechRecognition) {
-            // High-fidelity fallback for browsers without Web Speech API
-            fallbackTimeoutRef.current = setTimeout(() => {
-                if (!activeRef.current) return;
-                const fallbackQueries = [
-                    "How do your autonomous agents handle high-volume sales?",
-                    "Can you tell me about your FSI suite for banking?",
-                    "I'm interested in a free AI audit for my organization",
-                ];
-                const query = fallbackQueries[turnCount % fallbackQueries.length];
-                processUserInput(query);
-            }, 3000);
+            // Browsers without Web Speech API (like Firefox) use the fully interactive hybrid mode.
+            // We just set status to LISTENING and wait for the user to type and send their query.
+            setStatus("LISTENING");
             return;
         }
 
@@ -419,25 +411,29 @@ export default function AiEmployee() {
                 recognitionRef.current = null;
             }
         } else {
-            // REQUEST MIC PERMISSIONS EXPLICITLY FOR ROBUSTNESS
-            setPermissionError(null);
-            setIsTextMode(false);
-            const SpeechRecognition = typeof window !== "undefined" && ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition);
-
-            if (!SpeechRecognition) {
-                setPermissionError("Voice Intelligence requires Chrome, Edge, or a compatible browser. Please continue in Text Mode.");
-                setStatus("IDLE");
-                setTimeout(() => setPermissionError(null), 15000);
-                return;
-            }
-
-            const initProtocol = () => {
-                if (synthesisRef.current) {
+            // Unlocks speech synthesis synchronously in response to the user gesture
+            if (typeof window !== "undefined" && window.speechSynthesis) {
+                try {
                     const silent = new SpeechSynthesisUtterance("");
                     silent.volume = 0;
-                    synthesisRef.current.speak(silent);
+                    window.speechSynthesis.speak(silent);
+                    if (window.speechSynthesis.paused) {
+                        window.speechSynthesis.resume();
+                    }
+                } catch (e) {
+                    console.warn("Silent utterance setup warning:", e);
                 }
+            }
 
+            setPermissionError(null);
+            setIsTextMode(false);
+
+            const SpeechRecognition = typeof window !== "undefined" && ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition);
+
+            const initProtocol = (forceTextMode = false) => {
+                if (forceTextMode) {
+                    setIsTextMode(true);
+                }
                 activeRef.current = true;
                 setIsActive(true);
                 setStatus("CONNECTING");
@@ -457,24 +453,38 @@ export default function AiEmployee() {
                 });
             };
 
+            // Request explicit microphone permission on ANY browser first to trigger the browser prompt
             if (typeof navigator !== "undefined" && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                // Request explicit permission first to trigger the browser prompt immediately
                 navigator.mediaDevices.getUserMedia({ audio: true })
                     .then((stream) => {
-                        // IMMEDIATELY stop the stream tracks to free up the microphone for SpeechRecognition.
-                        // Failing to stop the stream can cause hardware locks leading to Protocol Errors.
+                        // Stop the stream tracks immediately to free up the hardware
                         stream.getTracks().forEach(track => track.stop());
-                        initProtocol();
+                        
+                        if (!SpeechRecognition) {
+                            // Mic allowed, but SpeechRecognition not supported (e.g. Firefox)
+                            // Activate fully functional hybrid interactive voice mode
+                            initProtocol(true);
+                        } else {
+                            initProtocol(false);
+                        }
                     })
                     .catch((err) => {
                         console.error("Mic Access Denied:", err);
+                        // If mic is denied or blocked
                         setPermissionError("MICROPHONE BLOCKED: Please click the lock/mic icon in your browser's URL bar, allow microphone access, and try again.");
                         setStatus("IDLE");
                         setTimeout(() => setPermissionError(null), 15000);
                     });
             } else {
-                // Fallback: If mediaDevices API is missing (e.g. strict environments), rely on SpeechRecognition natively.
-                initProtocol();
+                // MediaDevices API missing (e.g. non-secure local or older context)
+                if (SpeechRecognition) {
+                    initProtocol(false);
+                } else {
+                    // Fallback to text mode connection directly
+                    setPermissionError("Voice recognition is not fully supported in this environment. Continuing in Text Mode.");
+                    initProtocol(true);
+                    setTimeout(() => setPermissionError(null), 10000);
+                }
             }
         }
     };
@@ -707,7 +717,15 @@ export default function AiEmployee() {
                                                     isActive ? "text-white/70" : "text-black/50"
                                                 )}>
                                                     {isActive 
-                                                        ? status === "LISTENING" ? "LISTENING..." : status === "THINKING" ? "PROCESSING WITH MSA CORE..." : status === "SPEAKING" ? "SPEAKING..." : "ABORT CONNECTION"
+                                                        ? status === "LISTENING" 
+                                                            ? isTextMode 
+                                                                ? "HYBRID TEXT MODE • TYPE BELOW" 
+                                                                : "LISTENING..." 
+                                                            : status === "THINKING" 
+                                                                ? "PROCESSING WITH MSA CORE..." 
+                                                                : status === "SPEAKING" 
+                                                                    ? "SPEAKING..." 
+                                                                    : "ABORT CONNECTION"
                                                         : "REAL AI • MSA CORE • LIVE"
                                                     }
                                                 </span>

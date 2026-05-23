@@ -23,43 +23,51 @@ const formatMarkdown = (text: string) => {
     if (parsedText.includes('|')) {
         const lines = parsedText.split('\n');
         let inTable = false;
+        let tableRowsCount = 0;
         const newLines = [];
+        let currentTableHtml = "";
         
         for (let i = 0; i < lines.length; i++) {
             const line = lines[i].trim();
             if (line.startsWith('|') && line.endsWith('|')) {
-                if (!inTable) {
-                    inTable = true;
-                    newLines.push('<div class="overflow-x-auto my-4 rounded-xl border border-border"><table class="w-full text-sm text-left border-collapse">');
-                }
                 // Check if it's a separator line like |---|---|
                 if (line.match(/^\|(?:\s*[-:]+\s*\|)+$/)) {
                     continue; // Skip separator line
                 }
                 
+                if (!inTable) {
+                    inTable = true;
+                    tableRowsCount = 0;
+                    currentTableHtml = '<div class="overflow-x-auto my-4 rounded-xl border border-border"><table class="w-full text-sm text-left border-collapse">';
+                }
+                
                 const cells = line.split('|').filter((_, index, array) => index !== 0 && index !== array.length - 1);
                 
-                newLines.push('<tr class="border-b border-border last:border-b-0 hover:bg-foreground/[0.02] transition-colors">');
-                cells.forEach((cell, index) => {
+                currentTableHtml += '<tr class="border-b border-border last:border-b-0 hover:bg-foreground/[0.02] transition-colors">';
+                cells.forEach((cell) => {
                     const content = cell.trim();
                     // If it's the first row of the table, treat as header
-                    if (newLines.length === 2) { 
-                         newLines.push(`<th class="px-4 py-3 font-bold bg-foreground/[0.05] border-r border-border last:border-r-0 text-foreground">${content}</th>`);
+                    if (tableRowsCount === 0) { 
+                         currentTableHtml += `<th class="px-4 py-3 font-bold bg-foreground/[0.05] border-r border-border last:border-r-0 text-foreground">${content}</th>`;
                     } else {
-                         newLines.push(`<td class="px-4 py-3 border-r border-border last:border-r-0 text-foreground/80">${content}</td>`);
+                         currentTableHtml += `<td class="px-4 py-3 border-r border-border last:border-r-0 text-foreground/80">${content}</td>`;
                     }
                 });
-                newLines.push('</tr>');
+                currentTableHtml += '</tr>';
+                tableRowsCount++;
             } else {
                 if (inTable) {
                     inTable = false;
-                    newLines.push('</table></div>');
+                    currentTableHtml += '</table></div>';
+                    newLines.push(currentTableHtml);
+                    currentTableHtml = "";
                 }
                 newLines.push(lines[i]);
             }
         }
         if (inTable) {
-            newLines.push('</table></div>');
+            currentTableHtml += '</table></div>';
+            newLines.push(currentTableHtml);
         }
         parsedText = newLines.join('\n');
     }

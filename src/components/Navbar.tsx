@@ -241,23 +241,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Desktop Navigation */}
-                <div className="hidden lg:flex items-center gap-x-10 relative">
-                    {/* Sliding Pill Indicator */}
-                    <AnimatePresence>
-                        {navLinks.find(l => pathname === l.href || (l.submenu?.some(s => pathname === s.href))) && (
-                            <motion.div
-                                layoutId="nav-pill"
-                                className="absolute h-10 bg-foreground/5 rounded-full -z-10"
-                                initial={false}
-                                transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                                style={{
-                                    left: 0,
-                                    width: "auto"
-                                }}
-                            />
-                        )}
-                    </AnimatePresence>
-
+                <div className="hidden lg:flex items-center gap-x-6 relative">
                     {navLinks.map((link) => {
                         const isActive = pathname === link.href || (link.submenu?.some(s => pathname === s.href));
                         
@@ -272,19 +256,15 @@ export default function Navbar() {
                                     href={link.href}
                                     aria-label={link.label}
                                     className={cn(
-                                        "text-[11px] font-black uppercase tracking-[0.25em] transition-all relative py-4 flex items-center gap-2",
-                                        isActive ? "text-foreground" : "text-foreground/70 dark:text-foreground/40 hover:text-foreground group-hover:drop-shadow-[0_0_10px_hsl(var(--foreground) / 0.1)]"
+                                        "text-[11px] font-black uppercase tracking-[0.25em] transition-all duration-300 relative py-2 px-3.5 rounded-full flex items-center gap-2",
+                                        isActive 
+                                            ? "text-foreground bg-foreground/[0.05] dark:bg-white/[0.05]" 
+                                            : "text-foreground/75 dark:text-foreground/40 hover:text-foreground hover:bg-foreground/[0.03] dark:hover:bg-white/[0.03] group-hover:drop-shadow-[0_0_10px_hsl(var(--foreground) / 0.1)]"
                                     )}
                                 >
-                                    {link.icon && <span className={cn("transition-opacity", isActive ? "opacity-100" : "opacity-40 group-hover:opacity-100")}>{link.icon}</span>}
+                                    {link.icon && <span className={cn("transition-opacity", isActive ? "opacity-100" : "opacity-45 group-hover:opacity-100")}>{link.icon}</span>}
                                     {link.name}
-                                    {link.submenu && <ChevronDown size={10} className={cn("transition-opacity", isActive ? "opacity-100" : "opacity-40 dark:opacity-20 group-hover:opacity-100")} />}
-                                    
-                                    {/* Traditional line indicator - refined */}
-                                    <span className={cn(
-                                        "absolute bottom-3 left-0 h-[1.5px] bg-foreground/40 transition-all duration-[400ms]",
-                                        isActive ? "w-full" : "w-0 group-hover:w-full"
-                                    )} />
+                                    {link.submenu && <ChevronDown size={10} className={cn("transition-opacity", isActive ? "opacity-100" : "opacity-45 dark:opacity-20 group-hover:opacity-100")} />}
                                 </Link>
 
                                 <AnimatePresence>

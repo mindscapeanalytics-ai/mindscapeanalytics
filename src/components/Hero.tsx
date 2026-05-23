@@ -25,15 +25,6 @@ export default function Hero() {
                 className="container-standard relative z-10 py-2 md:py-6 pointer-events-none flex flex-col items-center justify-center min-h-[60vh] md:min-h-[70vh] will-change-[opacity,transform]"
             >
                 <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-3 lg:px-6 py-1 lg:py-2.5 rounded-full bg-background dark:bg-foreground/[0.03] border border-border/80 backdrop-blur-md mb-8 lg:mb-12 shadow-sm will-change-transform"
-                    >
-                        <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-secondary rounded-full shadow-[0_0_10px_hsl(var(--secondary) / 0.6)]" />
-                        <span className="text-[6.5px] lg:text-[10px] font-mono text-foreground/80 dark:text-foreground/40 uppercase tracking-[0.25em] lg:tracking-[0.4em] font-black">Registry // ELITE_SYSTEM_V4</span>
-                    </motion.div>
-
                     <div className="relative space-y-2 flex flex-col items-center">
                         {/* Scanning Brackets - Mobile Only */}
                         <div className="lg:hidden absolute -top-4 -left-1 -right-1 -bottom-4 pointer-events-none opacity-40">
@@ -145,33 +136,6 @@ export default function Hero() {
                         </div>
                     </motion.div>
 
-                    {/* LIVE NETWORK PULSE HUD - 2026 TRUST SIGNAL */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 1, duration: 1 }}
-                        className="hidden xl:flex absolute right-12 top-1/2 -translate-y-1/2 flex-col gap-4 p-6 rounded-2xl border border-white/5 bg-zinc-950/40 backdrop-blur-xl z-20"
-                    >
-                        <div className="flex flex-col gap-1">
-                            <span className="text-[8px] font-mono text-secondary tracking-[0.3em] font-black uppercase">Active_Agents</span>
-                            <span className="text-xl font-bold text-white tracking-tighter">1,402</span>
-                        </div>
-                        <div className="h-px w-full bg-white/5" />
-                        <div className="flex flex-col gap-1">
-                            <span className="text-[8px] font-mono text-white/20 tracking-[0.3em] font-black uppercase">Network_Latency</span>
-                            <div className="flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-                                <span className="text-sm font-bold text-white/60">12ms</span>
-                            </div>
-                        </div>
-                        <div className="h-px w-full bg-white/5" />
-                        <div className="flex flex-col gap-1">
-                            <span className="text-[8px] font-mono text-white/20 tracking-[0.3em] font-black uppercase">Inference_Engine</span>
-                            <span className="text-[10px] font-bold text-secondary/60">MSA_CORE // AGENT_ORCHESTRATOR</span>
-                        </div>
-                    </motion.div>
-
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -180,7 +144,7 @@ export default function Hero() {
                     >
                         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 w-full sm:w-auto mt-2">
                             <CalButton calLink="mindscape/strategy" className="w-full sm:w-auto">
-                                <button className="w-full sm:w-auto group relative px-6 lg:px-10 py-3.5 lg:py-5 bg-secondary text-white font-black uppercase text-[10px] lg:text-xs tracking-[0.2em] rounded-xl shadow-lg transition-all hover:scale-105 active:scale-95 not-italic">
+                                <button className="w-full sm:w-auto group relative px-6 lg:px-10 py-3.5 lg:py-5 bg-secondary text-secondary-foreground font-black uppercase text-[10px] lg:text-xs tracking-[0.2em] rounded-xl shadow-lg transition-all hover:scale-105 active:scale-95 not-italic">
                                     <span className="relative z-10 flex items-center justify-center gap-3">
                                         BOOK A STRATEGY CALL
                                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
