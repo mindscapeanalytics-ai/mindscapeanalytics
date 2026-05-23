@@ -27,9 +27,11 @@ export default function AiEmployee() {
     const [conversationHistory, setConversationHistory] = useState<ConversationEntry[]>([]);
     const [turnCount, setTurnCount] = useState(0);
     const [permissionError, setPermissionError] = useState<string | null>(null);
+    const [micFallbackCountdown, setMicFallbackCountdown] = useState<number | null>(null);
     const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
     const [isTextMode, setIsTextMode] = useState(false);
     const [textInput, setTextInput] = useState("");
+    const micFallbackIntervalRef = useRef<NodeJS.Timeout | null>(null);
     
     const recognitionRef = useRef<any>(null);
     const activeRef = useRef(false);
@@ -59,6 +61,10 @@ export default function AiEmployee() {
         if (resumeIntervalRef.current) {
             clearInterval(resumeIntervalRef.current);
             resumeIntervalRef.current = null;
+        }
+        if (micFallbackIntervalRef.current) {
+            clearInterval(micFallbackIntervalRef.current);
+            micFallbackIntervalRef.current = null;
         }
     }, []);
 
@@ -469,11 +475,26 @@ export default function AiEmployee() {
                         }
                     })
                     .catch((err) => {
-                        console.error("Mic Access Denied:", err);
-                        // If mic is denied or blocked
-                        setPermissionError("MICROPHONE BLOCKED: Please click the lock/mic icon in your browser's URL bar, allow microphone access, and try again.");
+                        console.warn("Mic Access Denied — auto-falling back to Text Mode:", err);
+                        // Show error with countdown, then auto-launch text mode
+                        let countdown = 4;
+                        setMicFallbackCountdown(countdown);
+                        setPermissionError("Microphone blocked. Auto-switching to Text Mode in...");
                         setStatus("IDLE");
-                        setTimeout(() => setPermissionError(null), 15000);
+                        micFallbackIntervalRef.current = setInterval(() => {
+                            countdown -= 1;
+                            setMicFallbackCountdown(countdown);
+                            if (countdown <= 0) {
+                                if (micFallbackIntervalRef.current) {
+                                    clearInterval(micFallbackIntervalRef.current);
+                                    micFallbackIntervalRef.current = null;
+                                }
+                                setPermissionError(null);
+                                setMicFallbackCountdown(null);
+                                // Auto-launch interactive text mode
+                                startTextProtocol();
+                            }
+                        }, 1000);
                     });
             } else {
                 // MediaDevices API missing (e.g. non-secure local or older context)
@@ -594,30 +615,49 @@ export default function AiEmployee() {
                                         <AnimatePresence>
                                             {permissionError && (
                                                 <motion.div
-                                                    initial={{ opacity: 0, scale: 0.9 }}
-                                                    animate={{ opacity: 1, scale: 1 }}
-                                                    exit={{ opacity: 0, scale: 0.9 }}
-                                                    className="w-[90%] max-w-sm bg-rose-500/10 backdrop-blur-xl border border-rose-500/30 rounded-xl p-4 mb-2 text-center pointer-events-auto z-30"
+                                                    initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                                    exit={{ opacity: 0, scale: 0.9, y: -10 }}
+                                                    className="w-[90%] max-w-sm bg-zinc-900/95 backdrop-blur-xl border border-amber-500/40 rounded-2xl p-4 mb-2 text-center pointer-events-auto z-30 shadow-2xl"
                                                 >
-                                                    <div className="flex items-center gap-3 justify-center mb-1">
-                                                        <MicOff className="w-3.5 h-3.5 text-rose-500" />
-                                                        <span className="text-[10px] font-mono text-rose-500 uppercase tracking-widest font-black">PROTOCOL_ERROR</span>
+                                                    {/* Header */}
+                                                    <div className="flex items-center gap-2 justify-center mb-2">
+                                                        <MicOff className="w-3.5 h-3.5 text-amber-400" />
+                                                        <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest font-black">MIC UNAVAILABLE</span>
                                                     </div>
-                                                    <p className="text-[10px] text-white/70 leading-relaxed uppercase tracking-tighter mb-3">
+                                                    {/* Message */}
+                                                    <p className="text-[11px] text-white/60 leading-relaxed mb-3">
                                                         {permissionError}
                                                     </p>
+                                                    {/* Countdown badge */}
+                                                    {micFallbackCountdown !== null && micFallbackCountdown > 0 && (
+                                                        <div className="flex items-center justify-center gap-2 mb-3">
+                                                            <div className="w-8 h-8 rounded-full border-2 border-amber-400/60 flex items-center justify-center">
+                                                                <span className="text-sm font-black text-amber-400">{micFallbackCountdown}</span>
+                                                            </div>
+                                                            <span className="text-[9px] font-mono text-white/40 uppercase tracking-wider">AUTO SWITCHING</span>
+                                                        </div>
+                                                    )}
+                                                    {/* Instant switch button */}
                                                     <button
                                                         onClick={() => {
+                                                            // Clear the countdown interval
+                                                            if (micFallbackIntervalRef.current) {
+                                                                clearInterval(micFallbackIntervalRef.current);
+                                                                micFallbackIntervalRef.current = null;
+                                                            }
                                                             setPermissionError(null);
-                                                            startTextProtocol();
+                                                            setMicFallbackCountdown(null);
+                                                            // Slight delay so error overlay exits before text mode mounts
+                                                            setTimeout(() => startTextProtocol(), 100);
                                                         }}
-                                                        className="w-full py-2 rounded-lg bg-white/10 hover:bg-white/20 active:scale-98 text-[9px] text-white font-mono uppercase tracking-widest transition-all border border-white/10 cursor-pointer"
+                                                        className="w-full py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 active:scale-95 text-[10px] text-black font-black uppercase tracking-widest transition-all cursor-pointer shadow-lg"
                                                     >
-                                                        ⚡ Continue in Interactive Text Mode
+                                                        ⚡ Switch to Text Mode Now
                                                     </button>
                                                 </motion.div>
                                             )}
-                                            {(transcript || agentResponse || isTextMode) && isActive && !permissionError && (
+                                            {(transcript || agentResponse || isTextMode) && isActive && !permissionError && !micFallbackCountdown && (
                                                 <motion.div 
                                                     initial={{ opacity: 0, y: 20 }} 
                                                     animate={{ opacity: 1, y: 0 }} 
