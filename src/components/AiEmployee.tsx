@@ -501,35 +501,12 @@ export default function AiEmployee() {
                 });
             };
 
-            // Request explicit microphone permission on ANY browser first to trigger the browser prompt
-            if (typeof navigator !== "undefined" && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices.getUserMedia({ audio: true })
-                    .then((stream) => {
-                        // Stop the stream tracks immediately to free up the hardware
-                        stream.getTracks().forEach(track => track.stop());
-                        
-                        if (!SpeechRecognition) {
-                            // Mic allowed, but SpeechRecognition not supported (e.g. Firefox)
-                            // Activate fully functional hybrid interactive voice mode
-                            initProtocol(true);
-                        } else {
-                            initProtocol(false);
-                        }
-                    })
-                    .catch((err) => {
-                        console.warn("Mic Access Denied — auto-falling back to Text Mode:", err);
-                        triggerFallback();
-                    });
+            if (SpeechRecognition) {
+                initProtocol(false);
             } else {
-                // MediaDevices API missing (e.g. non-secure local or older context)
-                if (SpeechRecognition) {
-                    initProtocol(false);
-                } else {
-                    // Fallback to text mode connection directly
-                    setPermissionError("Voice recognition is not fully supported in this environment. Continuing in Text Mode.");
-                    initProtocol(true);
-                    setTimeout(() => setPermissionError(null), 10000);
-                }
+                setPermissionError("Voice recognition is not natively supported in this environment. Continuing in Text Mode.");
+                initProtocol(true);
+                setTimeout(() => setPermissionError(null), 10000);
             }
         }
     };
