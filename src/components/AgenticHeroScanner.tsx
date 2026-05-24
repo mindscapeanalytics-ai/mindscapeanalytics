@@ -179,26 +179,25 @@ export default function AgenticHeroScanner() {
                                     <div className="w-2.5 h-2.5 rounded-full bg-amber-500/40" />
                                     <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/40" />
                                 </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-2 sm:gap-4">
+                                    <div className="flex items-center gap-1.5 sm:gap-2">
                                         <Activity className="w-3 h-3 text-secondary animate-pulse" />
-                                        <span className="text-[9px] font-mono text-secondary/60 tracking-widest font-black uppercase">CORE ACTIVE</span>
+                                        <span className="text-[9px] font-mono text-secondary/80 tracking-widest font-black uppercase">CORE ACTIVE</span>
                                     </div>
-                                    <div className="h-4 w-px bg-white/10" />
-                                    <span className="text-[9px] font-mono text-white/20 tracking-widest uppercase">ID: MSA SCOUTER ALPHA</span>
+                                    <div className="hidden sm:block h-4 w-px bg-white/10" />
+                                    <span className="hidden sm:inline text-[9px] font-mono text-white/40 tracking-widest uppercase">ID: MSA SCOUTER ALPHA</span>
                                 </div>
                             </div>
 
                             {/* Terminal Content */}
                             <div 
                                 ref={scrollRef}
-                                className="flex-1 p-6 lg:p-8 font-mono text-sm overflow-y-auto space-y-6 custom-scrollbar"
-                                style={{ maxHeight: '420px' }}
+                                className="flex-1 p-4 sm:p-6 lg:p-8 font-mono text-xs sm:text-sm overflow-y-auto space-y-6 custom-scrollbar max-h-[50vh] md:max-h-[420px]"
                             >
                                 {history.length === 0 && !isAnalyzing && (
-                                    <div className="space-y-6 opacity-60">
-                                        <p className="text-secondary tracking-widest uppercase font-black">{">"} INITIALIZING MINDSCAPE AGENT PROTOCOL...</p>
-                                        <p className="text-white/60">Awaiting input. Enter a URL or describe a bottleneck.</p>
+                                    <div className="space-y-6">
+                                        <p className="text-secondary tracking-widest uppercase font-black text-xs sm:text-sm">{">"} INITIALIZING MINDSCAPE AGENT PROTOCOL...</p>
+                                        <p className="text-white/80">Awaiting input. Enter a URL or describe a bottleneck.</p>
                                         
                                         <div className="grid grid-cols-1 gap-3">
                                             {[
@@ -210,10 +209,10 @@ export default function AgenticHeroScanner() {
                                                 <button 
                                                     key={i}
                                                     onClick={() => setInput(prompt)}
-                                                    className="text-left p-3 rounded-lg bg-white/[0.02] border border-white/5 hover:bg-secondary/10 hover:border-secondary/30 transition-all text-[10px] text-white/40 hover:text-white group/btn"
+                                                    className="text-left p-3.5 sm:p-4 rounded-xl bg-white/[0.05] border border-white/10 hover:bg-secondary/15 hover:border-secondary/40 transition-all text-xs sm:text-sm text-white/80 hover:text-white group/btn flex items-center"
                                                 >
-                                                    <span className="opacity-0 group-hover:opacity-100 mr-2 text-secondary"> {">"} </span>
-                                                    {prompt}
+                                                    <span className="opacity-50 group-hover:opacity-100 mr-3 text-secondary transition-opacity flex-shrink-0"> {">"} </span>
+                                                    <span>{prompt}</span>
                                                 </button>
                                             ))}
                                         </div>
@@ -226,10 +225,10 @@ export default function AgenticHeroScanner() {
                                         msg.type === 'user' ? "items-end" : "items-start"
                                     )}>
                                         <div className={cn(
-                                            "max-w-[90%] p-4 rounded-2xl text-xs lg:text-sm",
+                                            "max-w-[95%] sm:max-w-[90%] p-4 rounded-2xl text-xs sm:text-sm",
                                             msg.type === 'user' 
                                                 ? "bg-secondary/10 border border-secondary/20 text-white" 
-                                                : "bg-white/[0.03] border border-white/5 text-white/80 whitespace-pre-wrap leading-relaxed shadow-xl"
+                                                : "bg-white/[0.03] border border-white/5 text-white/90 whitespace-pre-wrap leading-relaxed shadow-xl"
                                         )}>
                                             {msg.type === 'bot' && (
                                                 <div className="flex items-center gap-2 mb-3 text-secondary">
@@ -255,18 +254,18 @@ export default function AgenticHeroScanner() {
 
                                 {/* Lead Capture After Result */}
                                 {result && !leadCaptured && !isAnalyzing && (
-                                    <div className="mt-4 p-5 rounded-xl bg-secondary/10 border border-secondary/20 space-y-4">
+                                    <div className="mt-4 p-4 sm:p-5 rounded-xl bg-secondary/10 border border-secondary/20 space-y-4">
                                         <p className="text-[10px] font-mono font-black text-secondary uppercase tracking-widest">📧 Get Full Report + Implementation Blueprint</p>
-                                        <div className="flex gap-2">
+                                        <div className="flex flex-col sm:flex-row gap-2">
                                             <input
                                                 type="email"
                                                 value={leadEmail}
                                                 onChange={(e) => setLeadEmail(e.target.value)}
                                                 placeholder="your@email.com"
-                                                className="flex-1 h-10 px-4 rounded-lg bg-black/40 border border-white/10 text-xs text-white placeholder:text-white/20 focus:outline-none focus:border-secondary/50"
+                                                className="flex-1 h-10 px-4 rounded-lg bg-black/40 border border-white/10 text-xs text-white placeholder:text-white/40 focus:outline-none focus:border-secondary/50"
                                                 onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); captureAuditLead(); } }}
                                             />
-                                            <button onClick={captureAuditLead} className="h-10 px-6 rounded-lg bg-secondary text-white text-[10px] font-black uppercase tracking-wider hover:bg-secondary/80 transition-colors">
+                                            <button onClick={captureAuditLead} className="h-10 px-6 rounded-lg bg-secondary text-white text-[10px] font-black uppercase tracking-wider hover:bg-secondary/80 transition-colors w-full sm:w-auto">
                                                 Send
                                             </button>
                                         </div>
@@ -280,20 +279,20 @@ export default function AgenticHeroScanner() {
                             </div>
 
                             {/* Terminal Input */}
-                            <div className="p-6 border-t border-white/5 bg-white/[0.01]">
+                            <div className="p-4 sm:p-6 border-t border-white/5 bg-white/[0.02]">
                                 <form onSubmit={handleAnalyze} className="relative group/input">
                                     <input 
                                         type="text"
                                         value={input}
                                         onChange={(e) => setInput(e.target.value)}
-                                        placeholder="Enter URL or manual process description..."
+                                        placeholder="Enter URL or manual process..."
                                         disabled={isAnalyzing}
-                                        className="w-full bg-zinc-900/40 border border-white/10 rounded-xl px-6 py-4 text-sm font-mono text-white placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-secondary/50 transition-all disabled:opacity-50"
+                                        className="w-full bg-zinc-900/60 border border-white/20 rounded-xl px-4 sm:px-6 py-3.5 sm:py-4 pr-12 text-xs sm:text-sm font-mono text-white placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-secondary/50 transition-all disabled:opacity-50"
                                     />
                                     <button 
                                         type="submit"
                                         disabled={isAnalyzing || !input.trim()}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-lg bg-secondary text-white hover:scale-110 active:scale-95 transition-all disabled:opacity-0"
+                                        className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 rounded-lg bg-secondary text-white hover:scale-110 active:scale-95 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed"
                                     >
                                         <ArrowRight className="w-4 h-4" />
                                     </button>

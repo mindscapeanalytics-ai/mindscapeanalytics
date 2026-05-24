@@ -121,92 +121,102 @@ export default function AiEmployee() {
             return;
         }
 
-        // Preemptively clear any active Chrome 15s keep-alive interval
         if (resumeIntervalRef.current) {
             clearInterval(resumeIntervalRef.current);
             resumeIntervalRef.current = null;
         }
 
+        const runSpeak = () => {
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // Voice Selection Logic - 2026 Pro Standard (Strict Male Preference)
+            const preferredVoices = [
+                "Microsoft Andrew Online (Natural)",     // Windows 11 Premium Male
+                "Microsoft Brian Online (Natural)",      // Windows Premium Male
+                "Microsoft Christopher Online (Natural)",// Windows Premium Male
+                "Microsoft Guy Online (Natural)",        // Windows Premium Male
+                "Microsoft Ryan Online (Natural)",       // Windows Premium Male
+                "Google US English Male",                // Chrome Premium Male
+                "Google UK English Male",                // Chrome Premium UK Male
+                "Jamie",                                 // macOS Premium Male
+                "Daniel",                                // macOS/iOS UK Male
+                "Arthur",                                // macOS Premium UK Male
+                "Aaron",                                 // macOS Male
+                "Alex"                                   // macOS Classic Male
+            ];
+
+            let availableVoices = voices;
+            if (availableVoices.length === 0) {
+                availableVoices = window.speechSynthesis.getVoices();
+            }
+
+            let selectedVoice = null;
+            for (const name of preferredVoices) {
+                selectedVoice = availableVoices.find(v => v.name.includes(name));
+                if (selectedVoice) break;
+            }
+
+            // Deep fallback: Look for ANY voice that explicitly says "Male" or "Boy"
+            if (!selectedVoice) {
+                selectedVoice = availableVoices.find(v => v.lang.startsWith("en") && (v.name.includes("Male") || v.name.includes("Boy")));
+            }
+            
+            // Final fallback: just get the first English voice if nothing else exists
+            if (!selectedVoice) {
+                selectedVoice = availableVoices.find(v => v.lang.startsWith("en"));
+            }
+
+            if (selectedVoice) utterance.voice = selectedVoice;
+            
+            // 2026 Premium Audio Hacks
+            utterance.rate = 1.05;  // Slightly faster cadence for an intelligent, snappy feel
+            utterance.pitch = 0.95; // Slightly lower pitch for a deeper, more authoritative male presence
+            utterance.volume = 1.0;
+
+            // CRITICAL HACK: Chrome 15-second SpeechSynthesis Bug Bypass
+            resumeIntervalRef.current = setInterval(() => {
+                if (synthesisRef.current && synthesisRef.current.speaking) {
+                    synthesisRef.current.pause();
+                    synthesisRef.current.resume();
+                }
+            }, 10000);
+
+            utterance.onend = () => {
+                if (resumeIntervalRef.current) {
+                    clearInterval(resumeIntervalRef.current);
+                    resumeIntervalRef.current = null;
+                }
+                if (activeRef.current) {
+                    onEnd();
+                }
+            };
+            
+            utterance.onerror = (e: any) => {
+                console.warn("TTS Event Error:", e.error || "interrupted");
+                if (resumeIntervalRef.current) {
+                    clearInterval(resumeIntervalRef.current);
+                    resumeIntervalRef.current = null;
+                }
+                // Avoid calling onEnd if we explicitly cancelled or it was interrupted naturally
+                if (activeRef.current && e.error !== "canceled" && e.error !== "interrupted") {
+                    onEnd();
+                }
+            };
+
+            synthesisRef.current?.speak(utterance);
+        };
+
         if (typeof window !== "undefined" && window.speechSynthesis) {
-            window.speechSynthesis.resume();
-        }
-        synthesisRef.current.cancel();
-        
-        const utterance = new SpeechSynthesisUtterance(text);
-        
-        // Voice Selection Logic - 2026 Pro Standard (Strict Male Preference)
-        const preferredVoices = [
-            "Microsoft Andrew Online (Natural)",     // Windows 11 Premium Male
-            "Microsoft Brian Online (Natural)",      // Windows Premium Male
-            "Microsoft Christopher Online (Natural)",// Windows Premium Male
-            "Microsoft Guy Online (Natural)",        // Windows Premium Male
-            "Microsoft Ryan Online (Natural)",       // Windows Premium Male
-            "Google US English Male",                // Chrome Premium Male
-            "Google UK English Male",                // Chrome Premium UK Male
-            "Jamie",                                 // macOS Premium Male
-            "Daniel",                                // macOS/iOS UK Male
-            "Arthur",                                // macOS Premium UK Male
-            "Aaron",                                 // macOS Male
-            "Alex"                                   // macOS Classic Male
-        ];
-
-        // Retrieve available voices, fallback to instant getVoices if lazy loaded empty
-        let availableVoices = voices;
-        if (availableVoices.length === 0) {
-            availableVoices = window.speechSynthesis.getVoices();
-        }
-
-        let selectedVoice = null;
-        for (const name of preferredVoices) {
-            selectedVoice = availableVoices.find(v => v.name.includes(name));
-            if (selectedVoice) break;
-        }
-
-        // Deep fallback: Look for ANY voice that explicitly says "Male" or "Boy"
-        if (!selectedVoice) {
-            selectedVoice = availableVoices.find(v => v.lang.startsWith("en") && (v.name.includes("Male") || v.name.includes("Boy")));
-        }
-        
-        // Final fallback: just get the first English voice if nothing else exists
-        if (!selectedVoice) {
-            selectedVoice = availableVoices.find(v => v.lang.startsWith("en"));
-        }
-
-        if (selectedVoice) utterance.voice = selectedVoice;
-        
-        // 2026 Premium Audio Hacks
-        utterance.rate = 1.05;  // Slightly faster cadence for an intelligent, snappy feel
-        utterance.pitch = 0.95; // Slightly lower pitch for a deeper, more authoritative male presence
-        utterance.volume = 1.0;
-
-        // CRITICAL HACK: Chrome 15-second SpeechSynthesis Bug Bypass
-        // Triggers synthesis keep-alive pulse every 10s to bypass browser-native freeze policies.
-        resumeIntervalRef.current = setInterval(() => {
-            if (synthesisRef.current && synthesisRef.current.speaking) {
-                synthesisRef.current.resume();
+            // Cancel and resume fix for iOS Safari and Chrome Android
+            if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+                window.speechSynthesis.cancel();
+                setTimeout(runSpeak, 50); // slight delay to allow buffer clear
+            } else {
+                runSpeak();
             }
-        }, 10000);
-
-        utterance.onend = () => {
-            if (resumeIntervalRef.current) {
-                clearInterval(resumeIntervalRef.current);
-                resumeIntervalRef.current = null;
-            }
-            if (activeRef.current) {
-                onEnd();
-            }
-        };
-        
-        utterance.onerror = (e) => {
-            console.error("TTS Error:", e);
-            if (resumeIntervalRef.current) {
-                clearInterval(resumeIntervalRef.current);
-                resumeIntervalRef.current = null;
-            }
-            onEnd();
-        };
-
-        synthesisRef.current.speak(utterance);
+        } else {
+            setTimeout(onEnd, 100);
+        }
     }, [voices]);
 
     const getAIResponse = useCallback(async (userText: string, history: ConversationEntry[]): Promise<string> => {
@@ -235,6 +245,48 @@ export default function AiEmployee() {
         }
     }, []);
 
+    const startTextProtocol = useCallback(() => {
+        setIsTextMode(true);
+        activeRef.current = true;
+        setIsActive(true);
+        setStatus("CONNECTING");
+        
+        const welcome = "Establishing secure connection to MSA Agent Core in Text Mode. I am the Architect. How can I assist with your organization's AI transformation today?";
+        setAgentResponse(welcome);
+        setStatus("SPEAKING");
+        
+        if (synthesisRef.current && synthesisRef.current.paused) {
+            synthesisRef.current.resume();
+        }
+
+        speakText(welcome, () => {
+            if (activeRef.current) {
+                setStatus("LISTENING");
+            }
+        });
+    }, [speakText]);
+
+    const triggerFallback = useCallback(() => {
+        let countdown = 4;
+        setMicFallbackCountdown(countdown);
+        setPermissionError("Microphone blocked. Auto-switching to Text Mode in...");
+        setStatus("IDLE");
+        if (micFallbackIntervalRef.current) clearInterval(micFallbackIntervalRef.current);
+        micFallbackIntervalRef.current = setInterval(() => {
+            countdown -= 1;
+            setMicFallbackCountdown(countdown);
+            if (countdown <= 0) {
+                if (micFallbackIntervalRef.current) {
+                    clearInterval(micFallbackIntervalRef.current);
+                    micFallbackIntervalRef.current = null;
+                }
+                setPermissionError(null);
+                setMicFallbackCountdown(null);
+                startTextProtocol();
+            }
+        }, 1000);
+    }, [startTextProtocol]);
+
     const startListening = useCallback(() => {
         if (!activeRef.current) return;
         
@@ -259,7 +311,6 @@ export default function AiEmployee() {
 
         if (!SpeechRecognition) {
             // Browsers without Web Speech API (like Firefox) use the fully interactive hybrid mode.
-            // We just set status to LISTENING and wait for the user to type and send their query.
             setStatus("LISTENING");
             return;
         }
@@ -296,7 +347,8 @@ export default function AiEmployee() {
             if (!activeRef.current) return;
             
             if (finalTranscript) {
-                processUserInput(finalTranscript);
+                // Wait for definition of processUserInput which is hoisted via closure in React
+                (processUserInput as any)(finalTranscript);
             } else {
                 // Centralized single-restart mechanism inside onend with guard check
                 setStatus("LISTENING");
@@ -309,26 +361,37 @@ export default function AiEmployee() {
         };
 
         recognition.onerror = (event: any) => {
-            console.error("STT Error:", event.error);
+            console.warn("STT Error:", event.error);
             recognitionActiveRef.current = false;
             
             // Mic Blocked or Service Blocked: Terminate gracefully to prevent permissions prompts loops
             if (event.error === "not-allowed" || event.error === "service-not-allowed") {
-                setPermissionError("MICROPHONE BLOCKED: Please click the lock icon in your browser's URL bar to allow microphone access, or continue in Text Mode.");
-                activeRef.current = false;
-                setIsActive(false);
-                setStatus("IDLE");
-                clearAllTimeouts();
+                triggerFallback();
+            } else if (event.error === "no-speech") {
+                setStatus("LISTENING");
+                restartTimeoutRef.current = setTimeout(() => {
+                    if (activeRef.current && !recognitionActiveRef.current) {
+                        startListening();
+                    }
+                }, 1000);
+            } else {
+                // Network or other generic error, retry gently
+                setStatus("LISTENING");
+                restartTimeoutRef.current = setTimeout(() => {
+                    if (activeRef.current && !recognitionActiveRef.current) {
+                        startListening();
+                    }
+                }, 1000);
             }
         };
 
         try { 
             recognition.start(); 
         } catch (e) {
-            console.error("Recognition start error:", e);
+            console.warn("Recognition start error:", e);
             recognitionActiveRef.current = false;
         }
-    }, [turnCount, clearAllTimeouts, isTextMode]);
+    }, [clearAllTimeouts, triggerFallback]);
 
     const processUserInput = useCallback(async (userText: string) => {
         if (!activeRef.current) return;
@@ -368,27 +431,6 @@ export default function AiEmployee() {
             }
         });
     }, [conversationHistory, getAIResponse, speakText, startListening]);
-
-    const startTextProtocol = useCallback(() => {
-        setIsTextMode(true);
-        activeRef.current = true;
-        setIsActive(true);
-        setStatus("CONNECTING");
-        
-        const welcome = "Establishing secure connection to MSA Agent Core in Text Mode. I am the Architect. How can I assist with your organization's AI transformation today?";
-        setAgentResponse(welcome);
-        setStatus("SPEAKING");
-        
-        if (synthesisRef.current && synthesisRef.current.paused) {
-            synthesisRef.current.resume();
-        }
-
-        speakText(welcome, () => {
-            if (activeRef.current) {
-                setStatus("LISTENING");
-            }
-        });
-    }, [speakText]);
 
     const toggleProtocol = () => {
         if (isActive) {
@@ -476,25 +518,7 @@ export default function AiEmployee() {
                     })
                     .catch((err) => {
                         console.warn("Mic Access Denied — auto-falling back to Text Mode:", err);
-                        // Show error with countdown, then auto-launch text mode
-                        let countdown = 4;
-                        setMicFallbackCountdown(countdown);
-                        setPermissionError("Microphone blocked. Auto-switching to Text Mode in...");
-                        setStatus("IDLE");
-                        micFallbackIntervalRef.current = setInterval(() => {
-                            countdown -= 1;
-                            setMicFallbackCountdown(countdown);
-                            if (countdown <= 0) {
-                                if (micFallbackIntervalRef.current) {
-                                    clearInterval(micFallbackIntervalRef.current);
-                                    micFallbackIntervalRef.current = null;
-                                }
-                                setPermissionError(null);
-                                setMicFallbackCountdown(null);
-                                // Auto-launch interactive text mode
-                                startTextProtocol();
-                            }
-                        }, 1000);
+                        triggerFallback();
                     });
             } else {
                 // MediaDevices API missing (e.g. non-secure local or older context)
