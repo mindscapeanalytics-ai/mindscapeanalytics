@@ -50,17 +50,14 @@ export default function Hero() {
             
             {/* Animated Background Images with Low Opacity */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                {/* Professional Overlay to ensure text readability */}
-                <div className="absolute inset-0 bg-background/90 dark:bg-background/95 z-10 backdrop-blur-[4px]" /> 
-                
                 <AnimatePresence mode="popLayout">
                     <motion.div
                         key={bgIndex}
                         initial={{ opacity: 0, scale: 1.05 }}
-                        animate={{ opacity: 0.25, scale: 1 }}
+                        animate={{ opacity: 0.6, scale: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 2, ease: "easeInOut" }}
-                        className="absolute inset-0 w-full h-full"
+                        className="absolute inset-0 w-full h-full z-0"
                     >
                         <Image 
                             src={HERO_BG_IMAGES[bgIndex]} 
@@ -73,6 +70,9 @@ export default function Hero() {
                         />
                     </motion.div>
                 </AnimatePresence>
+                
+                {/* Professional Overlay to ensure text readability */}
+                <div className="absolute inset-0 bg-background/50 dark:bg-background/70 z-10 backdrop-blur-[2px]" /> 
             </div>
 
             <div className="container-standard grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-12 items-center z-10 relative mx-auto w-full max-w-7xl">

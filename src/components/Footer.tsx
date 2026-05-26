@@ -29,12 +29,12 @@ const socialLinks = [
 
 export default function Footer() {
     return (
-        <footer className="relative bg-transparent border-t border-border pt-24 pb-0 overflow-hidden">
+        <footer className="relative bg-transparent border-t border-border pt-16 md:pt-24 pb-0 overflow-hidden">
             {/* Shimmering Ambient Background */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,hsla(var(--foreground),0.05),transparent_50%)] pointer-events-none" />
 
-            <div className="container-standard relative z-20 pb-40 lg:pb-64">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-20">
+            <div className="container-standard relative z-20 pb-32 md:pb-40 lg:pb-64">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 lg:gap-20">
                     {/* Brand Column */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -219,7 +219,7 @@ export default function Footer() {
             </div>
 
             {/* Massive Metallic Shimmer Background Text */}
-            <div className="absolute inset-x-0 bottom-16 pointer-events-none select-none flex items-end justify-center z-0 overflow-hidden opacity-70 h-[60%] lg:h-[80%]">
+            <div className="absolute inset-x-0 bottom-24 md:bottom-16 pointer-events-none select-none flex items-end justify-center z-0 overflow-hidden opacity-30 dark:opacity-70 h-[30%] md:h-[60%] lg:h-[80%]">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -240,8 +240,8 @@ export default function Footer() {
             </div>
 
             {/* Final Bottom Bar */}
-            <div className="absolute bottom-0 inset-x-0 z-30 w-full border-t border-border bg-background/40 backdrop-blur-xl">
-                <div className="container-standard py-4 flex flex-col-reverse md:flex-row justify-between items-center gap-4">
+            <div className="absolute bottom-0 inset-x-0 z-30 w-full border-t border-border bg-background/90 md:bg-background/40 backdrop-blur-xl">
+                <div className="container-standard py-6 md:py-4 flex flex-col-reverse md:flex-row justify-between items-center gap-4">
                     <p className="text-foreground/40 text-[9px] font-mono font-black tracking-[0.3em] uppercase text-center md:text-left">
                         © 2026 // MINDSCAPE ANALYTICS LLC. <span className="hidden md:inline">FOUNDED 2025. ALL RIGHTS RESERVED.</span>
                     </p>

@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, FileText, Download, Share2, Terminal, Cpu, Activity, Zap } from "lucide-react";
+import { Sparkles, FileText, Download, Share2, Terminal, Cpu, Activity, Zap, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const initialArticles = [
     {
@@ -108,6 +109,9 @@ export default function NeuralNewsroom() {
     const [logs, setLogs] = useState<string[]>([]);
     const [marketIndex, setMarketIndex] = useState(2480.12);
     const [scannedCount, setScannedCount] = useState(128402);
+    const [copiedId, setCopiedId] = useState<number | null>(null);
+    const [downloadingId, setDownloadingId] = useState<number | null>(null);
+    const router = useRouter();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -185,23 +189,27 @@ export default function NeuralNewsroom() {
         }, statusSequence.length * 600 + 500);
     };
 
-    const handleShare = (title: string) => {
+    const handleShare = (id: number, title: string) => {
         const url = typeof window !== "undefined" ? window.location.href : "https://mindscapeanalytics.ai";
         const shareText = `[MSA_NEURAL_LINK] :: ${title} :: ${url}`;
 
         if (navigator.clipboard) {
             navigator.clipboard.writeText(shareText);
-            // We could add a toast here, but the alert is a good feedback for now as per institutional style
-            alert("NEURAL_LINK_COPIED: Encrypted report access link is now in your clipboard.");
+            setCopiedId(id);
+            setTimeout(() => setCopiedId(null), 2000);
         }
     };
 
-    const handleDownload = (title: string) => {
-        alert(`REPORT_GENERATED: ${title}.pdf\nInstitutional clearance granted. Download starting...`);
+    const handleDownload = (id: number, title: string) => {
+        setDownloadingId(id);
+        setTimeout(() => {
+            setDownloadingId(null);
+            alert(`REPORT_GENERATED: ${title}.pdf\nInstitutional clearance granted. Download complete.`);
+        }, 1500);
     };
 
     const handleDeploy = () => {
-        window.location.href = "/shop";
+        router.push("/shop");
     };
 
     return (
@@ -437,16 +445,16 @@ export default function NeuralNewsroom() {
                                                     </div>
                                                     <div className="flex gap-2">
                                                         <button 
-                                                            onClick={() => handleShare(article.title)}
-                                                            className="p-2.5 sm:p-3 rounded-xl bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all active:scale-95"
+                                                            onClick={() => handleShare(article.id, article.title)}
+                                                            className="p-2.5 sm:p-3 rounded-xl bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all active:scale-95 flex items-center justify-center min-w-[38px] sm:min-w-[42px]"
                                                         >
-                                                            <Share2 size={13} />
+                                                            {copiedId === article.id ? <Check size={13} className="text-emerald-400" /> : <Share2 size={13} />}
                                                         </button>
                                                         <button 
-                                                            onClick={() => handleDownload(article.title)}
-                                                            className="p-2.5 sm:p-3 rounded-xl bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all active:scale-95"
+                                                            onClick={() => handleDownload(article.id, article.title)}
+                                                            className="p-2.5 sm:p-3 rounded-xl bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all active:scale-95 flex items-center justify-center min-w-[38px] sm:min-w-[42px]"
                                                         >
-                                                            <Download size={13} />
+                                                            {downloadingId === article.id ? <Activity size={13} className="animate-spin text-secondary" /> : <Download size={13} />}
                                                         </button>
                                                     </div>
                                                 </div>
